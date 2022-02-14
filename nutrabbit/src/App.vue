@@ -31,11 +31,8 @@ export default {
   transition: all 0.3s ease-in;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #35f1c5;
+  color: #07a07d;
   margin-top: 60px;
 }
 </style>
