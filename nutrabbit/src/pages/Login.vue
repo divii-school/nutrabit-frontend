@@ -1,6 +1,7 @@
 <template>
   <div class="Auth-wrap">
     <Header/>
+    
   </div>
 </template>
 
