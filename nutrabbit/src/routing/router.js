@@ -42,6 +42,7 @@ const routes = [
         path: '/login',
         component: Login,
         // beforeEnter: guest,
+        
     },
     {
         name: 'register',

@@ -3,6 +3,7 @@
     <div class="container mx-auto">
       <h1>Home</h1>
       <router-link to="/register" class="border-2 p-3">Register</router-link>
+      <router-link to="/login" class="border-2 p-3">Login</router-link>
     </div>
   </div>
 </template>

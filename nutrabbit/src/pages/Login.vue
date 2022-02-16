@@ -1,12 +1,16 @@
 <template>
   <div class="Auth-wrap">
-    <h1>Login</h1>
+    <Header/>
   </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue'
 export default {
   name: "Login",
+  components:{
+    Header,
+  }
 };
 </script>
 
