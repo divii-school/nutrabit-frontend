@@ -6,9 +6,9 @@
       <p>login</p>
       <form>
             <label>ID</label>
-            <input type="text" placeholder="Enter your ID" required>
+            <input type="text" placeholder="Enter ID" required>
             <label>Password</label>
-            <input type="password" placeholder="Enter your password" required>
+            <input type="password" placeholder="Enter password" required>
             <input type="checkbox" id="check">
              <label id="check1">Save ID</label><br>
              <p class="find">find ID | find password
@@ -204,14 +204,14 @@ margin-top:15px ;
   padding:2px;
   border-radius:5px ;
   margin:10px ;
-  height:35px ;
+  height:30px ;
 }
 .btn-1{
   width: 295px;
   background-color: #ffe600;
   color:rgb(49, 43, 43);
   border-radius:5px ;
-  height:35px ;
+  height:30px ;
   margin:10px ;
   font-size:14px ;
 } 
@@ -220,7 +220,7 @@ margin-top:15px ;
   background-color:rgb(6, 158, 6);
   color:rgb(226, 210, 210);
   border-radius:5px ;
-  height:35px ;
+  height:30px ;
   font-size:14px ;
   margin-left:10px ;
 }  

@@ -3,6 +3,7 @@ import NotFound from '../components/NotFound.vue';
 import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
+import Membership from '../pages/Membership.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -48,6 +49,12 @@ const routes = [
         name: 'register',
         path: '/register',
         component: Register,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'membership',
+        path: '/membership',
+        component: Membership,
         // beforeEnter: guest,
     },
     {
