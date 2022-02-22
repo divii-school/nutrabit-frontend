@@ -1,14 +1,10 @@
 <template>
     <div>
        <footer class="footer-container">
-           <div class="final">
-               
-
+           <!-- <div class="final">
                <div class="box-2">
                  <p>Terms of Use &nbsp; | &nbsp; <span>Privacy Policy</span></p>
                </div>
-                
-               <!-- <div class="box-3"> -->
                    <div class="vl"></div>
                    <h6>Korean
                        <svg
@@ -27,12 +23,13 @@
             ></path>
           </svg>
                    </h6>
-             
-<!-- <div class="relative inline-block text-left">
-  <div>
-    <button type="button" class="inline-flex justify-center  border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-white-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
-      Korean
-      <svg
+           </div> -->
+           <div class="final">
+           <p class="box">Terms of Use &nbsp; | &nbsp; <span>Privacy Policy</span></p>   
+            <div class="vl"></div>
+            <div class="korean">
+               <h6>Korean
+                       <svg
             aria-hidden="true"
             focusable="false"
             data-prefix="fas"
@@ -47,12 +44,11 @@
               d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"
             ></path>
           </svg>
-    </button>
-  </div>
-</div> -->
-               <!-- </div> -->
-          
-                <div class="vll"></div>
+                   </h6>
+            </div>
+            
+            <div class="vll"></div>
+                 
            </div>
            <div class="group-1">
                <div class="col1">
@@ -86,9 +82,9 @@ export default {
     box-sizing: border-box;
 }
 footer{
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
 }
 .footer-container{
@@ -127,27 +123,29 @@ footer{
     font-size: 12px;
 }
 .final{
-    border-top:1px solid rgb(214, 206, 206);
-    border-bottom:1px solid rgb(214, 206, 206);
-   width: 100%; 
+  border-top:1px solid rgb(214, 206, 206);
+  border-bottom:1px solid rgb(214, 206, 206);
    display: flex;
+   /* width: 100%; */
    align-items: center;
    justify-content: space-evenly;
+   height: 50px;
 }
-.box-2{
+/* .box-2{
     width: 70%;
     padding: 10px;
     margin-left: -330px;
     
 
 }
-/* .box-3{
+.box-3{
 width: 30%;
 
 } */
-.box-2 p{
+.box{
     font-size: 12px;
     color:rgb(121, 111, 111);
+    margin-left: 200px;
 }
 span{
   font-weight: 900;  
@@ -155,20 +153,18 @@ span{
 .vl {
   border-left: 2px solid grey;
   position: absolute;
-  height: 40px;
-  margin-left:300px;
-  top: 0;
+  height: 50px;
+  margin-left:660px;
+  
 }
 .vll {
   border-left: 2px solid grey;
   position: absolute;
-  height: 40px;
-  margin-left:600px;
-  top: 0;
+  height: 50px;
+  margin-left:900px;
 }
 h6{
-    margin-left: -650px;
+  margin-left:220px;
     display: flex;
 }
-
 </style>
