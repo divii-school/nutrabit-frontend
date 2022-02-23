@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import Membership from '../pages/Membership.vue';
+import Method from '../pages/Method.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -57,6 +58,13 @@ const routes = [
         component: Membership,
         // beforeEnter: guest,
     },
+    {
+        name: 'method',
+        path: '/method',
+        component: Method,
+        // beforeEnter: guest,
+    },
+    
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

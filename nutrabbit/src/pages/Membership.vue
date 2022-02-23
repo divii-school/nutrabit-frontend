@@ -8,12 +8,13 @@
          <input type="text" placeholder="Please Select a member type">
          </div>
          <div class="box-1">
-           
+           <img src="../assets/icons/user.svg">
      <p class="ind1">individual membership</p>
      <p class="ind2">When an individual joins</p>
 
          </div>
          <div class="box-2">
+           <img src="../assets/icons/Group.svg">
          <p class="ind1">Business membership registration</p>
          <p class="ind2">When a company joins</p>
          </div>
@@ -41,7 +42,7 @@ export default {
    background:#fff;
   padding:35px;
   margin:auto;
-  /* text-align:center; */
+
   height:600px ;
 } 
 input[type=text], select {
@@ -54,9 +55,7 @@ input[type=text], select {
   box-sizing: border-box;
   font-size:18px ;
 }
-/* .input label {
-     text-align:left;
-} */
+
 p{
   font-size:30px ;
 }
@@ -82,12 +81,35 @@ p{
     font-size:19px;
     color:rgb(73, 70, 70);
     align-items: center;
-    margin:35px ;
+    /* margin:35px ; */
+    margin-top:50px ;
 }
 .ind2{
    font-size:15px;
     color:rgb(156, 149, 149);
     align-items: center;
-    margin-top:-47px ;
+    margin-top:-10px ;
+}
+.box-1 img{
+Width :40px;
+Height:50px;
+position: absolute;
+left: 48.02%;
+right: 45.02%;
+ top: 53.87%;
+/* bottom: 54.85%;  */
+}
+.box-2 img{
+Width :40px;
+Height:50px;
+position: absolute;
+left: 48.02%;
+right: 45.02%;
+ top: 82.87%;
+/* bottom: 54.85%;  */
 }
 </style>
+
+
+
+

@@ -5,6 +5,7 @@
       <router-link to="/register" class="border-2 p-3">Register</router-link>
       <router-link to="/login" class="border-2 p-3">Login</router-link>
       <router-link to="/membership" class="border-2 p-3">Membership</router-link>
+      <router-link to="/method" class="border-2 p-3">Method</router-link>
     </div>
   </div>
 </template>
