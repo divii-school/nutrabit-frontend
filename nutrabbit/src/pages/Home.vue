@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <div class="container mx-auto">
-      <h1>Home</h1>
+       <h1>Home</h1>
       <router-link to="/register" class="border-2 p-3">Register</router-link>
       <router-link to="/login" class="border-2 p-3">Login</router-link>
       <router-link to="/membership" class="border-2 p-3">Membership</router-link>
-      <router-link to="/method" class="border-2 p-3">Method</router-link>
+      <router-link to="/business" class="border-2 p-3">Business</router-link>
+       <router-link to="/registrationComp" class="border-2 p-3">RegistrationComp</router-link>
     </div>
   </div>
 </template>
