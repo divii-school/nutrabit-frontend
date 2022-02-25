@@ -7,6 +7,9 @@
       <router-link to="/membership" class="border-2 p-3">Membership</router-link>
       <router-link to="/business" class="border-2 p-3">Business</router-link>
        <router-link to="/registrationComp" class="border-2 p-3">RegistrationComp</router-link>
+       <router-link to="/findID" class="border-2 p-3">FindID</router-link>
+       <router-link to="/changePassword" class="border-2 p-3">ChangePassword</router-link>
+       <router-link to="/findPassword" class="border-2 p-3">FindPassword</router-link>
     </div>
   </div>
 </template>

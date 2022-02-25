@@ -6,6 +6,9 @@ import Register from '../pages/Register.vue';
 import Membership from '../pages/Membership.vue';
 import Business from '../pages/Business.vue';
 import RegistrationComp from '../pages/RegistrationComp.vue';
+import FindID from '../pages/FindID.vue';
+import ChangePassword from '../pages/ChangePassword.vue';
+import FindPassword from '../pages/FindPassword.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -69,6 +72,24 @@ const routes = [
         name: 'registrationComp',
         path: '/registrationComp',
         component: RegistrationComp,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'findID',
+        path: '/findID',
+        component:FindID,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'changePassword',
+        path: '/changePassword',
+        component:ChangePassword,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'findPassword',
+        path: '/findPassword',
+        component:FindPassword,
         // beforeEnter: guest,
     },
     
