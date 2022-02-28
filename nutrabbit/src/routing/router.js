@@ -9,6 +9,8 @@ import RegistrationComp from '../pages/RegistrationComp.vue';
 import FindID from '../pages/FindID.vue';
 import ChangePassword from '../pages/ChangePassword.vue';
 import FindPassword from '../pages/FindPassword.vue';
+import Main from '../pages/Main.vue';
+
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -90,6 +92,12 @@ const routes = [
         name: 'findPassword',
         path: '/findPassword',
         component:FindPassword,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'main',
+        path: '/main',
+        component:Main,
         // beforeEnter: guest,
     },
     

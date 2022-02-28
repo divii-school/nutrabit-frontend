@@ -10,6 +10,7 @@
        <router-link to="/findID" class="border-2 p-3">FindID</router-link>
        <router-link to="/changePassword" class="border-2 p-3">ChangePassword</router-link>
        <router-link to="/findPassword" class="border-2 p-3">FindPassword</router-link>
+       <router-link to="/main" class="border-2 p-3">Main</router-link>
     </div>
   </div>
 </template>
