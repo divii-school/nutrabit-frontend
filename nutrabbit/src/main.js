@@ -9,7 +9,6 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import VueLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "./Tailwind.css";
-
 // if(localStorage.token) {
 //   setAuthHeader(localStorage.token);
 // } else {

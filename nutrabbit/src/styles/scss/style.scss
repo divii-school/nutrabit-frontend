@@ -7,6 +7,7 @@
 @import "./form";
 @import "./auth";
 @import "./modal";
+@import "./header";
 
 * {
   box-sizing: border-box;
@@ -34,6 +35,13 @@ body {
     background-color: $grey-1;
     color: $black-1;
   }
+}
+.container-big{
+  max-width: 1760px;
+  width: 95%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
 }
 h1,
 h2,
