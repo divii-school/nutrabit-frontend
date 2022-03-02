@@ -49,16 +49,15 @@
       <div class="white-box">
         <ul>
           <li>
-            <a href="#">Login</a>
-          </li>
-          <li>
-            <a href="#">nutri 3.3</a>
-          </li>
-          <li>
-            <a href="#">ONLY ONE</a>
-          </li>
-          <li>
-            <a href="#">CUSTOMER CENTER</a>
+            <div class="side-menu-heading">
+              <a href="#">Login</a>
+            </div>
+            <div class="side-menu-list">
+              <a href="javascript:void(0)">About Us</a>
+              <a href="javascript:void(0)">my choice</a>
+              <a href="javascript:void(0)">nutri 3.3 blending</a>
+              <a href="javascript:void(0)">Sample making guide</a>
+            </div>
           </li>
         </ul>
       </div>
