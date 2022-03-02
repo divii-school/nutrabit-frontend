@@ -20,7 +20,7 @@
              sign up as a member through your sns id
            </p>
               <button class="btn-1">
-                <img src="../assets/icons/logo.svg">  
+                <img src="../assets/icons/logo-black.svg">  
              <span>Start With cacao</span> 
         </button><br>
         <button class="btn-2 ">
