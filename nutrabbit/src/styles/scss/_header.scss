@@ -166,11 +166,11 @@ header{
         width: 50%;
       }
       .white-box {
-        @include flex-align-center;
+        @include flex-justify-center;
         background: $white-1;
         width: 50%;
         position: relative;
-        padding-left: 165px;
+        padding: 50px;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
         ul{
           text-align: left;
