@@ -14,7 +14,7 @@
 
          </div>
          <div class="box-2">
-           <img src="../assets/icons/Group.svg">
+           <img src="../assets/icons/Building_Symbol.svg">
          <p class="ind1">Business membership registration</p>
          <p class="ind2">When a company joins</p>
          </div>
