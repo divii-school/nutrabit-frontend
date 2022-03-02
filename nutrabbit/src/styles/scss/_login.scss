@@ -71,12 +71,12 @@
             .membership-list-wrap{
                 ul{
                     padding-top: 40px;
-                    border-top: 1px solid #CFCFCF;
+                    border-top: 1px solid $grey-CF;
                     margin-top: 20px;
                     .membership-item{
                         @include flex-justify-center;
                         flex-direction: column;
-                        border: 1px solid #CFCFCF;
+                        border: 1px solid $grey-CF;
                         box-sizing: border-box;
                         border-radius: 5px;
                         padding: 43px;
@@ -100,6 +100,12 @@
                             color: $grey-66;
                             margin-top:5px;
             
+                        }
+                        .method-item{
+                            @include flex-justify-center;
+                            flex-direction: column; 
+                            padding: 43px;
+                            margin-top: 40px; 
                         }
                     }
                 }

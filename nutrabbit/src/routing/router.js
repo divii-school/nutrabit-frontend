@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import Membership from '../pages/Membership.vue';
+import Method from '../pages/Method.vue';
 import Business from '../pages/Business.vue';
 import RegistrationComp from '../pages/RegistrationComp.vue';
 import FindID from '../pages/FindID.vue';
@@ -62,6 +63,12 @@ const routes = [
         name: 'membership',
         path: '/membership',
         component: Membership,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'method',
+        path: '/method',
+        component:Method,
         // beforeEnter: guest,
     },
     {

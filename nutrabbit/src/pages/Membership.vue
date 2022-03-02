@@ -8,7 +8,7 @@
           <p class="membership-desc">Please select a member type</p>
           <div class="membership-list-wrap">
             <ul>
-              <li class="membership-item">
+              <li class="membership-item active">
                 <i class="icon-user"></i>
                 <h2 class="list-heading">individual membership</h2>
                 <p class="list-desc">When an individual joins</p>
