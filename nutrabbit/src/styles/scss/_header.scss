@@ -189,6 +189,10 @@ header{
                 font-size: 32px;
                 line-height: 38px;
                 color: $black-18;
+                padding-bottom: 10px;
+                &.active{
+                  border-bottom: 3px solid $green-68;
+                }
               }
             }
             .side-menu-list{
@@ -200,6 +204,9 @@ header{
                 margin-top: 20px;
                 &:first-child{
                   margin-top: 0;
+                }
+                &.active{
+                  color: $green-68;
                 }
               }
             }

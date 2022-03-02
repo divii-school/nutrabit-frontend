@@ -67,10 +67,10 @@
           </li>
           <li>
             <div class="side-menu-heading">
-              <a href="#">ONLY ONE</a>
+              <a href="#" class="active">ONLY ONE</a>
             </div>
             <div class="side-menu-list">
-              <a href="javascript:void(0)">raw material storage box</a>
+              <a class="active" href="javascript:void(0)">raw material storage box</a>
               <a href="javascript:void(0)">my recipe</a>
               <a href="javascript:void(0)">my application</a>
             </div>
