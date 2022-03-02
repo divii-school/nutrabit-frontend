@@ -9,6 +9,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import VueLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "./Tailwind.css";
+import i18n from './config/i18n';
 // if(localStorage.token) {
 //   setAuthHeader(localStorage.token);
 // } else {
@@ -18,8 +19,10 @@ import "./Tailwind.css";
 // axios.defaults.baseURL = 'http://demo-vuejs.dvconsulting.org/admin/api';
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 
+
 const app = createApp(App);
 app.use(VueLoading);
 app.use(VueSweetalert2);
 app.use(VueAxios, axios);
+app.use(i18n);
 app.use(router).mount("#app");
