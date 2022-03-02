@@ -86,12 +86,13 @@ input {
 .custom-check {
 	display: block;
 	position: relative;
-	padding-left: 25px;
+	padding-left: 33px;
 	cursor: pointer;
-	font-size: 12px !important;
-  line-height: 20px !important;
-  letter-spacing: -0.2px;
-  color: $grey-E0;
+	font-size: 14px !important;
+  line-height: 17px !important;
+  color: $grey-82 !important;
+  font-weight: normal !important;
+  margin: 0 !important;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -106,8 +107,8 @@ input {
 		&:checked{
 			~ {
 				.checkmark {
-          background-color: red;
-          border: 1px solid red;
+          background-color: $green-68;
+          border: 1px solid $green-68;
 					&:after {
 						display: block;
 					}
@@ -117,10 +118,10 @@ input {
 	}
 	.checkmark {
 		&:after {
-      left: 6px;
+      left: 8px;
       top: 1px;
-      width: 5px;
-      height: 11px;
+      width: 8px;
+      height: 15px;
 			border: solid $white-1;
 			border-width: 0 2px 2px 0;
 			-webkit-transform: rotate(45deg);
@@ -130,8 +131,8 @@ input {
 	}
   &.active{
     .checkmark {
-      background-color: red;
-      border: 1px solid red;
+      background-color: $green-68;
+      border: 1px solid $green-68;
       &:after {
         display: block;
       }
@@ -142,11 +143,11 @@ input {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 18px;
-	width: 18px;
+	height: 24px;
+	width: 24px;
   background-color: $white-1;
   border-radius: 0;
-  border: 1px solid #CECED0;
+  border: 1px solid $grey-CF;
 	&:after {
 		content: "";
 		position: absolute;

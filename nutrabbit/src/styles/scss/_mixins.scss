@@ -30,3 +30,22 @@
   line-height: 48px;
   color: $black-00;
 }
+@mixin small-text {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: $grey-66;
+}
+
+@mixin primary-btn-1 {
+  @include flex-justify-center;
+  padding: 11px 30px 11px;
+  height: 45px;
+  background: $grey-4C;
+  border-radius: 5px;
+  width: 100%;
+  color: $white-1;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
