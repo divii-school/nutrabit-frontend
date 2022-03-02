@@ -20,10 +20,12 @@
           <div class="header-dropdown">
             <vue-select :options="['EN', 'KO']" placeholder="EN"> </vue-select>
           </div>
+
           <a
-            href="javascript:void(0)"
+            href="#"
             class="menu-toggle"
-            v-on:click="sidemenu"
+            @click="active = !active"
+            :aria-pressed="active ? 'true' : 'false'"
           >
             <img src="../assets/images/menu-toggle.png" alt="" />
           </a>
@@ -31,20 +33,33 @@
       </div>
     </div>
   </header>
-  <div class="right-menu-screen" :class="[isActive ? active : '']">
+  <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
-      <div class="mob-close">
-        <a href="javascript:void(0)"><img src="assets/images/cross.png" /></a>
+      <div
+        class="closeMenu"
+        @click="active = !active"
+        :aria-pressed="active ? 'true' : 'false'"
+      >
+        <a href="javascript:void(0)"
+          ><img src="/src/assets/icons/menu-close.svg"
+        /></a>
       </div>
 
       <div class="black-box"></div>
       <div class="white-box">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="solution.html">Solution</a></li>
-          <li><a href="partners.html">Partners</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="#">Login</a>
+          </li>
+          <li>
+            <a href="#">nutri 3.3</a>
+          </li>
+          <li>
+            <a href="#">ONLY ONE</a>
+          </li>
+          <li>
+            <a href="#">CUSTOMER CENTER</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -60,16 +75,21 @@ export default {
 
   data() {
     return {
-      isActive: false,
+      active: false,
     };
   },
   methods: {
-    sidemenu: function () {
-      this.isActive = !this.isActive;
+    activeLink(event) {
+      if (event.target.className == "right-menu-screen") {
+        event.target.className = "active";
+      } else {
+        event.target.className = "right-menu-screen";
+      }
     },
   },
 };
 </script>
+
  
 
 

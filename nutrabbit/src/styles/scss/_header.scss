@@ -143,10 +143,6 @@ header{
       right:40px;
       top: 21px;
       z-index: 9;
-      @media only screen and (max-width: 768px) {
-        right: 14px;
-        top: 21px;
-      }
     }
     .right-small-box {
       display: flex;
@@ -154,84 +150,12 @@ header{
       .black-box {
         background: $black-00;
         width: 50%;
-        @media only screen and (max-width: 768px) {
-          display: none;
-        }
       }
       .white-box {
         background: $white-1;
         width: 50%;
         position: relative;
-        @media only screen and (max-width: 768px) {
-          width: 100%;
-        }
-
-        ul {
-          margin-top: 153px;
-          margin-left: 165px;
-          padding:0px;
-          @media screen and (max-height: 1600px){
-            margin-top: 100px;
-        }
-          @media only screen and (max-width: 960px) {
-            margin-left: 4%;
-            margin-top: 10%;
-          }
-          @media only screen and (max-width: 768px) {
-            margin-left: 30px;
-            margin-top:102px;
-            padding: 0px;
-          }
-          li {
-            list-style: none;
-            padding-bottom: 50px;
-            @media only screen and (max-width: 960px) {
-              padding-bottom: 30px;
-            }
-
-            @media only screen and (max-width: 768px) {
-              padding-bottom: 25px;
-            }
-            a {
-              font-family: Helvetica;
-              font-style: normal;
-              font-weight: bold;
-              font-size: 32px;
-              line-height: 37px;
-              color: $black-18;
-              @media only screen and (max-width: 960px) {
-                font-size: 24px;
-              }
-              @media only screen and (max-width: 768px) {
-                font-size: 18px;
-                font-weight: bold;
-              }
-              &:hover {
-                border-bottom: 5px solid #67d2be;
-              }
-            }
-          }
-        }
-        .menu-logo {
-          width: 190px;
-          position: absolute;
-          bottom: 70px;
-          left: 166px;
-          @media screen and ( max-height: 1600px){
-            bottom: 30px;
-        }
-
-          @media only screen and (max-width: 960px) {
-            left: 70px;
-          }
-          @media only screen and (max-width: 768px) {
-            left: 10%;
-          }
-          @media only screen and (max-width: 768px) {
-            left: 33px;
-            width:140px;
-          }
-        }
+        
       }
     }
   }
