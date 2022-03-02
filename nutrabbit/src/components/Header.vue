@@ -2,7 +2,7 @@
   <header>
     <div class="container-big">
       <div class="header-menu flex">
-        <div class="manuLeft flex">
+        <div class="manuLeft">
           <a href="#" class="header-logo">
             <img src="../assets/images/logo.svg" alt="Logo" />
           </a>
@@ -11,12 +11,12 @@
             <li><a href="#">nutri 3.3 blending</a></li>
           </ul>
         </div>
-        <div class="manuRight flex">
+        <div class="manuRight">
           <div class="search-wrap">
-            <input type="text" />
-            <i></i>
+            <input type="text" placeholder="Enter your desired search term." />
+            <i class="icon-search-black"></i>
           </div>
-          <a href="">login</a>
+          <a href="" class="login-item">login</a>
           <div class="dropdown">
             <a href="" class="dropdown-toggle"></a>
             <div class="dropdown-menu">
@@ -24,7 +24,7 @@
               <a href="">EN</a>
             </div>
           </div>
-          <a href="">
+          <a href="" class="menu-toggle">
             <img src="../assets/images/menu-toggle.png" alt="" />
           </a>
         </div>

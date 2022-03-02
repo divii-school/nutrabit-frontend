@@ -4,6 +4,7 @@ header{
         @include flex-justify-between;
         min-height: 80px;
         .manuLeft{
+            @include flex-align-center;
             .header-logo{
                 img{
                     height: 25px;
@@ -24,7 +25,30 @@ header{
             }
         }
         .manuRight{
-    
+            @include flex-align-center;
+            .search-wrap{
+                input{
+                    height: 40px;
+                    width: 261px;
+                    padding: 0 5px;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: $grey-66;
+                    border-bottom: 1px solid $black-00;
+                }
+            }
+            .login-item{
+                font-size: 16px;
+                line-height: 19px;
+                color: $black-33;
+                margin-left: 32px;
+            }
+            .menu-toggle{
+                img{
+                    width: 56px;
+                    height: 40px;
+                }
+            }
         }
     }
 }
