@@ -48,15 +48,41 @@
       <div class="black-box"></div>
       <div class="white-box">
         <ul>
-          <li>
+          <li class="with-login-tip">
+            <i class="icon-login-tip login-tip"></i>
             <div class="side-menu-heading">
               <a href="#">Login</a>
+            </div>
+          </li>
+          <li>
+            <div class="side-menu-heading">
+              <a href="#">nutri 3.3</a>
             </div>
             <div class="side-menu-list">
               <a href="javascript:void(0)">About Us</a>
               <a href="javascript:void(0)">my choice</a>
               <a href="javascript:void(0)">nutri 3.3 blending</a>
               <a href="javascript:void(0)">Sample making guide</a>
+            </div>
+          </li>
+          <li>
+            <div class="side-menu-heading">
+              <a href="#">ONLY ONE</a>
+            </div>
+            <div class="side-menu-list">
+              <a href="javascript:void(0)">raw material storage box</a>
+              <a href="javascript:void(0)">my recipe</a>
+              <a href="javascript:void(0)">my application</a>
+            </div>
+          </li>
+          <li>
+            <div class="side-menu-heading">
+              <a href="#">CUSTOMER CENTER</a>
+            </div>
+            <div class="side-menu-list">
+              <a href="javascript:void(0)">Notice</a>
+              <a href="javascript:void(0)">FAQ</a>
+              <a href="javascript:void(0)">1:1 inquiry</a>
             </div>
           </li>
         </ul>
