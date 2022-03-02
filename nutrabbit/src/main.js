@@ -10,6 +10,11 @@ import VueLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "./Tailwind.css";
 import i18n from './config/i18n';
+
+//select
+import VueNextSelect from 'vue-next-select'
+import "vue-next-select/dist/index.css";
+
 // if(localStorage.token) {
 //   setAuthHeader(localStorage.token);
 // } else {
@@ -26,3 +31,5 @@ app.use(VueSweetalert2);
 app.use(VueAxios, axios);
 app.use(i18n);
 app.use(router).mount("#app");
+app.use(router).mount("#app")
+app.component('vue-select', VueNextSelect)
