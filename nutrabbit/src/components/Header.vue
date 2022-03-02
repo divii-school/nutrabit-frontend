@@ -18,10 +18,13 @@
           </div>
           <a href="" class="login-item">login</a>
           <div class="dropdown">
-            <a href="" class="dropdown-toggle"></a>
-            <div class="dropdown-menu">
-              <a href="">KO</a>
-              <a href="">EN</a>
+            <a href="javascript:void(0)">
+              <span>EN</span>
+              <i class="icon-arrow-down-solid"></i>
+            </a>
+            <div class="dropdown-menu" style="display: none">
+              <a class="dropdown-item" href="javascript:void(0)">KR</a>
+              <a class="dropdown-item" href="javascript:void(0)">EN</a>
             </div>
           </div>
           <a href="" class="menu-toggle">
