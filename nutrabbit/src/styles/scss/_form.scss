@@ -15,16 +15,15 @@
   }
   .input-group{
       .form-control{
+          @include small-text;
           width: 100%;
-          background: #FFFFFF;
-          border: 1px solid #A4A4A4;
+          background: $white-1;
+          border: 1px solid $grey-A4;
           border-radius: 5px;
           padding: 14px 20px;
-          font-size: 14px;
-          line-height: 17px;
           color: $black-33;
           &::placeholder{
-              color: #CFCFCF;
+              color: $grey-CF;
           }
       }
   }

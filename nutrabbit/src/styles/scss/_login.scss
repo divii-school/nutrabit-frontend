@@ -10,6 +10,50 @@
         }
         form{
             margin-top: 60px;
+            .form-links{
+                @include flex-justify-between;
+                margin-top: 30px;
+                .form-links-left{
+                    ul{
+                        @include flex-align-center;
+                        li{
+                            &:before{
+                                content: "I";
+                                margin: 0 10px;
+                                color: #A4A4A4;
+                            }
+                            &:first-child{
+                                &::before{
+                                    display: none;
+                                }
+                            }
+                            a{
+                                @include small-text
+                            }
+                        }
+                    }
+                }
+                .form-link-right{
+                    a{
+                        @include small-text;
+                        text-decoration: underline;
+                        color: $green-68; 
+                    }
+                }
+            }
+            .btn-primary{
+                margin-top: 22px;
+            }
+        }
+        .getting-started{
+            border-top: 1px solid #E0E0E0;
+            padding-top: 30px;
+            margin-top: 30px;
+            button{
+                &.green{
+                    margin-top: 10px;
+                }
+            }
         }
     }
 }
