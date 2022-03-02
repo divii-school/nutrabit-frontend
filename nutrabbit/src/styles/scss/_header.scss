@@ -31,7 +31,7 @@ header{
                 input{
                     height: 40px;
                     width: 261px;
-                    padding: 0 5px;
+                    padding: 0 30px 0 5px;
                     font-size: 14px;
                     line-height: 17px;
                     color: $grey-66;
@@ -50,15 +50,56 @@ header{
                 line-height: 19px;
                 color: $black-33;
                 margin-left: 32px;
+                font-weight: 500;
             }
-            .dropdown{
+            .header-dropdown{
                 margin-left: 32px; 
-                .dropdown-selector{
-                    span{
+                .vue-select{
+                    width: auto;
+                    border: 0;
+                    border-radius: 0;
+                    input{
+                        width: 20px;
+                        font-weight: 500;
                         font-size: 14px;
                         line-height: 17px;
                         color: $black-33;
-                        margin-right: 5px;
+                        &::placeholder{
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $black-33;
+                        }
+                    }
+                    .arrow-downward{
+                        border-color: $black-33 transparent transparent;
+                        border-width: 5px 5px 0;
+                    }
+                    .vue-dropdown{
+                        width: auto;
+                        border: 1px solid $grey-E0;
+                        top: 53px;
+                        li{
+                            width: 149px;
+                            height: 49px;
+                            padding: 16px;
+                            span{
+                                text-align: left;
+                                font-size: 14px;
+                                line-height: 17px;
+                                letter-spacing: 0.03em;
+                                color: $black-33;
+                            }
+                            &:hover{
+                                background: transparent;
+                                span{
+                                    color: $green-68;
+                                }
+                            }
+                            &.highlighted{
+                                background: transparent;
+                            }
+                        }
                     }
                 }
             }
