@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <img src="../assets/icons/Tick-Green.svg"><br>
+        <img src="../assets/icons/tick-green.svg"><br>
         <h1>Membership registration completed</h1><br>
         <p>Sign up is complete</p>
         <p>Experience the various features of nutri 3.3 from now on!</p>
