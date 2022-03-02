@@ -56,4 +56,34 @@
             }
         }
     }
+    &.membership-wrap{
+        .login-inner{
+            .login-heading{
+                text-align: left;
+            }
+            .membership-desc{
+                text-align: left;
+                font-size: 18px;
+                line-height: 22px;
+                color: $grey-7C;
+                margin-top:10px;
+            }
+            .membership-heading{
+                font-size: 26px;
+                line-height: 31px;
+                align-items: center;
+                color: $black-33;
+                margin-top:15px;
+
+            }
+            .membership-description{
+                font-size: 16px;
+                line-height: 19px;
+                align-items: center;
+                color: #666666;
+                margin-top:5px;
+
+            }
+        }
+    }
 }
