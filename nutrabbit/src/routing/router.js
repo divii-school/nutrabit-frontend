@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue';
 import Login from '../pages/0.1-login.vue';
 import Register from '../pages/Register.vue';
 import Membership from '../pages/0.1.2.1-1-member-registration-type-selection.vue';
-import Method from '../pages/Method.vue';
+import Method from '../pages/0.1.2.1-2-member-registration-method.vue';
 import Business from '../pages/Business.vue';
 import RegistrationComp from '../pages/RegistrationComp.vue';
 import FindID from '../pages/FindID.vue';

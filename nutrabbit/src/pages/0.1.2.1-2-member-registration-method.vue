@@ -12,7 +12,8 @@
                 <h2 class="method-heading">General membership registration</h2>
                 <p class="list-desc">Sign up as a member via email.</p>
               </li>
-            </ul>
+              </ul>
+          
 
           </div>
         </div>
