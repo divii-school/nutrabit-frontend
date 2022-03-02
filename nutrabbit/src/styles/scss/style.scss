@@ -8,6 +8,7 @@
 @import "./auth";
 @import "./modal";
 @import "./header";
+@import "./login";
 
 * {
   box-sizing: border-box;
@@ -39,6 +40,13 @@ body {
 .container-big{
   max-width: 1760px;
   width: 95%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+.container-small{
+  max-width: 682px;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;

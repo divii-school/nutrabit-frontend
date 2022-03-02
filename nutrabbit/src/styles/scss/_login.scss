@@ -1,0 +1,15 @@
+.login-wrap{
+    padding: 80px 0;
+    .login-inner{
+        padding: 70px 90px;
+        background: $white-1;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        .login-heading{
+            @include heading1;
+        }
+        form{
+            margin-top: 60px;
+        }
+    }
+}

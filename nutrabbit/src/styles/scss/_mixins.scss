@@ -24,10 +24,9 @@
 }
 
 // title
-@mixin heading-1 {
-  font-family: $default-font;
-  font-weight: 600;
-  font-size: 43px;
-  line-height: 59px;
-  // color: #ffffff;
+@mixin heading1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: $black-00;
 }

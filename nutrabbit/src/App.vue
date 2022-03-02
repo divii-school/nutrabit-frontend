@@ -33,8 +33,8 @@ export default {
 #app {
   text-align: center;
   // color: #07a07d;
-  margin-top:-90px;
-  margin-left:-20px;
-  margin-right:-20px;
+  // margin-top:-90px;
+  // margin-left:-20px;
+  // margin-right:-20px;
 }
 </style>
