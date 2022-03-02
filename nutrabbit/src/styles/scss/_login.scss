@@ -68,7 +68,7 @@
                 color: $grey-7C;
                 margin-top:10px;
             }
-            .membership-heading{
+            .list-heading{
                 font-size: 26px;
                 line-height: 31px;
                 align-items: center;
@@ -76,13 +76,19 @@
                 margin-top:15px;
 
             }
-            .membership-description{
+            .list-desc{
                 font-size: 16px;
                 line-height: 19px;
                 align-items: center;
                 color: $grey-66;
                 margin-top:5px;
 
+            }
+            .membership-item{
+                border: 1px solid #CFCFCF;
+                box-sizing: border-box;
+                border-radius: 5px;
+                padding: 43px;
             }
         }
     }

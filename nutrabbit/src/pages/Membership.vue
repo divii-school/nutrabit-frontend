@@ -9,14 +9,14 @@
           <div class="membership-list-wrap">
             <ul>
               <li>
-                <i class=".icon-user"></i>
-                <h2 class="membership-heading">individual membership</h2>
-                <p class="membership-description">When an individual joins</p>
+                <i class="icon-user"></i>
+                <h2 class="list-heading">individual membership</h2>
+                <p class="list-desc">When an individual joins</p>
               </li>
-               <li>
-                <i class=".icon-building-symbol"></i>
-                <h2 class="membership-heading">Business membership registration</h2>
-                <p When class="membership-description">When a company joins</p>
+               <li class="membership-item">
+                <i class="icon-building-symbol"></i>
+                <h2 class="list-heading">Business membership registration</h2>
+                <p When class="list-desc">When a company joins</p>
               </li>
             </ul>
           </div>
