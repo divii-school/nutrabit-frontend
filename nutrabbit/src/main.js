@@ -30,6 +30,6 @@ app.use(VueLoading);
 app.use(VueSweetalert2);
 app.use(VueAxios, axios);
 app.use(i18n);
-app.use(router).mount("#app");
 app.use(router).mount("#app")
 app.component('vue-select', VueNextSelect)
+
