@@ -27,6 +27,7 @@ header{
         .manuRight{
             @include flex-align-center;
             .search-wrap{
+                position: relative;
                 input{
                     height: 40px;
                     width: 261px;
@@ -36,6 +37,13 @@ header{
                     color: $grey-66;
                     border-bottom: 1px solid $black-00;
                 }
+                i{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                }
             }
             .login-item{
                 font-size: 16px;
@@ -43,7 +51,19 @@ header{
                 color: $black-33;
                 margin-left: 32px;
             }
+            .dropdown{
+                margin-left: 32px; 
+                .dropdown-selector{
+                    span{
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: $black-33;
+                        margin-right: 5px;
+                    }
+                }
+            }
             .menu-toggle{
+                margin-left: 20px; 
                 img{
                     width: 56px;
                     height: 40px;

@@ -18,7 +18,7 @@
           </div>
           <a href="" class="login-item">login</a>
           <div class="dropdown">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" class="dropdown-selector">
               <span>EN</span>
               <i class="icon-arrow-down-solid"></i>
             </a>
