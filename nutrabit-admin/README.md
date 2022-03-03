@@ -1,4 +1,4 @@
-# freya-vue
+# Nutrabit Admin vue
 
 ## Project setup
 ```
