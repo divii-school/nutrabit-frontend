@@ -89,7 +89,7 @@
           </li>
           <li class="side-menu-language">
             <ul class="flex">
-              <li><a href="">KO</a></li>
+              <li><a href="" @click="changeLanguage()">KO</a></li>
               <li><a href="">EN</a></li>
             </ul>
           </li>
@@ -119,6 +119,9 @@ export default {
         event.target.className = "right-menu-screen";
       }
     },
+    changeLanguage(){
+       
+    }
   },
 };
 </script>
