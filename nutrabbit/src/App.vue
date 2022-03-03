@@ -31,7 +31,7 @@ export default {
   transition: all 0.3s ease-in;
 }
 #app {
-  text-align: center;
+  // text-align: center;
   // color: #07a07d;
   // margin-top:-90px;
   // margin-left:-20px;

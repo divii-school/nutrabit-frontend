@@ -70,7 +70,9 @@
               <a href="#" class="active">ONLY ONE</a>
             </div>
             <div class="side-menu-list">
-              <a class="active" href="javascript:void(0)">raw material storage box</a>
+              <a class="active" href="javascript:void(0)"
+                >raw material storage box</a
+              >
               <a href="javascript:void(0)">my recipe</a>
               <a href="javascript:void(0)">my application</a>
             </div>
@@ -84,6 +86,12 @@
               <a href="javascript:void(0)">FAQ</a>
               <a href="javascript:void(0)">1:1 inquiry</a>
             </div>
+          </li>
+          <li class="side-menu-language">
+            <ul class="flex">
+              <li><a href="">KO</a></li>
+              <li><a href="">EN</a></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -114,7 +122,3 @@ export default {
   },
 };
 </script>
-
- 
-
-
