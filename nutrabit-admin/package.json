@@ -1,0 +1,50 @@
+{
+	"name": "freya",
+	"version": "2.0.0",
+	"private": true,
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build",
+		"test:unit": "vue-cli-service test:unit",
+		"lint": "vue-cli-service lint",
+		"node-sass": "sass --watch public/assets:public/assets"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.5.0",
+		"@vue/cli-plugin-eslint": "~4.5.0",
+		"@vue/cli-plugin-router": "~4.5.0",
+		"@vue/cli-plugin-unit-jest": "~4.5.0",
+		"@vue/cli-service": "~4.5.0",
+		"@vue/compiler-sfc": "3.1.5",
+		"@vue/test-utils": "^2.0.0-0",
+		"babel-core": "7.0.0-bridge.0",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^25.0.0",
+		"eslint": "^6.8.0",
+		"eslint-plugin-vue": "^7.0.0-0"
+	},
+	"dependencies": {
+		"@babel/core": "^7.16.5",
+		"@fullcalendar/core": "^5.7.2",
+		"@fullcalendar/daygrid": "^5.7.2",
+		"@fullcalendar/interaction": "^5.7.2",
+		"@fullcalendar/timegrid": "^5.7.2",
+		"@fullcalendar/vue3": "^5.7.2",
+		"@vueup/vue-quill": "^1.0.0-beta.7",
+		"axios": "^0.21.1",
+		"chart.js": "3.3.2",
+		"core-js": "^3.6.5",
+		"i18n": "^0.13.4",
+		"node-sass": "^7.0.1",
+		"primeflex": "2.0.0",
+		"primeicons": "4.1.0",
+		"primevue": "3.7.1",
+		"prismjs": "^1.9.0",
+		"sass": "^1.37.5",
+		"sass-loader": "^7.0.1",
+		"validator": "^13.7.0",
+		"vue": "3.1.5",
+		"vue-i18n": "^9.2.0-beta.26",
+		"vue-router": "^4.0.11"
+	}
+}
