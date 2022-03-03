@@ -49,3 +49,16 @@
   font-size: 18px;
   line-height: 22px;
 }
+@mixin small-outline-btn {
+  @include flex-justify-center;
+  padding: 4px;
+  height: 45px;
+  background: $white-1;
+  border-radius: 5px;
+  width: 109px;
+  color: $green-68;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  border: 1px solid $green-68;
+}

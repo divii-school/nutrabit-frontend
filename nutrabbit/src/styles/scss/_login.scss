@@ -19,12 +19,35 @@
             padding: 60px 16px;
             box-shadow: none;
         }
-        .login-heading {
-            @include heading1;
-            text-align: center;
-            @media screen and (max-width: 540px) {
-                font-size: 30px;
-                line-height: 36px;
+        .login-heading-wrap{
+            .login-heading {
+                @include heading1;
+                text-align: center;
+                @media screen and (max-width: 540px) {
+                    font-size: 30px;
+                    line-height: 36px;
+                }
+            }
+            &.with-extra-text{
+                padding-bottom: 10px;
+                border-bottom: 1px solid $grey-CF;
+                .login-heading{
+                    @include flex-align-center;
+                    span{
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: $grey-7C;
+                        margin-left: 20px;
+                        font-weight: 400;
+                    }
+                }
+                span{
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: $green-53;
+                }
             }
         }
         form {
@@ -36,6 +59,12 @@
             }
             @media screen and (max-width: 540px) {
                 margin-top: 40px;
+            }
+            .form-group{
+                margin-top: 24px;
+                &:first-child{
+                    margin-top: 0;
+                }
             }
             .form-links {
                 @include flex-justify-between;
@@ -70,6 +99,12 @@
             }
             .btn-primary {
                 margin-top: 22px;
+            }
+            &.signUp-form{
+                margin-top: 20px;
+                .btn-primary{
+                    margin-top: 40px;
+                }
             }
         }
         .getting-started {

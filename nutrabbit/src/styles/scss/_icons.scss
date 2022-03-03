@@ -47,3 +47,17 @@
   width: 20px;
   display: inline-block;
 }
+.icon-required{
+  background: url(../../../src/assets/icons/icon-required.svg) no-repeat center center;
+  background-size: auto 8px;
+  height: 8px;
+  width: 8px;
+  display: inline-block;
+}
+.green-tick-circle {
+  background: url(../../../src/assets/icons/green-tick-circle.svg) no-repeat center center;
+  background-size: auto 24px;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}

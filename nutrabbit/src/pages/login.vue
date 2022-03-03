@@ -5,7 +5,7 @@
       <div class="login-wrap">
         <div class="login-inner">
           <div class="login-heading-wrap">
-          <h1 class="login-heading">login</h1>
+            <h1 class="login-heading">login</h1>
           </div>
           <form action="">
             <div class="form-group">
@@ -55,8 +55,12 @@
             <button class="btn-primary">login</button>
           </form>
           <div class="getting-started">
-            <button class="btn-primary with-icon yellow-btn"><i class="icon-chat-black"></i> Start with cacao</button>
-            <button class="btn-primary with-icon green-btn"><i class="icon-naver"></i> Getting Started with Naver</button>
+            <button class="btn-primary with-icon yellow-btn">
+              <i class="icon-chat-black"></i> Start with cacao
+            </button>
+            <button class="btn-primary with-icon green-btn">
+              <i class="icon-naver"></i> Getting Started with Naver
+            </button>
           </div>
         </div>
       </div>

@@ -1,30 +1,95 @@
-.form-group{
-  margin-top: 24px;
-  &:first-child{
-      margin-top: 0;
-  }
-  label{
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 22px;
-      color: $black-33;
-      margin-bottom: 10px;
-      width: 100%;
-      text-align: left;
-      display: inline-block;
-  }
-  .input-group{
-      .form-control{
-          @include small-text;
-          width: 100%;
-          background: $white-1;
-          border: 1px solid $grey-A4;
-          border-radius: 5px;
-          padding: 14px 20px;
-          color: $black-33;
-          &::placeholder{
-              color: $grey-CF;
-          }
-      }
-  }
+.form-group {
+    margin-top: 29px;
+    &:first-child {
+        margin-top: 0;
+    }
+    label {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: $black-33;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        display: inline-block;
+        display: flex;
+        align-items: flex-start;
+        i {
+            margin: 6px 5px 0 0;
+        }
+    }
+    .input-group {
+        .input-inner {
+            position: relative;
+            .form-control {
+                @include small-text;
+                width: 100%;
+                background: $white-1;
+                border: 1px solid $grey-A4;
+                border-radius: 5px;
+                padding: 14px 20px;
+                color: $black-33;
+                &::placeholder {
+                    color: $grey-CF;
+                }
+            }
+            .time{
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translate(0, -50%);
+                font-size: 14px;
+                line-height: 17px;
+                color: $green-53;
+            }
+        }
+        &.with-btn {
+            @include flex-align-center;
+            .input-inner {
+                width: calc(100% - 119px);
+                margin-right: 10px;
+            }
+        }
+        &.dual-input {
+            margin-bottom: 10px;
+        }
+    }
+    .multi-checkbox {
+        @include flex-justify-between;
+    }
+    &.error {
+        .input-group{
+            .input-inner{
+                .form-control {
+                    border: 1px solid $red-3;
+                }
+            }
+        }
+        .error-msg {
+            font-size: 14px;
+            line-height: 17px;
+            color: $red-3;
+        }
+    }
+}
+
+.signUp-form {
+    .terms-sec {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $grey-CF;
+        .form-group {
+            margin-top: 24px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    .business-form{
+        margin-top: 40px;
+        padding-bottom: 64px;
+        border-bottom: 1px solid $grey-CF;
+    }
+    .individuals-form{
+        margin-top: 40px;
+    }
 }
