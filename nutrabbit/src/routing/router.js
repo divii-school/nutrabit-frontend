@@ -70,11 +70,11 @@ const routes = [
         path: '/registration-business',
         component: RegistrationBusiness
     },
-    {
-        name: 'personal-information-management',
-        path: '/personal-information-management',
-        component: Personal-information-management
-    },
+    // {
+    //     name: 'personal-information-management',
+    //     path: '/personal-information-management',
+    //     component: Personal-information-management
+    // },
     {
         name: 'method',
         path: '/method',
