@@ -1,5 +1,61 @@
-.icon-search {
-  background: url('../assets/icons/search.svg') no-repeat center center;
+.icon-search-black {
+  background: url(../../../src/assets/icons/icon-search-black.svg) no-repeat right center;
+  background-size: auto 24px;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+.icon-arrow-down-solid {
+  background: url(../../../src/assets/icons/icon-arrow-down-solid.svg) no-repeat right center;
+  background-size: auto 4px;
+  height: 4px;
+  width: 8px;
+  display: inline-block;
+}
+.icon-chat-black {
+  background: url(../../../src/assets/icons/icon-chat-black.svg) no-repeat center center;
+  background-size: auto 24px;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+.icon-naver {
+  background: url(../../../src/assets/icons/icon-naver.svg) no-repeat center center;
+  background-size: auto 24px;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+.icon-user{
+  background: url(../../../src/assets/icons/user.svg) no-repeat center center;
+  background-size: auto 50px;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+.icon-building-symbol{
+  background: url(../../../src/assets/icons/building-symbol.svg) no-repeat center center;
+  background-size: auto 50px;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+.icon-login-tip{
+  background: url(../../../src/assets/icons/icon-login-tip.svg) no-repeat center center;
+  background-size: auto 20px;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+.icon-required{
+  background: url(../../../src/assets/icons/icon-required.svg) no-repeat center center;
+  background-size: auto 8px;
+  height: 8px;
+  width: 8px;
+  display: inline-block;
+}
+.green-tick-circle {
+  background: url(../../../src/assets/icons/green-tick-circle.svg) no-repeat center center;
   background-size: auto 24px;
   height: 24px;
   width: 24px;

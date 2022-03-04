@@ -24,10 +24,41 @@
 }
 
 // title
-@mixin heading-1 {
-  font-family: $default-font;
+@mixin heading1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: $black-00;
+}
+@mixin small-text {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: $grey-66;
+}
+
+@mixin primary-btn-1 {
+  @include flex-justify-center;
+  padding: 11px 30px 11px;
+  height: 45px;
+  background: $grey-4C;
+  border-radius: 5px;
+  width: 100%;
+  color: $white-1;
   font-weight: 600;
-  font-size: 43px;
-  line-height: 59px;
-  // color: #ffffff;
+  font-size: 18px;
+  line-height: 22px;
+}
+@mixin small-outline-btn {
+  @include flex-justify-center;
+  padding: 4px;
+  height: 45px;
+  background: $white-1;
+  border-radius: 5px;
+  width: 109px;
+  color: $green-68;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  border: 1px solid $green-68;
 }

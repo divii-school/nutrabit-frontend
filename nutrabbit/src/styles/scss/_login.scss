@@ -1,0 +1,222 @@
+.login-wrap {
+    padding: 80px 0;
+    @media screen and (max-width: 768px) {
+        padding: 5px 0 55px;
+    }
+    .login-inner {
+        padding: 70px 90px;
+        background: $white-1;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        @media screen and (max-width: 768px) {
+            padding: 60px 90px;
+            box-shadow: none;
+        }
+        // @media screen and (max-width: 640px){
+        //     padding: 60px 69px;
+        // }
+        @media screen and (max-width: 640px) {
+            padding: 60px 16px;
+            box-shadow: none;
+        }
+        .login-heading-wrap{
+            .login-heading {
+                @include heading1;
+                text-align: center;
+                @media screen and (max-width: 540px) {
+                    font-size: 30px;
+                    line-height: 36px;
+                }
+            }
+            &.with-extra-text{
+                padding-bottom: 10px;
+                border-bottom: 1px solid $grey-CF;
+                .login-heading{
+                    @include flex-align-center;
+                    span{
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: $grey-7C;
+                        margin-left: 20px;
+                        font-weight: 400;
+                    }
+                }
+                span{
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: $green-53;
+                }
+            }
+        }
+        form {
+            max-width: 502px;
+            width: 100%;
+            margin-top: 60px;
+            @media screen and (max-width: 768px) {
+                max-width: 100%;
+            }
+            @media screen and (max-width: 540px) {
+                margin-top: 40px;
+            }
+            .form-group{
+                margin-top: 24px;
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
+            .form-links {
+                @include flex-justify-between;
+                margin-top: 30px;
+                .form-links-left {
+                    ul {
+                        @include flex-align-center;
+                        li {
+                            &:before {
+                                content: "I";
+                                margin: 0 10px;
+                                color: #A4A4A4;
+                            }
+                            &:first-child {
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                            a {
+                                @include small-text
+                            }
+                        }
+                    }
+                }
+                .form-link-right {
+                    a {
+                        @include small-text;
+                        text-decoration: underline;
+                        color: $green-68;
+                    }
+                }
+            }
+            .btn-primary {
+                margin-top: 22px;
+            }
+            &.signUp-form{
+                margin-top: 20px;
+                .btn-primary{
+                    margin-top: 40px;
+                }
+            }
+        }
+        .getting-started {
+            border-top: 1px solid #E0E0E0;
+            padding-top: 30px;
+            margin-top: 30px;
+            button {
+                &.green-btn {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    &.membership-wrap {
+        .login-inner {
+            .login-heading {
+                text-align: left;
+            }
+            .membership-desc {
+                text-align: left;
+                font-size: 18px;
+                line-height: 22px;
+                color: $grey-7C;
+                margin-top: 10px;
+            }
+            .membership-list-wrap {
+                ul {
+                    padding-top: 40px;
+                    border-top: 1px solid $grey-CF;
+                    margin-top: 20px;
+                    .membership-item {
+                        @include flex-justify-center;
+                        flex-direction: column;
+                        border: 1px solid $grey-CF;
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        padding: 43px 40px;
+                        margin-top: 40px;
+                        width: 100%;
+                        &:first-child {
+                            margin-top: 0;
+                        }
+                        &.active {
+                            border: 3px solid $green-68;
+                        }
+                        .list-heading {
+                            font-size: 26px;
+                            line-height: 31px;
+                            color: $black-33;
+                            margin-top: 15px;
+                            font-weight: 600;
+                            text-align: center;
+                            @media screen and (max-width: 768px) {
+                                font-size: 24px;
+                                line-height: 29px;
+                            }
+                        }
+                        .list-desc {
+                            font-size: 16px;
+                            line-height: 19px;
+                            color: $grey-66;
+                            margin-top: 5px;
+                        }
+                        .method-item {
+                            @include flex-justify-center;
+                            flex-direction: column;
+                            padding: 43px;
+                            margin-top: 40px;
+                        }
+                        .method-heading {
+                            font-size: 24px;
+                            line-height: 29px;
+                            color: #333333;
+                            margin-top: 40px;
+                        }
+                    }
+                }
+                &.method-selection {
+                    ul {
+                        li {
+                            margin-top: 40px;
+                            border-top: 1px solid $grey-E0;
+                            padding-top: 40px;
+                            &:first-child{
+                                border: 0;
+                                padding-top: 0;
+                                margin-top: 0;
+                            }
+                            h2 {
+                                font-weight: 600;
+                                font-size: 24px;
+                                line-height: 29px;
+                                color: $black-33;
+                                text-align: center;
+                            }
+                            p {
+                                font-size: 16px;
+                                line-height: 19px;
+                                color: $grey-66;
+                                text-align: center;
+                                margin-top: 5px;
+                            }
+                            .btn-primary {
+                                margin-top: 30px;
+                                &.green-btn{
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

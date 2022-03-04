@@ -1,43 +1,31 @@
-.primaryBtn {
-  border: 0px;
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  &.orangeBtn {
-    background-color: $orange-1;
+.btn-primary{
+  @include primary-btn-1;
+  &.with-icon{
+    height: 46px;
+    i{
+      margin-right: 10px;
+    }
+  }
+  &.yellow-btn{
+    background: $yellow-50;
+    color: $black-3A;
+    font-size: 19px;
+    line-height: 23px;
+  }
+  &.green-btn{
+    background: $green-5A;
+    font-size: 19px;
+    line-height: 23px;
+  }
+  &.grenn-btn2{
     color: $white-1;
-    width: 100%;
-    height: 58px;
-    font-size: 24px;
-    line-height: 33px;
-    border-radius: 5px;
+    background: $green-68;
   }
 }
-.links {
-  @include flex-justify-center;
-  text-decoration: none;
-}
-.back-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  background-color: $black-2;
-}
-.btn-green {
-  background: #30be71;
-  border-radius: 5px;
-  padding: 7px 35px;
-  border-radius: 5px;
-}
-.btn-grey {
-  background: #757575;
-  border-radius: 5px;
-  padding: 7px 35px;
-  border-radius: 5px;
-}
-.btn-red {
-  background: $red-2;
-  border-radius: 5px;
-  padding: 7px 35px;
-  border-radius: 5px;
+.btn-green-outline{
+  @include small-outline-btn;
+  &.grey{
+    color: $grey-CF;
+    border: 1px solid $grey-CF;
+  }
 }

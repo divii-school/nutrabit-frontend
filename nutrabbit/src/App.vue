@@ -31,8 +31,10 @@ export default {
   transition: all 0.3s ease-in;
 }
 #app {
-  text-align: center;
-  color: #07a07d;
-  margin-top: 60px;
+  // text-align: center;
+  // color: #07a07d;
+  // margin-top:-90px;
+  // margin-left:-20px;
+  // margin-right:-20px;
 }
 </style>
