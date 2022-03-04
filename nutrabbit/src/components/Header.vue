@@ -89,7 +89,7 @@
           </li>
           <li class="side-menu-language">
             <ul class="flex">
-              <li><a href="" @click="changeLanguage()">KO</a></li>
+              <li><a href="">KO</a></li>
               <li><a href="">EN</a></li>
             </ul>
           </li>
