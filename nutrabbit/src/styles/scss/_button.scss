@@ -17,4 +17,15 @@
     font-size: 19px;
     line-height: 23px;
   }
+  &.grenn-btn2{
+    color: $white-1;
+    background: $green-68;
+  }
+}
+.btn-green-outline{
+  @include small-outline-btn;
+  &.grey{
+    color: $grey-CF;
+    border: 1px solid $grey-CF;
+  }
 }
