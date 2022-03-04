@@ -79,7 +79,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter your mobile phone number"
+                    value="010-1234-1234"
                   />
                 </div>
               </div>
@@ -91,7 +91,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter address"
+                   value="15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul"
                   />
                 </div>
                 <button class="btn-green-outline">Address Search</button>
@@ -101,7 +101,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter detailed address"
+                    value="First floor"
                   />
                 </div>
               </div>
