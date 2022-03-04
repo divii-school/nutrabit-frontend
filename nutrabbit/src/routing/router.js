@@ -10,7 +10,7 @@ import RegistrationCompleted from '../pages/member-registration-completed.vue';
 import FindID from '../pages/find-id.vue';
 import ForgotPassword from '../pages/forgot-password.vue';
 import ChangePassword from '../pages/change-password.vue';
-
+import PersonalInformation from '../pages/personal-information-management.vue';
 import Main from '../pages/Main.vue';
 
 
@@ -70,11 +70,13 @@ const routes = [
         path: '/registration-business',
         component: RegistrationBusiness
     },
-    // {
-    //     name: 'personal-information-management',
-    //     path: '/personal-information-management',
-    //     component: Personal-information-management
-    // },
+
+    {
+        name: 'personal-information',
+        path: '/personal-information',
+        component:  PersonalInformation
+    },
+   
     {
         name: 'method',
         path: '/method',
