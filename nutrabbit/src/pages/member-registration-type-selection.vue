@@ -10,11 +10,6 @@
 
           <div class="membership-list-wrap">
             <ul>
-              <!-- <li v-for="item in items" :key="item.message">
-                <i class="icon-user"></i>
-                <h2 class="list-heading">individual membership</h2>
-                <p class="list-desc">When an individual joins</p>
-              </li> -->
               <li class="membership-item active">
                 <i class="icon-user"></i>
                 <h2 class="list-heading">individual membership</h2>
@@ -36,16 +31,6 @@
 <script>
 export default {
   name: "member-registration-type-selection",
-  data() {
-    return {
-      items: [
-        {
-          img: "../"
-        }, 
-        { message: "Bar" }
-        ],
-    };
-  },
 };
 </script>
 
