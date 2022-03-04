@@ -10,9 +10,6 @@ import RegistrationCompleted from '../pages/member-registration-completed.vue';
 import FindID from '../pages/find-id.vue';
 import ForgotPassword from '../pages/forgot-password.vue';
 import ChangePassword from '../pages/change-password.vue';
-import Modal from '../pages/modal.vue';
-import PersonalInformation from '../pages/personal-information-management.vue';
-
 
 import Main from '../pages/Main.vue';
 
@@ -107,11 +104,6 @@ const routes = [
         path: '/change-password',
         component:ChangePassword,
         // beforeEnter: guest,
-    },
-    {
-        name: 'modal',
-        path: '/modal',
-        component: Modal,
     },
 
 
