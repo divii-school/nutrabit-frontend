@@ -1,6 +1,6 @@
 <template>
   <div class="main-body">
-    <div class="container-small">
+    <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
@@ -29,7 +29,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter ID"
+                    value="rabbit123"
                   />
                 </div>
               </div>
@@ -41,7 +41,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
+                    placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
                   />
                 </div>
               </div>
@@ -53,7 +53,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="verify password"
+                    placeholder="Sankyu password confirmation"
                   />
                 </div>
               </div>
@@ -65,7 +65,8 @@
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter your name"
+                    value="rabbit123@gmail.com"
+                
                   />
                 </div>
               </div>
