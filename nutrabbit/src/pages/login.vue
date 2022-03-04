@@ -1,9 +1,8 @@
 <template>
-  <Header />
   <div class="main-body">
     <div class="container-small">
-      <div class="login-wrap">
-        <div class="login-inner">
+      <div class="login-signup-wrap">
+        <div class="login-signup-inner">
           <div class="login-heading-wrap">
           <h1 class="login-heading">{{$t("login")}}</h1>
           </div>
@@ -62,17 +61,16 @@
       </div>
     </div>
   </div>
-  <Footer />
+  <Modal/>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
+import Modal from '../pages/modal.vue';
+import Button from '../components/Button.vue';
 export default {
   name: "Login",
-  components: {
-    Header,
-    Footer,
-  },
+  components:{
+    Button
+  }
 };
 </script>

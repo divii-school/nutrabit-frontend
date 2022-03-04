@@ -1,9 +1,8 @@
 <template>
-  <Header />
   <div class="main-body">
     <div class="container-small">
-      <div class="login-wrap membership-wrap">
-        <div class="login-inner">
+      <div class="login-signup-wrap membership-wrap">
+        <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               Sign Up
@@ -190,16 +189,10 @@
       </div>
     </div>
   </div>
-  <Footer />
 </template>
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
+
 export default {
-  name: "Method",
-  components: {
-    Header,
-    Footer,
-  },
+  name: "member-registration-individual",
 };
 </script>

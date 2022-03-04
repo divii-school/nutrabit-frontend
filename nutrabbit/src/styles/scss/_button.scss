@@ -21,6 +21,11 @@
     color: $white-1;
     background: $green-68;
   }
+  &.grey-btn{
+    color: $grey-4C;
+    border: 1px solid $grey-4C;
+    background: $white-1;
+  }
 }
 .btn-green-outline{
   @include small-outline-btn;

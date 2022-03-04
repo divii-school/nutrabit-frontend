@@ -3,6 +3,9 @@ footer{
         max-width: 1464px;
         width: 100%;
         margin: 0 auto;
+        @media screen and (max-width:992px){
+            padding: 0 16px;
+        }
     }
     .footer-inner{
         .footer-links{
@@ -11,25 +14,59 @@ footer{
             .footer-links-inner{
                 @include flex-justify-between;
                  padding: 0 116px 0 294px;
+                @media screen and (max-width:992px){
+                    padding: 0 100px 0 200px;
+                }
+                @media screen and (max-width: 768px){
+                    padding: 0;
+                }
                 .link-left{
                     ul{
                         @include flex-align-center;
                         li{
-                            &::before{
-                                content: "I";
-                                margin: 0 15px;
-                                color: $grey-BD;
-                            }
-                            &:first-child{
-                                &::before{
-                                    display: none;
+                            position: relative;
+                                padding-left: 15px;
+                                margin-left: 15px;
+                                @media screen and (max-width: 992px){
+                                    padding-left: 10px;
+                                    margin-left: 10px;
                                 }
-                            }
+                                @media screen and (max-width: 768px){
+                                    padding-left: 5px;
+                                    margin-left: 5px;
+                                }
+                                &::before{
+                                    position: absolute;
+                                    content: "";
+                                    background: $grey-BD;
+                                    height: 15px;
+                                    width: 1px;
+                                    top: 5px;
+                                    left: 0;
+                                    @media screen and (max-width: 768px){
+                                        height: 10px;
+                                        top: 10px;
+                                    }
+                                } 
+                                &:first-child{
+                                    margin: 0;
+                                    padding: 0;
+                                    &::before{
+                                        display: none;
+                                    }
+                                }
                             a{
                                 font-size: 14px;
                                 line-height: 17px;
                                 color: $grey-4C;
-                                &.active{
+                                display: inline-block;
+                                @media screen and (max-width: 768px){
+                                    font-size: 10px;
+                                    line-height: 12px;
+                                }
+                            }
+                            &.active{
+                                a{
                                     font-weight: 600;
                                 }
                             }
@@ -48,17 +85,28 @@ footer{
                             align-items: center;
                             justify-content: center;
                             width: 120px;
+                            @media screen and (max-width: 768px){
+                               height: 32px;
+                               width: 87px;
+                            }
                             .vue-select-header{
                                 justify-content: center;
                                 cursor: pointer;
                                 .vue-input{
                                     width: 45px;
                                     padding: 0;
+                                    @media screen and (max-width: 768px){
+                                        width: 34px;
+                                    }
                                     input{
                                         font-weight: 500;
                                         font-size: 14px;
                                         line-height: 17px;
                                         color: $grey-4C;
+                                        @media screen and (max-width: 768px){
+                                            font-size: 10px;
+                                            line-height: 12px;
+                                        }
                                         &::placeholder{
                                             font-weight: 500;
                                             color: $grey-4C;
@@ -66,7 +114,7 @@ footer{
                                     }
                                 }
                                 .arrow-downward{
-                                   margin: 0 0 0 25px;
+                                   margin: 0 0 0 29px;
                                    background: url(../../../src/assets/icons/icon-arrowUp.svg) no-repeat right center;
                                    height: 6px;
                                    width: 8px;
@@ -84,6 +132,19 @@ footer{
                                     height: 49px;
                                     padding: 16px;
                                     border-radius: 0;
+                                    @media screen and (max-width: 768px){
+                                        width: 87px;
+                                        height: 30px;
+                                        padding: 5px 10px;
+                                    }
+                                    span{
+                                        font-size: 14px;
+                                        line-height: 17px;
+                                        @media screen and (max-width: 768px){
+                                            font-size: 10px;
+                                            line-height: 12px;
+                                        }
+                                    }
                                     &:hover{
                                         background: transparent;
                                         span{
@@ -104,20 +165,92 @@ footer{
             display: flex;
             align-items: flex-start;
             padding: 25px 0 26px;
+            @media screen and (max-width: 768px){
+                padding: 25px 0 25px;
+            }
             .footer-logo{
                 height: 56px;
                 width: 128px;
+                @media screen and (max-width: 768px){
+                    height: 42px;
+                    width: 80px;
+                }
                 img{
                     width: auto;
                     height: 56px;
+                    @media screen and (max-width: 768px){
+                        height: 42px;
+                        min-width: 80px;
+                    }
                 }
             }
             .address{
                 padding-left: 166px;
-                p{
+                @media screen and (max-width:992px){
+                    padding-left: 72px;
+                }
+                @media screen and (max-width: 768px){
+                    padding-left: 30px;
+                }
+                ul{
+                    @include flex-align-center;
+                    @media screen and (max-width: 580px){
+                        flex-wrap: wrap;
+                    }
+                    
+                    li{
+                        position: relative;
+                        padding-left: 15px;
+                        margin-left: 15px;
+                        @media screen and (max-width: 768px){
+                            padding-left: 5px;
+                            margin-left: 5px;
+                        }
+                        &::before{
+                            position: absolute;
+                            content: "";
+                            background: $grey-BD;
+                            height: 15px;
+                            width: 1px;
+                            top: 4px;
+                            left: 0;
+                            @media screen and (max-width: 768px){
+                                height: 10px;
+                                top: 2px;
+                            }
+                        } 
+                        &:first-child{
+                            margin: 0;
+                            padding: 0;
+                            &::before{
+                                display: none;
+                            }
+                        }
+                        &:last-child{
+                            @media screen and (max-width: 551px){
+                                padding: 0;
+                                margin: 0;
+                                &:before{
+                                    display: none;
+                                }
+                            }
+                        }
+                        &.active{
+                            font-weight: 600;
+                        }
+                    }
+                }
+                p, ul li{
                     font-size: 14px;
                     line-height: 22px;
                     color: $grey-4C;
+                    @media screen and (max-width: 992px){
+                        font-size: 12px;
+                    }
+                    @media screen and (max-width: 768px){
+                        font-size: 10px;
+                        line-height: 13px;
+                    }
                 }
                 a{
                     font-size: 14px;
@@ -125,6 +258,14 @@ footer{
                     color: $grey-4C;
                     margin-top: 22px;
                     display: block;
+                    @media screen and (max-width: 992px){
+                        font-size: 12px;
+                    }
+                    @media screen and (max-width: 768px){
+                        margin-top: 10px;
+                        font-size: 10px;
+                        line-height: 13px;
+                    }
                 }
             }
         }
