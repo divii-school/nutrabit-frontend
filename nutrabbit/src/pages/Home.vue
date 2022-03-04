@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home main-body">
     <div class="container mx-auto">
        <h1>Home</h1>
       <router-link to="/register" class="border-2 p-3">Register</router-link>

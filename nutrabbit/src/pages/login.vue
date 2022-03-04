@@ -61,16 +61,14 @@
       </div>
     </div>
   </div>
-  <Modal/>
 </template>
 
 <script>
-import Modal from '../pages/modal.vue';
 import Button from '../components/Button.vue';
 export default {
   name: "Login",
   components:{
-    Button
+    Button,
   }
 };
 </script>

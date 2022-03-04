@@ -11,8 +11,8 @@
             <p class="text-center">Sign up is complete.</p>
             <p class="text-center">Experience the various features of nutri 3.3 from now on!</p>
           </div>
-          <div class="btn-wrap flex">
-            <button class="btn-primary grey-btn">home</button>
+          <div class="btn-wrap flex dual-btn">
+            <button class="btn-primary grey-btn-outline">home</button>
             <button class="btn-primary grenn-btn2">login</button>
           </div>
         </div>
