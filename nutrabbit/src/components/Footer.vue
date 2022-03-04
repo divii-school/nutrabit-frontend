@@ -7,7 +7,7 @@
             <div class="link-left">
               <ul>
                 <li><a href="">Terms of Use</a></li>
-                <li><a class="active" href="">privacy policy</a></li>
+                <li class="active"><a href="">privacy policy</a></li>
               </ul>
             </div>
             <div class="link-right">
@@ -25,10 +25,11 @@
           <img src="../assets/images/footer-logo.svg" alt="" />
         </a>
         <div class="address">
-          <p>
-            Newtrabit Co., Ltd. I CEO: Min Kyung-ran I Business registration
-            number: 603-88-01301
-          </p>
+          <ul>
+            <li>Newtrabit Co., Ltd.</li>
+            <li>CEO: Min Kyung-ran</li>
+            <li class="active">Business registration number: 603-88-01301</li>
+          </ul>
           <p>
             Headquarters: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul
           </p>

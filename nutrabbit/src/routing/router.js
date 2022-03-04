@@ -2,16 +2,17 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
 import Home from '../pages/Home.vue';
 import Login from '../pages/login.vue';
-import Register from '../pages/Register.vue';
-import Membership from '../pages/member-registration-type-selection.vue';
+import MembershipSelection from '../pages/member-registration-type-selection.vue';
 import Method from '../pages/member-registration-method.vue';
 import RegistrationIndividuals from '../pages/member-registration-individual.vue';
 import RegistrationBusiness from '../pages/membership-registration-business.vue';
-import Business from '../pages/Business.vue';
-import RegistrationComp from '../pages/RegistrationComp.vue';
-import FindID from '../pages/FindID.vue';
-import ChangePassword from '../pages/ChangePassword.vue';
-import FindPassword from '../pages/FindPassword.vue';
+import RegistrationCompleted from '../pages/member-registration-completed.vue';
+import FindID from '../pages/find-id.vue';
+import ForgotPassword from '../pages/forgot-password.vue';
+import ChangePassword from '../pages/change-password.vue';
+import Modal from '../pages/modal.vue';
+
+
 import Main from '../pages/Main.vue';
 
 
@@ -56,9 +57,9 @@ const routes = [
         
     },
     {
-        name: 'membership',
-        path: '/membership',
-        component: Membership,
+        name: 'Membership-selection',
+        path: '/Membership-selection',
+        component: MembershipSelection,
         // beforeEnter: guest,
     },
     {
@@ -78,49 +79,44 @@ const routes = [
         // beforeEnter: guest,
     },
     {
-        name: 'register',
-        path: '/register',
-        component: Register,
-        // beforeEnter: guest,
+        name: 'registration-completed',
+        path: '/registration-completed',
+        component: RegistrationCompleted
     },
     {
-        name: 'business',
-        path: '/business',
-        component: Business,
-        // beforeEnter: guest,
-    },
-    {
-        name: 'registrationComp',
-        path: '/registrationComp',
-        component: RegistrationComp,
-        // beforeEnter: guest,
-    },
-    {
-        name: 'findID',
-        path: '/findID',
+        name: 'find-id',
+        path: '/find-id',
         component:FindID,
         // beforeEnter: guest,
     },
     {
-        name: 'changePassword',
-        path: '/changePassword',
+        name: 'forgot-password',
+        path: '/forgot-password',
+        component: ForgotPassword
+    },
+    {
+        name: 'change-password',
+        path: '/change-password',
         component:ChangePassword,
         // beforeEnter: guest,
     },
     {
-        name: 'findPassword',
-        path: '/findPassword',
-        component:FindPassword,
-        // beforeEnter: guest,
+        name: 'modal',
+        path: '/modal',
+        component: Modal,
     },
+
+
+
+
+    
+
     {
         name: 'main',
         path: '/main',
         component:Main,
         // beforeEnter: guest,
     },
-    
-    
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

@@ -23,6 +23,9 @@ body {
   padding: 0;
   height: 100%;
 }
+.main-body{
+  min-height: 100vh;
+}
 #app-container {
   height: 100%;
   // background-color: $black-1;
@@ -41,8 +44,11 @@ body {
 .container-small{
   max-width: 682px;
   width: 100%;
-  // padding-left: 15px;
-  // padding-right: 15px;
+  margin: 0 auto;
+}
+.container-medium{
+  max-width: 870px;
+  width: 100%;
   margin: 0 auto;
 }
 h1,
