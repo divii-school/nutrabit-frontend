@@ -73,6 +73,11 @@ const routes = [
         component: RegistrationBusiness
     },
     {
+        name: 'personal-information-management',
+        path: '/personal-information-management',
+        component: Personal-information-management
+    },
+    {
         name: 'method',
         path: '/method',
         component:Method,
