@@ -56,12 +56,6 @@ const routes = [
         
     },
     {
-        name: 'register',
-        path: '/register',
-        component: Register,
-        // beforeEnter: guest,
-    },
-    {
         name: 'membership',
         path: '/membership',
         component: Membership,
@@ -81,6 +75,12 @@ const routes = [
         name: 'method',
         path: '/method',
         component:Method,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register,
         // beforeEnter: guest,
     },
     {
