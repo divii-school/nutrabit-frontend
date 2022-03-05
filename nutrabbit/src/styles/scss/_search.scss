@@ -43,10 +43,14 @@
         .search-resul-list-wrap{
             margin-top: 40px;
             .search-resul-list{
-                background: #FFFFFF;
+                background: $white-1;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                 border-radius: 10px;
                 padding: 40px 20px;
+                margin-top: 40px;
+                &:first-child{
+                    margin-top: 0;
+                }
                 .list-heading{
                     font-size: 24px;
                     line-height: 24px;
