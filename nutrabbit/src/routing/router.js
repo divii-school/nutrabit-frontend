@@ -10,6 +10,7 @@ import RegistrationCompleted from '../pages/MemberRegistrationCompleted.vue';
 import FindID from '../pages/FindId.vue';
 import ForgotPassword from '../pages/ForgotPassword.vue';
 import ChangePassword from '../pages/ChangePassword.vue';
+import SearchResult from '../pages/SearchResult.vue';
 import PersonalInformation from '../pages/PersonalInformationManagement.vue';
 import Main from '../pages/Main.vue';
 
@@ -103,6 +104,12 @@ const routes = [
         name: 'change-password',
         path: '/change-password',
         component:ChangePassword,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'search-result',
+        path: '/search-result',
+        component:SearchResult,
         // beforeEnter: guest,
     },
 

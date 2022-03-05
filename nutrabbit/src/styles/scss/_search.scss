@@ -1,0 +1,85 @@
+.search-result-main{
+    padding: 80px 0;
+    .search-wrap{
+        @include flex-justify-center;
+        .search-inner{
+            position: relative;
+            max-width: 534px;
+            width: 100%;
+            input{
+                width: 100%;
+                height: 34px;
+                border-bottom: 1px solid $black-00;
+                font-size: 18px;
+                line-height: 22px;
+                color: $grey-4C;
+                padding: 5px 30px 5px 5px;
+                &::placeholder{
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: $grey-A4;
+                }
+            }
+            i{
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+            }
+        }
+    }
+    .search-result-body{
+        margin-top: 40px;
+        .search-result-title{
+            font-size: 16px;
+            line-height: 21px;
+            color: $grey-66;
+            span{
+                font-weight: bold;
+                margin: 0 5px;
+            }
+        }
+        .search-resul-list-wrap{
+            margin-top: 40px;
+            .search-resul-list{
+                background: #FFFFFF;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                padding: 40px 20px;
+                .list-heading{
+                    font-size: 24px;
+                    line-height: 24px;
+                    color: $grey-4C;
+                    font-weight: 700;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid $grey-CF;
+                }
+                .search-list-inner{
+                    margin: 20px -27px 40px;
+                    @include flex-align-center;
+                    .search-list-item{
+                        margin: 0 27px;
+                        width: calc(25% - 54px);
+                        .item-img-wrap{
+                            height: 240px;
+                            width: 240px;
+                            img{
+                                width: auto;
+                                height: 240px;
+                            }
+                        }
+                        p{
+                            font-weight: 600;
+                            font-size: 18px;
+                            line-height: 22px;
+                            letter-spacing: 0.01em;
+                            color: $black-33;
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

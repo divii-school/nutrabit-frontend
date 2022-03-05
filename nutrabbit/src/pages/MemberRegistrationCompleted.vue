@@ -1,6 +1,6 @@
 <template>
   <div class="main-body">
-    <div class="container-medium">
+    <div class="signUp-container">
       <div class="login-signup-wrap registration-completed">
         <div class="login-signup-inner">
           <div class="circle-tick">
