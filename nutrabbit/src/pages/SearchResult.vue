@@ -24,7 +24,7 @@
                   v-for="item in item.searchListData"
                   :key="item"
                 >
-                  <Card :item="item" type="searchData"/>
+                  <SmallCard :item="item" type="searchData"/>
                 </li>
               </ul>
               <!-- <Pagination /> -->
