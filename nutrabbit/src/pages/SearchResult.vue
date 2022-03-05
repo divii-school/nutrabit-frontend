@@ -27,7 +27,7 @@
                   <SmallCard :item="item" type="searchData"/>
                 </li>
               </ul>
-              <!-- <Pagination /> -->
+              <Pagination />
               <p>fcv</p>
             </li>
           </ul>
@@ -52,6 +52,7 @@ export default {
   name: "SearchResult",
   components:{
       SmallCard,
+      Pagination,
   },
   //   computed: {
   //     filteresult() {
