@@ -11,15 +11,19 @@
         <div class="search-result-body">
           <p class="search-result-title">gun<span>5 pieces</span>result</p>
           <ul class="search-resul-list-wrap">
-            <li class="search-resul-list" v-for="user in users" :key="user">
-              <h1 class="list-heading">{{user.name}}</h1>
+            <li class="search-resul-list" v-for="item in searchResult" :key="item">
+              <h1 class="list-heading">{{ item.title }}</h1>
               <ul class="search-list-inner">
-                <li class="search-list-item" v-for="link in user.links" :key="link">
+                <li
+                  class="search-list-item"
+                  v-for="item in item.searchListData"
+                  :key="item"
+                >
                   <div class="item-img-wrap">
-                    <img v-bind:src="link.name" alt="" />
+                    <img v-bind:src="item.img" alt="" />
                     <!-- <img src="../assets/images/aloe-img1.png" alt="" /> -->
                   </div>
-                  <p class="text-center">{{ link.url }}</p>
+                  <p class="text-center">{{ item.desc }}</p>
                 </li>
               </ul>
             </li>
@@ -35,30 +39,47 @@
 <script>
 export default {
   name: "SearchResult",
-  
+
   data() {
     return {
-    users: [{
-        name: 'nutri 3.3',
-        links: [
+      searchResult: [
         {
-          name:"../../../src/assets/images/aloe-img1.png",
-          url: "Aloe A B"
-        },{
-         name:"../../../src/assets/images/aloe-img2.png",
-          url: "Aloe A B C"
-        }]
-      },{
-        name: 'Vue User',
-        links: [
+          title: "nutri 3.3",
+          searchListData: [
+            {
+              img: "../../../src/assets/images/aloe-img1.png",
+              desc: "Aloe A B",
+            },
+            {
+              img: "../../../src/assets/images/aloe-img2.png",
+              desc: "Aloe A B C",
+            },
+          ],
+        },
+
         {
-          name:"Vue Forum",
-          url: "forum.vuejs.org"
-        },{
-          name:"Vue Chat",
-          url: "chat.vuejs.org"
-        }]
-      }]
+          title: "Recommended blending",
+          searchListData: [
+            {
+              img: "../../../src/assets/images/aloe-img3.png",
+              desc: "Aloe Blending",
+            },
+            {
+              img: "../../../src/assets/images/aloe-img4.png",
+              desc: "Aloe gel blending",
+            },
+          ],
+        },
+        {
+          title: "Raw material",
+          searchListData: [
+            {
+              img: "../../../src/assets/images/aloe-img5.png",
+              desc: "aloe",
+            },
+          ],
+        },
+      ],
     };
   },
 };
