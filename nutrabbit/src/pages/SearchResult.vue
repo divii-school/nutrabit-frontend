@@ -11,18 +11,19 @@
         <div class="search-result-body">
           <p class="search-result-title">gun<span>5 pieces</span>result</p>
           <ul class="search-resul-list-wrap">
-            <li class="search-resul-list" v-for="link in user" :key="link">
-              <h1 class="list-heading">{{ link.name }}</h1>
+            <li class="search-resul-list" v-for="item in searchResult" :key="item">
+              <h1 class="list-heading">{{ item.title }}</h1>
               <ul class="search-list-inner">
                 <li
                   class="search-list-item"
-                  v-for="link in user.links"
-                  :key="link"
+                  v-for="item in item.searchListData"
+                  :key="item"
                 >
                   <div class="item-img-wrap">
-                    <img v-bind:src="link.name" alt="" />
+                    <img v-bind:src="item.img" alt="" />
+                    <!-- <img src="../assets/images/aloe-img1.png" alt="" /> -->
                   </div>
-                  <p class="text-center">{{ link.url }}</p>
+                  <p class="text-center">{{ item.desc }}</p>
                 </li>
               </ul>
               <Pagination />
@@ -38,36 +39,43 @@
 import Pagination from "../components/Pagination.vue";
 export default {
   name: "SearchResult",
-  components: {
-    Pagination,
-  },
 
   data() {
     return {
-      users: [
+      searchResult: [
         {
-          name: "nutri 3.3",
-          links: [
+          title: "nutri 3.3",
+          searchListData: [
             {
-              name: "../../../src/assets/images/aloe-img1.png",
-              url: "Aloe A B",
+              img: "../../../src/assets/images/aloe-img1.png",
+              desc: "Aloe A B",
             },
             {
-              name: "../../../src/assets/images/aloe-img2.png",
-              url: "Aloe A B C",
+              img: "../../../src/assets/images/aloe-img2.png",
+              desc: "Aloe A B C",
+            },
+          ],
+        },
+
+        {
+          title: "Recommended blending",
+          searchListData: [
+            {
+              img: "../../../src/assets/images/aloe-img3.png",
+              desc: "Aloe Blending",
+            },
+            {
+              img: "../../../src/assets/images/aloe-img4.png",
+              desc: "Aloe gel blending",
             },
           ],
         },
         {
-          name: "Vue User",
-          links: [
+          title: "Raw material",
+          searchListData: [
             {
-              name: "Vue Forum",
-              url: "forum.vuejs.org",
-            },
-            {
-              name: "Vue Chat",
-              url: "chat.vuejs.org",
+              img: "../../../src/assets/images/aloe-img5.png",
+              desc: "aloe",
             },
           ],
         },
