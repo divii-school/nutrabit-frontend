@@ -47,11 +47,11 @@
 
 <script>
 import Pagination from "../components/Pagination.vue";
-import Card from "../components/Card.vue";
+import SmallCard from "../components/SmallCard.vue";
 export default {
   name: "SearchResult",
   components:{
-      Card,
+      SmallCard,
   },
   //   computed: {
   //     filteresult() {
