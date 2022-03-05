@@ -14,7 +14,7 @@
         <div class="manuRight">
           <div class="search-wrap">
             <input type="text" placeholder="Enter your desired search term." />
-            <i class="icon-search-black"></i>
+            <a href=""><i class="icon-search-black"></i></a>
           </div>
           <a href="" class="login-item">login</a>
           <div class="header-dropdown">
