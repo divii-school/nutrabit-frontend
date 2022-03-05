@@ -275,4 +275,15 @@
             }
         }
     }
+    &.personal-info{
+        .login-signup-inner {
+        .login-heading-wrap{
+            .login-heading{
+               padding: 0px;
+               border-bottom: 0px;
+            }
+
+        } 
+    } 
+    }
 }

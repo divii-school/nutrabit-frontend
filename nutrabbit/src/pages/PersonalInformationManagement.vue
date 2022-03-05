@@ -1,9 +1,9 @@
 <template>
   <div class="main-body">
     <div class="signUp-container">
-      <div class="login-signup-wrap membership-wrap">
+      <div class="login-signup-wrap membership-wrap personal-info">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap with-extra-text">
+          <div class="login-heading-wrap">
             <h1 class="login-heading">
               Personal information management
             </h1>
