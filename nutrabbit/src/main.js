@@ -1,8 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./routing/router";
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 // import setAuthHeader from "./utils/setAuthHeader";
@@ -14,7 +14,7 @@ import "./Tailwind.css";
 import { createI18n } from "vue-i18n";
 
 //select
-import VueNextSelect from 'vue-next-select'
+import VueNextSelect from 'vue-next-select';
 import "vue-next-select/dist/index.css";
 
 // if(localStorage.token) {

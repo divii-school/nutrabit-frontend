@@ -38,3 +38,9 @@
     border: 1px solid $grey-CF;
   }
 }
+.btn-small-solid{
+  @include small-solid-btn;
+  &.green{
+    background: $green-68;
+  }
+}

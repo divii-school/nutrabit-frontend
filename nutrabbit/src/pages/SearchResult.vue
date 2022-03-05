@@ -24,19 +24,28 @@
                   v-for="item in item.searchListData"
                   :key="item"
                 >
-                  <SmallCard :item="item" type="searchData"/>
+                  <SearchCard :item="item" type="searchData" />
                 </li>
               </ul>
-              <!-- <Pagination /> -->
-              <p>fcv</p>
+              <Pagination />
             </li>
           </ul>
-          <ul class="search-resul-list-wrap faq">
+
+          <!-- this is for no data -->
+
+          <!-- <ul class="search-resul-list-wrap faq">
             <li class="search-resul-list">
-              <h1 class="list-heading">FAQ</h1>
+              <h1 class="list-heading">No Data Sec</h1>
               <div class="no-result-found">
                 <span>No results were found for your search.</span>
               </div>
+            </li>
+          </ul> -->
+
+          <ul class="search-resul-list-wrap faq">
+            <li class="search-resul-list">
+              <h1 class="list-heading">FAQ</h1>
+              <SearchAccordion/>
             </li>
           </ul>
         </div>
@@ -47,11 +56,14 @@
 
 <script>
 import Pagination from "../components/Pagination.vue";
-import SmallCard from "../components/SmallCard.vue";
+import SearchCard from "../components/SearchCard.vue";
+import SearchAccordion from '../components/SearchAccordion.vue';
 export default {
   name: "SearchResult",
-  components:{
-      SmallCard,
+  components: {
+    SearchCard,
+    Pagination,
+    SearchAccordion,
   },
   //   computed: {
   //     filteresult() {
@@ -69,7 +81,7 @@ export default {
   //   },
   data() {
     return {
-    //   search: "",
+      //   search: "",
       searchResultData: [
         {
           title: "nutri 3.3",
