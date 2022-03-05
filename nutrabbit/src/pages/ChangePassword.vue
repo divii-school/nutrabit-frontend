@@ -1,6 +1,6 @@
 <template>
   <div class="main-body">
-    <div class="container-small">
+    <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">

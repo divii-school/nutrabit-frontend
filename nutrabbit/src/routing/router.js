@@ -2,15 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
 import Home from '../pages/Home.vue';
 import Login from '../pages/login.vue';
-import MembershipSelection from '../pages/member-registration-type-selection.vue';
-import Method from '../pages/member-registration-method.vue';
-import RegistrationIndividuals from '../pages/member-registration-individual.vue';
-import RegistrationBusiness from '../pages/membership-registration-business.vue';
-import RegistrationCompleted from '../pages/member-registration-completed.vue';
-import FindID from '../pages/find-id.vue';
-import ForgotPassword from '../pages/forgot-password.vue';
-import ChangePassword from '../pages/change-password.vue';
-import PersonalInformation from '../pages/personal-information-management.vue';
+import MembershipSelection from '../pages/MemberRegistrationTypeSelection.vue';
+import Method from '../pages/MemberRegistrationMethod.vue';
+import RegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
+import RegistrationBusiness from '../pages/MembershipRegistrationBusiness.vue';
+import RegistrationCompleted from '../pages/MemberRegistrationCompleted.vue';
+import FindID from '../pages/FindId.vue';
+import ForgotPassword from '../pages/ForgotPassword.vue';
+import ChangePassword from '../pages/ChangePassword.vue';
+import PersonalInformation from '../pages/PersonalInformationManagement.vue';
 import Main from '../pages/Main.vue';
 
 
@@ -55,8 +55,8 @@ const routes = [
         
     },
     {
-        name: 'Membership-selection',
-        path: '/Membership-selection',
+        name: 'membership-selection',
+        path: '/membership-selection',
         component: MembershipSelection,
         // beforeEnter: guest,
     },
