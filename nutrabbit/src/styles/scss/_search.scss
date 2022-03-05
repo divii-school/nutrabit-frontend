@@ -20,7 +20,8 @@
                     color: $grey-A4;
                 }
             }
-            i{
+            a{
+                @include flex-justify-center;
                 position: absolute;
                 right: 0;
                 top: 0;
@@ -59,11 +60,20 @@
                     padding-bottom: 20px;
                     border-bottom: 1px solid $grey-CF;
                 }
+                .no-result-found{
+                    @include flex-justify-center;
+                    margin: 20px 0 40px 0;
+                    span{
+                        font-size: 16px;
+                        line-height: 21px;
+                        color: $grey-66;
+                    }
+                }
                 .search-list-inner{
-                    margin: 20px -27px 40px;
+                    margin: 20px -27px 0;
                     @include flex-align-center;
                     .search-list-item{
-                        margin: 0 27px;
+                        margin: 0 27px 40px;
                         width: calc(25% - 54px);
                         .item-img-wrap{
                             height: 240px;

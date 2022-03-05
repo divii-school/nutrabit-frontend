@@ -4,14 +4,19 @@
       <div class="search-result-main">
         <div class="search-wrap">
           <div class="search-inner">
+            <!-- <input v-model="search" type="text" placeholder="Search" /> -->
             <input type="text" placeholder="Search" />
-            <i class="icon-search-black"></i>
+            <a href="#"><i class="icon-search-black"></i></a>
           </div>
         </div>
         <div class="search-result-body">
           <p class="search-result-title">gun<span>5 pieces</span>result</p>
           <ul class="search-resul-list-wrap">
-            <li class="search-resul-list" v-for="item in searchResult" :key="item">
+            <li
+              class="search-resul-list"
+              v-for="item of searchResultData"
+              :key="item"
+            >
               <h1 class="list-heading">{{ item.title }}</h1>
               <ul class="search-list-inner">
                 <li
@@ -19,14 +24,19 @@
                   v-for="item in item.searchListData"
                   :key="item"
                 >
-                  <div class="item-img-wrap">
-                    <img v-bind:src="item.img" alt="" />
-                    <!-- <img src="../assets/images/aloe-img1.png" alt="" /> -->
-                  </div>
-                  <p class="text-center">{{ item.desc }}</p>
+                  <Card :item="item" type="searchData"/>
                 </li>
               </ul>
-              <Pagination />
+              <!-- <Pagination /> -->
+              <p>fcv</p>
+            </li>
+          </ul>
+          <ul class="search-resul-list-wrap faq">
+            <li class="search-resul-list">
+              <h1 class="list-heading">FAQ</h1>
+              <div class="no-result-found">
+                <span>No results were found for your search.</span>
+              </div>
             </li>
           </ul>
         </div>
@@ -37,12 +47,30 @@
 
 <script>
 import Pagination from "../components/Pagination.vue";
+import Card from "../components/Card.vue";
 export default {
   name: "SearchResult",
-
+  components:{
+      Card,
+  },
+  //   computed: {
+  //     filteresult() {
+  //       return this.searchResultData.filter((item) => {
+  //         for (const { desc } of item.searchListData) {
+  //           if (desc.indexOf(this.search) > -1) {
+  //             return item;
+  //           }
+  //           else{
+  //               return "no data"
+  //           }
+  //         }
+  //       });
+  //     },
+  //   },
   data() {
     return {
-      searchResult: [
+    //   search: "",
+      searchResultData: [
         {
           title: "nutri 3.3",
           searchListData: [
