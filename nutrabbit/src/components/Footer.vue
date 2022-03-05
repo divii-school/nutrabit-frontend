@@ -12,7 +12,7 @@
             </div>
             <div class="link-right">
               <div class="footer-dropdown">
-                <vue-select :options="['English', 'Korean']" placeholder="English">
+                <vue-select :options="['English', 'Korean']" placeholder="English" close-on-select>
                 </vue-select>
               </div>
             </div>

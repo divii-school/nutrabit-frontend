@@ -93,6 +93,53 @@
                         }
                     }
                 }
+                .paggination-wrap{
+                    @include flex-justify-center;
+                    a{
+                        @include flex-justify-center;
+                    }
+                    ul{
+                        @include flex-align-center;
+                        li{
+                            @include flex-justify-center;
+                           height: 24px;
+                           width: 24px;
+                           font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            letter-spacing: 0.02em;
+                            color: $black-18;
+                        }
+                    }
+                }
+            }
+            &.faq{
+                .faq-inner{
+                    margin-top: 20px;
+                    border: 1px solid $grey-CF;
+                    border-radius: 5px;
+                    button{
+                        @include flex-justify-center;
+                        width: 100%;
+                        height: 49px;
+                        background: $white-F2;
+                        font-size: 16px;
+                        line-height: 19px;
+                        letter-spacing: 0.02em;
+                        color: $grey-A4;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                    }
+                    .accordion-details{
+                        padding: 15px 10px 21px;
+                        p{
+                            text-align: center;
+                            font-size: 16px;
+                            line-height: 21px;
+                            color: $grey-66;
+                        }
+                    }
+                }
             }
         }
     }

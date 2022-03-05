@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "SmallCard",
+  name: "SearchCard",
   props: ['item', 'type'],
 };
 </script>

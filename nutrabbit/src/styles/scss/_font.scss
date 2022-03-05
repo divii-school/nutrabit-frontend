@@ -28,3 +28,16 @@
   font-weight: 700;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Ballast';
+  src: url('../../../src/assets/fonts/Ballast.eot');
+  src: url('../../../src/assets/fonts/Ballast.eot?#iefix') format('embedded-opentype'),
+      url('../../../src/assets/fonts/Ballast.woff2') format('woff2'),
+      url('../../../src/assets/fonts/Ballast.woff') format('woff'),
+      url('../../../src/assets/fonts/Ballast.ttf') format('truetype'),
+      url('../../../src/assets/fonts/Ballast.svg#Ballast') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

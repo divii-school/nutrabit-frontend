@@ -112,18 +112,18 @@ const routes = [
         component:SearchResult,
         // beforeEnter: guest,
     },
-
-
-
-
-    
-
     {
         name: 'main',
         path: '/main',
         component:Main,
         // beforeEnter: guest,
     },
+
+
+
+    
+
+
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

@@ -18,7 +18,7 @@
           </div>
           <a href="" class="login-item">login</a>
           <div class="header-dropdown">
-            <vue-select :options="['EN', 'KO']" placeholder="EN"> </vue-select>
+            <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select> </vue-select>
           </div>
 
           <a
