@@ -120,13 +120,15 @@
         .logout-withdraw{
             @include flex-align-center;
             justify-content: flex-end;
+            margin: 41px 0;
+            color:$grey-66;
             ul{
                 @include flex-align-center;
                 li{
                     &:before{
                         content: 'I';
                         margin: 0 10px;
-                        color: red;
+                        color: $grey-BD;
                     }
                     &:first-child{
                         &::before{

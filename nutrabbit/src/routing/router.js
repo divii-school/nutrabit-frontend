@@ -13,6 +13,7 @@ import ChangePassword from '../pages/ChangePassword.vue';
 import SearchResult from '../pages/SearchResult.vue';
 import PersonalInformation from '../pages/PersonalInformationManagement.vue';
 import PersonalInformationBusiness from '../pages/PersonalInformationBusiness.vue';
+import WithdrawalOfMembership from '../pages/WithdrawalOfMembership.vue';
 import Main from '../pages/Main.vue';
 import MyChoice from '../pages/MyChoice.vue';
 
@@ -84,6 +85,13 @@ const routes = [
         path: '/PersonalInformationBusiness',
         component:  PersonalInformationBusiness
     },
+    {
+        name: 'WithdrawalOfMembership',
+        path: '/WithdrawalOfMembership',
+        component: WithdrawalOfMembership
+    },
+    
+   
    
    
     {
