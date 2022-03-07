@@ -147,6 +147,16 @@
            </div>
             <button class="btn-primary grenn-btn2">Save</button>
           </form>
+           <div class="logout-withdraw">
+            <ul>
+              <li>
+              <a href="">Log out</a>
+              </li>
+               <li>
+              <a href="">Withdrawal</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

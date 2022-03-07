@@ -46,6 +46,10 @@
                 line-height: 17px;
                 color: $green-53;
             }
+            .textarea{
+                width: 690px;
+                height: 278px;
+            }
         }
         &.with-btn {
             @include flex-align-center;
