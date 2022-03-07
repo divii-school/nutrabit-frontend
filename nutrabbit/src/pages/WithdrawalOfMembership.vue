@@ -19,7 +19,7 @@
               </div>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2">Save</button>
+            <button class="btn-primary grenn-btn2">Confirm</button>
           </form>
         </div>
       </div>
