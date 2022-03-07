@@ -1,8 +1,6 @@
 <template>
   <div class="nutri-product-item">
-    <div class="nutri-pimg">
-      <img :src="item.img" alt="" />
-    </div>
+    <img class="nutri-pimg" :src="item.img" alt="" />
     <div class="tag-wrap">
       <span>nutri 3.3</span>
       <span>nutri 3.3</span>

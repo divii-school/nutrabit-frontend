@@ -18,15 +18,20 @@
               :key="item"
             >
               <h1 class="list-heading">{{ item.title }}</h1>
-              <ul class="search-list-inner">
-                <li
-                  class="search-list-item"
-                  v-for="item in item.searchListData"
-                  :key="item"
-                >
-                  <SearchCard :item="item" type="searchData" />
-                </li>
-              </ul>
+              <div class="search-list-inner-wrap" v-if="item && item.searchListData && item.searchListData.length">
+                <ul class="search-list-inner" >
+                  <li
+                    class="search-list-item"
+                    v-for="item in item.searchListData"
+                    :key="item"
+                  >
+                    <SearchCard :item="item" type="searchData" />
+                  </li>
+                </ul>
+              </div>
+              <div class="no-result-found" v-else>
+                <span>No results were found for your search.</span>
+              </div>
               <Pagination />
             </li>
           </ul>
@@ -45,7 +50,7 @@
           <ul class="search-resul-list-wrap faq">
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
-              <SearchAccordion/>
+              <SearchAccordion />
             </li>
           </ul>
         </div>
@@ -57,7 +62,7 @@
 <script>
 import Pagination from "../components/Pagination.vue";
 import SearchCard from "../components/SearchCard.vue";
-import SearchAccordion from '../components/SearchAccordion.vue';
+import SearchAccordion from "../components/SearchAccordion.vue";
 export default {
   name: "SearchResult",
   components: {

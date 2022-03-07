@@ -1,16 +1,11 @@
 <template>
-  <div class="faq-inner">
-    <button
-      @click="toggleAccordion()"
-      class="accordion-heading"
-      :aria-expanded="isOpen"
-      :aria-controls="`collapse${_uid}`"
-    >
+  <div class="faq-item">
+    <button @click="toggleAccordion()" class="accordion-heading" :aria-expanded="isOpen" :aria-controls="`collapse${_uid}`" >
       <slot name="title"> Questions </slot>
     </button>
     <div class="accordion-details" v-show="isOpen" :id="`collapse${_uid}`">
-      <p>
-          <slot name="description">No results were found for your search.</slot>
+      <p class="no-data">
+        <slot name="description">No results were found for your search.</slot>
       </p>
     </div>
   </div>

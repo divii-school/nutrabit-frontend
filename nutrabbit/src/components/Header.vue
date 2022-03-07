@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : '' ">
     <div class="header-container">
       <div class="header-menu flex">
         <div class="manuLeft">
@@ -122,6 +122,11 @@ export default {
     changeLanguage(){
        
     }
+  },
+    computed: {
+    isHeaderPositionAbsolute() {
+      return this.$route.name=='main';
+    },
   },
 };
 </script>
