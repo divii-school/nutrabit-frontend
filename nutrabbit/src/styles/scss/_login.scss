@@ -117,6 +117,25 @@
                 }
             }
         }
+        .logout-withdraw{
+            @include flex-align-center;
+            justify-content: flex-end;
+            ul{
+                @include flex-align-center;
+                li{
+                    &:before{
+                        content: 'I';
+                        margin: 0 10px;
+                        color: red;
+                    }
+                    &:first-child{
+                        &::before{
+                            display: none;
+                        }
+                    }
+                } 
+            }
+        }
     }
     &.membership-wrap {
         .login-signup-inner {

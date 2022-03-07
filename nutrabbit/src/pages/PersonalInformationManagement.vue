@@ -150,7 +150,7 @@
 
             <button class="btn-primary grenn-btn2">Save</button>
           </form>
-          <div class="">
+          <div class="logout-withdraw">
             <ul>
               <li>
               <a href="">Log out</a>
