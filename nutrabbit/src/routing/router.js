@@ -15,6 +15,8 @@ import PersonalInformation from '../pages/PersonalInformationManagement.vue';
 import PersonalInformationBusiness from '../pages/PersonalInformationBusiness.vue';
 import WithdrawalOfMembership from '../pages/WithdrawalOfMembership.vue';
 import Main from '../pages/Main.vue';
+import MyChoice from '../pages/MyChoice.vue';
+import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
 
 
 // function guest(to, from, next) {
@@ -124,13 +126,25 @@ const routes = [
     {
         name: 'search-result',
         path: '/search-result',
-        component:SearchResult,
+        component: SearchResult,
         // beforeEnter: guest,
     },
     {
         name: 'main',
         path: '/main',
-        component:Main,
+        component: Main,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'my-choice',
+        path: '/my-choice',
+        component: MyChoice,
+        // beforeEnter: guest,
+    },
+    {
+        name: 'my-choice-category-selection',
+        path: '/my-choice-category-selection',
+        component: MyChoiceCategorySelection,
         // beforeEnter: guest,
     },
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="card-inner">
+  <div class="search-card-inner">
     <img class="search-result-img" v-bind:src="item.img" alt="" />
     <p class="text-center">{{ item.desc }}</p>
   </div>

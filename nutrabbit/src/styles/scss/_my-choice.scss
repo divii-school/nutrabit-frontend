@@ -1,0 +1,212 @@
+.main-body{
+    .my-choce-wrap{
+        padding: 80px 0 28px;
+        @media screen and (max-width: 640px){
+            padding: 65px 0 123px;
+        }
+        .my-choice-heading{
+            @include flex-align-center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $grey-CF;
+            h2{
+                font-weight: bold;
+                font-size: 40px;
+                line-height: 40px;
+                color: $purple-F4;
+                @media screen and (max-width: 640px){
+                    font-size: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+        .my-choice-list-wrap{
+            margin-top: 45px;
+            .my-choice-list-outer{
+                .my-choice-list-outer-item{
+                    margin-top: 14px;
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                    .list-heading{
+                        font-weight: bold;
+                        font-size: 22px;
+                        line-height: 22px;
+                        color: $grey-4C;
+                        padding-bottom: 25px;
+                        border-bottom: 1px solid $grey-CF;
+                        @media screen and (max-width: 640px){
+                            font-size: 20px;
+                            line-height: 20px;
+                        }
+                    }
+                    .my-choice-list-inner{
+                        @include flex-align-center;
+                        margin: 30px -20px 0;
+                        flex-wrap: wrap;
+                        @media screen and (max-width: 992px){
+                            margin: 30px -11.5px 0;
+                        }
+                        @media screen and (max-width: 640px){
+                            margin: 20px -11.5px 0;
+                        }
+                        .my-choice-list-inner-item{
+                            padding: 0 20px;
+                            margin-bottom: 38px;
+                            flex: 0 0 16.66%;
+                            width: 16.66%;
+                            max-width: 16.66%;
+                            @media screen and (max-width: 1200px){
+                                flex: 0 0 20%;
+                                width: 20%;
+                                max-width: 20%;
+                            }
+                            @media screen and (max-width: 992px){
+                                flex: 0 0 25%;
+                                width: 25%;
+                                max-width: 25%;
+                                padding: 0 11.5px;
+                            }
+                            @media screen and (max-width: 768px){
+                                flex: 0 0 33.33%;
+                                width: 33.33%;
+                                max-width: 33.33%;
+                            }
+                            @media screen and (max-width: 640px){
+                                flex: 0 0 50%;
+                                width: 50%;
+                                max-width: 50%;
+                                margin-bottom: 30px;
+                            }
+                            .choice-card{
+                                @include flex-justify-center;
+                                height: 160px;
+                                width: 160px;
+                                border: 1px solid $grey-E0;
+                                border-radius: 10px;
+                                @media screen and (max-width: 768px){
+                                    width: 100%;
+                                }
+                                img{
+                                    height: 80px;
+                                    width: 80px;
+                                }
+                            }
+                            .desc{
+                                font-weight: 600;
+                                font-size: 18px;
+                                line-height: 22px;
+                                color: $grey-4C;
+                                text-align: center;
+                                margin-top: 15px;
+                                @media screen and (max-width: 768px){
+                                    line-height: 27px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.my-choice-selection{
+            padding: 80px 0;
+            .my-choice-heading{
+                padding: 0;
+                border: 0;
+                margin-bottom: 83px
+            }
+            .choice-selection-item{
+                .heading-wrap{
+                    @include flex-justify-between;
+                    padding-bottom: 23px;
+                    border-bottom: 1px solid $grey-CF;
+                    .heading{
+                        @include flex-align-center;
+                        h2{
+                            font-weight: 600;
+                            font-size: 18px;
+                            line-height: 22px;
+                            letter-spacing: 0.01em;
+                            color: $black-33;
+                        }
+                        &.heading-blue{
+                            h2{
+                                color: $blue-E8;
+                            }
+                        }
+                    }
+                    .heading-left{
+                        a{
+                            @include flex-align-center;
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 16px;
+                            color: $black-2E;
+                            i{
+                                margin: 5px 5px 0 0;
+                            }
+                        }
+                    }
+                }
+                .recomanded-list{
+                    @include flex-align-center;
+                    flex-wrap: wrap;
+                    margin: 40px -34px 0;
+                    li{
+                        width: 25%;
+                        max-width: 25%;
+                        flex: 0 0 25%;
+                        padding: 0 34px;
+                        margin-bottom: 30px;
+                    }
+                }
+                &.raw-material{
+                    margin-top: 53px;
+                    .raw-material-list{
+                        li{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            padding: 47px 30px;
+                            border-bottom: 1px solid $grey-CF;
+                            .list-left{
+                                display: flex;
+                                align-items: flex-start; 
+                                .img-wrap{
+                                    height: 180px;
+                                    width: 180px;
+                                    margin-right: 40px;
+                                    img{
+                                        height: 180px;
+                                        width: auto;
+                                    }
+                                }
+                                .material-details{
+                                    h2{
+                                        font-weight: 600;
+                                        font-size: 22px;
+                                        line-height: 26px;
+                                        color: $black-18;
+                                    }
+                                    .description{
+                                        margin-top: 15px;
+                                        p{
+                                            font-size: 18px;
+                                            line-height: 23px;
+                                            color: $grey-82;
+                                        }
+                                    }
+                                }
+                            }
+                            .list-right{
+                                button{
+                                    height: 52px;
+                                    width: 211px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
