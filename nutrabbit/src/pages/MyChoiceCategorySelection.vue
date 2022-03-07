@@ -17,10 +17,15 @@
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>
-                            This is a menu where I make my own health functional
-                            food recipes.
+                            This is a recommended recipe for those who have
+                            difficulty choosing raw materials.
                           </li>
-                          <li>Please select the desired function.</li>
+                          <li>
+                            Recommended blending is a semi-finished product that
+                            has already been formulated with effective
+                            ingredients and formulations.
+                          </li>
+                          <li>Choose the recommended recipe you want.</li>
                         </ul>
                       </div>
                     </template>
@@ -48,10 +53,9 @@
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>
-                            This is a menu where I make my own health functional
-                            food recipes.
+                            This is a menu where I make my own health functional food recipes.
                           </li>
-                          <li>Please select the desired function.</li>
+                          <li>Choose the raw material you want. (Multiple selection possible)</li>
                         </ul>
                       </div>
                     </template>
