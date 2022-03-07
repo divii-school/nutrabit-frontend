@@ -32,7 +32,7 @@
                 font-size: 14px;
                 line-height: 18px;
                 text-align: center;
-                color: #FFFFFF;
+                color: $white-1;
                 position: relative;
             }
         }
@@ -119,6 +119,9 @@
                     li{
                         padding: 0 44px;
                         margin-bottom: 80px;
+                        flex: 0 0 33%;
+                        max-width: 33%;
+                        width: 33%;
                         .nutri-product-item{
                             @include flex-justify-center;
                             flex-direction: column;
