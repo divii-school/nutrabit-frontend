@@ -12,6 +12,7 @@ import ForgotPassword from '../pages/ForgotPassword.vue';
 import ChangePassword from '../pages/ChangePassword.vue';
 import SearchResult from '../pages/SearchResult.vue';
 import PersonalInformation from '../pages/PersonalInformationManagement.vue';
+import PersonalInformationBusiness from '../pages/PersonalInformationBusiness.vue';
 import Main from '../pages/Main.vue';
 
 
@@ -77,6 +78,12 @@ const routes = [
         path: '/personal-information',
         component:  PersonalInformation
     },
+    {
+        name: 'PersonalInformationBusiness',
+        path: '/PersonalInformationBusiness',
+        component:  PersonalInformationBusiness
+    },
+   
    
     {
         name: 'method',
