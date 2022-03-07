@@ -107,5 +107,106 @@
                 }
             }
         }
+        &.my-choice-selection{
+            padding: 80px 0;
+            .my-choice-heading{
+                padding: 0;
+                border: 0;
+                margin-bottom: 83px
+            }
+            .choice-selection-item{
+                .heading-wrap{
+                    @include flex-justify-between;
+                    padding-bottom: 23px;
+                    border-bottom: 1px solid $grey-CF;
+                    .heading{
+                        @include flex-align-center;
+                        h2{
+                            font-weight: 600;
+                            font-size: 18px;
+                            line-height: 22px;
+                            letter-spacing: 0.01em;
+                            color: $black-33;
+                        }
+                        &.heading-blue{
+                            h2{
+                                color: $blue-E8;
+                            }
+                        }
+                    }
+                    .heading-left{
+                        a{
+                            @include flex-align-center;
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 16px;
+                            color: $black-2E;
+                            i{
+                                margin: 5px 5px 0 0;
+                            }
+                        }
+                    }
+                }
+                .recomanded-list{
+                    @include flex-align-center;
+                    flex-wrap: wrap;
+                    margin: 40px -34px 0;
+                    li{
+                        width: 25%;
+                        max-width: 25%;
+                        flex: 0 0 25%;
+                        padding: 0 34px;
+                        margin-bottom: 30px;
+                    }
+                }
+                &.raw-material{
+                    margin-top: 53px;
+                    .raw-material-list{
+                        li{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            padding: 47px 30px;
+                            border-bottom: 1px solid $grey-CF;
+                            .list-left{
+                                display: flex;
+                                align-items: flex-start; 
+                                .img-wrap{
+                                    height: 180px;
+                                    width: 180px;
+                                    margin-right: 40px;
+                                    img{
+                                        height: 180px;
+                                        width: auto;
+                                    }
+                                }
+                                .material-details{
+                                    h2{
+                                        font-weight: 600;
+                                        font-size: 22px;
+                                        line-height: 26px;
+                                        color: $black-18;
+                                    }
+                                    .description{
+                                        margin-top: 15px;
+                                        p{
+                                            font-size: 18px;
+                                            line-height: 23px;
+                                            color: $grey-82;
+                                        }
+                                    }
+                                }
+                            }
+                            .list-right{
+                                button{
+                                    height: 52px;
+                                    width: 211px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

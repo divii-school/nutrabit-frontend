@@ -210,3 +210,18 @@ input {
       }
   }
 }
+
+.search-card-inner{
+  .search-result-img{
+    width: 240px;
+    height: 240px;
+  }
+  p{
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      color: $black-33;
+      margin-top: 20px;
+  }
+}
