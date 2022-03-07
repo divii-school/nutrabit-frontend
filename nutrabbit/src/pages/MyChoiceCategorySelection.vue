@@ -51,7 +51,7 @@
 <script>
 import Popper from "vue3-popper";
 export default {
-  name: "MyChoice",
+  name: "MyChoiceCategorySelection",
   components: {
     Popper,
   },
@@ -61,38 +61,6 @@ export default {
         {
           title: "muscular system",
           myChoiceListData: [
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
             {
               img: "../../../src/assets/images/choice-img1.svg",
               desc: "gut health",

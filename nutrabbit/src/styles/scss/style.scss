@@ -118,10 +118,12 @@ input {
 		&:checked{
 			~ {
 				.checkmark {
-          background-color: $green-68;
-          border: 1px solid $green-68;
+          background-color: $white-1;
+          border: 1px solid $grey-66;
 					&:after {
 						display: block;
+            border: solid $grey-66;
+            border-width: 0 2px 2px 0;
 					}
 				}
 			}
@@ -164,4 +166,47 @@ input {
 		position: absolute;
 		display: block;
 	}
+}
+
+// tolltip
+
+.tolltip-outer{
+  height: 24px;
+  width: 24px;
+  >div{
+      margin: 0 0 0 10px !important;
+      border: 0 !important;
+  }
+  .popper{
+      left: 213px !important;
+      top: -18px !important;
+      @media screen and (max-width: 768px){
+          left: 94px !important;
+      }
+      .heading-tooltip-content{
+          background: $white-1;
+          padding: 20px 30px 20px 55px;
+          border: 1px solid $grey-E0;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          max-width: 444px;
+          @media screen and (max-width: 768px){
+              padding: 10px 10px 10px 30px;
+              max-width: 207px;
+          }
+          ul{
+              list-style: initial;
+              li{
+                  font-weight: 500;
+                  font-size: 16px;
+                  line-height: 24px;
+                  color: $grey-4C;
+                  @media screen and (max-width: 768px){
+                      font-size: 12px;
+                      line-height: 18px;
+                  }
+              }
+          }
+      }
+  }
 }
