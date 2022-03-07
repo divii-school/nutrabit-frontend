@@ -4,6 +4,12 @@
         img{
             width: 100%;
             height: 828px;
+            @media screen and (max-width: 992px){
+                height: 700px;
+            }
+            @media screen and (max-width: 768px){
+                height: 500px;
+            }
         }
         .banner-title{
             font-weight: bold;
@@ -15,6 +21,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
+            @media screen and (max-width: 1200px){
+                font-size: 100px;
+                line-height: 130px;
+            }
         }
         .swiper-pagination{
             height: 34px;
@@ -42,6 +52,9 @@
             margin: 150px 0;
             @include flex-justify-center;
             flex-direction:  column;
+            @media screen and (max-width: 1200px){
+                margin: 80px 0;
+            }
             .my-choice-title-top{
                 font-size: 50px;
                 line-height: 55px;
@@ -61,6 +74,14 @@
                 font-size: 60px;
                 line-height: 78px;
                 color: $black-18;
+                @media screen and (max-width: 1200px){
+                    font-size: 40px;
+                    line-height: 58px;
+                }
+                @media screen and (max-width: 768px){
+                    font-size: 30px;
+                    line-height: 45px;
+                }
             }
             .desc{
                 font-weight: 500;
@@ -83,6 +104,14 @@
                         content: '';
                         left: -75px;
                         top: -80px;
+                        @media screen and (max-width: 992px){
+                            height: 122px;
+                            background-size: auto 122px;
+                            width: 109px;
+                            content: "";
+                            left: -59px;
+                            top: -69px;
+                        }
                     }
                 }
             }
@@ -116,12 +145,34 @@
                     @include flex-align-center;
                     flex-wrap: wrap;
                     margin: 0 -44px;
+                    @media screen and (max-width: 1400px){
+                        margin: 0 -30px;
+                    }
+                    @media screen and (max-width: 1200px){
+                        margin: 0 -20px;
+                    }
+                    @media screen and (max-width: 768px){
+                        margin: 0 -13px;
+                    }
                     li{
                         padding: 0 44px;
                         margin-bottom: 80px;
-                        flex: 0 0 33%;
-                        max-width: 33%;
-                        width: 33%;
+                        flex: 0 0 33.33%;
+                        max-width: 33.33%;
+                        width: 33.33%;
+                        @media screen and (max-width: 1400px){
+                            padding: 0 30px;
+                        }
+                        @media screen and (max-width: 1200px){
+                            padding: 0 20px;
+                        }
+                        @media screen and (max-width: 768px){
+                            padding: 0 6.5px;
+                            width: 50%;
+                            max-width: 50%;
+                            flex: 0 0 50%;
+                        }
+                        
                         .nutri-product-item{
                             @include flex-justify-center;
                             flex-direction: column;
@@ -153,6 +204,10 @@
                                 line-height: 31px;
                                 text-align: center;
                                 color: $black-18;
+                                @media screen and (max-width: 992px){
+                                    font-size: 18px;
+                                    line-height: 23px;
+                                }
                             }
                         }
                     }
