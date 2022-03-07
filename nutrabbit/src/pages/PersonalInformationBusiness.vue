@@ -11,18 +11,54 @@
           <form action="" class="signUp-form">
            <div class="individuals-form">
               <div class="form-group">
-              <label for="">name</label>
+              <label for="">Business Number</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                   value="Hong Gil Dong"
+                   value="123-45-67890"
                   />
                 </div>
               </div>
             </div>
             <div class="form-group">
+              <label for="">Business name</label>
+              <div class="input-group">
+                <div class="input-inner">
+                  <input
+                    class="form-control"
+                    type="text"
+                    value="New Trabit"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Department</label>
+              <div class="input-group">
+                <div class="input-inner">
+                  <input
+                    class="form-control"
+                    type="text"
+                    value="Marketing Department"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Contact person</label>
+              <div class="input-group">
+                <div class="input-inner">
+                  <input
+                    class="form-control"
+                    type="text"
+                    value="Hong Gil Dong"
+                  />
+                </div>
+              </div>
+            </div>
+             <div class="form-group">
               <label for="">ID</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -30,18 +66,20 @@
                     class="form-control"
                     type="text"
                     value="rabbit123"
+                
                   />
                 </div>
               </div>
             </div>
+           
             <div class="form-group">
-              <label for="">password</label>
+              <label for="">Password</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
+                   placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
                   />
                 </div>
               </div>
@@ -106,48 +144,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="">distribution medium</label>
-              <div class="multi-checkbox">
-                <div class="check-box-wrap">
-                  <label class="custom-check"
-                    >offline
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="check-box-wrap">
-                  <label class="custom-check"
-                    >online
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="check-box-wrap">
-                  <label class="custom-check"
-                    >Network (door-to-door sales)
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="check-box-wrap">
-                  <label class="custom-check"
-                    >SNS
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="check-box-wrap">
-                  <label class="custom-check"
-                    >Etc
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
            </div>
-
             <button class="btn-primary grenn-btn2">Save</button>
           </form>
         </div>
@@ -158,6 +155,6 @@
 <script>
 
 export default {
-  name: "PersonalInformationManagement",
+  name: "PersonalInformationBusiness",
 };
 </script>
