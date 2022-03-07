@@ -33,6 +33,9 @@
                 &::placeholder {
                     color: $grey-CF;
                 }
+                &.disabled{
+                    background: $grey-9;
+                }
             }
             .time{
                 position: absolute;

@@ -15,7 +15,7 @@
               <div class="input-group">
                 <div class="input-inner">
                   <input
-                    class="form-control"
+                    class="form-control disabled"
                     type="text"
                    value="123-45-67890"
                   />
@@ -63,7 +63,7 @@
               <div class="input-group">
                 <div class="input-inner">
                   <input
-                    class="form-control"
+                    class="form-control disabled"
                     type="text"
                     value="rabbit123"
                 
@@ -101,7 +101,7 @@
               <div class="input-group">
                 <div class="input-inner">
                   <input
-                    class="form-control"
+                    class="form-control disabled"
                     type="text"
                     value="rabbit123@gmail.com"
                 

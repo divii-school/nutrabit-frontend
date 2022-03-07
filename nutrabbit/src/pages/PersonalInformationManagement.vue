@@ -22,12 +22,12 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group ">
               <label for="">ID</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
-                    class="form-control"
+                    class="form-control disabled"
                     type="text"
                     value="rabbit123"
                   />
@@ -63,7 +63,7 @@
               <div class="input-group">
                 <div class="input-inner">
                   <input
-                    class="form-control"
+                    class="form-control disabled"
                     type="text"
                     value="rabbit123@gmail.com"
                 
@@ -150,6 +150,16 @@
 
             <button class="btn-primary grenn-btn2">Save</button>
           </form>
+          <div class="">
+            <ul>
+              <li>
+              <a href="">Log out</a>
+              </li>
+               <li>
+              <a href="">Withdrawal</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
