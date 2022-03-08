@@ -16,7 +16,8 @@ import PersonalInformationBusiness from '../pages/PersonalInformationBusiness.vu
 import WithdrawalOfMembership from '../pages/WithdrawalOfMembership.vue';
 import Main from '../pages/Main.vue';
 import MyChoice from '../pages/MyChoice.vue';
-import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue';
+import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
+import InquiryContactUs from '../pages/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
 
@@ -93,6 +94,15 @@ const routes = [
         component: WithdrawalOfMembership
     },
     {
+        name: 'InquiryContactUs',
+        path: '/InquiryContactUs',
+        component: InquiryContactUs
+    },
+    
+   
+   
+   
+    {
         name: 'method',
         path: '/method',
         component:Method,
@@ -142,19 +152,16 @@ const routes = [
         name: 'my-choice-category-selection',
         path: '/my-choice-category-selection',
         component: MyChoiceCategorySelection,
-        // beforeEnter: guest,
     },
     {
         name: 'my-choice-recomanded-blending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
-        // beforeEnter: guest,
     },
     {
         name: 'sample-making',
         path: '/sample-making',
         component: SampleMaking,
-        // beforeEnter: guest,
     },
 
 

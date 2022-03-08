@@ -3,6 +3,12 @@
     @media screen and (max-width: 768px) {
         padding: 5px 0 55px;
     }
+    .inquiry-heading{
+        color:$green-53;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 40px;
+    }
     .login-signup-inner {
         padding: 70px 90px;
         background: $white-1;
@@ -281,18 +287,7 @@
                 }
             }
             .btn-wrap{
-                width: 100%;
                 margin-top: 80px;
-                &.dual-btn{
-                    button{
-                        &:first-child{
-                            margin-right: 5px;
-                        }
-                        &:last-child{
-                            margin-left: 5px;
-                        }
-                    }
-                }
             }
         }
     }
@@ -303,5 +298,18 @@
                 border: 0;
             } 
         } 
+    }
+    .btn-wrap{
+        width: 100%;
+        &.dual-btn{
+            button{
+                &:first-child{
+                    margin-right: 5px;
+                }
+                &:last-child{
+                    margin-left: 5px;
+                }
+            }
+        }
     }
 }
