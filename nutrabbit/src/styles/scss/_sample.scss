@@ -1,0 +1,166 @@
+.sampleBLueAfter{
+    position: relative;
+    margin: 80px 0 30px 0;
+    &:after{
+        position: absolute;
+        background: url(../../../src/assets/images/nutri-choice-symbol.svg) no-repeat top left;
+        background-size: auto 142px;
+        height: 142px;
+        width: 129px;
+        content: '';
+        left: -95px;
+        top: -40px;
+        z-index: -1;
+        @media screen and (max-width: 992px){
+            height: 122px;
+            background-size: auto 122px;
+            width: 109px;
+            content: "";
+            left: -59px;
+            top: -69px;
+        }
+        @media screen and (max-width: 640px){
+            background: url(../../../src/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
+            height: 70px;
+            background-size: auto 70px;
+            width: 68px;
+            content: "";
+            left: -65px;
+            top: -20px;
+        }
+    }
+}
+
+.sampleServices{
+    padding: 150px 0;
+    @media screen and (max-width: 640px){
+        padding: 80px 0;
+    }
+    h4{
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 36px;
+        color: $black-33;
+        margin-bottom: 80px;
+    }
+    .samllTitle{
+        color: $purple-F4;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    ul{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-align: center;
+        margin: 0 -10px;
+        @media screen and (max-width: 640px){
+            flex-wrap: wrap;
+        }
+        li{
+            margin: 0 10px;
+            width: 20%;
+            @media screen and (max-width: 640px){
+                width: 100%;
+            }
+            .imgCont{
+                padding: 25px;
+                border-radius: 50%;
+                background: #EAD9FD;
+                height: 145px !important;
+                width: 145px !important; 
+                margin: 0 auto;
+                img{
+                    height: auto !important;
+                    width: auto !important; 
+                }
+            }
+            span{
+                font-size: 14px;
+                line-height: 16px;
+                font-weight: 600;
+                color: $purple-F4;
+                text-transform: uppercase;
+                border: 1px solid $purple-F4;
+                border-radius: 20px;
+                padding: 2px 13px;
+                margin: 60px  0 15px;
+                display: inline-block;
+            }
+            h5{
+                font-size: 22px;
+                line-height: 36px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            p{
+                font-size: 15px;
+                line-height: 25px;
+                font-weight: 500;
+            }
+        }
+    }
+    
+    .accCont{
+        max-width: 1166px;
+        width: 100%;
+        margin: 0 auto;
+        .accTItle{
+            display: block;
+            width: 100%;
+            background: $purple-F4;
+            padding: 20px 35px 20px 85px;
+            position: relative;
+            -webkit-border-radius: 20px;
+            -webkit-border-bottom-left-radius: 0;
+            -moz-border-radius: 20px;
+            -moz-border-radius-bottomleft: 0;
+            border-radius: 20px;
+            border-bottom-left-radius: 0;
+            color: $white-1;
+            font-size: 24px;
+            line-height: 28px;
+            &::before{
+                position: absolute;
+                left: 35px;
+                top: 10px;
+                content: 'Q';
+                font-size: 40px;
+                line-height: 48px;
+                font-weight: 700;
+                transform: translateY(50%);
+            }
+        }
+        .accBody{
+            display: block;
+            width: 100%;
+            border: 1px solid $grey-66;
+            color: $grey-66;
+            text-align: right;
+            margin: 30px 0 0 0;
+            padding: 20px 85px 20px 35px;
+            position: relative;
+            -webkit-border-radius: 20px;
+            -webkit-border-bottom-right-radius: 0;
+            -moz-border-radius: 20px;
+            -moz-border-radius-bottomright: 0;
+            border-radius: 20px;
+            border-bottom-right-radius: 0;
+            font-size: 22px;
+            line-height: 26px;
+            &::after{
+                position: absolute;
+                right: 35px;
+                top: 10px;
+                content: 'A';
+                font-size: 40px;
+                line-height: 48px;
+                font-weight: 700;
+                transform: translateY(50%);
+            }
+        }
+    }
+    
+}
