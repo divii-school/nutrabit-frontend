@@ -226,5 +226,26 @@ input {
       color: $black-33;
       margin-top: 20px;
   }
+  .recomanded-vitamin{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: $blue-E8;
+    margin-top: 5px;
+    @media screen and (max-width: 640px){
+        font-size: 14px;
+        line-height: 21px;
+    }
+  }
+  .recomanded-quality{
+    font-size: 18px;
+    line-height: 22px;
+    color: $grey-82;
+    margin-top: 10px;
+      @media screen and (max-width: 640px){
+        font-size: 16px;
+        line-height: 24px;
+    }
+  }
 }
 

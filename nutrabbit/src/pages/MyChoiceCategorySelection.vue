@@ -33,12 +33,14 @@
                 </div>
               </div>
               <div class="heading-left">
-                <a href=""><i class="icon-plus"></i>see more</a>
+                <a href="" class="see-more"
+                  ><i class="icon-plus"></i>see more</a
+                >
               </div>
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :item="item" type="searchData" />
+                <SearchCard :item="item" />
               </li>
             </ul>
           </div>
@@ -53,9 +55,13 @@
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>
-                            This is a menu where I make my own health functional food recipes.
+                            This is a menu where I make my own health functional
+                            food recipes.
                           </li>
-                          <li>Choose the raw material you want. (Multiple selection possible)</li>
+                          <li>
+                            Choose the raw material you want. (Multiple
+                            selection possible)
+                          </li>
                         </ul>
                       </div>
                     </template>
@@ -63,7 +69,14 @@
                 </div>
               </div>
               <div class="heading-left">
-                <a href=""><i class="icon-plus"></i>see more</a>
+                <div class="dropdown">
+                  <vue-select
+                    :options="['in order of popularity', 'in order of popularity']"
+                    placeholder="in order of popularity"
+                    close-on-select
+                  >
+                  </vue-select>
+                </div>
               </div>
             </div>
             <ul class="raw-material-list">
@@ -82,7 +95,7 @@
                   </div>
                 </div>
                 <div class="list-right">
-                  <button class="btn-small-solid">test</button>
+                  <button class="btn-small-solid">add</button>
                 </div>
               </li>
             </ul>
@@ -98,11 +111,13 @@
 <script>
 import Popper from "vue3-popper";
 import SearchCard from "../components/SearchCard.vue";
+import VueNextSelect from "vue-next-select";
 export default {
   name: "MyChoiceCategorySelection",
   components: {
     Popper,
     SearchCard,
+    "vue-select": VueNextSelect,
   },
   data() {
     return {

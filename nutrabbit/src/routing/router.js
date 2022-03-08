@@ -18,6 +18,9 @@ import Main from '../pages/Main.vue';
 import MyChoice from '../pages/MyChoice.vue';
 import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
 import InquiryContactUs from '../pages/InquiryContactUs.vue'
+import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue';
+import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue';
+import SampleMaking from '../pages/SampleMaking.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -150,7 +153,16 @@ const routes = [
         name: 'my-choice-category-selection',
         path: '/my-choice-category-selection',
         component: MyChoiceCategorySelection,
-        // beforeEnter: guest,
+    },
+    {
+        name: 'my-choice-recomanded-blending',
+        path: '/my-choice-recomanded-blending',
+        component: MyChoiceRecomandedBlending,
+    },
+    {
+        name: 'sample-making',
+        path: '/sample-making',
+        component: SampleMaking,
     },
 
 

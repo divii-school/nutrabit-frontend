@@ -25,7 +25,7 @@
                     v-for="item in item.searchListData"
                     :key="item"
                   >
-                    <SearchCard :item="item" type="searchData" />
+                    <SearchCard :item="item" />
                   </li>
                 </ul>
               </div>

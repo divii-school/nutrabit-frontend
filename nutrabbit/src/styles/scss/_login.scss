@@ -281,18 +281,7 @@
                 }
             }
             .btn-wrap{
-                width: 100%;
                 margin-top: 80px;
-                &.dual-btn{
-                    button{
-                        &:first-child{
-                            margin-right: 5px;
-                        }
-                        &:last-child{
-                            margin-left: 5px;
-                        }
-                    }
-                }
             }
         }
     }
@@ -304,9 +293,17 @@
             } 
         } 
     }
-    &.inquiry-contact{
-        .login-signup-inner{
-            padding: 70px 70px;
+    .btn-wrap{
+        width: 100%;
+        &.dual-btn{
+            button{
+                &:first-child{
+                    margin-right: 5px;
+                }
+                &:last-child{
+                    margin-left: 5px;
+                }
+            }
         }
     }
 }
