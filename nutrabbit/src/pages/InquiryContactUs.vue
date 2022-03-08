@@ -1,7 +1,8 @@
 <template>
     <div class="main-body">
     <div class="signUp-container">
-      <div class="login-signup-wrap membership-wrap inquiry-contact">
+      <div class="login-signup-wrap membership-wrap personal-info">
+          <h1 class="inquiry-heading">1.1 Inquiry</h1>
         <div class="login-signup-inner ">
           <form action="" class="signUp-form">
            <div class="individuals-form">
@@ -9,7 +10,7 @@
               <label for="">Inquiry subject</label>
               <div class="input-group">
              <div class="header-dropdown">
-            <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select> </vue-select>
+            <vue-select  class="inquiry-select" :options="['', '']" placeholder="Choose the subject of your inquiry" close-on-select> </vue-select>
           </div>
               </div>
             </div>
