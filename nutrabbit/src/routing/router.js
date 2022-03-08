@@ -142,19 +142,16 @@ const routes = [
         name: 'my-choice-category-selection',
         path: '/my-choice-category-selection',
         component: MyChoiceCategorySelection,
-        // beforeEnter: guest,
     },
     {
         name: 'my-choice-recomanded-blending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
-        // beforeEnter: guest,
     },
     {
         name: 'sample-making',
         path: '/sample-making',
         component: SampleMaking,
-        // beforeEnter: guest,
     },
 
 
