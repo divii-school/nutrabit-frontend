@@ -50,6 +50,10 @@
                 width: 690px;
                 height: 278px;
             }
+            .inquiry-textarea{
+                width: 730px;
+                height: 216px;
+            }
         }
         &.with-btn {
             @include flex-align-center;

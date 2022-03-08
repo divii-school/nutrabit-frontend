@@ -17,7 +17,7 @@ import WithdrawalOfMembership from '../pages/WithdrawalOfMembership.vue';
 import Main from '../pages/Main.vue';
 import MyChoice from '../pages/MyChoice.vue';
 import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
-
+import InquiryContactUs from '../pages/InquiryContactUs.vue'
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -90,6 +90,11 @@ const routes = [
         name: 'WithdrawalOfMembership',
         path: '/WithdrawalOfMembership',
         component: WithdrawalOfMembership
+    },
+    {
+        name: 'InquiryContactUs',
+        path: '/InquiryContactUs',
+        component: InquiryContactUs
     },
     
    
