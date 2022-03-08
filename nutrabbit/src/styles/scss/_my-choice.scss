@@ -123,24 +123,42 @@
             .choice-selection-item{
                 .heading-wrap{
                     @include flex-justify-between;
-                    padding-bottom: 23px;
+                    padding-bottom: 25px;
                     border-bottom: 1px solid $grey-CF;
+                    @media screen and (max-width: 640px){
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
                     .heading{
                         @include flex-align-center;
                         h2{
                             font-weight: 600;
-                            font-size: 18px;
-                            line-height: 22px;
+                            font-size: 24px;
+                            line-height: 24px;
                             letter-spacing: 0.01em;
                             color: $black-33;
+                            @media screen and (max-width: 640px){
+                                font-size: 20px;
+                                line-height: 20px;
+                            }
                         }
                         &.heading-blue{
                             h2{
                                 color: $blue-E8;
                             }
+                            .tolltip-outer{
+                                .popper{
+                                    @media screen and (max-width: 640px){
+                                        left: 0 !important
+                                    }
+                                }
+                            }
                         }
                     }
                     .heading-left{
+                        @media screen and (max-width: 640px){
+                            margin-top: 10px;
+                        }
                         .see-more{
                             @include flex-align-center;
                             font-weight: 500;
@@ -216,14 +234,14 @@
                         margin: 40px -25px 0;
                     }
                     @media screen and (max-width: 640px){
-                        margin: 40px -16px 0;
+                        margin: 30px -16px 0;
                     }
                     li{
                         width: 25%;
                         max-width: 25%;
                         flex: 0 0 25%;
                         padding: 0 34px;
-                        margin-bottom: 30px;
+                        margin-bottom: 40px;
                         @media screen and (max-width: 992px){
                             width: 33.33%;
                             max-width: 33.33%;
@@ -231,6 +249,7 @@
                         }
                         @media screen and (max-width: 768px){
                             padding: 0 20px;
+                            margin-bottom: 30px;
                         }
                         @media screen and (max-width: 640px){
                             padding: 0 8px;
@@ -245,11 +264,19 @@
                                     width: 100%;
                                 } 
                             }
+                            p{
+                                @media screen and (max-width: 640px){
+                                    margin-top: 10px;
+                                }
+                            }
                         }
                     }
                 }
                 &.raw-material{
                     margin-top: 53px;
+                    @media screen and (max-width: 640px){
+                        margin-top: 55px;
+                    }
                     .raw-material-list{
                         li{
                             display: flex;
@@ -277,6 +304,9 @@
                                     margin-right: 40px;
                                     @media screen and (max-width: 992px){
                                         margin-right: 20px;
+                                    } 
+                                    @media screen and (max-width: 768px){
+                                        margin-right: 0;
                                     } 
                                     img{
                                         height: 180px;
@@ -320,6 +350,8 @@
                                 button{
                                     height: 52px;
                                     width: 211px;
+                                    font-size: 18px;
+                                    line-height: 22px;
                                     @media screen and (max-width: 992px){
                                         width: 150px;
                                     } 
@@ -327,11 +359,20 @@
                                         width: 100%;
                                         margin-top: 30px;
                                     } 
+                                    @media screen and (max-width: 640px){
+                                        font-size: 14px;
+                                        line-height: 17px;
+                                    } 
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+        &.recomanded-blending-main{
+            @media screen and (max-width: 640px){
+                padding: 65px 0 125px;
             }
         }
     }

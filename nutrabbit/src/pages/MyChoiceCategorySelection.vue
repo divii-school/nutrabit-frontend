@@ -40,7 +40,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :item="item" type="searchData" />
+                <SearchCard :item="item" />
               </li>
             </ul>
           </div>
