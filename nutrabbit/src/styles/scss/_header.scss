@@ -9,18 +9,27 @@ header{
         .header-menu{
             @include flex-justify-between;
             min-height: 80px;
+            @media screen and (max-width: 640px){
+              min-height: 62px;
+            }
             .manuLeft{
                 @include flex-align-center;
                 .header-logo{
                     img{
                         height: 25px;
                         width: auto;
+                        @media screen and (max-width: 640px){
+                          height: 19px;
+                        }
                     }
                 }
                 ul{
                     margin-left: 40px;
                     @media screen and (max-width: 1200px){
                       margin-left: 20px;
+                    }
+                    @media screen and (max-width: 1024px){
+                      display: none;
                     }
                     li{
                         margin-left: 40px;
@@ -33,7 +42,7 @@ header{
                             line-height: 24px;
                             color: $black-18;
                             @media screen and (max-width: 1200px){
-                              font-size: 18px;
+                              font-size: 16px;
                               line-height: 22px;
                             }
                         }
@@ -42,28 +51,134 @@ header{
             }
             .manuRight{
                 @include flex-align-center;
-                .search-wrap{
-                    position: relative;
-                    input{
-                        height: 40px;
-                        width: 261px;
-                        padding: 0 30px 0 5px;
+                .vue-select{
+                  width: auto;
+                  border: 0;
+                  border-radius: 0;
+                  .vue-input{
+                      input{
+                        width: 20px;
+                        font-weight: 500;
                         font-size: 14px;
                         line-height: 17px;
-                        color: $grey-66;
-                        border-bottom: 1px solid $black-00;
-                        background: transparent;
-                        @media screen and (max-width: 1200px){
-                          width: 240px;
+                        color: $black-33;
+                        &::placeholder{
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $black-33;
                         }
                     }
-                    a{
-                        @include flex-justify-center;
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        bottom: 0;
-                        margin: auto 0;
+                  }
+                  .arrow-downward{
+                      border-color: $black-33 transparent transparent;
+                      border-width: 5px 5px 0;
+                  }
+                  .vue-dropdown{
+                      width: auto;
+                      border: 0;
+                      top: 32px;
+                      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+                      left: -10px;
+                      border-top: 1px solid $green-45;
+                      li{
+                          width: 68px;
+                          height: 49px;
+                          padding: 0 16px;
+                          @include flex-align-center;
+                          span{
+                              text-align: left;
+                              font-size: 14px;
+                              line-height: 17px;
+                              letter-spacing: 0.03em;
+                              color: $black-33;
+                          }
+                          &:hover{
+                              background: transparent;
+                              span{
+                                  color: $green-68;
+                              }
+                          }
+                          &.highlighted{
+                              background: transparent;
+                          }
+                      }
+                  }
+                }
+                .search-wrap{
+                  @media screen and (max-width: 640px){
+                    display: none;
+                  }
+                    .input-group{
+                      position: relative;
+                        input{
+                            height: 40px;
+                            width: 261px;
+                            padding: 0 30px 0 5px;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $grey-66;
+                            border-bottom: 1px solid $black-00;
+                            background: transparent;
+                            @media screen and (max-width: 1200px){
+                              width: 240px;
+                            }
+                        }
+                        a{
+                            @include flex-justify-center;
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto 0;
+                        }
+                    }
+                    .search-data{
+                      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+                      position: absolute;
+                      width: 100%;
+                      z-index: 1;
+                      background: $white-1;
+                      max-width: 261px;
+                      display: none;
+                      .search-data-inner{
+                        min-height: 269px;
+                        background: $white-1;
+                        ul{
+                          padding: 16px;
+                          li{
+                            @include flex-justify-between;
+                            margin-top: 20px;
+                            &:first-child{
+                              margin-top: 0;
+                            }
+                            p{
+                              font-size: 14px;
+                              line-height: 17px;
+                              letter-spacing: 0.03em;
+                              color: $grey-66;
+                            }
+                            a{
+                              i{
+                                margin-left: 10px;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      .delete-close{
+                        @include flex-justify-between;
+                        padding: 9px 10px;
+                        a{
+                          @include flex-align-center;
+                          font-size: 12px;
+                          line-height: 14px;
+                          color: $grey-A4;
+                        }
+                      }
+                      // &.activeSearch{
+                      //   display: block;
+                      // }
                     }
                 }
                 .login-item{
@@ -75,66 +190,75 @@ header{
                     @media screen and (max-width: 1200px){
                       margin-left: 20px;
                     }
+                    @media screen and (max-width: 768px){
+                      display: none;
+                    }
+                }
+                .after-login-dropdown{
+                  margin-left: 32px;
+                  @media screen and (max-width: 768px){
+                    display: none;
+                  }
+                  .dropdown {
+                    position: relative;
+                    display: inline-block;
+                      .dropbtn{
+                        @include flex-align-center;
+                        i{
+                          margin-right: 5px;
+                        }
+                      }
+                      .dropdown-content{
+                        border-top: 1px solid $green-45;
+                        display: none;
+                        position: absolute;
+                        min-width: 260px;
+                        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+                        z-index: 1;
+                        left: -125px;
+                        top: 31px;
+                        a{
+                          padding: 16px;
+                          display: block;
+                          font-size: 14px;
+                          line-height: 17px;
+                          letter-spacing: 0.03em;
+                          color: $black-33;
+                          background: $white-1;
+                        }
+                      }
+                    }
+                    .dropdown:hover .dropdown-content {
+                      display: block;
+                    }
                 }
                 .header-dropdown{
                     margin-left: 32px; 
                     @media screen and (max-width: 1200px){
-                      margin-left: 20px;
+                      margin-left: 15px;
                     }
-                    .vue-select{
-                        width: auto;
-                        border: 0;
-                        border-radius: 0;
-                        input{
-                            width: 20px;
-                            font-weight: 500;
-                            font-size: 14px;
-                            line-height: 17px;
-                            color: $black-33;
-                            &::placeholder{
-                                font-weight: 500;
-                                font-size: 14px;
-                                line-height: 17px;
-                                color: $black-33;
-                            }
-                        }
-                        .arrow-downward{
-                            border-color: $black-33 transparent transparent;
-                            border-width: 5px 5px 0;
-                        }
-                        .vue-dropdown{
-                            width: auto;
-                            border: 1px solid $grey-E0;
-                            top: 53px;
-                            li{
-                                width: 119px;
-                                height: 49px;
-                                padding: 16px;
-                                span{
-                                    text-align: left;
-                                    font-size: 14px;
-                                    line-height: 17px;
-                                    letter-spacing: 0.03em;
-                                    color: $black-33;
-                                }
-                                &:hover{
-                                    background: transparent;
-                                    span{
-                                        color: $green-68;
-                                    }
-                                }
-                                &.highlighted{
-                                    background: transparent;
-                                }
-                            }
-                        }
+                    @media screen and (max-width: 768px){
+                      display: none;
                     }
+                }
+                .mobile-search{
+                  display: none;
+                  @media screen and (max-width: 640px){
+                    display: block;
+                  }
                 }
                 .menu-toggle{
                     margin-left: 20px; 
+                    @media screen and (max-width: 768px){
+                      margin-left: 16px; 
+                    }
                     img{
                         min-width: 56px;
                         height: 40px;
+                        @media screen and (max-width: 768px){
+                          min-width: 32px;
+                          height: 32px;
+                        }
                     }
                 }
             }
@@ -197,12 +321,13 @@ header{
         }
       }
       .white-box {
-        @include flex-justify-center;
+        // @include flex-justify-center;
         background: $white-1;
         width: 50%;
         position: relative;
-        padding: 50px;
+        padding: 185px 0 185px 165px;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+        overflow: auto;
         @media screen and (max-width: 1200px){
           padding: 92px 32px;
         }

@@ -1,5 +1,5 @@
 <template>
-  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : '' ">
+  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
     <div class="header-container">
       <div class="header-menu flex">
         <div class="manuLeft">
@@ -13,14 +13,66 @@
         </div>
         <div class="manuRight">
           <div class="search-wrap">
-            <input type="text" placeholder="Enter your desired search term." />
-            <a href=""><i class="icon-search-black"></i></a>
+            <div class="input-group">
+              <input
+                type="text"
+                placeholder="Enter your desired search term."
+                @click="activeSearch = !activeSearch"
+                :aria-pressed="activeSearch ? 'true' : 'false'"
+              />
+              <a href="#"><i class="icon-search-black"></i></a>
+            </div>
+            <div class="search-data" :class="{ activeSearch: activeSearch }">
+              <div class="search-data-inner">
+                <ul>
+                  <li>
+                    <p>muscular system</p>
+                    <a href="#"><i class="icon-close-search"></i></a>
+                  </li>
+                  <li>
+                    <p>aloe</p>
+                    <a href="#"><i class="icon-close-search"></i></a>
+                  </li>
+                  <li>
+                    <p>nervous system</p>
+                    <a href="#"><i class="icon-close-search"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="delete-close">
+                <a href="#"><i class="icon-delete"></i>Delete all</a>
+                <a
+                  href="#"
+                  @click="activeSearch = !activeSearch"
+                  :aria-pressed="activeSearch ? 'true' : 'false'"
+                  >to close</a
+                >
+              </div>
+            </div>
           </div>
-          <a href="" class="login-item">login</a>
+          <!-- <a href="" class="login-item">login</a> -->
+          <div class="after-login-dropdown flex items-center">
+            <div class="dropdown">
+              <button class="dropbtn">
+                <i class="login-icon"></i>rabbit123 님
+              </button>
+              <div class="dropdown-content">
+                <a href="#">Change of personal information</a>
+                <a href="#">Log out</a>
+              </div>
+            </div>
+          </div>
           <div class="header-dropdown">
-            <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select> </vue-select>
+            <vue-select
+              :options="['EN', 'KO']"
+              placeholder="EN"
+              close-on-select
+            >
+            </vue-select>
           </div>
-
+          <a class="mobile-search flex items-center justify-center" href=""
+            ><i class="icon-mobile-search"></i
+          ></a>
           <a
             href="#"
             class="menu-toggle"
@@ -112,20 +164,25 @@ export default {
     };
   },
   methods: {
-    activeLink(event) {
+    activeSideMenu(event) {
       if (event.target.className == "right-menu-screen") {
         event.target.className = "active";
       } else {
         event.target.className = "right-menu-screen";
       }
     },
-    changeLanguage(){
-       
-    }
+    activeSearch(event) {
+      if (event.target.className == "search-data") {
+        event.target.className = "activeSearch";
+      } else {
+        event.target.className = "search-data";
+      }
+    },
+    changeLanguage() {},
   },
-    computed: {
+  computed: {
     isHeaderPositionAbsolute() {
-      return this.$route.name=='main';
+      return this.$route.name == "main";
     },
   },
 };

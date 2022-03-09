@@ -96,3 +96,31 @@
   min-width: 24px;
   display: inline-block;
 }
+.login-icon {
+  background: url(../../../src/assets/icons/login-icon.svg) no-repeat center center;
+  background-size: auto 20px;
+  height: 20px;
+  min-width: 20px;
+  display: inline-block;
+}
+.icon-close-search {
+  background: url(../../../src/assets/icons/icon-close-search.svg) no-repeat center center;
+  background-size: auto 20px;
+  height: 20px;
+  min-width: 20px;
+  display: inline-block;
+}
+.icon-delete {
+  background: url(../../../src/assets/icons/icon-delete.svg) no-repeat center center;
+  background-size: auto 20px;
+  height: 20px;
+  min-width: 20px;
+  display: inline-block;
+}
+.icon-mobile-search {
+  background: url(../../../src/assets/icons/icon-mobile-search.svg) no-repeat center center;
+  background-size: auto 32px;
+  height: 32px;
+  min-width: 32px;
+  display: inline-block;
+}
