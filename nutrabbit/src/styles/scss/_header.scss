@@ -489,6 +489,9 @@ header{
     box-shadow: none;
     .search-data-inner{
       min-height: 132px;
+      .no-search-data{
+        min-height: 375px;
+      }
     }
     .delete-close{
       border-top: 1px solid $white-F2;
@@ -529,6 +532,10 @@ header{
           }
         }
       }
+    }
+    .no-search-data{
+      min-height: 261px;
+      @include flex-justify-center;
     }
   }
   .delete-close{

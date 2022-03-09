@@ -113,6 +113,9 @@
               <a href="#"><i class="icon-close-search"></i></a>
             </li>
           </ul>
+          <div class="no-search-data">
+            <p>There are no recent searches.</p>
+          </div>
         </div>
         <div class="delete-close">
           <a href="#"><i class="icon-delete"></i>Delete all</a>
