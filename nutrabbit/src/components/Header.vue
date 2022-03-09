@@ -135,52 +135,37 @@
 
       <div class="black-box"></div>
       <div class="white-box">
-        <ul>
-          <li class="with-login-tip">
-            <i class="icon-login-tip login-tip"></i>
+        <ul class="right-menu-items">
+          <li
+            v-for="(item, index) in rightMenuItem"
+            :key="index"
+            @click="activeSubmenu = activeSubmenu == index ? '' : index"
+          >
             <div class="side-menu-heading">
-              <a href="#">Login</a>
+              <a href="#">{{ item.mainItem }}</a>
+              <i
+                class="icon-menu-downArw"
+                :class="
+                  typeof item.subItemData !== 'undefined' && item.subItemData.length ? '' : 'no-arrow'
+                "
+              ></i>
+            </div>
+            <div
+              class="side-menu-list"
+              v-for="(item, index2) in item.subItemData"
+              :key="index2"
+              :class="activeSubmenu === index ? 'activeSubmenu' : ''"
+            >
+              <a href="javascript:void(0)">{{ item.subItem1 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem2 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem3 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem4 }}</a>
             </div>
           </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#">nutri 3.3</a>
-            </div>
-            <div class="side-menu-list">
-              <a href="javascript:void(0)">About Us</a>
-              <a href="javascript:void(0)">my choice</a>
-              <a href="javascript:void(0)">nutri 3.3 blending</a>
-              <a href="javascript:void(0)">Sample making guide</a>
-            </div>
-          </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#" class="active">ONLY ONE</a>
-            </div>
-            <div class="side-menu-list">
-              <a class="active" href="javascript:void(0)"
-                >raw material storage box</a
-              >
-              <a href="javascript:void(0)">my recipe</a>
-              <a href="javascript:void(0)">my application</a>
-            </div>
-          </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#">CUSTOMER CENTER</a>
-            </div>
-            <div class="side-menu-list">
-              <a href="javascript:void(0)">Notice</a>
-              <a href="javascript:void(0)">FAQ</a>
-              <a href="javascript:void(0)">1:1 inquiry</a>
-            </div>
-          </li>
-          <li class="side-menu-language">
-            <ul class="flex">
-              <li><a href="">KO</a></li>
-              <li><a href="">EN</a></li>
-            </ul>
-          </li>
+        </ul>
+        <ul class="side-menu-language">
+          <li><a href="">KO</a></li>
+          <li><a href="">EN</a></li>
         </ul>
       </div>
     </div>
@@ -198,6 +183,42 @@ export default {
     return {
       active: false,
       activeSearch: false,
+      rightMenuItem: [
+        {
+          mainItem: "Login",
+        },
+        {
+          mainItem: "nutri 3.3",
+          subItemData: [
+            {
+              subItem1: "About Us",
+              subItem2: "my choice",
+              subItem3: "nutri 3.3 blending",
+              subItem4: "Sample making guide",
+            },
+          ],
+        },
+        {
+          mainItem: "ONLY ONE",
+          subItemData: [
+            {
+              subItem1: "raw material storage box",
+              subItem2: "my recipe",
+              subItem3: "my application",
+            },
+          ],
+        },
+        {
+          mainItem: "CUSTOMER CENTER",
+          subItemData: [
+            {
+              subItem1: "Notice",
+              subItem2: "FAQ",
+              subItem3: "1:1 inquiry",
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {
