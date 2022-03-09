@@ -1,90 +1,126 @@
 <template>
-  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
-    <div class="header-container">
-      <div class="header-menu flex">
-        <div class="manuLeft">
-          <a href="javascript:void(0)" class="header-logo">
-            <img src="../assets/images/logo.svg" alt="Logo" />
-          </a>
-          <ul class="flex">
-            <li><a href="javascript:void(0)">my choice</a></li>
-            <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
+  <template v-if="showHeader">
+    <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
+      <div class="header-container">
+        <div class="header-menu flex">
+          <div class="manuLeft">
+            <a href="javascript:void(0)" class="header-logo">
+              <img src="../assets/images/logo.svg" alt="Logo" />
+            </a>
+            <ul class="flex">
+              <li><a href="javascript:void(0)">my choice</a></li>
+              <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
+            </ul>
+          </div>
+          <div class="manuRight">
+            <div class="search-wrap">
+              <div class="input-group">
+                <input
+                  type="text"
+                  placeholder="Enter your desired search term."
+                  @click="activeSearch = true"
+                />
+                <a href="#"><i class="icon-search-black"></i></a>
+              </div>
+              <div
+                class="header-search-data"
+                :class="activeSearch ? 'activeSearch' : ''"
+              >
+                <div class="search-data-inner">
+                  <ul>
+                    <li>
+                      <p>muscular system</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                    <li>
+                      <p>aloe</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                    <li>
+                      <p>nervous system</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="delete-close">
+                  <a href="#"><i class="icon-delete"></i>Delete all</a>
+                  <a href="#" @click="activeSearch = false">to close</a>
+                </div>
+              </div>
+            </div>
+            <!-- <a href="" class="login-item">login</a> -->
+            <div class="after-login-dropdown flex items-center">
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <i class="login-icon"></i>rabbit123 님
+                </button>
+                <div class="dropdown-content">
+                  <a href="#">Change of personal information</a>
+                  <a href="#">Log out</a>
+                </div>
+              </div>
+            </div>
+            <div class="header-dropdown">
+              <vue-select
+                :options="['EN', 'KO']"
+                placeholder="EN"
+                close-on-select
+              >
+              </vue-select>
+            </div>
+            <a class="mobile-search flex items-center justify-center" href=""
+              ><i class="icon-mobile-search"></i
+            ></a>
+            <a
+              href="#"
+              class="menu-toggle"
+              @click="active = !active"
+              :aria-pressed="active ? 'true' : 'false'"
+            >
+              <img src="../assets/images/menu-toggle.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </template>
+  <template v-else>
+    <div class="search-wrap mobile-search-wrap">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Enter your desired search term."
+          @click="activeSearch = true"
+        />
+        <a href="#"><i class="icon-mobile-search"></i></a>
+      </div>
+      <div
+        class="header-search-data"
+        :class="activeSearch ? 'activeSearch' : ''"
+      >
+        <div class="search-data-inner">
+          <ul>
+            <li>
+              <p>muscular system</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
+            <li>
+              <p>aloe</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
+            <li>
+              <p>nervous system</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
           </ul>
         </div>
-        <div class="manuRight">
-          <div class="search-wrap">
-            <div class="input-group">
-              <input
-                type="text"
-                placeholder="Enter your desired search term."
-                @click="activeSearch = !activeSearch"
-                :aria-pressed="activeSearch ? 'true' : 'false'"
-              />
-              <a href="#"><i class="icon-search-black"></i></a>
-            </div>
-            <div class="search-data" :class="{ activeSearch: activeSearch }">
-              <div class="search-data-inner">
-                <ul>
-                  <li>
-                    <p>muscular system</p>
-                    <a href="#"><i class="icon-close-search"></i></a>
-                  </li>
-                  <li>
-                    <p>aloe</p>
-                    <a href="#"><i class="icon-close-search"></i></a>
-                  </li>
-                  <li>
-                    <p>nervous system</p>
-                    <a href="#"><i class="icon-close-search"></i></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="delete-close">
-                <a href="#"><i class="icon-delete"></i>Delete all</a>
-                <a
-                  href="#"
-                  @click="activeSearch = !activeSearch"
-                  :aria-pressed="activeSearch ? 'true' : 'false'"
-                  >to close</a
-                >
-              </div>
-            </div>
-          </div>
-          <!-- <a href="" class="login-item">login</a> -->
-          <div class="after-login-dropdown flex items-center">
-            <div class="dropdown">
-              <button class="dropbtn">
-                <i class="login-icon"></i>rabbit123 님
-              </button>
-              <div class="dropdown-content">
-                <a href="#">Change of personal information</a>
-                <a href="#">Log out</a>
-              </div>
-            </div>
-          </div>
-          <div class="header-dropdown">
-            <vue-select
-              :options="['EN', 'KO']"
-              placeholder="EN"
-              close-on-select
-            >
-            </vue-select>
-          </div>
-          <a class="mobile-search flex items-center justify-center" href=""
-            ><i class="icon-mobile-search"></i
-          ></a>
-          <a
-            href="#"
-            class="menu-toggle"
-            @click="active = !active"
-            :aria-pressed="active ? 'true' : 'false'"
-          >
-            <img src="../assets/images/menu-toggle.png" alt="" />
-          </a>
+        <div class="delete-close">
+          <a href="#"><i class="icon-delete"></i>Delete all</a>
+          <a href="#" @click="activeSearch = false">to close</a>
         </div>
       </div>
     </div>
-  </header>
+  </template>
   <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
       <div
@@ -161,6 +197,7 @@ export default {
   data() {
     return {
       active: false,
+      activeSearch: false,
     };
   },
   methods: {
@@ -171,18 +208,14 @@ export default {
         event.target.className = "right-menu-screen";
       }
     },
-    activeSearch(event) {
-      if (event.target.className == "search-data") {
-        event.target.className = "activeSearch";
-      } else {
-        event.target.className = "search-data";
-      }
-    },
     changeLanguage() {},
   },
   computed: {
     isHeaderPositionAbsolute() {
       return this.$route.name == "main";
+    },
+    showHeader() {
+      return this.$route.name != "mobile-search";
     },
   },
 };
