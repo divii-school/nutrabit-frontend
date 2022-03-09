@@ -20,6 +20,7 @@ import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
 import InquiryContactUs from '../pages/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
+import MobileSearch from '../pages/MobileSearch.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -98,10 +99,6 @@ const routes = [
         path: '/InquiryContactUs',
         component: InquiryContactUs
     },
-    
-   
-   
-   
     {
         name: 'method',
         path: '/method',
@@ -162,6 +159,11 @@ const routes = [
         name: 'sample-making',
         path: '/sample-making',
         component: SampleMaking,
+    },
+    {
+        name: 'mobile-search',
+        path: '/mobile-search',
+        component: MobileSearch,
     },
 
 
