@@ -469,7 +469,10 @@ header{
       &::placeholder{
         color: $grey-BD;
       }
-      &:focus{
+      // &:focus{
+      //   border: 1px solid $green-68;
+      // }
+      &.activeSearchInput{
         border: 1px solid $green-68;
       }
     }
@@ -479,8 +482,11 @@ header{
       right: 8px;
       top: 50%;
       transform: translate(0, -50%);
-      i{
-
+      &.activeSearchIcon{
+        i{
+          background: url(../../../src/assets/icons/icon-mobile-search-green.svg) no-repeat center center;
+          background-size: auto 32px;
+        }
       }
     }
   }

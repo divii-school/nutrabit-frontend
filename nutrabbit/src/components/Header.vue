@@ -68,9 +68,10 @@
               >
               </vue-select>
             </div>
-            <a class="mobile-search flex items-center justify-center" href=""
-              ><i class="icon-mobile-search"></i
-            ></a>
+             <router-link to="/mobile-search" class="mobile-search flex items-center justify-center">
+             <i class="icon-mobile-search"></i>
+             </router-link>
+            
             <a
               href="#"
               class="menu-toggle"
@@ -91,8 +92,9 @@
           type="text"
           placeholder="Enter your desired search term."
           @click="activeSearch = true"
+          :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <a href="#"><i class="icon-mobile-search"></i></a>
+        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"><i class="icon-mobile-search"></i></a>
       </div>
       <div
         class="header-search-data"
@@ -113,9 +115,9 @@
               <a href="#"><i class="icon-close-search"></i></a>
             </li>
           </ul>
-          <div class="no-search-data">
+          <!-- <div class="no-search-data">
             <p>There are no recent searches.</p>
-          </div>
+          </div> -->
         </div>
         <div class="delete-close">
           <a href="#"><i class="icon-delete"></i>Delete all</a>
