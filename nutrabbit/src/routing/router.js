@@ -21,6 +21,7 @@ import InquiryContactUs from '../pages/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
 import MobileSearch from '../pages/MobileSearch.vue';
+import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -164,6 +165,11 @@ const routes = [
         name: 'mobile-search',
         path: '/mobile-search',
         component: MobileSearch,
+    },
+    {
+        name: 'choice-recommended-blending-detailed-page',
+        path: '/choice-recommended-blending-detailed-page',
+        component: ChoiceRecommendedBlendingDetailedPage,
     },
 
 

@@ -68,10 +68,13 @@
               >
               </vue-select>
             </div>
-             <router-link to="/mobile-search" class="mobile-search flex items-center justify-center">
-             <i class="icon-mobile-search"></i>
-             </router-link>
-            
+            <router-link
+              to="/mobile-search"
+              class="mobile-search flex items-center justify-center"
+            >
+              <i class="icon-mobile-search"></i>
+            </router-link>
+
             <a
               href="#"
               class="menu-toggle"
@@ -94,7 +97,9 @@
           @click="activeSearch = true"
           :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"><i class="icon-mobile-search"></i></a>
+        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"
+          ><i class="icon-mobile-search"></i
+        ></a>
       </div>
       <div
         class="header-search-data"
@@ -151,7 +156,10 @@
               <i
                 class="icon-menu-downArw"
                 :class="
-                  typeof item.subItemData !== 'undefined' && item.subItemData.length ? '' : 'no-arrow'
+                  typeof item.subItemData !== 'undefined' &&
+                  item.subItemData.length
+                    ? ''
+                    : 'no-arrow'
                 "
               ></i>
             </div>

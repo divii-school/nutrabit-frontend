@@ -30,6 +30,10 @@
     color: $white-1;
     background: $grey-4C;
   }
+  &.blue-btn-solid{
+    color: $white-1;
+    background: $blue-E8;
+  }
 }
 .btn-green-outline{
   @include small-outline-btn;
