@@ -126,18 +126,10 @@
                 flex-wrap: wrap;
                 margin: 25px -3.5px 0;
                 li{
-                    width: 20%;
-                    flex: 0 0 20%;
-                    max-width: 20%;
                     margin: 0 3.5px 10px;
-                    @media screen and (max-width: 992px){
-                        width: 20%;
-                        flex: 0 0 20%;
-                        max-width: 20%;
-                    }
                     img{
                         height: 90px;
-                        width: 90px;
+                        min-width: 90px;
                     }
                 }
             }
