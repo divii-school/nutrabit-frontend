@@ -151,6 +151,9 @@
                                     @media screen and (max-width: 640px){
                                         left: 0 !important
                                     }
+                                    button{
+                                        @include flex-justify-center;
+                                    }
                                 }
                             }
                         }
@@ -366,6 +369,35 @@
                                 }
                             }
                         }
+                        &.package-list{
+                            li{
+                                .list-left{
+                                    align-items: center;
+                                    .material-details{
+                                        &.with-input{
+                                            @include flex-align-center;
+                                            h2{
+                                                min-width: 206px;
+                                            }
+                                            .input-group{
+                                                margin-left: 15px;
+                                                input{
+                                                    height: 37px;
+                                                    border: 1px solid $grey-CF;
+                                                    border-radius: 5px;
+                                                    padding: 10px 15px;
+                                                    width: 821px;
+                                                    font-weight: 400;
+                                                    font-size: 14px;
+                                                    line-height: 17px;
+                                                    color: $grey-BD;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -373,6 +405,98 @@
         &.recomanded-blending-main{
             @media screen and (max-width: 640px){
                 padding: 65px 0 125px;
+            }
+        }
+        &.package-list-section{
+            .my-choice-heading{
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 80px;
+                h2{
+                    color: $blue-E8
+                }
+                .recomanded-status-wrap{
+                    @include flex-justify-between;
+                    width: 100%;
+                    margin-top: 30px;
+                    .recomanded-status{
+                        position: relative;
+                        width: 25%;
+                        .d-item{
+                            @include flex-justify-center;
+                            flex-direction: column;
+                            span{
+                                height: 16px;
+                                width: 16px;
+                                border-radius: 100%;
+                                border: 1px solid $blue-F1;
+                                display: block;
+                                background: $white-1;
+                                z-index: 2;
+                            }
+                            p{
+                                font-weight: 500;
+                                font-size: 18px;
+                                line-height: 18px;
+                                color: $grey-A4;
+                                margin-top: 10px;
+                            }
+                        }
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            height: 1px;
+                            background: $grey-E0;
+                            right: 140px;
+                            top: 8px;
+                        }
+                        &:first-child{
+                            &:before{
+                                display: none;
+                            }
+                        }
+                        &.active{
+                            p{
+                                color: $blue-E8;
+                                font-weight: 600;
+                            }
+                            span{
+                                border: 1px solid $blue-E8;
+                                background: $blue-E8;
+                            }
+                            &:before{
+                                background: $blue-E8;
+                            }
+                        }
+                        &.visited{
+                            p{
+                                color: $blue-F1;
+                            }
+                            span{
+                                border: 1px solid $blue-E8;
+                                background: #DCE3FA;
+                            }
+                            &:before{
+                                background: $blue-E8;
+                            }
+                        }
+                    }
+                }
+            }
+            .choice-selection-item-wrap{
+                .choice-selection-item{
+                    .package-list-wrap{
+                        .btn-wrap{
+                            @include flex-justify-between;
+                            margin-top: 40px;
+                            button{
+                                min-width: 200px;
+                                height: 45px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

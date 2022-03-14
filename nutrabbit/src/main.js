@@ -16,22 +16,9 @@ import { createI18n } from "vue-i18n";
 //select
 import VueNextSelect from 'vue-next-select';
 import "vue-next-select/dist/index.css";
+import './config/axios-interceptor';
 
-// if(localStorage.token) {
-//   setAuthHeader(localStorage.token);
-// } else {
-//   setAuthHeader(false);
-// }
 
-// axios.defaults.baseURL = 'http://demo-vuejs.dvconsulting.org/admin/api';
-// axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
-// axios.defaults.baseURL = '';
-// axios.defaults.headers = {
-//     source:'',
-//     apiKey:'',
-//     token: localStorage.getItem('token'),
-//     'Accept-Language':'en'
-// };
 
 const i18n = createI18n({
     locale:"en",

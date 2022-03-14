@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
-import Home from '../pages/Home.vue';
 import Login from '../pages/login.vue';
 import MembershipSelection from '../pages/MemberRegistrationTypeSelection.vue';
 import Method from '../pages/MemberRegistrationMethod.vue';
@@ -22,6 +21,7 @@ import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue'
 import SampleMaking from '../pages/SampleMaking.vue';
 import MobileSearch from '../pages/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
+import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
 
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -46,21 +46,24 @@ import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBle
 // }
 
 const routes = [
+    // {
+    //     name: 'home',
+    //     path: '/',
+    //     component: Home,
+    //     meta: {
+    //         name: 'topnav',
+    //         ShowText: true
+    //     }
+    // },
     {
-        name: 'home',
+        name: 'main',
         path: '/',
-        component: Home,
-        // beforeEnter: guard,
-        meta: {
-            name: 'topnav',
-            ShowText: true
-        }
+        component: Main,
     },
     {
         name: 'login',
         path: '/login',
         component: Login,
-        // beforeEnter: guest,
         
     },
     {
@@ -135,12 +138,6 @@ const routes = [
         // beforeEnter: guest,
     },
     {
-        name: 'main',
-        path: '/main',
-        component: Main,
-        // beforeEnter: guest,
-    },
-    {
         name: 'my-choice',
         path: '/my-choice',
         component: MyChoice,
@@ -170,6 +167,11 @@ const routes = [
         name: 'choice-recommended-blending-detailed-page',
         path: '/choice-recommended-blending-detailed-page',
         component: ChoiceRecommendedBlendingDetailedPage,
+    },
+    {
+        name: 'choice-recommended-blending-package-selection',
+        path: '/choice-recommended-blending-package-selection',
+        component: ChoiceRecommendedBlendingPackageSelection,
     },
 
 
