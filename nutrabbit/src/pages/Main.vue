@@ -1,19 +1,29 @@
 <template>
   <div class="main-page">
-    <div class="main-slider">
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-      >
-        <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
-          <img :src="slider.img" alt="" />
-          <p class="banner-title text-center">{{ slider.title }}</p>
-        </swiper-slide>
-      </swiper>
+    <div
+      class="main-page-inner"
+      v-if="
+        typeof this.logedInUserDetails !== 'undefined' &&
+        this.logedInUserDetails &&
+        this.logedInUserDetails.userId
+      "
+    >
+
+      <div class="main-slider">
+        <swiper
+          :pagination="{
+            type: 'fraction',
+          }"
+          :navigation="true"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
+            <img :src="slider.img" alt="" />
+            <p class="banner-title text-center">{{ slider.title }}</p>
+          </swiper-slide>
+        </swiper>
+      </div>
       <div class="main-page-body">
         <div class="container-medium">
           <div class="nutri-choice with-img">
@@ -159,5 +169,13 @@ export default {
       modules: [Pagination],
     };
   },
+  // mounted() {
+  //   if (localStorage.getItem("logedInUserDetails")) {
+  //     this.logedInUserDetails =
+  //       JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+  //   } else {
+  //     this.logedInUserDetails = null;
+  //   }
+  // },
 };
 </script>

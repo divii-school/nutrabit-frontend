@@ -82,7 +82,7 @@
             <a
               href="#"
               class="menu-toggle"
-              @click="active = !active"
+              @click="sideMenuOpen"
               :aria-pressed="active ? 'true' : 'false'"
             >
               <img src="../assets/images/menu-toggle.png" alt="" />
@@ -135,7 +135,11 @@
       </div>
     </div>
   </template>
-  <div class="right-menu-screen" :class="{ active: active }">
+  <div
+    class="right-menu-screen"
+    :class="{ active: active }"
+    v-if="this.logedInUserDetails"
+  >
     <div class="top-box right-small-box">
       <div
         class="closeMenu"
@@ -156,7 +160,17 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <a href="#">{{ item.mainItem }}</a>
+              <a
+                href="#"
+                :text="
+                  typeof this.logedInUserDetails !== 'undefined' &&
+                  this.logedInUserDetails.name &&
+                  index == 0
+                    ? this.logedInUserDetails.name
+                    : item.mainItem
+                "
+                >{{ item.mainItem }}</a
+              >
               <i
                 class="icon-menu-downArw"
                 :class="
@@ -187,19 +201,33 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    <Modal
+      v-show="isModalVisible"
+      @close="closeModal"
+      bodytext1="This service requires login."
+      bodytext2="Please use the service after logging in."
+      btnText1="cancellation"
+      btnText2="log in"
+    />
+  </div>
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
+import Modal from "./Modal.vue";
 export default {
   name: "Header",
   components: {
     "vue-select": VueNextSelect,
+    Modal,
   },
 
   data() {
     return {
       active: false,
       activeSearch: false,
+      active: false,
+      isModalVisible: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -253,6 +281,25 @@ export default {
         window.location = "/login";
       }
     },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    sideMenuOpen() {
+      if (
+        typeof this.logedInUserDetails !== "undefined" &&
+        this.logedInUserDetails &&
+        this.logedInUserDetails.userId
+      ) {
+        console.log("pppp");
+        this.active = true;
+      } else {
+        console.log("qqqq");
+        this.showModal();
+      }
+    },
   },
   computed: {
     isHeaderPositionAbsolute() {
@@ -266,9 +313,8 @@ export default {
     if (localStorage.getItem("logedInUserDetails")) {
       this.logedInUserDetails =
         JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-    }
-    else{
-      this.logedInUserDetails = null
+    } else {
+      this.logedInUserDetails = null;
     }
   },
 };

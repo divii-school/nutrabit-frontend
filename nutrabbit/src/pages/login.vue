@@ -81,6 +81,7 @@
 import Button from "../components/Button.vue";
 import axios from "axios";
 import { useCookies } from "vue3-cookies";
+
 export default {
   name: "Login",
   components: {
@@ -103,43 +104,52 @@ export default {
     async onSubmit() {
       const setEmail = this.email;
       const setPassword = this.password;
-      try {
-        const data = await axios
-          .post("/v1/sites/auth/login", {
-            login_id: setEmail,
-            password: setPassword,
-          })
-          .then((response) => {
-            if (response.data.status == 200) {
-              console.log(response.data.status);
-              localStorage.setItem(
-                "logedInUserDetails",
-                JSON.stringify(response.data.data)
-              );
-              if (this.checkBox) {
-                this.cookies.set("rememberUserEmail", setEmail);
-                this.cookies.set("rememberUserPassword", setPassword);
-              } else {
-                this.cookies.set("rememberUserEmail", "");
-                this.cookies.set("rememberUserPassword", "");
+      if (setEmail == "") {
+        this.errorEmail = "Please enter an email id";
+      }
+      else if (setPassword == "") {
+        this.errorPassword = "Please enter password";
+      } else {
+        try {
+          const data = await axios
+            .post("/v1/sites/auth/login", {
+              login_id: setEmail,
+              password: setPassword,
+            })
+            .then((response) => {
+              if (response.data.status == 200) {
+                console.log(response.data.status);
+                localStorage.setItem(
+                  "logedInUserDetails",
+                  JSON.stringify(response.data.data)
+                );
+                if (this.checkBox) {
+                  this.cookies.set("rememberUserEmail", setEmail);
+                  this.cookies.set("rememberUserPassword", setPassword);
+                } else {
+                  this.cookies.set("rememberUserEmail", "");
+                  this.cookies.set("rememberUserPassword", "");
+                }
+                window.location = "/";
               }
-              window.location = "/";
-            }
-          });
-      } catch (error) {
-        let text = error && error.response && error.response.data ? error.response.data.message : '';
-        let result = text.match("Password");
-        let result1 = text.match("Email");
-        if (result == "Password") {
-          this.errorPassword = "Enter a valid password.";
-          this.errorEmail = "";
-        } else if (result1 == "Email") {
-          this.errorPassword = "";
-          this.errorEmail = "Enter a valid email.";
-        } else {
-          alert("Email or, password is incorrect");
+            });
+        } catch (error) {
+          let text =
+            error && error.response && error.response.data
+              ? error.response.data.message
+              : "";
+          let result = text.match("Password");
+          let result1 = text.match("Email");
+          if (result == "Password") {
+            this.errorPassword = "Enter a valid password.";
+            this.errorEmail = "";
+          } else if (result1 == "Email") {
+            this.errorPassword = "";
+            this.errorEmail = "Enter a valid email.";
+          } else {
+            alert("Email or, password is incorrect");
+          }
         }
-        console.log(text);
       }
     },
   },
@@ -148,9 +158,9 @@ export default {
       const rememberUserPasswordCookie = this.cookies.get(
         "rememberUserPassword"
       );
-      
+
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
-      
+
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
         (this.email = rememberUserEmailCookie),
           (this.password = rememberUserEmailCookie);
