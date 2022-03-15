@@ -48,18 +48,22 @@
                 </div>
               </div>
             </div>
-            <!-- <a href="" class="login-item">login</a> -->
-            <div class="after-login-dropdown flex items-center">
+            <!-- <p>{{this.logedInUserDetails}}</p> -->
+            <div
+              class="after-login-dropdown flex items-center"
+              v-if="this.logedInUserDetails && this.logedInUserDetails.userId"
+            >
               <div class="dropdown">
                 <button class="dropbtn">
-                  <i class="login-icon"></i>rabbit123 님
+                  <i class="login-icon"></i>{{ this.logedInUserDetails.name }}
                 </button>
                 <div class="dropdown-content">
                   <a href="#">Change of personal information</a>
-                  <a href="#">Log out</a>
+                  <a href="#" @click="logOut()">Log out</a>
                 </div>
               </div>
             </div>
+            <a href="" class="login-item" v-else>login</a>
             <div class="header-dropdown">
               <vue-select
                 :options="['EN', 'KO']"
@@ -243,6 +247,12 @@ export default {
       }
     },
     changeLanguage() {},
+    logOut() {
+      if (this.logedInUserDetails) {
+        localStorage.removeItem("logedInUserDetails");
+        window.location = "/login";
+      }
+    },
   },
   computed: {
     isHeaderPositionAbsolute() {
@@ -251,6 +261,15 @@ export default {
     showHeader() {
       return this.$route.name != "mobile-search";
     },
+  },
+  mounted() {
+    if (localStorage.getItem("logedInUserDetails")) {
+      this.logedInUserDetails =
+        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    }
+    else{
+      this.logedInUserDetails = null
+    }
   },
 };
 </script>
