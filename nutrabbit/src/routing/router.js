@@ -22,7 +22,7 @@ import SampleMaking from '../pages/SampleMaking.vue';
 import MobileSearch from '../pages/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
-
+import Notice from '../pages/Notice.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
 //         next({ name: 'home' });
@@ -172,6 +172,12 @@ const routes = [
         name: 'choice-recommended-blending-package-selection',
         path: '/choice-recommended-blending-package-selection',
         component: ChoiceRecommendedBlendingPackageSelection,
+    },
+    {
+        name: 'notice',
+        path: '/notice',
+        component: Notice,
+        
     },
 
 
