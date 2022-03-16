@@ -422,10 +422,19 @@
                                     }
                                     .radio-wrap{
                                         @include flex-align-center;
+                                        .custom-radio{
+                                            @media screen and (max-width: 640px){
+                                               padding-left: 37px;
+                                            }
+                                        }
                                     }
                                     .material-details{
                                         @media screen and (max-width: 768px){
                                             margin-left: 62px;
+                                        }
+                                        @media screen and (max-width: 640px){
+                                            margin-left: 37px;
+                                            margin-top: 20px;
                                         }
                                         h2{
                                             @media screen and (max-width: 768px){
@@ -458,6 +467,9 @@
                 flex-direction: column;
                 align-items: flex-start;
                 margin-bottom: 80px;
+                @media screen and (max-width: 768px) {
+                    margin-bottom: 61px;
+                }
                 h2{
                     color: $blue-E8
                 }
@@ -465,6 +477,9 @@
                     @include flex-justify-between;
                     width: 100%;
                     margin-top: 30px;
+                    @media screen and (max-width: 768px) {
+                        margin-top: 32px;
+                    }
                     .recomanded-status{
                         position: relative;
                         width: 25%;
@@ -486,6 +501,10 @@
                                 line-height: 18px;
                                 color: $grey-A4;
                                 margin-top: 10px;
+                                @media screen and (max-width: 768px) {
+                                    font-size: 14px;
+                                    line-height: 14px;
+                                }
                             }
                         }
                         &:before{
@@ -539,6 +558,10 @@
                             button{
                                 min-width: 200px;
                                 height: 45px;
+                                @media screen and (max-width: 768px) {
+                                    min-width: 162px;
+                                    line-height: 14px;
+                                }
                             }
                         }
                     }
