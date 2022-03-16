@@ -30,18 +30,25 @@
         
         }
         .notice-list{
-            @include flex-justify-between;
-             margin-top: 20px;
+             padding: 15px 20px;
              border-bottom: 1px solid $grey-CF;
-            .item-left{
-                span{
-                    font-size: 14px;
-                    line-height: 17px;
-                    text-align: center;
-                    color: $green-68;
-                    border:1px solid $green-68;
-                    border-radius:9px; 
-                    padding: 3px;
+            ul{
+                li{
+                    @include flex-justify-between;
+                    .item-left{
+                        @include flex-align-center;
+                        span{
+                            @include flex-justify-center;
+                            font-size: 14px;
+                            line-height: 17px;
+                            text-align: center;
+                            color: $green-68;
+                            border:1px solid $green-68;
+                            border-radius:9px; 
+                            padding: 5px 15px;
+                            margin-right: 10px;
+                        }
+                    }
                 }
             }
            
