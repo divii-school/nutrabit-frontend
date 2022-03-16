@@ -228,7 +228,6 @@ export default {
     return {
       active: false,
       activeSearch: false,
-      active: false,
       isModalVisible: false,
       rightMenuItem: [
         {

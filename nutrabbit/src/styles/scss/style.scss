@@ -111,6 +111,9 @@ input {
 	-ms-user-select: none;
 	user-select: none;
   font-weight: normal;
+  &.error{
+    color: $red-3 !important;
+  }
 	input {
 		position: absolute;
 		opacity: 0;

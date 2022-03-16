@@ -62,18 +62,18 @@
             <div class="package-list-wrap">
               <ul class="raw-material-list package-list">
                 <li v-for="data in rwaMaterialData" :key="data">
-                  <div class="list-left">
-                    <label class="custom-radio">
-                      <input type="radio" checked="checked" name="radio" />
-                      <span class="checkmark"></span>
-                    </label>
-                    <div class="img-wrap" v-if="data.img">
-                      <img :src="data.img" alt="" />
+                  <div class="list-left" :class="data.img ? '' : 'with-input' ">
+                    <div class="radio-wrap">
+                      <label class="custom-radio">
+                        <input type="radio" checked="checked" name="radio" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <div class="img-wrap" v-if="data.img">
+                        <img :src="data.img" alt="" />
+                      </div>
                     </div>
                     <div
-                      class="material-details"
-                      :class="data.inputField ? 'with-input' : ''"
-                    >
+                      class="material-details">
                       <h2>{{ data.title }}</h2>
                       <div class="description" v-if="data.desc">
                         <p

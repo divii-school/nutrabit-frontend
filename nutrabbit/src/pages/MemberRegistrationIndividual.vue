@@ -16,7 +16,7 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="terms-sec">
-              <div class="form-group">
+              <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
@@ -24,8 +24,12 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
+                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
-              <div class="form-group">
+              <div
+                class="form-group"
+                :class="error.personalCheck ? 'error' : ''"
+              >
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
@@ -34,6 +38,7 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
+                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="individuals-form">
@@ -97,7 +102,6 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
-                <!-- <span class="error-msg" v-if="this.password !== this.confirmPassword">{{ error.confirmPassword }}</span> -->
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>e-mail</label>
@@ -179,35 +183,35 @@
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >offline
-                      <input type="checkbox" v-model="checkOffline"/>
+                      <input type="checkbox" v-model="checkOffline" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >online
-                      <input type="checkbox" v-model="checkOnline"/>
+                      <input type="checkbox" v-model="checkOnline" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >Network (door-to-door sales)
-                      <input type="checkbox" v-model="checkNetwork"/>
+                      <input type="checkbox" v-model="checkNetwork" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >SNS
-                      <input type="checkbox" v-model="checkSNS"/>
+                      <input type="checkbox" v-model="checkSNS" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >Etc
-                      <input type="checkbox" v-model="checkETC"/>
+                      <input type="checkbox" v-model="checkETC" />
                       <span class="checkmark"></span>
                     </label>
                   </div>

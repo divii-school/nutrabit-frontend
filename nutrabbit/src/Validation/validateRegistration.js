@@ -14,23 +14,29 @@ const validateRegistration = (data) => {
   //   }
   // }
 
-  if (validator.isEmpty(termsCheck)) {
-    errors.termsCheck = "check 1";
+  if (termsCheck == false) {
+    errors.termsCheck = "Please check the terms";
   }
-  if (validator.isEmpty(personalCheck)) {
-    errors.personalCheck = "check 2";
+  if (personalCheck == false) {
+    errors.personalCheck = "Please check personal information";
   }
   if (validator.isEmpty(name)) {
-    errors.name = "Enter your name";
+    errors.name = "Enter your name please";
   }
   if (validator.isEmpty(username)) {
-    errors.username = "Enter your username";
+    errors.username = "Please enter your ID";
+  }
+  else if (!(validator.isAlphanumeric(username))) {
+    errors.username = "Please use only letter and number";
   }
   if (validator.isEmpty(password)) {
-    errors.password = "Enter a Password";
+    errors.password = "Please enter a Password";
+  }
+  else if (password.length < 10 || password.length > 20){
+    errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
   }
   if (validator.isEmpty(confirmPassword)) {
-    errors.confirmPassword = "Enter a verifcation Password";
+    errors.confirmPassword = "Please confirm your password";
   }
   if (!validator.equals(password, confirmPassword)) {
     errors.confirmPassword = "Password should match!";
@@ -39,16 +45,16 @@ const validateRegistration = (data) => {
     errors.email = "Enter a valid email address";
   }
   if (validator.isEmpty(email)) {
-    errors.email = "Enter an Email";
+    errors.email = "Please enter your email address";
   }
   if (validator.isEmpty(emailOTP)) {
-    errors.emailOTP = "Enter an Email OTP";
+    errors.emailOTP = "Please enter your email verification code";
   }
   if (validator.isEmpty(phoneNumber)) {
-    errors.phoneNumber = "Enter a Phone Number";
+    errors.phoneNumber = "Please enter your mobile phone number";
   }
   if (validator.isEmpty(address)) {
-    errors.address = "Enter a Address";
+    errors.address = "Please enter your address";
   }
 
 

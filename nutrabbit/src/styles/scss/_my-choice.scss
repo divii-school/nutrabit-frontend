@@ -372,25 +372,71 @@
                         &.package-list{
                             li{
                                 .list-left{
+                                    width: 100%;
                                     align-items: center;
-                                    .material-details{
-                                        &.with-input{
+                                    @media screen and (max-width: 992px){
+                                        align-items: flex-start;
+                                    }
+                                    &.with-input{
+                                        @include flex-align-center;
+                                        width: 100%;
+                                        flex-direction: row;
+                                        .radio-wrap{
+                                            .custom-radio{
+                                                .checkmark{
+                                                    top: -2px;
+                                                }
+                                            }
+                                        }
+                                        .material-details{
                                             @include flex-align-center;
+                                            width: 100%;
+                                            margin: 0;
                                             h2{
-                                                min-width: 206px;
+                                                min-width: 180px;
+                                                margin-right: 40px;
+                                                @media screen and (max-width: 992px){
+                                                    margin-right: 20px; 
+                                                }
+                                                @media screen and (max-width: 768px){
+                                                    line-height: 20px;
+                                                    min-width: auto;
+                                                }
                                             }
                                             .input-group{
-                                                margin-left: 15px;
+                                                width: 100%;
                                                 input{
                                                     height: 37px;
                                                     border: 1px solid $grey-CF;
                                                     border-radius: 5px;
                                                     padding: 10px 15px;
-                                                    width: 821px;
+                                                    width: 100%;
+                                                    max-width: 821px;
                                                     font-weight: 400;
                                                     font-size: 14px;
                                                     line-height: 17px;
                                                     color: $grey-BD;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .radio-wrap{
+                                        @include flex-align-center;
+                                    }
+                                    .material-details{
+                                        @media screen and (max-width: 768px){
+                                            margin-left: 62px;
+                                        }
+                                        h2{
+                                            @media screen and (max-width: 768px){
+                                                text-align: left;
+                                                min-width: auto;
+                                            }
+                                        }
+                                        .description{
+                                            p{
+                                                @media screen and (max-width: 768px){
+                                                    text-align: left;
                                                 }
                                             }
                                         }
@@ -448,7 +494,7 @@
                             width: 100%;
                             height: 1px;
                             background: $grey-E0;
-                            right: 140px;
+                            right: 50%;
                             top: 8px;
                         }
                         &:first-child{
