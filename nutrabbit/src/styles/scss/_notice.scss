@@ -1,0 +1,51 @@
+.main-body{
+    .container-medium{
+    .my-notic-wrap{
+        padding: 80px 0 28px;
+        @media screen and (max-width: 640px){
+            padding: 65px 0 123px;
+        }
+        .my-notice-heading{
+            @include flex-align-center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $grey-CF;
+            h2{
+                font-weight: bold;
+                font-size: 30px;
+                line-height: 100%;
+                color:$green-68;
+                @media screen and (max-width: 640px){
+                    font-size: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+        .notice-heading{
+            @include flex-justify-between;
+            border-bottom: 1px solid $grey-CF;
+            padding: 20px 0;
+            font-size: 18px;
+            line-height: 18px;
+            color:$grey-A4; 
+        
+        }
+        .notice-list{
+            @include flex-justify-between;
+             margin-top: 20px;
+             border-bottom: 1px solid $grey-CF;
+            .item-left{
+                span{
+                    font-size: 14px;
+                    line-height: 17px;
+                    text-align: center;
+                    color: $green-68;
+                    border:1px solid $green-68;
+                    border-radius:9px; 
+                    padding: 3px;
+                }
+            }
+           
+        }
+    }
+}
+}
