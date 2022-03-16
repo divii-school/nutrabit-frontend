@@ -23,6 +23,7 @@ import MobileSearch from '../pages/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/Notice.vue';
+import NoticeDetailPage from '../pages/NoticeDetailPage.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
 //         next({ name: 'home' });
@@ -179,11 +180,12 @@ const routes = [
         component: Notice,
         
     },
-
-
-
-    
-
+    {
+        name: 'noticeDetailPage',
+        path: '/noticeDetailPage',
+        component:NoticeDetailPage,
+        
+    },
 
     {
         path: '/:pathMatch(.*)*',
