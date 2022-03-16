@@ -41,7 +41,7 @@
             where information about announcements comes in.
           </p>
         </div>
-        <div class="btn">
+        <div class="btn flex justify-end">
         <button class="btn-small-solid grey">as a list</button>
         </div>
       </div>
