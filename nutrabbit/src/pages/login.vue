@@ -48,7 +48,7 @@
               <div class="form-links-left">
                 <ul>
                   <li>
-                    <a href="">{{ $t("findID") }}</a>
+                    <router-link  to="/find-id">{{ $t("findID") }}</router-link>
                   </li>
                   <li>
                     <a href="">{{ $t("findpassword") }}</a>
@@ -56,7 +56,7 @@
                 </ul>
               </div>
               <div class="form-link-right">
-                <a href="">{{ $t("SignUp") }}</a>
+                <router-link to="/membership-selection">{{ $t("SignUp") }}</router-link>
               </div>
             </div>
             <button class="btn-primary" @click="onSubmit">

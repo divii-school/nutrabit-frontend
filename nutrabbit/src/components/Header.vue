@@ -4,9 +4,9 @@
       <div class="header-container">
         <div class="header-menu flex">
           <div class="manuLeft">
-            <a href="javascript:void(0)" class="header-logo">
+            <router-link  class="header-logo" to="/">
               <img src="../assets/images/logo.svg" alt="Logo" />
-            </a>
+            </router-link>
             <ul class="flex">
               <li><a href="javascript:void(0)">my choice</a></li>
               <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
@@ -63,7 +63,9 @@
                 </div>
               </div>
             </div>
-            <a href="" class="login-item" v-else>login</a>
+             <router-link
+              to="/login" class="login-item" v-else>login</router-link>
+            
             <div class="header-dropdown">
               <vue-select
                 :options="['EN', 'KO']"

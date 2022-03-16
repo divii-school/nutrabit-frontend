@@ -169,13 +169,13 @@ export default {
       modules: [Pagination],
     };
   },
-  // mounted() {
-  //   if (localStorage.getItem("logedInUserDetails")) {
-  //     this.logedInUserDetails =
-  //       JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-  //   } else {
-  //     this.logedInUserDetails = null;
-  //   }
-  // },
+  mounted() {
+    if (localStorage.getItem("logedInUserDetails")) {
+      this.logedInUserDetails =
+        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    } else {
+      this.logedInUserDetails = null;
+    }
+  },
 };
 </script>

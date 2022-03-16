@@ -9,8 +9,17 @@
           </div>
 
           <div class="membership-list-wrap">
-            <ul>
-              <li class="membership-item active">
+            <ul class="membership-list-inner">
+              <!-- @click="active = !active"
+                :class="active ? 'active' : ''" -->
+              <li
+                class="membership-item"
+                @click="
+                  $router.push({
+                    name: 'method-selection',
+                  })
+                "
+              >
                 <i class="icon-user"></i>
                 <h2 class="list-heading">individual membership</h2>
                 <p class="list-desc">When an individual joins</p>
@@ -31,6 +40,11 @@
 <script>
 export default {
   name: "member-registration-type-selection",
+  data() {
+    return {
+      active: false,
+    };
+  },
 };
 </script>
 

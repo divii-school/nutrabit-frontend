@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
 import Login from '../pages/login.vue';
 import MembershipSelection from '../pages/MemberRegistrationTypeSelection.vue';
-import Method from '../pages/MemberRegistrationMethod.vue';
+import MethodSelection from '../pages/MemberRegistrationMethod.vue';
 import RegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
 import RegistrationBusiness from '../pages/MembershipRegistrationBusiness.vue';
 import RegistrationCompleted from '../pages/MemberRegistrationCompleted.vue';
@@ -104,9 +104,9 @@ const routes = [
         component: InquiryContactUs
     },
     {
-        name: 'method',
-        path: '/method',
-        component:Method,
+        name: 'method-selection',
+        path: '/method-selection',
+        component:MethodSelection,
         // beforeEnter: guest,
     },
     {
