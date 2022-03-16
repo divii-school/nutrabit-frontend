@@ -24,6 +24,7 @@ import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBle
 import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/Notice.vue';
 import NoticeDetailPage from '../pages/NoticeDetailPage.vue';
+import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
 //         next({ name: 'home' });
@@ -184,6 +185,12 @@ const routes = [
         name: 'noticeDetailPage',
         path: '/noticeDetailPage',
         component:NoticeDetailPage,
+        
+    },
+    {
+        name: 'MyRecipeDetail',
+        path: '/my-recipe-detail',
+        component: MyRecipeDetail,
         
     },
 
