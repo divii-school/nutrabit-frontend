@@ -23,6 +23,7 @@ import MobileSearch from '../pages/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/Notice.vue';
+import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
 //         next({ name: 'home' });
@@ -177,6 +178,12 @@ const routes = [
         name: 'notice',
         path: '/notice',
         component: Notice,
+        
+    },
+    {
+        name: 'MyRecipeDetail',
+        path: '/my-recipe-detail',
+        component: MyRecipeDetail,
         
     },
 
