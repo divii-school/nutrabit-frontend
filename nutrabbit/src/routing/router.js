@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
 import Login from '../pages/login.vue';
 import MembershipSelection from '../pages/MemberRegistrationTypeSelection.vue';
-import MethodSelection from '../pages/MemberRegistrationMethod.vue';
-import RegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
+import MemberRegistrationMethod from '../pages/MemberRegistrationMethod.vue';
+import MemberRegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
 import RegistrationBusiness from '../pages/MembershipRegistrationBusiness.vue';
 import RegistrationCompleted from '../pages/MemberRegistrationCompleted.vue';
 import FindID from '../pages/FindId.vue';
@@ -75,9 +75,9 @@ const routes = [
         // beforeEnter: guest,
     },
     {
-        name: 'registration-ndividuals',
-        path: '/registration-ndividuals',
-        component: RegistrationIndividuals
+        name: 'MemberRegistrationIndividual',
+        path: '/memberregistration-ndividuals',
+        component: MemberRegistrationIndividuals
     },
     {
         name: 'registration-business',
@@ -106,9 +106,9 @@ const routes = [
         component: InquiryContactUs,
     },
     {
-        name: 'method-selection',
+        name: 'MemberRegistrationMethod',
         path: '/method-selection',
-        component:MethodSelection,
+        component:MemberRegistrationMethod,
         // beforeEnter: guest,
     },
     {

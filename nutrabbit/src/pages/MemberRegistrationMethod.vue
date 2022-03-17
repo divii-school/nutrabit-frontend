@@ -42,6 +42,6 @@
 <script>
 
 export default {
-  name: "member-registration-method",
+  name: "MemberRegistrationMethod",
 };
 </script>
