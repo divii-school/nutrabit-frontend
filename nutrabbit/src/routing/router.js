@@ -92,17 +92,17 @@ const routes = [
     },
     {
         name: 'PersonalInformationBusiness',
-        path: '/PersonalInformationBusiness',
+        path: '/Personal-Information-Business',
         component:  PersonalInformationBusiness
     },
     {
         name: 'WithdrawalOfMembership',
-        path: '/WithdrawalOfMembership',
+        path: '/Withdrawal-Of-Membership',
         component: WithdrawalOfMembership
     },
     {
         name: 'InquiryContactUs',
-        path: '/InquiryContactUs',
+        path: '/Inquiry-ContactUs',
         component: InquiryContactUs,
     },
     {
@@ -183,7 +183,7 @@ const routes = [
     },
     {
         name: 'noticeDetailPage',
-        path: '/notice_detail_page',
+        path: '/notice-detail-page',
         component:NoticeDetailPage,
         
     },
