@@ -1,5 +1,5 @@
 <template>
-  <div class="paggination-wrap">
+  <div class="pagination-wrap">
     <a href=""><i class="pagination-arrow-left"></i></a>
     <ul>
       <li>1</li>

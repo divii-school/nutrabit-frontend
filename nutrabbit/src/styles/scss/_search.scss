@@ -133,27 +133,8 @@
                         }
                     }
                 }
-                .paggination-wrap{
-                    @include flex-justify-center;
-                    a{
-                        @include flex-justify-center;
-                    }
-                    ul{
-                        @include flex-align-center;
-                        li{
-                            @include flex-justify-center;
-                           height: 24px;
-                           width: 24px;
-                           font-weight: 500;
-                            font-size: 14px;
-                            line-height: 17px;
-                            letter-spacing: 0.02em;
-                            color: $black-18;
-                        }
-                    }
-                }
             }
-            .paggination-wrap{
+            .pagination-wrap{
                 @media screen and (max-width: 768px){
                     margin-top: 20px;
                 }
