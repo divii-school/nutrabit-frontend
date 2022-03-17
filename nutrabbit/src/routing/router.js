@@ -25,6 +25,7 @@ import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceR
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
+
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -194,6 +195,7 @@ const routes = [
         component: FAQ,
         
     },
+  
     {
         name: 'MyRecipeDetail',
         path: '/my-recipe-detail',

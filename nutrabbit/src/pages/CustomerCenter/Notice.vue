@@ -11,140 +11,80 @@
         </div>
         <div class="notice-list">
           <ul>
-            <li>
+            <li v-for="(item, index) in NoticeList" :key="index">
               <div class="item-left">
-                <span>important</span>
-                <p>This is the announcement title. This is the announcement title.</p>
+                <span v-if="item.tag">{{item.tag}}</span>
+                <p>{{item.title}}</p>
               </div>
               <div class="item-right">
-                <p>2022.01.10</p>
+                <p>{{item.date}}</p>
               </div>
             </li>
             </ul>
         </div>
-          <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <span>important</span>
-                <p>This is the announcement title. This is the announcement title.</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-          <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <span>important</span>
-                <p>This is the announcement title. This is the announcement title.</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-          <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <span>important</span>
-                <p>This is the announcement title. This is the announcement title.</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-          <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <span>important</span>
-                <p>This is the announcement title. This is the announcement title.</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <p>This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <p>This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <p>This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <p>This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <div class="notice-list">
-          <ul>
-            <li>
-              <div class="item-left">
-                <p>This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title</p>
-              </div>
-              <div class="item-right">
-                <p>2022.01.10</p>
-              </div>
-            </li>
-            </ul>
-        </div>
-         <!-- <Pagination /> -->
+         
+         <Pagination />
       </div>
     </div>
   </div>
 </template>
 <script>
-// import Pagination from "../components/Pagination.vue";
+import Pagination from "../../components/Pagination.vue";
 export default {
   name: "Notice",
   components: {
-    // Pagination,
+    Pagination,
   },
+   data(){
+    return{
+      NoticeList:[
+        {
+          tag:"important",
+          title:"This is the announcement title. This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          tag:"important",
+          title:"This is the announcement title. This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          tag:"important",
+          title:"This is the announcement title. This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          tag:"important",
+          title:"This is the announcement title. This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          tag:"important",
+          title:"This is the announcement title. This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
+          date:"2022.01.10"
+        },
+        {
+          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
+          date:"2022.01.10"
+        }
+      ]
+    }
+  }
 };
 </script>
