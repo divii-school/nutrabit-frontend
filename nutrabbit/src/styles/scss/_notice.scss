@@ -35,11 +35,11 @@
         }
       }
       .notice-list {
-        padding: 15px 20px;
-        border-bottom: 1px solid $grey-CF;
         ul {
           li {
             @include flex-justify-between;
+            border-bottom: 1px solid $grey-CF;
+            padding: 15px 20px;
             .item-left {
               @include flex-align-center;
               span {
@@ -89,7 +89,7 @@
       .faq-heading{
         @include flex-align-center;
         border-bottom: 1px solid $grey-CF;
-        padding: 20px 0;
+        padding: 20px 40px;
         font-size: 18px;
         line-height: 18px;
         color: $grey-A4;
@@ -103,6 +103,7 @@
               font-size: 17px;
               line-height: 20px;
               color:$grey-66;
+              
             }
           
         }
