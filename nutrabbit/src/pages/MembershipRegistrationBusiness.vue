@@ -215,6 +215,6 @@
 <script>
 
 export default {
-  name: "membership-registration-business",
+  name: "MembershipRegistrationBusiness",
 };
 </script>
