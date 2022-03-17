@@ -92,17 +92,17 @@ const routes = [
     },
     {
         name: 'PersonalInformationBusiness',
-        path: '/PersonalInformationBusiness',
+        path: '/Personal-Information-Business',
         component:  PersonalInformationBusiness
     },
     {
         name: 'WithdrawalOfMembership',
-        path: '/WithdrawalOfMembership',
+        path: '/Withdrawal-Of-Membership',
         component: WithdrawalOfMembership
     },
     {
         name: 'InquiryContactUs',
-        path: '/InquiryContactUs',
+        path: '/Inquiry-ContactUs',
         component: InquiryContactUs,
     },
     {
