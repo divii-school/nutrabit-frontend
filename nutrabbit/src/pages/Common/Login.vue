@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import Button from "../components/Button.vue";
+import Button from "../../components/Button.vue";
 import axios from "axios";
 import { useCookies } from "vue3-cookies";
 

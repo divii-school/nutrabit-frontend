@@ -229,7 +229,7 @@
   </div>
 </template>
 <script>
-import validateRegistration from "../Validation/validateRegistration";
+import validateRegistration from "../../Validation/validateRegistration";
 export default {
   name: "MemberRegistrationIndividual",
   data() {
