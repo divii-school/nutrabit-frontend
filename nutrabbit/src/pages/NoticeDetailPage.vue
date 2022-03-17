@@ -11,8 +11,7 @@
               <div class="item-left">
                 <span>important</span>
                 <p>
-                  This is the announcement title. This is the announcement
-                  title.
+                  This is the announcement title. This is the announcement title. This is the announcement title. This is the announcement title.
                 </p>
               </div>
               <div class="item-right">
