@@ -117,18 +117,18 @@ const routes = [
         component: RegistrationCompleted
     },
     {
-        name: 'find-id',
+        name: 'FindId',
         path: '/find-id',
         component:FindID,
         // beforeEnter: guest,
     },
     {
-        name: 'forgot-password',
+        name: 'ForgotPassword',
         path: '/forgot-password',
         component: ForgotPassword
     },
     {
-        name: 'change-password',
+        name: 'ChangePassword',
         path: '/change-password',
         component:ChangePassword,
         // beforeEnter: guest,
@@ -166,12 +166,12 @@ const routes = [
         component: MobileSearch,
     },
     {
-        name: 'choice-recommended-blending-detailed-page',
+        name: 'ChoiceRecommendedBlendingDetailedPage',
         path: '/choice-recommended-blending-detailed-page',
         component: ChoiceRecommendedBlendingDetailedPage,
     },
     {
-        name: 'choice-recommended-blending-package-selection',
+        name: 'ChoiceRecommendedBlendingPackageSelection',
         path: '/choice-recommended-blending-package-selection',
         component: ChoiceRecommendedBlendingPackageSelection,
     },
