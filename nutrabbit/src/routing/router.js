@@ -76,7 +76,7 @@ const routes = [
     },
     {
         name: 'MemberRegistrationIndividual',
-        path: '/member-registration-ndividuals',
+        path: '/member-registration-individuals',
         component: MemberRegistrationIndividuals
     },
     {
