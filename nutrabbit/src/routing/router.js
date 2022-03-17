@@ -24,6 +24,7 @@ import ChoiceRecommendedBlendingDetailedPage from '../pages/MyChoice/ChoiceRecom
 import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
+import FAQ from '../pages/CustomerCenter/FAQ.vue';
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
@@ -185,6 +186,12 @@ const routes = [
         name: 'noticeDetailPage',
         path: '/notice-detail-page',
         component:NoticeDetailPage,
+        
+    },
+    {
+        name: 'Faq',
+        path: '/faq',
+        component: FAQ,
         
     },
     {
