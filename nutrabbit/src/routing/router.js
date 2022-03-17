@@ -58,12 +58,12 @@ const routes = [
     //     }
     // },
     {
-        name: 'main',
+        name: 'Main',
         path: '/',
         component: Main,
     },
     {
-        name: 'login',
+        name: 'Login',
         path: '/login',
         component: Login,
         
@@ -112,8 +112,8 @@ const routes = [
         // beforeEnter: guest,
     },
     {
-        name: 'registration-completed',
-        path: '/registration-completed',
+        name: 'MemberRegistrationCompleted',
+        path: '/member-registration-completed',
         component: RegistrationCompleted
     },
     {

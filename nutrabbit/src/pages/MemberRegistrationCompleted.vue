@@ -22,6 +22,6 @@
 </template>
 <script>
 export default {
-  name: "member-registration-completed",
+  name: "MemberRegistrationCompleted",
 };
 </script>
