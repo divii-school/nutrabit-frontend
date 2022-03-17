@@ -103,7 +103,7 @@ const routes = [
     {
         name: 'InquiryContactUs',
         path: '/InquiryContactUs',
-        component: InquiryContactUs
+        component: InquiryContactUs,
     },
     {
         name: 'method-selection',
