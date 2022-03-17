@@ -134,17 +134,17 @@
             </li>
             </ul>
         </div>
-         <Pagination />
+         <!-- <Pagination /> -->
       </div>
     </div>
   </div>
 </template>
 <script>
-import Pagination from "../components/Pagination.vue";
+// import Pagination from "../components/Pagination.vue";
 export default {
   name: "Notice",
   components: {
-    Pagination,
+    // Pagination,
   },
 };
 </script>
