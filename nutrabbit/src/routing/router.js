@@ -183,7 +183,7 @@ const routes = [
     },
     {
         name: 'noticeDetailPage',
-        path: '/notice_detail_page',
+        path: '/notice-detail-page',
         component:NoticeDetailPage,
         
     },
