@@ -32,7 +32,7 @@
           </ul>
         </div>
         <div class="choice-selection-item-wrap">
-          <div class="choice-selection-item raw-material">
+          <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
                 <h2>Choose a package</h2>
@@ -59,41 +59,38 @@
                 </div>
               </div>
             </div>
-            <div class="package-list-wrap">
-              <ul class="raw-material-list package-list">
-                <li v-for="data in rwaMaterialData" :key="data">
-                  <div class="list-left" :class="data.img ? '' : 'with-input' ">
-                    <div class="radio-wrap">
-                      <label class="custom-radio">
-                        <input type="radio" checked="checked" name="radio" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <div class="img-wrap" v-if="data.img">
-                        <img :src="data.img" alt="" />
-                      </div>
-                    </div>
-                    <div
-                      class="material-details">
-                      <h2>{{ data.title }}</h2>
-                      <div class="description" v-if="data.desc">
-                        <p
-                          v-for="(description, index) in data.desc"
-                          :key="index"
-                        >
-                          {{ description }}
-                        </p>
-                      </div>
-                      <div class="input-group" v-if="data.inputField">
-                        <input
-                          :type="data.inputField.type"
-                          :value="data.inputField.value"
-                          :placeholder="data.inputField.placeholder"
-                        />
-                      </div>
-                    </div>
-                  </div>
+            <div class="product-list-wrap">
+              <ul class="raw-material-list">
+                <li v-for="(item, index) in rwaMaterialData" :key="index">
+                  <ProductList :item="item"/>
                 </li>
               </ul>
+              <div class="product-item with-input">
+                <div class="radio-wrap">
+                  <label class="custom-radio">
+                    <input type="radio" checked="checked" name="radio" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="material-details">
+                  <h2>unchecked</h2>
+                  <div class="input-group">
+                    <input type="text" placeholder="Direct input">
+                  </div>
+                </div>
+              </div>
+              <div class="product-item with-input">
+                <div class="radio-wrap">
+                  <label class="custom-radio">
+                    <input type="radio" checked="checked" name="radio" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="material-details">
+                  <h2>unchecked</h2>
+                </div>
+              </div>
+
               <div class="btn-wrap">
                 <button class="btn-small-solid grey">Previous</button>
                 <button class="btn-small-solid blue">next</button>
@@ -110,10 +107,12 @@
 
 <script>
 import Popper from "vue3-popper";
+import ProductList from "../../components/ProductList.vue";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
+    ProductList,
   },
   data() {
     return {
@@ -132,17 +131,6 @@ export default {
             "It is hygienic and convenient.",
             "The packaging volume is slightly larger.",
           ],
-        },
-        {
-          title: "Etc",
-          inputField: {
-            type: "text",
-            value: "",
-            placeholder: "Direct input",
-          },
-        },
-        {
-          title: "unchecked",
         },
       ],
     };
