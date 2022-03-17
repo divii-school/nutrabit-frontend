@@ -229,9 +229,9 @@
   </div>
 </template>
 <script>
-import validateRegistration from "../Validation/validateRegistration";
+import validateRegistration from "../../Validation/validateRegistration";
 export default {
-  name: "member-registration-individual",
+  name: "MemberRegistrationIndividual",
   data() {
     return {
       termsCheck: "",

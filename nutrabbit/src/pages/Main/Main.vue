@@ -76,7 +76,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css";
-import MainProductCard from "../components/MainProductCard.vue";
+import MainProductCard from "../../components/MainProductCard.vue";
 export default {
   name: "Main",
   components: {

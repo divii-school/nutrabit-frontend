@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
 import Login from '../pages/login.vue';
-import MembershipSelection from '../pages/MemberRegistrationTypeSelection.vue';
-import MethodSelection from '../pages/MemberRegistrationMethod.vue';
-import RegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
-import RegistrationBusiness from '../pages/MembershipRegistrationBusiness.vue';
+import MemberRegistrationTypeSelection from '../pages/MemberRegistrationTypeSelection.vue';
+import MemberRegistrationMethod from '../pages/MemberRegistrationMethod.vue';
+import MemberRegistrationIndividuals from '../pages/MemberRegistrationIndividual.vue';
+import MembershipRegistrationBusiness from '../pages/MembershipRegistrationBusiness.vue';
 import RegistrationCompleted from '../pages/MemberRegistrationCompleted.vue';
 import FindID from '../pages/FindId.vue';
 import ForgotPassword from '../pages/ForgotPassword.vue';
@@ -69,20 +69,20 @@ const routes = [
         
     },
     {
-        name: 'membership-selection',
-        path: '/membership-selection',
-        component: MembershipSelection,
+        name: 'MemberRegistrationTypeSelection',
+        path: '/member-registration-type-selection',
+        component: MemberRegistrationTypeSelection,
         // beforeEnter: guest,
     },
     {
-        name: 'registration-ndividuals',
-        path: '/registration-ndividuals',
-        component: RegistrationIndividuals
+        name: 'MemberRegistrationIndividual',
+        path: '/member-registration-ndividuals',
+        component: MemberRegistrationIndividuals
     },
     {
-        name: 'registration-business',
-        path: '/registration-business',
-        component: RegistrationBusiness
+        name: 'MembershipRegistrationBusiness',
+        path: '/membership-registration-business',
+        component: MembershipRegistrationBusiness
     },
 
     {
@@ -106,9 +106,9 @@ const routes = [
         component: InquiryContactUs,
     },
     {
-        name: 'method-selection',
+        name: 'MemberRegistrationMethod',
         path: '/method-selection',
-        component:MethodSelection,
+        component:MemberRegistrationMethod,
         // beforeEnter: guest,
     },
     {
@@ -134,24 +134,24 @@ const routes = [
         // beforeEnter: guest,
     },
     {
-        name: 'search-result',
+        name: 'SearchResult',
         path: '/search-result',
         component: SearchResult,
         // beforeEnter: guest,
     },
     {
-        name: 'my-choice',
+        name: 'MyChoice',
         path: '/my-choice',
         component: MyChoice,
         // beforeEnter: guest,
     },
     {
-        name: 'my-choice-category-selection',
+        name: 'MyChoiceCategorySelection',
         path: '/my-choice-category-selection',
         component: MyChoiceCategorySelection,
     },
     {
-        name: 'my-choice-recomanded-blending',
+        name: 'MyChoiceRecomandedBlending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
     },
@@ -161,7 +161,7 @@ const routes = [
         component: SampleMaking,
     },
     {
-        name: 'mobile-search',
+        name: 'MobileSearch',
         path: '/mobile-search',
         component: MobileSearch,
     },

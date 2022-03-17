@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: "member-registration-type-selection",
+  name: "MemberRegistrationTypeSelection",
   data() {
     return {
       active: false,

@@ -60,9 +60,9 @@
 </template>
 
 <script>
-import Pagination from "../components/Pagination.vue";
-import SearchCard from "../components/SearchCard.vue";
-import SearchAccordion from "../components/SearchAccordion.vue";
+import Pagination from "../../components/Pagination.vue";
+import SearchCard from "../../components/SearchCard.vue";
+import SearchAccordion from "../../components/SearchAccordion.vue";
 export default {
   name: "SearchResult",
   components: {
