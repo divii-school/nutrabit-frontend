@@ -10,20 +10,20 @@ import FindID from '../pages/FindId.vue';
 import ForgotPassword from '../pages/ForgotPassword.vue';
 import ChangePassword from '../pages/ChangePassword.vue';
 import SearchResult from '../pages/SearchResult.vue';
-import PersonalInformation from '../pages/PersonalInformationManagement.vue';
-import PersonalInformationBusiness from '../pages/PersonalInformationBusiness.vue';
-import WithdrawalOfMembership from '../pages/WithdrawalOfMembership.vue';
+import PersonalInformation from '../Personalinfo/PersonalInformationManagement.vue';
+import PersonalInformationBusiness from '../Personalinfo/PersonalInformationBusiness.vue';
+import WithdrawalOfMembership from '../Personalinfo/WithdrawalOfMembership.vue';
 import Main from '../pages/Main.vue';
 import MyChoice from '../pages/MyChoice.vue';
 import MyChoiceCategorySelection from '../pages/MyChoiceCategorySelection.vue'
-import InquiryContactUs from '../pages/InquiryContactUs.vue'
+import InquiryContactUs from '../CustomerCenter/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
 import MobileSearch from '../pages/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/ChoiceRecommendedBlendingPackageSelection.vue';
-import Notice from '../pages/Notice.vue';
-import NoticeDetailPage from '../pages/NoticeDetailPage.vue';
+import Notice from '../CustomerCenter/Notice.vue';
+import NoticeDetailPage from '../CustomerCenter/NoticeDetailPage.vue';
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
