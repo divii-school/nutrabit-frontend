@@ -65,7 +65,21 @@
                   <ProductList :item="item"/>
                 </li>
               </ul>
-              <div class="product-item">
+              <div class="product-item with-input">
+                <div class="radio-wrap">
+                  <label class="custom-radio">
+                    <input type="radio" checked="checked" name="radio" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="material-details">
+                  <h2>unchecked</h2>
+                  <div class="input-group">
+                    <input type="text" placeholder="Direct input">
+                  </div>
+                </div>
+              </div>
+              <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
                     <input type="radio" checked="checked" name="radio" />
