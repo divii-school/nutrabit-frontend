@@ -21,7 +21,7 @@
           </ul>
         </div>
         <div class="background">
-          <img src="../assets/images/background.png" />
+        <img src="src/assets/images/background.png" />
         </div>
         <div class="details">
           <p>

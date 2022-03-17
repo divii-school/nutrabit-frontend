@@ -58,6 +58,7 @@
                 line-height: 22px;
                 color: $black-33;
               }
+              
             }
             .item-right {
               font-weight: 400;
@@ -84,6 +85,27 @@
       .btn{
           margin-top: 40px;
           
+      }
+      .faq-heading{
+        @include flex-align-center;
+        border-bottom: 1px solid $grey-CF;
+        padding: 20px 0;
+        font-size: 18px;
+        line-height: 18px;
+        color: $grey-A4;
+        .title{
+          padding-left: 37px;
+        }
+      }
+      .notice-list{
+        .item-left{
+            .para-category{
+              font-size: 17px;
+              line-height: 20px;
+              color:$grey-66;
+            }
+          
+        }
       }
     }
   }
