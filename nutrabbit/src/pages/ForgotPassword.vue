@@ -59,6 +59,6 @@
 </template>
 <script>
 export default {
-   name:'forgot-password'
+   name:'ForgotPassword'
 }
 </script>

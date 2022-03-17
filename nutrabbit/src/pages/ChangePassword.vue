@@ -43,6 +43,6 @@
 </template>
 <script>
 export default {
-   name:'change-password'
+   name:'ChangePassword'
 }
 </script>
