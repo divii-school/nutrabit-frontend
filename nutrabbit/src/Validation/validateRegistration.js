@@ -5,14 +5,6 @@ const validateRegistration = (data) => {
 
   const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address } = data;
 
-  // if (localStorage.users) {
-  //   let lsuser = localStorage.users;
-  //   lsuser = JSON.parse(lsuser);
-  //   let index = lsuser.findIndex((user) => user.email === email);
-  //   if (index > -1) {
-  //     errors.email = "Email already exists !";
-  //   }
-  // }
 
   if (termsCheck == false) {
     errors.termsCheck = "Please check the terms";

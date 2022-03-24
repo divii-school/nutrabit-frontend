@@ -20,7 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
-                    <input type="checkbox" v-model="termsCheck" />
+                    <input type="checkbox" v-model="termsCheck"  @change="individalRegistration" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -34,7 +34,7 @@
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
                     information.
-                    <input type="checkbox" v-model="personalCheck" />
+                    <input type="checkbox" v-model="personalCheck" @change="individalRegistration" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -51,6 +51,7 @@
                       type="text"
                       placeholder="Enter your name"
                       v-model="name"
+                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -68,6 +69,7 @@
                       type="text"
                       placeholder="Enter ID"
                       v-model="username"
+                       @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -86,6 +88,7 @@
                       type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
+                       @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -105,6 +108,7 @@
                       type="text"
                       placeholder="verify password"
                       v-model="confirmPassword"
+                       @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -122,6 +126,7 @@
                       type="text"
                       placeholder="Enter your email"
                       v-model="email"
+                       @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline" @click="sendOtp">
@@ -142,11 +147,12 @@
                       type="text"
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
+                       @keyup="individalRegistration"
                     />
                     <span class="time">{{ timer }}</span>
                     <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
                   </div>
-                  <button class="btn-green-outline grey">certification</button>
+                  <button class="btn-green-outline" :class="{ grey: isActive }">certification</button>
                 </div>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
@@ -159,6 +165,7 @@
                       type="text"
                       placeholder="Enter your mobile phone number"
                       v-model="phoneNumber"
+                       @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -172,6 +179,7 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter address"
+                       @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline">Address Search</button>
@@ -183,6 +191,7 @@
                       type="text"
                       placeholder="Enter detailed address"
                       v-model="address"
+                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -245,7 +254,6 @@
             <button
               class="btn-primary grenn-btn2"
               @click="individalRegistration"
-              :class="checkFields ? '' : 'curDisabled' "
             >
               Sign Up
             </button>
@@ -278,7 +286,7 @@ export default {
       errorUser: "",
       errorEmail: "",
       timer: 180,
-      checkFields: false
+      isActive: true,
     };
   },
   methods: {
@@ -361,6 +369,7 @@ export default {
             })
             .then((response) => {
               if (response.data.status == 200) {
+                this.isActive = false
                 this.$swal("OTP has been sent to your email");
                 setInterval(() => {
                   if (this.timer === 0) {
