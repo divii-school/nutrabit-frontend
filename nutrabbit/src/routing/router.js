@@ -25,6 +25,7 @@ import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceR
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
+import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue'
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
@@ -176,6 +177,11 @@ const routes = [
         name: 'ChoiceRecommendedBlendingPackageSelection',
         path: '/choice-recommended-blending-package-selection',
         component: ChoiceRecommendedBlendingPackageSelection,
+    },
+    {
+        name: 'RawMaterialEstimation',
+        path: '/raw-material-estimation',
+        component: RawMaterialEstimation,
     },
     {
         name: 'notice',
