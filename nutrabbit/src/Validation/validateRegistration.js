@@ -3,7 +3,7 @@ import validator from "validator";
 const validateRegistration = (data) => {
   let errors = {};
 
-  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address} = data;
+  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address } = data;
 
   // if (localStorage.users) {
   //   let lsuser = localStorage.users;
@@ -23,6 +23,9 @@ const validateRegistration = (data) => {
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
+  // else if (validator.isEmpty(!(name))) {
+  //   errors.name = "";
+  // }
   if (validator.isEmpty(username)) {
     errors.username = "Please enter your ID";
   }
@@ -32,8 +35,9 @@ const validateRegistration = (data) => {
   if (validator.isEmpty(password)) {
     errors.password = "Please enter a Password";
   }
-  else if (password.length < 10 || password.length > 20){
+  else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
     errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+    console.log('working')
   }
   if (validator.isEmpty(confirmPassword)) {
     errors.confirmPassword = "Please confirm your password";

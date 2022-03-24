@@ -56,9 +56,12 @@
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
               </div>
-              <div class="form-group" :class="error.username ? 'error' : ''">
+              <div
+                class="form-group"
+                :class="error.username || errorUser ? 'error' : ''"
+              >
                 <label for=""><i class="icon-required"></i>ID</label>
-                <div class="input-group">
+                <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
@@ -67,8 +70,12 @@
                       v-model="username"
                     />
                   </div>
+                  <button class="btn-green-outline" @click="checkUser">
+                    Check Availability
+                  </button>
                 </div>
                 <span class="error-msg">{{ error.username }}</span>
+                <span class="error-msg">{{ errorUser }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>password</label>
@@ -76,7 +83,7 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
                     />
@@ -103,7 +110,10 @@
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
-              <div class="form-group" :class="error.email ? 'error' : ''">
+              <div
+                class="form-group"
+                :class="error.email || errorEmail ? 'error' : ''"
+              >
                 <label for=""><i class="icon-required"></i>e-mail</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -114,11 +124,12 @@
                       v-model="email"
                     />
                   </div>
-                  <button class="btn-green-outline">
+                  <button class="btn-green-outline" @click="sendOtp">
                     Send verification code
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
+                <span class="error-msg">{{ errorEmail }}</span>
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
@@ -132,7 +143,7 @@
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
                     />
-                    <span class="time">02:10</span>
+                    <span class="time">{{ timer }}</span>
                     <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
                   </div>
                   <button class="btn-green-outline grey">certification</button>
@@ -183,35 +194,47 @@
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >offline
-                      <input type="checkbox" v-model="checkOffline" />
+                      <input
+                        type="checkbox"
+                        value="offline"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >online
-                      <input type="checkbox" v-model="checkOnline" />
+                      <input
+                        type="checkbox"
+                        value="online"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >Network (door-to-door sales)
-                      <input type="checkbox" v-model="checkNetwork" />
+                      <input
+                        type="checkbox"
+                        value="network"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >SNS
-                      <input type="checkbox" v-model="checkSNS" />
+                      <input type="checkbox" value="sns" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
                       >Etc
-                      <input type="checkbox" v-model="checkETC" />
+                      <input type="checkbox" value="etc" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -219,7 +242,11 @@
               </div>
             </div>
 
-            <button class="btn-primary grenn-btn2" @click="onSubmit">
+            <button
+              class="btn-primary grenn-btn2"
+              @click="individalRegistration"
+              :class="checkFields ? '' : 'curDisabled' "
+            >
               Sign Up
             </button>
           </form>
@@ -229,6 +256,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 export default {
   name: "MemberRegistrationIndividual",
@@ -244,17 +272,17 @@ export default {
       emailOTP: "",
       phoneNumber: "",
       address: "",
-      checkOffline: "",
-      checkOnline: "",
-      checkNetwork: "",
-      checkSNS: "",
-      checkETC: "",
+      checkName: [],
       error: {},
       errors: {},
+      errorUser: "",
+      errorEmail: "",
+      timer: 180,
+      checkFields: false
     };
   },
   methods: {
-    onSubmit() {
+    async individalRegistration() {
       let credential = {
         termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
@@ -270,7 +298,86 @@ export default {
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
         this.error = error;
-        console.log(error);
+      } else {
+        try {
+          return await axios
+            .post("/v1/sites/user/individual_registration", {
+              name: this.name,
+              username: this.username,
+              password: this.password,
+              email: this.email,
+              mobile: this.phoneNumber,
+              address: this.address,
+              distribution_medium: this.checkName.join(","),
+            })
+            .then((response) => {
+              if (response.data.status == 200) {
+                console.log(response.data);
+                // window.location = "/";
+              }
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    async checkUser() {
+      if (this.errorUser == "") {
+        this.errorUser = "Please enter your ID";
+      } else {
+        try {
+          return await axios
+            .post("/v1/sites/user/check_id", {
+              uuid: this.username,
+            })
+            .then((response) => {
+              if (
+                response.data.status == 200 &&
+                response.data.data.is_exist === 0
+              ) {
+                console.log(response.data.data.is_exist);
+              } else if (
+                response.data.status == 200 &&
+                response.data.data.is_exist === 1
+              ) {
+                return (this.errorUser = response.data.data.msg);
+              }
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    async sendOtp() {
+      // let timer = 10;
+      if (this.email == "") {
+        console.log("error");
+        this.errorEmail = "Enter a valid email address";
+      } else {
+        try {
+          return await axios
+            .post("v1/sites/user/send_otp", {
+              email: this.email,
+            })
+            .then((response) => {
+              if (response.data.status == 200) {
+                this.$swal("OTP has been sent to your email");
+                setInterval(() => {
+                  if (this.timer === 0) {
+                    clearInterval();
+                  } else {
+                    this.timer--;
+                    console.log(this.timer);
+                  }
+                }, 1000);
+              } else {
+                console.log("0");
+                return (this.errorEmail = response.data.message);
+              }
+            });
+        } catch (error) {
+          console.log(error);
+        }
       }
     },
   },
