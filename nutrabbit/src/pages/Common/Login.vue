@@ -48,7 +48,7 @@
               <div class="form-links-left">
                 <ul>
                   <li>
-                    <router-link  to="/find-id">{{ $t("findID") }}</router-link>
+                    <router-link to="/find-id">{{ $t("findID") }}</router-link>
                   </li>
                   <li>
                     <a href="">{{ $t("findpassword") }}</a>
@@ -56,7 +56,9 @@
                 </ul>
               </div>
               <div class="form-link-right">
-                <router-link to="/membership-selection">{{ $t("SignUp") }}</router-link>
+                <router-link to="/member-registration-type-selection">{{
+                  $t("SignUp")
+                }}</router-link>
               </div>
             </div>
             <button class="btn-primary" @click="onSubmit">
@@ -106,8 +108,7 @@ export default {
       const setPassword = this.password;
       if (setEmail == "") {
         this.errorEmail = "Please enter an email id";
-      }
-      else if (setPassword == "") {
+      } else if (setPassword == "") {
         this.errorPassword = "Please enter password";
       } else {
         try {
@@ -146,9 +147,10 @@ export default {
           } else if (result1 == "Email") {
             this.errorPassword = "";
             this.errorEmail = "Enter a valid email.";
-          } else {
-            alert("Email or, password is incorrect");
-          }
+          } 
+          // else {
+          //   alert("Email or, password is incorrect");
+          // }
         }
       }
     },

@@ -16,7 +16,7 @@
                 class="membership-item"
                 @click="
                   $router.push({
-                    name: 'method-selection',
+                    name: 'MemberRegistrationIndividual',
                   })
                 "
               >
