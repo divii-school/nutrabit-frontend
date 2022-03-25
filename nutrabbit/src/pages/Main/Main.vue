@@ -1,69 +1,59 @@
 <template>
   <div class="main-page">
-    <div
-      class="main-page-inner"
-      v-if="
-        typeof this.logedInUserDetails !== 'undefined' &&
-        this.logedInUserDetails &&
-        this.logedInUserDetails.userId
-      "
-    >
-
-      <div class="main-slider">
-        <swiper
-          :pagination="{
-            type: 'fraction',
-          }"
-          :navigation="true"
-          :modules="modules"
-          class="mySwiper"
-        >
-          <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
-            <img :src="slider.img" alt="" />
-            <p class="banner-title text-center">{{ slider.title }}</p>
-          </swiper-slide>
-        </swiper>
+    <div class="main-slider">
+      <swiper
+        :pagination="{
+          type: 'fraction',
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+      >
+        <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
+          <img :src="slider.img" alt="" />
+          <p class="banner-title text-center">{{ slider.title }}</p>
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div class="main-page-body">
+      <div class="container-medium">
+        <div class="nutri-choice with-img">
+          <span class="my-choice-title-top">my choice</span>
+          <p class="title text-center">my choice</p>
+          <h2 class="nutri-choice-heading text-center">
+            Direct health functional food recipes<br />Opportunity to create!
+          </h2>
+          <p class="desc text-center">
+            Create your own recipe with just one combination of your choice!
+          </p>
+          <button class="btn-small-solid">Go to my choice</button>
+        </div>
       </div>
-      <div class="main-page-body">
-        <div class="container-medium">
-          <div class="nutri-choice with-img">
-            <span class="my-choice-title-top">my choice</span>
-            <p class="title text-center">my choice</p>
+      <div class="devider">
+        <i class="icon-grey-star"></i>
+      </div>
+      <div class="container-medium">
+        <div class="nutri-blending">
+          <div class="nutri-choice">
+            <span class="my-choice-title-top">nutri 3.3</span>
+            <p class="title text-center">nutri 3.3 blending</p>
             <h2 class="nutri-choice-heading text-center">
-              Direct health functional food recipes<br />Opportunity to create!
+              service only for you<br />Easily seize the opportunity to launch
+              your own product!
             </h2>
             <p class="desc text-center">
-              Create your own recipe with just one combination of your choice!
+              We provide all services from A to Z of health functional food.
             </p>
-            <button class="btn-small-solid">Go to my choice</button>
+            <button class="btn-small-solid green">
+              What is nutri 3.3 Blending?
+            </button>
           </div>
-        </div>
-        <div class="devider">
-          <i class="icon-grey-star"></i>
-        </div>
-        <div class="container-medium">
-          <div class="nutri-blending">
-            <div class="nutri-choice">
-              <span class="my-choice-title-top">nutri 3.3</span>
-              <p class="title text-center">nutri 3.3 blending</p>
-              <h2 class="nutri-choice-heading text-center">
-                service only for you<br />Easily seize the opportunity to launch
-                your own product!
-              </h2>
-              <p class="desc text-center">
-                We provide all services from A to Z of health functional food.
-              </p>
-              <button class="btn-small-solid green">
-                What is nutri 3.3 Blending?
-              </button>
-            </div>
-            <div class="nutri-dom-product">
-              <ul>
-                <li v-for="(item, index) in ProductData" :key="index">
-                  <MainProductCard :item="item" />
-                </li>
-              </ul>
-            </div>
+          <div class="nutri-dom-product">
+            <ul>
+              <li v-for="(item, index) in ProductData" :key="index">
+                <MainProductCard :item="item" />
+              </li>
+            </ul>
           </div>
         </div>
       </div>
