@@ -20,7 +20,11 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
-                    <input type="checkbox" v-model="termsCheck"  @change="individalRegistration" />
+                    <input
+                      type="checkbox"
+                      v-model="termsCheck"
+                      @change="individalRegistration"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -34,7 +38,11 @@
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
                     information.
-                    <input type="checkbox" v-model="personalCheck" @change="individalRegistration" />
+                    <input
+                      type="checkbox"
+                      v-model="personalCheck"
+                      @change="individalRegistration"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -69,7 +77,7 @@
                       type="text"
                       placeholder="Enter ID"
                       v-model="username"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -88,7 +96,7 @@
                       type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -108,7 +116,7 @@
                       type="text"
                       placeholder="verify password"
                       v-model="confirmPassword"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -126,7 +134,7 @@
                       type="text"
                       placeholder="Enter your email"
                       v-model="email"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline" @click="sendOtp">
@@ -147,12 +155,14 @@
                       type="text"
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                     <span class="time">{{ timer }}</span>
                     <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
                   </div>
-                  <button class="btn-green-outline" :class="{ grey: isActive }">certification</button>
+                  <button class="btn-green-outline" :class="{ grey: isActive }" @click="verifyOTP">
+                    certification
+                  </button>
                 </div>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
@@ -165,7 +175,7 @@
                       type="text"
                       placeholder="Enter your mobile phone number"
                       v-model="phoneNumber"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -179,7 +189,7 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter address"
-                       @keyup="individalRegistration"
+                      @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline">Address Search</button>
@@ -364,29 +374,59 @@ export default {
       } else {
         try {
           return await axios
-            .post("v1/sites/user/send_otp", {
+            .post("/v1/sites/user/send_otp", {
               email: this.email,
             })
             .then((response) => {
               if (response.data.status == 200) {
-                this.isActive = false
+                this.isActive = false;
                 this.$swal("OTP has been sent to your email");
                 setInterval(() => {
                   if (this.timer === 0) {
                     clearInterval();
                   } else {
                     this.timer--;
-                    console.log(this.timer);
                   }
                 }, 1000);
               } else {
-                console.log("0");
                 return (this.errorEmail = response.data.message);
               }
             });
         } catch (error) {
           console.log(error);
         }
+      }
+    },
+    async verifyOTP() {
+      if (this.emailOTP == "") {
+        console.log("error");
+        this.emailOTP = "Please enter your email verification code";
+      } 
+      else if (this.email == "") {
+        console.log("error");
+        this.errorEmail = "Enter a valid email address";
+      } 
+      else {
+        try {
+          return await axios
+            .post("/v1/sites/user/verify_otp", {
+              email: this.email,
+              verification_code: this.emailOTP,
+            })
+            .then((response) => {
+              if (
+                response.data.status == 200 &&
+                response.data.data.otp_verify === 1
+              ) {
+                console.log(response.data.data.otp_verify);
+              } else if (
+                response.data.status == 200 &&
+                response.data.data.otp_verify === 0
+              ) {
+                return (this.emailOTP = response.data.message);
+              }
+            });
+        } catch {}
       }
     },
   },

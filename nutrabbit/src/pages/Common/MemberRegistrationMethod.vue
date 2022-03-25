@@ -16,7 +16,7 @@
                 <p class="list-desc">Sign up as a member via email.</p>
                 <button class="btn-primary" @click="
                 $router.push({
-                  name: 'member-registration-individuals',
+                  name: 'MemberRegistrationIndividual',
                 })
               ">Sign Up</button>
               </li>
