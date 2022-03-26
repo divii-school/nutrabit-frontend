@@ -20,11 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
-                    <input
-                      type="checkbox"
-                      v-model="termsCheck"
-                      @change="individalRegistration"
-                    />
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -38,11 +34,7 @@
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
                     information.
-                    <input
-                      type="checkbox"
-                      v-model="personalCheck"
-                      @change="individalRegistration"
-                    />
+                    <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -59,7 +51,6 @@
                       type="text"
                       placeholder="Enter your name"
                       v-model="name"
-                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -77,7 +68,6 @@
                       type="text"
                       placeholder="Enter ID"
                       v-model="username"
-                      @keyup="individalRegistration"
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -85,7 +75,6 @@
                   </button>
                 </div>
                 <span class="error-msg">{{ error.username }}</span>
-                <span class="error-msg">{{ errorUser }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>password</label>
@@ -96,7 +85,6 @@
                       type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
-                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -116,7 +104,6 @@
                       type="text"
                       placeholder="verify password"
                       v-model="confirmPassword"
-                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -134,10 +121,13 @@
                       type="text"
                       placeholder="Enter your email"
                       v-model="email"
-                      @keyup="individalRegistration"
                     />
                   </div>
-                  <button class="btn-green-outline" @click="sendOtp">
+                  <button
+                    class="btn-green-outline"
+                    @click="sendOtp"
+                    :class="{ grey: isVerification }"
+                  >
                     Send verification code
                   </button>
                 </div>
@@ -155,12 +145,15 @@
                       type="text"
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
-                      @keyup="individalRegistration"
                     />
                     <span class="time">{{ timer }}</span>
                     <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
                   </div>
-                  <button class="btn-green-outline" :class="{ grey: isActive }" @click="verifyOTP">
+                  <button
+                    class="btn-green-outline"
+                    :class="{ grey: isActive }"
+                    @click="verifyOTP"
+                  >
                     certification
                   </button>
                 </div>
@@ -175,7 +168,6 @@
                       type="text"
                       placeholder="Enter your mobile phone number"
                       v-model="phoneNumber"
-                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -189,10 +181,12 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter address"
-                      @keyup="individalRegistration"
+                      v-model="address"
                     />
                   </div>
-                  <button class="btn-green-outline">Address Search</button>
+                  <button class="btn-green-outline" @click="getAddress">
+                    Address Search
+                  </button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
@@ -201,7 +195,6 @@
                       type="text"
                       placeholder="Enter detailed address"
                       v-model="address"
-                      @keyup="individalRegistration"
                     />
                   </div>
                 </div>
@@ -276,6 +269,7 @@
 <script>
 import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
+import validator from "validator";
 export default {
   name: "MemberRegistrationIndividual",
   data() {
@@ -293,10 +287,10 @@ export default {
       checkName: [],
       error: {},
       errors: {},
-      errorUser: "",
-      errorEmail: "",
-      timer: 180,
+      timer: 130,
       isActive: true,
+      isVerification: false,
+      // timerOn: true,
     };
   },
   methods: {
@@ -318,6 +312,19 @@ export default {
         this.error = error;
       } else {
         try {
+          let checkUserStatus = await this.checkUser();
+          let sendVerification = await this.sendOtp();
+          let checkOtp = await this.verifyOTP();
+          let checkAddress = this.getAddress();
+          if (!checkUserStatus) {
+            return;
+          } else if (!sendVerification) {
+            return;
+          } else if (!checkOtp) {
+            return;
+          } else if (!checkAddress) {
+            this.error.address = "Please enter your address";
+          }
           return await axios
             .post("/v1/sites/user/individual_registration", {
               name: this.name,
@@ -330,8 +337,7 @@ export default {
             })
             .then((response) => {
               if (response.data.status == 200) {
-                console.log(response.data);
-                // window.location = "/";
+                window.location = "/login";
               }
             });
         } catch (error) {
@@ -340,94 +346,97 @@ export default {
       }
     },
     async checkUser() {
-      if (this.errorUser == "") {
-        this.errorUser = "Please enter your ID";
+      if (!this.username) {
+        return (this.error.username = "Please enter your ID");
+      } else if (!validator.isAlphanumeric(this.username)) {
+        return (this.error.username = "Please match the format");
       } else {
         try {
-          return await axios
-            .post("/v1/sites/user/check_id", {
-              uuid: this.username,
-            })
-            .then((response) => {
-              if (
-                response.data.status == 200 &&
-                response.data.data.is_exist === 0
-              ) {
-                console.log(response.data.data.is_exist);
-              } else if (
-                response.data.status == 200 &&
-                response.data.data.is_exist === 1
-              ) {
-                return (this.errorUser = response.data.data.msg);
-              }
-            });
+          const checkUserdata = await axios.post("/v1/sites/user/check_id", {
+            uuid: this.username,
+          });
+          if (
+            checkUserdata.data.status == 200 &&
+            checkUserdata.data.data.is_exist === 0
+          ) {
+            console.log(checkUserdata.data.data.is_exist);
+            return true;
+          } else if (
+            checkUserdata.data.status == 200 &&
+            checkUserdata.data.data.is_exist === 1
+          ) {
+            return (this.error.username = checkUserdata.data.data.msg);
+          }
         } catch (error) {
-          console.log(error);
+          this.error.username = "Please verify the user";
+          return false;
         }
       }
     },
     async sendOtp() {
-      // let timer = 10;
       if (this.email == "") {
-        console.log("error");
-        this.errorEmail = "Enter a valid email address";
+        return (this.error.email = "Enter a valid email address");
       } else {
         try {
-          return await axios
-            .post("/v1/sites/user/send_otp", {
-              email: this.email,
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                this.isActive = false;
-                this.$swal("OTP has been sent to your email");
-                setInterval(() => {
-                  if (this.timer === 0) {
-                    clearInterval();
-                  } else {
-                    this.timer--;
-                  }
-                }, 1000);
+          const sendOtoData = await axios.post("/v1/sites/user/send_otp", {
+            email: this.email,
+          });
+          if (sendOtoData.data.status == 200) {
+            this.isActive = false;
+            this.isVerification = true;
+            this.$swal("OTP has been sent to your email");
+            setInterval(() => {
+              if (this.timer === 0) {
+                clearInterval();
+                this.isVerification = false;
+                this.isActive = true;
               } else {
-                return (this.errorEmail = response.data.message);
+                this.timer--;
               }
-            });
+            }, 1000);
+            return true;
+          } else {
+            return (this.error.email = sendOtoData.data.message);
+          }
         } catch (error) {
-          console.log(error);
+          this.error.email = "Please verify the email";
+          return false;
         }
       }
     },
     async verifyOTP() {
       if (this.emailOTP == "") {
-        console.log("error");
-        this.emailOTP = "Please enter your email verification code";
-      } 
-      else if (this.email == "") {
-        console.log("error");
-        this.errorEmail = "Enter a valid email address";
-      } 
-      else {
-        try {
-          return await axios
-            .post("/v1/sites/user/verify_otp", {
-              email: this.email,
-              verification_code: this.emailOTP,
-            })
-            .then((response) => {
-              if (
-                response.data.status == 200 &&
-                response.data.data.otp_verify === 1
-              ) {
-                console.log(response.data.data.otp_verify);
-              } else if (
-                response.data.status == 200 &&
-                response.data.data.otp_verify === 0
-              ) {
-                return (this.emailOTP = response.data.message);
-              }
-            });
-        } catch {}
+        return (this.error.emailOTP = "Enter an valid OTP");
       }
+      try {
+        const verifyOtpData = await axios.post("/v1/sites/user/verify_otp", {
+          email: this.email,
+          verification_code: this.emailOTP,
+        });
+        if (
+          verifyOtpData.data.status == 200 &&
+          verifyOtpData.data.data.otp_verify === 1
+        ) {
+          this.$swal("OTP verified");
+          return true;
+        } else if (
+          verifyOtpData.data.status == 200 &&
+          verifyOtpData.data.data.otp_verify === 0
+        ) {
+          console.log("wrong otp");
+        }
+      } catch {
+        this.error.emailOTP = "Please enter your email verification code";
+        return false;
+      }
+    },
+    getAddress() {
+      new daum.Postcode({
+        oncomplete: (data) => {
+          console.log(data);
+          return (this.address = data.address);
+        },
+      }).open();
     },
   },
 };
