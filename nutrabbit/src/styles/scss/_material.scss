@@ -1,0 +1,157 @@
+.materialForm{
+    .tableWrap{
+        border: 1px solid $grey-CF;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 20px 0 40px;
+        table{
+            width: 100%;
+            thead{
+                th{
+                    background: $grey-9;
+                    padding: 15px;
+                    font-size: 16px;
+                    line-height: 110%;
+                    color: #A4A4A4;
+                    font-weight: normal;
+                    text-align: center;
+                }
+            }
+            td{
+                text-align: center;
+                padding: 15px;
+                font-size: 16px;
+                line-height: 110%;
+                color: $grey-66;
+                border-bottom: 1px solid $grey-EF;
+            }
+        }
+    }
+    .fGroup{
+        margin-bottom: 40px;
+        &.mb0{
+            margin-bottom: 0 !important;
+        }
+        label{
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 110%;
+            margin-bottom: 15px;
+            &.mb0{
+                margin-bottom: 0 !important;
+            }
+        }
+        span{
+            font-size: 18px;
+            line-height: 110%;
+            color: $grey-82;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $grey-CF;
+            display: block;
+            margin: 20px 0 0px;
+            font-weight: 400;
+        }
+        input,textarea{
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid $grey-A4;
+            border-radius: 5px;
+            
+        }
+        textarea{
+            resize: none;
+            min-height: 193px;
+        }
+    }
+    .product-list-wrap{
+        .material-details{
+            h2{
+                span{
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 110%;
+                    color: $grey-82;
+                    margin-left: 15px;
+                }
+            }
+        }
+        ul{
+            font-size: 16px;
+            color: $grey-A4;
+            font-weight: 400;
+            line-height: 110%;
+            margin: 15px 0 40px;
+            li{
+                margin-bottom: 8px;
+            }
+        }
+        .btn-wrap{
+            button{
+                @media screen and (max-width: 640px) {
+                    min-width: inherit !important;
+                    padding: 10px 14px;
+                }
+            }
+            .btnWrapRight{
+                display: flex;
+                justify-content: space-between; 
+            }
+        }
+    }
+}
+.addWrap{
+    padding: 30px 20px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    .selectAllHeader{
+        border-bottom: 1px solid $grey-CF;
+        padding: 24px 0;
+        li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .radio-wrap{
+                color: $grey-66;
+                label{
+                    @media screen and (max-width: 640px) {
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+        .deleteBtn{
+            display: flex;
+            justify-content: space-between;
+            color: $grey-A4;
+            @media screen and (max-width: 640px) {
+                margin-top: -10px;
+            }
+            i{
+                margin: 3px 0 0 12px;
+            }
+        }
+    }
+    .addIng{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $grey-82;
+        padding: 16px;
+        border-radius: 5px;
+        margin: 15px 0 0 0;
+        color: $grey-82;
+        button{
+            display: flex;
+            align-items: center;
+            i{
+                margin-right: 10px;
+            }
+        }
+    }
+    .flexEnd{
+        justify-content: flex-end !important;
+    }
+}

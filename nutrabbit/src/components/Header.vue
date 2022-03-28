@@ -1,39 +1,147 @@
 <template>
-  <header>
-    <div class="header-container">
-      <div class="header-menu flex">
-        <div class="manuLeft">
-          <a href="javascript:void(0)" class="header-logo">
-            <img src="../assets/images/logo.svg" alt="Logo" />
-          </a>
-          <ul class="flex">
-            <li><a href="javascript:void(0)">my choice</a></li>
-            <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
-          </ul>
-        </div>
-        <div class="manuRight">
-          <div class="search-wrap">
-            <input type="text" placeholder="Enter your desired search term." />
-            <i class="icon-search-black"></i>
+  <template v-if="showHeader">
+    <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
+      <div class="header-container">
+        <div class="header-menu flex">
+          <div class="manuLeft">
+            <router-link  class="header-logo" to="/">
+              <img src="../assets/images/logo.svg" alt="Logo" />
+            </router-link>
+            <ul class="flex">
+              <li><a href="javascript:void(0)">my choice</a></li>
+              <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
+            </ul>
           </div>
-          <a href="" class="login-item">login</a>
-          <div class="header-dropdown">
-            <vue-select :options="['EN', 'KO']" placeholder="EN"> </vue-select>
-          </div>
+          <div class="manuRight">
+            <div class="search-wrap">
+              <div class="input-group">
+                <input
+                  type="text"
+                  placeholder="Enter your desired search term."
+                  @click="activeSearch = true"
+                />
+                <a href="#"><i class="icon-search-black"></i></a>
+              </div>
+              <div
+                class="header-search-data"
+                :class="activeSearch ? 'activeSearch' : ''"
+              >
+                <div class="search-data-inner">
+                  <ul>
+                    <li>
+                      <p>muscular system</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                    <li>
+                      <p>aloe</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                    <li>
+                      <p>nervous system</p>
+                      <a href="#"><i class="icon-close-search"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="delete-close">
+                  <a href="#"><i class="icon-delete"></i>Delete all</a>
+                  <a href="#" @click="activeSearch = false">to close</a>
+                </div>
+              </div>
+            </div>
+            <!-- <p>{{this.logedInUserDetails}}</p> -->
+            <div
+              class="after-login-dropdown flex items-center"
+              v-if="this.logedInUserDetails && this.logedInUserDetails.userId"
+            >
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <i class="login-icon"></i>{{ this.logedInUserDetails.name }}
+                </button>
+                <div class="dropdown-content">
+                  <a href="#">Change of personal information</a>
+                  <a href="#" @click="logOut()">Log out</a>
+                </div>
+              </div>
+            </div>
+             <router-link
+              to="/login" class="login-item" v-else>login</router-link>
+            
+            <div class="header-dropdown">
+              <vue-select
+                :options="['EN', 'KO']"
+                placeholder="EN"
+                close-on-select
+              >
+              </vue-select>
+            </div>
+            <router-link
+              to="/mobile-search"
+              class="mobile-search flex items-center justify-center"
+            >
+              <i class="icon-mobile-search"></i>
+            </router-link>
 
-          <a
-            href="#"
-            class="menu-toggle"
-            @click="active = !active"
-            :aria-pressed="active ? 'true' : 'false'"
-          >
-            <img src="../assets/images/menu-toggle.png" alt="" />
-          </a>
+            <a
+              href="#"
+              class="menu-toggle"
+              @click="sideMenuOpen"
+              :aria-pressed="active ? 'true' : 'false'"
+            >
+              <img src="../assets/images/menu-toggle.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </template>
+  <template v-else>
+    <div class="search-wrap mobile-search-wrap">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Enter your desired search term."
+          @click="activeSearch = true"
+          :class="activeSearch ? 'activeSearchInput' : ''"
+        />
+        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"
+          ><i class="icon-mobile-search"></i
+        ></a>
+      </div>
+      <div
+        class="header-search-data"
+        :class="activeSearch ? 'activeSearch' : ''"
+      >
+        <div class="search-data-inner">
+          <ul>
+            <li>
+              <p>muscular system</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
+            <li>
+              <p>aloe</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
+            <li>
+              <p>nervous system</p>
+              <a href="#"><i class="icon-close-search"></i></a>
+            </li>
+          </ul>
+          <!-- <div class="no-search-data">
+            <p>There are no recent searches.</p>
+          </div> -->
+        </div>
+        <div class="delete-close">
+          <a href="#"><i class="icon-delete"></i>Delete all</a>
+          <a href="#" @click="activeSearch = false">to close</a>
         </div>
       </div>
     </div>
-  </header>
-  <div class="right-menu-screen" :class="{ active: active }">
+  </template>
+  <div
+    class="right-menu-screen"
+    :class="{ active: active }"
+    v-if="this.logedInUserDetails"
+  >
     <div class="top-box right-small-box">
       <div
         class="closeMenu"
@@ -47,80 +155,165 @@
 
       <div class="black-box"></div>
       <div class="white-box">
-        <ul>
-          <li class="with-login-tip">
-            <i class="icon-login-tip login-tip"></i>
+        <ul class="right-menu-items">
+          <li
+            v-for="(item, index) in rightMenuItem"
+            :key="index"
+            @click="activeSubmenu = activeSubmenu == index ? '' : index"
+          >
             <div class="side-menu-heading">
-              <a href="#">Login</a>
-            </div>
-          </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#">nutri 3.3</a>
-            </div>
-            <div class="side-menu-list">
-              <a href="javascript:void(0)">About Us</a>
-              <a href="javascript:void(0)">my choice</a>
-              <a href="javascript:void(0)">nutri 3.3 blending</a>
-              <a href="javascript:void(0)">Sample making guide</a>
-            </div>
-          </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#" class="active">ONLY ONE</a>
-            </div>
-            <div class="side-menu-list">
-              <a class="active" href="javascript:void(0)"
-                >raw material storage box</a
+              <a
+                href="#"
+                :text="
+                  typeof this.logedInUserDetails !== 'undefined' &&
+                  this.logedInUserDetails.name &&
+                  index == 0
+                    ? this.logedInUserDetails.name
+                    : item.mainItem
+                "
+                >{{ item.mainItem }}</a
               >
-              <a href="javascript:void(0)">my recipe</a>
-              <a href="javascript:void(0)">my application</a>
+              <i
+                class="icon-menu-downArw"
+                :class="
+                  typeof item.subItemData !== 'undefined' &&
+                  item.subItemData.length
+                    ? ''
+                    : 'no-arrow'
+                "
+              ></i>
+            </div>
+            <div
+              class="side-menu-list"
+              v-for="(item, index2) in item.subItemData"
+              :key="index2"
+              :class="activeSubmenu === index ? 'activeSubmenu' : ''"
+            >
+              <a href="javascript:void(0)">{{ item.subItem1 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem2 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem3 }}</a>
+              <a href="javascript:void(0)">{{ item.subItem4 }}</a>
             </div>
           </li>
-          <li>
-            <div class="side-menu-heading">
-              <a href="#">CUSTOMER CENTER</a>
-            </div>
-            <div class="side-menu-list">
-              <a href="javascript:void(0)">Notice</a>
-              <a href="javascript:void(0)">FAQ</a>
-              <a href="javascript:void(0)">1:1 inquiry</a>
-            </div>
-          </li>
-          <li class="side-menu-language">
-            <ul class="flex">
-              <li><a href="" @click="changeLanguage()">KO</a></li>
-              <li><a href="">EN</a></li>
-            </ul>
-          </li>
+        </ul>
+        <ul class="side-menu-language">
+          <li><a href="">KO</a></li>
+          <li><a href="">EN</a></li>
         </ul>
       </div>
     </div>
   </div>
+  <div v-else>
+    <Modal
+      v-show="isModalVisible"
+      @close="closeModal"
+      bodytext1="This service requires login."
+      bodytext2="Please use the service after logging in."
+      btnText1="cancellation"
+      btnText2="log in"
+    />
+  </div>
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
+import Modal from "./Modal.vue";
 export default {
   name: "Header",
   components: {
     "vue-select": VueNextSelect,
+    Modal,
   },
 
   data() {
     return {
       active: false,
+      activeSearch: false,
+      isModalVisible: false,
+      rightMenuItem: [
+        {
+          mainItem: "Login",
+        },
+        {
+          mainItem: "nutri 3.3",
+          subItemData: [
+            {
+              subItem1: "About Us",
+              subItem2: "my choice",
+              subItem3: "nutri 3.3 blending",
+              subItem4: "Sample making guide",
+            },
+          ],
+        },
+        {
+          mainItem: "ONLY ONE",
+          subItemData: [
+            {
+              subItem1: "raw material storage box",
+              subItem2: "my recipe",
+              subItem3: "my application",
+            },
+          ],
+        },
+        {
+          mainItem: "CUSTOMER CENTER",
+          subItemData: [
+            {
+              subItem1: "Notice",
+              subItem2: "FAQ",
+              subItem3: "1:1 inquiry",
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {
-    activeLink(event) {
+    activeSideMenu(event) {
       if (event.target.className == "right-menu-screen") {
         event.target.className = "active";
       } else {
         event.target.className = "right-menu-screen";
       }
     },
-    changeLanguage(){
-       
+    changeLanguage() {},
+    logOut() {
+      if (this.logedInUserDetails) {
+        localStorage.removeItem("logedInUserDetails");
+        window.location = "/login";
+      }
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    sideMenuOpen() {
+      if (
+        typeof this.logedInUserDetails !== "undefined" &&
+        this.logedInUserDetails &&
+        this.logedInUserDetails.userId
+      ) {
+        this.active = true;
+      } else {
+        this.showModal();
+      }
+    },
+  },
+  computed: {
+    isHeaderPositionAbsolute() {
+      return this.$route.name == "Main";
+    },
+    showHeader() {
+      return this.$route.name != "mobile-search";
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("logedInUserDetails")) {
+      this.logedInUserDetails =
+        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    } else {
+      this.logedInUserDetails = null;
     }
   },
 };

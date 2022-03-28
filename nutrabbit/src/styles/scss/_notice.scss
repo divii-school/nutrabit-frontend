@@ -1,0 +1,118 @@
+.main-body {
+  .container-medium {
+    .my-notice-wrap {
+      padding: 80px 28px;
+      @media screen and (max-width: 640px) {
+        padding: 65px 0 123px;
+      }
+      .my-notice-heading {
+        @include flex-align-center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $grey-CF;
+        h2 {
+          font-weight: bold;
+          font-size: 30px;
+          line-height: 100%;
+          color: $green-68;
+          @media screen and (max-width: 640px) {
+            font-size: 30px;
+            line-height: 30px;
+          }
+        }
+      }
+      .notice-heading {
+        @include flex-justify-between;
+        border-bottom: 1px solid $grey-CF;
+        padding: 20px 0;
+        font-size: 18px;
+        line-height: 18px;
+        color: $grey-A4;
+        .title {
+          margin-left: 9px;
+        }
+        .date {
+          margin-right: 12px;
+        }
+      }
+      .notice-list {
+        ul {
+          li {
+            @include flex-justify-between;
+            border-bottom: 1px solid $grey-CF;
+            padding: 15px 20px;
+            .item-left {
+              @include flex-align-center;
+              span {
+                @include flex-justify-center;
+                font-size: 14px;
+                line-height: 17px;
+                text-align: center;
+                color: $green-68;
+                border: 1px solid $green-68;
+                border-radius: 9px;
+                padding: 5px 15px;
+                margin-right: 10px;
+              }
+              p {
+                font-size: 18px;
+                line-height: 22px;
+                color: $black-33;
+              }
+              
+            }
+            .item-right {
+              font-weight: 400;
+              font-size: 17px;
+              line-height: 20px;
+              color: $grey-A4;
+            }
+          }
+        }
+      }
+
+      .background {
+        margin-top: 40px;
+      }
+      .details {
+        // margin-top:35px;
+        border-bottom: 1px solid $grey-CF;
+        p {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: $black-33;
+          margin:35px;
+        }
+      }
+      .btn{
+          margin-top: 40px;
+          
+      }
+      .faq-heading{
+        @include flex-align-center;
+        border-bottom: 1px solid $grey-CF;
+        padding: 20px 40px;
+        font-size: 18px;
+        line-height: 18px;
+        color: $grey-A4;
+        .title{
+          padding-left: 37px;
+        }
+      }
+      .notice-list{
+        .item-left{
+            .para-category{
+              font-size: 17px;
+              line-height: 20px;
+              color:$grey-66;
+              
+            }
+          
+        }
+      }
+      .pagination-wrap{
+        margin-top: 40px;
+      }
+    }
+  }
+}

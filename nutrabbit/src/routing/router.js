@@ -1,20 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
-import Home from '../pages/Home.vue';
-import Login from '../pages/login.vue';
-import Register from '../pages/Register.vue';
-import Membership from '../pages/member-registration-type-selection.vue';
-import Method from '../pages/member-registration-method.vue';
-import RegistrationIndividuals from '../pages/member-registration-individual.vue';
-import RegistrationBusiness from '../pages/membership-registration-business.vue';
-import Business from '../pages/Business.vue';
-import RegistrationComp from '../pages/RegistrationComp.vue';
-import FindID from '../pages/FindID.vue';
-import ChangePassword from '../pages/ChangePassword.vue';
-import FindPassword from '../pages/FindPassword.vue';
-import Main from '../pages/Main.vue';
+import Login from '../pages/Common/login.vue';
+import MemberRegistrationTypeSelection from '../pages/Common/MemberRegistrationTypeSelection.vue';
+import MemberRegistrationMethod from '../pages/Common/MemberRegistrationMethod.vue';
+import MemberRegistrationIndividuals from '../pages/Common/MemberRegistrationIndividual.vue';
+import MembershipRegistrationBusiness from '../pages/Common/MembershipRegistrationBusiness.vue';
+import RegistrationCompleted from '../pages/Common/MemberRegistrationCompleted.vue';
+import FindID from '../pages/Common/FindId.vue';
+import ForgotPassword from '../pages/Common/ForgotPassword.vue';
+import ChangePassword from '../pages/Common/ChangePassword.vue';
+import SearchResult from '../pages/GNB/SearchResult.vue';
+import PersonalInformation from '../pages/Personalinfo/PersonalInformationManagement.vue';
+import PersonalInformationBusiness from '../pages/Personalinfo/PersonalInformationBusiness.vue';
+import WithdrawalOfMembership from '../pages/Personalinfo/WithdrawalOfMembership.vue';
+import Main from '../pages/Main/Main.vue';
+import MyChoice from '../pages/MyChoice/MyChoice.vue';
+import MyChoiceCategorySelection from '../pages/MyChoice/MyChoiceCategorySelection.vue'
+import InquiryContactUs from '../pages/CustomerCenter/InquiryContactUs.vue'
+import MyChoiceRecomandedBlending from '../pages/MyChoice/MyChoiceRecomandedBlending.vue';
+import SampleMaking from '../pages/SampleMaking.vue';
+import MobileSearch from '../pages/GNB/MobileSearch.vue';
+import ChoiceRecommendedBlendingDetailedPage from '../pages/MyChoice/ChoiceRecommendedBlendingDetailedPage.vue';
+import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceRecommendedBlendingPackageSelection.vue';
+import Notice from '../pages/CustomerCenter/Notice.vue';
+import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
+import FAQ from '../pages/CustomerCenter/FAQ.vue';
+import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
+import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
+import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
+import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
 
-
+import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
 //     if (localStorage.token) {
 //         next({ name: 'home' });
@@ -38,89 +54,179 @@ import Main from '../pages/Main.vue';
 // }
 
 const routes = [
+    // {
+    //     name: 'home',
+    //     path: '/',
+    //     component: Home,
+    //     meta: {
+    //         name: 'topnav',
+    //         ShowText: true
+    //     }
+    // },
     {
-        name: 'home',
+        name: 'Main',
         path: '/',
-        component: Home,
-        // beforeEnter: guard,
-        meta: {
-            name: 'topnav',
-            ShowText: true
-        }
+        component: Main,
     },
     {
-        name: 'login',
+        name: 'Login',
         path: '/login',
         component: Login,
-        // beforeEnter: guest,
         
     },
     {
-        name: 'register',
-        path: '/register',
-        component: Register,
+        name: 'MemberRegistrationTypeSelection',
+        path: '/member-registration-type-selection',
+        component: MemberRegistrationTypeSelection,
         // beforeEnter: guest,
     },
     {
-        name: 'membership',
-        path: '/membership',
-        component: Membership,
+        name: 'MemberRegistrationIndividual',
+        path: '/member-registration-individuals',
+        component: MemberRegistrationIndividuals
+    },
+    {
+        name: 'MembershipRegistrationBusiness',
+        path: '/membership-registration-business',
+        component: MembershipRegistrationBusiness
+    },
+
+    {
+        name: 'personal-information',
+        path: '/personal-information',
+        component:  PersonalInformation
+    },
+    {
+        name: 'PersonalInformationBusiness',
+        path: '/personal-information-business',
+        component:  PersonalInformationBusiness
+    },
+    {
+        name: 'WithdrawalOfMembership',
+        path: '/withdrawal-of-membership',
+        component: WithdrawalOfMembership
+    },
+    {
+        name: 'InquiryContactUs',
+        path: '/inquiry-contactUs',
+        component: InquiryContactUs,
+    },
+    {
+        name: 'MemberRegistrationMethod',
+        path: '/method-selection',
+        component:MemberRegistrationMethod,
         // beforeEnter: guest,
     },
     {
-        name: 'registration-ndividuals',
-        path: '/registration-ndividuals',
-        component: RegistrationIndividuals
+        name: 'MemberRegistrationCompleted',
+        path: '/member-registration-completed',
+        component: RegistrationCompleted
     },
     {
-        name: 'registration-business',
-        path: '/registration-business',
-        component: RegistrationBusiness
-    },
-    {
-        name: 'method',
-        path: '/method',
-        component:Method,
-        // beforeEnter: guest,
-    },
-    {
-        name: 'business',
-        path: '/business',
-        component: Business,
-        // beforeEnter: guest,
-    },
-    {
-        name: 'registrationComp',
-        path: '/registrationComp',
-        component: RegistrationComp,
-        // beforeEnter: guest,
-    },
-    {
-        name: 'findID',
-        path: '/findID',
+        name: 'FindId',
+        path: '/find-id',
         component:FindID,
         // beforeEnter: guest,
     },
     {
-        name: 'changePassword',
-        path: '/changePassword',
+        name: 'ForgotPassword',
+        path: '/forgot-password',
+        component: ForgotPassword
+    },
+    {
+        name: 'ChangePassword',
+        path: '/change-password',
         component:ChangePassword,
         // beforeEnter: guest,
     },
     {
-        name: 'findPassword',
-        path: '/findPassword',
-        component:FindPassword,
+        name: 'SearchResult',
+        path: '/search-result',
+        component: SearchResult,
         // beforeEnter: guest,
     },
     {
-        name: 'main',
-        path: '/main',
-        component:Main,
+        name: 'MyChoice',
+        path: '/my-choice',
+        component: MyChoice,
         // beforeEnter: guest,
     },
-    
-    
+    {
+        name: 'MyChoiceCategorySelection',
+        path: '/my-choice-category-selection',
+        component: MyChoiceCategorySelection,
+    },
+    {
+        name: 'MyChoiceRecomandedBlending',
+        path: '/my-choice-recomanded-blending',
+        component: MyChoiceRecomandedBlending,
+    },
+    {
+        name: 'sample-making',
+        path: '/sample-making',
+        component: SampleMaking,
+    },
+    {
+        name: 'MobileSearch',
+        path: '/mobile-search',
+        component: MobileSearch,
+    },
+    {
+        name: 'ChoiceRecommendedBlendingDetailedPage',
+        path: '/choice-recommended-blending-detailed-page',
+        component: ChoiceRecommendedBlendingDetailedPage,
+    },
+    {
+        name: 'ChoiceRecommendedBlendingPackageSelection',
+        path: '/choice-recommended-blending-package-selection',
+        component: ChoiceRecommendedBlendingPackageSelection,
+    },
+    {
+        name: 'RawMaterialEstimation',
+        path: '/raw-material-estimation',
+        component: RawMaterialEstimation,
+    },
+    {
+        name: 'RawMMaterialPackage',
+        path: '/raw-material-package',
+        component: RawMMaterialPackage,
+    },
+    {
+        name: 'IngredientFormulation',
+        path: '/ingredient-formulation',
+        component: IngredientFormulation,
+    },
+    {
+        name: 'AddIngredient',
+        path: '/add-ingredient',
+        component: AddIngredient,
+    },
+    {
+        name: 'notice',
+        path: '/notice',
+        component: Notice,
+        
+    },
+    {
+        name: 'noticeDetailPage',
+        path: '/notice-detail-page',
+        component:NoticeDetailPage,
+        
+    },
+    {
+        name: 'Faq',
+        path: '/faq',
+        component: FAQ,
+        
+    },
+  
+    {
+        name: 'MyRecipeDetail',
+        path: '/my-recipe-detail',
+        component: MyRecipeDetail,
+        
+    },
+
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

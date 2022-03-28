@@ -1,17 +1,25 @@
 <template>
   <div id="app-container" :class="theme">
+    <Header />
     <router-view :key="$route.path" v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 export default {
   name: "App",
-}
+  components: {
+    Header,
+    Footer,
+  },
+};
 </script>
 
 <style lang="scss">
@@ -29,12 +37,5 @@ export default {
 }
 .route-leave-active {
   transition: all 0.3s ease-in;
-}
-#app {
-  // text-align: center;
-  // color: #07a07d;
-  // margin-top:-90px;
-  // margin-left:-20px;
-  // margin-right:-20px;
 }
 </style>

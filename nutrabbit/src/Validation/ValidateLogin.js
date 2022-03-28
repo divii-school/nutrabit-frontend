@@ -1,9 +1,9 @@
 import validator from 'validator';
 
-const validateLogin = (data) => {
+const validateLogin = (vdata) => {
   let errors = {}
 
-  const {email, password} = data;
+  const {email, password} = vdata;
 
   if(!validator.isEmail(email)) {
     errors.email = 'Please enter a valid email'
