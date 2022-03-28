@@ -29,6 +29,8 @@ import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
 import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
 import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
 import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
+import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
+
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
@@ -160,6 +162,11 @@ const routes = [
         name: 'MyChoiceRecomandedBlending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
+    },
+    {
+        name: 'MyChoiceRecomandedBlendingFinalQuote',
+        path: '/my-choice-recomanded-blending-fquote',
+        component: MyChoiceRecomandedBlendingFinalQuote,
     },
     {
         name: 'sample-making',

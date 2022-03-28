@@ -331,6 +331,11 @@ input {
 
 /* theme color */
 .themePurple{
+  .heading {
+    h2{
+      color: $grey-66 !important;
+    }
+  }
   .blue{
     background: $purple-F4;
   }
@@ -340,6 +345,11 @@ input {
     }
     .recomanded-status-wrap{
       .recomanded-status{
+        .d-item{
+          span{
+            border-color: #C08EF8 !important;
+          }
+        }
         &.visited {
           .d-item{
             span{
@@ -350,10 +360,30 @@ input {
               color: #C08EF8 !important;
             }
           }
+          &::before{
+            background: $purple-F4 !important;
+          }
+        }
+        &.active{
+          &::before{
+            background: $purple-F4 !important;
+          }
+          span{
+            background: $purple-F4 !important;
+            border-color: $purple-F4 !important;
+          }
+          p{
+            color: $purple-F4 !important;
+          }
         }
       }
     }
   }
-
-    
+  .btn-green-outline{
+    &.blue{
+      color: $purple-F4;
+      background: transparent;
+      border-color: $purple-F4;
+    }
+  }
 }

@@ -1,9 +1,9 @@
 <template>
-  <div class="main-body themePurple">
+  <div class="main-body">
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>Recommended blending</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
@@ -66,10 +66,6 @@
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div class="fGroup">
-                <label>title</label>
-                <input type="text" name="" placeholder="Please enter the subject.">
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
