@@ -3,6 +3,7 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
+          <p id="timer">{{timer}}</p>
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               Sign Up
@@ -290,6 +291,7 @@ export default {
       timer: 130,
       isActive: true,
       isVerification: false,
+      otpVerified: false,
       // timerOn: true,
     };
   },
@@ -438,6 +440,31 @@ export default {
         },
       }).open();
     },
+    // timer() {
+    //   let remaining = 120;
+    //   let m = Math.floor(remaining / 60);
+    //   let s = remaining % 60;
+
+    //   m = m < 10 ? "0" + m : m;
+    //   s = s < 10 ? "0" + s : s;
+    //   document.getElementById("timer").innerHTML = m + ":" + s;
+    //   remaining -= 1;
+
+    //   if (remaining >= 0 && timerOn) {
+    //     setTimeout(function () {
+    //       timer(remaining);
+    //     }, 1000);
+    //     return;
+    //   }
+
+    //   if (!timerOn) {
+    //     // Do validate stuff here
+    //     return;
+    //   }
+
+    //   // Do timeout stuff here
+    //   alert("Timeout for otp");
+    // },
   },
 };
 </script>
