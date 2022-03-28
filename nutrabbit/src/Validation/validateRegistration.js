@@ -12,6 +12,18 @@ const validateRegistration = (data) => {
   if (personalCheck == false) {
     errors.personalCheck = "Please check personal information";
   }
+  // if (validator.isEmpty(businessNumber)) {
+  //   errors.name = "Please enter your business number";
+  // }
+  // if (validator.isEmpty(businessName)) {
+  //   errors.name = "Please enter your business name";
+  // }
+  // if (validator.isEmpty(depertment)) {
+  //   errors.name = "Please enter the department name";
+  // }
+  // if (validator.isEmpty(contactPerson)) {
+  //   errors.name = "Please enter the name of the person in charge";
+  // }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }

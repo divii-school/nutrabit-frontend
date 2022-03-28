@@ -3,7 +3,6 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <p id="timer">{{timer}}</p>
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               Sign Up
@@ -57,10 +56,7 @@
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
               </div>
-              <div
-                class="form-group"
-                :class="error.username || errorUser ? 'error' : ''"
-              >
+              <div class="form-group" :class="error.username ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>ID</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -110,10 +106,7 @@
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
-              <div
-                class="form-group"
-                :class="error.email || errorEmail ? 'error' : ''"
-              >
+              <div class="form-group" :class="error.email ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>e-mail</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -133,7 +126,6 @@
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
-                <span class="error-msg">{{ errorEmail }}</span>
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
@@ -339,7 +331,7 @@ export default {
             })
             .then((response) => {
               if (response.data.status == 200) {
-                window.location = "/login";
+                window.location = "/member-registration-completed";
               }
             });
         } catch (error) {
@@ -348,62 +340,52 @@ export default {
       }
     },
     async checkUser() {
-      if (!this.username) {
-        return (this.error.username = "Please enter your ID");
-      } else if (!validator.isAlphanumeric(this.username)) {
-        return (this.error.username = "Please match the format");
-      } else {
-        try {
-          const checkUserdata = await axios.post("/v1/sites/user/check_id", {
-            uuid: this.username,
-          });
-          if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 0
-          ) {
-            console.log(checkUserdata.data.data.is_exist);
-            return true;
-          } else if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 1
-          ) {
-            return (this.error.username = checkUserdata.data.data.msg);
-          }
-        } catch (error) {
-          this.error.username = "Please verify the user";
-          return false;
+      try {
+        const checkUserdata = await axios.post("/v1/sites/user/check_id", {
+          uuid: this.username,
+        });
+        if (
+          checkUserdata.data.status == 200 &&
+          checkUserdata.data.data.is_exist === 0
+        ) {
+          console.log(checkUserdata.data.data.is_exist);
+          return true;
+        } else if (
+          checkUserdata.data.status == 200 &&
+          checkUserdata.data.data.is_exist === 1
+        ) {
+          return (this.error.username = checkUserdata.data.data.msg);
         }
+      } catch (error) {
+        this.error.username = "Please verify the user";
+        return false;
       }
     },
     async sendOtp() {
-      if (this.email == "") {
-        return (this.error.email = "Enter a valid email address");
-      } else {
-        try {
-          const sendOtoData = await axios.post("/v1/sites/user/send_otp", {
-            email: this.email,
-          });
-          if (sendOtoData.data.status == 200) {
-            this.isActive = false;
-            this.isVerification = true;
-            this.$swal("OTP has been sent to your email");
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-              } else {
-                this.timer--;
-              }
-            }, 1000);
-            return true;
-          } else {
-            return (this.error.email = sendOtoData.data.message);
-          }
-        } catch (error) {
-          this.error.email = "Please verify the email";
-          return false;
+      try {
+        const sendOtoData = await axios.post("/v1/sites/user/send_otp", {
+          email: this.email,
+        });
+        if (sendOtoData.data.status == 200) {
+          this.isActive = false;
+          this.isVerification = true;
+          this.$swal("OTP has been sent to your email");
+          setInterval(() => {
+            if (this.timer === 0) {
+              clearInterval();
+              this.isVerification = false;
+              this.isActive = true;
+            } else {
+              this.timer--;
+            }
+          }, 1000);
+          return true;
+        } else {
+          return (this.error.email = sendOtoData.data.message);
         }
+      } catch (error) {
+        this.error.email = "hhhh";
+        return false;
       }
     },
     async verifyOTP() {

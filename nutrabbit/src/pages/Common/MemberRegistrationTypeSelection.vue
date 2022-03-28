@@ -24,7 +24,14 @@
                 <h2 class="list-heading">individual membership</h2>
                 <p class="list-desc">When an individual joins</p>
               </li>
-              <li class="membership-item">
+              <li
+                class="membership-item"
+                @click="
+                  $router.push({
+                    name: 'MemberRegistrationMethod',
+                  })
+                "
+              >
                 <i class="icon-building-symbol"></i>
                 <h2 class="list-heading">Business membership registration</h2>
                 <p When class="list-desc">When a company joins</p>
