@@ -76,8 +76,8 @@
                 <span>If you provide more details, it will help you get an accurate quote.</span>
                 <textarea placeholder="Please write freely"></textarea>
               </div>
-              <div class="fGroup">
-                <label>Select service
+              <div class="fGroup mb0">
+                <label class="mb0">Select service
                   <span>* Multiple selection possible</span>
                 </label>
               </div>
@@ -112,7 +112,10 @@
                 </ul>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey">Previous</button>
-                  <button class="btn-small-solid blue">next</button>
+                  <div class="btnWrapRight">
+                    <button class="btn-green-outline blue">temporary storage</button>
+                    <button class="btn-small-solid blue ml-4">next</button>
+                  </div>
                 </div>
             </div>
             </div>

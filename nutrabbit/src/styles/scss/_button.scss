@@ -41,6 +41,11 @@
     color: $grey-CF;
     border: 1px solid $grey-CF;
   }
+  &.blue{
+    background: transparent;
+    border: 1px solid $blue-E8;
+    color: $blue-E8;
+  }
 }
 .btn-small-solid{
   @include small-solid-btn;
