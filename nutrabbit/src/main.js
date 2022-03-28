@@ -17,6 +17,7 @@ import { createI18n } from "vue-i18n";
 import VueNextSelect from 'vue-next-select';
 import "vue-next-select/dist/index.css";
 import './config/axios-interceptor';
+import "../src/assets/js/postcode.v2.js";
 
 // cookie
 import { globalCookiesConfig } from "vue3-cookies";

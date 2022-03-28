@@ -5,14 +5,6 @@ const validateRegistration = (data) => {
 
   const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address } = data;
 
-  // if (localStorage.users) {
-  //   let lsuser = localStorage.users;
-  //   lsuser = JSON.parse(lsuser);
-  //   let index = lsuser.findIndex((user) => user.email === email);
-  //   if (index > -1) {
-  //     errors.email = "Email already exists !";
-  //   }
-  // }
 
   if (termsCheck == false) {
     errors.termsCheck = "Please check the terms";
@@ -20,6 +12,18 @@ const validateRegistration = (data) => {
   if (personalCheck == false) {
     errors.personalCheck = "Please check personal information";
   }
+  // if (validator.isEmpty(businessNumber)) {
+  //   errors.name = "Please enter your business number";
+  // }
+  // if (validator.isEmpty(businessName)) {
+  //   errors.name = "Please enter your business name";
+  // }
+  // if (validator.isEmpty(depertment)) {
+  //   errors.name = "Please enter the department name";
+  // }
+  // if (validator.isEmpty(contactPerson)) {
+  //   errors.name = "Please enter the name of the person in charge";
+  // }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }

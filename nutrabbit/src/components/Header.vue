@@ -294,17 +294,15 @@ export default {
         this.logedInUserDetails &&
         this.logedInUserDetails.userId
       ) {
-        console.log("pppp");
         this.active = true;
       } else {
-        console.log("qqqq");
         this.showModal();
       }
     },
   },
   computed: {
     isHeaderPositionAbsolute() {
-      return this.$route.name == "main";
+      return this.$route.name == "Main";
     },
     showHeader() {
       return this.$route.name != "mobile-search";

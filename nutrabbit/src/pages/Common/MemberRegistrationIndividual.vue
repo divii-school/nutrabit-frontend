@@ -56,10 +56,7 @@
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
               </div>
-              <div
-                class="form-group"
-                :class="error.username || errorUser ? 'error' : ''"
-              >
+              <div class="form-group" :class="error.username ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>ID</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -75,7 +72,6 @@
                   </button>
                 </div>
                 <span class="error-msg">{{ error.username }}</span>
-                <span class="error-msg">{{ errorUser }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>password</label>
@@ -110,10 +106,7 @@
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
-              <div
-                class="form-group"
-                :class="error.email || errorEmail ? 'error' : ''"
-              >
+              <div class="form-group" :class="error.email ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>e-mail</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -124,12 +117,15 @@
                       v-model="email"
                     />
                   </div>
-                  <button class="btn-green-outline" @click="sendOtp">
+                  <button
+                    class="btn-green-outline"
+                    @click="sendOtp"
+                    :class="{ grey: isVerification }"
+                  >
                     Send verification code
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
-                <span class="error-msg">{{ errorEmail }}</span>
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
@@ -146,7 +142,13 @@
                     <span class="time">{{ timer }}</span>
                     <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
                   </div>
-                  <button class="btn-green-outline grey">certification</button>
+                  <button
+                    class="btn-green-outline"
+                    :class="{ grey: isActive }"
+                    @click="verifyOTP"
+                  >
+                    certification
+                  </button>
                 </div>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
@@ -172,9 +174,12 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter address"
+                      v-model="address"
                     />
                   </div>
-                  <button class="btn-green-outline">Address Search</button>
+                  <button class="btn-green-outline" @click="getAddress">
+                    Address Search
+                  </button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
@@ -245,7 +250,6 @@
             <button
               class="btn-primary grenn-btn2"
               @click="individalRegistration"
-              :class="checkFields ? '' : 'curDisabled' "
             >
               Sign Up
             </button>
@@ -258,6 +262,7 @@
 <script>
 import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
+import validator from "validator";
 export default {
   name: "MemberRegistrationIndividual",
   data() {
@@ -275,10 +280,11 @@ export default {
       checkName: [],
       error: {},
       errors: {},
-      errorUser: "",
-      errorEmail: "",
-      timer: 180,
-      checkFields: false
+      timer: 130,
+      isActive: true,
+      isVerification: false,
+      otpVerified: false,
+      // timerOn: true,
     };
   },
   methods: {
@@ -300,6 +306,19 @@ export default {
         this.error = error;
       } else {
         try {
+          let checkUserStatus = await this.checkUser();
+          let sendVerification = await this.sendOtp();
+          let checkOtp = await this.verifyOTP();
+          let checkAddress = this.getAddress();
+          if (!checkUserStatus) {
+            return;
+          } else if (!sendVerification) {
+            return;
+          } else if (!checkOtp) {
+            return;
+          } else if (!checkAddress) {
+            this.error.address = "Please enter your address";
+          }
           return await axios
             .post("/v1/sites/user/individual_registration", {
               name: this.name,
@@ -312,8 +331,7 @@ export default {
             })
             .then((response) => {
               if (response.data.status == 200) {
-                console.log(response.data);
-                // window.location = "/";
+                window.location = "/member-registration-completed";
               }
             });
         } catch (error) {
@@ -322,64 +340,113 @@ export default {
       }
     },
     async checkUser() {
-      if (this.errorUser == "") {
-        this.errorUser = "Please enter your ID";
-      } else {
-        try {
-          return await axios
-            .post("/v1/sites/user/check_id", {
-              uuid: this.username,
-            })
-            .then((response) => {
-              if (
-                response.data.status == 200 &&
-                response.data.data.is_exist === 0
-              ) {
-                console.log(response.data.data.is_exist);
-              } else if (
-                response.data.status == 200 &&
-                response.data.data.is_exist === 1
-              ) {
-                return (this.errorUser = response.data.data.msg);
-              }
-            });
-        } catch (error) {
-          console.log(error);
+      try {
+        const checkUserdata = await axios.post("/v1/sites/user/check_id", {
+          uuid: this.username,
+        });
+        if (
+          checkUserdata.data.status == 200 &&
+          checkUserdata.data.data.is_exist === 0
+        ) {
+          console.log(checkUserdata.data.data.is_exist);
+          return true;
+        } else if (
+          checkUserdata.data.status == 200 &&
+          checkUserdata.data.data.is_exist === 1
+        ) {
+          return (this.error.username = checkUserdata.data.data.msg);
         }
+      } catch (error) {
+        this.error.username = "Please verify the user";
+        return false;
       }
     },
     async sendOtp() {
-      // let timer = 10;
-      if (this.email == "") {
-        console.log("error");
-        this.errorEmail = "Enter a valid email address";
-      } else {
-        try {
-          return await axios
-            .post("v1/sites/user/send_otp", {
-              email: this.email,
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                this.$swal("OTP has been sent to your email");
-                setInterval(() => {
-                  if (this.timer === 0) {
-                    clearInterval();
-                  } else {
-                    this.timer--;
-                    console.log(this.timer);
-                  }
-                }, 1000);
-              } else {
-                console.log("0");
-                return (this.errorEmail = response.data.message);
-              }
-            });
-        } catch (error) {
-          console.log(error);
+      try {
+        const sendOtoData = await axios.post("/v1/sites/user/send_otp", {
+          email: this.email,
+        });
+        if (sendOtoData.data.status == 200) {
+          this.isActive = false;
+          this.isVerification = true;
+          this.$swal("OTP has been sent to your email");
+          setInterval(() => {
+            if (this.timer === 0) {
+              clearInterval();
+              this.isVerification = false;
+              this.isActive = true;
+            } else {
+              this.timer--;
+            }
+          }, 1000);
+          return true;
+        } else {
+          return (this.error.email = sendOtoData.data.message);
         }
+      } catch (error) {
+        this.error.email = "hhhh";
+        return false;
       }
     },
+    async verifyOTP() {
+      if (this.emailOTP == "") {
+        return (this.error.emailOTP = "Enter an valid OTP");
+      }
+      try {
+        const verifyOtpData = await axios.post("/v1/sites/user/verify_otp", {
+          email: this.email,
+          verification_code: this.emailOTP,
+        });
+        if (
+          verifyOtpData.data.status == 200 &&
+          verifyOtpData.data.data.otp_verify === 1
+        ) {
+          this.$swal("OTP verified");
+          return true;
+        } else if (
+          verifyOtpData.data.status == 200 &&
+          verifyOtpData.data.data.otp_verify === 0
+        ) {
+          console.log("wrong otp");
+        }
+      } catch {
+        this.error.emailOTP = "Please enter your email verification code";
+        return false;
+      }
+    },
+    getAddress() {
+      new daum.Postcode({
+        oncomplete: (data) => {
+          console.log(data);
+          return (this.address = data.address);
+        },
+      }).open();
+    },
+    // timer() {
+    //   let remaining = 120;
+    //   let m = Math.floor(remaining / 60);
+    //   let s = remaining % 60;
+
+    //   m = m < 10 ? "0" + m : m;
+    //   s = s < 10 ? "0" + s : s;
+    //   document.getElementById("timer").innerHTML = m + ":" + s;
+    //   remaining -= 1;
+
+    //   if (remaining >= 0 && timerOn) {
+    //     setTimeout(function () {
+    //       timer(remaining);
+    //     }, 1000);
+    //     return;
+    //   }
+
+    //   if (!timerOn) {
+    //     // Do validate stuff here
+    //     return;
+    //   }
+
+    //   // Do timeout stuff here
+    //   alert("Timeout for otp");
+    // },
   },
 };
 </script>
