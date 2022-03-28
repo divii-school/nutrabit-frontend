@@ -1,0 +1,326 @@
+.main-page{
+    min-height: 100vh;
+    .main-slider{
+        img{
+            width: 100%;
+            height: 828px;
+            @media screen and (max-width: 992px){
+                height: 700px;
+            }
+            @media screen and (max-width: 768px){
+                height: 500px;
+            }
+            @media screen and (max-width: 640px){
+                height: 375px;
+            }
+        }
+        .banner-title{
+            font-weight: bold;
+            font-size: 150px;
+            line-height: 180px;
+            color: $black-18;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            @media screen and (max-width: 1200px){
+                font-size: 100px;
+                line-height: 130px;
+            }
+            @media screen and (max-width: 768px){
+                font-size: 60px;
+                line-height: 90px;
+                // top: 250px;
+            }
+            @media screen and (max-width: 640px){
+                font-size: 30px;
+                line-height: 36px;
+            }
+        }
+        .swiper-pagination{
+            @include flex-justify-center;
+            color: $white-1;
+            position: absolute;
+            background: rgba(24, 24, 24, 0.7);
+            border-radius: 50px;
+            width: 97px;
+            height: 34px;
+            font-weight: 600;
+            bottom: 60px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            font-size: 14px;
+            line-height: 18px;
+            @media screen and (max-width: 768px){
+                bottom: 30px;
+                height: 21px;
+                width: 44px;
+                font-size: 10px;
+                line-height: 13px;
+            }
+            span{
+                font-size: 14px;
+                line-height: 18px;
+                text-align: center;
+                color: $white-1;
+                position: relative;
+                @media screen and (max-width: 768px){
+                    font-size: 10px;
+                    line-height: 13px;
+                }
+                &:first-child{
+                    margin-right: 8px;
+                    @media screen and (max-width: 768px){
+                        margin-right: 4px;
+                    }
+                }
+                &:last-child{
+                    margin-left: 8px;
+                    @media screen and (max-width: 768px){
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
+    }
+    .main-page-body{
+        .nutri-choice{
+            margin: 150px 0;
+            @include flex-justify-center;
+            flex-direction:  column;
+            @media screen and (max-width: 1200px){
+                margin: 120px 0;
+            }
+            @media screen and (max-width: 640px){
+                margin: 80px 0;
+            }
+            .my-choice-title-top{
+                font-size: 50px;
+                line-height: 10px;
+                color: $purple-F4;
+                font-family: $ballast-font;
+                @media screen and (max-width: 640px){
+                    font-size: 20px;
+                }
+            }
+            .title{
+                font-weight: bold;
+                font-size: 30px;
+                line-height: 36px;
+                color: $purple-F4;
+                @media screen and (max-width: 640px){
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+            .nutri-choice-heading{
+                margin-top: 15px;
+                position: relative;
+                font-weight: bold;
+                font-size: 60px;
+                line-height: 78px;
+                color: $black-18;
+                @media screen and (max-width: 1200px){
+                    font-size: 40px;
+                    line-height: 58px;
+                }
+                @media screen and (max-width: 768px){
+                    font-size: 30px;
+                    line-height: 45px;
+                }
+                @media screen and (max-width: 640px){
+                    font-size: 24px;
+                    line-height: 31px;
+                }
+            }
+            .desc{
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                color: $grey-82;
+                margin-top: 30px;
+                @media screen and (max-width: 640px){
+                    font-size: 13px;
+                    line-height: 16px;
+                    margin-top: 15px;
+                }
+            }
+            .sampleNote{
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                margin-top: 30px;
+                color: $grey-A4;
+            }
+            .btn-small-solid{
+                margin-top: 40px;
+                @media screen and (max-width: 640px){
+                   margin-top: 30px;
+                   height: 34px;
+                   padding: 10px 20px;
+                   font-size: 12px;
+                   line-height: 14px;
+                }
+            }
+            &.with-img{
+                .nutri-choice-heading{
+                    position: relative;
+                    &:after{
+                        position: absolute;
+                        background: url(../../../src/assets/images/nutri-choice-symbol.svg) no-repeat top left;
+                        background-size: auto 142px;
+                        height: 142px;
+                        width: 129px;
+                        content: '';
+                        left: -75px;
+                        top: -80px;
+                        z-index: -1;
+                        @media screen and (max-width: 992px){
+                            height: 122px;
+                            background-size: auto 122px;
+                            width: 109px;
+                            content: "";
+                            left: -59px;
+                            top: -69px;
+                        }
+                        @media screen and (max-width: 640px){
+                            background: url(../../../src/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
+                            height: 70px;
+                            background-size: auto 70px;
+                            width: 68px;
+                            content: "";
+                            left: -5px;
+                            top: -20px;
+                        }
+                    }
+                }
+            }
+        }
+        .devider{
+            @include flex-justify-center;
+            position: relative;
+            i{
+                margin: 0 10px;
+            }
+            &::before{
+                width: 100%;
+                height: 1px;
+                background: $grey-CF;
+                content: '';
+            }
+            &::after{
+                width: 100%;
+                height: 1px;
+                background: $grey-CF;
+                content: '';
+            }
+        }
+        .nutri-blending{
+            .nutri-choice{
+                margin-bottom: 80px;
+                @media screen and (max-width: 1200px){
+                    margin-bottom: 60px;
+                }
+            }
+            .nutri-dom-product{
+                position: relative;
+                margin-bottom: 150px;
+                @media screen and (max-width: 768px){
+                    margin-bottom: 170px;
+                }
+                ul{
+                    @include flex-align-center;
+                    flex-wrap: wrap;
+                    margin: 0 -44px;
+                    @media screen and (max-width: 1400px){
+                        margin: 0 -30px;
+                    }
+                    @media screen and (max-width: 1200px){
+                        margin: 0 -20px;
+                    }
+                    @media screen and (max-width: 768px){
+                        margin: 0 -13px;
+                    }
+                    li{
+                        padding: 0 44px;
+                        margin-bottom: 80px;
+                        flex: 0 0 33.33%;
+                        max-width: 33.33%;
+                        width: 33.33%;
+                        @media screen and (max-width: 1400px){
+                            padding: 0 30px;
+                        }
+                        @media screen and (max-width: 1200px){
+                            padding: 0 20px;
+                        }
+                        @media screen and (max-width: 768px){
+                            padding: 0 6.5px;
+                            margin-bottom: 30px;
+                        }
+                        @media screen and (max-width: 640px){
+                            width: 50%;
+                            max-width: 50%;
+                            flex: 0 0 50%;
+                        }
+                        
+                        .nutri-product-item{
+                            @include flex-justify-center;
+                            flex-direction: column;
+                            .nutri-pimg{
+                                width: 330px;
+                                height: 330px;
+                                border-radius: 200px 200px 0px 0px;
+                                @media screen and (max-width: 768px){
+                                    width: 164px;
+                                    height: 165px;
+                                }
+                            }
+                            .tag-wrap{
+                                @include flex-align-center;
+                                margin: 20px -5px 0;
+                                @media screen and (max-width: 768px){
+                                    margin: 10px -5px 0;
+                                }
+                                span{
+                                    @include flex-justify-center; 
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    line-height: 17px;
+                                    color: $green-68;
+                                    border: 1px solid $green-68;
+                                    box-sizing: border-box;
+                                    border-radius: 50px;
+                                    height: 25px;
+                                    padding: 4px 10px;
+                                    margin: 0 5px;
+                                    @media screen and (max-width: 768px){
+                                        font-size: 10px;
+                                        line-height: 12px;
+                                    }
+                                }
+                            }
+                            .title{
+                                margin-top: 20px;
+                                font-weight: 600;
+                                font-size: 26px;
+                                line-height: 31px;
+                                text-align: center;
+                                color: $black-18;
+                                @media screen and (max-width: 992px){
+                                    font-size: 18px;
+                                    line-height: 23px;
+                                }
+                                @media screen and (max-width: 768px){
+                                    font-size: 14px;
+                                    line-height: 17px;
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

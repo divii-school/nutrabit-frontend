@@ -21,11 +21,41 @@
     color: $white-1;
     background: $green-68;
   }
+  &.grey-btn-outline{
+    color: $grey-4C;
+    border: 1px solid $grey-4C;
+    background: $white-1;
+  }
+  &.grey-btn-solid{
+    color: $white-1;
+    background: $grey-4C;
+  }
+  &.blue-btn-solid{
+    color: $white-1;
+    background: $blue-E8;
+  }
 }
 .btn-green-outline{
   @include small-outline-btn;
   &.grey{
     color: $grey-CF;
     border: 1px solid $grey-CF;
+  }
+  &.blue{
+    background: transparent;
+    border: 1px solid $blue-E8;
+    color: $blue-E8;
+  }
+}
+.btn-small-solid{
+  @include small-solid-btn;
+  &.green{
+    background: $green-68;
+  }
+  &.blue{
+    background: $blue-E8;
+  }
+  &.grey{
+    background: $grey-66;
   }
 }

@@ -9,18 +9,27 @@ header{
         .header-menu{
             @include flex-justify-between;
             min-height: 80px;
+            @media screen and (max-width: 640px){
+              min-height: 62px;
+            }
             .manuLeft{
                 @include flex-align-center;
                 .header-logo{
                     img{
                         height: 25px;
                         width: auto;
+                        @media screen and (max-width: 640px){
+                          height: 19px;
+                        }
                     }
                 }
                 ul{
                     margin-left: 40px;
                     @media screen and (max-width: 1200px){
                       margin-left: 20px;
+                    }
+                    @media screen and (max-width: 1024px){
+                      display: none;
                     }
                     li{
                         margin-left: 40px;
@@ -33,7 +42,7 @@ header{
                             line-height: 24px;
                             color: $black-18;
                             @media screen and (max-width: 1200px){
-                              font-size: 18px;
+                              font-size: 16px;
                               line-height: 22px;
                             }
                         }
@@ -42,26 +51,87 @@ header{
             }
             .manuRight{
                 @include flex-align-center;
-                .search-wrap{
-                    position: relative;
-                    input{
-                        height: 40px;
-                        width: 261px;
-                        padding: 0 30px 0 5px;
+                .vue-select{
+                  width: auto;
+                  border: 0;
+                  border-radius: 0;
+                  .vue-input{
+                      input{
+                        width: 20px;
+                        font-weight: 500;
                         font-size: 14px;
                         line-height: 17px;
-                        color: $grey-66;
-                        border-bottom: 1px solid $black-00;
-                        @media screen and (max-width: 1200px){
-                          width: 240px;
+                        color: $black-33;
+                        &::placeholder{
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $black-33;
                         }
                     }
-                    i{
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        bottom: 0;
-                        margin: auto 0;
+                  }
+                  .arrow-downward{
+                      border-color: $black-33 transparent transparent;
+                      border-width: 5px 5px 0;
+                  }
+                  .vue-dropdown{
+                      width: auto;
+                      border: 0;
+                      top: 32px;
+                      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+                      left: -10px;
+                      border-top: 1px solid $green-45;
+                      li{
+                          width: 68px;
+                          height: 49px;
+                          padding: 0 16px;
+                          @include flex-align-center;
+                          span{
+                              text-align: left;
+                              font-size: 14px;
+                              line-height: 17px;
+                              letter-spacing: 0.03em;
+                              color: $black-33;
+                          }
+                          &:hover{
+                              background: transparent;
+                              span{
+                                  color: $green-68;
+                              }
+                          }
+                          &.highlighted{
+                              background: transparent;
+                          }
+                      }
+                  }
+                }
+                .search-wrap{
+                  @media screen and (max-width: 640px){
+                    display: none;
+                  }
+                    .input-group{
+                      position: relative;
+                        input{
+                            height: 40px;
+                            width: 261px;
+                            padding: 0 30px 0 5px;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $grey-66;
+                            border-bottom: 1px solid $black-00;
+                            background: transparent;
+                            @media screen and (max-width: 1200px){
+                              width: 240px;
+                            }
+                        }
+                        a{
+                            @include flex-justify-center;
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto 0;
+                        }
                     }
                 }
                 .login-item{
@@ -73,71 +143,87 @@ header{
                     @media screen and (max-width: 1200px){
                       margin-left: 20px;
                     }
+                    @media screen and (max-width: 768px){
+                      display: none;
+                    }
+                }
+                .after-login-dropdown{
+                  margin-left: 32px;
+                  @media screen and (max-width: 768px){
+                    display: none;
+                  }
+                  .dropdown {
+                    position: relative;
+                    display: inline-block;
+                      .dropbtn{
+                        @include flex-align-center;
+                        i{
+                          margin-right: 5px;
+                        }
+                      }
+                      .dropdown-content{
+                        border-top: 1px solid $green-45;
+                        display: none;
+                        position: absolute;
+                        min-width: 260px;
+                        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+                        z-index: 1;
+                        left: -125px;
+                        top: 31px;
+                        a{
+                          padding: 16px;
+                          display: block;
+                          font-size: 14px;
+                          line-height: 17px;
+                          letter-spacing: 0.03em;
+                          color: $black-33;
+                          background: $white-1;
+                        }
+                      }
+                    }
+                    .dropdown:hover .dropdown-content {
+                      display: block;
+                    }
                 }
                 .header-dropdown{
                     margin-left: 32px; 
                     @media screen and (max-width: 1200px){
-                      margin-left: 20px;
+                      margin-left: 15px;
                     }
-                    .vue-select{
-                        width: auto;
-                        border: 0;
-                        border-radius: 0;
-                        input{
-                            width: 20px;
-                            font-weight: 500;
-                            font-size: 14px;
-                            line-height: 17px;
-                            color: $black-33;
-                            &::placeholder{
-                                font-weight: 500;
-                                font-size: 14px;
-                                line-height: 17px;
-                                color: $black-33;
-                            }
-                        }
-                        .arrow-downward{
-                            border-color: $black-33 transparent transparent;
-                            border-width: 5px 5px 0;
-                        }
-                        .vue-dropdown{
-                            width: auto;
-                            border: 1px solid $grey-E0;
-                            top: 53px;
-                            li{
-                                width: 119px;
-                                height: 49px;
-                                padding: 16px;
-                                span{
-                                    text-align: left;
-                                    font-size: 14px;
-                                    line-height: 17px;
-                                    letter-spacing: 0.03em;
-                                    color: $black-33;
-                                }
-                                &:hover{
-                                    background: transparent;
-                                    span{
-                                        color: $green-68;
-                                    }
-                                }
-                                &.highlighted{
-                                    background: transparent;
-                                }
-                            }
-                        }
+                    @media screen and (max-width: 768px){
+                      display: none;
                     }
+                }
+                .mobile-search{
+                  display: none;
+                  @media screen and (max-width: 640px){
+                    display: block;
+                  }
                 }
                 .menu-toggle{
                     margin-left: 20px; 
+                    @media screen and (max-width: 768px){
+                      margin-left: 16px; 
+                    }
                     img{
                         min-width: 56px;
                         height: 40px;
+                        @media screen and (max-width: 768px){
+                          min-width: 32px;
+                          height: 32px;
+                        }
                     }
                 }
             }
         }
       }
+    &.main-page-header{
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      width: 100%;
+      box-shadow: none;
+    }
 }
 .right-menu-screen {
     width: 100%;
@@ -188,29 +274,42 @@ header{
         }
       }
       .white-box {
-        @include flex-justify-center;
+        // @include flex-justify-center;
         background: $white-1;
         width: 50%;
         position: relative;
-        padding: 50px;
+        padding: 185px 0 185px 165px;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+        overflow: auto;
         @media screen and (max-width: 1200px){
           padding: 92px 32px;
         }
-        @media screen and (max-width: 767px){
+        @media screen and (max-width: 768px){
           width: 100%;
           justify-content: flex-start;
           align-items: flex-start;
         }
-        ul{
+        .right-menu-items{
           text-align: left;
+          position: relative;
+          &::before{
+            content: '';
+            position: absolute;
+            background: url(../../../src/assets/icons/icon-login-tip.svg) no-repeat center center;
+            background-size: auto;
+            background-size: auto 20px;
+            height: 20px;
+            width: 20px;
+            top: -22px;
+            left: 0;
+          }
           li{
             display: flex;
             align-items: flex-start;
             margin-top: 52px;
-            @media screen and (max-width: 767px){
+            @media screen and (max-width: 768px){
               flex-direction: column;
-              margin-top: 30px;
+              margin-top: 33px;
             }
             &:first-child{
               margin: 0;
@@ -218,6 +317,8 @@ header{
             .side-menu-heading{
               width: 245px;
               margin-right: 100px;
+              @include flex-justify-between;
+              cursor: pointer;
               @media screen and (max-width: 1600px){
                 width: 200px;
                 margin-right: 50px;
@@ -230,13 +331,16 @@ header{
                 width: 120px;
                 margin-right: 15px;
               }
+              @media screen and (max-width: 768px){
+                width: 100%;
+                margin: 0;
+              }
               
               a{
                 font-weight: bold;
                 font-size: 32px;
                 line-height: 38px;
                 color: $black-18;
-                padding-bottom: 10px;
                 @media screen and (max-width: 1200px){
                   font-size: 25px;
                   line-height: 28px;
@@ -245,16 +349,40 @@ header{
                   font-size: 20px;
                   line-height: 26px;
                 }
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 768px){
                   font-size: 16px;
                   line-height: 19px;
                 }
-                &.active{
+              }
+              &.active{
+                margin-bottom: 10px;
+                a{
+                  padding-bottom: 10px;
                   border-bottom: 3px solid $green-68;
+                }
+                @media screen and (max-width: 768px){
+                 margin-bottom: 6px;
+                  a{
+                    padding-bottom: 6px;
+                    border-bottom: 3px solid $green-68;
+                  }
+                }
+              }
+              .icon-menu-downArw{
+                display: none;
+                @media screen and (max-width: 768px){
+                  display: block;
+                }
+                &.no-arrow{
+                  display: none;
                 }
               }
             }
             .side-menu-list{
+              @media screen and (max-width: 768px){
+                display: none;
+                padding: 16px;
+              }
               a{
                 font-size: 20px;
                 line-height: 24px;
@@ -269,15 +397,23 @@ header{
                   font-size: 15px;
                   line-height: 19px;
                 }
-                @media screen and (max-width: 767px){
+                @media screen and (max-width: 768px){
                   font-size: 14px;
                   line-height: 17px;
+                }
+                @media screen and (max-width: 768px){
+                  display: block;
                 }
                 &:first-child{
                   margin-top: 0;
                 }
                 &.active{
                   color: $green-68;
+                }
+              }
+              &.activeSubmenu{
+                @media screen and (max-width: 768px){
+                  display: block;
                 }
               }
             }
@@ -287,36 +423,138 @@ header{
                 margin-bottom: 5px;
               }
             }
-            &.side-menu-language{
-              margin-top: 80px;
-              @media screen and (max-width: 767px){
-                margin-top: 46px;
-              }
-              ul{
-                li{
-                  margin: 0;
-                  font-size: 16px;
-                  line-height: 19px;
-                  color: $grey-82;
-                  @media screen and (max-width: 767px){
-                    font-size: 14px;
-                    line-height: 17px;
-                  }
-                  &::before{
-                    content: "I";
-                    margin: 0 20px;
-                    color: $grey-BF;
-                  }
-                  &:first-child{
-                    &::before{
-                      display: none;
-                    }
-                  }
-                }
+          }
+        }
+        .side-menu-language{
+          @include flex-align-center;
+          margin-top: 80px;
+          @media screen and (max-width: 768px){
+            margin-top: 46px;
+          }
+          li{
+            margin: 0;
+            font-size: 16px;
+            line-height: 19px;
+            color: $grey-82;
+            @media screen and (max-width: 768px){
+              font-size: 14px;
+              line-height: 17px;
+            }
+            &::before{
+              content: "I";
+              margin: 0 20px;
+              color: $grey-BF;
+            }
+            &:first-child{
+              &::before{
+                display: none;
               }
             }
           }
         }
       }
     }
+}
+.mobile-search-wrap{
+  .input-group{
+    position: relative;
+    input{
+      width: 100%;
+      height: 48px;
+      padding: 8px 40px 8px 12px;
+      border: 1px solid $grey-66;
+      font-size: 14px;
+      line-height: 17px;
+      color: $grey-82;
+      &::placeholder{
+        color: $grey-BD;
+      }
+      // &:focus{
+      //   border: 1px solid $green-68;
+      // }
+      &.activeSearchInput{
+        border: 1px solid $green-68;
+      }
+    }
+    a{
+      @include flex-justify-center;
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translate(0, -50%);
+      &.activeSearchIcon{
+        i{
+          background: url(../../../src/assets/icons/icon-mobile-search-green.svg) no-repeat center center;
+          background-size: auto 32px;
+        }
+      }
+    }
   }
+  .header-search-data{
+    max-width: 100%;
+    box-shadow: none;
+    .search-data-inner{
+      min-height: 132px;
+      .no-search-data{
+        min-height: 375px;
+      }
+    }
+    .delete-close{
+      border-top: 1px solid $white-F2;
+    }
+  }
+}
+.header-search-data{
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: $white-1;
+  max-width: 261px;
+  display: none;
+  @media screen and (max-width: 1200px){
+    max-width: 240px;
+  }
+  .search-data-inner{
+    min-height: 269px;
+    background: $white-1;
+    ul{
+      padding: 16px;
+      li{
+        @include flex-justify-between;
+        margin-top: 20px;
+        &:first-child{
+          margin-top: 0;
+        }
+        p{
+          font-size: 14px;
+          line-height: 17px;
+          letter-spacing: 0.03em;
+          color: $grey-66;
+        }
+        a{
+          i{
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+    .no-search-data{
+      min-height: 261px;
+      @include flex-justify-center;
+    }
+  }
+  .delete-close{
+    @include flex-justify-between;
+    padding: 9px 10px;
+    a{
+      @include flex-align-center;
+      font-size: 12px;
+      line-height: 14px;
+      color: $grey-A4;
+    }
+  }
+  &.activeSearch{
+    display: block;
+  }
+}
