@@ -291,9 +291,9 @@ export default {
     },
     sideMenuOpen() {
       if (
-        typeof this.logedInUserDetails !== "undefined" &&
-        this.logedInUserDetails &&
-        this.logedInUserDetails.userId
+        // typeof this.logedInUserDetails !== "undefined" &&
+        // this.logedInUserDetails &&
+        this.logedInUserDetails
       ) {
         this.active = true;
       } else {
@@ -310,11 +310,11 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    if (localStorage.getItem("token")) {
+      this.logedInUserDetails = true;
+        // JSON.parse(localStorage.getItem("token")) || {};
     } else {
-      this.logedInUserDetails = null;
+      this.logedInUserDetails = false;
     }
   },
 };

@@ -212,8 +212,12 @@
                       v-model="emailOTP"
                       maxlength="6"
                     />
-                    <span class="time" :class="{ startTimer: startTimer }">{{ timer }}</span>
-                    <span class="time" :class="{ showTick: showTick }" ><i class="green-tick-circle"></i></span>
+                    <span class="time" :class="{ startTimer: startTimer }">{{
+                      timer
+                    }}</span>
+                    <span class="time" :class="{ showTick: showTick }"
+                      ><i class="green-tick-circle"></i
+                    ></span>
                   </div>
                   <button
                     class="btn-green-outline"
@@ -355,7 +359,7 @@ export default {
             })
             .then((response) => {
               if (response.data.status == 200) {
-                window.location = "/member-registration-completed";
+                this.$router.push("member-registration-completed");
               }
             });
         } catch (error) {
@@ -445,6 +449,7 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.error.emailOTP = '';
             return true;
           } else if (
             verifyOtpData.data.status == 200 &&
