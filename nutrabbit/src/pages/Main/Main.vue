@@ -67,6 +67,7 @@ import { Pagination } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
+import { inject } from "vue";
 export default {
   name: "Main",
   components: {
@@ -155,8 +156,10 @@ export default {
     };
   },
   setup() {
+    const common = inject("common");
     return {
       modules: [Pagination],
+      common
     };
   },
   mounted() {
