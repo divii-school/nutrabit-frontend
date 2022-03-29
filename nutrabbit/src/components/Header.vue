@@ -36,17 +36,17 @@
                     </li>
                     <li>
                       <p>aloe</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to=""><i class="icon-close-search"></i></router-link>
                     </li>
                     <li>
                       <p>nervous system</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to="" ><i class="icon-close-search"></i></router-link>
                     </li>
                   </ul>
                 </div>
                 <div class="delete-close">
-                  <a href="#"><i class="icon-delete"></i>Delete all</a>
-                  <a href="#" @click="activeSearch = false">to close</a>
+                  <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
+                  <router-link to="" @click="activeSearch = false">to close</router-link>
                 </div>
               </div>
             </div>
@@ -60,8 +60,8 @@
                   <i class="login-icon"></i>{{ this.logedInUserDetails.name }}
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">Change of personal information</a>
-                  <a href="#" @click="logOut()">Log out</a>
+                  <router-link to="" >Change of personal information</router-link>
+                  <router-link to="" @click="logOut()">Log out</router-link>
                 </div>
               </div>
             </div>
@@ -83,14 +83,14 @@
               <i class="icon-mobile-search"></i>
             </router-link>
 
-            <a
-              href="#"
+            <router-link
+              to=""
               class="menu-toggle"
               @click="sideMenuOpen"
               :aria-pressed="active ? 'true' : 'false'"
             >
               <img src="../assets/images/menu-toggle.png" alt="" />
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
