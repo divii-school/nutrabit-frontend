@@ -1,5 +1,4 @@
 <template>
-<p>{{}}</p>
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
@@ -9,8 +8,10 @@
               <img src="../assets/images/logo.svg" alt="Logo" />
             </router-link>
             <ul class="flex">
-              <li><a href="javascript:void(0)">my choice</a></li>
-              <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
+              <li><router-link to="">my choice</router-link></li>
+              <li><router-link to="">nutri 3.3 blending</router-link></li>
+              <!-- this is for testing purpose only -->
+              <li><router-link to="/personal-information">Personal Info</router-link></li>
             </ul>
           </div>
           <div class="manuRight">
@@ -21,7 +22,7 @@
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
                 />
-                <a href="#"><i class="icon-search-black"></i></a>
+                <router-link to=""><i class="icon-search-black"></i></router-link>
               </div>
               <div
                 class="header-search-data"
@@ -31,7 +32,7 @@
                   <ul>
                     <li>
                       <p>muscular system</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to=""><i class="icon-close-search"></i></router-link>
                     </li>
                     <li>
                       <p>aloe</p>
