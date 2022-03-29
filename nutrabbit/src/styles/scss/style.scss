@@ -333,6 +333,15 @@ button:disabled {
   }
 }
 
+.blendBtnList{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button{
+    width: 49%;
+  }
+}
+
 /* theme color */
 .themePurple{
   .heading {
@@ -388,6 +397,22 @@ button:disabled {
       color: $purple-F4;
       background: transparent;
       border-color: $purple-F4;
+    }
+  }
+  .blending-tag{
+    span{
+      border-color: $purple-F4 !important;
+      color: $purple-F4 !important;
+    }
+  }
+  .blendBtnList{
+    .purple-btn-outline{
+      color: $purple-F4;
+      background: transparent;
+      border: 1px solid $purple-F4;
+    }
+    .blue-btn-solid{
+      background: $purple-F4;
     }
   }
 }
