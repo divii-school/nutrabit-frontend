@@ -105,9 +105,9 @@
           @click="activeSearch = true"
           :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"
+        <router-link to="" :class="activeSearch ? 'activeSearchIcon' : ''"
           ><i class="icon-mobile-search"></i
-        ></a>
+        ></router-link>
       </div>
       <div
         class="header-search-data"
@@ -117,7 +117,7 @@
           <ul>
             <li>
               <p>muscular system</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
             <li>
               <p>aloe</p>

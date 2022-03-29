@@ -40,4 +40,12 @@ export default class CommonService {
       .then((res) => res)
       .catch((err) => err)
   }
+
+  // forget password verification
+
+  async forgetPassword(email, username) {
+    return await axios.post(`/user/find_password`, { email, username })
+      .then((res) => res)
+      .catch((err) => err)
+  }
 }

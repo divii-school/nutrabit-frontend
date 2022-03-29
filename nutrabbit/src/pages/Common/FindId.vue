@@ -98,7 +98,7 @@ export default {
     this.commonService = new CommonService();
   },
   methods: {
-    confirmFindId() {
+    async confirmFindId() {
       if (!validator.isEmail(this.email)) {
         this.error.email = "Enter a valid email address";
       }
@@ -161,7 +161,7 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
-            this.error.emailOTP = '';
+            this.error.emailOTP = "";
             return true;
           }
         } catch (error) {

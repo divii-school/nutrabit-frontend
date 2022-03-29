@@ -38,7 +38,7 @@
                 </div>
                 <button
                   class="btn-green-outline"
-                  @click="userFindId"
+                  @click="forgetPassword"
                   :class="{ grey: isVerification }"
                   :disabled="emailValidated"
                 >
@@ -107,6 +107,7 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
+      verify_status: '',
     };
   },
   created() {
@@ -114,7 +115,7 @@ export default {
   },
   methods: {
     confirmFindId() {
-      if (!validator.isEmpty(this.userId)) {
+      if (this.userId == "") {
         this.error.userId = "Enter a valid user id";
       }
       if (!validator.isEmail(this.email)) {
@@ -126,43 +127,48 @@ export default {
       if (validator.isEmpty(this.emailOTP)) {
         this.error.emailOTP = "Please enter your email verification code";
       } else {
-        this.$router.push("/login");
+        console.log(this.verify_status)
+        if (localUserData.verify_status == 1) {
+          this.$router.push("/change-password");
+        }
       }
     },
-    async userFindId() {
+    async forgetPassword() {
       if (!validator.isEmail(this.email)) {
         this.error.email = "Enter a valid email address";
       }
       if (validator.isEmpty(this.email)) {
         this.error.email = "Please enter your email address";
       } else {
-        this.commonService.userFindId(this.email).then((res) => {
-          console.log(res);
+        this.commonService
+          .forgetPassword(this.email, this.userId)
+          .then((res) => {
+            console.log(res);
 
-          if (res.status == 200) {
-            this.isActive = false;
-            this.isVerification = true;
-            this.emailValidated = 1;
-            this.otpValidate = 0;
-            this.startTimer = false;
-            this.$swal("OTP has been sent to your email");
-            this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
-              }
-            }, 1000);
-          }
-          if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
-          }
-        });
+            if (res.status == 200) {
+              this.isActive = false;
+              this.isVerification = true;
+              this.emailValidated = 1;
+              this.otpValidate = 0;
+              this.startTimer = false;
+              this.$swal("OTP has been sent to your email");
+              this.error.email = "";
+              setInterval(() => {
+                if (this.timer === 0) {
+                  clearInterval();
+                  this.isVerification = false;
+                  this.isActive = true;
+                  this.emailValidated = 0;
+                  this.otpValidate = 1;
+                } else {
+                  this.timer--;
+                }
+              }, 1000);
+            }
+            if (res.response.data.status == 400) {
+              return (this.error.email = res.response.data.message);
+            }
+          });
       }
     },
     async verifyOTP() {
@@ -170,7 +176,8 @@ export default {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
         try {
-          const verifyOtpData = await axios.post("/user/find_id_post", {
+          const verifyOtpData = await axios.post("/user/find_password_post", {
+            username: this.userId,
             email: this.email,
             verification_code: this.emailOTP,
             btn_type: "certification",
@@ -180,6 +187,10 @@ export default {
             this.startTimer = true;
             this.showTick = false;
             this.error.emailOTP = "";
+            localStorage.setItem(
+              "userData",
+              JSON.stringify(verifyOtpData.data.data)
+            );
             return true;
           }
         } catch (error) {
@@ -188,6 +199,10 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    let localUserData = JSON.parse(localStorage.getItem("userData"));
+    this.verify_status = localUserData.verify_status;
   },
 };
 </script>
