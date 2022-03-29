@@ -91,6 +91,7 @@
 <script>
 import CommonService from "../../services/CommonService";
 import validator from "validator";
+import axios from "axios";
 export default {
   name: "ForgotPassword",
   data() {
@@ -99,7 +100,6 @@ export default {
       email: "",
       emailOTP: "",
       error: {},
-      errors: {},
       timer: 130,
       isActive: true,
       isVerification: false,
@@ -108,6 +108,7 @@ export default {
       startTimer: true,
       showTick: true,
       verify_status: '',
+      localUserData: '',
     };
   },
   created() {
@@ -127,8 +128,8 @@ export default {
       if (validator.isEmpty(this.emailOTP)) {
         this.error.emailOTP = "Please enter your email verification code";
       } else {
-        console.log(this.verify_status)
-        if (localUserData.verify_status == 1) {
+        console.log(this.localUserData.verifiy_status)
+        if (this.localUserData.verifiy_status == 1) {
           this.$router.push("/change-password");
         }
       }
@@ -188,12 +189,13 @@ export default {
             this.showTick = false;
             this.error.emailOTP = "";
             localStorage.setItem(
-              "userData",
+              "forgetUserData",
               JSON.stringify(verifyOtpData.data.data)
             );
             return true;
           }
         } catch (error) {
+          console.log(error)
           this.error.emailOTP = "wrong otp";
           return false;
         }
@@ -201,8 +203,9 @@ export default {
     },
   },
   mounted() {
-    let localUserData = JSON.parse(localStorage.getItem("userData"));
-    this.verify_status = localUserData.verify_status;
+    this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));    
+    console.log(this.localUserData.userId)
+    console.log(this.localUserData.verifiy_status)
   },
 };
 </script>
