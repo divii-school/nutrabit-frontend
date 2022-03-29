@@ -3,7 +3,7 @@ import validator from "validator";
 const validateRegistration = (data) => {
   let errors = {};
 
-  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address } = data;
+  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address, account_type, businessNumber, businessName, depertment, contactPerson } = data;
 
 
   if (termsCheck == false) {
@@ -12,24 +12,23 @@ const validateRegistration = (data) => {
   if (personalCheck == false) {
     errors.personalCheck = "Please check personal information";
   }
-  // if (validator.isEmpty(businessNumber)) {
-  //   errors.name = "Please enter your business number";
-  // }
-  // if (validator.isEmpty(businessName)) {
-  //   errors.name = "Please enter your business name";
-  // }
-  // if (validator.isEmpty(depertment)) {
-  //   errors.name = "Please enter the department name";
-  // }
-  // if (validator.isEmpty(contactPerson)) {
-  //   errors.name = "Please enter the name of the person in charge";
-  // }
+  if (account_type == 'business') {
+    if (validator.isEmpty(businessNumber)) {
+      errors.businessNumber = "Please enter your business number";
+    }
+    if (validator.isEmpty(businessName)) {
+      errors.businessName = "Please enter your business name";
+    }
+    if (validator.isEmpty(depertment)) {
+      errors.depertment = "Please enter the department name";
+    }
+    if (validator.isEmpty(contactPerson)) {
+      errors.contactPerson = "Please enter the name of the person in charge";
+    }
+  }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
-  // else if (validator.isEmpty(!(name))) {
-  //   errors.name = "";
-  // }
   if (validator.isEmpty(username)) {
     errors.username = "Please enter your ID";
   }

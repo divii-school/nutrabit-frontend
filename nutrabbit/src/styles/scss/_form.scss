@@ -45,13 +45,18 @@
                 font-size: 14px;
                 line-height: 17px;
                 color: $green-53;
+                &.startTimer{
+                    display: none;
+                }
+                &.showTick{
+                    display: none;
+                }
             }
             .textarea{
                 width: 690px;
                 height: 278px;
             }
             .inquiry-textarea{
-              
                 height: 216px;
             }
 

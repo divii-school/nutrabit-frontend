@@ -4,12 +4,10 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">
-              find ID
-            </h1>
+            <h1 class="login-heading">find ID</h1>
           </div>
           <form action="" class="signUp-form">
-           <div class="form-group">
+            <div class="form-group">
               <label for=""><i class="icon-required"></i>e-mail</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
@@ -25,7 +23,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label for=""><i class="icon-required"></i>Email Verification Number</label>
+              <label for=""
+                ><i class="icon-required"></i>Email Verification Number</label
+              >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -44,38 +44,23 @@
       </div>
     </div>
   </div>
-  <button
-      type="button"
-      class="btn"
-      @click="showModal"
-    >
-      Open Modal!
-    </button>
-
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-    />
+  <button type="button" class="btn">Open Modal!</button>
 </template>
 <script>
-import Modal from '../../components/Modal.vue';
+
 export default {
-   name:'FindId',
-   components:{
-     Modal,
-   },
-   data() {
-      return {
-        isModalVisible: false,
-      };
-    },
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      }
+  name: "FindId",
+  data() {
+    return {
+      
+    };
+  },
+  methods: {
+    async findId (){
+      const findIdData = await axios.post('/v1/sites/user/find_id', {
+
+      })
     }
-}
+  },
+};
 </script>

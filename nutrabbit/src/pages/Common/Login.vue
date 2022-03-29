@@ -131,7 +131,7 @@ export default {
                   this.cookies.set("rememberUserEmail", "");
                   this.cookies.set("rememberUserPassword", "");
                 }
-                window.location = "/";
+                this.$router.push("/")
               }
             });
         } catch (error) {

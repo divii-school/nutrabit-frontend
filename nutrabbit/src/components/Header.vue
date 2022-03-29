@@ -1,4 +1,5 @@
 <template>
+<p>{{}}</p>
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
