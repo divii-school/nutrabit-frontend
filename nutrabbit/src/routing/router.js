@@ -25,7 +25,12 @@ import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceR
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
-import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue'
+import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
+import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
+import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
+import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
+import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
+
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
@@ -159,6 +164,11 @@ const routes = [
         component: MyChoiceRecomandedBlending,
     },
     {
+        name: 'MyChoiceRecomandedBlendingFinalQuote',
+        path: '/my-choice-recomanded-blending-fquote',
+        component: MyChoiceRecomandedBlendingFinalQuote,
+    },
+    {
         name: 'sample-making',
         path: '/sample-making',
         component: SampleMaking,
@@ -182,6 +192,21 @@ const routes = [
         name: 'RawMaterialEstimation',
         path: '/raw-material-estimation',
         component: RawMaterialEstimation,
+    },
+    {
+        name: 'RawMMaterialPackage',
+        path: '/raw-material-package',
+        component: RawMMaterialPackage,
+    },
+    {
+        name: 'IngredientFormulation',
+        path: '/ingredient-formulation',
+        component: IngredientFormulation,
+    },
+    {
+        name: 'AddIngredient',
+        path: '/add-ingredient',
+        component: AddIngredient,
     },
     {
         name: 'notice',

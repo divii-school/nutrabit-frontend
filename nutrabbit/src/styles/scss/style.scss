@@ -272,6 +272,7 @@ button:disabled {
   user-select: none;
   padding-left: 62px;
   margin-bottom: 12px;
+  line-height: 110%;
   /* Hide the browser's default radio button */
   input {
     position: absolute;
@@ -329,5 +330,64 @@ button:disabled {
           letter-spacing: 0.02em;
           color: $black-18;
       }
+  }
+}
+
+/* theme color */
+.themePurple{
+  .heading {
+    h2{
+      color: $grey-66 !important;
+    }
+  }
+  .blue{
+    background: $purple-F4;
+  }
+  .my-choice-heading{
+    h2{ 
+      color: $purple-F4 !important;
+    }
+    .recomanded-status-wrap{
+      .recomanded-status{
+        .d-item{
+          span{
+            border-color: #C08EF8 !important;
+          }
+        }
+        &.visited {
+          .d-item{
+            span{
+              border-color: $purple-F4 !important;
+              background: #EAD9FD !important;
+            }
+            p{
+              color: #C08EF8 !important;
+            }
+          }
+          &::before{
+            background: $purple-F4 !important;
+          }
+        }
+        &.active{
+          &::before{
+            background: $purple-F4 !important;
+          }
+          span{
+            background: $purple-F4 !important;
+            border-color: $purple-F4 !important;
+          }
+          p{
+            color: $purple-F4 !important;
+          }
+        }
+      }
+    }
+  }
+  .btn-green-outline{
+    &.blue{
+      color: $purple-F4;
+      background: transparent;
+      border-color: $purple-F4;
+    }
   }
 }

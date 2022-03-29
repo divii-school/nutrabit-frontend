@@ -6,23 +6,18 @@
           <div class="login-heading-wrap">
             <h1 class="login-heading">{{ $t("login") }}</h1>
           </div>
-          <form action="" @submit="(e) => e.preventDefault()">
+          <form action @submit="(e) => e.preventDefault()">
             <div class="form-group" :class="errorEmail ? 'error' : ''">
-              <label for="">{{ $t("ID") }}</label>
+              <label for>{{ $t("ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter ID"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
             </div>
             <div class="form-group" :class="errorPassword ? 'error' : ''">
-              <label for="">{{ $t("password") }}</label>
+              <label for>{{ $t("password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -51,26 +46,28 @@
                     <router-link to="/find-id">{{ $t("findID") }}</router-link>
                   </li>
                   <li>
-                    <a href="">{{ $t("findpassword") }}</a>
+                    <a href>{{ $t("findpassword") }}</a>
                   </li>
                 </ul>
               </div>
               <div class="form-link-right">
-                <router-link to="/member-registration-type-selection">{{
-                  $t("SignUp")
-                }}</router-link>
+                <router-link to="/member-registration-type-selection">
+                  {{
+                    $t("SignUp")
+                  }}
+                </router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">
-              {{ $t("login") }}
-            </button>
+            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
           </form>
           <div class="getting-started">
             <button class="btn-primary with-icon yellow-btn">
-              <i class="icon-chat-black"></i>{{ $t("Startwithcacao") }}
+              <i class="icon-chat-black"></i>
+              {{ $t("Startwithcacao") }}
             </button>
             <button class="btn-primary with-icon green-btn">
-              <i class="icon-naver"></i> {{ $t("GettingStartedwithNaver") }}
+              <i class="icon-naver"></i>
+              {{ $t("GettingStartedwithNaver") }}
             </button>
           </div>
         </div>
@@ -82,7 +79,10 @@
 <script>
 import Button from "../../components/Button.vue";
 import axios from "axios";
+import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
+import CommonService from "../../services/CommonService";
+
 
 export default {
   name: "Login",
@@ -100,60 +100,11 @@ export default {
   },
   setup() {
     const { cookies } = useCookies();
-    return { cookies };
+    const common = inject("common");
+    return { cookies, common };
   },
-  methods: {
-    async onSubmit() {
-      const setEmail = this.email;
-      const setPassword = this.password;
-      if (setEmail == "") {
-        this.errorEmail = "Please enter an email id";
-      } else if (setPassword == "") {
-        this.errorPassword = "Please enter password";
-      } else {
-        try {
-          const data = await axios
-            .post("/v1/sites/auth/login", {
-              login_id: setEmail,
-              password: setPassword,
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                console.log(response.data.status);
-                localStorage.setItem(
-                  "logedInUserDetails",
-                  JSON.stringify(response.data.data)
-                );
-                if (this.checkBox) {
-                  this.cookies.set("rememberUserEmail", setEmail);
-                  this.cookies.set("rememberUserPassword", setPassword);
-                } else {
-                  this.cookies.set("rememberUserEmail", "");
-                  this.cookies.set("rememberUserPassword", "");
-                }
-                this.$router.push("/")
-              }
-            });
-        } catch (error) {
-          let text =
-            error && error.response && error.response.data
-              ? error.response.data.message
-              : "";
-          let result = text.match("Password");
-          let result1 = text.match("Email");
-          if (result == "Password") {
-            this.errorPassword = "Enter a valid password.";
-            this.errorEmail = "";
-          } else if (result1 == "Email") {
-            this.errorPassword = "";
-            this.errorEmail = "Enter a valid email.";
-          } 
-          // else {
-          //   alert("Email or, password is incorrect");
-          // }
-        }
-      }
-    },
+  created() {
+    this.commonService = new CommonService();
   },
   mounted() {
     if (this.cookies) {
@@ -168,6 +119,71 @@ export default {
           (this.password = rememberUserEmailCookie);
       }
     }
+  },
+  methods: {
+    onSubmit() {
+      const setEmail = this.email;
+      const setPassword = this.password;
+      if (setEmail == "") {
+        this.errorEmail = "Please enter an email id";
+      } else if (setPassword == "") {
+        this.errorPassword = "Please enter password";
+      } else {
+        // try {
+        //   const data = await axios
+        //     .post("/v1/sites/auth/login", {
+        //       login_id: setEmail,
+        //       password: setPassword,
+        //     })
+        //     .then((response) => {
+        //       if (response.data.status == 200) {
+        //         console.log(response.data.status);
+        //         localStorage.setItem(
+        //           "logedInUserDetails",
+        //           JSON.stringify(response.data.data)
+        //         );
+        //         if (this.checkBox) {
+        //           this.cookies.set("rememberUserEmail", setEmail);
+        //           this.cookies.set("rememberUserPassword", setPassword);
+        //         }
+        //         window.location = "/";
+        //       }
+        //     });
+        // } catch (error) {
+        //   let text =
+        //     error && error.response && error.response.data
+        //       ? error.response.data.message
+        //       : "";
+        //   let result = text.match("Password");
+        //   let result1 = text.match("Email");
+        //   if (result == "Password") {
+        //     this.errorPassword = "Enter a valid password.";
+        //     this.errorEmail = "";
+        //   } else if (result1 == "Email") {
+        //     this.errorPassword = "";
+        //     this.errorEmail = "Enter a valid email.";
+        //   }
+        //   // else {
+        //   //   alert("Email or, password is incorrect");
+        //   // }
+        // }
+
+        //API
+        this.commonService.getLogin(setEmail, setPassword).then((res) => {
+          console.log(res.data);
+          if (res.data.status == 200) {
+            console.log(res.data.status);
+            localStorage.setItem('token', res.data.data.token);
+            this.common.state.userId = res.data.data.userId;
+            if (this.checkBox) {
+              this.cookies.set("rememberUserEmail", setEmail);
+              this.cookies.set("rememberUserPassword", setPassword);
+            }
+            this.$router.push("/");
+          }
+        });
+      }
+    },
   },
 };
 </script>
