@@ -121,6 +121,7 @@
                     class="btn-green-outline"
                     @click="sendOtp"
                     :class="{ grey: isVerification }"
+                    :disabled="emailValidated"
                   >
                     Send verification code
                   </button>
@@ -138,14 +139,20 @@
                       type="text"
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
+                      maxlength="6"
                     />
-                    <span class="time">{{ timer }}</span>
-                    <!-- <span class="time"><i class="green-tick-circle"></i></span> -->
+                    <span class="time" :class="{ startTimer: startTimer }">{{
+                      timer
+                    }}</span>
+                    <span class="time" :class="{ showTick: showTick }"
+                      ><i class="green-tick-circle"></i
+                    ></span>
                   </div>
                   <button
                     class="btn-green-outline"
                     :class="{ grey: isActive }"
                     @click="verifyOTP"
+                    :disabled="otpValidate"
                   >
                     certification
                   </button>
@@ -175,6 +182,7 @@
                       type="text"
                       placeholder="Enter address"
                       v-model="address"
+                      disabled
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
@@ -188,6 +196,7 @@
                       type="text"
                       placeholder="Enter detailed address"
                       v-model="address"
+                      disabled
                     />
                   </div>
                 </div>
@@ -263,6 +272,7 @@
 import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
+import CommonService from "../../services/CommonService";
 export default {
   name: "MemberRegistrationIndividual",
   data() {
@@ -283,9 +293,14 @@ export default {
       timer: 130,
       isActive: true,
       isVerification: false,
-      otpVerified: false,
-      // timerOn: true,
+      emailValidated: 0,
+      otpValidate: 1,
+      startTimer: true,
+      showTick: true,
     };
+  },
+  created() {
+    this.commonService = new CommonService();
   },
   methods: {
     async individalRegistration() {
@@ -305,113 +320,114 @@ export default {
       if (isInvalid) {
         this.error = error;
       } else {
-        try {
-          let checkUserStatus = await this.checkUser();
-          let sendVerification = await this.sendOtp();
-          let checkOtp = await this.verifyOTP();
-          let checkAddress = this.getAddress();
-          if (!checkUserStatus) {
-            return;
-          } else if (!sendVerification) {
-            return;
-          } else if (!checkOtp) {
-            return;
-          } else if (!checkAddress) {
-            this.error.address = "Please enter your address";
-          }
-          return await axios
-            .post("/v1/sites/user/individual_registration", {
-              name: this.name,
-              username: this.username,
-              password: this.password,
-              email: this.email,
-              mobile: this.phoneNumber,
-              address: this.address,
-              distribution_medium: this.checkName.join(","),
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                window.location = "/member-registration-completed";
-              }
-            });
-        } catch (error) {
-          console.log(error);
-        }
+        this.commonService
+          .individalRegistration(
+            this.name,
+            this.username,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.checkName.join(",")
+          )
+          .then((res) => {
+            console.log(res);
+            if (res.data.status == 200) {
+              console.log(res.data.status);
+              this.$router.push("member-registration-completed");
+            }
+          });
       }
     },
     async checkUser() {
-      try {
-        const checkUserdata = await axios.post("/v1/sites/user/check_id", {
-          uuid: this.username,
-        });
-        if (
-          checkUserdata.data.status == 200 &&
-          checkUserdata.data.data.is_exist === 0
-        ) {
-          console.log(checkUserdata.data.data.is_exist);
-          return true;
-        } else if (
-          checkUserdata.data.status == 200 &&
-          checkUserdata.data.data.is_exist === 1
-        ) {
-          return (this.error.username = checkUserdata.data.data.msg);
+      if (validator.isEmpty(this.username)) {
+        this.error.username = "Please enter your ID";
+      }
+      if (!validator.isAlphanumeric(this.username)) {
+        this.error.username = "Please use only letter and number";
+      } else {
+        try {
+          const checkUserdata = await axios.post("/user/check_id", {
+            uuid: this.username,
+          });
+          if (
+            checkUserdata.data.status == 200 &&
+            checkUserdata.data.data.is_exist === 0
+          ) {
+            return (this.error.username = "");
+          } else if (
+            checkUserdata.data.status == 200 &&
+            checkUserdata.data.data.is_exist === 1
+          ) {
+            return (this.error.username = checkUserdata.data.data.msg);
+          }
+        } catch (error) {
+          return false;
         }
-      } catch (error) {
-        this.error.username = "Please verify the user";
-        return false;
       }
     },
     async sendOtp() {
-      try {
-        const sendOtoData = await axios.post("/v1/sites/user/send_otp", {
-          email: this.email,
+      if (!validator.isEmail(this.email)) {
+        this.error.email = "Enter a valid email address";
+      }
+      if (validator.isEmpty(this.email)) {
+        this.error.email = "Please enter your email address";
+      } else {
+        this.commonService.sendOTP(this.email).then((res) => {
+          if (res.status == 200) {
+            this.isActive = false;
+            this.isVerification = true;
+            this.emailValidated = 1;
+            this.otpValidate = 0;
+            this.startTimer = false;
+            this.$swal("OTP has been sent to your email");
+            this.error.email = "";
+            setInterval(() => {
+              if (this.timer === 0) {
+                clearInterval();
+                this.isVerification = false;
+                this.isActive = true;
+                this.emailValidated = 0;
+                this.otpValidate = 1;
+              } else {
+                this.timer--;
+              }
+            }, 1000);
+          }
+          if (res.response.data.status == 400) {
+            return (this.error.email = res.response.data.message);
+          }
         });
-        if (sendOtoData.data.status == 200) {
-          this.isActive = false;
-          this.isVerification = true;
-          this.$swal("OTP has been sent to your email");
-          setInterval(() => {
-            if (this.timer === 0) {
-              clearInterval();
-              this.isVerification = false;
-              this.isActive = true;
-            } else {
-              this.timer--;
-            }
-          }, 1000);
-          return true;
-        } else {
-          return (this.error.email = sendOtoData.data.message);
-        }
-      } catch (error) {
-        this.error.email = "hhhh";
-        return false;
       }
     },
     async verifyOTP() {
       if (this.emailOTP == "") {
         return (this.error.emailOTP = "Enter an valid OTP");
-      }
-      try {
-        const verifyOtpData = await axios.post("/v1/sites/user/verify_otp", {
-          email: this.email,
-          verification_code: this.emailOTP,
-        });
-        if (
-          verifyOtpData.data.status == 200 &&
-          verifyOtpData.data.data.otp_verify === 1
-        ) {
-          this.$swal("OTP verified");
-          return true;
-        } else if (
-          verifyOtpData.data.status == 200 &&
-          verifyOtpData.data.data.otp_verify === 0
-        ) {
-          console.log("wrong otp");
+      } else {
+        try {
+          const verifyOtpData = await axios.post("/user/verify_otp", {
+            email: this.email,
+            verification_code: this.emailOTP,
+          });
+          if (
+            verifyOtpData.data.status == 200 &&
+            verifyOtpData.data.data.otp_verify === 1
+          ) {
+            this.$swal("OTP verified");
+            this.startTimer = true;
+            this.showTick = false;
+            this.error.emailOTP = '';
+            return true;
+          } else if (
+            verifyOtpData.data.status == 200 &&
+            verifyOtpData.data.data.otp_verify === 0
+          ) {
+            this.error.emailOTP = "wrong otp";
+          }
+        } catch (error) {
+          this.error.emailOTP = "Please enter your email verification code";
+          return false;
         }
-      } catch {
-        this.error.emailOTP = "Please enter your email verification code";
-        return false;
       }
     },
     getAddress() {

@@ -8,8 +8,10 @@
               <img src="../assets/images/logo.svg" alt="Logo" />
             </router-link>
             <ul class="flex">
-              <li><a href="javascript:void(0)">my choice</a></li>
-              <li><a href="javascript:void(0)">nutri 3.3 blending</a></li>
+              <li><router-link to="">my choice</router-link></li>
+              <li><router-link to="">nutri 3.3 blending</router-link></li>
+              <!-- this is for testing purpose only -->
+              <li><router-link to="/personal-information">Personal Info</router-link></li>
             </ul>
           </div>
           <div class="manuRight">
@@ -20,7 +22,7 @@
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
                 />
-                <a href="#"><i class="icon-search-black"></i></a>
+                <router-link to=""><i class="icon-search-black"></i></router-link>
               </div>
               <div
                 class="header-search-data"
@@ -30,21 +32,21 @@
                   <ul>
                     <li>
                       <p>muscular system</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to=""><i class="icon-close-search"></i></router-link>
                     </li>
                     <li>
                       <p>aloe</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to=""><i class="icon-close-search"></i></router-link>
                     </li>
                     <li>
                       <p>nervous system</p>
-                      <a href="#"><i class="icon-close-search"></i></a>
+                      <router-link to="" ><i class="icon-close-search"></i></router-link>
                     </li>
                   </ul>
                 </div>
                 <div class="delete-close">
-                  <a href="#"><i class="icon-delete"></i>Delete all</a>
-                  <a href="#" @click="activeSearch = false">to close</a>
+                  <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
+                  <router-link to="" @click="activeSearch = false">to close</router-link>
                 </div>
               </div>
             </div>
@@ -58,8 +60,8 @@
                   <i class="login-icon"></i>{{ this.logedInUserDetails.name }}
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">Change of personal information</a>
-                  <a href="#" @click="logOut()">Log out</a>
+                  <router-link to="" >Change of personal information</router-link>
+                  <router-link to="" @click="logOut()">Log out</router-link>
                 </div>
               </div>
             </div>
@@ -81,14 +83,14 @@
               <i class="icon-mobile-search"></i>
             </router-link>
 
-            <a
-              href="#"
+            <router-link
+              to=""
               class="menu-toggle"
               @click="sideMenuOpen"
               :aria-pressed="active ? 'true' : 'false'"
             >
               <img src="../assets/images/menu-toggle.png" alt="" />
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -103,9 +105,9 @@
           @click="activeSearch = true"
           :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <a href="#" :class="activeSearch ? 'activeSearchIcon' : ''"
+        <router-link to="" :class="activeSearch ? 'activeSearchIcon' : ''"
           ><i class="icon-mobile-search"></i
-        ></a>
+        ></router-link>
       </div>
       <div
         class="header-search-data"
@@ -115,7 +117,7 @@
           <ul>
             <li>
               <p>muscular system</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
             <li>
               <p>aloe</p>
@@ -290,9 +292,9 @@ export default {
     },
     sideMenuOpen() {
       if (
-        typeof this.logedInUserDetails !== "undefined" &&
-        this.logedInUserDetails &&
-        this.logedInUserDetails.userId
+        // typeof this.logedInUserDetails !== "undefined" &&
+        // this.logedInUserDetails &&
+        this.logedInUserDetails
       ) {
         this.active = true;
       } else {
@@ -309,11 +311,11 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    if (localStorage.getItem("token")) {
+      this.logedInUserDetails = true;
+        // JSON.parse(localStorage.getItem("token")) || {};
     } else {
-      this.logedInUserDetails = null;
+      this.logedInUserDetails = false;
     }
   },
 };

@@ -97,6 +97,10 @@ input {
   }
 }
 
+button:disabled {
+  cursor: no-drop;
+}
+
 // custom check box
 .custom-check {
 	display: block;
