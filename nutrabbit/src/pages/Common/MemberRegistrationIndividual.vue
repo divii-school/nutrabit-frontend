@@ -143,14 +143,9 @@
                     />
                     <span
                       class="time"
-                      id="countdown"
+                      id="timer"
                       :class="{ startTimer: startTimer }"
-                    ></span>
-                    <span
-                      class="time"
-                      id="countdown"
-                      :class="{ startTimer: startTimer }"
-                      >{{ timer }}</span
+                      >{{ newTime }}</span
                     >
                     <span class="time" :class="{ showTick: showTick }"
                       ><i class="green-tick-circle"></i
@@ -296,13 +291,15 @@ export default {
       address: "",
       checkName: [],
       error: {},
-      timer: 130,
+      timer: 10,
+      newTime: "",
       isActive: true,
       isVerification: false,
       emailValidated: 0,
       otpValidate: 1,
       startTimer: true,
       showTick: true,
+      // remaining: 180
     };
   },
   created() {
@@ -377,18 +374,25 @@ export default {
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
             setInterval(() => {
-              if (this.timer === 0) {
+              console.log(this.timer);
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer == 0) {
                 clearInterval();
                 this.isVerification = false;
                 this.isActive = true;
                 this.emailValidated = 0;
                 this.otpValidate = 1;
-              } else {
+                this.startTimer = true;
+              } 
+              else if (this.timer > 0) {
                 this.timer--;
               }
             }, 1000);
-          }
-          if (res.response.data.status == 400) {
+          } else if (res.response.data.status == 400) {
             return (this.error.email = res.response.data.message);
           }
         });
