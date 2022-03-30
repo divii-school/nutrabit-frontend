@@ -25,6 +25,14 @@ export default class CommonService {
       .catch((err) => err)
   }
 
+    // check user id
+
+    async checkUser(uuid) {
+      return await axios.post(`/user/check_id`, { uuid })
+        .then((res) => res)
+        .catch((err) => err)
+    }
+
   // send otp
 
   async sendOTP(email) {
@@ -32,6 +40,16 @@ export default class CommonService {
       .then((res) => res)
       .catch((err) => err)
   }
+
+  // verify OTP
+
+  async verifyOTP(email, verification_code) {
+    return await axios.post(`/user/verify_otp`, { email, verification_code })
+      .then((res) => res)
+      .catch((err) => err)
+  }
+
+  
 
   // User find id
 

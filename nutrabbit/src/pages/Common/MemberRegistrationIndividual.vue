@@ -331,9 +331,7 @@ export default {
             this.checkName.join(",")
           )
           .then((res) => {
-            console.log(res);
             if (res.data.status == 200) {
-              console.log(res.data.status);
               this.$router.push("member-registration-completed");
             }
           });
@@ -346,24 +344,20 @@ export default {
       if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
       } else {
-        try {
-          const checkUserdata = await axios.post("/user/check_id", {
-            uuid: this.username,
-          });
+        this.commonService.checkUser(this.username).then((res) => {
           if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 0
+            res.data.status == 200 &&
+            res.data.data.is_exist === 0
           ) {
-            return (this.error.username = "");
+            this.error.username = "";
+            this.$swal("User id available");
           } else if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 1
+            res.data.status == 200 &&
+            res.data.data.is_exist === 1
           ) {
-            return (this.error.username = checkUserdata.data.data.msg);
+            return (this.error.username = res.data.data.msg);
           }
-        } catch (error) {
-          return false;
-        }
+        });
       }
     },
     async sendOtp() {
@@ -404,32 +398,20 @@ export default {
       if (this.emailOTP == "") {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
-        try {
-          const verifyOtpData = await axios.post("/user/verify_otp", {
-            email: this.email,
-            verification_code: this.emailOTP,
-          });
-          if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 1
-          ) {
+        this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
-            this.error.emailOTP = '';
+            this.error.emailOTP = "";
             return true;
-          } else if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 0
-          ) {
+          } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             this.error.emailOTP = "wrong otp";
           }
-        } catch (error) {
-          this.error.emailOTP = "Please enter your email verification code";
-          return false;
-        }
+        });
       }
     },
+
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
