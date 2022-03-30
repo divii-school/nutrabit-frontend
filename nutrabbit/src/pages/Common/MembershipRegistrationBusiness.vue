@@ -169,7 +169,7 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
                     />
@@ -309,7 +309,6 @@ export default {
       depertment: "",
       contactPerson: "",
       error: {},
-      errors: {},
       timer: 130,
       isActive: true,
       isVerification: false,
