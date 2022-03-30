@@ -174,6 +174,7 @@ export default {
             console.log(res.data.status);
             localStorage.setItem('token', res.data.data.token);
             this.common.state.userId = res.data.data.userId;
+            this.common.state.name = res.data.data.name;
             if (this.checkBox) {
               this.cookies.set("rememberUserEmail", setEmail);
               this.cookies.set("rememberUserPassword", setPassword);

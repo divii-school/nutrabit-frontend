@@ -3,6 +3,7 @@ import { reactive } from "vue";
 const state = reactive({
   AppData: undefined,
   userId: '',
+  name: '',
 });
 
 const methods = {

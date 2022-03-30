@@ -11,7 +11,7 @@
       <footer class="modal-footer">
         <div class="modal-btn-wrap dual-btn">
             <button type="button" class="btn-primary grey-btn-solid" @click="close" >{{btnText1}}</button>
-            <button type="button" class="btn-primary grenn-btn2" >{{btnText2}}</button>
+            <button type="button" class="btn-primary grenn-btn2" @click="this.$router.push(link)">{{btnText2}}</button>
         </div>
       </footer>
     </div>
@@ -21,7 +21,7 @@
 <script>
   export default {
     name: 'Modal',
-    props:['bodytext1', 'bodytext2', 'btnText1', 'btnText2'],
+    props:['bodytext1', 'bodytext2', 'btnText1', 'btnText2', 'link'],
     methods: {
       close() {
         this.$emit('close');

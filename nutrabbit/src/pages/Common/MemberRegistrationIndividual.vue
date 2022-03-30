@@ -141,7 +141,8 @@
                       v-model="emailOTP"
                       maxlength="6"
                     />
-                    <span class="time" :class="{ startTimer: startTimer }">{{
+                      <span class="time" id="countdown" :class="{ startTimer: startTimer }"></span>
+                    <span class="time" id="countdown" :class="{ startTimer: startTimer }">{{
                       timer
                     }}</span>
                     <span class="time" :class="{ showTick: showTick }"
@@ -288,7 +289,6 @@ export default {
       address: "",
       checkName: [],
       error: {},
-      errors: {},
       timer: 130,
       isActive: true,
       isVerification: false,
@@ -404,7 +404,6 @@ export default {
         });
       }
     },
-
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
@@ -412,31 +411,30 @@ export default {
         },
       }).open();
     },
-    // timer() {
-    //   let remaining = 120;
-    //   let m = Math.floor(remaining / 60);
-    //   let s = remaining % 60;
-
-    //   m = m < 10 ? "0" + m : m;
-    //   s = s < 10 ? "0" + s : s;
-    //   document.getElementById("timer").innerHTML = m + ":" + s;
-    //   remaining -= 1;
-
-    //   if (remaining >= 0 && timerOn) {
-    //     setTimeout(function () {
-    //       timer(remaining);
-    //     }, 1000);
-    //     return;
-    //   }
-
-    //   if (!timerOn) {
-    //     // Do validate stuff here
-    //     return;
-    //   }
-
-    //   // Do timeout stuff here
-    //   alert("Timeout for otp");
-    // },
   },
+  mounted: function() {
+    let upgradeTime = 7200;
+    let seconds = upgradeTime;
+
+    function timer() {
+      let days = Math.floor(seconds / 24 / 60 / 60);
+      let hoursLeft = Math.floor((seconds) - (days * 86400));
+      let hours = Math.floor(hoursLeft / 3600);
+      let minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+      let minutes = Math.floor(minutesLeft / 60);
+      let remainingSeconds = seconds % 60;
+      if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+      }
+      document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
+      if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('countdown').innerHTML = "Completed";
+      } else {
+        seconds--;
+      }
+    }
+    var countdownTimer = setInterval(timer, 1000);
+  }
 };
 </script>
