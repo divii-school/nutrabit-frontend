@@ -409,8 +409,7 @@ export default {
                 this.timer--;
               }
             }, 1000);
-          }
-          if (res.response.data.status == 400) {
+          } else if (res.response.data.status == 400) {
             return (this.error.email = res.response.data.message);
           }
         });
