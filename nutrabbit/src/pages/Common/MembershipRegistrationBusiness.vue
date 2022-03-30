@@ -169,7 +169,7 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
                     />
