@@ -269,7 +269,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
@@ -345,16 +344,10 @@ export default {
         this.error.username = "Please use only letter and number";
       } else {
         this.commonService.checkUser(this.username).then((res) => {
-          if (
-            res.data.status == 200 &&
-            res.data.data.is_exist === 0
-          ) {
+          if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.error.username = "";
             this.$swal("User id available");
-          } else if (
-            res.data.status == 200 &&
-            res.data.data.is_exist === 1
-          ) {
+          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
         });
@@ -415,7 +408,6 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
           return (this.address = data.address);
         },
       }).open();

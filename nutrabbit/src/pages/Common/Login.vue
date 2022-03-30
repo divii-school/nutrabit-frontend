@@ -78,7 +78,6 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import axios from "axios";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";

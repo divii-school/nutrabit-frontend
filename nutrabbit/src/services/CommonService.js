@@ -25,57 +25,81 @@ export default class CommonService {
       .catch((err) => err)
   }
 
-    // check user id
+  // check user id
 
-    async checkUser(uuid) {
-      return await axios.post(`/user/check_id`, { uuid })
-        .then((res) => res)
-        .catch((err) => err)
-    }
+  async checkUser(username) {
+    return await axios.post(`/user/check_id`, { uuid: username })
+      .then((res) => res)
+      .catch((err) => err)
+  }
 
   // send otp
 
   async sendOTP(email) {
-    return await axios.post(`/user/send_otp`, { email })
+    return await axios.post(`/user/send_otp`, { email: email })
       .then((res) => res)
       .catch((err) => err)
   }
 
   // verify OTP
 
-  async verifyOTP(email, verification_code) {
-    return await axios.post(`/user/verify_otp`, { email, verification_code })
+  async verifyOTP(email, emailOTP) {
+    return await axios.post(`/user/verify_otp`, { email: email, verification_code: emailOTP })
       .then((res) => res)
       .catch((err) => err)
   }
 
-  
+  // Business signup
+  async BusinessRegistration(name, username, password, email, phoneNumber, address, businessNumber, businessName, depertment, contactPerson) {
+    return await axios.post(`/user/business_registration`, {
+      name: name,
+      username: username,
+      password: password,
+      email: email,
+      mobile: phoneNumber,
+      address: address,
+      business_number: businessNumber,
+      business_name: businessName,
+      department: depertment,
+      contact_person: contactPerson,
+    })
+      .then((res) => res)
+      .catch((err) => err)
+  }
 
   // User find id
 
   async userFindId(email) {
-    return await axios.post(`/user/find_id`, { email })
+    return await axios.post(`/user/find_id`, { email: email })
       .then((res) => res)
       .catch((err) => err)
   }
 
+  // // Find id otp verification
+
+  // async verifyOTP(email, emailOTP, btn_type) {
+  //   return await axios.post(`/user/verify_otp`, { email: email, verification_code: emailOTP, btn_type: 'certification' })
+  //     .then((res) => res)
+  //     .catch((err) => err)
+  // }
+
   // forget password verification
 
   async forgetPassword(email, username) {
-    return await axios.post(`/user/find_password`, { email, username })
+    return await axios.post(`/user/find_password`, { email: email, username: username })
       .then((res) => res)
       .catch((err) => err)
   }
 
   // change password
 
-  async ChangePassword(userId, newPassword, confirm_password){
+  async ChangePassword(userId, password, confirmPassword) {
     return await axios.post(`/user/change_password`, {
-      userId, 
-      newPassword, 
-      confirm_password
+      userId: userId,
+      newPassword: password,
+      confirm_password: confirmPassword
     })
-    .then((res)=> res)
-    .catch((err)=> err)
+      .then((res) => res)
+      .catch((err) => err)
   }
 }

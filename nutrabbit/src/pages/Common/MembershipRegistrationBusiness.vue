@@ -287,7 +287,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
@@ -321,7 +320,7 @@ export default {
       // timerOn: true,
     };
   },
-    created() {
+  created() {
     this.commonService = new CommonService();
   },
   methods: {
@@ -347,28 +346,24 @@ export default {
       if (isInvalid) {
         this.error = error;
       } else {
-        try {
-          return await axios
-            .post("/user/business_registration", {
-              name: this.name,
-              username: this.username,
-              password: this.password,
-              email: this.email,
-              mobile: this.phoneNumber,
-              address: this.address,
-              business_number: this.businessNumber,
-              business_name: this.businessName,
-              department: this.depertment,
-              contact_person: this.contactPerson,
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                this.$router.push("member-registration-completed");
-              }
-            });
-        } catch (error) {
-          console.log(error);
-        }
+        this.commonService
+          .individalRegistration(
+            this.name,
+            this.username,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.businessNumber,
+            this.businessName,
+            this.depertment,
+            this.contactPerson
+          )
+          .then((res) => {
+            if (res.data.status == 200) {
+              this.$router.push("member-registration-completed");
+            }
+          });
       }
     },
     async checkUser() {
@@ -442,7 +437,6 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
           return (this.address = data.address);
         },
       }).open();
