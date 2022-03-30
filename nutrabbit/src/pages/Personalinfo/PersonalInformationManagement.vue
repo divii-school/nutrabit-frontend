@@ -6,7 +6,7 @@
           <div class="login-heading-wrap">
             <h1 class="login-heading">Personal information management</h1>
           </div>
-          <form action class="signUp-form">
+          <form action class="signUp-form" @submit="(e) => e.preventDefault()">
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
                 <label for>name</label>
@@ -24,8 +24,9 @@
                     <input class="form-control disabled" type="text" v-model="userID" />
                   </div>
                 </div>
+                <!-- <span class="error-msg">{{ error.userID }}</span> -->
               </div>
-              <div class="form-group">
+              <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for>password</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -38,9 +39,9 @@
                     />
                   </div>
                 </div>
-                <!-- <span class="error-msg">{{ error.password }}</span> -->
+                <span class="error-msg">{{ error.password }}</span>
               </div>
-              <div class="form-group">
+              <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
                 <label for>verify password</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -52,7 +53,7 @@
                     />
                   </div>
                 </div>
-                <!-- <span class="error-msg">{{ error.confirmPassword }}</span> -->
+                <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group">
                 <label for>e-mail</label>
@@ -63,16 +64,16 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for>phone number</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="phoneNumber" />
                   </div>
                 </div>
-                <!-- <span class="error-msg">{{ error.phoneNumber }}</span> -->
+                <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
-              <div class="form-group">
+              <div class="form-group" :class="error.address ? 'error' : ''">
                 <label for>address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
@@ -85,7 +86,7 @@
                     <input class="form-control" type="text" v-model="address" />
                   </div>
                 </div>
-                <!-- <span class="error-msg">{{ error.address }}</span> -->
+                <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
                 <label for>distribution medium</label>
@@ -133,7 +134,7 @@
               </div>
             </div>
             <!-- <p>{{common.state.userId}}</p> -->
-            <button class="btn-primary grenn-btn2" @click="personalInfo">Save</button>
+            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">Save</button>
           </form>
           <div class="logout-withdraw">
             <ul>
@@ -154,7 +155,7 @@
 import axios from "axios";
 import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
-// import validateRegistration from "../../Validation/validateRegistration";
+import personalInfoValidation from "../../Validation/personalInfoValidation";
 export default {
   name: "PersonalInformationManagement",
   data() {
@@ -177,35 +178,75 @@ export default {
     return { common };
   },
 
+   created() {
+    this.personalInfoservice = new PersonalInfoService();
+  },
+
   methods: {
-    save() {
-      console.log("success");
+    // async save() {
+    //   this.personalInfoservice.updatePersonalInfo(
+    //     this.userID, 
+    //     this.name, 
+    //     this.password, 
+    //     this.confirmPassword, 
+    //     this.mobile, 
+    //     this.address, 
+    //     this.checkName.join(",")
+    //     )
+    //     .then((res) => {
+    //       console.warn(res);
+    //       console.log("response",res);
+    //   });
+    // },
+
+    async updatePersonalInfo() {
+      console.log("aaaaaa");
+      let credential = {
+        name: this.name,
+        // username: this.username,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        email: this.email,
+        // emailOTP: this.emailOTP,
+        phoneNumber: this.phoneNumber,
+        address: this.address,
+      };
+      const { isInvalid, error } = personalInfoValidation(credential);
+      if (isInvalid) {
+        this.error = error;
+      } else {
+        this.personalInfoservice
+          .updatePersonalInfo(
+            this.name,
+            this.userID,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.checkName.join(",")
+          )
+          .then((res) => {
+            console.log(res);
+            if (res.data.status == 200) {
+              console.log(res.data.status);
+              // this.$router.push("member-registration-completed");
+            }
+          });
+      }
     },
 
     async personalInfo() {
 
-      this.personalInfoservice.getPersonalData(5).then((res) => {
-        console.log(res.data);
+      this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+        console.log(res.data); 
+        let data = res.data;
+        this.name = data.data[0].name;
+        this.userID = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
       });
 
-
-
-
-      // try {
-      //   const personalData = await axios.post("/profile/personal_information", {
-      //     userID: this.common.state.userId,
-      //     // name: this.name,
-      //     // password: this.password,
-      //     // confirm_password: this.confirmPassword,
-      //     // mobile: this.phoneNumber,
-      //     // address: this.address,
-      //     // distribution_medium: this.checkName.join(","),
-      //   })
-      //   console.log(personalData);
-      // } catch (error) {
-      //   console.log(error);
-      // }
-      // }
     },
 
     //     async apiFunctionName(){
@@ -224,12 +265,7 @@ export default {
 
   },
 
-  created() {
-    this.personalInfoservice = new PersonalInfoService();
-  },
-
   mounted() {
-    console.log("this.common.state.userId", this.common.state.userId);
     this.personalInfo();
   },
 };

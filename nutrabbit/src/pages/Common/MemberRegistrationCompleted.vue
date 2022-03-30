@@ -16,21 +16,13 @@
           <div class="btn-wrap flex dual-btn">
             <button
               class="btn-primary grey-btn-outline"
-              @click="
-                $router.push({
-                  name: '/',
-                })
-              "
+              @click="this.$router.push('/')"
             >
               home
             </button>
             <button
               class="btn-primary grenn-btn2"
-              @click="
-                $router.push({
-                  name: 'login',
-                })
-              "
+              @click="this.$router.push('/login')"
             >
               login
             </button>

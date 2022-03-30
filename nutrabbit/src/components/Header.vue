@@ -4,14 +4,18 @@
       <div class="header-container">
         <div class="header-menu flex">
           <div class="manuLeft">
-            <router-link  class="header-logo" to="/">
+            <router-link class="header-logo" to="/">
               <img src="../assets/images/logo.svg" alt="Logo" />
             </router-link>
             <ul class="flex">
               <li><router-link to="">my choice</router-link></li>
               <li><router-link to="">nutri 3.3 blending</router-link></li>
               <!-- this is for testing purpose only -->
-              <li><router-link to="/personal-information">Personal Info</router-link></li>
+              <li>
+                <router-link to="/personal-information"
+                  >Personal Info</router-link
+                >
+              </li>
             </ul>
           </div>
           <div class="manuRight">
@@ -22,7 +26,9 @@
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
                 />
-                <router-link to=""><i class="icon-search-black"></i></router-link>
+                <router-link to=""
+                  ><i class="icon-search-black"></i
+                ></router-link>
               </div>
               <div
                 class="header-search-data"
@@ -32,42 +38,55 @@
                   <ul>
                     <li>
                       <p>muscular system</p>
-                      <router-link to=""><i class="icon-close-search"></i></router-link>
+                      <router-link to=""
+                        ><i class="icon-close-search"></i
+                      ></router-link>
                     </li>
                     <li>
                       <p>aloe</p>
-                      <router-link to=""><i class="icon-close-search"></i></router-link>
+                      <router-link to=""
+                        ><i class="icon-close-search"></i
+                      ></router-link>
                     </li>
                     <li>
                       <p>nervous system</p>
-                      <router-link to="" ><i class="icon-close-search"></i></router-link>
+                      <router-link to=""
+                        ><i class="icon-close-search"></i
+                      ></router-link>
                     </li>
                   </ul>
                 </div>
                 <div class="delete-close">
-                  <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
-                  <router-link to="" @click="activeSearch = false">to close</router-link>
+                  <router-link to=""
+                    ><i class="icon-delete"></i>Delete all</router-link
+                  >
+                  <router-link to="" @click="activeSearch = false"
+                    >to close</router-link
+                  >
                 </div>
               </div>
             </div>
             <!-- <p>{{this.logedInUserDetails}}</p> -->
             <div
               class="after-login-dropdown flex items-center"
-              v-if="this.logedInUserDetails && this.logedInUserDetails.userId"
+              v-if="this.logedInUserDetails"
             >
               <div class="dropdown">
                 <button class="dropbtn">
-                  <i class="login-icon"></i>{{ this.logedInUserDetails.name }}
+                  <i class="login-icon"></i>{{ username }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to="" >Change of personal information</router-link>
+                  <router-link to=""
+                    >Change of personal information</router-link
+                  >
                   <router-link to="" @click="logOut()">Log out</router-link>
                 </div>
               </div>
             </div>
-             <router-link
-              to="/login" class="login-item" v-else>login</router-link>
-            
+            <router-link to="/login" class="login-item" v-else
+              >login</router-link
+            >
+
             <div class="header-dropdown">
               <vue-select
                 :options="['EN', 'KO']"
@@ -213,11 +232,13 @@
       bodytext2="Please use the service after logging in."
       btnText1="cancellation"
       btnText2="log in"
+      link = '/login'
     />
   </div>
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
+import { inject } from "vue";
 import Modal from "./Modal.vue";
 export default {
   name: "Header",
@@ -228,6 +249,7 @@ export default {
 
   data() {
     return {
+      username: this.common.state.name,
       active: false,
       activeSearch: false,
       isModalVisible: false,
@@ -269,6 +291,10 @@ export default {
       ],
     };
   },
+  setup() {
+    const common = inject("common");
+    return { common };
+  },
   methods: {
     activeSideMenu(event) {
       if (event.target.className == "right-menu-screen") {
@@ -291,11 +317,7 @@ export default {
       this.isModalVisible = false;
     },
     sideMenuOpen() {
-      if (
-        // typeof this.logedInUserDetails !== "undefined" &&
-        // this.logedInUserDetails &&
-        this.logedInUserDetails
-      ) {
+      if (this.logedInUserDetails) {
         this.active = true;
       } else {
         this.showModal();
@@ -313,7 +335,6 @@ export default {
   mounted() {
     if (localStorage.getItem("token")) {
       this.logedInUserDetails = true;
-        // JSON.parse(localStorage.getItem("token")) || {};
     } else {
       this.logedInUserDetails = false;
     }

@@ -107,8 +107,8 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
-      verify_status: '',
-      localUserData: '',
+      verify_status: "",
+      localUserData: "",
     };
   },
   created() {
@@ -128,8 +128,10 @@ export default {
       if (validator.isEmpty(this.emailOTP)) {
         this.error.emailOTP = "Please enter your email verification code";
       } else {
-        console.log(this.localUserData.verifiy_status)
-        if (this.localUserData.verifiy_status == 1) {
+        if (
+          this.localUserData != null &&
+          this.localUserData.verifiy_status == 1
+        ) {
           this.$router.push("/change-password");
         }
       }
@@ -144,8 +146,6 @@ export default {
         this.commonService
           .forgetPassword(this.email, this.userId)
           .then((res) => {
-            console.log(res);
-
             if (res.status == 200) {
               this.isActive = false;
               this.isVerification = true;
@@ -166,10 +166,13 @@ export default {
                 }
               }, 1000);
             }
-            if (res.response.data.status == 400) {
-              return (this.error.email = res.response.data.message);
-            }
+             if (res.response.data.status == 400) {
+                this.error.email = res.response.data.message;
+              }
           });
+        // .catch((err) => {
+        //    return (this.error.email = res.data.message);
+        // });
       }
     },
     async verifyOTP() {
@@ -194,8 +197,7 @@ export default {
             );
             return true;
           }
-        } catch (error) {
-          console.log(error)
+        } catch (err) {
           this.error.emailOTP = "wrong otp";
           return false;
         }
@@ -203,9 +205,7 @@ export default {
     },
   },
   mounted() {
-    this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));    
-    console.log(this.localUserData.userId)
-    console.log(this.localUserData.verifiy_status)
+    this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
   },
 };
 </script>

@@ -17,7 +17,7 @@
                   <input
                     class="form-control disabled"
                     type="text"
-                   value="123-45-67890"
+                    v-model="business_number"
                   />
                 </div>
               </div>
@@ -28,8 +28,8 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
-                    value="New Trabit"
+                    type="text" 
+                    v-model="business_name"
                   />
                 </div>
               </div>
@@ -41,7 +41,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    value="Marketing Department"
+                    v-model="department"
                   />
                 </div>
               </div>
@@ -53,7 +53,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    value="Hong Gil Dong"
+                    v-model="contact_person"
                   />
                 </div>
               </div>
@@ -65,7 +65,7 @@
                   <input
                     class="form-control disabled"
                     type="text"
-                    value="rabbit123"
+                    v-model="id"
                 
                   />
                 </div>
@@ -80,6 +80,8 @@
                     class="form-control"
                     type="text"
                    placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
+                   maxlength="20"
+                   v-model="password"
                   />
                 </div>
               </div>
@@ -92,6 +94,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Sankyu password confirmation"
+                    v-model="confirm_password"
                   />
                 </div>
               </div>
@@ -103,7 +106,7 @@
                   <input
                     class="form-control disabled"
                     type="text"
-                    value="rabbit123@gmail.com"
+                    v-model="email"
                 
                   />
                 </div>
@@ -117,7 +120,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    value="010-1234-1234"
+                    v-model="mobile"
                   />
                 </div>
               </div>
@@ -129,7 +132,7 @@
                   <input
                     class="form-control"
                     type="text"
-                   value="15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul"
+                   v-model="address"
                   />
                 </div>
                 <button class="btn-green-outline">Address Search</button>
@@ -139,7 +142,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    value="First floor"
+                    v-model="address"
                   />
                 </div>
               </div>
@@ -163,8 +166,62 @@
   </div>
 </template>
 <script>
-
+import axios from "axios";
+import { inject } from "vue";
+import PersonalInfoService from "../../services/PersonalInfoService";
 export default {
   name: "PersonalInformationBusiness",
+  data(){
+    return{
+      userId: this.common.state.userId,
+      business_number:"",
+      business_name:"",
+      department:"",
+      contact_person:"",
+      id:"",
+      password:"",
+      confirm_password:"",
+      email:"",
+      mobile:"",
+      address:"",
+    }
+  },
+
+  setup() {
+    const common = inject("common");
+    return { common };
+  },
+
+  methods: {
+
+      async personalInfo() {
+
+      this.personalInfoservice.getBusinessData(this.userId).then((res) => {
+        console.log(res.data.status); 
+        let data = res.data;
+        console.log("data",data);
+        this.business_number = data.data[0].business_number;
+        this.business_name = data.data[0].business_name;        
+        this.department = data.data[0].department;
+        this.contact_person = data.data[0].name;
+        this.id = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.mobile = data.data[0].mobile;
+        this.address = data.data[0].address;
+      });
+
+    },
+
+  },
+
+
+    created() {
+      this.personalInfoservice = new PersonalInfoService();
+    },
+
+  mounted() {
+    this.personalInfo();
+  },
+
 };
 </script>

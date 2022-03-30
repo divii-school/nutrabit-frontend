@@ -18,7 +18,7 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="password"
                     placeholder="Enter new password"
                     v-model="password"
                   />
@@ -37,7 +37,7 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="password"
                     placeholder="New password confirmation"
                     v-model="confirmPassword"
                   />
@@ -69,7 +69,7 @@ export default {
     };
   },
   created() {
-    this.commonService = new CommonService();
+  this.commonService = new CommonService();
   },
   methods: {
     changePassword() {
@@ -80,14 +80,16 @@ export default {
       const { isInvalid, error } = passwordValidation(credential);
       if (isInvalid) {
         this.error = error;
-      } else {
-        this.CommonService.ChangePassword(
+      }
+      else {
+        this.commonService.ChangePassword(
           this.localUserData.userId,
           this.password,
           this.confirmPassword
         ).then((res) => {
-          if(res.response.stattus == 200){
+          if(res.status == 200){
             this.$router.push("/login");
+            this.$swal(res.data.data);
           }
         });
       }
@@ -95,8 +97,6 @@ export default {
   },
   mounted() {
     this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
-    console.log(this.localUserData.userId);
-    console.log(this.localUserData.verifiy_status);
   },
 };
 </script>

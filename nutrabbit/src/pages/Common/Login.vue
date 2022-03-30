@@ -78,7 +78,6 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import axios from "axios";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
@@ -175,6 +174,7 @@ export default {
             console.log(res.data.status);
             localStorage.setItem('token', res.data.data.token);
             this.common.state.userId = res.data.data.userId;
+            this.common.state.name = res.data.data.name;
             if (this.checkBox) {
               this.cookies.set("rememberUserEmail", setEmail);
               this.cookies.set("rememberUserPassword", setPassword);
