@@ -275,13 +275,11 @@
       </div>
     </div>
   </div>
-  <p class="countdown"></p>
 </template>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
-import moment from 'moment';
 export default {
   name: "MemberRegistrationIndividual",
   data() {
@@ -420,20 +418,6 @@ export default {
         },
       }).open();
     },
-  },
-  mounted() {
-    let eventTime = 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
-    let currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
-    let diffTime = eventTime - currentTime;
-    let duration = moment.duration(diffTime * 1000, "milliseconds");
-    let interval = 1000;
-
-    setInterval(function () {
-      duration = moment.duration(duration - interval, "milliseconds");
-      $(".countdown").text(
-        duration.hours() + ":" + duration.minutes() + ":" + duration.seconds()
-      );
-    }, interval);
   },
 };
 </script>
