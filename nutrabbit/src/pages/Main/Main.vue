@@ -71,6 +71,7 @@ import "swiper/css/pagination";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
 import { inject } from "vue";
+import axios from 'axios';
 export default {
   name: "Main",
   components: {
@@ -81,68 +82,7 @@ export default {
   data() {
     return {
       MainSlider: [],
-      ProductData: [
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Nutri ODM Product Title",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-      ],
+      ProductData: [],
     };
   },
   setup() {
@@ -154,6 +94,7 @@ export default {
   },
   mounted() {
     this.created();
+    this.nutriData();
     if (localStorage.getItem("logedInUserDetails")) {
       this.logedInUserDetails =
         JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
@@ -164,13 +105,29 @@ export default {
   methods: {
     async created() {
       try {
-        const data = await axios.post("/v1/sites/banner", {
+        const data = await axios.post("/banner", {
           lang: "KO"
         })
           .then((response) => {
             if (response.data.status == 200) {
               this.MainSlider = response.data.data.bannerData;
               // console.log(response.data.data.bannerData);
+            }
+          });
+      }
+      catch (e) {
+        console.error(e);
+      }
+    },
+    async nutriData() {
+      try {
+        const data = await axios.post("/nutriBlending", {
+          lang: "KO"
+        })
+          .then((response) => {
+            if (response.data.status == 200) {
+              this.ProductData = response.data.data.blendingData;
+              console.log(response.data.data.blendingData);
             }
           });
       }

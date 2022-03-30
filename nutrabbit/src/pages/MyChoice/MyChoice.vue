@@ -50,6 +50,7 @@
 
 <script>
 import Popper from "vue3-popper";
+import axios from 'axios';
 export default {
   name: "MyChoice",
   components: {
@@ -66,7 +67,7 @@ export default {
   methods: {
     async created() {
       try {
-        const data = await axios.post("/v1/sites/product/parent_category", {
+        const data = await axios.post("/product/parent_category", {
           lang: "KO"
         })
          .then((response) => {
@@ -82,7 +83,7 @@ export default {
     },
     async subcategory(id) {
       try {
-        const data = await axios.post("/v1/sites/product/sub_category", {
+        const data = await axios.post("/product/sub_category", {
           lang: "KO",
           parent_category_id:id
         })
