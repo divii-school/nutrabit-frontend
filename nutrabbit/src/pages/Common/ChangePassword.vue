@@ -20,6 +20,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Enter new password"
+                    v-model="password"
                   />
                 </div>
               </div>
@@ -38,6 +39,7 @@
                     class="form-control"
                     type="text"
                     placeholder="New password confirmation"
+                    v-model="confirmPassword"
                   />
                 </div>
               </div>
@@ -54,6 +56,7 @@
 </template>
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
+import CommonService from "../../services/CommonService";
 export default {
   name: "ChangePassword",
   data() {
@@ -61,7 +64,12 @@ export default {
       password: "",
       confirmPassword: "",
       error: {},
+      errors: {},
+      localUserData: "",
     };
+  },
+  created() {
+    this.commonService = new CommonService();
   },
   methods: {
     changePassword() {
@@ -73,9 +81,22 @@ export default {
       if (isInvalid) {
         this.error = error;
       } else {
-        console.log("hhhhh")
+        this.CommonService.ChangePassword(
+          this.localUserData.userId,
+          this.password,
+          this.confirmPassword
+        ).then((res) => {
+          if(res.response.stattus == 200){
+            this.$router.push("/login");
+          }
+        });
       }
     },
+  },
+  mounted() {
+    this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
+    console.log(this.localUserData.userId);
+    console.log(this.localUserData.verifiy_status);
   },
 };
 </script>

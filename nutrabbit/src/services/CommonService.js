@@ -48,4 +48,16 @@ export default class CommonService {
       .then((res) => res)
       .catch((err) => err)
   }
+
+  // change password
+
+  async ChangePassword(userId, newPassword, confirm_password){
+    return await axios.post(`/user/change_password`, {
+      userId, 
+      newPassword, 
+      confirm_password
+    })
+    .then((res)=> res)
+    .catch((err)=> err)
+  }
 }
