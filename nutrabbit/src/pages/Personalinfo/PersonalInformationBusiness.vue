@@ -10,31 +10,31 @@
           </div>
           <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
            <div class="individuals-form">
-              <div class="form-group" :class="error.businessNumber ? 'error' : ''">
+              <div class="form-group" :class="error.business_number ? 'error' : ''">
               <label for="">Business Number</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control disabled"
                     type="text"
-                    v-model="businessNumber"
+                    v-model="business_number"
                   />
                 </div>
               </div>
-              <span class="error-msg">{{ error.businessNumber }}</span>
+              <span class="error-msg">{{ error.business_number }}</span>
             </div>
-            <div class="form-group" :class="error.businessName ? 'error' : ''">
+            <div class="form-group" :class="error.business_name ? 'error' : ''">
               <label for="">Business name</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text" 
-                    v-model="businessName"
+                    v-model="business_name"
                   />
                 </div>
               </div>
-              <span class="error-msg">{{ error.businessName }}</span>
+              <span class="error-msg">{{ error.business_name }}</span>
             </div>
             <div class="form-group" :class="error.depertment ? 'error' : ''">
               <label for="">Department</label>
@@ -176,16 +176,16 @@
 <script>
 import axios from "axios";
 import { inject } from "vue";
-import PersonalInfoService from "../../services/PersonalInfoService";
-import personalInfoValidation from "../../Validation/personalInfoValidation";
+import PersonalBusinessService from "../../services/PersonalBusinessService";
+import personalBusinessValidation from "../../Validation/personalBusinessValidation";
 export default {
   name: "PersonalInformationBusiness",
   data(){
     return{
       userId: this.common.state.userId,
       userID: "",
-      businessNumber:"",
-      businessName:"",
+      business_number:"",
+      business_name:"",
       department:"",
       contactPerson:"",
       uuid:"",
@@ -203,21 +203,25 @@ export default {
     return { common };
   },
 
+  created() {
+    this.personalBusinessService = new PersonalBusinessService();
+  },
+
   methods: {
 
     async personalInfo() {
 
-      this.personalInfoservice.getBusinessData(this.userId).then((res) => {
+      this.personalBusinessService.getBusinessData(this.userId).then((res) => {
         console.log(res.data.status); 
         let data = res.data;
         console.log("data",data);
-        this.businessNumber = data.data[0].businessNumber;
-        this.businessName = data.data[0].businessName;        
+        this.business_number = data.data[0].business_number;
+        this.business_name = data.data[0].business_name;        
         this.department = data.data[0].department;
         this.contactPerson = data.data[0].name;
         this.uuid = data.data[0].uuid;
         this.email = data.data[0].email;
-        this.mobile = data.data[0].mobile;
+        this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
       });
@@ -226,8 +230,8 @@ export default {
     async updateBusinessInfo() {
       console.log("aaaaaa");
       let credential = {
-        business_number: this.businessNumber,
-        business_name: this.businessName,
+        business_number: this.business_number,
+        business_name: this.business_name,
         department: this.department,
         contactPerson: this.contactPerson,
         password: this.password,
@@ -237,17 +241,17 @@ export default {
         phoneNumber: this.phoneNumber,
         address: this.address,
       };
-      const { isInvalid, error } = personalInfoValidation(credential);
+      const { isInvalid, error } = personalBusinessValidation(credential);
       if (isInvalid) {
         console.log("bbbbb");
         this.error = error;
       } else {
         console.log("ccccc");
-        this.personalInfoservice
+        this.personalBusinessService
           .updateBusinessInfo(
             this.userID,
-            this.businessNumber,
-            this.businessName,
+            this.business_number,
+            this.business_name,
             this.department,
             this.contactPerson,
             this.password,
@@ -276,11 +280,6 @@ export default {
       }).open();
     },
 
-  },
-
-
-  created() {
-    this.personalInfoservice = new PersonalInfoService();
   },
 
   mounted() {

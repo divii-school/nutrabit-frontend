@@ -1,10 +1,24 @@
 import validator from "validator";
 
-const personalInfoValidation = (data) => {
+const personalBusinessValidation = (data) => {
   let errors = {};
 
   const { name, password, confirmPassword, phoneNumber, address, business_number, business_name, depertment, contactPerson } = data;
 
+  // if (account_type == 'business') {
+    if (validator.isEmpty(business_number)) {
+      errors.businessNumber = "Please enter your business number";
+    }
+    if (validator.isEmpty(business_name)) {
+      errors.businessName = "Please enter your business name";
+    }
+    if (validator.isEmpty(depertment)) {
+      errors.depertment = "Please enter the department name";
+    }
+    if (validator.isEmpty(contactPerson)) {
+      errors.contactPerson = "Please enter the name of the person in charge";
+    }
+  // }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
@@ -35,4 +49,4 @@ const personalInfoValidation = (data) => {
   };
 };
 
-export default personalInfoValidation;
+export default personalBusinessValidation;
