@@ -11,7 +11,12 @@
               <label for>{{ $t("ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter ID"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -52,13 +57,13 @@
               </div>
               <div class="form-link-right">
                 <router-link to="/member-registration-type-selection">
-                  {{
-                    $t("SignUp")
-                  }}
+                  {{ $t("SignUp") }}
                 </router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
+            <button class="btn-primary" @click="onSubmit">
+              {{ $t("login") }}
+            </button>
           </form>
           <div class="getting-started">
             <button class="btn-primary with-icon yellow-btn">
@@ -78,11 +83,9 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import axios from "axios";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
-
 
 export default {
   name: "Login",
@@ -170,16 +173,24 @@ export default {
 
         //API
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
-          console.log(res.data);
-          if (res.data.status == 200) {
-            console.log(res.data.status);
-            localStorage.setItem('token', res.data.data.token);
-            this.common.state.userId = res.data.data.userId;
-            if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+          // console.log(res.data);
+          if (res.response) {
+            console.log(res.response);
+            if (res.response.data.status == 400) {
+              this.$swal(res.response.data.message);
             }
-            this.$router.push("/");
+          } else {
+            if (res.data.status == 200) {
+              console.log(res.data.status);
+              localStorage.setItem("token", res.data.data.token);
+              this.common.state.userId = res.data.data.userId;
+              this.common.state.name = res.data.data.name;
+              if (this.checkBox) {
+                this.cookies.set("rememberUserEmail", setEmail);
+                this.cookies.set("rememberUserPassword", setPassword);
+              }
+              this.$router.push("/");
+            }
           }
         });
       }

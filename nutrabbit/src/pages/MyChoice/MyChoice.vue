@@ -25,17 +25,17 @@
               v-for="item of myChoice"
               :key="item"
             >
-              <h2 class="list-heading">{{ item.title }}</h2>
+              <h2 class="list-heading">{{ item.category_name_ko }}</h2>
               <ul class="my-choice-list-inner">
                 <li
                   class="my-choice-list-inner-item"
-                  v-for="item in item.myChoiceListData"
+                  v-for="item in subcategory(item.id)"
                   :key="item"
                 >
                   <div class="choice-card">
-                    <img v-bind:src="item.img" alt="" />
+                    <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + item.category_image_path" alt="" />
                   </div>
-                  <p class="desc">{{ item.desc }}</p>
+                  <p class="desc">{{ item.category_name_ko }}</p>
                 </li>
               </ul>
             </li>
@@ -50,6 +50,7 @@
 
 <script>
 import Popper from "vue3-popper";
+import axios from 'axios';
 export default {
   name: "MyChoice",
   components: {
@@ -57,85 +58,46 @@ export default {
   },
   data() {
     return {
-      myChoice: [
-        {
-          title: "muscular system",
-          myChoiceListData: [
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-          ],
-        },
-
-        {
-          title: "nervous system",
-          myChoiceListData: [
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-          ],
-        },
-        {
-          title: "digestive/metabolic system",
-          myChoiceListData: [
-            {
-              img: "../../../src/assets/images/choice-img1.svg",
-              desc: "gut health",
-            },
-          ],
-        },
-      ],
+      myChoice: [],
     };
   },
+  mounted() {
+    this.created();
+  },
+  methods: {
+    async created() {
+      try {
+        const data = await axios.post("/product/parent_category", {
+          lang: "KO"
+        })
+         .then((response) => {
+            if (response.data.status == 200) {
+              this.myChoice=response.data.data.parentCategoryData;
+               //console.log(response.data.data.parentCategoryData);
+            }
+          });
+      }
+      catch (e) {
+        console.error(e);
+      }
+    },
+    async subcategory(id) {
+      try {
+        const data = await axios.post("/product/sub_category", {
+          lang: "KO",
+          parent_category_id:id
+        })
+         .then((response) => {
+            if (response.data.status == 200) {
+               console.log(response.data.data);
+               return response.data.data;
+            }
+          });
+      }
+      catch (e) {
+        console.error(e);
+      }
+    },
+  }
 };
 </script>
