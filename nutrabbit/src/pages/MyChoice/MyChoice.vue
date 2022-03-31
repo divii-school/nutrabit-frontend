@@ -6,36 +6,40 @@
           <h2>my choice</h2>
           <div class="tolltip-outer">
             <Popper>
-            <button><i class="icon-info"></i></button>
-            <template #content>
-              <div class="heading-tooltip-content">
-                <ul>
-                  <li>This is a menu where I make my own health functional food recipes.</li>
-                  <li>Please select the desired function.</li>
-                </ul>
-              </div>
-            </template>
-          </Popper>
+              <button>
+                <i class="icon-info"></i>
+              </button>
+              <template #content>
+                <div class="heading-tooltip-content">
+                  <ul>
+                    <li>This is a menu where I make my own health functional food recipes.</li>
+                    <li>Please select the desired function.</li>
+                  </ul>
+                </div>
+              </template>
+            </Popper>
           </div>
         </div>
         <div class="my-choice-list-wrap">
           <ul class="my-choice-list-outer">
-            <li
-              class="my-choice-list-outer-item"
-              v-for="item of myChoice"
-              :key="item"
-            >
-              <h2 class="list-heading">{{ item.category_name_ko }}</h2>
+            <li class="my-choice-list-outer-item" v-for="item of categories" :key="item">
+              <h2 class="list-heading">{{ item.category_name }}</h2>
               <ul class="my-choice-list-inner">
                 <li
                   class="my-choice-list-inner-item"
-                  v-for="item in subcategory(item.id)"
-                  :key="item"
+                  v-for="(item, i) of item.sub_category_arr"
+                  :key="i + 1"
                 >
                   <div class="choice-card">
-                    <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + item.category_image_path" alt="" />
+                    <img
+                      :src="
+                        'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                        item.sub_category_image_path
+                      "
+                      alt
+                    />
                   </div>
-                  <p class="desc">{{ item.category_name_ko }}</p>
+                  <p class="desc">{{ item.sub_category_name }}</p>
                 </li>
               </ul>
             </li>
@@ -46,11 +50,10 @@
   </div>
 </template>
 
-          
-
 <script>
 import Popper from "vue3-popper";
-import axios from 'axios';
+import axios from "axios";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "MyChoice",
   components: {
@@ -58,46 +61,27 @@ export default {
   },
   data() {
     return {
-      myChoice: [],
+      categories: '',
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
   mounted() {
-    this.created();
+    this.allCategories();
   },
   methods: {
-    async created() {
-      try {
-        const data = await axios.post("/product/parent_category", {
-          lang: "KO"
-        })
-         .then((response) => {
-            if (response.data.status == 200) {
-              this.myChoice=response.data.data.parentCategoryData;
-               //console.log(response.data.data.parentCategoryData);
-            }
-          });
-      }
-      catch (e) {
-        console.error(e);
-      }
+    // allCategories list
+    allCategories() {
+      this.mychoiceService.getCategories().then((res) => {
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          console.log('getCategories res', res.data.parentCategoryData);
+          this.categories = res.data.parentCategoryData;
+        }
+      });
     },
-    async subcategory(id) {
-      try {
-        const data = await axios.post("/product/sub_category", {
-          lang: "KO",
-          parent_category_id:id
-        })
-         .then((response) => {
-            if (response.data.status == 200) {
-               console.log(response.data.data);
-               return response.data.data;
-            }
-          });
-      }
-      catch (e) {
-        console.error(e);
-      }
-    },
-  }
+  },
 };
 </script>
