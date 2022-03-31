@@ -213,7 +213,7 @@
                       maxlength="6"
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
-                      timer
+                      newTime
                     }}</span>
                     <span class="time" :class="{ showTick: showTick }"
                       ><i class="green-tick-circle"></i
@@ -316,7 +316,8 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
-      // timerOn: true,
+      storeSetInterval: null,
+      newTime: "",
     };
   },
   created() {
@@ -398,17 +399,29 @@ export default {
             this.startTimer = false;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 130;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
               }
             }, 1000);
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+            }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             return (this.error.email = res.response.data.message);
           }
