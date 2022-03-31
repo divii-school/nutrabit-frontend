@@ -397,6 +397,7 @@ export default {
             this.emailValidated = 1;
             this.otpValidate = 0;
             this.startTimer = false;
+            this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
 
@@ -421,9 +422,11 @@ export default {
               this.isActive = true;
               this.emailValidated = 0;
               this.otpValidate = 1;
+              this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            return this.$swal(res.response.data.message);
+            //return (this.error.email = res.response.data.message);
           }
         });
       }
@@ -437,6 +440,10 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.isActive = true;
+            this.isVerification = false;
+            this.emailValidated = 0;
+            this.otpValidate = 1;
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
@@ -452,31 +459,6 @@ export default {
         },
       }).open();
     },
-    // timer() {
-    //   let remaining = 120;
-    //   let m = Math.floor(remaining / 60);
-    //   let s = remaining % 60;
-
-    //   m = m < 10 ? "0" + m : m;
-    //   s = s < 10 ? "0" + s : s;
-    //   document.getElementById("timer").innerHTML = m + ":" + s;
-    //   remaining -= 1;
-
-    //   if (remaining >= 0 && timerOn) {
-    //     setTimeout(function () {
-    //       timer(remaining);
-    //     }, 1000);
-    //     return;
-    //   }
-
-    //   if (!timerOn) {
-    //     // Do validate stuff here
-    //     return;
-    //   }
-
-    //   // Do timeout stuff here
-    //   alert("Timeout for otp");
-    // },
   },
 };
 </script>

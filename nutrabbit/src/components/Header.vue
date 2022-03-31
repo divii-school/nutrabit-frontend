@@ -2,6 +2,7 @@
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
+        <p>{{ username }}</p>
         <div class="header-menu flex">
           <div class="manuLeft">
             <router-link class="header-logo" to="/">
@@ -11,11 +12,7 @@
               <li><router-link to="">my choice</router-link></li>
               <li><router-link to="">nutri 3.3 blending</router-link></li>
               <!-- this is for testing purpose only -->
-              <li>
-                <router-link to="/personal-information"
-                  >Personal Info</router-link
-                >
-              </li>
+              <li><router-link to="/personal-information">Personal Info</router-link></li>
             </ul>
           </div>
           <div class="manuRight">
@@ -232,7 +229,7 @@
       bodytext2="Please use the service after logging in."
       btnText1="cancellation"
       btnText2="log in"
-      link = '/login'
+      link="/login"
     />
   </div>
 </template>

@@ -291,7 +291,7 @@ export default {
       address: "",
       checkName: [],
       error: {},
-      timer: 5,
+      timer: 130,
       newTime: "",
       isActive: true,
       isVerification: false,
@@ -300,6 +300,7 @@ export default {
       startTimer: true,
       showTick: true,
       storeSetInterval: null,
+      newTime: "",
     };
   },
   created() {
@@ -365,12 +366,13 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-         if (res.status == 200) {
+          if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
             this.otpValidate = 0;
-            this.startTimer = false;
+              this.startTimer = false;
+            this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
 
@@ -378,7 +380,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 5;
+            this.timer = 130;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -395,10 +397,11 @@ export default {
               this.isActive = true;
               this.emailValidated = 0;
               this.otpValidate = 1;
-              this.timer = false
+              this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            return this.$swal(res.response.data.message);
+            //return (this.error.email = res.response.data.message);
           }
         });
       }
@@ -412,6 +415,10 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.isActive = true;
+            this.isVerification = false;
+            this.emailValidated = 0;
+            this.otpValidate = 1;
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {

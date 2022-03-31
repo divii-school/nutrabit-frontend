@@ -14,7 +14,7 @@ export default class PersonalInfoService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address,checkName) {
+  async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address, checkName) {
     return await axios.post(`/profile/personal_information/update`, {
       userID: userID,
       name: name,
@@ -22,18 +22,8 @@ export default class PersonalInfoService {
       confirm_password:confirmPassword,
       mobile: phoneNumber,
       address: address,
-      distribution_medium:checkName,   
+      distribution_medium: checkName,   
     }).then((res) => res);
   }
-
-  //API business function
-
-  // API Functions
-  async getBusinessData(userId) {
-    return await axios.post(`/profile/business_information`,
-      {
-        userID: userId,
-      }).then((res) => res).catch((err) => err);
-  }
-
+  
 }

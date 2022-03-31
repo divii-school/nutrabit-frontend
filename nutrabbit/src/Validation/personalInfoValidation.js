@@ -3,40 +3,12 @@ import validator from "validator";
 const personalInfoValidation = (data) => {
   let errors = {};
 
-//   const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address, account_type, businessNumber, businessName, depertment, contactPerson } = data;
+  const { name, password, confirmPassword, phoneNumber, address, reason } = data;
 
-  const { name, password, confirmPassword, phoneNumber, address} = data;
-
-
-//   if (termsCheck == false) {
-//     errors.termsCheck = "Please check the terms";
-//   }
-//   if (personalCheck == false) {
-//     errors.personalCheck = "Please check personal information";
-//   }
-//   if (account_type == 'business') {
-//     if (validator.isEmpty(businessNumber)) {
-//       errors.businessNumber = "Please enter your business number";
-//     }
-//     if (validator.isEmpty(businessName)) {
-//       errors.businessName = "Please enter your business name";
-//     }
-//     if (validator.isEmpty(depertment)) {
-//       errors.depertment = "Please enter the department name";
-//     }
-//     if (validator.isEmpty(contactPerson)) {
-//       errors.contactPerson = "Please enter the name of the person in charge";
-//     }
-//   }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
-//   if (validator.isEmpty(username)) {
-//     errors.username = "Please enter your ID";
-//   }
-//   else if (!(validator.isAlphanumeric(username))) {
-//     errors.username = "Please use only letter and number";
-//   }
+
   if (validator.isEmpty(password)) {
     errors.password = "Please enter a Password";
   }
@@ -49,20 +21,15 @@ const personalInfoValidation = (data) => {
   if (!validator.equals(password, confirmPassword)) {
     errors.confirmPassword = "Password should match!";
   }
-//   if (!validator.isEmail(email)) {
-//     errors.email = "Enter a valid email address";
-//   }
-//   if (validator.isEmpty(email)) {
-//     errors.email = "Please enter your email address";
-//   }
-//   if (validator.isEmpty(emailOTP)) {
-//     errors.emailOTP = "Please enter your email verification code";
-//   }
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = "Please enter your mobile phone number";
   }
   if (validator.isEmpty(address)) {
     errors.address = "Please enter your address";
+  }
+
+  if (validator.isEmpty(reason)) {
+    errors.reason = "Please enter your reason";
   }
 
 
