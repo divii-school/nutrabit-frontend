@@ -30,7 +30,7 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <button class="btn-small-solid">Go to my choice</button>
+          <button class="btn-small-solid" @click="this.$router.push({name: 'MyChoice'})">Go to my choice</button>
         </div>
       </div>
       <div class="devider">
