@@ -3,7 +3,7 @@ import validator from "validator";
 const validateRegistration = (data) => {
   let errors = {};
 
-  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address, account_type, businessNumber, businessName, depertment, contactPerson } = data;
+  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address, detsilAddress, account_type, businessNumber, businessName, depertment, contactPerson } = data;
 
 
   if (termsCheck == false) {
@@ -59,7 +59,7 @@ const validateRegistration = (data) => {
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = "Please enter your mobile phone number";
   }
-  if (validator.isEmpty(address)) {
+  if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
     errors.address = "Please enter your address";
   }
 
