@@ -85,7 +85,6 @@ export default {
       email: "",
       emailOTP: "",
       error: {},
-      errors: {},
       timer: 130,
       isActive: true,
       isVerification: false,

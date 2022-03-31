@@ -64,7 +64,6 @@ export default {
       password: "",
       confirmPassword: "",
       error: {},
-      errors: {},
       localUserData: "",
     };
   },
