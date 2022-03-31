@@ -47,7 +47,7 @@
                   />
                 </div>
               </div>
-              <span class="error-msg">{{ error.depertment }}</span>
+              <span class="error-msg">{{ error.department }}</span>
             </div>
             <div class="form-group" :class="error.contactPerson ? 'error' : ''">
               <label for="">Contact person</label>
@@ -161,10 +161,10 @@
            <div class="logout-withdraw">
             <ul>
               <li>
-              <a href="">Log out</a>
+                <a href="">Log out</a>
               </li>
-               <li>
-              <a href="">Withdrawal</a>
+               <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
+                <!-- <a href=""></a> -->
               </li>
             </ul>
           </div>
@@ -174,7 +174,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import { inject } from "vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
 import personalBusinessValidation from "../../Validation/personalBusinessValidation";

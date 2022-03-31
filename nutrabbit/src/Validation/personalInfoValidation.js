@@ -3,7 +3,7 @@ import validator from "validator";
 const personalInfoValidation = (data) => {
   let errors = {};
 
-  const { name, password, confirmPassword, phoneNumber, address, business_number, business_name, depertment, contactPerson } = data;
+  const { name, password, confirmPassword, phoneNumber, address, reason } = data;
 
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
@@ -26,6 +26,10 @@ const personalInfoValidation = (data) => {
   }
   if (validator.isEmpty(address)) {
     errors.address = "Please enter your address";
+  }
+
+  if (validator.isEmpty(reason)) {
+    errors.reason = "Please enter your reason";
   }
 
 

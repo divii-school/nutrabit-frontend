@@ -101,6 +101,14 @@ button:disabled {
   cursor: no-drop;
 }
 
+.bBtm-0{
+  border-bottom: 0 !important;
+}
+
+textarea{
+  resize: none;
+}
+
 // custom check box
 .custom-check {
 	display: block;
@@ -416,6 +424,53 @@ button:disabled {
     }
   }
 }
+
+
+// file input 
+
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.file-input {
+  label {
+    display: block;
+    position: relative;
+    width: auto;
+    height: 45px;
+    background: none;
+    border: 1px solid #A4A4A4;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #A4A4A4;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+    img{
+      margin-left: 5px;
+    }
+  }
+}
+
+.inquery{
+  h1{
+    @media screen and (max-width: 640px){ 
+      margin: 65px 0 0 0!important;
+    }
+  }
+  .login-signup-inner{
+    @media screen and (max-width: 640px){
+      padding: 40px 16px !important;
+    }
+  }
+}
+
 .swal2-popup{
   max-width: 520px !important;
   width: 100% !important;

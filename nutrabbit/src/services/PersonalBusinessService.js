@@ -7,28 +7,6 @@ var token = localStorage.getItem('token');
 export default class PersonalBusinessService {
 
   // API Functions
-//   async getPersonalData(userId) {
-//     return await axios.post(`/profile/personal_information`,
-//       {
-//         userID: userId,
-//       }).then((res) => res).catch((err) => err);
-//   }
-
-//   async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address, checkName) {
-//     return await axios.post(`/profile/personal_information/update`, {
-//       userID: userID,
-//       name: name,
-//       password:password,
-//       confirm_password:confirmPassword,
-//       mobile: phoneNumber,
-//       address: address,
-//       distribution_medium: checkName,   
-//     }).then((res) => res);
-//   }
-
-  //API business function
-
-  // API Functions
   async getBusinessData(userId) {
     return await axios.post(`/profile/business_information`,
       {
@@ -50,4 +28,10 @@ export default class PersonalBusinessService {
     }).then((res) => res);
   }
 
+  async businessWithdraw(reason) {
+    return await axios.post(`/profile/withdrawal`,
+      {
+        reason:reason,
+      }).then((res) => res).catch((err) => err);
+  }
 }
