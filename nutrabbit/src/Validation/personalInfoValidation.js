@@ -14,20 +14,20 @@ const personalInfoValidation = (data) => {
 //   if (personalCheck == false) {
 //     errors.personalCheck = "Please check personal information";
 //   }
-//   if (account_type == 'business') {
-//     if (validator.isEmpty(businessNumber)) {
-//       errors.businessNumber = "Please enter your business number";
-//     }
-//     if (validator.isEmpty(businessName)) {
-//       errors.businessName = "Please enter your business name";
-//     }
-//     if (validator.isEmpty(depertment)) {
-//       errors.depertment = "Please enter the department name";
-//     }
-//     if (validator.isEmpty(contactPerson)) {
-//       errors.contactPerson = "Please enter the name of the person in charge";
-//     }
-//   }
+  // if (account_type == 'business') {
+    if (validator.isEmpty(businessNumber)) {
+      errors.businessNumber = "Please enter your business number";
+    }
+    if (validator.isEmpty(businessName)) {
+      errors.businessName = "Please enter your business name";
+    }
+    if (validator.isEmpty(depertment)) {
+      errors.depertment = "Please enter the department name";
+    }
+    if (validator.isEmpty(contactPerson)) {
+      errors.contactPerson = "Please enter the name of the person in charge";
+    }
+  // }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
@@ -49,15 +49,6 @@ const personalInfoValidation = (data) => {
   if (!validator.equals(password, confirmPassword)) {
     errors.confirmPassword = "Password should match!";
   }
-//   if (!validator.isEmail(email)) {
-//     errors.email = "Enter a valid email address";
-//   }
-//   if (validator.isEmpty(email)) {
-//     errors.email = "Please enter your email address";
-//   }
-//   if (validator.isEmpty(emailOTP)) {
-//     errors.emailOTP = "Please enter your email verification code";
-//   }
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = "Please enter your mobile phone number";
   }

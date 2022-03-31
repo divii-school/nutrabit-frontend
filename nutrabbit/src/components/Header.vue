@@ -11,7 +11,7 @@
               <li><router-link to="">my choice</router-link></li>
               <li><router-link to="">nutri 3.3 blending</router-link></li>
               <!-- this is for testing purpose only -->
-              <li><router-link to="/personal-information">Personal Info</router-link></li>
+              <li><router-link to="/personal-information-business">Personal Info</router-link></li>
             </ul>
           </div>
           <div class="manuRight">

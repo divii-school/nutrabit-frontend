@@ -14,7 +14,7 @@ export default class PersonalInfoService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address,checkName) {
+  async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address, checkName) {
     return await axios.post(`/profile/personal_information/update`, {
       userID: userID,
       name: name,
@@ -22,7 +22,7 @@ export default class PersonalInfoService {
       confirm_password:confirmPassword,
       mobile: phoneNumber,
       address: address,
-      distribution_medium:checkName,   
+      distribution_medium: checkName,   
     }).then((res) => res);
   }
 
@@ -34,6 +34,20 @@ export default class PersonalInfoService {
       {
         userID: userId,
       }).then((res) => res).catch((err) => err);
+  }
+
+  async updateBusinessInfo(userID, businessNumber, businessName, department, contactPerson, password, confirmPassword, phoneNumber, address) {
+    return await axios.post(`/profile/personal_information/update`, {
+      userID: userID,
+      business_number: businessNumber,
+      business_name:businessName,
+      department:department,
+      name: contactPerson,
+      password: password,
+      confirm_password:confirmPassword,
+      mobile: phoneNumber,
+      address: address,  
+    }).then((res) => res);
   }
 
 }
