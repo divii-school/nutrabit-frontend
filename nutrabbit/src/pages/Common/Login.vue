@@ -140,7 +140,7 @@ export default {
             }
           } else {
             if (res.data.status == 200) {
-              console.log(res.data.status);
+              console.log(res);
               localStorage.setItem("token", res.data.data.token);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
