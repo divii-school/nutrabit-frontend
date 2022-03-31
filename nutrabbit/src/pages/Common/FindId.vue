@@ -47,7 +47,7 @@
                     maxlength="6"
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
-                    timer
+                    newTime
                   }}</span>
                   <span class="time" :class="{ showTick: showTick }"
                     ><i class="green-tick-circle"></i
@@ -75,8 +75,7 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 import CommonService from "../../services/CommonService";
 import validator from "validator";
 export default {
@@ -94,6 +93,8 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
+      storeSetInterval: null,
+      newTime: "",
     };
   },
   created() {
@@ -121,30 +122,42 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.userFindId(this.email).then((res) => {
-          console.log(res);
-
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
             this.otpValidate = 0;
             this.startTimer = false;
+            this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 130;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
               }
             }, 1000);
-          }
-          if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+              this.startTimer = true;
+            }, (this.timer + 1) * 1000);
+          } else if (res.response.data.status == 400) {
+            return this.$swal(res.response.data.message);
+            //return (this.error.email = res.response.data.message);
           }
         });
       }
@@ -163,6 +176,10 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.isActive = true;
+            this.isVerification = false;
+            this.emailValidated = 0;
+            this.otpValidate = 1;
             this.error.emailOTP = "";
             return true;
           }

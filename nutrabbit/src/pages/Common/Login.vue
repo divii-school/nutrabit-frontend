@@ -51,7 +51,7 @@
                     <router-link to="/find-id">{{ $t("findID") }}</router-link>
                   </li>
                   <li>
-                    <a href>{{ $t("findpassword") }}</a>
+                    <router-link to="/forgot-password">{{ $t("findpassword") }}</router-link>
                   </li>
                 </ul>
               </div>
@@ -132,48 +132,7 @@ export default {
       } else if (setPassword == "") {
         this.errorPassword = "Please enter password";
       } else {
-        // try {
-        //   const data = await axios
-        //     .post("/v1/sites/auth/login", {
-        //       login_id: setEmail,
-        //       password: setPassword,
-        //     })
-        //     .then((response) => {
-        //       if (response.data.status == 200) {
-        //         console.log(response.data.status);
-        //         localStorage.setItem(
-        //           "logedInUserDetails",
-        //           JSON.stringify(response.data.data)
-        //         );
-        //         if (this.checkBox) {
-        //           this.cookies.set("rememberUserEmail", setEmail);
-        //           this.cookies.set("rememberUserPassword", setPassword);
-        //         }
-        //         window.location = "/";
-        //       }
-        //     });
-        // } catch (error) {
-        //   let text =
-        //     error && error.response && error.response.data
-        //       ? error.response.data.message
-        //       : "";
-        //   let result = text.match("Password");
-        //   let result1 = text.match("Email");
-        //   if (result == "Password") {
-        //     this.errorPassword = "Enter a valid password.";
-        //     this.errorEmail = "";
-        //   } else if (result1 == "Email") {
-        //     this.errorPassword = "";
-        //     this.errorEmail = "Enter a valid email.";
-        //   }
-        //   // else {
-        //   //   alert("Email or, password is incorrect");
-        //   // }
-        // }
-
-        //API
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
-          // console.log(res.data);
           if (res.response) {
             console.log(res.response);
             if (res.response.data.status == 400) {
