@@ -213,7 +213,7 @@
                       maxlength="6"
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
-                      timer
+                      newTime
                     }}</span>
                     <span class="time" :class="{ showTick: showTick }"
                       ><i class="green-tick-circle"></i
@@ -316,7 +316,8 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
-      // timerOn: true,
+      storeSetInterval: null,
+      newTime: "",
     };
   },
   created() {
@@ -396,21 +397,36 @@ export default {
             this.emailValidated = 1;
             this.otpValidate = 0;
             this.startTimer = false;
+            this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 130;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
               }
             }, 1000);
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+              this.startTimer = true;
+            }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            return this.$swal(res.response.data.message);
+            //return (this.error.email = res.response.data.message);
           }
         });
       }
@@ -424,6 +440,10 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.isActive = true;
+            this.isVerification = false;
+            this.emailValidated = 0;
+            this.otpValidate = 1;
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
@@ -439,31 +459,6 @@ export default {
         },
       }).open();
     },
-    // timer() {
-    //   let remaining = 120;
-    //   let m = Math.floor(remaining / 60);
-    //   let s = remaining % 60;
-
-    //   m = m < 10 ? "0" + m : m;
-    //   s = s < 10 ? "0" + s : s;
-    //   document.getElementById("timer").innerHTML = m + ":" + s;
-    //   remaining -= 1;
-
-    //   if (remaining >= 0 && timerOn) {
-    //     setTimeout(function () {
-    //       timer(remaining);
-    //     }, 1000);
-    //     return;
-    //   }
-
-    //   if (!timerOn) {
-    //     // Do validate stuff here
-    //     return;
-    //   }
-
-    //   // Do timeout stuff here
-    //   alert("Timeout for otp");
-    // },
   },
 };
 </script>

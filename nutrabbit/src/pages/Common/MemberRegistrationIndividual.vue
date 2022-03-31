@@ -10,7 +10,11 @@
             </h1>
             <span>* Required</span>
           </div>
-          <form action class="signUp-form" @submit="(e) => e.preventDefault()">
+          <form
+            action=""
+            class="signUp-form"
+            @submit="(e) => e.preventDefault()"
+          >
             <div class="terms-sec">
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
@@ -22,10 +26,14 @@
                 </div>
                 <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
-              <div class="form-group" :class="error.personalCheck ? 'error' : ''">
+              <div
+                class="form-group"
+                :class="error.personalCheck ? 'error' : ''"
+              >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the collection and use of personal information.
+                    (Required) I agree to the collection and use of personal
+                    information.
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -35,7 +43,7 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for> <i class="icon-required"></i>name </label>
+                <label for=""><i class="icon-required"></i>name</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -49,7 +57,7 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for> <i class="icon-required"></i>ID </label>
+                <label for=""><i class="icon-required"></i>ID</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -66,7 +74,7 @@
                 <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for> <i class="icon-required"></i>password </label>
+                <label for=""><i class="icon-required"></i>password</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -79,8 +87,13 @@
                 </div>
                 <span class="error-msg">{{ error.password }}</span>
               </div>
-              <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
-                <label for> <i class="icon-required"></i>verify password </label>
+              <div
+                class="form-group"
+                :class="error.confirmPassword ? 'error' : ''"
+              >
+                <label for=""
+                  ><i class="icon-required"></i>verify password</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -94,7 +107,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for> <i class="icon-required"></i>e-mail </label>
+                <label for=""><i class="icon-required"></i>e-mail</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -116,9 +129,9 @@
                 <span class="error-msg">{{ error.email }}</span>
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
-                <label for>
-                  <i class="icon-required"></i>Email Verification Number
-                </label>
+                <label for=""
+                  ><i class="icon-required"></i>Email Verification Number</label
+                >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -132,10 +145,11 @@
                       class="time"
                       id="timer"
                       :class="{ startTimer: startTimer }"
+                      >{{ newTime }}</span
+                    >
+                    <span class="time" :class="{ showTick: showTick }"
+                      ><i class="green-tick-circle"></i
                     ></span>
-                    <span class="time" :class="{ showTick: showTick }">
-                      <i class="green-tick-circle"></i>
-                    </span>
                   </div>
                   <button
                     class="btn-green-outline"
@@ -149,7 +163,7 @@
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for> <i class="icon-required"></i>phone number </label>
+                <label for=""><i class="icon-required"></i>phone number</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -163,7 +177,7 @@
                 <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
               <div class="form-group" :class="error.address ? 'error' : ''">
-                <label for> <i class="icon-required"></i>address </label>
+                <label for=""><i class="icon-required"></i>address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input
@@ -192,39 +206,51 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for>distribution medium</label>
+                <label for="">distribution medium</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
-                    <label class="custom-check">
-                      offline
-                      <input type="checkbox" value="offline" v-model="checkName" />
+                    <label class="custom-check"
+                      >offline
+                      <input
+                        type="checkbox"
+                        value="offline"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check">
-                      online
-                      <input type="checkbox" value="online" v-model="checkName" />
+                    <label class="custom-check"
+                      >online
+                      <input
+                        type="checkbox"
+                        value="online"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check">
-                      Network (door-to-door sales)
-                      <input type="checkbox" value="network" v-model="checkName" />
+                    <label class="custom-check"
+                      >Network (door-to-door sales)
+                      <input
+                        type="checkbox"
+                        value="network"
+                        v-model="checkName"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check">
-                      SNS
+                    <label class="custom-check"
+                      >SNS
                       <input type="checkbox" value="sns" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check">
-                      Etc
+                    <label class="custom-check"
+                      >Etc
                       <input type="checkbox" value="etc" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
@@ -233,7 +259,10 @@
               </div>
             </div>
 
-            <button class="btn-primary grenn-btn2" @click="individalRegistration">
+            <button
+              class="btn-primary grenn-btn2"
+              @click="individalRegistration"
+            >
               Sign Up
             </button>
           </form>
@@ -243,7 +272,6 @@
   </div>
 </template>
 <script>
-import moment from "moment";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
@@ -263,54 +291,22 @@ export default {
       address: "",
       checkName: [],
       error: {},
-      timer: 10,
+      timer: 130,
       newTime: "",
       isActive: true,
       isVerification: false,
-      emailValidated: false,
-      otpValidate: true,
+      emailValidated: 0,
+      otpValidate: 1,
       startTimer: true,
       showTick: true,
-      // remaining: 180
+      storeSetInterval: null,
+      newTime: "",
     };
   },
   created() {
     this.commonService = new CommonService();
-    // this.currentDateTime()
-  },
-  watch: {
-    runTime: function (val) {
-      if (val) {
-        return val;
-      }
-    },
   },
   methods: {
-    currentDateTime() {
-      var eventTime = 5;
-      var currentTime = 0;
-      var diffTime = eventTime - currentTime;
-      var duration = moment.duration(diffTime * 1000, "milliseconds");
-      var interval = 1000;
-      setInterval(function () {
-        duration = moment.duration(duration - interval, "milliseconds");
-        let time = duration.minutes() + ":" + duration.seconds();
-        if (duration.seconds() >= 0) {
-          console.log(time);
-          document.querySelector("#timer").innerHTML = time.toString();
-        }
-        if (duration.seconds() == 0) {
-          console.log("time out");
-          document.querySelector("#timer").innerHTML = "";
-          this.isVerification = false;
-          this.isActive = false;
-          this.emailValidated = true;
-          this.otpValidate = false;
-          this.startTimer = true;
-          console.log(this.startTimer);
-        }
-      }, interval);
-    },
     async individalRegistration() {
       let credential = {
         termsCheck: this.termsCheck,
@@ -371,35 +367,41 @@ export default {
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
           if (res.status == 200) {
-            this.isActive = true;
+            this.isActive = false;
             this.isVerification = true;
-            this.emailValidated = false;
-            this.otpValidate = true;
-            this.startTimer = false;
+            this.emailValidated = 1;
+            this.otpValidate = 0;
+              this.startTimer = false;
+            this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            this.currentDateTime();
-            // setInterval(() => {
-            //   console.log(this.timer);
-            //   let m = Math.floor(this.timer / 60);
-            //   let s = this.timer % 60;
-            //   m = m < 10 ? "0" + m : m;
-            //   s = s < 10 ? "0" + s : s;
-            //   this.newTime = m + ":" + s;
-            //   if (this.timer == 0) {
-            //     clearInterval();
-            //     this.isVerification = false;
-            //     this.isActive = true;
-            //     this.emailValidated = 0;
-            //     this.otpValidate = 1;
-            //     this.startTimer = true;
-            //   }
-            //   else if (this.timer > 0) {
-            //     this.timer--;
-            //   }
-            // }, 1000);
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 130;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
+              }
+            }, 1000);
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+              this.startTimer = true;
+            }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            return this.$swal(res.response.data.message);
+            //return (this.error.email = res.response.data.message);
           }
         });
       }
@@ -413,6 +415,10 @@ export default {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
+            this.isActive = true;
+            this.isVerification = false;
+            this.emailValidated = 0;
+            this.otpValidate = 1;
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
