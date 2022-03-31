@@ -169,7 +169,7 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
                     />
@@ -213,7 +213,7 @@
                       maxlength="6"
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
-                      timer
+                      newTime
                     }}</span>
                     <span class="time" :class="{ showTick: showTick }"
                       ><i class="green-tick-circle"></i
@@ -276,7 +276,7 @@
             </div>
             <button
               class="btn-primary grenn-btn2"
-              @click="individalRegistration"
+              @click="BusinessRegistration"
             >
               Sign Up
             </button>
@@ -287,9 +287,9 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
+import CommonService from "../../services/CommonService";
 export default {
   name: "MembershipRegistrationBusiness",
   data() {
@@ -309,7 +309,6 @@ export default {
       depertment: "",
       contactPerson: "",
       error: {},
-      errors: {},
       timer: 130,
       isActive: true,
       isVerification: false,
@@ -317,11 +316,15 @@ export default {
       otpValidate: 1,
       startTimer: true,
       showTick: true,
-      // timerOn: true,
+      storeSetInterval: null,
+      newTime: "",
     };
   },
+  created() {
+    this.commonService = new CommonService();
+  },
   methods: {
-    async individalRegistration() {
+    async BusinessRegistration() {
       let credential = {
         termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
@@ -343,28 +346,24 @@ export default {
       if (isInvalid) {
         this.error = error;
       } else {
-        try {
-          return await axios
-            .post("/v1/sites/user/business_registration", {
-              name: this.name,
-              username: this.username,
-              password: this.password,
-              email: this.email,
-              mobile: this.phoneNumber,
-              address: this.address,
-              business_number: this.businessNumber,
-              business_name: this.businessName,
-              department: this.depertment,
-              contact_person: this.contactPerson,
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                this.$router.push("member-registration-completed");
-              }
-            });
-        } catch (error) {
-          console.log(error);
-        }
+        this.commonService
+          .individalRegistration(
+            this.name,
+            this.username,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.businessNumber,
+            this.businessName,
+            this.depertment,
+            this.contactPerson
+          )
+          .then((res) => {
+            if (res.data.status == 200) {
+              this.$router.push("member-registration-completed");
+            }
+          });
       }
     },
     async checkUser() {
@@ -374,24 +373,14 @@ export default {
       if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
       } else {
-        try {
-          const checkUserdata = await axios.post("/v1/sites/user/check_id", {
-            uuid: this.username,
-          });
-          if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 0
-          ) {
-            return (this.error.username = "");
-          } else if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 1
-          ) {
-            return (this.error.username = checkUserdata.data.data.msg);
+        this.commonService.checkUser(this.username).then((res) => {
+          if (res.data.status == 200 && res.data.data.is_exist === 0) {
+            this.error.username = "";
+            this.$swal("User id available");
+          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            return (this.error.username = res.data.data.msg);
           }
-        } catch (error) {
-          return false;
-        }
+        });
       }
     },
     async sendOtp() {
@@ -401,11 +390,8 @@ export default {
       if (validator.isEmpty(this.email)) {
         this.error.email = "Please enter your email address";
       } else {
-        try {
-          const sendOtpData = await axios.post("/v1/sites/user/send_otp", {
-            email: this.email,
-          });
-          if (sendOtpData.data.status == 200) {
+        this.commonService.sendOTP(this.email).then((res) => {
+          if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
@@ -413,60 +399,55 @@ export default {
             this.startTimer = false;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 130;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
               }
             }, 1000);
-          } else {
-            return (this.error.email = sendOtpData.data.message);
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+            }, (this.timer + 1) * 1000);
+          } else if (res.response.data.status == 400) {
+            return (this.error.email = res.response.data.message);
           }
-          console.log(sendOtpData);
-        } catch (error) {
-          this.error.email = "Email ID Already Exists";
-        }
+        });
       }
     },
     async verifyOTP() {
       if (this.emailOTP == "") {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
-        try {
-          const verifyOtpData = await axios.post("/v1/sites/user/verify_otp", {
-            email: this.email,
-            verification_code: this.emailOTP,
-          });
-          if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 1
-          ) {
+        this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
-            this.error.emailOTP = '';
+            this.error.emailOTP = "";
             return true;
-          } else if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 0
-          ) {
+          } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             this.error.emailOTP = "wrong otp";
           }
-        } catch (error) {
-          this.error.emailOTP = "Please enter your email verification code";
-          return false;
-        }
+        });
       }
     },
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
           return (this.address = data.address);
         },
       }).open();

@@ -98,7 +98,7 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
                     />
@@ -141,9 +141,12 @@
                       v-model="emailOTP"
                       maxlength="6"
                     />
-                    <span class="time" :class="{ startTimer: startTimer }">{{
-                      timer
-                    }}</span>
+                    <span
+                      class="time"
+                      id="timer"
+                      :class="{ startTimer: startTimer }"
+                      >{{ newTime }}</span
+                    >
                     <span class="time" :class="{ showTick: showTick }"
                       ><i class="green-tick-circle"></i
                     ></span>
@@ -269,7 +272,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
@@ -289,14 +291,15 @@ export default {
       address: "",
       checkName: [],
       error: {},
-      errors: {},
-      timer: 130,
+      timer: 5,
+      newTime: "",
       isActive: true,
       isVerification: false,
       emailValidated: 0,
       otpValidate: 1,
       startTimer: true,
       showTick: true,
+      storeSetInterval: null,
     };
   },
   created() {
@@ -331,9 +334,7 @@ export default {
             this.checkName.join(",")
           )
           .then((res) => {
-            console.log(res);
             if (res.data.status == 200) {
-              console.log(res.data.status);
               this.$router.push("member-registration-completed");
             }
           });
@@ -346,24 +347,14 @@ export default {
       if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
       } else {
-        try {
-          const checkUserdata = await axios.post("/user/check_id", {
-            uuid: this.username,
-          });
-          if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 0
-          ) {
-            return (this.error.username = "");
-          } else if (
-            checkUserdata.data.status == 200 &&
-            checkUserdata.data.data.is_exist === 1
-          ) {
-            return (this.error.username = checkUserdata.data.data.msg);
+        this.commonService.checkUser(this.username).then((res) => {
+          if (res.data.status == 200 && res.data.data.is_exist === 0) {
+            this.error.username = "";
+            this.$swal("User id available");
+          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            return (this.error.username = res.data.data.msg);
           }
-        } catch (error) {
-          return false;
-        }
+        });
       }
     },
     async sendOtp() {
@@ -374,7 +365,7 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-          if (res.status == 200) {
+         if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
@@ -382,19 +373,31 @@ export default {
             this.startTimer = false;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
-            setInterval(() => {
-              if (this.timer === 0) {
-                clearInterval();
-                this.isVerification = false;
-                this.isActive = true;
-                this.emailValidated = 0;
-                this.otpValidate = 1;
-              } else {
-                this.timer--;
+
+            if (this.storeSetInterval) {
+              clearInterval(this.storeSetInterval);
+            }
+            // asign new time again
+            this.timer = 5;
+
+            this.storeSetInterval = setInterval(() => {
+              let m = Math.floor(this.timer / 60);
+              let s = this.timer % 60;
+              m = m < 10 ? "0" + m : m;
+              s = s < 10 ? "0" + s : s;
+              this.newTime = m + ":" + s;
+              if (this.timer > 0) {
+                return this.timer--;
               }
             }, 1000);
-          }
-          if (res.response.data.status == 400) {
+            setTimeout(() => {
+              this.isVerification = false;
+              this.isActive = true;
+              this.emailValidated = 0;
+              this.otpValidate = 1;
+              this.timer = false
+            }, (this.timer + 1) * 1000);
+          } else if (res.response.data.status == 400) {
             return (this.error.email = res.response.data.message);
           }
         });
@@ -404,65 +407,26 @@ export default {
       if (this.emailOTP == "") {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
-        try {
-          const verifyOtpData = await axios.post("/user/verify_otp", {
-            email: this.email,
-            verification_code: this.emailOTP,
-          });
-          if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 1
-          ) {
+        this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
-            this.error.emailOTP = '';
+            this.error.emailOTP = "";
             return true;
-          } else if (
-            verifyOtpData.data.status == 200 &&
-            verifyOtpData.data.data.otp_verify === 0
-          ) {
+          } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             this.error.emailOTP = "wrong otp";
           }
-        } catch (error) {
-          this.error.emailOTP = "Please enter your email verification code";
-          return false;
-        }
+        });
       }
     },
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
           return (this.address = data.address);
         },
       }).open();
     },
-    // timer() {
-    //   let remaining = 120;
-    //   let m = Math.floor(remaining / 60);
-    //   let s = remaining % 60;
-
-    //   m = m < 10 ? "0" + m : m;
-    //   s = s < 10 ? "0" + s : s;
-    //   document.getElementById("timer").innerHTML = m + ":" + s;
-    //   remaining -= 1;
-
-    //   if (remaining >= 0 && timerOn) {
-    //     setTimeout(function () {
-    //       timer(remaining);
-    //     }, 1000);
-    //     return;
-    //   }
-
-    //   if (!timerOn) {
-    //     // Do validate stuff here
-    //     return;
-    //   }
-
-    //   // Do timeout stuff here
-    //   alert("Timeout for otp");
-    // },
   },
 };
 </script>
