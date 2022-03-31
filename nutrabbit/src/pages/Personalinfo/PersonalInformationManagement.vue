@@ -21,7 +21,7 @@
                 <label for>ID</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control disabled" type="text" v-model="userID" />
+                    <input class="form-control disabled" type="text" v-model="uuid" />
                   </div>
                 </div>
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
@@ -35,7 +35,6 @@
                       type="text"
                       placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
                       v-model="password"
-                      maxlength="20"
                     />
                   </div>
                 </div>
@@ -79,7 +78,7 @@
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="address" />
                   </div>
-                  <button class="btn-green-outline">Address Search</button>
+                  <button class="btn-green-outline" @click="getAddress">Address Search</button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
@@ -152,7 +151,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import personalInfoValidation from "../../Validation/personalInfoValidation";
@@ -170,6 +168,7 @@ export default {
       address: "",
       checkName: [],
       error: {},
+      uuid:"",
     };
   },
 
@@ -213,13 +212,16 @@ export default {
       };
       const { isInvalid, error } = personalInfoValidation(credential);
       if (isInvalid) {
+        console.log("bbbbb");
         this.error = error;
       } else {
+        console.log("ccccc");
         this.personalInfoservice
           .updatePersonalInfo(
-            this.name,
             this.userID,
+            this.name,
             this.password,
+            this.confirmPassword,
             this.email,
             this.phoneNumber,
             this.address,
@@ -228,6 +230,7 @@ export default {
           .then((res) => {
             console.log(res);
             if (res.data.status == 200) {
+              console.log("ddddd");
               console.log(res.data.status);
               // this.$router.push("member-registration-completed");
             }
@@ -241,12 +244,22 @@ export default {
         console.log(res.data); 
         let data = res.data;
         this.name = data.data[0].name;
-        this.userID = data.data[0].uuid;
+        this.uuid = data.data[0].uuid;
         this.email = data.data[0].email;
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
+        this.userID = this.common.state.userId;
       });
 
+    },
+
+    getAddress() {
+      new daum.Postcode({
+        oncomplete: (data) => {
+          console.log(data);
+          return (this.address = data.address);
+        },
+      }).open();
     },
 
     //     async apiFunctionName(){
