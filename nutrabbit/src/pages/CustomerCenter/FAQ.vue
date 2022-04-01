@@ -9,7 +9,7 @@
           <p class="category">category</p>
           <p class="title">title</p>
         </div>
-        <FaqAccordion v-for="(item, index) in NoticeList" :key="index">
+        <FaqAccordion v-for="(item, index) of NoticeList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <p class="para-category"> {{item.categoryname}}</p>

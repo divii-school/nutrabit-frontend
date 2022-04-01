@@ -11,7 +11,7 @@
         </div>
         <div class="notice-list bBtm-0">
           <ul>
-            <li v-for="(item, index) in NoticeList" :key="index">
+            <li v-for="(item, index) of NoticeList" :key="index">
               <div class="item-left">
                 <span v-if="item.tag">{{item.tag}}</span>
                 <p>{{item.title}}</p>

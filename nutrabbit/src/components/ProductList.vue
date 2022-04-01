@@ -12,7 +12,7 @@
     <div class="material-details">
       <h2>{{item.title}}</h2>
       <div class="description">
-        <p v-for="(description, ind) in item.desc" :key="ind">{{description}}</p>
+        <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p>
       </div>
     </div>
   </div>
