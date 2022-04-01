@@ -2,7 +2,7 @@ import { reactive } from "vue";
 
 const state = reactive({
   AppData: undefined,
-  userId: '',
+  userId: localStorage.getItem("uid"),
   name: '',
 });
 
