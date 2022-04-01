@@ -12,7 +12,11 @@
               <li><router-link to="">my choice</router-link></li>
               <li><router-link to="">nutri 3.3 blending</router-link></li>
               <!-- this is for testing purpose only -->
-              <li><router-link to="/personal-information">Personal Info</router-link></li>
+              <li>
+                <router-link to="/personal-information"
+                  >Personal Info</router-link
+                >
+              </li>
             </ul>
           </div>
           <div class="manuRight">
@@ -137,11 +141,11 @@
             </li>
             <li>
               <p>aloe</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to="" ><i class="icon-close-search"></i></router-link>
             </li>
             <li>
               <p>nervous system</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to="" ><i class="icon-close-search"></i></router-link>
             </li>
           </ul>
           <!-- <div class="no-search-data">
@@ -149,8 +153,8 @@
           </div> -->
         </div>
         <div class="delete-close">
-          <a href="#"><i class="icon-delete"></i>Delete all</a>
-          <a href="#" @click="activeSearch = false">to close</a>
+          <router-link to="" ><i class="icon-delete"></i>Delete all</router-link>
+          <router-link to=""  @click="activeSearch = false">to close</router-link>
         </div>
       </div>
     </div>
@@ -166,9 +170,9 @@
         @click="active = !active"
         :aria-pressed="active ? 'true' : 'false'"
       >
-        <a href="javascript:void(0)"
+        <router-link href="javascript:void(0)"
           ><img src="/src/assets/icons/menu-close.svg"
-        /></a>
+        /></router-link>
       </div>
 
       <div class="black-box"></div>
@@ -207,16 +211,16 @@
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <a href="javascript:void(0)">{{ item.subItem1 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem2 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem3 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem4 }}</a>
+              <router-link href="javascript:void(0)">{{ item.subItem1 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem2 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem3 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem4 }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li><a href="">KO</a></li>
-          <li><a href="">EN</a></li>
+          <li><router-link href="">KO</router-link></li>
+          <li><router-link href="">EN</router-link></li>
         </ul>
       </div>
     </div>
