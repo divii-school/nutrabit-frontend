@@ -31,6 +31,7 @@ import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
 import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
 import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
 import MyChoiceRawMaterialDetailedPage from '../pages/MyChoice/MyChoiceRawMaterialDetailedPage.vue';
+import Inquery from '../pages/CustomerCenter/Inquery.vue';
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
@@ -112,6 +113,11 @@ const routes = [
         name: 'InquiryContactUs',
         path: '/inquiry-contactUs',
         component: InquiryContactUs,
+    },
+    {
+        name: 'Inquery',
+        path: '/inquiry',
+        component: Inquery,
     },
     {
         name: 'MemberRegistrationMethod',

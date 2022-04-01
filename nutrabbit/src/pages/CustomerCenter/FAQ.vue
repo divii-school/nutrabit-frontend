@@ -12,12 +12,17 @@
         <FaqAccordion v-for="(item, index) in NoticeList" :key="index">
           <template v-slot:title>
             <div class="item-left">
-              <p class="para-category"> {{item.categoryname}}</p>
-              <span v-if="item.tag">{{item.tag}}</span>
-              <p>{{item.title}}</p>
+              <div class="item-left-inner">
+                <p class="para-category"> {{item.categoryname}}</p>
+                <span v-if="item.tag">{{item.tag}}</span>
+              </div>
+              <div class="item-right-inner">
+                <p>{{item.title}}</p>
+              </div>
             </div>
           </template>
           <template v-slot:content>
+            <h4>Answred</h4>
             <p>
               {{item.content}}
             </p>
