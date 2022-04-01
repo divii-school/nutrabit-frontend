@@ -8,13 +8,15 @@
               <img src="../assets/images/logo.svg" alt="Logo" />
             </router-link>
             <ul class="flex">
-              <li><router-link to="">my choice</router-link></li>
-              <li><router-link to="">nutri 3.3 blending</router-link></li>
+              <li>
+                <router-link to>my choice</router-link>
+              </li>
+              <li>
+                <router-link to>nutri 3.3 blending</router-link>
+              </li>
               <!-- this is for testing purpose only -->
               <li>
-                <router-link to="/personal-information"
-                  >Personal Info</router-link
-                >
+                <router-link to="/personal-information">Personal Info</router-link>
               </li>
             </ul>
           </div>
@@ -26,89 +28,70 @@
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
                 />
-                <router-link to=""
-                  ><i class="icon-search-black"></i
-                ></router-link>
+                <router-link to>
+                  <i class="icon-search-black"></i>
+                </router-link>
               </div>
-              <div
-                class="header-search-data"
-                :class="activeSearch ? 'activeSearch' : ''"
-              >
+              <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
                 <div class="search-data-inner">
                   <ul>
                     <li>
                       <p>muscular system</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                     <li>
                       <p>aloe</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                     <li>
                       <p>nervous system</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                   </ul>
                 </div>
                 <div class="delete-close">
-                  <router-link to=""
-                    ><i class="icon-delete"></i>Delete all</router-link
-                  >
-                  <router-link to="" @click="activeSearch = false"
-                    >to close</router-link
-                  >
+                  <router-link to>
+                    <i class="icon-delete"></i>Delete all
+                  </router-link>
+                  <router-link to @click="activeSearch = false">to close</router-link>
                 </div>
               </div>
             </div>
             <!-- <p>{{this.logedInUserDetails}}</p> -->
-            <div
-              class="after-login-dropdown flex items-center"
-              v-if="this.logedInUserDetails"
-            >
+            <div class="after-login-dropdown flex items-center" v-if="this.logedInUserDetails">
               <div class="dropdown">
                 <button class="dropbtn">
-                  <i class="login-icon"></i>{{ username }}
+                  <i class="login-icon"></i>
+                  {{ userDetails.name }}{{token}}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to=""
-                    >Change of personal information</router-link
-                  >
-                  <router-link to="" @click="logOut()">Log out</router-link>
+                  <router-link to>Change of personal information</router-link>
+                  <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
             </div>
-            <router-link to="/login" class="login-item" v-else
-              >login</router-link
-            >
+            <router-link to="/login" class="login-item" v-else>login</router-link>
 
             <div class="header-dropdown">
-              <vue-select
-                :options="['EN', 'KO']"
-                placeholder="EN"
-                close-on-select
-              >
-              </vue-select>
+              <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select></vue-select>
             </div>
-            <router-link
-              to="/mobile-search"
-              class="mobile-search flex items-center justify-center"
-            >
+            <router-link to="/mobile-search" class="mobile-search flex items-center justify-center">
               <i class="icon-mobile-search"></i>
             </router-link>
 
             <router-link
-              to=""
+              to
               class="menu-toggle"
               @click="sideMenuOpen"
               :aria-pressed="active ? 'true' : 'false'"
             >
-              <img src="../assets/images/menu-toggle.png" alt="" />
+              <img src="../assets/images/menu-toggle.png" alt />
             </router-link>
           </div>
         </div>
@@ -124,19 +107,18 @@
           @click="activeSearch = true"
           :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <router-link to="" :class="activeSearch ? 'activeSearchIcon' : ''"
-          ><i class="icon-mobile-search"></i
-        ></router-link>
+        <router-link to :class="activeSearch ? 'activeSearchIcon' : ''">
+          <i class="icon-mobile-search"></i>
+        </router-link>
       </div>
-      <div
-        class="header-search-data"
-        :class="activeSearch ? 'activeSearch' : ''"
-      >
+      <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
         <div class="search-data-inner">
           <ul>
             <li>
               <p>muscular system</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
+              <router-link to>
+                <i class="icon-close-search"></i>
+              </router-link>
             </li>
             <li>
               <p>aloe</p>
@@ -149,7 +131,7 @@
           </ul>
           <!-- <div class="no-search-data">
             <p>There are no recent searches.</p>
-          </div> -->
+          </div>-->
         </div>
         <div class="delete-close">
           <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
@@ -160,20 +142,12 @@
       </div>
     </div>
   </template>
-  <div
-    class="right-menu-screen"
-    :class="{ active: active }"
-    v-if="this.logedInUserDetails"
-  >
+  <div class="right-menu-screen" :class="{ active: active }" v-if="this.logedInUserDetails">
     <div class="top-box right-small-box">
-      <div
-        class="closeMenu"
-        @click="active = !active"
-        :aria-pressed="active ? 'true' : 'false'"
-      >
-        <router-link href="javascript:void(0)"
-          ><img src="/src/assets/icons/menu-close.svg"
-        /></router-link>
+      <div class="closeMenu" @click="active = !active" :aria-pressed="active ? 'true' : 'false'">
+        <a href="javascript:void(0)">
+          <img src="/src/assets/icons/menu-close.svg" />
+        </a>
       </div>
 
       <div class="black-box"></div>
@@ -185,22 +159,13 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <a
-                href="#"
-                :text="
-                  typeof this.logedInUserDetails !== 'undefined' &&
-                  this.logedInUserDetails.name &&
-                  index == 0
-                    ? this.logedInUserDetails.name
-                    : item.mainItem
-                "
-                >{{ item.mainItem }}</a
-              >
+              <!-- <a href="#" v-if="token">{{ userDetails.name }}</a>
+              <a href="#" v-else>{{ item.mainItem }}</a> -->
               <i
                 class="icon-menu-downArw"
                 :class="
                   typeof item.subItemData !== 'undefined' &&
-                  item.subItemData.length
+                    item.subItemData.length
                     ? ''
                     : 'no-arrow'
                 "
@@ -247,6 +212,7 @@
   </div> -->
 </template>
 <script>
+import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
 import Modal from "./Modal.vue";
@@ -259,7 +225,10 @@ export default {
 
   data() {
     return {
-      username: this.common.state.name,
+      token: localStorage.token ? true : false,
+      userId: this.common.state.userId,
+      userDetails: '',
+      logedInUserDetails: false,
       active: false,
       activeSearch: false,
       isModalVisible: false,
@@ -305,6 +274,18 @@ export default {
     const common = inject("common");
     return { common };
   },
+  created() {
+    this.personalInfoService = new PersonalInfoService();
+  },
+  mounted() {
+    if (localStorage.token) {
+      this.logedInUserDetails = true;
+    } else {
+      this.logedInUserDetails = false;
+      
+    }
+    this.getUserInfo();
+  },
   methods: {
     activeSideMenu(event) {
       if (event.target.className == "right-menu-screen") {
@@ -313,10 +294,10 @@ export default {
         event.target.className = "right-menu-screen";
       }
     },
-    changeLanguage() {},
+    changeLanguage() { },
     logOut() {
       if (this.logedInUserDetails) {
-        localStorage.removeItem("logedInUserDetails");
+        localStorage.clear();
         window.location = "/login";
       }
     },
@@ -333,6 +314,12 @@ export default {
         this.showModal();
       }
     },
+    getUserInfo() {
+      this.personalInfoService.getPersonalData(this.userId).then((res) => {
+        console.log('userDetails res', res.data.data[0]);
+        this.userDetails = res.data.data[0];
+      });
+    },
   },
   computed: {
     isHeaderPositionAbsolute() {
@@ -342,12 +329,6 @@ export default {
       return this.$route.name != "mobile-search";
     },
   },
-  mounted() {
-    if (localStorage.getItem("token")) {
-      this.logedInUserDetails = true;
-    } else {
-      this.logedInUserDetails = false;
-    }
-  },
+
 };
 </script>

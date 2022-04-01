@@ -140,10 +140,12 @@ export default {
             }
           } else {
             if (res.data.status == 200) {
-              console.log(res);
-              localStorage.setItem("token", res.data.data.token);
+              console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
+              localStorage.setItem("uid", res.data.data.userId);
+              localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
                 this.cookies.set("rememberUserPassword", setPassword);
