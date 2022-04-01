@@ -35,9 +35,11 @@
                 </div>
               </div>
               <div class="heading-left">
-                <router-link to="/my-choice-recomanded-blending"><a href class="see-more">
-                  <i class="icon-plus"></i>see more
-                </a></router-link>
+                <router-link to="/my-choice-recomanded-blending">
+                  <a href class="see-more">
+                    <i class="icon-plus"></i>see more
+                  </a>
+                </router-link>
               </div>
             </div>
             <ul class="recomanded-list">

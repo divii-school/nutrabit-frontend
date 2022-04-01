@@ -74,7 +74,7 @@ const routes = [
         name: 'Login',
         path: '/login',
         component: Login,
-        
+
     },
     {
         name: 'MemberRegistrationTypeSelection',
@@ -96,12 +96,12 @@ const routes = [
     {
         name: 'personal-information',
         path: '/personal-information',
-        component:  PersonalInformation
+        component: PersonalInformation
     },
     {
         name: 'PersonalInformationBusiness',
         path: '/personal-information-business',
-        component:  PersonalInformationBusiness
+        component: PersonalInformationBusiness
     },
     {
         name: 'WithdrawalOfMembership',
@@ -116,7 +116,7 @@ const routes = [
     {
         name: 'MemberRegistrationMethod',
         path: '/method-selection',
-        component:MemberRegistrationMethod,
+        component: MemberRegistrationMethod,
         // beforeEnter: guest,
     },
     {
@@ -127,7 +127,7 @@ const routes = [
     {
         name: 'FindId',
         path: '/find-id',
-        component:FindID,
+        component: FindID,
         // beforeEnter: guest,
     },
     {
@@ -138,7 +138,7 @@ const routes = [
     {
         name: 'ChangePassword',
         path: '/change-password',
-        component:ChangePassword,
+        component: ChangePassword,
         // beforeEnter: guest,
     },
     {
@@ -217,26 +217,26 @@ const routes = [
         name: 'notice',
         path: '/notice',
         component: Notice,
-        
+
     },
     {
         name: 'noticeDetailPage',
         path: '/notice-detail-page',
-        component:NoticeDetailPage,
-        
+        component: NoticeDetailPage,
+
     },
     {
         name: 'Faq',
         path: '/faq',
         component: FAQ,
-        
+
     },
-  
+
     {
         name: 'MyRecipeDetail',
         path: '/my-recipe-detail',
         component: MyRecipeDetail,
-        
+
     },
 
     {

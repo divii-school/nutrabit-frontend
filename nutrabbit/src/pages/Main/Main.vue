@@ -18,7 +18,7 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div class="main-page-body">
+    <div v-if="token" class="main-page-body">
       <div class="container-medium">
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
@@ -30,7 +30,9 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <router-link to="/my-choice"><button class="btn-small-solid">Go to my choice</button></router-link>
+          <router-link to="/my-choice">
+            <button class="btn-small-solid">Go to my choice</button>
+          </router-link>
         </div>
       </div>
       <div class="devider">
@@ -83,6 +85,7 @@ export default {
     return {
       MainSlider: [],
       ProductData: [],
+      token: localStorage.getItem('token'),
     };
   },
   setup() {
@@ -96,13 +99,13 @@ export default {
     this.MainService = new MainService();
   },
   mounted() {
-   this.allBanner();
-    this.allNutidata();
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    // this.allBanner();
+
+    if (localStorage.getItem("token")) {
+      this.allBanner();
+      this.allNutidata();
     } else {
-      this.logedInUserDetails = null;
+      this.allBanner();
     }
   },
   methods: {
@@ -120,11 +123,13 @@ export default {
     // allNutidata list
     allNutidata() {
       this.MainService.getNutriData().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
+        // console.log(res);
+        if (res.status == 200) {
+          this.ProductData = res.data.blendingData;
+
         } else {
           // console.log('getNutridata res', res.data.blendingData);
-          this.ProductData = res.data.blendingData;
+          this.$swal(res.message, "error");
         }
       });
     },

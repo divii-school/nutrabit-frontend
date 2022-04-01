@@ -15,11 +15,11 @@
                 <router-link to>nutri 3.3 blending</router-link>
               </li>
               <!-- this is for testing purpose only -->
-              <li>
+              <!-- <li>
                 <router-link to="/personal-information"
                   >Personal Info</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </div>
           <div class="manuRight">
@@ -242,7 +242,7 @@
   </div> -->
 </template>
 <script>
-import PersonalInfoService from "../services/PersonalInfoService";
+// import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
 import Modal from "./Modal.vue";
@@ -304,16 +304,16 @@ export default {
     const common = inject("common");
     return { common };
   },
-  created() {
-    this.personalInfoService = new PersonalInfoService();
-  },
+  // created() {
+  //   this.personalInfoService = new PersonalInfoService();
+  // },
   mounted() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
     } else {
       this.logedInUserDetails = false;
     }
-    this.getUserInfo();
+    // this.getUserInfo();
   },
   methods: {
     changeLanguage() {},
@@ -337,12 +337,12 @@ export default {
       //   this.showModal();
       // }
     },
-    getUserInfo() {
-      this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        // console.log('userDetails res', res.data.data[0]);
-        // this.userDetails = res.data.data[0];
-      });
-    },
+    // getUserInfo() {
+    //   this.personalInfoService.getPersonalData(this.userId).then((res) => {
+    //     // console.log('userDetails res', res.data.data[0]);
+    //     // this.userDetails = res.data.data[0];
+    //   });
+    // },
   },
   computed: {
     isHeaderPositionAbsolute() {
