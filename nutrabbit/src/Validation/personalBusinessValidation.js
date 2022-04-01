@@ -3,7 +3,9 @@ import validator from "validator";
 const personalBusinessValidation = (data) => {
   let errors = {};
 
-  const { business_number, business_name, department, contactPerson, password, confirmPassword, phoneNumber, address, reason } = data;
+  const { business_number, business_name, department, contactPerson, password, 
+
+    confirmPassword, phoneNumber, address, reason, withdraw_type } = data;
 
   // if (account_type == 'business') {
     if (validator.isEmpty(business_number)) {
@@ -18,10 +20,6 @@ const personalBusinessValidation = (data) => {
     if (validator.isEmpty(contactPerson)) {
       errors.contactPerson = "Please enter the name of the person in charge";
     }
-  // }
-//   if (validator.isEmpty(name)) {
-//     errors.name = "Enter your name please";
-//   }
 
     if (validator.isEmpty(password)) {
         errors.password = "Please enter a Password";
@@ -42,10 +40,11 @@ const personalBusinessValidation = (data) => {
         errors.address = "Please enter your address";
     }
 
-    if (validator.isEmpty(reason)) {
-        errors.reason = "Please enter your reason";
-      }
-
+    if (withdraw_type == "bussiness") {
+        if (validator.isEmpty(reason)) {
+            errors.reason = "Please enter your reason";
+        }
+    }
 
   return {
     isInvalid: Object.keys(errors).length > 0,

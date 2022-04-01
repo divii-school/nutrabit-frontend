@@ -22,7 +22,7 @@
         </div>
         <div class="my-choice-list-wrap">
           <ul class="my-choice-list-outer">
-            <li class="my-choice-list-outer-item" v-for="item of categories" :key="item">
+            <li class="my-choice-list-outer-item" v-for="item in categories" :key="item">
               <h2 class="list-heading">{{ item.category_name }}</h2>
               <ul class="my-choice-list-inner">
                 <li
