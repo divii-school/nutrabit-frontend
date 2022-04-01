@@ -176,7 +176,10 @@
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
-              <div class="form-group" :class="error.address ? 'error' : ''">
+              <div
+                class="form-group"
+                :class="error.address || error.detsilAddress ? 'error' : ''"
+              >
                 <label for=""><i class="icon-required"></i>address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
@@ -198,8 +201,7 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter detailed address"
-                      v-model="address"
-                      disabled
+                      v-model="detsilAddress"
                     />
                   </div>
                 </div>
@@ -289,6 +291,7 @@ export default {
       emailOTP: "",
       phoneNumber: "",
       address: "",
+      detsilAddress: "",
       checkName: [],
       error: {},
       timer: 130,
@@ -319,6 +322,7 @@ export default {
         emailOTP: this.emailOTP,
         phoneNumber: this.phoneNumber,
         address: this.address,
+        detsilAddress: this.detsilAddress,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
@@ -332,6 +336,7 @@ export default {
             this.email,
             this.phoneNumber,
             this.address,
+            this.detsilAddress,
             this.checkName.join(",")
           )
           .then((res) => {
@@ -371,7 +376,7 @@ export default {
             this.isVerification = true;
             this.emailValidated = 1;
             this.otpValidate = 0;
-              this.startTimer = false;
+            this.startTimer = false;
             this.showTick = true;
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
@@ -430,6 +435,7 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
+          console.log(data);
           return (this.address = data.address);
         },
       }).open();

@@ -8,10 +8,18 @@
               <img src="../assets/images/logo.svg" alt="Logo" />
             </router-link>
             <ul class="flex">
-              <li><router-link to="">my choice</router-link></li>
-              <li><router-link to="">nutri 3.3 blending</router-link></li>
+              <li>
+                <router-link to>my choice</router-link>
+              </li>
+              <li>
+                <router-link to>nutri 3.3 blending</router-link>
+              </li>
               <!-- this is for testing purpose only -->
-              <li><router-link to="/personal-information">Personal Info</router-link></li>
+              <li>
+                <router-link to="/personal-information"
+                  >Personal Info</router-link
+                >
+              </li>
             </ul>
           </div>
           <div class="manuRight">
@@ -22,9 +30,9 @@
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
                 />
-                <router-link to=""
-                  ><i class="icon-search-black"></i
-                ></router-link>
+                <router-link to>
+                  <i class="icon-search-black"></i>
+                </router-link>
               </div>
               <div
                 class="header-search-data"
@@ -34,29 +42,29 @@
                   <ul>
                     <li>
                       <p>muscular system</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                     <li>
                       <p>aloe</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                     <li>
                       <p>nervous system</p>
-                      <router-link to=""
-                        ><i class="icon-close-search"></i
-                      ></router-link>
+                      <router-link to>
+                        <i class="icon-close-search"></i>
+                      </router-link>
                     </li>
                   </ul>
                 </div>
                 <div class="delete-close">
-                  <router-link to=""
-                    ><i class="icon-delete"></i>Delete all</router-link
-                  >
-                  <router-link to="" @click="activeSearch = false"
+                  <router-link to>
+                    <i class="icon-delete"></i>Delete all
+                  </router-link>
+                  <router-link to @click="activeSearch = false"
                     >to close</router-link
                   >
                 </div>
@@ -69,13 +77,12 @@
             >
               <div class="dropdown">
                 <button class="dropbtn">
-                  <i class="login-icon"></i>{{ username }}
+                  <i class="login-icon"></i>
+                  {{ userDetails.name }}{{ token }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to=""
-                    >Change of personal information</router-link
-                  >
-                  <router-link to="" @click="logOut()">Log out</router-link>
+                  <router-link to>Change of personal information</router-link>
+                  <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
             </div>
@@ -88,8 +95,7 @@
                 :options="['EN', 'KO']"
                 placeholder="EN"
                 close-on-select
-              >
-              </vue-select>
+              ></vue-select>
             </div>
             <router-link
               to="/mobile-search"
@@ -99,12 +105,12 @@
             </router-link>
 
             <router-link
-              to=""
+              to
               class="menu-toggle"
               @click="sideMenuOpen"
               :aria-pressed="active ? 'true' : 'false'"
             >
-              <img src="../assets/images/menu-toggle.png" alt="" />
+              <img src="../assets/images/menu-toggle.png" alt />
             </router-link>
           </div>
         </div>
@@ -120,9 +126,9 @@
           @click="activeSearch = true"
           :class="activeSearch ? 'activeSearchInput' : ''"
         />
-        <router-link to="" :class="activeSearch ? 'activeSearchIcon' : ''"
-          ><i class="icon-mobile-search"></i
-        ></router-link>
+        <router-link to :class="activeSearch ? 'activeSearchIcon' : ''">
+          <i class="icon-mobile-search"></i>
+        </router-link>
       </div>
       <div
         class="header-search-data"
@@ -132,24 +138,28 @@
           <ul>
             <li>
               <p>muscular system</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
+              <router-link to>
+                <i class="icon-close-search"></i>
+              </router-link>
             </li>
             <li>
               <p>aloe</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
             <li>
               <p>nervous system</p>
-              <a href="#"><i class="icon-close-search"></i></a>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
           </ul>
           <!-- <div class="no-search-data">
             <p>There are no recent searches.</p>
-          </div> -->
+          </div>-->
         </div>
         <div class="delete-close">
-          <a href="#"><i class="icon-delete"></i>Delete all</a>
-          <a href="#" @click="activeSearch = false">to close</a>
+          <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
+          <router-link to="" @click="activeSearch = false"
+            >to close</router-link
+          >
         </div>
       </div>
     </div>
@@ -165,31 +175,22 @@
         @click="active = !active"
         :aria-pressed="active ? 'true' : 'false'"
       >
-        <a href="javascript:void(0)"
-          ><img src="/src/assets/icons/menu-close.svg"
-        /></a>
+        <a href="javascript:void(0)">
+          <img src="/src/assets/icons/menu-close.svg" />
+        </a>
       </div>
 
       <div class="black-box"></div>
       <div class="white-box">
         <ul class="right-menu-items">
           <li
-            v-for="(item, index) in rightMenuItem"
+            v-for="(item, index) of rightMenuItem"
             :key="index"
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <a
-                href="#"
-                :text="
-                  typeof this.logedInUserDetails !== 'undefined' &&
-                  this.logedInUserDetails.name &&
-                  index == 0
-                    ? this.logedInUserDetails.name
-                    : item.mainItem
-                "
-                >{{ item.mainItem }}</a
-              >
+              <!-- <a href="#" v-if="token">{{ userDetails.name }}</a>
+              <a href="#" v-else>{{ item.mainItem }}</a> -->
               <i
                 class="icon-menu-downArw"
                 :class="
@@ -202,25 +203,33 @@
             </div>
             <div
               class="side-menu-list"
-              v-for="(item, index2) in item.subItemData"
+              v-for="(item, index2) of item.subItemData"
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <a href="javascript:void(0)">{{ item.subItem1 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem2 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem3 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem4 }}</a>
+              <router-link href="javascript:void(0)">{{
+                item.subItem1
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem2
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem3
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem4
+              }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li><a href="">KO</a></li>
-          <li><a href="">EN</a></li>
+          <li><router-link href="">KO</router-link></li>
+          <li><router-link href="">EN</router-link></li>
         </ul>
       </div>
     </div>
   </div>
-  <div v-else>
+  <!-- <div v-else>
     <Modal
       v-show="isModalVisible"
       @close="closeModal"
@@ -230,9 +239,10 @@
       btnText2="log in"
       link = '/login'
     />
-  </div>
+  </div> -->
 </template>
 <script>
+import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
 import Modal from "./Modal.vue";
@@ -245,7 +255,10 @@ export default {
 
   data() {
     return {
-      username: this.common.state.name,
+      token: localStorage.token ? true : false,
+      userId: this.common.state.userId,
+      userDetails: "",
+      logedInUserDetails: false,
       active: false,
       activeSearch: false,
       isModalVisible: false,
@@ -291,33 +304,44 @@ export default {
     const common = inject("common");
     return { common };
   },
+  created() {
+    this.personalInfoService = new PersonalInfoService();
+  },
+  mounted() {
+    if (localStorage.token) {
+      this.logedInUserDetails = true;
+    } else {
+      this.logedInUserDetails = false;
+    }
+    this.getUserInfo();
+  },
   methods: {
-    activeSideMenu(event) {
-      if (event.target.className == "right-menu-screen") {
-        event.target.className = "active";
-      } else {
-        event.target.className = "right-menu-screen";
-      }
-    },
     changeLanguage() {},
     logOut() {
       if (this.logedInUserDetails) {
-        localStorage.removeItem("logedInUserDetails");
+        localStorage.clear();
         window.location = "/login";
       }
     },
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
+    // showModal() {
+    //   this.isModalVisible = true;
+    // },
+    // closeModal() {
+    //   this.isModalVisible = false;
+    // },
     sideMenuOpen() {
-      if (this.logedInUserDetails) {
-        this.active = true;
-      } else {
-        this.showModal();
-      }
+      this.active = true;
+      // if (this.logedInUserDetails) {
+      //   this.active = true;
+      // } else {
+      //   this.showModal();
+      // }
+    },
+    getUserInfo() {
+      this.personalInfoService.getPersonalData(this.userId).then((res) => {
+        // console.log('userDetails res', res.data.data[0]);
+        // this.userDetails = res.data.data[0];
+      });
     },
   },
   computed: {
@@ -327,13 +351,6 @@ export default {
     showHeader() {
       return this.$route.name != "mobile-search";
     },
-  },
-  mounted() {
-    if (localStorage.getItem("token")) {
-      this.logedInUserDetails = true;
-    } else {
-      this.logedInUserDetails = false;
-    }
   },
 };
 </script>

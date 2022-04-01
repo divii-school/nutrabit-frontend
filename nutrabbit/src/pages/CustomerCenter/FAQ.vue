@@ -9,7 +9,7 @@
           <p class="category">category</p>
           <p class="title">title</p>
         </div>
-        <FaqAccordion v-for="(item, index) in NoticeList" :key="index">
+        <FaqAccordion v-for="(item, index) of NoticeList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <p class="para-category"> {{item.categoryname}}</p>
@@ -95,7 +95,7 @@ export default {
          {
           categoryname:"service",
           title:"This is the FAQ title.",
-          content:"10 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
+          content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare facilisi tempor rutrum blandit duis mauris egestas iaculis. Gravida eu nulla imperdiet turpis massa aliquam, vestibulum gravida tempor. Non fermentum malesuada sit amet vestibulum semper sem mollis. Magna pellentesque bibendum tellus est tortor, faucibus nibh sagittis. Nunc, scelerisque cras convallis duis orci ultrices nec amet eget. Gravida vestibulum, suspendisse eu ut. At at cursus faucibus ac risus mollis."
         },
 
       ]

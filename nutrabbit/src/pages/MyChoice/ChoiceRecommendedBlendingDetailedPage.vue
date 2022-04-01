@@ -4,14 +4,14 @@
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
-            <swiper-slide v-for="(item, index) in ProductImages" :key="index">
+            <swiper-slide v-for="(item, index) of ProductImages" :key="index">
               <img :src="item" alt="" />
             </swiper-slide>
           </swiper>
         </div>
         <div
           class="blending-right"
-          v-for="(item, index) in productDetails"
+          v-for="(item, index) of productDetails"
           :key="index"
         >
           <div class="right-heading">
@@ -19,7 +19,7 @@
             <h2>{{ item.title }}</h2>
             <div
               class="blending-tag"
-              v-for="(tag, index) in item.tags"
+              v-for="(tag, index) of item.tags"
               :key="index"
             >
               <span>{{ tag.tag1 }}</span>
@@ -32,7 +32,7 @@
           </div>
           <div class="product-details-wrap">
             <ul>
-              <li v-for="(desc, index) in item.innderData" :key="index">
+              <li v-for="(desc, index) of item.innderData" :key="index">
                 <h2>{{ desc.title }}</h2>
                 <p>{{ desc.desc }}</p>
               </li>
@@ -41,14 +41,14 @@
           </div>
           <div
             class="suggested-product"
-            v-for="(items, index) in silimarProduct"
+            v-for="(items, index) of silimarProduct"
             :key="index"
           >
             <h2>{{ items.title }}</h2>
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul
               class="smilar-product-img"
-              v-for="(item, index) in items.productImg"
+              v-for="(item, index) of items.productImg"
               :key="index"
             >
               <li>

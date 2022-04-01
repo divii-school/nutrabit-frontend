@@ -244,7 +244,10 @@
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
-              <div class="form-group" :class="error.address ? 'error' : ''">
+              <div
+                class="form-group"
+                :class="error.address || error.detsilAddress ? 'error' : ''"
+              >
                 <label for=""><i class="icon-required"></i>address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
@@ -266,8 +269,7 @@
                       class="form-control"
                       type="text"
                       placeholder="Enter detailed address"
-                      v-model="address"
-                      disabled
+                      v-model="detsilAddress"
                     />
                   </div>
                 </div>
@@ -304,6 +306,7 @@ export default {
       emailOTP: "",
       phoneNumber: "",
       address: "",
+      detsilAddress: "",
       businessNumber: "",
       businessName: "",
       depertment: "",
@@ -336,6 +339,7 @@ export default {
         emailOTP: this.emailOTP,
         phoneNumber: this.phoneNumber,
         address: this.address,
+        detsilAddress: this.detsilAddress,
         businessNumber: this.businessNumber,
         businessName: this.businessName,
         depertment: this.depertment,
@@ -354,6 +358,7 @@ export default {
             this.email,
             this.phoneNumber,
             this.address,
+            this.detsilAddress,
             this.businessNumber,
             this.businessName,
             this.depertment,

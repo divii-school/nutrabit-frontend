@@ -29,7 +29,7 @@
       </svg>
     </button>
     
-    <div v-show="isOpen" :id="`collapse${_uid}`">
+    <div v-show="isOpen" :id="`collapse${_uid}`" class="accroCont">
       <slot name="content" />
     </div>
 </template>

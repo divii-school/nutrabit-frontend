@@ -9,7 +9,7 @@
         :modules="modules"
         class="mySwiper"
       >
-        <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img
             :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + slider.desktop_banner_path"
             alt
@@ -30,7 +30,7 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <button class="btn-small-solid">Go to my choice</button>
+          <button class="btn-small-solid" @click="this.$router.push({name: 'MyChoice'})">Go to my choice</button>
         </div>
       </div>
       <div class="devider">
@@ -53,7 +53,7 @@
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) in ProductData" :key="index">
+              <li v-for="(item, index) of ProductData" :key="index">
                 <MainProductCard :item="item" />
               </li>
             </ul>

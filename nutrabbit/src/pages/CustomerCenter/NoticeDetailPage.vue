@@ -5,7 +5,7 @@
         <div class="my-notice-heading">
           <h2>Notice</h2>
         </div>
-        <div class="notice-list">
+        <div class="notice-list noBorder">
           <ul>
             <li>
               <div class="item-left">
