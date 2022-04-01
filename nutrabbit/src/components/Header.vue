@@ -2,7 +2,6 @@
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
-          <p @click="showModal">click</p>
         <div class="header-menu flex">
           <div class="manuLeft">
             <router-link class="header-logo" to="/">
