@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {provide} from 'vue';
+import { provide } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import common from "./store/common";

@@ -98,12 +98,12 @@ export default {
   mounted() {
    this.allBanner();
     this.allNutidata();
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-    } else {
-      this.logedInUserDetails = null;
-    }
+    // if (localStorage.getItem("logedInUserDetails")) {
+    //   this.logedInUserDetails =
+    //     JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    // } else {
+    //   this.logedInUserDetails = null;
+    // }
   },
   methods: {
     // allBanner list
