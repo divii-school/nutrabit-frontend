@@ -66,12 +66,11 @@
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { inject } from "vue";
-import axios from 'axios';
 import { Pagination } from "swiper";
-import MainProductCard from "../../components/MainProductCard.vue";
-import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css";
+import MainProductCard from "../../components/MainProductCard.vue";
+import { inject } from "vue";
 import MainService from "../../services/MainService";
 export default {
   name: "Main",

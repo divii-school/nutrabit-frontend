@@ -2,6 +2,7 @@
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
+          <p @click="showModal">click</p>
         <div class="header-menu flex">
           <div class="manuLeft">
             <router-link class="header-logo" to="/">
@@ -165,7 +166,9 @@
     </div>
   </template>
   <div
-    class="right-menu-screen active"
+    class="right-menu-screen"
+    :class="{ active: active }"
+    v-if="this.logedInUserDetails"
   >
     <div class="top-box right-small-box">
       <div
@@ -227,7 +230,7 @@
       </div>
     </div>
   </div>
-  <!-- <div v-else>
+  <div>
     <Modal
       v-show="isModalVisible"
       @close="closeModal"
@@ -237,7 +240,8 @@
       btnText2="log in"
       link = '/login'
     />
-  </div> -->
+  </div>
+
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
@@ -321,12 +325,12 @@ export default {
         window.location = "/login";
       }
     },
-    // showModal() {
-    //   this.isModalVisible = true;
-    // },
-    // closeModal() {
-    //   this.isModalVisible = false;
-    // },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
     sideMenuOpen() {
       this.active = true;
       // if (this.logedInUserDetails) {
