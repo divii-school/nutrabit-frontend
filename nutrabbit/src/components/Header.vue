@@ -165,9 +165,7 @@
     </div>
   </template>
   <div
-    class="right-menu-screen"
-    :class="{ active: active }"
-    v-if="this.logedInUserDetails"
+    class="right-menu-screen active"
   >
     <div class="top-box right-small-box">
       <div
