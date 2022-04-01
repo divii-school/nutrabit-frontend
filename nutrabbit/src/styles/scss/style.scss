@@ -502,3 +502,38 @@ textarea{
     }
   }
 }
+
+
+.contWrap{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  .contCol{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+    }
+    &:first-child{
+      margin-bottom: 60px;
+      @media screen and (max-width: 640px) {
+        margin-bottom: 20px;
+      }
+    }
+    h4{
+      width: 200px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #A4A4A4;
+      @media screen and (max-width: 640px){
+        margin-bottom: 10px;
+      }
+    }
+    p{
+      font-size: 16px;
+      line-height: 130%;
+      color: #333;
+    }
+  }
+}
