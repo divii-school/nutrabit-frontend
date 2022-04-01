@@ -78,7 +78,7 @@
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
-                  {{ userDetails.name }}{{ token }}
+                  {{ userDetails.name }}
                 </button>
                 <div class="dropdown-content">
                   <router-link to>Change of personal information</router-link>
@@ -229,7 +229,7 @@
       </div>
     </div>
   </div>
-  <!-- <div v-else>
+  <div>
     <Modal
       v-show="isModalVisible"
       @close="closeModal"
@@ -239,12 +239,13 @@
       btnText2="log in"
       link = '/login'
     />
-  </div> -->
+  </div>
+
 </template>
 <script>
-// import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
+import PersonalInfoService from "../services/PersonalInfoService";
 import Modal from "./Modal.vue";
 export default {
   name: "Header",
@@ -304,16 +305,16 @@ export default {
     const common = inject("common");
     return { common };
   },
-  // created() {
-  //   this.personalInfoService = new PersonalInfoService();
-  // },
+  created() {
+    this.personalInfoService = new PersonalInfoService();
+  },
   mounted() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
     } else {
       this.logedInUserDetails = false;
     }
-    // this.getUserInfo();
+    this.getUserInfo();
   },
   methods: {
     changeLanguage() {},
@@ -323,12 +324,12 @@ export default {
         window.location = "/login";
       }
     },
-    // showModal() {
-    //   this.isModalVisible = true;
-    // },
-    // closeModal() {
-    //   this.isModalVisible = false;
-    // },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
     sideMenuOpen() {
       this.active = true;
       // if (this.logedInUserDetails) {
@@ -337,12 +338,12 @@ export default {
       //   this.showModal();
       // }
     },
-    // getUserInfo() {
-    //   this.personalInfoService.getPersonalData(this.userId).then((res) => {
-    //     // console.log('userDetails res', res.data.data[0]);
-    //     // this.userDetails = res.data.data[0];
-    //   });
-    // },
+    getUserInfo() {
+      this.personalInfoService.getPersonalData(this.userId).then((res) => {
+        console.log('userDetails res', res.data.data[0]);
+        this.userDetails = res.data.data[0];
+      });
+    },
   },
   computed: {
     isHeaderPositionAbsolute() {
