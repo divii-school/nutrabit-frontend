@@ -30,7 +30,7 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <button class="btn-small-solid" @click="this.$router.push({name: 'MyChoice'})">Go to my choice</button>
+          <router-link to="/my-choice"><button class="btn-small-solid">Go to my choice</button></router-link>
         </div>
       </div>
       <div class="devider">
@@ -72,6 +72,7 @@ import { Pagination } from "swiper";
 import MainProductCard from "../../components/MainProductCard.vue";
 import "swiper/css";
 import "swiper/css/pagination";
+import MainService from "../../services/MainService";
 export default {
   name: "Main",
   components: {
@@ -92,48 +93,41 @@ export default {
       common
     };
   },
+  created() {
+    this.MainService = new MainService();
+  },
   mounted() {
-    this.created();
-    this.nutriData();
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-    } else {
-      this.logedInUserDetails = null;
-    }
+   this.allBanner();
+    this.allNutidata();
+    // if (localStorage.getItem("logedInUserDetails")) {
+    //   this.logedInUserDetails =
+    //     JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    // } else {
+    //   this.logedInUserDetails = null;
+    // }
   },
   methods: {
-    async created() {
-      try {
-        const data = await axios.post("/banner", {
-          lang: "KO"
-        })
-          .then((response) => {
-            if (response.data.status == 200) {
-              this.MainSlider = response.data.data.bannerData;
-              // console.log(response.data.data.bannerData);
-            }
-          });
-      }
-      catch (e) {
-        console.error(e);
-      }
+    // allBanner list
+    allBanner() {
+      this.MainService.getSlider().then((res) => {
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          // console.log('getBanner res', res.data.bannerData);
+          this.MainSlider = res.data.bannerData;
+        }
+      });
     },
-    async nutriData() {
-      try {
-        const data = await axios.post("/nutriBlending", {
-          lang: "KO"
-        })
-          .then((response) => {
-            if (response.data.status == 200) {
-              this.ProductData = response.data.data.blendingData;
-              console.log(response.data.data.blendingData);
-            }
-          });
-      }
-      catch (e) {
-        console.error(e);
-      }
+    // allNutidata list
+    allNutidata() {
+      this.MainService.getNutriData().then((res) => {
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          // console.log('getNutridata res', res.data.blendingData);
+          this.ProductData = res.data.blendingData;
+        }
+      });
     },
   }
 

@@ -30,6 +30,7 @@
                   v-for="(item, i) of item.sub_category_arr"
                   :key="i + 1"
                 >
+                <router-link :to="'/my-choice-category-selection/'+ item.sub_category_id ">
                   <div class="choice-card">
                     <img
                       :src="
@@ -40,6 +41,7 @@
                     />
                   </div>
                   <p class="desc">{{ item.sub_category_name }}</p>
+                  </router-link>
                 </li>
               </ul>
             </li>
@@ -52,7 +54,6 @@
 
 <script>
 import Popper from "vue3-popper";
-import axios from "axios";
 import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "MyChoice",
@@ -77,7 +78,7 @@ export default {
         if (res.response) {
           this.$swal(res.response.data.message, "error");
         } else {
-          console.log('getCategories res', res.data.parentCategoryData);
+          // console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
         }
       });

@@ -235,14 +235,14 @@
       bodytext2="Please use the service after logging in."
       btnText1="cancellation"
       btnText2="log in"
-      link="/login"
+      link = '/login'
     />
   </div> -->
 </template>
 <script>
-import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
+import PersonalInfoService from "../services/PersonalInfoService";
 import Modal from "./Modal.vue";
 export default {
   name: "Header",

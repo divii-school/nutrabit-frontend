@@ -14,7 +14,7 @@
               <label for="">Reason for withdrawal</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <textarea class="form-control textarea" placeholder="Please enter the reason for withdrawal" v-model="reason"></textarea>
+                  <textarea class="form-control textarea" @keyup="reasonkeyup" placeholder="Please enter the reason for withdrawal" v-model="reason"></textarea>
                 </div>
               </div>
               <span class="error-msg">{{ error.reason }}</span>
@@ -22,16 +22,22 @@
            </div>
             <button class="btn-primary grenn-btn2" @click="businessWithdraw">Confirm</button>
           </form>
+          <!-- <modal/> -->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+// import Modal from "./Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
-import personalBusinessValidation from "../../Validation/personalBusinessValidation";
+// import personalBusinessValidation from "../../Validation/personalBusinessValidation";
 export default {
   name: "WithdrawalOfMembership",
+  // components: {
+  //   "vue-select": VueNextSelect,
+  //   Modal,
+  // },
   data() {
     return{
       reason:"",
@@ -44,22 +50,25 @@ export default {
   },
 
   methods:{
-    // async withdraw() {
 
-    //   this.personalBusinessService.businessWithdraw(this.reason).then((res) => {
-    //     console.log(res.data.status); 
-    //   });
-    // },
+    reasonkeyup(){
+      if (this.reason == "") {
+        this.error.reason = "Please enter the reason";
+      } else{
+        this.error.reason = ""
+      }
+    },
 
     async businessWithdraw() {
       console.log("aaaaaa");
-      let credential = {
-        reason: this.reason,
-      };
-      const { isInvalid, error } = personalBusinessValidation(credential);
-      if (isInvalid) {
+      // let credential = {
+      //   reason: this.reason,
+      //   withdraw_type: "bussiness",
+      // };
+      // const { isInvalid, error } = personalBusinessValidation(credential);
+      if (this.reason == "") {
         console.log("bbbbb");
-        this.error = error;
+        this.error.reason = "Please enter the reason";
       } else {
         console.log("ccccc");
         this.personalBusinessService

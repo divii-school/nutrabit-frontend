@@ -12,7 +12,9 @@
                 <h2>Recommended blending</h2>
                 <div class="tolltip-outer">
                   <Popper>
-                    <button><i class="icon-info"></i></button>
+                    <button>
+                      <i class="icon-info"></i>
+                    </button>
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
@@ -38,8 +40,7 @@
                     :options="['in order of popularity', 'in order of popularity']"
                     placeholder="in order of popularity"
                     close-on-select
-                  >
-                  </vue-select>
+                  ></vue-select>
                 </div>
               </div>
             </div>
@@ -61,6 +62,7 @@
 import Popper from "vue3-popper";
 import SearchCard from "../../components/SearchCard.vue";
 import VueNextSelect from "vue-next-select";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "MyChoiceRecomandedBlending",
   components: {
@@ -70,51 +72,27 @@ export default {
   },
   data() {
     return {
-      blendingData: [
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-           {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-        {
-          img: "../../../src/assets/images/aloe-img1.png",
-          desc: "Oridinary blend",
-          desc2: "aloe + vitamin C",
-          desc3: "fresh powder"
-        },
-      ],
+      blendingData: [],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.allBlendingData();
+  },
+  methods: {
+    // allBlendingData list
+    allBlendingData() {
+      this.mychoiceService.getRecommendedData().then((res) => {
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          //  console.log('allBlendingData res', res.data.blendingData);
+          this.blendingData = res.data.blendingData;
+        }
+      });
+    },
+  }
 };
 </script>
