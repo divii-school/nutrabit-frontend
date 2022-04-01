@@ -155,7 +155,7 @@ const routes = [
     },
     {
         name: 'MyChoiceCategorySelection',
-        path: '/my-choice-category-selection',
+        path: '/my-choice-category-selection/:id',
         component: MyChoiceCategorySelection,
     },
     {
