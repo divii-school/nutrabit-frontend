@@ -182,20 +182,16 @@
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <a href="javascript:void(0)">{{ item.subItem1 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem2 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem3 }}</a>
-              <a href="javascript:void(0)">{{ item.subItem4 }}</a>
+              <router-link href="javascript:void(0)">{{ item.subItem1 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem2 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem3 }}</router-link>
+              <router-link href="javascript:void(0)">{{ item.subItem4 }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li>
-            <a href>KO</a>
-          </li>
-          <li>
-            <a href>EN</a>
-          </li>
+          <li><router-link href="">KO</router-link></li>
+          <li><router-link href="">EN</router-link></li>
         </ul>
       </div>
     </div>

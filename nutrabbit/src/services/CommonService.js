@@ -11,7 +11,7 @@ export default class CommonService {
     return await axios.post(`/auth/login`, { login_id: loginId, password: loginPw, }).then((res) => res).catch((err) => err);
   }
   // Individuals signup
-  async individalRegistration(name, username, password, email, phoneNumber, address, checkName) {
+  async individalRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName) {
     return await axios.post(`/user/individual_registration`, {
       name: name,
       username: username,
@@ -19,6 +19,7 @@ export default class CommonService {
       email: email,
       mobile: phoneNumber,
       address: address,
+      detail_address: detsilAddress,
       distribution_medium: checkName,
     })
       .then((res) => res)
@@ -50,7 +51,7 @@ export default class CommonService {
   }
 
   // Business signup
-  async BusinessRegistration(name, username, password, email, phoneNumber, address, businessNumber, businessName, depertment, contactPerson) {
+  async BusinessRegistration(name, username, password, email, phoneNumber, address, detsilAddress, businessNumber, businessName, depertment, contactPerson) {
     return await axios.post(`/user/business_registration`, {
       name: name,
       username: username,
@@ -58,6 +59,7 @@ export default class CommonService {
       email: email,
       mobile: phoneNumber,
       address: address,
+      detail_address: detsilAddress,
       business_number: businessNumber,
       business_name: businessName,
       department: depertment,
