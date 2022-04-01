@@ -2,7 +2,7 @@
     <div>
           <div class="notice-list">
           <ul>
-            <li v-for="(item, index) in NoticeList" :key="index">
+            <li v-for="(item, index) of NoticeList" :key="index">
               <div class="item-left">
                 <p class="para-category"> {{item.categoryname}}</p>
                 <span v-if="item.tag">{{item.tag}}</span>

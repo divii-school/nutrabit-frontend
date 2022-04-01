@@ -175,10 +175,15 @@
 </template>
 <script>
 import { inject } from "vue";
+// import Modal from "./Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
 import personalBusinessValidation from "../../Validation/personalBusinessValidation";
 export default {
   name: "PersonalInformationBusiness",
+  // components: {
+  //   "vue-select": VueNextSelect,
+  //   Modal,
+  // },
   data(){
     return{
       userId: this.common.state.userId,

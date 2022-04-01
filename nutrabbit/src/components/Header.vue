@@ -184,7 +184,7 @@
       <div class="white-box">
         <ul class="right-menu-items">
           <li
-            v-for="(item, index) in rightMenuItem"
+            v-for="(item, index) of rightMenuItem"
             :key="index"
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
@@ -203,7 +203,7 @@
             </div>
             <div
               class="side-menu-list"
-              v-for="(item, index2) in item.subItemData"
+              v-for="(item, index2) of item.subItemData"
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
@@ -237,7 +237,7 @@
       bodytext2="Please use the service after logging in."
       btnText1="cancellation"
       btnText2="log in"
-      link="/login"
+      link = '/login'
     />
   </div> -->
 </template>
