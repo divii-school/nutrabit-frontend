@@ -18,7 +18,7 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div v-if="token" class="main-page-body">
+    <div class="main-page-body">
       <div class="container-medium">
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
@@ -30,7 +30,10 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <router-link to="/my-choice">
+          <router-link to="/my-choice" v-if="token">
+            <button class="btn-small-solid">Go to my choice</button>
+          </router-link>
+          <router-link to="/" v-else @click="accessPage()">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
@@ -99,14 +102,8 @@ export default {
     this.MainService = new MainService();
   },
   mounted() {
-    // this.allBanner();
-
-    if (localStorage.getItem("token")) {
-      this.allBanner();
-      this.allNutidata();
-    } else {
-      this.allBanner();
-    }
+   this.allBanner();
+    this.allNutidata();
   },
   methods: {
     // allBanner list
@@ -133,6 +130,10 @@ export default {
         }
       });
     },
+
+    accessPage() {
+       this.$swal("Unauthorized Access.Please Login.");
+    }
   }
 
 };

@@ -13,6 +13,6 @@ export default class MainService {
 
     //getNutriData API Functions
     async getNutriData() {
-        return await axios.post(`/nutriBlending`, { lang: 'KO' }, {headers: {token:token}}).then((res) => res.data).catch((err) => err);
+        return await axios.post(`/nutriBlending/list`, { lang: 'KO' }).then((res) => res.data).catch((err) => err);
     }
 }
