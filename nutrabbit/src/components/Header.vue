@@ -2,7 +2,6 @@
   <template v-if="showHeader">
     <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
       <div class="header-container">
-        <p>{{ username }}</p>
         <div class="header-menu flex">
           <div class="manuLeft">
             <router-link class="header-logo" to="/">
@@ -141,11 +140,11 @@
             </li>
             <li>
               <p>aloe</p>
-              <router-link to="" ><i class="icon-close-search"></i></router-link>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
             <li>
               <p>nervous system</p>
-              <router-link to="" ><i class="icon-close-search"></i></router-link>
+              <router-link to=""><i class="icon-close-search"></i></router-link>
             </li>
           </ul>
           <!-- <div class="no-search-data">
@@ -153,8 +152,10 @@
           </div> -->
         </div>
         <div class="delete-close">
-          <router-link to="" ><i class="icon-delete"></i>Delete all</router-link>
-          <router-link to=""  @click="activeSearch = false">to close</router-link>
+          <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
+          <router-link to="" @click="activeSearch = false"
+            >to close</router-link
+          >
         </div>
       </div>
     </div>
@@ -211,10 +212,18 @@
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link href="javascript:void(0)">{{ item.subItem1 }}</router-link>
-              <router-link href="javascript:void(0)">{{ item.subItem2 }}</router-link>
-              <router-link href="javascript:void(0)">{{ item.subItem3 }}</router-link>
-              <router-link href="javascript:void(0)">{{ item.subItem4 }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem1
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem2
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem3
+              }}</router-link>
+              <router-link href="javascript:void(0)">{{
+                item.subItem4
+              }}</router-link>
             </div>
           </li>
         </ul>
@@ -225,7 +234,7 @@
       </div>
     </div>
   </div>
-  <div v-else>
+  <!-- <div v-else>
     <Modal
       v-show="isModalVisible"
       @close="closeModal"
@@ -235,7 +244,7 @@
       btnText2="log in"
       link="/login"
     />
-  </div>
+  </div> -->
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
