@@ -95,12 +95,12 @@ export default {
   mounted() {
     this.created();
     this.nutriData();
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-    } else {
-      this.logedInUserDetails = null;
-    }
+    // if (localStorage.getItem("logedInUserDetails")) {
+    //   this.logedInUserDetails =
+    //     JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
+    // } else {
+    //   this.logedInUserDetails = null;
+    // }
   },
   methods: {
     async created() {

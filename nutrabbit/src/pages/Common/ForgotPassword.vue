@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import CommonService from "../../services/CommonService";
 import validator from "validator";
 import axios from "axios";
+import CommonService from "../../services/CommonService";
 export default {
   name: "ForgotPassword",
   data() {

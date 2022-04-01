@@ -242,9 +242,9 @@
   </div> -->
 </template>
 <script>
-import PersonalInfoService from "../services/PersonalInfoService";
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
+import PersonalInfoService from "../services/PersonalInfoService";
 import Modal from "./Modal.vue";
 export default {
   name: "Header",
