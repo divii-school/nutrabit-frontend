@@ -140,8 +140,8 @@
               <li>
                 <a href>Log out</a>
               </li>
-              <li>
-                <a href>Withdrawal</a>
+              <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
+                <!-- <a href>Withdrawal</a> -->
               </li>
             </ul>
           </div>

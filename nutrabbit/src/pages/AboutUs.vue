@@ -20,7 +20,7 @@
             <p class="title text-center samllTitle">my choice</p>
             <h4 class="title text-center">nutri 3.3 blending</h4>
             <ul>
-              <li v-for="(item, index) in processData" :key="index">
+              <li v-for="(item, index) of processData" :key="index">
                 <div class="imgCont">
                   <img :src="item.img">
                 </div>
