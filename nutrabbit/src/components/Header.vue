@@ -16,7 +16,9 @@
               </li>
               <!-- this is for testing purpose only -->
               <li>
-                <router-link to="/personal-information">Personal Info</router-link>
+                <router-link to="/personal-information"
+                  >Personal Info</router-link
+                >
               </li>
             </ul>
           </div>
@@ -32,7 +34,10 @@
                   <i class="icon-search-black"></i>
                 </router-link>
               </div>
-              <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
+              <div
+                class="header-search-data"
+                :class="activeSearch ? 'activeSearch' : ''"
+              >
                 <div class="search-data-inner">
                   <ul>
                     <li>
@@ -59,16 +64,21 @@
                   <router-link to>
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="activeSearch = false">to close</router-link>
+                  <router-link to @click="activeSearch = false"
+                    >to close</router-link
+                  >
                 </div>
               </div>
             </div>
             <!-- <p>{{this.logedInUserDetails}}</p> -->
-            <div class="after-login-dropdown flex items-center" v-if="this.logedInUserDetails">
+            <div
+              class="after-login-dropdown flex items-center"
+              v-if="this.logedInUserDetails"
+            >
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
-                  {{ userDetails.name }}{{token}}
+                  {{ userDetails.name }}{{ token }}
                 </button>
                 <div class="dropdown-content">
                   <router-link to>Change of personal information</router-link>
@@ -76,12 +86,21 @@
                 </div>
               </div>
             </div>
-            <router-link to="/login" class="login-item" v-else>login</router-link>
+            <router-link to="/login" class="login-item" v-else
+              >login</router-link
+            >
 
             <div class="header-dropdown">
-              <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select></vue-select>
+              <vue-select
+                :options="['EN', 'KO']"
+                placeholder="EN"
+                close-on-select
+              ></vue-select>
             </div>
-            <router-link to="/mobile-search" class="mobile-search flex items-center justify-center">
+            <router-link
+              to="/mobile-search"
+              class="mobile-search flex items-center justify-center"
+            >
               <i class="icon-mobile-search"></i>
             </router-link>
 
@@ -111,7 +130,10 @@
           <i class="icon-mobile-search"></i>
         </router-link>
       </div>
-      <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
+      <div
+        class="header-search-data"
+        :class="activeSearch ? 'activeSearch' : ''"
+      >
         <div class="search-data-inner">
           <ul>
             <li>
@@ -142,9 +164,17 @@
       </div>
     </div>
   </template>
-  <div class="right-menu-screen" :class="{ active: active }" v-if="this.logedInUserDetails">
+  <div
+    class="right-menu-screen"
+    :class="{ active: active }"
+    v-if="this.logedInUserDetails"
+  >
     <div class="top-box right-small-box">
-      <div class="closeMenu" @click="active = !active" :aria-pressed="active ? 'true' : 'false'">
+      <div
+        class="closeMenu"
+        @click="active = !active"
+        :aria-pressed="active ? 'true' : 'false'"
+      >
         <a href="javascript:void(0)">
           <img src="/src/assets/icons/menu-close.svg" />
         </a>
@@ -165,7 +195,7 @@
                 class="icon-menu-downArw"
                 :class="
                   typeof item.subItemData !== 'undefined' &&
-                    item.subItemData.length
+                  item.subItemData.length
                     ? ''
                     : 'no-arrow'
                 "
@@ -227,7 +257,7 @@ export default {
     return {
       token: localStorage.token ? true : false,
       userId: this.common.state.userId,
-      userDetails: '',
+      userDetails: "",
       logedInUserDetails: false,
       active: false,
       activeSearch: false,
@@ -282,42 +312,35 @@ export default {
       this.logedInUserDetails = true;
     } else {
       this.logedInUserDetails = false;
-      
     }
     this.getUserInfo();
   },
   methods: {
-    activeSideMenu(event) {
-      if (event.target.className == "right-menu-screen") {
-        event.target.className = "active";
-      } else {
-        event.target.className = "right-menu-screen";
-      }
-    },
-    changeLanguage() { },
+    changeLanguage() {},
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();
         window.location = "/login";
       }
     },
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
+    // showModal() {
+    //   this.isModalVisible = true;
+    // },
+    // closeModal() {
+    //   this.isModalVisible = false;
+    // },
     sideMenuOpen() {
-      if (this.logedInUserDetails) {
-        this.active = true;
-      } else {
-        this.showModal();
-      }
+      this.active = true;
+      // if (this.logedInUserDetails) {
+      //   this.active = true;
+      // } else {
+      //   this.showModal();
+      // }
     },
     getUserInfo() {
       this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        console.log('userDetails res', res.data.data[0]);
-        this.userDetails = res.data.data[0];
+        // console.log('userDetails res', res.data.data[0]);
+        // this.userDetails = res.data.data[0];
       });
     },
   },
@@ -329,6 +352,5 @@ export default {
       return this.$route.name != "mobile-search";
     },
   },
-
 };
 </script>
