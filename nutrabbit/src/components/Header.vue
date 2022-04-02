@@ -103,11 +103,7 @@
               <i class="icon-mobile-search"></i>
             </router-link>
 
-            <router-link
-              to
-              class="menu-toggle"
-              @click="sideMenuOpen"
-            >
+            <router-link to class="menu-toggle" @click="sideMenuOpen">
               <img src="../assets/images/menu-toggle.png" alt />
             </router-link>
           </div>
@@ -162,15 +158,9 @@
       </div>
     </div>
   </template>
-  <div
-    class="right-menu-screen"
-    :class="{ active: active }"
-  >
+  <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
-      <div
-        class="closeMenu"
-        @click="active = !active"
-      >
+      <div class="closeMenu" @click="active = !active">
         <router-link to>
           <img src="/src/assets/icons/menu-close.svg" />
         </router-link>
@@ -185,15 +175,12 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <router-link to v-if="token">{{ userDetails.name }}</router-link>
+              <router-link to v-if="token && index == 0" >{{ userDetails.name }}</router-link>
               <router-link to v-else>{{ item.mainItem }}</router-link>
               <i
                 class="icon-menu-downArw"
                 :class="
-                  item.subItemData &&
-                  item.subItemData.length
-                    ? ''
-                    : 'no-arrow'
+                  item.subItemData && item.subItemData.length ? '' : 'no-arrow'
                 "
               ></i>
             </div>
@@ -203,18 +190,10 @@
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link to>{{
-                item.subItem1
-              }}</router-link>
-              <router-link to>{{
-                item.subItem2
-              }}</router-link>
-              <router-link to>{{
-                item.subItem3
-              }}</router-link>
-              <router-link to>{{
-                item.subItem4
-              }}</router-link>
+              <router-link to>{{ item.subItem1 }}</router-link>
+              <router-link to>{{ item.subItem2 }}</router-link>
+              <router-link to>{{ item.subItem3 }}</router-link>
+              <router-link to>{{ item.subItem4 }}</router-link>
             </div>
           </li>
         </ul>
@@ -335,7 +314,7 @@ export default {
     },
     getUserInfo() {
       this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        console.log('userDetails res', res.data.data[0]);
+        console.log("userDetails res", res.data.data[0]);
         this.userDetails = res.data.data[0];
       });
     },
