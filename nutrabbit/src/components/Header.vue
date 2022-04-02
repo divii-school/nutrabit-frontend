@@ -160,14 +160,13 @@
   </template>
   <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
-      <div class="closeMenu" @click="active = !active">
-        <router-link to>
-          <img src="/src/assets/icons/menu-close.svg" />
-        </router-link>
-      </div>
-
       <div class="black-box"></div>
       <div class="white-box">
+        <div class="closeMenu" @click="active = !active">
+          <router-link to>
+            <img src="/src/assets/icons/menu-close.svg" />
+          </router-link>
+        </div>
         <ul class="right-menu-items">
           <li
             v-for="(item, index) of rightMenuItem"
@@ -175,7 +174,9 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <router-link to v-if="token && index == 0" >{{ userDetails.name }}</router-link>
+              <router-link to v-if="token && index == 0"
+                >{{ userDetails.name }} <i class="icon-leftArw"></i
+              ></router-link>
               <router-link to v-else>{{ item.mainItem }}</router-link>
               <i
                 class="icon-menu-downArw"

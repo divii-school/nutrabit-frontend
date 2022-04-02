@@ -341,6 +341,14 @@ header{
                 font-size: 32px;
                 line-height: 38px;
                 color: $black-18;
+                display: flex;
+                align-items: flex-start;
+                .icon-leftArw{
+                  margin: 8px 0 0 10px;
+                  @media screen and (max-width: 768px){
+                    display: none;
+                  }
+                }
                 @media screen and (max-width: 1200px){
                   font-size: 25px;
                   line-height: 28px;
