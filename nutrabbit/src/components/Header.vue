@@ -189,7 +189,8 @@
               class="side-menu-list"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link to
+              <router-link
+                to
                 @click="onClickLink(item.link)"
                 v-for="(item, index2) of item.subItemData"
                 :key="index2"
@@ -211,8 +212,8 @@
       @close="closeModal"
       bodytext1="This service requires login."
       bodytext2="Please use the service after logging in."
-      btnText1="cancellation"
-      btnText2="log in"
+      btnText1="Cancel"
+      btnText2="Login"
       link="/login"
     />
   </div>
@@ -323,26 +324,24 @@ export default {
         window.location = "/login";
       }
     },
-    showModal() {
-      this.isModalVisible = true;
-    },
     closeModal() {
       this.isModalVisible = false;
     },
     onClickLink(link) {
       console.log("link", link);
       if (this.userId) {
-        this.isModalVisible = true;
-        this.$router.push(link)
+        this.$router.push(link);
+      } 
+       else if (!this.userId && this.$router.push('/login')) {
+        this.$router.push(link);
       }
+      else{
+        this.isModalVisible = true;
+        this.active = false;
+      } 
     },
     sideMenuOpen() {
       this.active = true;
-      // if (this.logedInUserDetails) {
-      //   this.active = true;
-      // } else {
-      //   this.showModal();
-      // }
     },
     getUserInfo() {
       if (this.userId) {

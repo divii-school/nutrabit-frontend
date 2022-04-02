@@ -533,7 +533,10 @@ textarea{
     p{
       font-size: 16px;
       line-height: 130%;
-      color: #333;
+      color: $black-33;
     }
   }
+}
+.modal-backdrop{
+  z-index: 7;
 }
