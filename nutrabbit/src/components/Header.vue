@@ -190,6 +190,7 @@
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
               <router-link to
+                @click="onClickLink(item.link)"
                 v-for="(item, index2) of item.subItemData"
                 :key="index2"
                 >{{ item.label }}</router-link
@@ -328,13 +329,13 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
-    // onClickLink(link) {
-    //   console.log("link", link);
-    //   if (this.userId) {
-    //     this.isModalVisible = true;
-    //     this.$router.push(link)
-    //   }
-    // },
+    onClickLink(link) {
+      console.log("link", link);
+      if (this.userId) {
+        this.isModalVisible = true;
+        this.$router.push(link)
+      }
+    },
     sideMenuOpen() {
       this.active = true;
       // if (this.logedInUserDetails) {
