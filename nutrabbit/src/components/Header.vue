@@ -15,11 +15,11 @@
                 <router-link to>nutri 3.3 blending</router-link>
               </li>
               <!-- this is for testing purpose only -->
-              <li>
+              <!-- <li>
                 <router-link to="/personal-information"
                   >Personal Info</router-link
                 >
-              </li>
+              </li> -->
             </ul>
           </div>
           <div class="manuRight">
@@ -335,6 +335,7 @@ export default {
     },
     getUserInfo() {
       this.personalInfoService.getPersonalData(this.userId).then((res) => {
+        console.log('userDetails res', res.data.data[0]);
         this.userDetails = res.data.data[0];
       });
     },

@@ -30,17 +30,17 @@
                   v-for="(item, i) of item.sub_category_arr"
                   :key="i + 1"
                 >
-                <router-link :to="'/my-choice-category-selection/'+ item.sub_category_id ">
-                  <div class="choice-card">
-                    <img
-                      :src="
-                        'http://api-nutrabbit-dev.dvconsulting.org/public' +
-                        item.sub_category_image_path
-                      "
-                      alt
-                    />
-                  </div>
-                  <p class="desc">{{ item.sub_category_name }}</p>
+                  <router-link :to="'/my-choice-category-selection/' + item.sub_category_id">
+                    <div class="choice-card">
+                      <img
+                        :src="
+                          'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                          item.sub_category_image_path
+                        "
+                        alt
+                      />
+                    </div>
+                    <p class="desc">{{ item.sub_category_name }}</p>
                   </router-link>
                 </li>
               </ul>
