@@ -187,14 +187,13 @@
             </div>
             <div
               class="side-menu-list"
-              v-for="(item, index2) of item.subItemData"
-              :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link to>{{ item.subItem1 }}</router-link>
-              <router-link to>{{ item.subItem2 }}</router-link>
-              <router-link to>{{ item.subItem3 }}</router-link>
-              <router-link to>{{ item.subItem4 }}</router-link>
+              <router-link to
+                v-for="(item, index2) of item.subItemData"
+                :key="index2"
+                >{{ item.label }}</router-link
+              >
             </div>
           </li>
         </ul>
@@ -246,10 +245,20 @@ export default {
           mainItem: "nutri 3.3",
           subItemData: [
             {
-              subItem1: "About Us",
-              subItem2: "my choice",
-              subItem3: "nutri 3.3 blending",
-              subItem4: "Sample making guide",
+              label: "About Us",
+              link: "/login",
+            },
+            {
+              label: "my choice",
+              link: "/",
+            },
+            {
+              label: "nutri 3.3 blending",
+              link: "/",
+            },
+            {
+              label: "Sample making guide",
+              link: "/",
             },
           ],
         },
@@ -257,9 +266,16 @@ export default {
           mainItem: "ONLY ONE",
           subItemData: [
             {
-              subItem1: "raw material storage box",
-              subItem2: "my recipe",
-              subItem3: "my application",
+              label: "raw material storage box",
+              link: "/",
+            },
+            {
+              label: "my recipe",
+              link: "/",
+            },
+            {
+              label: "my application",
+              link: "/",
             },
           ],
         },
@@ -267,9 +283,16 @@ export default {
           mainItem: "CUSTOMER CENTER",
           subItemData: [
             {
-              subItem1: "Notice",
-              subItem2: "FAQ",
-              subItem3: "1:1 inquiry",
+              label: "Notice",
+              link: "/",
+            },
+            {
+              label: "FAQ",
+              link: "/",
+            },
+            {
+              label: "1:1 inquiry",
+              link: "/",
             },
           ],
         },
@@ -305,6 +328,13 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    // onClickLink(link) {
+    //   console.log("link", link);
+    //   if (this.userId) {
+    //     this.isModalVisible = true;
+    //     this.$router.push(link)
+    //   }
+    // },
     sideMenuOpen() {
       this.active = true;
       // if (this.logedInUserDetails) {
@@ -314,10 +344,12 @@ export default {
       // }
     },
     getUserInfo() {
-      this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        console.log("userDetails res", res.data.data[0]);
-        this.userDetails = res.data.data[0];
-      });
+      if (this.userId) {
+        this.personalInfoService.getPersonalData(this.userId).then((res) => {
+          console.log("userDetails res", res.data.data[0]);
+          this.userDetails = res.data.data[0];
+        });
+      }
     },
   },
   computed: {
