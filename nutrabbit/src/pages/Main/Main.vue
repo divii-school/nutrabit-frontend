@@ -31,6 +31,7 @@
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
           <router-link to="/my-choice">
+          
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
@@ -52,6 +53,7 @@
               class="desc text-center"
             >We provide all services from A to Z of health functional food.</p>
             <button class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <button @click="allNutidata">jhbkjbjk</button>
           </div>
           <div class="nutri-dom-product">
             <ul>
@@ -99,7 +101,7 @@ export default {
     this.MainService = new MainService();
   },
   mounted() {
-    // this.allBanner();
+    this.allBanner();
 
     if (localStorage.getItem("token")) {
       this.allBanner();

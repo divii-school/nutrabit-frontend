@@ -4,6 +4,7 @@
       <div class="login-signup-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
+            {{'ENV: '+ process.env.VUE_APP_NAME}}
             <h1 class="login-heading">{{ $t("login") }}</h1>
           </div>
           <form action @submit="(e) => e.preventDefault()">
@@ -143,8 +144,8 @@ export default {
               console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
-              localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
