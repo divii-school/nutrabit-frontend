@@ -70,7 +70,6 @@
                 </div>
               </div>
             </div>
-            <!-- <p>{{this.logedInUserDetails}}</p> -->
             <div
               class="after-login-dropdown flex items-center"
               v-if="this.logedInUserDetails"
@@ -78,7 +77,7 @@
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
-                  {{ userDetails.name }}{{ token }}
+                  {{ userDetails.name }}
                 </button>
                 <div class="dropdown-content">
                   <router-link to>Change of personal information</router-link>
@@ -108,7 +107,6 @@
               to
               class="menu-toggle"
               @click="sideMenuOpen"
-              :aria-pressed="active ? 'true' : 'false'"
             >
               <img src="../assets/images/menu-toggle.png" alt />
             </router-link>
@@ -167,17 +165,15 @@
   <div
     class="right-menu-screen"
     :class="{ active: active }"
-    v-if="this.logedInUserDetails"
   >
     <div class="top-box right-small-box">
       <div
         class="closeMenu"
         @click="active = !active"
-        :aria-pressed="active ? 'true' : 'false'"
       >
-        <a href="javascript:void(0)">
+        <router-link to>
           <img src="/src/assets/icons/menu-close.svg" />
-        </a>
+        </router-link>
       </div>
 
       <div class="black-box"></div>
@@ -189,12 +185,12 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <!-- <a href="#" v-if="token">{{ userDetails.name }}</a>
-              <a href="#" v-else>{{ item.mainItem }}</a> -->
+              <router-link to v-if="token">{{ userDetails.name }}</router-link>
+              <router-link to v-else>{{ item.mainItem }}</router-link>
               <i
                 class="icon-menu-downArw"
                 :class="
-                  typeof item.subItemData !== 'undefined' &&
+                  item.subItemData &&
                   item.subItemData.length
                     ? ''
                     : 'no-arrow'
@@ -207,24 +203,24 @@
               :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link href="javascript:void(0)">{{
+              <router-link to>{{
                 item.subItem1
               }}</router-link>
-              <router-link href="javascript:void(0)">{{
+              <router-link to>{{
                 item.subItem2
               }}</router-link>
-              <router-link href="javascript:void(0)">{{
+              <router-link to>{{
                 item.subItem3
               }}</router-link>
-              <router-link href="javascript:void(0)">{{
+              <router-link to>{{
                 item.subItem4
               }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li><router-link href="">KO</router-link></li>
-          <li><router-link href="">EN</router-link></li>
+          <li><router-link to>KO</router-link></li>
+          <li><router-link to>EN</router-link></li>
         </ul>
       </div>
     </div>
@@ -237,10 +233,9 @@
       bodytext2="Please use the service after logging in."
       btnText1="cancellation"
       btnText2="log in"
-      link = '/login'
+      link="/login"
     />
   </div>
-
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
@@ -340,8 +335,7 @@ export default {
     },
     getUserInfo() {
       this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        // console.log('userDetails res', res.data.data[0]);
-        // this.userDetails = res.data.data[0];
+        this.userDetails = res.data.data[0];
       });
     },
   },
