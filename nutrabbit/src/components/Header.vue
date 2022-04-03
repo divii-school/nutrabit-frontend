@@ -177,7 +177,9 @@
               <router-link to v-if="token && index == 0"
                 >{{ userDetails.name }} <i class="icon-leftArw"></i
               ></router-link>
-              <router-link to v-else>{{ item.mainItem }}</router-link>
+              <router-link to v-else @click="index == 0 ? goToLogin() : ''">{{
+                item.mainItem
+              }}</router-link>
               <i
                 class="icon-menu-downArw"
                 :class="
@@ -290,7 +292,7 @@ export default {
             },
             {
               label: "FAQ",
-              link: "/",
+              link: "/faq",
             },
             {
               label: "1:1 inquiry",
@@ -331,14 +333,19 @@ export default {
       console.log("link", link);
       if (this.userId) {
         this.$router.push(link);
-      } 
-       else if (!this.userId && this.$router.push('/login')) {
-        this.$router.push(link);
       }
-      else{
+      if (link == '/login' || link == '/faq') {
+        this.$router.push(link);
+        this.active = false;
+      }
+      else {
         this.isModalVisible = true;
         this.active = false;
-      } 
+      }
+    },
+    goToLogin() {
+      this.$router.push("/login");
+      this.active = false;
     },
     sideMenuOpen() {
       this.active = true;
