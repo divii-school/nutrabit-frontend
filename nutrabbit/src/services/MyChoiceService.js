@@ -26,4 +26,9 @@ export default class MyChoiceService {
     return await axios.post(`/product/raw_material_storage_box/add`, { raw_material_id: raw_material_id }).then((res) => res).catch((err) => err);
   }
 
+  //Recommended blending detail API Functions
+  async getRecommendedBlendingDetail(blending_id) {
+    return await axios.post(`/blending/id`, { id: blending_id, lang: 'KO' }).then((res) => res).catch((err) => err);
+  }
+
 }
