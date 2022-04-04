@@ -31,6 +31,8 @@ import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
 import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
 import MyChoiceRawMaterialDetailedPage from '../pages/MyChoice/MyChoiceRawMaterialDetailedPage.vue';
 import Inquery from '../pages/CustomerCenter/Inquery.vue';
+import MyRecipeDetails from '../pages/OnlyMe/MyRecipeDetails.vue';
+import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 // function guest(to, from, next) {
@@ -231,14 +233,23 @@ const routes = [
         component: FAQ,
 
     },
+    {
+        name: 'MyRecipeDetails',
+        path: '/my-recipe-details',
+        component: MyRecipeDetails,
+    },
+    {
+        name: 'MyRecipeDetailsEdit',
+        path: '/my-recipe-detail-edit',
+        component: MyRecipeDetailsEdit,
 
+    },
     {
         name: 'MyRecipeDetail',
         path: '/my-recipe-detail',
         component: MyRecipeDetail,
 
     },
-
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
