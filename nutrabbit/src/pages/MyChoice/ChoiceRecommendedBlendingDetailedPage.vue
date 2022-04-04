@@ -80,6 +80,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useRoute } from 'vue-router'
+import MyChoiceService from "../../services/MyChoiceService";
 
 export default {
   name: "ChoiceRecommendedBlendingDetailedPage",
@@ -89,6 +91,8 @@ export default {
   },
   data() {
     return {
+      blending_id: null,
+      blending_data:'',
       pagination: {
         clickable: true,
         renderBullet: (index, className) => {
@@ -162,5 +166,30 @@ export default {
       ],
     };
   },
+   created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+   mounted() {
+    this.blendingDetail();
+  },
+  methods: {
+     // blendingDetails
+    blendingDetail() {
+      let sub_cat = useRoute();
+      this.blending_id = sub_cat.params.id;
+      const setBlendingId = this.blending_id;
+      // console.log(setBlendingId);
+
+      this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
+        //  console.log(res.data);
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          console.log('getBlendingdetail res', res.data.data);
+          this.blending_data = res.data.data;
+        }
+      });
+    },
+  }
 };
 </script>

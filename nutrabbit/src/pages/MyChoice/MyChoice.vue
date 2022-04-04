@@ -75,6 +75,7 @@ export default {
     // allCategories list
     allCategories() {
       this.mychoiceService.getCategories().then((res) => {
+        // console.log(res);
         if (res.response) {
           this.$swal(res.response.data.message, "error");
         } else {

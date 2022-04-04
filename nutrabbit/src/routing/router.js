@@ -180,7 +180,7 @@ const routes = [
     },
     {
         name: 'ChoiceRecommendedBlendingDetailedPage',
-        path: '/choice-recommended-blending-detailed-page',
+        path: '/choice-recommended-blending-detailed-page/:id',
         component: ChoiceRecommendedBlendingDetailedPage,
     },
     {
