@@ -540,3 +540,13 @@ textarea{
 .modal-backdrop{
   z-index: 7;
 }
+.overlay-click-out-side{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+  background: red;
+}

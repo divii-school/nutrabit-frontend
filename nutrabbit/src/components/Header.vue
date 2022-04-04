@@ -141,17 +141,19 @@
       </div>
     </div>
   </div>
-  <div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-      bodytext1="This service requires login."
-      bodytext2="Please use the service after logging in."
-      btnText1="Cancel"
-      btnText2="Login"
-      link="/login"
-    />
-  </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
+  <div
+    :class="activeSearch ? 'overlay-click-out-side' : ''"
+    @click="activeSearch = false"
+  ></div>
 </template>
 
 <script>
@@ -174,6 +176,7 @@ export default {
       active: false,
       activeSearch: false,
       isModalVisible: false,
+      activeSubmenu: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -264,7 +267,6 @@ export default {
       this.isModalVisible = false;
     },
     onClickLink(link) {
-      console.log("link", link);
       if (this.userId) {
         this.$router.push(link);
       }
