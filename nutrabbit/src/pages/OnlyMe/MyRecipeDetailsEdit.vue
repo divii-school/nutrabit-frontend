@@ -92,7 +92,7 @@
                   <div class="form-group">
                     <div class="check-box-wrap">
                       <label class="custom-check">
-                        <input type="checkbox"><span class="checkmark"></span>
+                         <input type="checkbox"><span class="checkmark"></span>
                       </label>
                     </div>
                     <!-- <span class="error-msg"></span> -->
