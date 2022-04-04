@@ -1,5 +1,7 @@
 header{
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 3;
+    position: relative;
     .header-container{
         max-width: 1760px;
         width: 95%;
@@ -123,6 +125,9 @@ header{
                             @media screen and (max-width: 1200px){
                               width: 240px;
                             }
+                            &:focus{
+                              border-bottom: 1px solid $green-68;
+                            }
                         }
                         a{
                             @include flex-justify-center;
@@ -219,7 +224,7 @@ header{
       }
     &.main-page-header{
       position: absolute;
-      z-index: 2;
+      z-index: 3;
       top: 0;
       width: 100%;
       box-shadow: none;
@@ -315,22 +320,21 @@ header{
           li{
             display: flex;
             align-items: flex-start;
-            margin-top: 52px;
+            margin-top: 39px;
             pointer-events: none;
             @media screen and (max-width: 768px){
               flex-direction: column;
-              margin-top: 33px;
+              margin-top: 17px;
+              pointer-events: auto;
             }
             &:hover > .side-menu-heading a {
               border-bottom: 3px solid $green-68;
-              padding-bottom: 10px;
             }
             &:first-child{
               margin: 0;
-              &:hover > .side-menu-heading a{
-                border-bottom: 0;
-                padding-bottom: 0;
-              }
+              // &:hover > .side-menu-heading a{
+              //   border-bottom: 3px solid transparent;
+              // }
             }
             .side-menu-heading{
               width: 245px;
@@ -361,6 +365,8 @@ header{
                 display: flex;
                 align-items: flex-start;
                 pointer-events: auto;
+                padding-bottom: 10px;
+                border-bottom: 3px solid transparent;
                 .icon-leftArw{
                   margin: 8px 0 0 10px;
                   @media screen and (max-width: 768px){
@@ -471,55 +477,6 @@ header{
         }
       }
     }
-}
-.mobile-search-wrap{
-  .input-group{
-    position: relative;
-    input{
-      width: 100%;
-      height: 48px;
-      padding: 8px 40px 8px 12px;
-      border: 1px solid $grey-66;
-      font-size: 14px;
-      line-height: 17px;
-      color: $grey-82;
-      &::placeholder{
-        color: $grey-BD;
-      }
-      // &:focus{
-      //   border: 1px solid $green-68;
-      // }
-      &.activeSearchInput{
-        border: 1px solid $green-68;
-      }
-    }
-    a{
-      @include flex-justify-center;
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translate(0, -50%);
-      &.activeSearchIcon{
-        i{
-          background: url(../../../src/assets/icons/icon-mobile-search-green.svg) no-repeat center center;
-          background-size: auto 32px;
-        }
-      }
-    }
-  }
-  .header-search-data{
-    max-width: 100%;
-    box-shadow: none;
-    .search-data-inner{
-      min-height: 132px;
-      .no-search-data{
-        min-height: 375px;
-      }
-    }
-    .delete-close{
-      border-top: 1px solid $white-F2;
-    }
-  }
 }
 .header-search-data{
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
