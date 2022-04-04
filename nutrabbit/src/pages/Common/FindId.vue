@@ -17,9 +17,10 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="email"
                     placeholder="Enter your email"
                     v-model="email"
+                    @keyup="checkError"
                   />
                 </div>
                 <button
@@ -45,6 +46,7 @@
                     placeholder="Enter your email verification code"
                     v-model="emailOTP"
                     maxlength="6"
+                    @keyup="checkError"
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -78,6 +80,7 @@
 import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
+import forgotPassword from "../../Validation/forgotPassword";
 export default {
   name: "FindId",
   data() {
@@ -100,16 +103,25 @@ export default {
     this.commonService = new CommonService();
   },
   methods: {
-    async confirmFindId() {
-      if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
-      }
-      if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
-      }
-      if (validator.isEmpty(this.emailOTP)) {
-        this.error.emailOTP = "Please enter your email verification code";
+     checkError() {
+      let credential = {
+        email: this.email,
+        emailOTP: this.emailOTP,
+      };
+      const { isInvalid, error } = forgotPassword(credential);
+      if (isInvalid) {
+        this.error = error;
+        return false;
       } else {
+        this.error = "";
+        return true;
+      }
+    },
+    async confirmFindId() {
+      if (!this.checkError()) {
+        return;
+      }
+      else {
         this.$router.push("/login");
       }
     },

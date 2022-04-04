@@ -21,6 +21,7 @@
                     type="password"
                     placeholder="Enter new password"
                     v-model="password"
+                    @keyup="checkError"
                   />
                 </div>
               </div>
@@ -40,6 +41,7 @@
                     type="password"
                     placeholder="New password confirmation"
                     v-model="confirmPassword"
+                    @keyup="checkError"
                   />
                 </div>
               </div>
@@ -68,10 +70,10 @@ export default {
     };
   },
   created() {
-  this.commonService = new CommonService();
+    this.commonService = new CommonService();
   },
   methods: {
-    changePassword() {
+    checkError() {
       let credential = {
         password: this.password,
         confirmPassword: this.confirmPassword,
@@ -79,18 +81,33 @@ export default {
       const { isInvalid, error } = passwordValidation(credential);
       if (isInvalid) {
         this.error = error;
+        return false;
+      } else {
+        this.error = "";
+        return true;
       }
-      else {
-        this.commonService.ChangePassword(
-          this.localUserData.userId,
-          this.password,
-          this.confirmPassword
-        ).then((res) => {
-          if(res.status == 200){
-            this.$router.push("/login");
-            this.$swal(res.data.data);
-          }
-        });
+    },
+    changePassword() {
+      // let credential = {
+      //   password: this.password,
+      //   confirmPassword: this.confirmPassword,
+      // };
+      // const { isInvalid, error } = passwordValidation(credential);
+      if (!this.checkError()) {
+        return;
+      } else {
+        this.commonService
+          .ChangePassword(
+            this.localUserData.userId,
+            this.password,
+            this.confirmPassword
+          )
+          .then((res) => {
+            if (res.status == 200) {
+              this.$router.push("/login");
+              this.$swal(res.data.data);
+            }
+          });
       }
     },
   },
