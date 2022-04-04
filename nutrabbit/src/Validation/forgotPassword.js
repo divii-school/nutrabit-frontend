@@ -3,19 +3,21 @@ import validator from "validator";
 const forgotPassword = (data) => {
     let errors = {};
 
-    const { userId, email, emailOTP} = data;
+    const { userId, email, emailOTP, validation_type} = data;
 
-    if (validator.isEmpty(userId)) {
-        errors.userId = "Please enter a Password";
+    if(validation_type == 'forgotPassword'){
+        if (validator.isEmpty(userId)) {
+            errors.userId = "Please enter your ID";
+        }
     }
     if (validator.isEmpty(email)) {
-        errors.email = "Please enter a Password";
+        errors.email = "Please enter your email address";
     }
-    else if (validator.isEmail(email)) {
-        errors.email = "Please enter a Password";
+    else if (!validator.isEmail(email)) {
+        errors.email = "Enter a valid email address";
     }
     if (validator.isEmpty(emailOTP)) {
-        errors.emailOTP = "Please enter a Password";
+        errors.emailOTP = "Please enter your email verification code";
     }
 
     return {

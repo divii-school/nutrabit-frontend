@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "click-outside-vue3": "^4.0.1",
     "jw-vue-pagination": "^1.0.3",
     "moment": "^2.29.1",
     "swiper": "^8.0.7",

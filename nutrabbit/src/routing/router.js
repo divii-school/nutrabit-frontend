@@ -19,7 +19,6 @@ import MyChoiceCategorySelection from '../pages/MyChoice/MyChoiceCategorySelecti
 import InquiryContactUs from '../pages/CustomerCenter/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoice/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
-import MobileSearch from '../pages/GNB/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/MyChoice/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/CustomerCenter/Notice.vue';
@@ -178,11 +177,6 @@ const routes = [
         name: 'sample-making',
         path: '/sample-making',
         component: SampleMaking,
-    },
-    {
-        name: 'MobileSearch',
-        path: '/mobile-search',
-        component: MobileSearch,
     },
     {
         name: 'ChoiceRecommendedBlendingDetailedPage',

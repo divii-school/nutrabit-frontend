@@ -20,7 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
-                    <input type="checkbox" v-model="termsCheck" />
+                    <input type="checkbox" v-model="termsCheck" @change="checkError"/>
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -34,7 +34,7 @@
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
                     information.
-                    <input type="checkbox" v-model="personalCheck" />
+                    <input type="checkbox" v-model="personalCheck" @change="checkError" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -56,6 +56,7 @@
                       type="text"
                       placeholder="Enter business number"
                       v-model="businessNumber"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -73,6 +74,7 @@
                       type="text"
                       placeholder="Enter business name"
                       v-model="businessName"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -87,6 +89,7 @@
                       type="text"
                       placeholder="Enter depertment name"
                       v-model="depertment"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -106,6 +109,7 @@
                       type="text"
                       placeholder="Enter the person in charge"
                       v-model="contactPerson"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -122,6 +126,7 @@
                       type="text"
                       placeholder="Enter your name"
                       v-model="name"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -136,6 +141,7 @@
                       type="text"
                       placeholder="Enter ID"
                       v-model="username"
+                      @keyup="checkError"
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -153,6 +159,7 @@
                       type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -172,6 +179,7 @@
                       type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -186,6 +194,7 @@
                       type="text"
                       placeholder="Enter your email"
                       v-model="email"
+                      @keyup="checkError"
                     />
                   </div>
                   <button
@@ -211,6 +220,7 @@
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
                       maxlength="6"
+                      @keyup="checkError"
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
                       newTime
@@ -239,6 +249,7 @@
                       type="text"
                       placeholder="Enter your mobile phone number"
                       v-model="phoneNumber"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -257,6 +268,7 @@
                       placeholder="Enter address"
                       v-model="address"
                       disabled
+                      @keyup="checkError"
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
@@ -270,6 +282,7 @@
                       type="text"
                       placeholder="Enter detailed address"
                       v-model="detsilAddress"
+                      @keyup="checkError"
                     />
                   </div>
                 </div>
@@ -327,7 +340,7 @@ export default {
     this.commonService = new CommonService();
   },
   methods: {
-    async BusinessRegistration() {
+    checkError() {
       let credential = {
         termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
@@ -349,6 +362,15 @@ export default {
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
         this.error = error;
+        return false;
+      } else {
+        this.error = "";
+        return true;
+      }
+    },
+    async BusinessRegistration() {
+      if (!this.checkError()) {
+        return;
       } else {
         this.commonService
           .individalRegistration(

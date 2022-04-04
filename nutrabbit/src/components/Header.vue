@@ -1,163 +1,96 @@
 <template>
-  <template v-if="showHeader">
-    <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
-      <div class="header-container">
-        <div class="header-menu flex">
-          <div class="manuLeft">
-            <router-link class="header-logo" to="/">
-              <img src="../assets/images/logo.svg" alt="Logo" />
-            </router-link>
-            <ul class="flex">
-              <li>
-                <router-link to>my choice</router-link>
-              </li>
-              <li>
-                <router-link to>nutri 3.3 blending</router-link>
-              </li>
-              <!-- this is for testing purpose only -->
-              <!-- <li>
-                <router-link to="/personal-information"
-                  >Personal Info</router-link
-                >
-              </li> -->
-            </ul>
-          </div>
-          <div class="manuRight">
-            <div class="search-wrap">
-              <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="Enter your desired search term."
-                  @click="activeSearch = true"
-                />
-                <router-link to>
-                  <i class="icon-search-black"></i>
-                </router-link>
-              </div>
-              <div
-                class="header-search-data"
-                :class="activeSearch ? 'activeSearch' : ''"
-              >
-                <div class="search-data-inner">
-                  <ul>
-                    <li>
-                      <p>muscular system</p>
-                      <router-link to>
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                    <li>
-                      <p>aloe</p>
-                      <router-link to>
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                    <li>
-                      <p>nervous system</p>
-                      <router-link to>
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                  </ul>
-                </div>
-                <div class="delete-close">
-                  <router-link to>
-                    <i class="icon-delete"></i>Delete all
-                  </router-link>
-                  <router-link to @click="activeSearch = false"
-                    >to close</router-link
-                  >
-                </div>
-              </div>
-            </div>
-            <div
-              class="after-login-dropdown flex items-center"
-              v-if="this.logedInUserDetails"
-            >
-              <div class="dropdown">
-                <button class="dropbtn">
-                  <i class="login-icon"></i>
-                  {{ userDetails.name }}
-                </button>
-                <div class="dropdown-content">
-                  <router-link to>Change of personal information</router-link>
-                  <router-link to @click="logOut()">Log out</router-link>
-                </div>
-              </div>
-            </div>
-            <router-link to="/login" class="login-item" v-else
-              >login</router-link
-            >
-
-            <div class="header-dropdown">
-              <vue-select
-                :options="['EN', 'KO']"
-                placeholder="EN"
-                close-on-select
-              ></vue-select>
-            </div>
-            <router-link
-              to="/mobile-search"
-              class="mobile-search flex items-center justify-center"
-            >
-              <i class="icon-mobile-search"></i>
-            </router-link>
-
-            <router-link to class="menu-toggle" @click="sideMenuOpen">
-              <img src="../assets/images/menu-toggle.png" alt />
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </header>
-  </template>
-  <template v-else>
-    <div class="search-wrap mobile-search-wrap">
-      <div class="input-group">
-        <input
-          type="text"
-          placeholder="Enter your desired search term."
-          @click="activeSearch = true"
-          :class="activeSearch ? 'activeSearchInput' : ''"
-        />
-        <router-link to :class="activeSearch ? 'activeSearchIcon' : ''">
-          <i class="icon-mobile-search"></i>
-        </router-link>
-      </div>
-      <div
-        class="header-search-data"
-        :class="activeSearch ? 'activeSearch' : ''"
-      >
-        <div class="search-data-inner">
-          <ul>
+  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
+    <div class="header-container">
+      <div class="header-menu flex">
+        <div class="manuLeft">
+          <router-link class="header-logo" to="/">
+            <img src="../assets/images/logo.svg" alt="Logo" />
+          </router-link>
+          <ul class="flex">
             <li>
-              <p>muscular system</p>
-              <router-link to>
-                <i class="icon-close-search"></i>
-              </router-link>
+              <router-link to>my choice</router-link>
             </li>
             <li>
-              <p>aloe</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
-            </li>
-            <li>
-              <p>nervous system</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
+              <router-link to>nutri 3.3 blending</router-link>
             </li>
           </ul>
-          <!-- <div class="no-search-data">
-            <p>There are no recent searches.</p>
-          </div>-->
         </div>
-        <div class="delete-close">
-          <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
-          <router-link to="" @click="activeSearch = false"
-            >to close</router-link
+        <div class="manuRight">
+          <div class="search-wrap">
+            <div class="input-group">
+              <input
+                type="text"
+                placeholder="Enter your desired search term."
+                @click="activeSearch = true"
+              />
+              <router-link to>
+                <i class="icon-search-black"></i>
+              </router-link>
+            </div>
+            <div
+              class="header-search-data"
+              :class="activeSearch ? 'activeSearch' : ''"
+            >
+              <div class="search-data-inner">
+                <ul>
+                  <li v-for="(item, index) in searchData" :key="index">
+                    <router-link to class="search-title">{{
+                      item
+                    }}</router-link>
+                    <router-link
+                      to
+                      class="search-item-close"
+                      @click="removeGoal(index)"
+                    >
+                      <i class="icon-close-search"></i>
+                    </router-link>
+                  </li>
+                </ul>
+                <!-- <div class="no-search-data">
+                  <p>There are no recent searches.</p>
+                </div> -->
+              </div>
+              <div class="delete-close">
+                <router-link to @click="this.searchData = []">
+                  <i class="icon-delete"></i>Delete all
+                </router-link>
+                <router-link to @click="activeSearch = false"
+                  >to close</router-link
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="after-login-dropdown flex items-center"
+            v-if="this.logedInUserDetails"
           >
+            <div class="dropdown">
+              <button class="dropbtn">
+                <i class="login-icon"></i>
+                {{ userDetails.name }}
+              </button>
+              <div class="dropdown-content">
+                <router-link to>Change of personal information</router-link>
+                <router-link to @click="logOut()">Log out</router-link>
+              </div>
+            </div>
+          </div>
+          <router-link to="/login" class="login-item" v-else>login</router-link>
+
+          <div class="header-dropdown">
+            <vue-select
+              :options="['EN', 'KO']"
+              placeholder="EN"
+              close-on-select
+            ></vue-select>
+          </div>
+          <router-link to class="menu-toggle" @click="sideMenuOpen">
+            <img src="../assets/images/menu-toggle.png" alt />
+          </router-link>
         </div>
       </div>
     </div>
-  </template>
+  </header>
   <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
       <div class="black-box"></div>
@@ -220,6 +153,7 @@
     />
   </div>
 </template>
+
 <script>
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
@@ -231,7 +165,6 @@ export default {
     "vue-select": VueNextSelect,
     Modal,
   },
-
   data() {
     return {
       token: localStorage.token ? true : false,
@@ -301,6 +234,7 @@ export default {
           ],
         },
       ],
+      searchData: ["muscular system", "aloe", "nervous system"],
     };
   },
   setup() {
@@ -334,11 +268,10 @@ export default {
       if (this.userId) {
         this.$router.push(link);
       }
-      if (link == '/login' || link == '/faq') {
+      if (link == "/login" || link == "/faq") {
         this.$router.push(link);
         this.active = false;
-      }
-      else {
+      } else {
         this.isModalVisible = true;
         this.active = false;
       }
@@ -357,6 +290,9 @@ export default {
           this.userDetails = res.data.data[0];
         });
       }
+    },
+    removeGoal(index) {
+      this.searchData.splice(index, 1);
     },
   },
   computed: {

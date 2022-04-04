@@ -20,6 +20,7 @@
                     type="text"
                     placeholder="Enter ID"
                     v-model="userId"
+                    @keyup="checkError"
                   />
                 </div>
               </div>
@@ -31,9 +32,10 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="email"
                     placeholder="Enter your email"
                     v-model="email"
+                    @keyup="checkError"
                   />
                 </div>
                 <button
@@ -59,6 +61,7 @@
                     placeholder="Enter your email verification code"
                     v-model="emailOTP"
                     maxlength="6"
+                    @keyup="checkError"
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -92,6 +95,7 @@
 import validator from "validator";
 import axios from "axios";
 import CommonService from "../../services/CommonService";
+import forgotPassword from "../../Validation/forgotPassword";
 export default {
   name: "ForgotPassword",
   data() {
@@ -117,18 +121,25 @@ export default {
     this.commonService = new CommonService();
   },
   methods: {
+    checkError() {
+      let credential = {
+        userId: this.userId,
+        email: this.email,
+        emailOTP: this.emailOTP,
+        validation_type: "forgotPassword",
+      };
+      const { isInvalid, error } = forgotPassword(credential);
+      if (isInvalid) {
+        this.error = error;
+        return false;
+      } else {
+        this.error = "";
+        return true;
+      }
+    },
     confirmFindId() {
-      if (this.userId == "") {
-        this.error.userId = "Enter a valid user id";
-      }
-      if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
-      }
-      if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
-      }
-      if (validator.isEmpty(this.emailOTP)) {
-        this.error.emailOTP = "Please enter your email verification code";
+      if (!this.checkError()) {
+        return;
       } else {
         if (
           this.localUserData != null &&

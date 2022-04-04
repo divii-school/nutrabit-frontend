@@ -543,13 +543,14 @@ header{
         &:first-child{
           margin-top: 0;
         }
-        p{
+        .search-title{
           font-size: 14px;
           line-height: 17px;
           letter-spacing: 0.03em;
           color: $grey-66;
         }
-        a{
+        .search-item-close{
+          @include flex-justify-center;
           i{
             margin-left: 10px;
           }
@@ -557,8 +558,13 @@ header{
       }
     }
     .no-search-data{
-      min-height: 261px;
+      min-height: 269px;
       @include flex-justify-center;
+      p{
+        font-size: 14px;
+        line-height: 17px;
+        color: $grey-66;
+      }
     }
   }
   .delete-close{
