@@ -4,20 +4,20 @@
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
-            <swiper-slide v-for="(item, index) of ProductImages" :key="index">
-              <img :src="item" alt="" />
+            <swiper-slide v-for="(item, index) of blending_data.detail_image_path" :key="index">
+              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' +item" alt="" />
             </swiper-slide>
           </swiper>
         </div>
         <div
           class="blending-right"
-          v-for="(item, index) of productDetails"
+          v-for="(item, index) of blending_data"
           :key="index"
         >
           <div class="right-heading">
             <i class="login-icon"></i>
-            <h2>{{ item.title }}</h2>
-            <div
+            <h2>{{ item.name_ko }}</h2>
+            <!-- <div
               class="blending-tag"
               v-for="(tag, index) of item.tags"
               :key="index"
@@ -28,13 +28,39 @@
               <span>{{ tag.tag4 }}</span>
               <span>{{ tag.tag5 }}</span>
               <span>{{ tag.tag6 }}</span>
+            </div> -->
+            <div
+              class="blending-tag"
+            
+            >
+              <span>{{ item.tags_ko }}</span>
             </div>
           </div>
           <div class="product-details-wrap">
             <ul>
-              <li v-for="(desc, index) of item.innderData" :key="index">
+              <!-- <li v-for="(desc, index) of item.innderData" :key="index">
                 <h2>{{ desc.title }}</h2>
                 <p>{{ desc.desc }}</p>
+              </li> -->
+              <li>
+                <h2>Sub raw Material</h2>
+                <p>{{ item.sub_raw_materials }}</p>
+              </li>
+              <li>
+                <h2>efficacy</h2>
+                <p>{{ item.efficiency_ko }}</p>
+              </li>
+              <li>
+                <h2>Category Name</h2>
+                <p>{{ item.category_name_ko }}</p>
+              </li>
+              <li>
+                <h2>Material Name</h2>
+                <p>{{ item.material_name_ko }}</p>
+              </li>
+              <li>
+                <h2>Product Information</h2>
+                <p>{{ item.description_ko }}</p>
               </li>
             </ul>
             <button class="btn-primary blue-btn-solid">next</button>
@@ -80,6 +106,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useRoute } from 'vue-router'
+import MyChoiceService from "../../services/MyChoiceService";
 
 export default {
   name: "ChoiceRecommendedBlendingDetailedPage",
@@ -89,6 +117,8 @@ export default {
   },
   data() {
     return {
+      blending_id: null,
+      blending_data:'',
       pagination: {
         clickable: true,
         renderBullet: (index, className) => {
@@ -96,7 +126,7 @@ export default {
             '<span class="' +
             className +
             '">' +
-            `<img src="${this.ProductImages[index]}" alt="" />` +
+            `<img src="${this.blending_data[index]}" alt="" />` +
             "</span>"
           );
         },
@@ -153,14 +183,38 @@ export default {
           ],
         },
       ],
-      ProductImages: [
-        "../../../src/assets/images/product-img1.png",
-        "../../../src/assets/images/product-img2.png",
-        "../../../src/assets/images/product-img3.png",
-        "../../../src/assets/images/product-img4.png",
-        "../../../src/assets/images/product-img6.png",
-      ],
+      ProductImages: [],
     };
   },
+   created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+   mounted() {
+    this.blendingDetail();
+  },
+  methods: {
+     // blendingDetails
+    blendingDetail() {
+      let sub_cat = useRoute();
+      this.blending_id = sub_cat.params.id;
+      const setBlendingId = this.blending_id;
+      // console.log(setBlendingId);
+
+      this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
+        //  console.log(res.data);
+        if (res.response) {
+          this.$swal(res.response.data.message, "error");
+        } else {
+          console.log('getBlendingdetail res', res.data.data.Sample1);
+          this.blending_data = res.data.data;
+
+          // let ids =  this.blending_data.map( (item) => item.detail_image_path);
+          
+          // this.ProductImages = ids;
+          // console.log(this.ProductImages);
+        }
+      });
+    },
+  }
 };
 </script>

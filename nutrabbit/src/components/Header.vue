@@ -16,49 +16,54 @@
           </ul>
         </div>
         <div class="manuRight">
-          <div class="search-wrap">
-            <div class="input-group">
-              <input
-                type="text"
-                placeholder="Enter your desired search term."
-                @click="activeSearch = true"
-              />
-              <router-link to>
-                <i class="icon-search-black"></i>
-              </router-link>
-            </div>
-            <div
-              class="header-search-data"
-              :class="activeSearch ? 'activeSearch' : ''"
-            >
-              <div class="search-data-inner">
-                <ul>
-                  <li v-for="(item, index) in searchData" :key="index">
-                    <router-link to class="search-title">{{
-                      item
-                    }}</router-link>
-                    <router-link
-                      to
-                      class="search-item-close"
-                      @click="removeGoal(index)"
-                    >
-                      <i class="icon-close-search"></i>
-                    </router-link>
-                  </li>
-                </ul>
-                <!-- <div class="no-search-data">
+          <div class="search-wrap-outer">
+            <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : '' ">
+              <div class="input-group">
+                <input
+                  type="text"
+                  placeholder="Enter your desired search term."
+                  @click="activeSearch = true"
+                />
+                <router-link to>
+                  <i class="icon-search-black"></i>
+                </router-link>
+              </div>
+              <div
+                class="header-search-data"
+                :class="activeSearch ? 'activeSearch' : ''"
+              >
+                <div class="search-data-inner">
+                  <ul>
+                    <li v-for="(item, index) in searchData" :key="index">
+                      <router-link to class="search-title">{{
+                        item
+                      }}</router-link>
+                      <router-link
+                        to
+                        class="search-item-close"
+                        @click="removeGoal(index)"
+                      >
+                        <i class="icon-close-search"></i>
+                      </router-link>
+                    </li>
+                  </ul>
+                  <!-- <div class="no-search-data">
                   <p>There are no recent searches.</p>
                 </div> -->
-              </div>
-              <div class="delete-close">
-                <router-link to @click="this.searchData = []">
-                  <i class="icon-delete"></i>Delete all
-                </router-link>
-                <router-link to @click="activeSearch = false"
-                  >to close</router-link
-                >
+                </div>
+                <div class="delete-close">
+                  <router-link to @click="this.searchData = []">
+                    <i class="icon-delete"></i>Delete all
+                  </router-link>
+                  <router-link to @click="toCloseBtn"
+                    >to close</router-link
+                  >
+                </div>
               </div>
             </div>
+            <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : '' " @click="showMobSearchF">
+              <i class="icon-search-black"></i>
+            </router-link>
           </div>
           <div
             class="after-login-dropdown flex items-center"
@@ -141,17 +146,19 @@
       </div>
     </div>
   </div>
-  <div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-      bodytext1="This service requires login."
-      bodytext2="Please use the service after logging in."
-      btnText1="Cancel"
-      btnText2="Login"
-      link="/login"
-    />
-  </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
+  <div
+    :class="activeSearch ? 'overlay-click-out-side' : ''"
+    @click="activeSearch = false"
+  ></div>
 </template>
 
 <script>
@@ -174,6 +181,8 @@ export default {
       active: false,
       activeSearch: false,
       isModalVisible: false,
+      activeSubmenu: false,
+      showMobSearch: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -253,6 +262,14 @@ export default {
     this.getUserInfo();
   },
   methods: {
+    showMobSearchF(){
+      this.showMobSearch = true;
+      this.activeSearch = true;
+    },
+    toCloseBtn(){
+      this.showMobSearch = false;
+      this.activeSearch = false;
+    },
     changeLanguage() {},
     logOut() {
       if (this.logedInUserDetails) {
@@ -264,7 +281,6 @@ export default {
       this.isModalVisible = false;
     },
     onClickLink(link) {
-      console.log("link", link);
       if (this.userId) {
         this.$router.push(link);
       }
