@@ -29,7 +29,7 @@ const routes = [
         path: '/',
         name: 'dashboard',
         exact: true,
-        component: () => import(`./pages${localStorage.getItem('admin-type')=='admin'?'/DfcManagement/DfcList.vue':'/dfc_user/ClientLookup.vue'}`),
+        component: () => import(`./pages${localStorage.getItem('userType')=='admin'?'/IndividualMember/IndividualList.vue':'/dfc_user/ClientLookup.vue'}`),
         beforeEnter: guard,
         meta: {
             breadcrumb: [{ parent: 'Dashboard', label: 'Dashboard' }],
@@ -288,46 +288,46 @@ const routes = [
     },
     
     //dfc management start
-    {
-        path: '/dfc-management', 
-        name: 'Dfc',
-        exact: true,
-        component: () => import('./pages/DfcManagement/DfcList.vue'),
-        beforeEnter: guard,
-        meta: {
-            breadcrumb: [{ parent: 'pages', label: 'dfc' }],
-        },
-    },
-    {
-        path: '/view-dfc/:id',
-        name: 'ViewDfc',
-        exact: true,
-        component: () => import('./pages/DfcManagement/Viewdfc.vue'),
-        beforeEnter: guard,
-        meta: {
-            breadcrumb: [{ parent: 'pages', label: 'view-dfc' }],
-        },
-    },
-    {
-        path: '/add-dfc',
-        name: 'AddDfc',
-        exact: true,
-        component: () => import('./pages/DfcManagement/AddDfc.vue'),
-        beforeEnter: guard,
-        meta: {
-            breadcrumb: [{ parent: 'pages', label: 'Add-dfc' }],
-        },
-    },
-    {
-        path: '/edit-dfc/:id',
-        name: 'EditDfc',
-        exact: true,
-        component: () => import('./pages/DfcManagement/EditDfc.vue'),
-        beforeEnter: guard,
-        meta: {
-            breadcrumb: [{ parent: 'pages', label: 'edit-dfc' }],
-        },
-    },
+    // {
+    //     path: '/dfc-management', 
+    //     name: 'Dfc',
+    //     exact: true,
+    //     component: () => import('./pages/DfcManagement/DfcList.vue'),
+    //     beforeEnter: guard,
+    //     meta: {
+    //         breadcrumb: [{ parent: 'pages', label: 'dfc' }],
+    //     },
+    // },
+    // {
+    //     path: '/view-dfc/:id',
+    //     name: 'ViewDfc',
+    //     exact: true,
+    //     component: () => import('./pages/DfcManagement/Viewdfc.vue'),
+    //     beforeEnter: guard,
+    //     meta: {
+    //         breadcrumb: [{ parent: 'pages', label: 'view-dfc' }],
+    //     },
+    // },
+    // {
+    //     path: '/add-dfc',
+    //     name: 'AddDfc',
+    //     exact: true,
+    //     component: () => import('./pages/DfcManagement/AddDfc.vue'),
+    //     beforeEnter: guard,
+    //     meta: {
+    //         breadcrumb: [{ parent: 'pages', label: 'Add-dfc' }],
+    //     },
+    // },
+    // {
+    //     path: '/edit-dfc/:id',
+    //     name: 'EditDfc',
+    //     exact: true,
+    //     component: () => import('./pages/DfcManagement/EditDfc.vue'),
+    //     beforeEnter: guard,
+    //     meta: {
+    //         breadcrumb: [{ parent: 'pages', label: 'edit-dfc' }],
+    //     },
+    // },
     //dfc management end
     //google-form start
     {
@@ -458,6 +458,16 @@ const routes = [
         beforeEnter: guard,
         meta: {
             breadcrumb: [{ parent: 'Inuery', label: 'inquiry list' }],
+        },
+    },
+    {
+        path: '/reply-inquiry/:id',
+        name: 'ReplyInquiry',
+        exact: true,
+        component: () => import('./pages/inquiry/ReplyInquiry.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ReplyInquiry' }],
         },
     },
     {
@@ -849,6 +859,355 @@ const routes = [
             breadcrumb: [{ parent: 'Pages', label: 'Cmsedit' }],
         },
     },
+    //User Management Start
+    {
+        path: '/individual-member',
+        name: 'IndividualMember',
+        exact: true,
+        component: () => import('./pages/IndividualMember/IndividualList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'IndividualMember' }],
+        },
+    },
+    {
+        path: '/business-member',
+        name: 'BusinessMember',
+        exact: true,
+        component: () => import('./pages/BusinessMember/BusinessList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'BusinessMember' }],
+        },
+    },
+    {
+        path: '/individual-edit/:id',
+        name: 'EditIndividual',
+        exact: true,
+        component: () => import('./pages/IndividualMember/EditIndividual.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'EditIndividual' }],
+        },
+    },
+    {
+        path: '/business-edit/:id',
+        name: 'EditBusiness',
+        exact: true,
+        component: () => import('./pages/BusinessMember/EditBusiness.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'EditBusiness' }],
+        },
+    },
+    {
+        path: '/business-view/:id',
+        name: 'ViewBusiness',
+        exact: true,
+        component: () => import('./pages/BusinessMember/ViewBusiness.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ViewBusiness' }],
+        },
+    },
+    {
+        path: '/individual-view/:id',
+        name: 'ViewIndividual',
+        exact: true,
+        component: () => import('./pages/IndividualMember/ViewIndividual.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ViewIndividual' }],
+        }
+    },
+
+   
+    // Product Registration Start
+    {
+        path: '/category-registration', 
+        name: 'CategoryProduct',
+        exact: true,
+        component: () => import('./pages/CategoryRegistration/CategoryList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'CategoryProduct' }],
+        },
+    },
+    {
+        path: '/edit-category/:id', 
+        name: 'CategoryEdit',
+        exact: true,
+        component: () => import('./pages/CategoryRegistration/EditCategory.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'CategoryEdit' }],
+        },
+    },
+    {
+        path: '/addcategory', 
+        name: 'CategoryAdd',
+        exact: true,
+        component: () => import('./pages/CategoryRegistration/AddCategory.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'CategoryAdd' }],
+        },
+    },
+    {
+        // path: '/view-banner/:id',
+        path: '/view-category/:id', 
+        name: 'CategoryView',
+        exact: true,
+        component: () => import('./pages/CategoryRegistration/ViewCategory.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'CategoryView' }],
+        },
+    },
+
+    {
+        path: '/excelcategory', 
+        name: 'CategoryExcelUpload',
+        exact: true,
+        component: () => import('./pages/CategoryRegistration/ExceluploadCategory.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'CategoryExcelUpload' }],
+        },
+    },
+   
+    {
+        path: '/raw-material-registration',
+        name: 'RawProduct',
+        exact: true,
+        component: () => import('./pages/RawMaterialRegistration/RawMaterialList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'RawProduct' }],
+        },
+    },
+    {
+        path: '/viewraw-material-registration/:id',
+        name: 'ViewRawProduct',
+        exact: true,
+        component: () => import('./pages/RawMaterialRegistration/ViewRawMaterial.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ViewRawProduct' }],
+        },
+    },
+    {
+        path: '/editraw-material-registration/:id',
+        name: 'EditRawProduct',
+        exact: true,
+        component: () => import('./pages/RawMaterialRegistration/EditRawMaterial.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'EditRawProduct' }],
+        },
+    },
+    {
+        path: '/addrawmaterial',
+        name: 'AddRawProduct',
+        exact: true,
+        component: () => import('./pages/RawMaterialRegistration/AddRawMaterial.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'AddRawProduct' }],
+        },
+    },
+    {
+        path: '/excelrawmaterial',
+        name: 'ExcelRawProduct',
+        exact: true,
+        component: () => import('./pages/RawMaterialRegistration/ExcelRawMaterial.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ExcelRawProduct' }],
+        },
+    },
+    
+    // Pill type Management start
+    {
+        path: '/pill-type-management', 
+        name: 'Pill',
+        exact: true,
+        component: () => import('./pages/PilltypeManagement/PilltypeList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'Pill' }],
+        },
+    },
+    {
+        path: '/pilltypeView/:id', 
+        name: 'PillView',
+        exact: true,
+        component: () => import('./pages/PilltypeManagement/ViewPilltype.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'PillView' }],
+        },
+    },
+    {
+        path: '/editpilltype/:id', 
+        name: 'Pilledit',
+        exact: true,
+        component: () => import('./pages/PilltypeManagement/EditPilltype.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'Pilledit' }],
+        },
+    },
+    {
+        path: '/addpilltype', 
+        name: 'AddPill',
+        exact: true,
+        component: () => import('./pages/PilltypeManagement/AddPilltype.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'AddPill' }],
+        },
+    },
+
+    // Package Management start
+    {
+        path: '/package-management',
+        name: 'package',
+        exact: true,
+        component: () => import('./pages/Packagemanagement/PackageList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'User' }],
+        },
+    },
+    {
+        path: '/view-package-type/:id',
+        name: 'viewpackage',
+        exact: true,
+        component: () => import('./pages/Packagemanagement/ViewPackageType.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'viewpackage' }],
+        },
+    },
+    {
+        path: '/edit-package-type/:id',
+        name: 'editpackage',
+        exact: true,
+        component: () => import('./pages/Packagemanagement/EditPackageType.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'editpackage' }],
+        },
+    },
+    {
+        path: '/addpackagetype',
+        name: 'AddPackageType',
+        exact: true,
+        component: () => import('./pages/Packagemanagement/AddPackageType.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'AddPackageType' }],
+        },
+    },
+
+    // Nutri Blending start
+    {
+        path: '/nutri-blending', 
+        name: 'nutri',
+        exact: true,
+        component: () => import('./pages/Nutriblending/NutriblendingList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'nutri' }],
+        },
+    },
+    {
+        path: '/addnutri-blending', 
+        name: 'Addnutri',
+        exact: true,
+        component: () => import('./pages/Nutriblending/AddNutriblending.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'Addnutri' }],
+        },
+    },
+    {
+        path: '/editnutri-blending/:id', 
+        name: 'editnutri',
+        exact: true,
+        component: () => import('./pages/Nutriblending/EditNutriblending.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'editnutri' }],
+        },
+    },
+    {
+        path: '/viewnutri-blending/:id', 
+        name: 'viewnutri',
+        exact: true,
+        component: () => import('./pages/Nutriblending/ViewNutriblending.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'viewnutri' }],
+        },
+    },
+    {
+        path: '/excelnutri-blending', 
+        name: 'excelnutri',
+        exact: true,
+        component: () => import('./pages/Nutriblending/ExcelNutriblending.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'excelnutri' }],
+        },
+    },
+    // Application Management start
+    {
+        path: '/app-management', 
+        name: 'appmanagement',
+        exact: true,
+        component: () => import('./pages/ApplicationManagement/ApplicationManagementList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'appmanagement' }],
+        },
+    },
+
+    // {
+    //     path: '/app-managementadd', 
+    //     name: 'appadd',
+    //     exact: true,
+    //     component: () => import('./pages/ApplicationManagement/AddApplicationManagement.vue'),
+    //     beforeEnter: guard,
+    //     meta: {
+    //         breadcrumb: [{ parent: 'pages', label: 'appadd' }],
+    //     },
+    // },
+
+    {
+        path: '/app-managementedit/:id', 
+        name: 'appedit',
+        exact: true,
+        component: () => import('./pages/ApplicationManagement/EditApplicationManagement.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'appedit' }],
+        },
+    },
+
+    {
+        path: '/app-managementview/:id', 
+        name: 'appview',
+        exact: true,
+        component: () => import('./pages/ApplicationManagement/ViewApplicationManagement.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'appview' }],
+        },
+    },
+
+    
 ];
 
 const router = createRouter({

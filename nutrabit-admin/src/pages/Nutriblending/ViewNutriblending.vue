@@ -1,0 +1,344 @@
+<template>
+    <ConfirmDialog group="dialog" />
+    <div class="p-grid">
+        <!-- <div class="p-col-12 p-pb-0">
+            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
+        </div> -->
+        <div class="p-col-12">
+            <div class="card p-fluid">
+                <h4><strong>{{$t('Blending.details.header')}}</strong></h4>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6"> 
+                        <strong> <label for="nameblending">{{ $t('Blending.details.name') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.name_ko }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="categoryblending">{{ $t('Blending.details.category') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.category_id }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="mainrawblending">{{ $t('Blending.details.Mainraw') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.raw_material_id }}</p>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="submaterialblending">{{ $t('Blending.details.submaterial') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.sub_raw_materials }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="pilltypeblending">{{ $t('Blending.details.pilltype') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.pill_id }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="tagsblending">{{ $t('Blending.list.addtag') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.tags_ko }}</p>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="blendingtags">{{ $t('Blending.details.blendingtags') }}:</label></strong>
+                        <p style="float:right;">{{ mydata.tags_en }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="efficacyblending">{{ $t('Blending.details.efficacy') }}:</label></strong>
+                         <p style="float:right;">{{ mydata.efficiency_ko }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                   <div class="p-field p-col p-md-6">
+                        <strong><label for="blendingefficacy">{{ $t('Blending.details.blendingefficacy') }}:</label></strong>
+                       <p style="float:right;">{{ mydata.efficiency_en }}</p>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                     <div class="p-field p-col p-md-6">
+                        <strong><label for="appearanceblending">{{ $t('Blending.details.appearance') }}:</label></strong>
+                         <p style="float:right;">{{ mydata.ingredients_ko }}</p>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="blendingappearance">{{ $t('Blending.details.blendingappearance') }}:</label></strong>
+                         <p style="float:right;">{{ mydata.ingredients_en }}</p>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="productdescriptionblending">{{ $t('Blending.list.productdescription') }}:</label></strong>
+                         <p style="float:right;">{{ mydata.description_ko }}</p>
+                    </div>
+                </div>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="blendingproductdescription">{{ $t('Blending.details.blendingproductdescription') }}:</label></strong>
+                         <p style="float:right;">{{ mydata.description_en }}</p>
+                    </div>
+                </div>
+
+                <div class="p-grid p-formgrid p-mb-3 browse">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="DetailImage" style="font-weight:bold;">
+                                {{ $t('Blending.details.DetailImage') }}
+                            </label>
+                            <div  v-for="(detailimage,img) in mydata.detailimage" :key="img">
+                                <div class="text-red" v-show="render1" >{{$t('validation.invalidFile')}}</div>
+                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" />
+                            </div>
+                        </div>
+                 </div>
+
+                 <div class="p-grid p-formgrid p-mb-3 browse">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="SimilarProductImage" style="font-weight:bold;">
+                                {{$t('Blending.details.SimilarProductImage')}}
+                            </label>
+                            <div  v-for="(similarimage,img) in mydata.similarimage" :key="img">
+                                <div class="text-red" v-show="render2" >{{$t('validation.invalidFile')}}</div>
+                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similar_image" class="product-image" />
+                            </div>
+                        </div>
+                 </div>
+                 
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="Thumbnail">{{$t('Blending.details.Thumbnail')}} :</label></strong>
+                        <div >
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" :alt="mydata.thumbnail1" class="product-image" />
+                        </div>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="blendingthumbnail">{{$t('Blending.details.blendingthumbnail')}} :</label></strong>
+                        <div >
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" :alt="mydata.thumbnail2" class="product-image" />
+                        </div>
+                    </div>
+                </div>
+                 <div class="p-formgrid p-grid">
+                    <div class="p-field p-col p-md-6">
+                        <strong><label for="status">{{$t('Blending.details.viewstatus')}} :</label></strong>
+                        <p style="float:right;">{{ mydata.status }}</p>
+                    </div>
+                   
+                </div>
+
+                <div class="p-d-flex p-jc-end" style="float:left;">
+                    <router-link :to="'/editnutri-blending/' + $route.params.id"
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
+                    >
+                </div>
+
+                <div class="p-d-flex p-jc-end">
+                    <!-- <router-link to="/view-user"
+                        ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2" disabled><i class="pi pi-eye p-mr-2"></i>point</Button>
+                    </router-link> -->
+                    
+                    <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+import axios from 'axios';
+import BlendingService from '../../service/API/BlendingService';
+
+// import {useRouter} from 'vue-router'
+export default {
+    data() {
+        return {
+            dropdownItems: [
+                { name: 'male', code: 'male' },
+                { name: 'female', code: 'female' },
+                { name: 'others', code: 'others' },
+            ],
+            dropdownItem: null,
+            mydata: {
+                detailimage: '',
+                similarimage:'',
+                name_ko: '',
+                // name_en: '',
+                category_id: '',
+                raw_material_id: '',
+                sub_raw_materials: '',
+                pill_id: '',
+                tags_ko: '',
+                tags_en: '',
+                efficiency_ko: '',
+                efficiency_en:'',
+                ingredients_ko: '',
+                ingredients_en: '',
+                description_ko: '',
+                description_en: '',
+                detail_image: '',
+                similar_image: '',
+                thumbnail1: '',
+                thumbnail2: '',
+                exposure: '',
+            },
+        };
+    },
+    created() {
+        this.blendingService = new BlendingService();
+    },
+    methods: {
+        del(id) {
+            this.$confirm.require({
+                group: 'dialog',
+                header: 'Confirmation',
+                message: 'Are you sure you want to delete?',
+                icon: 'pi pi-exclamation-triangle',
+                accept: () => {
+                    axios({ method: 'delete', url: `/admin/Blending/delete`, data: { deleteIdArray: id } }).then((res) => {
+                        console.warn(res);
+                        this.$router.push({ name: 'nutri' });
+                    });
+
+                    this.$toast.add({ severity: 'info', summary: 'Deleted', detail: 'Deleted successfully', life: 3000 });
+                },
+                reject: () => {
+                    this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+                },
+            });
+        },
+        formatDate(value) {
+            const date = new Date(value);
+            var dd = date.getDate();
+            var mm = date.getMonth() + 1;
+            var yyyy = date.getFullYear();
+            var hr = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            return (value = yyyy + '/' + mm + '/' + dd + '-' + hr + ':' + min + ':' + sec);
+        },
+    },
+    mounted() {
+        this.blendingService.viewBlending(this.$route.params.id).then((res) => {
+            // console.log(res);
+            this.mydata.name_ko = res.data.data[0].name_ko;
+            // this.mydata.name_en = res.data.data[0].name_en;
+            this.mydata.category_id = res.data.data[0].category_id;
+            this.mydata.raw_material_id = res.data.data[0].raw_material_id;
+            this.mydata.sub_raw_materials = res.data.data[0].sub_raw_materials;
+            this.mydata.pill_id = res.data.data[0].pill_id;
+            this.mydata.tags_ko = res.data.data[0].tags_ko;
+            this.mydata.tags_en = res.data.data[0].tags_en;
+            this.mydata.efficiency_ko = res.data.data[0].efficiency_ko;
+            this.mydata.efficiency_en = res.data.data[0].efficiency_en;
+            this.mydata.ingredients_ko = res.data.data[0].ingredients_ko;
+            this.mydata.ingredients_en = res.data.data[0].ingredients_en;
+            this.mydata.description_ko = res.data.data[0].description_ko;
+            this.mydata.description_en = res.data.data[0].description_en;
+            // this.mydata.detail_image = res.data.data[0].detail_image_path.split(",");
+        
+            this.mydata.detailimage = res.data.data[0].detail_image_path.toString().split(",");
+            
+            // console.log(res.data.data[0].detail_image_path.toString().split(","));
+             this.mydata.similarimage = res.data.data[0].similar_image_path.toString().split(",");
+             this.mydata.thumbnail1 = res.data.data[0].thumbnail_1_path;
+             this.mydata.thumbnail2 = res.data.data[0].thumbnail_2_path;
+            this.mydata.status = res.data.data[0].status;
+              console.log(this.mydata.detailimage);
+        });
+    },
+};
+</script>
+
+<style scoped>
+.p-fluid .p-button {
+    width: auto;
+}
+
+.p-button{
+    background: #000000;
+    border: 1px solid #0a0a0a;
+        color: white;
+}
+
+.detailimage{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 32%;
+    right: 0%;
+    top: 671px;
+    bottom: 0%;
+}
+.p-button{
+    background: #000000;
+    border: 1px solid #0A0A0A;
+    color: white;
+}
+.img-info {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgb(48, 48, 48);
+}
+.product-image {
+    padding-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 100px;
+    float: right;
+}
+.custom-select {
+    position: relative;
+    border: 1px solid #cecece;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+}
+.select-file {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0%;
+    z-index: 5;
+    opacity: 0;
+}
+.SelectBtn {
+    max-width: 100px;
+}
+.custom-select span {
+    max-width: 140px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.custom-select-invalid {
+    position: relative;
+    border: 1px solid red;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+}
+</style>

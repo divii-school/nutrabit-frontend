@@ -6,34 +6,19 @@
                 <div class="p-col-12">
                     <h5>{{ $t('Banner.edit_banner') }}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
                             <label for="title2">{{ $t('Banner.list.title') }}</label>
                             <InputText type="text" placeholder="Title" id="title2" v-model="title"></InputText>
                             <div class="text-red">{{ error.title }}</div>
                         </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Banner.list.link') }}</label>
-                            <InputText type="text" placeholder="link" id="title2" v-model="link"></InputText>
-                            <div class="text-red">{{ error.link }}</div>
-                        </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{ $t('Banner.list.type') }}</label>
-                            <Dropdown v-model="dropdownValueType" :options="dropdownValueTypes" optionLabel="name" :placeholder="type" />
-                            <div class="text-red">{{ error.type }}</div>
-                        </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Banner.list.status') }}</label>
-                            <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="name" :placeholder="status" />
-                            <div class="text-red">{{ error.state }}</div>
-                        </div>
                     </div>
-                    <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                      <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.deskbanner') }}
                                 <span class="img-info">(File Type jpg,jpeg,png )</span>
                             </label>
-                            <div class="custom-select">
+                            <div class="custom-select" >
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
@@ -41,15 +26,17 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + fileName1" :alt="fileName1" class="product-image" />
+                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + fileName1" :alt="fileName1" class="product-image" />
                             </div>
                         </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                    </div>
+                     <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.mobbanner') }}
                                 <span class="img-info">(File Type jpg,jpeg,png )</span>
                             </label>
-                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
+                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`" >
                                 <span v-if="!filesName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ filesName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" />
@@ -57,15 +44,48 @@
                             </div>
                             <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
                             <div class="text-red">{{ error.file }}</div>
-                            <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + fileName2" :alt="fileName1" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + fileName2" :alt="fileName1" class="product-image" />
+                        </div>
+                    </div>
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
+                            <label for="title2">{{ $t('Banner.list.link') }}</label>
+                            <InputText type="text" placeholder="link" id="title2" v-model="link"></InputText>
+                            <div class="text-red">{{ error.link }}</div>
+                        </div>
+                    </div>
+                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                            <label for="type">{{ $t('Banner.list.type') }}</label>
+                            <Dropdown v-model="dropdownValueType" :options="dropdownValueTypes" optionLabel="name" :placeholder="type" />
+                            <div class="text-red">{{ error.type }}</div>
+                        </div> -->
+                  
+                        
+                    
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
+                            <label for="state2">{{ $t('Banner.list.status') }}</label>
+                            <br>
+                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                             <input type="radio" id="yes" value="active" name="status" v-model="status">
+                                <label for="yes">Yes</label>
+                                
+                                <input type="radio" id="no" name="status" value="inactive" v-model="status">
+                                <label for="no">No</label>
+                            
+                            <div class="text-red">{{ error.state }}</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="p-d-flex p-jc-end p-ai-center"  style="float:left;">
+                <Button :label="$t('button.update')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
+            </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
                     <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
-                    <Button :label="$t('button.confirm')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
+                    
                 </div>
             </div>
         </form>
@@ -82,10 +102,10 @@ export default {
         return {
             render1: false,
             render2: false,
-            dropdownValues: [{ name: 'active' }, { name: 'inactive' }],
-            dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
+            dropdownValues:  [{ name: 'active',code:'활동적인' }, { name: 'inactive',code:'비활성' }],
+            // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
-            dropdownValueType: null,
+            // dropdownValueType: null,
             title: null,
             link: null,
             files: null,
@@ -110,16 +130,16 @@ export default {
         this.bannerService.viewBanner(this.$route.params.id).then((res) => {
             this.title = res.data.data[0].title;
             this.status = res.data.data[0].status;
-            this.type = res.data.data[0].type;
+            // this.type = res.data.data[0].type;
             this.link = res.data.data[0].link;
-            this.fileName1 = res.data.data[0].imageUrl;
-            this.fileName2 = res.data.data[0].imageUrlMobile;
+            this.fileName1 = res.data.data[0].desktop_banner_path;
+            this.fileName2 = res.data.data[0].mobile_banner_path;
             console.log(res.data.data[0]);
         });
     },
     methods: {
         reinitialize() {
-            (this.dropdownValue = null), (this.dropdownValueType = null), (this.title = null), (this.subtitle = null), (this.link = null), (this.fileName = null), (this.file = {});
+            (this.dropdownValue = null), (this.title = null), (this.link = null), (this.fileName = null), (this.file = {});
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -132,7 +152,7 @@ export default {
             } else {
                  this.render1=false;
                 this.fileName = this.file.name;
-                this.formData.append('fileImage', files[0]);
+                this.formData.append('desktop_banner', files[0]);
             }
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
@@ -150,7 +170,7 @@ export default {
             } else {
                  this.render2=false;
                 this.filesName = this.files.name;
-                this.formData.append('mobileImage', files[0]);
+                this.formData.append('mobile_banner', files[0]);
             }
             this.filesExtension = this.filesName.replace(/^.*\./, '');
             console.log(this.filesName);
@@ -159,7 +179,7 @@ export default {
             let vcheckData = {
                 title: this.title,
                 state: this.dropdownValue ? 'something' : 'something',
-                type: this.dropdownValueType ? 'something' : 'something',
+                // type: this.dropdownValueType ? 'something' : 'something',
                 link: this.link,
                 file: this.fileName1 == '' ? '' : 'something',
             };
@@ -172,10 +192,11 @@ export default {
                 this.formData.append('id', this.$route.params.id);
                 this.formData.append('link', this.link);
                 this.formData.append('status', this.dropdownValue?.name === undefined ? this.status : this.dropdownValue?.name);
-                this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
+                // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 return axios.put('/admin/banner/edit', this.formData).then((res) => {
-                    this.$router.push({ name: 'BannerManagement' });
+                    this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
+                     this.$router.push({ name: 'BannerManagement' });
                     console.log(res);
                 });
             }
@@ -219,6 +240,7 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
@@ -237,5 +259,11 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-left: 15px;
+}
+
+.p-button{
+    background: #000000;
+    border: 1px solid #0a0a0a;
+        color: white;
 }
 </style>

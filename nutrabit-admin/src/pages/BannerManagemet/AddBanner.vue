@@ -4,19 +4,22 @@
         <form>
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
-                    <h5>{{$t('Banner.addnew_banner')}}</h5>
+                    <h5>{{ $t('Banner.addnew_banner') }}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Banner.list.title')}}</label>
-                            <InputText :class="`${error.title ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.title')" id="title2" v-model="title"></InputText>
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="title2">{{ $t('Banner.list.title') }}</label>
+                            <InputText
+                                :class="`${error.title ? 'p-invalid' : ''}`"
+                                type="text"
+                                :placeholder="$t('Banner.list.bannertitle')"
+                                id="title2"
+                                v-model="title"
+                                @keyup="addBanner"
+                            ></InputText>
                             <div class="text-red">{{ error.title }}</div>
                         </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Banner.list.link')}}</label>
-                            <InputText :class="`${error.link ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.link')" id="title2" v-model="link"></InputText>
-                            <div class="text-red">{{ error.link }}</div>
-                        </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                    </div>
+                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="type">{{$t('Banner.list.type')}}</label>
                             <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
                                 v-model="dropdownValueType"
@@ -25,51 +28,98 @@
                                 :placeholder="$t('Banner.placeholder.select')"
                             />
                             <div class="text-red">{{ error.type }}</div>
-                        </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="state2">{{$t('Banner.list.status')}}</label>
-                            <Dropdown
-                            :class="`${error.state ? 'p-invalid' : ''}`"
-                                v-model="dropdownValue"
-                                :options="dropdownValues"
-                                optionLabel="code"
-                                :placeholder="dropdownValue"   
-                            />
-                            <div class="text-red">{{ error.state }}</div>
-                        </div>
-                    </div>
+                    </div>-->
+
                     <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
-                                {{$t('Banner.list.deskbanner')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                {{ $t('Banner.list.deskbanner') }}
+                                <span
+                                    class="img-info"
+                                >(File Type jpg,jpeg,png )</span>
                             </label>
-                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!fileName">파일 선택</span>
-                                <span v-else>{{$t('button.select_file')}}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
+                            <div class="custom-select">
+                                <span v-if="!fileName">{{ $t('button.select_file') }}</span>
+                                <span v-else>{{ fileName }}</span>
+                                <input type="file" class="select-file" v-on:change="onFileChange"   @keyup="addBanner"/>
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
-                            <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                            <img id="frame" src width="100px" height="100px" />
-                        </div>
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{$t('Banner.list.mobbanner')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div class="custom-select">
-                                <span v-if="!filesName">{{$t('button.select_file')}}</span>
-                                <span v-else>{{ filesName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
+                            <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="subtitle2">
+                                {{ $t('Banner.list.mobbanner') }}
+                                <span
+                                    class="img-info"
+                                >(File Type jpg,jpeg,png )</span>
+                            </label>
+                            <div class="custom-select">
+                                <span v-if="!filesName">{{ $t('button.select_file') }}</span>
+                                <span v-else>{{ filesName }}</span>
+                                <input type="file" class="select-file" v-on:change="onFileChanges"  @keyup="addBanner" />
+                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            </div>
+                            <div class="text-red">{{ error.file }}</div>
+                            <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
+                            <img id="frame" src width="100px" height="100px" />
+                        </div>
+                    </div>
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="title2">{{ $t('Banner.list.link') }}</label>
+                            <InputText
+                                :class="`${error.link ? 'p-invalid' : ''}`"
+                                type="text"
+                                :placeholder="$t('Banner.list.link')"
+                                id="title2"
+                                v-model="link"
+                                @keyup="addBanner"
+                            ></InputText>
+                            
+                            <div class="text-red">{{ error.link }}</div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="state2">{{ $t('Banner.list.status') }}</label>
+                            <br />
+                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                            <input
+                                type="radio"
+                                id="yes"
+                                value="active"
+                                name="status"
+                                v-model="status"
+                            />
+                            <label for="yes">Yes</label>
+
+                            <input
+                                type="radio"
+                                id="no"
+                                name="status"
+                                value="inactive"
+                                v-model="status"
+                            />
+                            <label for="no">No</label>
+
+                            <div class="text-red">{{ error.state }}</div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
+                <Button
+                    :label="$t('button.confirm')"
+                    icon="pi pi-check"
+                    iconPos="left"
+                    class="p-button p-button-sm p-mr-2 p-mb-2"
+                    @click="addBanner"
+                ></Button>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
@@ -79,13 +129,6 @@
                         iconPos="left"
                         class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         @click="$router.go(-1)"
-                    ></Button>
-                    <Button
-                        :label="$t('button.confirm')"
-                        icon="pi pi-check"
-                        iconPos="left"
-                        class="p-button p-button-sm p-mr-2 p-mb-2"
-                        @click="addBanner"
                     ></Button>
                 </div>
             </div>
@@ -101,15 +144,16 @@ export default {
     // props: ['dog', 'image'],
     data() {
         return {
-            render1:false,
-            render2:false,
-            dropdownValues: [{ name: 'active',code:'활성' }, { name: 'inactive',code:'비활성' }],
-            dropdownValueTypes: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
+            render1: false,
+            render2: false,
+            dropdownValues: [{ name: 'active', code: '활성' }, { name: 'inactive', code: '비활성' }],
+            // dropdownValueTypes: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
             dropdownValue: '활동적인',
-            dropdownValueType: null,
-            title:"",
+            // dropdownValueType: null,
+            sorting_order:"1",
+            title: "",
             subtitle: null,
-            link:"",
+            link: "",
             files: null,
             filesName: '',
             file: '',
@@ -117,13 +161,22 @@ export default {
             fileName: '',
             fileExtension: '',
             filesExtension: '',
+            status: '',
+            
+
             formData: new FormData(),
             error: {},
         };
     },
     methods: {
         reinitialize() {
-            (this.dropdownValue = null), (this.dropdownValueType = null), (this.title = null), (this.subtitle = null), (this.link = null), (this.fileName = null), (this.file = {});
+            (this.dropdownValue = null), (this.title = null), (this.link = null), (this.fileName = null), (this.file = {});
+        },
+        open() {
+            this.display = true;
+        },
+        close() {
+            this.display = false;
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -131,12 +184,12 @@ export default {
             this.file = files[0];
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.file.name)) {
-                this.render1=true;
+                this.render1 = true;
                 return false;
             } else {
-                this.render1=false;
+                this.render1 = false;
                 this.fileName = this.file.name;
-                this.formData.append('fileImage', files[0]);
+                this.formData.append('desktop_banner', files[0]);
             }
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
@@ -149,12 +202,12 @@ export default {
             this.files = files[0];
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.files.name)) {
-                this.render2=true;
+                this.render2 = true;
                 return false;
             } else {
-                 this.render2=false;
+                this.render2 = false;
                 this.filesName = this.files.name;
-                this.formData.append('mobileImage', files[0]);
+                this.formData.append('mobile_banner', files[0]);
             }
             this.filesExtension = this.filesName.replace(/^.*\./, '');
             console.log(this.filesName);
@@ -163,7 +216,8 @@ export default {
             let vcheckData = {
                 title: this.title,
                 state: this.dropdownValue == null ? '' : 'something',
-                type: this.dropdownValueType == null ? '' : 'something',
+                sorting_order: this.sorting_order,
+                // type: this.dropdownValueType == null ? '' : 'something',
                 link: this.link,
                 file: this.fileName == '' ? '' : 'something',
             };
@@ -172,21 +226,23 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-              // console.log(this.file);
-            this.formData.append('title', this.title);
-            this.formData.append('link', this.link);
-            this.formData.append('type', this.dropdownValueType?.name);
-            this.formData.append('status', this.dropdownValue.name===undefined ? this.dropdownValue :this.dropdownValue.name);
-            console.log(this.formData);
-            return axios
-                .post('/admin/banner/add', this.formData)
-                .then(() => {
-                   this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
-                    this.$router.push({ name: 'BannerManagement' });
-                })
-                
+                // console.log(this.file);
+                this.formData.append('title', this.title);
+                this.formData.append('link', this.link);
+                this.formData.append('sorting_order', this.sorting_order);
+                // this.formData.append('type', this.dropdownValueType?.name);
+                this.formData.append('status', this.dropdownValue.name === undefined ? this.status : this.dropdownValue.name);
+                console.log(this.formData);
+                return axios
+                    .post('/admin/banner/add', this.formData)
+                    .then(() => {
+
+                        this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
+                        this.$router.push({ name: 'BannerManagement' });
+                    })
+
             }
-           
+
         },
     },
 };
@@ -236,5 +292,11 @@ export default {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.p-button {
+    background: #000000;
+    border: 1px solid #0a0a0a;
+    color: white;
 }
 </style>

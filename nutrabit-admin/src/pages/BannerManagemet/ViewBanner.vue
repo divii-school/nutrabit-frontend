@@ -1,49 +1,77 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <div class="p-col-12 p-pb-0">
+        <!-- <div class="p-col-12 p-pb-0">
             <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div>
+        </div> -->
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>{{$t('Banner.details.header')}}</strong></h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-3">
-                        <strong> <label for="nameuser">{{$t('Banner.list.title')}} :</label></strong>
-                        <p>{{ mydata.title }}</p>
-                    </div>
-                    <div class="p-field p-col p-md-3">
-                        <strong><label for="emailuser">{{$t('Banner.list.link')}} :</label></strong>
-                        <p>{{ mydata.link }}</p>
-                    </div>
-                    <div class="p-field p-col p-md-3">
+
+                <div class="p-field p-grid">
+					<label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Banner.list.title') }}:</label>
+					<div class="p-col-12 p-md-10">
+						<p >{{ mydata.title }}</p>
+					</div> 
+				</div>
+
+                <div class="p-field p-grid">
+					<label for="desktopimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Banner.list.deskbanner') }}:</label>
+					<div class="p-col-12 p-md-10">
+						
+                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.desktop_banner" :alt="mydata.desktop_banner" class="product-image" />
+					</div> 
+				</div>
+
+                <div class="p-field p-grid">
+					<label for="mobileimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Banner.list.mobbanner') }}:</label>
+					<div class="p-col-12 p-md-10">
+						
+                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.mobile_banner" :alt="mydata.mobile_banner" class="product-image" />
+					</div> 
+				</div>
+
+                <div class="p-field p-grid">
+					<label for="link" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Banner.list.link') }}:</label>
+					<div class="p-col-12 p-md-10">
+						
+                         <p >{{ mydata.link }}</p>
+					</div> 
+				</div>
+               
+                
+               
+               
+                    <!-- <div class="p-field p-col p-md-3">
                         <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
                         <p>{{ mydata.type }}</p>
-                    </div>
+                    </div> -->
+                <div class="p-formgrid p-grid">
                     <div class="p-field p-col p-md-3">
                         <strong><label for="mobileuser">{{$t('Banner.list.status')}} :</label></strong>
-                        <p>{{ mydata.status }}</p>
+                        <br>
+                       <input type="radio" id="yes" value="active" name="status" v-model="mydata.status">
+                                <label for="yes">Yes</label>
+                                
+                                <input type="radio" id="no" name="status" value="inactive" v-model="mydata.status" >
+                                <label for="no">No</label>
                     </div>
+                </div>
 
-                    <div class="p-field p-col p-md-4">
-                        <strong><label for="state">{{$t('Banner.list.deskbanner')}} :</label></strong>
-                        <div>
-                            <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + mydata.dbanner" :alt="mydata.dbanner" class="product-image" />
-                        </div>
-                    </div>
-                    <div class="p-field p-col p-md-4">
-                        <strong><label for="state">{{$t('Banner.list.mobbanner')}} :</label></strong>
-                        <div>
-                            <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + mydata.mbanner" :alt="mydata.mbanner" class="product-image" />
-                        </div>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
+                
+                <div class="p-d-flex p-jc-end" style="float:left;">
                     <router-link :to="'/edit-banner/' + $route.params.id"
-                        ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{$t('button.edit')}}</Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{$t('button.edit')}}</Button></router-link
                     >
-                    <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i>{{$t('button.delete')}}</Button>
+                    <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i>{{$t('button.delete')}}</Button> -->
                 </div>
+
+                <div class="p-d-flex p-jc-end p-ai-center">
+                <div>
+                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -65,9 +93,9 @@ export default {
                 title: '',
                 link: '',
                 status: '',
-                dbanner: '',
-                mbanner: '',
-                type:''
+                desktop_banner: '',
+                mobile_banner: '',
+                // type:''
             },
         };
     },
@@ -100,24 +128,32 @@ export default {
             this.mydata.title = res.data.data[0].title;
             this.mydata.link = res.data.data[0].link;
             this.mydata.status = res.data.data[0].status;
-            this.mydata.dbanner = res.data.data[0].imageUrl;
-            this.mydata.mbanner = res.data.data[0].imageUrlMobile;
-            this.mydata.type = res.data.data[0].type;
+            this.mydata.desktop_banner = res.data.data[0].desktop_banner_path;
+            this.mydata.mobile_banner = res.data.data[0].mobile_banner_path;
+            // this.mydata.type = res.data.data[0].type;
         });
     },
 };
 </script>
 
 <style scoped>
+
 .product-image {
     margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 150px;
-    height: 100px;
+    width: 837px;
+    height: 120px;
+   
 }
 .p-fluid .p-button {
     width: auto;
+}
+
+.p-button{
+    background: #000000;
+    border: 1px solid #0a0a0a;
+        color: white;
 }
 </style>

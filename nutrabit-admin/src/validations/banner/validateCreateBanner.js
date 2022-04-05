@@ -4,7 +4,7 @@ import validator from 'validator';
 const validateCreateBanner = (data) => {
     let errors = {};
 
-    const { title, link, file,state,type} = data;
+    const { title, link, file,state} = data;
 
     if (validator.isEmpty(title)) {
         errors.title = '제목을 입력해주세요';
@@ -12,9 +12,7 @@ const validateCreateBanner = (data) => {
     if (validator.isEmpty(state)) {
         errors.state = '선택 해주세요';
     }
-    if (validator.isEmpty(type)) {
-        errors.type = '파일 유형을 선택해주세요';
-    }
+    
     if (validator.isEmpty(link)) {
         errors.link = 'URL을 입력해주세요';
     }
