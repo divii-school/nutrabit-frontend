@@ -1,5 +1,8 @@
 <template>
   <div class="main-page">
+    <div class="test" style="height:500px">
+      <h1>HELLO</h1>
+    </div>
     <div class="main-slider">
       <swiper
         :pagination="{
