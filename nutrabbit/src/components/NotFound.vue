@@ -1,6 +1,9 @@
 <template>
   <div class="pagenotfound">
-    <h1 class="title">Vue Note</h1>
+    <router-link class="header-logo" to="/">
+      <img src="../assets/images/logo.svg" alt="Logo" />
+    </router-link>
+    <!-- <h1 class="title">Vue Note</h1> -->
     <div class="num-wrap">
       <h1 class="num">404</h1>
       <p>Page Not Found</p>

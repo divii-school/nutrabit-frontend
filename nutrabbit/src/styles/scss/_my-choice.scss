@@ -378,7 +378,7 @@
                             @include flex-align-center;
                             width: 100%;
                             align-items: center;
-                            padding: 47px 30px;
+                            padding: 35px 30px;
                             border-bottom: 1px solid $grey-CF;
                             @media screen and (max-width: 640px){
                                 align-items: flex-start;
@@ -428,6 +428,10 @@
                                         }
                                     }
                                 }
+                            }
+                            &.without-input{
+                                border-top: 1px solid $grey-CF;
+                                margin-top: 20px;
                             }
                             .radio-wrap{
                                 @include flex-align-center;
