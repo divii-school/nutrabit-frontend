@@ -67,7 +67,7 @@ const routes = [
         name: 'Main',
         path: '/',
         component: Main,
-        beforeEnter: guard,
+        // beforeEnter: guard,
     },
     {
         name: 'Login',
