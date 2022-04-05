@@ -8,7 +8,7 @@
           </router-link>
           <ul class="flex">
             <li>
-              <router-link to>my choice</router-link>
+              <router-link to='/my-choice'>my choice</router-link>
             </li>
             <li>
               <router-link to>nutri 3.3 blending</router-link>
@@ -192,19 +192,19 @@ export default {
           subItemData: [
             {
               label: "About Us",
-              link: "/login",
+              link: "/",
             },
             {
               label: "my choice",
-              link: "/find-id",
+              link: "/",
             },
             {
               label: "nutri 3.3 blending",
-              link: "/find-id",
+              link: "/",
             },
             {
               label: "Sample making guide",
-              link: "/find-id",
+              link: "/",
             },
           ],
         },

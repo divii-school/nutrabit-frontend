@@ -49,7 +49,7 @@ function guard(to, from, next) {
     } else {
         next({ name: 'Login' });
         alert('Please login to access');
-        // this.$swal('Please login to access', "error");
+        // this.$swal("Please login to access");
     }
 }
 
@@ -156,7 +156,7 @@ const routes = [
         name: 'MyChoice',
         path: '/my-choice',
         component: MyChoice,
-        // beforeEnter: guest,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceCategorySelection',
@@ -229,7 +229,6 @@ const routes = [
         path: '/faq',
         name: 'Faq',
         component: FAQ,
-        beforeEnter: guard,
     },
     {
         name: 'MyRecipeDetails',
