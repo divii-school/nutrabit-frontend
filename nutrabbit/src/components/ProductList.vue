@@ -31,7 +31,7 @@ export default {
     created() {
       // Emit this information to the parents component
       this.$emit('name', this.package_id);
-      console.log(this.package_id);
+      // console.log(this.package_id);
     }
 };
 </script>

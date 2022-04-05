@@ -123,7 +123,6 @@ export default {
     return {
       blending_id: this.$route.params.blending_id,
       blendingPackageData: '',
-      check:'',
       rwaMaterialData: [
         {
           img: "../../../src/assets/images/pkgSelection.png",
@@ -148,6 +147,7 @@ export default {
   },
   mounted() {
     this.blendingPackage();
+     console.log(this.blending_id);
   },
   methods: {
     // blendingDetails
@@ -168,13 +168,14 @@ export default {
       console.log(value);
    },
     checkPackageId() {
-      console.log(this.package_id);
-      if (this.package_id == "") {
-        this.$swal("Please Choose a Package");
-      }
-      else {
-        this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', params: { blending_id: this.blending_id } });
-      }
+      console.log(this.blending_id);
+       this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', params: { blending_id: this.blending_id } });
+      // if (this.package_id == "") {
+      //   this.$swal("Please Choose a Package");
+      // }
+      // else {
+      //   this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', params: { blending_id: this.blending_id } });
+      // }
     }
   }
 };

@@ -104,13 +104,13 @@ export default {
       pagination: {
         clickable: true,
         renderBullet: (index, className) => {
-          // return (
-          //   '<span class="' +
-          //   className +
-          //   '" >' +
-          //   `<img src="http://api-nutrabbit-dev.dvconsulting.org/${this.blending_data.detail_image_path[index]}" alt="" />` +
-          //   "</span>"
-          // );
+          return (
+            '<span class="' +
+            className +
+            '" >' +
+            `<img src="http://api-nutrabbit-dev.dvconsulting.org/${this.blending_data.detail_image_path[index]}" alt="" />` +
+            "</span>"
+          );
 
         },
       },
