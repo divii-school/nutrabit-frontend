@@ -196,15 +196,15 @@ export default {
             },
             {
               label: "my choice",
-              link: "/",
+              link: "/find-id",
             },
             {
               label: "nutri 3.3 blending",
-              link: "/",
+              link: "/find-id",
             },
             {
               label: "Sample making guide",
-              link: "/",
+              link: "/find-id",
             },
           ],
         },
@@ -281,13 +281,15 @@ export default {
       this.isModalVisible = false;
     },
     onClickLink(link) {
-      if (this.userId) {
-        this.$router.push(link);
-      }
-      if (link == "/login" || link == "/faq") {
+      if (this.logedInUserDetails) {
         this.$router.push(link);
         this.active = false;
-      } else {
+      }
+      else if (link == "/login" || link == "/faq") {
+        this.$router.push(link);
+        this.active = false;
+      }
+      else {
         this.isModalVisible = true;
         this.active = false;
       }
@@ -304,6 +306,7 @@ export default {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
           console.log("userDetails res", res.data.data[0]);
           this.userDetails = res.data.data[0];
+          console.log(res.data.data[0].name)
         });
       }
     },

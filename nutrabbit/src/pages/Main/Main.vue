@@ -37,7 +37,7 @@
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
-            {{ 'ENV = ' +  process.env.VITE_SOME_KEY }}
+            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
