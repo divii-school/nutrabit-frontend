@@ -350,7 +350,7 @@ textarea{
   }
 }
 
-/* theme color */
+/* theme purple color */
 .themePurple{
   .heading {
     h2{
@@ -421,6 +421,83 @@ textarea{
     }
     .blue-btn-solid{
       background: $purple-F4;
+    }
+  }
+}
+
+/* theme green color */
+
+.themeGreen{
+  .heading {
+    h2{
+      color: $grey-66 !important;
+    }
+  }
+  .blue{
+    background: $green-68;
+  }
+  .my-choice-heading{
+    h2{ 
+      color: $green-68 !important;
+    }
+    .recomanded-status-wrap{
+      .recomanded-status{
+        .d-item{
+          span{
+            border-color: #C08EF8 !important;
+          }
+        }
+        &.visited {
+          .d-item{
+            span{
+              border-color: $green-68 !important;
+              background: #EAD9FD !important;
+            }
+            p{
+              color: #C08EF8 !important;
+            }
+          }
+          &::before{
+            background: $green-68 !important;
+          }
+        }
+        &.active{
+          &::before{
+            background: $green-68 !important;
+          }
+          span{
+            background: $green-68 !important;
+            border-color: $green-68 !important;
+          }
+          p{
+            color: $green-68 !important;
+          }
+        }
+      }
+    }
+  }
+  .btn-green-outline{
+    font-size: 18px;
+    &.blue{
+      color: $green-68;
+      background: transparent;
+      border-color: $green-68;
+    }
+  }
+  .blending-tag{
+    span{
+      border-color: $green-68 !important;
+      color: $green-68 !important;
+    }
+  }
+  .blendBtnList{
+    .purple-btn-outline{
+      color: $green-68;
+      background: transparent;
+      border: 1px solid $green-68;
+    }
+    .blue-btn-solid{
+      background: $green-68;
     }
   }
 }

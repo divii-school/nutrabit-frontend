@@ -1,9 +1,9 @@
 <template>
-  <div class="main-body">
+  <div class="main-body themeGreen">
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>Recommended blending</h2>
+          <h2>my choice</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
@@ -35,7 +35,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>options</h2>
+                <h2>Options</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -68,22 +68,34 @@
                 </table>
               </div>
               <div class="fGroup">
+                <label>Title</label>
+                <input type="text" name="" placeholder="My own recipe made with guar gum hydrolyzate">
+              </div>
+              <div class="fGroup">
                 <label>Additional Requests</label>
-                <span>If you provide more details, it will help you get an accurate quote.</span>
+                <span>The more detailed you are, the more accurate your estimate will be.</span>
                 <textarea placeholder="Please write freely"></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">Select service
-                  <span>* Multiple selection possible</span>
+                  <span>* Duplicate selection possible (package is excluded when requesting a sample.)</span>
                 </label>
               </div>
               <div class="product-list-wrap">
                 <div class="product-item with-input">
-                  <div class="radio-wrap">
+                  <!-- <div class="radio-wrap">
                     <label class="custom-radio">
                       <input type="radio" checked="checked" name="radio" />
                       <span class="checkmark"></span>
                     </label>
+                  </div> -->
+                  <div class="form-group">
+                    <div class="check-box-wrap">
+                      <label class="custom-check">
+                         <input type="checkbox"><span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <!-- <span class="error-msg"></span> -->
                   </div>
                   <div class="material-details">
                     <h2>Get a quote</h2>
@@ -101,16 +113,14 @@
                   </div>
                 </div>
                 <ul>
-                  <li>* Packages are excluded when requesting samples.</li>
                   <li>* The quotation will be sent to the registered email address within 2 business days.</li>
                   <li>* Unit price may vary depending on quantity & package design.</li>
                   <li>* It may differ from the detailed estimate at the time of completion.</li>
                 </ul>
                 <div class="btn-wrap">
-                  <button class="btn-small-solid grey">Previous</button>
+                  <button class="btn-small-solid grey">Cancel</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue">temporary storage</button>
-                    <button class="btn-small-solid blue ml-4">next</button>
+                    <button class="btn-small-solid blue ml-4">Save</button>
                   </div>
                 </div>
             </div>
@@ -128,14 +138,13 @@
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 export default {
-  name: "RawMaterialEstimation",
+  name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
     ProductList,
   },
   data() {
     return {
-      blending_id: this.$route.params.blending_id,
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -154,9 +163,6 @@ export default {
       //   },
       // ],
     };
-  },
-  mounted() {
-   console.log(this.blending_id);
   },
 };
 </script>
