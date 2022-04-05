@@ -40,7 +40,7 @@
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
-            {{ 'ENV = ' +  process.env.VITE_SOME_KEY }}
+            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
@@ -107,25 +107,27 @@ export default {
     this.MainService = new MainService();
   },
   mounted() {
-   this.allBanner();
+    this.allBanner();
     this.allNutidata();
   },
   methods: {
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
+        // console.log(res);
+        if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;
+
+        } else {
+          this.$swal(res.message, "error");
         }
       });
     },
     // allNutidata list
     allNutidata() {
       this.MainService.getNutriData().then((res) => {
-        // console.log(res);
+        //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
 
@@ -137,7 +139,7 @@ export default {
     },
 
     accessPage() {
-       this.$swal("Unauthorized Access.Please Login.");
+      this.$swal("Unauthorized Access.Please Login.");
     }
   }
 

@@ -31,4 +31,9 @@ export default class MyChoiceService {
     return await axios.post(`/blending/id`, { id: blending_id, lang: 'KO' }).then((res) => res).catch((err) => err);
   }
 
+  //recommended blending package API Functions
+  async getRecommendedBlendingPackage() {
+    return await axios.post(`/blending/package`, { lang: 'KO' }).then((res) => res.data).catch((err) => err);
+  }
+
 }

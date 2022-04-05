@@ -37,9 +37,9 @@
               <div class="heading-left">
                 <div class="dropdown">
                   <vue-select
-                    :options="['in order of popularity', 'in order of popularity']"
+                    :options="['in order of popularity', 'in alphabetical Order']"
                     placeholder="in order of popularity"
-                    close-on-select
+                    close-on-select @change="onChange($event)"
                   ></vue-select>
                 </div>
               </div>
@@ -73,6 +73,9 @@ export default {
   data() {
     return {
       blendingData: [],
+      onChange(e) {
+              console.log(e.target.value);
+          }
     };
   },
   created() {
@@ -85,11 +88,13 @@ export default {
     // allBlendingData list
     allBlendingData() {
       this.mychoiceService.getRecommendedData().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
-          //  console.log('allBlendingData res', res.data.blendingData);
+        // console.log(res);
+         if (res.status == 200) {
+         //  console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
+        } else {
+          
+           this.$swal(res.data.message, "error");
         }
       });
     },

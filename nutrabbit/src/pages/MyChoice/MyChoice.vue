@@ -75,12 +75,13 @@ export default {
     // allCategories list
     allCategories() {
       this.mychoiceService.getCategories().then((res) => {
-        // console.log(res);
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
+        //  console.log(res);
+        if (res.status == 200) {
           // console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
+        } else {
+
+          this.$swal(res.data.message, "error");
         }
       });
     },

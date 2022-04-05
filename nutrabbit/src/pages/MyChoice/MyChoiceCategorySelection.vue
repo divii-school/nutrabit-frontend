@@ -170,12 +170,13 @@ export default {
       const setSubCategory = this.sub_category_id;
 
       this.mychoiceService.getRawMaterial(setSubCategory).then((res) => {
-        // console.log(res.data);
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
+        //console.log(res.data);
+        if (res.status == 200) {
           // console.log('getRawMaterial res', res.data.data.rawMaterialData);
           this.rawMaterialData = res.data.data.rawMaterialData;
+
+        } else {
+          this.$swal(res.data.message, "error");
         }
       });
     },
@@ -183,11 +184,13 @@ export default {
     // allBlendingData list
     allBlendingData() {
       this.mychoiceService.getRecommendedData().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
+        //console.log(res);
+        if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
+
+        } else {
+          this.$swal(res.data.message, "error");
         }
       });
     },
