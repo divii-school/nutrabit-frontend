@@ -627,3 +627,48 @@ textarea{
   z-index: 2;
   background: red;
 }
+
+// tab style 
+
+.overlay-panel-actions-primary{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+  @media screen and (max-width: 640px) {
+    font-size: 18px;
+  }
+}
+
+.overlay-panel-actions-primary li{
+  border: 1px solid #E0E0E0;
+  color: #666666;
+  width: 50%;
+  padding: 19px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.overlay-panel-actions-primary li.active{
+  background: #16AE68;
+  border-color: #16AE68;
+  color: #fff;
+}
+
+.content-bd{
+  .tab-content{
+    padding-top: 40px;
+  }
+}
+
+.ansBlock{
+  border: 1px solid $grey-CF;
+  padding: 30px 30px 68px 30px;
+  border-radius: 10px;
+  p{
+    font-size: 16px;
+    list-style: 110%;
+    font-weight: 400;
+  }
+}
