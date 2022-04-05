@@ -25,7 +25,7 @@ import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
 import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
-import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
+import RawMaterialPackage from '../pages/MyChoice/RawMaterialPackage.vue';
 import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
 import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
 import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
@@ -33,6 +33,10 @@ import MyChoiceRawMaterialDetailedPage from '../pages/MyChoice/MyChoiceRawMateri
 import Inquery from '../pages/CustomerCenter/Inquery.vue';
 import MyRecipeDetails from '../pages/OnlyMe/MyRecipeDetails.vue';
 import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
+import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
+import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
+import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 function guest(to, from, next) {
@@ -199,9 +203,9 @@ const routes = [
         component: RawMaterialEstimation,
     },
     {
-        name: 'RawMMaterialPackage',
+        name: 'RawMaterialPackage',
         path: '/raw-material-package',
-        component: RawMMaterialPackage,
+        component: RawMaterialPackage,
     },
     {
         name: 'IngredientFormulation',
@@ -236,11 +240,30 @@ const routes = [
         component: MyRecipeDetails,
     },
     {
+        name: 'MyApplicationDetails',
+        path: '/my-allpication-detail',
+        component: MyApplicationDetails,
+
+    },
+    {
         name: 'MyRecipeDetailsEdit',
         path: '/my-recipe-detail-edit',
         component: MyRecipeDetailsEdit,
 
     },
+    {
+        name: 'MyRecipeDetailsSample',
+        path: '/my-recipe-details-sample',
+        component: MyRecipeDetailsSample,
+
+    },
+    {
+        name: 'MyRecipe',
+        path: '/my-recipe',
+        component: MyRecipe,
+
+    },
+
     {
         name: 'MyRecipeDetail',
         path: '/my-recipe-detail',

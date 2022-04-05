@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My choice</h2>
+          <h2>Sample application details</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -47,49 +47,19 @@
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
-                <span>The more detailed you are, the more accurate your estimate will be.</span>
-                <textarea placeholder="Please write freely"></textarea>
+                <div class="ansBlock">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ipsum adipiscing malesuada neque. Ut tincidunt vestibulum elementum leo scelerisque. Id consequat mi tempus etiam arcu neque, neque, diam tortor. Etiam amet commodo placerat elementum, laoreet ut scelerisque euismod. Pretium viverra id massa in eu vitae tellus. Nibh at ut tincidunt dignissim. Varius vulputate amet commodo netus. Consectetur proin convallis tincidunt sed tellus ornare diam dolor. Nulla nibh fringilla lacus consequat eget. Tellus mattis ullamcorper commodo, lacus. Aliquam feugiat id lectus aenean semper donec. Phasellus laoreet quis nulla placerat tempus vivamus. Libero tempor habitant pharetra, faucibus amet.</p>
+                </div>
               </div>
-              <div class="fGroup mb0">
-                <label class="mb0">Select service
-                  <span>* Duplicate selection possible (package is excluded when requesting a sample.)</span>
-                </label>
+              <div class="fGroup">
+                <label>Answer</label>
+                <div class="ansBlock">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ipsum adipiscing malesuada neque. Ut tincidunt vestibulum elementum leo scelerisque. Id consequat mi tempus etiam arcu neque, neque, diam tortor. Etiam amet commodo placerat elementum, laoreet ut scelerisque euismod. Pretium viverra id massa in eu vitae tellus. Nibh at ut tincidunt dignissim. Varius vulputate amet commodo netus. Consectetur proin convallis tincidunt sed tellus ornare diam dolor. Nulla nibh fringilla lacus consequat eget. Tellus mattis ullamcorper commodo, lacus. Aliquam feugiat id lectus aenean semper donec. Phasellus laoreet quis nulla placerat tempus vivamus. Libero tempor habitant pharetra, faucibus amet.</p>
+                </div>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                         <input type="checkbox"><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="material-details">
-                    <h2>Get a quote</h2>
-                  </div>
-                </div>
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                         <input type="checkbox"><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="material-details">
-                    <h2>sample application <span>(Sample cost 300,000 won/paid)</span></h2>
-                  </div>
-                </div>
-                <ul>
-                  <li>* The quotation will be sent to the registered email address within 2 business days.</li>
-                  <li>* Unit price may vary depending on quantity & package design.</li>
-                  <li>* It may differ from the detailed estimate at the time of completion.</li>
-                </ul>
-                <div class="btn-wrap">
-                  <button class="btn-small-solid grey">Cancel</button>
-                  <div class="btnWrapRight">
-                    <button class="btn-small-solid blue ml-4">Save</button>
-                  </div>
+                <div class="btn-wrap flex-justify-end">
+                  <button class="btn-small-solid grey">Previous</button>
                 </div>
             </div>
             </div>
@@ -106,7 +76,7 @@
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 export default {
-  name: "MyRecipeDetailsEdit",
+  name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,

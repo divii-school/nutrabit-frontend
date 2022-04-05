@@ -132,11 +132,11 @@
                     .heading{
                         @include flex-align-center;
                         h2{
-                            font-weight: 600;
+                            font-weight: 700;
                             font-size: 24px;
                             line-height: 24px;
                             letter-spacing: 0.01em;
-                            color: $grey-4C;
+                            color: $grey-66;
                             @media screen and (max-width: 640px){
                                 font-size: 20px;
                                 line-height: 20px;
@@ -476,6 +476,14 @@
                                     }
                                 }
                             }
+                            &.recipeCheck{
+                                .check-box-wrap{
+                                    margin-top: -7px
+                                }
+                                .material-details{
+                                    margin-left: 40px
+                                }
+                            }
                         }
                         .btn-wrap{
                             @include flex-justify-between;
@@ -487,6 +495,9 @@
                                     min-width: 162px;
                                     line-height: 14px;
                                 }
+                            }
+                            &.flex-justify-end{
+                                justify-content: flex-end;
                             }
                         }
                     }
@@ -587,6 +598,9 @@
                 }
             }
             .choice-selection-item-wrap{
+                &.recipeGap{
+                    margin-bottom: 80px;
+                }
                 .choice-selection-item{
                     .package-list-wrap{
                         .btn-wrap{
@@ -602,6 +616,12 @@
                             }
                         }
                     }
+                }
+                &.choice-wrap-border{
+                    border: 1px solid #CFCFCF;
+                    padding: 40px 20px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
                 }
             }
         }
