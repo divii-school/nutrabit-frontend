@@ -5,12 +5,12 @@
       v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org/' + item.thumbnail_1_path"
       alt
     />
-    <router-link :to="'/choice-recommended-blending-detailed-page/' + item.id">
-      <p class="text-center">{{ item.category_name_ko }}</p>
-    </router-link>
+    <p class="text-center">{{ item.category_name_ko }}</p>
     <template v-if="type == 'recomandedBlending'">
-      <p class="recomanded-vitamin text-center">{{ item.name_ko }}</p>
-      <p class="recomanded-quality text-center">{{ item.description_ko }}</p>
+      <router-link :to="'/choice-recommended-blending-detailed-page/' + item.id">
+        <p class="recomanded-vitamin text-center">{{ item.name_ko }}</p>
+        <p class="recomanded-quality text-center">{{ item.description_ko }}</p>
+      </router-link>
     </template>
   </div>
 </template>

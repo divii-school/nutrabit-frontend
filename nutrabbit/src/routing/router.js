@@ -39,27 +39,23 @@ import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
-// function guest(to, from, next) {
-//     if (localStorage.token) {
-//         next({ name: 'home' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'You already logged in',
-//         });
-//     } else next();
-// }
+function guest(to, from, next) {
+    if (localStorage.token) {
+        next({ name: 'Main' });
+        alert('You already logged in');
+        // this.$swal('You already logged in', "error");
+    } else next();
+}
 
-// function guard(to, from, next) {
-//     if (localStorage.token) {
-//         next();
-//     } else {
-//         next({ name: 'login' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'Please login to access',
-//         });
-//     }
-// }
+function guard(to, from, next) {
+    if (localStorage.token) {
+        next();
+    } else {
+        next({ name: 'Login' });
+        alert('Please login to access');
+        // this.$swal('Please login to access', "error");
+    }
+}
 
 const routes = [
     // {
@@ -75,11 +71,13 @@ const routes = [
         name: 'Main',
         path: '/',
         component: Main,
+        // beforeEnter: guard,
     },
     {
         name: 'Login',
         path: '/login',
         component: Login,
+        beforeEnter: guest,
 
     },
     {
@@ -232,10 +230,10 @@ const routes = [
 
     },
     {
-        name: 'Faq',
         path: '/faq',
+        name: 'Faq',
         component: FAQ,
-
+        beforeEnter: guard,
     },
     {
         name: 'MyRecipeDetails',

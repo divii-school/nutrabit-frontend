@@ -135,6 +135,7 @@ export default {
   },
   data() {
     return {
+      blending_id: this.$route.params.blending_id,
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -153,6 +154,9 @@ export default {
       //   },
       // ],
     };
+  },
+  mounted() {
+   console.log(this.blending_id);
   },
 };
 </script>

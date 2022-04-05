@@ -36,7 +36,7 @@
                 <div class="file-input">
                   <input type="file" id="file" class="file">
                   <label for="file">
-                    Select file <img src="src/assets/icons/upload.png">
+                    Select file <img src="../../assets/icons/upload.png">
                     <p class="file-name"></p>
                   </label>
                 </div>

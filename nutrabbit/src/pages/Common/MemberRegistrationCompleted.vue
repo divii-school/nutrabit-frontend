@@ -4,7 +4,7 @@
       <div class="login-signup-wrap registration-completed">
         <div class="login-signup-inner">
           <div class="circle-tick">
-            <img src="../assets/icons/green-tick-circle.svg" alt="" />
+            <img src="../../assets/icons/green-tick-circle.svg" alt="" />
           </div>
           <h2 class="text-center">Membership registration completed</h2>
           <div class="reg-desc">
