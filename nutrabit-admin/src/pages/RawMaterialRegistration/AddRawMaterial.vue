@@ -229,6 +229,7 @@
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
+                            <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
@@ -242,7 +243,7 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
@@ -253,7 +254,8 @@
                                 />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
-                            <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
+                            <div class="text-red">{{ error.files }}</div>
+                            <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
@@ -266,7 +268,7 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.newthumnail ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!newthumnail">파일 선택</span>
                                 <span v-else>{{ newthumnail }}</span>
@@ -277,8 +279,8 @@
                                 />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
-                            <div class="text-red">{{ error.newthumnail }}</div>
-                            <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
+                            <div class="text-red">{{ error.file }}</div>
+                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
@@ -291,15 +293,15 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.similar ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!similar">파일 선택</span>
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
-                            <div class="text-red">{{ error.similar }}</div>
-                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
+                            <div class="text-red">{{ error.files }}</div>
+                            <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>

@@ -126,7 +126,7 @@
                             <input type="file" class="select-file" v-on:change="onFileChange" />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
-                        <div style="display: flex; justify-content: flex-end">
+                        <div style="display: flex; justify-content: flex-end"> 
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image">

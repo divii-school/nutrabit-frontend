@@ -1,91 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <div class="p-col-12" v-show="detailsclient">
-            <div class="card p-fluid">
-                <h4>
-                    <strong>{{ $t('dfc_user.details_header') }}</strong>
-                </h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.ReferralCode') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.referralCode }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.Depositproductname') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositProductName == null ? '-empty-' : clientdata.depositProductName }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.CoinType') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinType }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.CoinAmount') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinAmount }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.StartDate') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.startDate }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.EndDate') }}:</label>
-                        </strong>
-                        <p>{{ clientdata.endDate }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.TotalDepositedInterest') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalPayableDepositInterest }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label
-                                for="emailuser"
-                            >{{ $t('dfc_user.list.Totaladditionalinterestpaid') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalAdditionalInterestPaid }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.DepositWon') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositWon }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.Status') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.status }}</p>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
-                    <Button
-                        @click="backList()"
-                        :label="$t('button.back')"
-                        icon="pi pi-angle-left"
-                        class="p-button-primary p-mr-2 p-mb-2"
-                    />
-                </div>
-            </div>
-        </div>
+        
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -98,18 +14,19 @@
                         <InputText
                             id="googlurl"
                             type="text"
-                            placeholder="search Raw Material"
-                            v-model="material_name_ko"
+                            placeholder="원료 검색"
+                            v-model="searchData"
+                            @keyup="resetdata"
                         />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
                         <!-- <label for="type">ID</label> -->
-                        <select
+                        <!-- <select
                             class="p-dropdown-label p-inputtext"
-                            name="category_id"
-                            id="category_id"
-                            v-model="category_id"
+                            name="sub_category_id"
+                            id="sub_category_id"
+                            v-model="sub_category_id"
                         >
                             <option value>Select</option>
                             <option
@@ -117,17 +34,18 @@
                                 v-bind:key="index"
                                 :value="item.id"
                             >{{ item.category_name_ko }}</option>
-                        </select>
-                        <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
+                        </select> -->
+                        <Dropdown v-model="sub_category_id"  :options="dropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
+                            id="sub_category_id" />
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="pass">{{ $t('RawMaterialadd.list.startDate') }}</label>
                         <Calendar
                             :showIcon="true"
                             :showButtonBar="true"
-                            v-model="startDate"
+                            v-model="from_date"
                             dateFormat="yy.mm.dd"
-                            :placeholder="$t('search.placeholder.date')"
+                            :placeholder="$t('RawMaterialadd.list.startDate')"
                         ></Calendar>
                     </div>
                 </div>
@@ -337,15 +255,18 @@ export default {
             refercode: '',
             error: {},
             clientdata: '',
+            sub_category_id:'',
             status: '',
             id: '',
             email: '',
             startDate: '',
+            from_date:'',
             endDate: '',
             sortBy: '',
             sortOrder: '',
             createdDate: '',
             material_name_ko: '',
+          
             category_id: '',
             dropdownValue: null,
             dropdownValues: '',
@@ -441,15 +362,29 @@ export default {
                     this.loading1 = false;
                 });
         },
+
+        resetdata(){
+            if (this.searchData === ''){
+                this.rawService
+                .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id, this.from_date, this.endDate, this.sortBy, this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchRaw() {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.material_name_ko === '') {
-                this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            if (this.searchData === '' && this.sub_category_id === '' && this.from_date === '') {
+                // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                console.log(  this.sub_category_id)
                 this.rawService
-                    .getRawList(this.status, this.material_name_ko, this.category_id, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id, this.from_date, this.endDate, this.sortBy, this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
