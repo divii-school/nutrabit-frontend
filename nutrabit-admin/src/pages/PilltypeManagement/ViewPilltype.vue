@@ -7,54 +7,62 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>{{$t('PillType.details.header')}}</strong></h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-3">
-                        <strong> <label for="nameuser">{{$t('PillType.list.addname')}} :</label></strong>
-                        <p style="float: right;">{{ mydata.name_ko }}</p>
+                 <div class="p-field p-grid">
+                    <label
+                        for="name_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PillType.list.addname') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.name_ko }}</p>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-3">
-                        <strong><label for="nameuseren">{{$t('PillType.list.addnamepill')}} :</label></strong>
-                        <p style="float: right;">{{ mydata.name_en }}</p>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="name_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PillType.list.addnamepill') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.name_en }}</p>
                     </div>
                 </div>
-                <div class="p-grid p-formgrid p-mb-3 browse">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="subtitle2" style="font-weight:bold;">
-                                {{ $t('PillType.list.uploadimage') }}
-                            </label>
-                            <div  style="float: right;margin-right: 40%;">
-                                <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
+
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="uploadimage"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PillType.list.uploadimage') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                       <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                                 <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + image_path" :alt="image_path" class="product-image" />
-                                
-                            </div>
-                        </div>
-                </div>
-                <!-- <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong><label for="state">{{$t('PillType.list.uploadimage')}} :</label></strong>
-                        <div style="float: right;">
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + image" :alt="image" class="product-image" />
-                        </div>
-                    </div>
-                </div> -->
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-3">
-                        <strong><label for="emailuser">{{$t('PillType.list.Description')}} :</label></strong>
-                        <p style="float: right;">{{ mydata.description_ko }}</p>
                     </div>
                 </div>
-                    <!-- <div class="p-field p-col p-md-3">
-                        <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
-                        <p>{{ mydata.type }}</p>
-                    </div> -->
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-3">
-                        <strong><label for="mobileuser">{{$t('PillType.list.AddDescription')}} :</label></strong>
-                        <p style="float: right;">{{ mydata.description_en }}</p>
+               
+                
+                <div class="p-field p-grid">
+                    <label
+                        for="description_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PillType.list.Description') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.description_ko }}</p>
                     </div>
                 </div>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="description_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PillType.list.AddDescription') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.description_en }}</p>
+                    </div>
+                </div>
+                
+                
+                    
+               
 
                 
                 <div class="p-d-flex p-jc-end" style="float:left;">
