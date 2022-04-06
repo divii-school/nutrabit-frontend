@@ -255,8 +255,4 @@ export default {
 };
 </script>
 <style scoped>
-/* .layout-menu-light .menu-wrapper{
-    background: #666666;
-   
-} */
 </style>
