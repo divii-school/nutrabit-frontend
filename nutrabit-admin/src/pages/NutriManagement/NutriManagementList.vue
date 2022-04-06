@@ -1,62 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <div class="p-col-12" v-show="detailsclient">
-            <div class="card p-fluid">
-                <h4><strong>{{$t('dfc_user.details_header')}}</strong></h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.ReferralCode')}} :</label></strong>
-                        <p>{{ clientdata.referralCode }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.Depositproductname')}} :</label></strong>
-                        <p>{{ clientdata.depositProductName == null ? '-empty-' : clientdata.depositProductName }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.CoinType')}} :</label></strong>
-                        <p>{{ clientdata.coinType }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.CoinAmount')}} :</label></strong>
-                        <p>{{ clientdata.coinAmount }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.StartDate')}} :</label></strong>
-                        <p>{{ clientdata.startDate }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.EndDate')}}:</label></strong>
-                        <p>{{ clientdata.endDate }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.TotalDepositedInterest')}} :</label></strong>
-                        <p>{{ clientdata.totalPayableDepositInterest }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.Totaladditionalinterestpaid')}} :</label></strong>
-                        <p>{{ clientdata.totalAdditionalInterestPaid }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.DepositWon')}} :</label></strong>
-                        <p>{{ clientdata.depositWon }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.Status')}} :</label></strong>
-                        <p>{{ clientdata.status }}</p>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
-                    <Button @click="backList()" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-primary p-mr-2 p-mb-2" />
-                </div>
-            </div>
-        </div>
+       
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -95,7 +40,7 @@
                     <div class="p-mb-4 p-mb-lg-0"></div>
                     <div>
                         <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchNutri"></Button>
-                        <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="resetUser"></Button>
+                        <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                     </div>
                 </div>
             </div>
