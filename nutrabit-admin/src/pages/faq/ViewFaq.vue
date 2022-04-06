@@ -9,72 +9,88 @@
                 <h4>
                     <strong>{{ $t('Faq.viewfaq') }}</strong>
                 </h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="nameuser">{{ $t('Faq.list.category') }} :</label>
-                        </strong>
-                        <p style="float:right">{{ mydata.category_name_ko }}</p>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="category_name_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.list.category') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.category_name_ko }}</p>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="title_ko">{{ $t('Faq.add.title') }} :</label>
-                        </strong>
-                        <p style="float:right;">{{ mydata.title_ko }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="title_en">{{ $t('Faq.add.addtitle') }} :</label>
-                        </strong>
-                        <p style="float:right;">{{ mydata.title_en }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="description_ko">{{ $t('Faq.add.answer') }} :</label>
-                        </strong>
-                        <p style="float:left;margin-left:20%;text-align: justify;">{{ mydata.description_ko }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="description_en">{{ $t('Faq.add.addanswer') }} :</label>
-                        </strong>
-                        <p style="float:left;margin-left:20%; text-align: justify;">{{ mydata.description_en }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="status">{{ $t('Faq.add.status') }} :</label>
-                        </strong>
-                        <p style="float:right;">{{ mydata.status }}</p>
+               
+               <div class="p-field p-grid">
+                    <label
+                        for="title_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.list.title') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.title_ko }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="top_10">{{ $t('Faq.add.top') }} :</label>
-                        </strong>
-                        <p style="float:right;">{{ mydata.top_10 }}</p>
+                  <div class="p-field p-grid">
+                    <label
+                        for="title_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.add.addtitle') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.title_en }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong>
-                            <label for="createdDate">{{ $t('Faq.add.createdate') }} :</label>
-                        </strong>
-                        <p style="float:right;"> {{ dateformat(mydata.createdDate) }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="description_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.add.answer') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.description_ko }}</p>
                     </div>
                 </div>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="description_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.add.addanswer') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.description_en }}</p>
+                    </div>
+                </div>
+               
+                 <div class="p-field p-grid">
+                    <label
+                        for="status"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.list.status') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.status }}</p>
+                    </div>
+                </div>
+                
+                
+               <div class="p-field p-grid">
+                    <label
+                        for="top_10"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.add.top') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.top_10 }}</p>
+                    </div>
+                </div>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="createdDate"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Faq.add.createdate') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ dateformat(mydata.createdDate) }}</p>
+                    </div>
+                </div>
+
 
                 <!-- <div class="p-field p-col p-md-3">
                         <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
