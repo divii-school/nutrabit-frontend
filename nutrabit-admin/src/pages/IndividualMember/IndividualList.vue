@@ -1,62 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <div class="p-col-12" v-show="detailsclient">
-            <div class="card p-fluid">
-                <h4><strong>{{$t('dfc_user.details_header')}}</strong></h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.ReferralCode')}} :</label></strong>
-                        <p>{{ clientdata.referralCode }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.Depositproductname')}} :</label></strong>
-                        <p>{{ clientdata.depositProductName == null ? '-empty-' : clientdata.depositProductName }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.CoinType')}} :</label></strong>
-                        <p>{{ clientdata.coinType }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.CoinAmount')}} :</label></strong>
-                        <p>{{ clientdata.coinAmount }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.StartDate')}} :</label></strong>
-                        <p>{{ clientdata.startDate }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.EndDate')}}:</label></strong>
-                        <p>{{ clientdata.endDate }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.TotalDepositedInterest')}} :</label></strong>
-                        <p>{{ clientdata.totalPayableDepositInterest }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="emailuser">{{$t('dfc_user.list.Totaladditionalinterestpaid')}} :</label></strong>
-                        <p>{{ clientdata.totalAdditionalInterestPaid }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong><label for="mobileuser">{{$t('dfc_user.list.DepositWon')}} :</label></strong>
-                        <p>{{ clientdata.depositWon }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong> <label for="nameuser">{{$t('dfc_user.list.Status')}} :</label></strong>
-                        <p>{{ clientdata.status }}</p>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
-                    <Button @click="backList()" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-primary p-mr-2 p-mb-2" />
-                </div>
-            </div>
-        </div>
+       
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -66,12 +11,12 @@
                         <div class="p-field p-col-12 p-md-4">
                             <!-- <label for="type">{{ $t('individual.list.UserName') }}</label> -->
                             <label for="type">담당자명</label>
-                            <InputText id="googlurl" type="text" placeholder="유형 이름" v-model="name" />
+                            <InputText id="googlurl" type="text" placeholder="유형 이름" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <!-- <label for="type">{{ $t('individual.list.ID') }}</label> -->
                             <label for="type">ID</label>
-                            <InputText id="googlurl" type="text" placeholder="ID 번호" v-model="id" />
+                            <InputText id="googlurl" type="text" placeholder="ID 번호" v-model="id"  @keyup="resetiddata"/>
                         </div>
                     </div>
                 <!-- <div class="p-formgrid p-grid p-mb-3">
@@ -352,12 +297,37 @@ export default {
                     this.loading1 = false;
                 });
         },
+         resetiddata(){
+            if (this.id === ''){
+                this.userservice
+                .getIndividualUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
+
+         resetdata(){
+            if (this.name === ''){
+                this.userservice
+                .getIndividualUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchIndividual() {
             // console.log(this.name);
             // console.log(this.id);
             
-            if (this.name === '' || this.id === '') {
-               this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            if (this.name === '' && this.id === '') {
+            //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.userservice
                     .getIndividualUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.startDate,this.endDate,this.sortBy,this.sortOrder)
