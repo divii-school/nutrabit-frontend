@@ -1,1040 +1,1113 @@
+
 {
   "message": "안녕하세요!",
   "address": {
     "city": "콜카타"
   },
-  "module": {
-    "title": {
-      "DFCMangement": "Nutrabbit 관리",
-      "BannerMangement": "배너 관리",
-      "PopupMangement": "팝업 관리",
-      "NFTMangement": "NFT 관리",
-      "CardnewsMangement": "카드뉴스 관리",
-      "MediaPressMangement": "미디어 프레스 관리",
-      "GoogleformsMangement": "구글 양식 관리",
-      "Client-lookup": "클라이언트 조회",
-      "PilltypeManagement":"알약 종류 관리",
-      "Packagemanagement":"패키지 관리",
-      "Nutriblending": "영양 3.3 관리",
-      "ApplicationManagement": "응용 관리",
-      "UserManagement":"사용자 관리",
-      "IndividualManagement": "개인 경영",
-      "BusinessManagement":"경영 관리",
-      "ProductRegistration": "제품 등록",
-      "CategoryRegistration": "카테고리 등록",
-      "RawRegistration":"원시 등록",
-      "RecommendedRegistration":"추천 블랜딩 등록",
-      "Customercenter":"고객센터",
-      "Faq":"자주하는 질문",
-      "Inquiry":"문의",
-      "Notice":"통지"
-    }
-  },
-  "validation":{
-    "pass":"비밀번호는 8 - 15자의 대문자, 소문자, 특수문자 조합으로 입력해주세요",
-    "invalidFile":"지원하지 않는 파일입니다"
-  },
-  "DFC": {
-    "s-header": "검색",
-    "addnew_dfc": "새 DFC 추가",
-    "search": {
-      "Referralcode": "추천 코드"
-    },
-    "placeholder": {
-      "refcode": "레퍼럴 코드를 입력해주세요"
-    },
-    "list": {
-      "header": "DFC 목록",
-      "Referralcode": "추천 코드",
-      "name": "이름",
-      "email": "이메일",
-      "location": "위치",
-      "mobile": "핸드폰 번호",
-      "rec-perfomance": "최근 실적",
-      "created_dt": "생성날짜 (날짜&시간)",
-      "see_more": "더보기",
-      "address": "주소",
-      "grade": "등급"
-    },
-    "details": {
-      "header": "상세",
-      "Referralcode": "추천 코드",
-      "name": "이름",
-      "email": "이메일",
-      "location": "등록 날짜 및 시간:",
-      "mobile": "휴대폰 번호",
-      "rec-perfomance": "최근 실적",
-      "created_dt": "생성날짜 (날짜&시간)",
-      "grade": "신분증",
-      "designation": "유통 매체",
-      "address": "레지던스 주소",
-      "remark": "비고",
-      "password":"비밀번호",
-      "editindividual":"개별 회원 정보 편집",
-      "Cancel":"취소합니다",
-      "confirm":"저장",
-      "Goback":"Go Back",
-      "individualheader":"회원의 세부 정보"
-    },
-    "add": {
-      "header": "새로운 DFC 등록 (Excel Upload)",
-      "feildheader": "Excel 업로드",
-      "placeholder": "파일 선택",
-      "message": "업로드 된 DFC 관리자는 재업로드 할 수 없습니다.",
-      "exceldownload": "샘플 다운로드"
-    }
-  },
-  "Banner": {
-    "s-header": "검색",
-    "addnew_banner": "배너 추가",
-    "edit_banner": "배너 수정",
-    "active":"활동적인",
-    "inactive":"비활성",
-    "search": {
-      "type": "제목"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "배너 목록",
-      "image": "이미지",
-      "title": "제목",
-      "bannertitle":"배너 제목",
-      "type": "유형",
-      "url": "URL",
-      "status": "노출",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "날짜 시간",
-      "see_more": "기능",
-      "link": "URL",
-      "deskbanner": "데스크탑 배너",
-      "mobbanner": "모바일 배너"
-    },
-    "details": {
-      "header": "배너 상세"
-    }
-  },
-  "Category": {
-    "s-header": "검색",
-    "addnew_category": "새 카테고리 추가",
-    "edit_category": "카테고리 편집",
-    "excel_category": "엑셀 업로드",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "카테고리 목록",
-      "image": "이미지",
-      "title": "1차 카테고리 (KO)",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "url": "1차 카테고리 (EN)",
-      "status": "2차 카테고리 (KO)",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "2차 카테고리 (EN)",
-      "see_more": "동작",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리 입력"
-    },
-    "details": {
-      "header": "카테고리 세부 정보"
-    }
-  },
-
-  "PillType": {
-    "s-header": "검색",
-    "addnew_pilltype": "제형 추가",
-    "edit_pilltype": "제형 수정",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "제형 리스트",
-      "sr":"번호",
-      "image": "이미지",
-      "name":"제형명",
-      "title": "1차 카테고리 (KO)",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "url": "1차 카테고리 (EN)",
-      "status": "2차 카테고리 (KO)",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "2차 카테고리 (EN)",
-      "see_more": "동작",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리 입력",
-      "addname":"제형명 (KO)",
-      "addnamepill":"제형명 (EN)",
-      "uploadimage":"이미지 업로드",
-      "Description":"설명 (KO)",
-      "AddDescription":"설명 (EN)"
-    },
-    "details": {
-      "header": "제형 정보"
-    }
-  },
-  "Business": {
-    "list": {
-      "header": "비즈니스 회원 목록",
-      "slNo": "slNo",
-      "BusinessNumber": "사업자번호",
-      "BusinessName":"비즈니스 이름",
-      "Username": "사용자 이름",
-      "Email": "이메일",
-      "ID": "신분증",
-      "RegistrationDate": "등록 날짜",
-      "Function": "제구실",
-      "Businessheader":"비즈니스 세부 정보",
-      "Departmentname":"부서 이름",
-      "Personincharge":"이름 의 사람 in 충전",
-      "Password":"비밀번호",
-      "mobile": "Mobile 번호",
-      "Area":"지역",
-      "EditBusiness":"비즈니스 회원 정보 편집",
-      "EditAdress":"주소"
-    }
-  },
-  "Individual": {
-    "list": {
-      "header": "비즈니스 회원 목록",
-      "slNo": "#",
-      "Username": "사용자 이름",
-      "Email": "이메일",
-      "ID": "신분증",
-      "RegistrationDate": "등록 날짜",
-      "Function": "제구실",
-      "cancel":"취소",
-      "confirm":"확인",
-      "newpassword":"새 비밀번호",
-      "changepass":"비밀번호 재설정"
-    }
-  },
-  "PackageType": {
-    "list": {
-      "header": "패키지 리스트",
-      "slNo": "SlNo",
-      "Image": "이미지",
-      "PackageName": "패키지 명",
-      "Actions": "기능",
-      "addnew_packagetype":"패키지 추가"
-    },
-    "view":{
-      "header":"패키지 정보",
-      "packagename(ko)":"패키지명 (KO)",
-      "packagename(en)":"패키지명 (EN)",
-      "image":"이미지:",
-      "description(ko)":"설명 (KO)",
-      "description(en)":"설명 (EN)"
-    },
-    "Edit":{
-      "editPackageHeader":"패키지 유형 편집",
-      "package(ko)":"패키지명 (KO)",
-      "package(en)":"패키지명 (EN)",
-      "image":"이미지 업로드:",
-      "desc(ko)":"설명 (KO)",
-      "desc(en)":"설명 (EN)",
-      "update":"업데이",
-      "back":"뒤로가기"
-    },
-    "Add":{
-      "addPackageHeader":"패키지 추가",
-      "addpackage(ko)":"패키지명 (KO)",
-      "addpackage(en)":"패키지명 (EN)",
-      "addimage":"이미지 업로드:",
-      "adddesc(ko)":"설명 (KO)",
-      "adddesc(en)":"설명 (EN)",
-      "addpublish":"출판하다"
-    }
-  },
-
-  "RawMaterialadd": {
-    "addnew_raw":"원료 추가",
-    "list": {
-      "header": "원료 목록",
-      "slNo": "slNo",
-      "RawMaterial": "원료",
-      "startDate":"날짜",
-      "category": "범주",
-      "name": "원료",
-      "Categories": "범주",
-      "status": "지위",
-      "Function": "제구실",
-      "editRawHeader":"원료 편집",
-      "viewRawHeader":"원료 상세",
-      "categorylist":"카테고리 선택",
-      "Rawmaterialname(KO)":"원료명(KO)",
-      "Rawmaterialname(EN)":"원료명(EN)",
-      "Standard(KO)": "기준 (KO)",
-      "Standard(EN)":"표준(EN)",
-      "Rawmarterialdescription(KO)":"날것의 재료 설명 (KO)",
-      "Rawmarterialdescription(EN)":"원료 설명(EN)",
-      "DailyIntakeAmount(KO)":"1일 섭취량 (KO)",
-      "DailyIntakeAmount(EN)":"일일 섭취량 금액(EN)",
-      "Prequotion(KO)":"주의사항 (KO)",
-      "Prequotion(EN)":"프리쿼션 (EN)",
-      "Extrainfo(KO)":"기타사항 (KO)",
-      "Extrainfo(EN)":"엑스트라정보(EN)",
-      "Function(KO)":"기능성 (KO)",
-      "Fucntion(EN)":"기능(EN)",
-      "banner":"유사 제품 이미지",
-      "thumbnail1":"첫 번째 썸네일",
-      "thumbnail2":"두 번째 썸네일",
-      "rawdetails":"상세 페이지의 원료 이미지",
-      "tags(KO)":"태그 추가(KO)",
-      "tags(EN)":"태그 추가(EN)",
-      "Rawname(KO)":"날것의 재료 이름 (KO)",
-    "Rawname(EN)":"날것의 재료 이름  (EN)",
-    "excel_raw":"엑셀 업로드",
-    "addnew_rawmaterial":"새로운 원료 추가",
-    "addnew_raw":"원료 추가",
-    "Add":"추가",
-    "Back":"뒤로!",
-    "tag1":"태그 (KO)",
-    "tag2":"태그 (EN)"
-    }
-    
-    
-  },
-
-  "Application":{
-    "s-header": "검색",
-    "addnew_pilltype": "제형 추가",
-    "edit_pilltype": "제형 수정",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록",
-      "ApplicantName":"신청자/업체명",
-      "RegisterDate":"등록일",
-      "date":"시작일",
-      "status":"상태",
-      "product":"상품",
-      "service":"서비스"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "신청서 목록",
-      "companyname":"신청자명 / 업체명",
-      "sr":"번호",
-      "image": "이미지",
-      "name":"제형명",
-      "title": "1차 카테고리 (KO)",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "product": "상품",
-      "service":"서비스",
-      "status": "상태",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "등록일",
-      "see_more": "동작",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리 입력",
-      "addname":"제형명 (KO)",
-      "addnamepill":"제형명 (EN)",
-      "uploadimage":"이미지 업로드",
-      "Description":"설명 (KO)",
-      "AddDescription":"설명 (EN)"
-    },
-    "details": {
-      "header": "신청서 정보",
-      "adminheader":"어드민 답변",
-      "status":"상태",
-      "answer":"어드민 답변",
-      "memo":"어드민 메모",
-      "name":"이름",
-      "id":"ID",
-      "password":"비밀번호",
-      "email":"이메일",
-      "mobile":"휴대폰 번호",
-      "address":"주소",
-      "datetime":"날짜 시간",
-      "application":"서비스",
-      "client":"요청사항",
-      "applicationlist":"신청 사항",
-      "category":"카테고리",
-      "description":"설명",
-      "save":"저장"
-      
-    }
-
-  },
-
-  "Blending": {
-    "s-header": "검색",
-    "addnew_blending": "새 블렌드 추가",
-    "edit_category": "배너 수정",
-    "excel_category": "엑셀 업로드",
-    "confirm":"추가",
-    "back":"뒤로가기",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록",
-      "category":"범주",
-      "blending":"블렌딩"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "권장 블렌딩 목록",
-      "image": "이미지",
-      "title": "1st Category (KO)",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "url": "1st Category (EN)",
-      "status": "Status",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "2nd Category (EN)",
-      "see_more": "Action",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리 입력",
-      "name":"블렌딩 이름 (KO)",
-      "blendingname1":"블렌딩 이름(EN)",
-      "addcategory":"범주",
-      "mainraw":"주요 원료",
-      "subraw":"서브 원료",
-      "piltype":"알 약 유형 고르다",
-      "addtag":"태그 추가 (KO)",
-      "tag": "태그 추가(EN)",
-      "addefficacy":"효능 (KO)",
-      "efficacy":"효능 (EN)",
-      "ingredients":"성분 세부 사항  (KO)",
-      "ingredientsdetails":"성분 세부 사항 (EN)",
-      "product":"제품 설명 (KO)",
-      "productdescription":"제품 설명(EN)",
-      "detail":"세부 이미지",
-      "similar":"유사한 제품 이미지",
-      "addthumnail":"1번 썸네일",
-      "newthumnail":"2번 썸네일",
-      "addstatus":"노출"
-    },
-    "details": {
-      "header": "블렌딩 디테일",
-      "name":"블렌더 이름",
-      "category":"범주",
-      "Mainraw":"주요 원료",
-      "submaterial":"하위 재료",
-      "pilltype":"알 약 유형",
-      "Tags":"Tags (KO)",
-      "blendingtags":"태그(EN)",
-      "efficacy":"효능 (KO)",
-      "blendingefficacy":"효능 (EN)",
-      "appearance":"외관(KO)",
-      "blendingappearance":"외관(EN)",
-      "productdescription":"Product Description (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "DetailImage":"세부 이미지",
-      "Thumbnail":"첫 번째 섬네일",
-      "blendingthumbnail":"2번째 썸네일",
-      "SimilarProductImage":"유사한 제품 이미지",
-      "viewstatus":"상태"
-    },
-    "edit":{
-      "name":"블렌딩 이름 (KO)",
-      "blendingname":"블렌딩 이름 (EN)",
-      "Category":"범주",
-      "edit":"블렌드 편집",
-      "Mainrawmaterial":"주요 원료",
-      "SubRawMaterial":"서브 원료",
-      "PillTypeSelect":"알 약 유형 선택",
-      "Tags":"Add tags (KO)",
-      "AddTags":"태그 추가(EN)",
-      "Efficacy":"Efficacy (KO)",
-      "blendingEfficacy":"효능(EN)",
-      "ingredientsdetails":"성상 (KO)",
-      "blendingingredientsdetails":"성분 정보(EN)",
-      "productdescription":"제품 설명 (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "detailimage":"세부 이미지",
-      "similarproductimage":"유사한 제품 이미지",
-      "1stThumnail":"첫 번째 둠네일",
-      "2stThumnail":"2차 둠네일",
-      "status":"노출"
-      
-    }
-  },
-
-  "Faq": {
-    "s-header": "검색",
-    "viewfaq":"FAQ 정보",
-    "addnew_faq": "FAQ 추가",
-    "edit_category": "배너 수정",
-    "excel_category": "엑셀 업로드",
-    "confirm":"추가",
-    "back":"뒤로가기",
-    "editnew_faq":"FAQ 수정",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록",
-      "category":"범주",
-      "blending":"블렌딩"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "add":{
-      "addnew_faq": "새 FAQ 추가",
-      "title":"제목 (KO)",
-      "addtitle":"제목 (EN)",
-      "answer":"내용 (KO)",
-      "addanswer":"내용 (EN)",
-      "status":"노출",
-      "top":"탑 10",
-      "createdate":"Date & Time"
-    },
-    "list": {
-      "header": "FAQ 목록",
-      "image": "이미지",
-      "title": "제목",
-      "Order":"Order",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "url": "1st Category (EN)",
-      "status": "상태",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "2nd Category (EN)",
-      "see_more": "동작",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리",
-      "name":"블렌딩 이름 (KO)",
-      "blendingname1":"블렌딩 이름(EN)",
-      "addcategory":"범주",
-      "mainraw":"주요 원료",
-      "subraw":"서브 원료",
-      "piltype":"알 약 유형 고르다",
-      "addtag":"태그 추가 (KO)",
-      "tag": "태그 추가(EN)",
-      "addefficacy":"효능 (KO)",
-      "efficacy":"효능 (EN)",
-      "ingredients":"성분 세부 사항  (KO)",
-      "ingredientsdetails":"성분 세부 사항 (EN)",
-      "product":"제품 설명 (KO)",
-      "productdescription":"제품 설명(EN)",
-      "detail":"세부 이미지",
-      "similar":"유사한 제품 이미지",
-      "addthumnail":"1번 썸네일",
-      "newthumnail":"2번 썸네일",
-      "addstatus":"노출"
-    },
-    "details": {
-      "header": "블렌딩 디테일",
-      "name":"블렌더 이름",
-      "category":"범주",
-      "Mainraw":"주요 원료",
-      "submaterial":"하위 재료",
-      "pilltype":"알 약 유형",
-      "Tags":"Tags (KO)",
-      "blendingtags":"태그(EN)",
-      "efficacy":"효능 (KO)",
-      "blendingefficacy":"효능 (EN)",
-      "appearance":"외관(KO)",
-      "blendingappearance":"외관(EN)",
-      "productdescription":"Product Description (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "DetailImage":"세부 이미지",
-      "Thumbnail":"첫 번째 섬네일",
-      "blendingthumbnail":"2번째 썸네일",
-      "SimilarProductImage":"유사한 제품 이미지",
-      "viewstatus":"상태"
-    },
-    "edit":{
-      "name":"블렌딩 이름 (KO)",
-      "blendingname":"블렌딩 이름 (EN)",
-      "Category":"범주",
-      "edit":"블렌드 편집",
-      "Mainrawmaterial":"주요 원료",
-      "SubRawMaterial":"서브 원료",
-      "PillTypeSelect":"알 약 유형 선택",
-      "Tags":"Add tags (KO)",
-      "AddTags":"태그 추가(EN)",
-      "Efficacy":"Efficacy (KO)",
-      "blendingEfficacy":"효능(EN)",
-      "ingredientsdetails":"성상 (KO)",
-      "blendingingredientsdetails":"성분 정보(EN)",
-      "productdescription":"제품 설명 (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "detailimage":"세부 이미지",
-      "similarproductimage":"유사한 제품 이미지",
-      "1stThumnail":"첫 번째 둠네일",
-      "2stThumnail":"2차 둠네일",
-      "status":"노출"
-      
-    }
-  },
-
-  "Inquiry": {
-    "list": {
-      "header": "1:1 문의 목록",
-      "appname":"신청자명/업체명",
-      "slNo": "#",
-      "title": "제목",
-      "QuestionType": "문의 타입",
-      "inqurydate":"문의 날짜",
-      "Reopenby":"답변자",
-      "status":"지위",
-      "Action": "기능",
-      "cancel":"취소",
-      "confirm":"확인",
-      "Blending":"제목",
-      "Tag":"태그",
-      "add_nutri":"새로운 Nutri3.3 블렌딩 추가",
-      "inqury1":"질문 제목 게시"
-    }
-  },
-
-  "Notice": {
-    "s-header": "검색",
-    "viewfaq":"FAQ 정보",
-    "addnew_notice": "공지사항 추가",
-    "edit_notice": "공지사항 수정",
-    "excel_category": "엑셀 업로드",
-    "confirm":"추가",
-    "back":"뒤로가기",
-    "editnew_faq":"FAQ 수정",
-    "search": {
-      "type": "범주",
-      "Register": "카테고리 등록",
-      "category":"범주",
-      "blending":"블렌딩"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "add":{
-      "addnew_faq": "새 FAQ 추가",
-      "title":"제목 (KO)",
-      "addtitle":"제목 (EN)",
-      "image":"이미지 업로드 (필수 아님)",
-      "description":"공지사항 내용 (KO)",
-      "adddescroption":"공지사항 내용 (EN)",
-      "answer":"내용 (KO)",
-      "addanswer":"내용 (EN)",
-      "status":"노출",
-      "top":"탑 10",
-      "createdate":"Date & Time"
-    },
-    "list": {
-      "header": "공지사항 목록",
-      "image": "이미지",
-      "title": "제목",
-     
-      "Order":"Order",
-      "categorytitle":"배너 제목",
-      "type": "유형",
-      "url": "1st Category (EN)",
-      "status": "상태",
-      "changeorder": "순서 변경",
-      "createddate": "발행일",
-      "created_dt": "2nd Category (EN)",
-      "see_more": "동작",
-      "link": "URL",
-      "deskcategory": "유사한 제품 이미지:",
-      "mobcategory": "모바일 배너",
-      "thumnail":"두 번째 카테고리 썸네일",
-      "category":"카테고리",
-      "name":"블렌딩 이름 (KO)",
-      "blendingname1":"블렌딩 이름(EN)",
-      "addcategory":"범주",
-      "mainraw":"주요 원료",
-      "subraw":"서브 원료",
-      "piltype":"알 약 유형 고르다",
-      "addtag":"태그 추가 (KO)",
-      "tag": "태그 추가(EN)",
-      "addefficacy":"효능 (KO)",
-      "efficacy":"효능 (EN)",
-      "ingredients":"성분 세부 사항  (KO)",
-      "ingredientsdetails":"성분 세부 사항 (EN)",
-      "product":"제품 설명 (KO)",
-      "productdescription":"제품 설명(EN)",
-      "detail":"세부 이미지",
-      "similar":"유사한 제품 이미지",
-      "addthumnail":"1번 썸네일",
-      "newthumnail":"2번 썸네일",
-      "addstatus":"노출"
-    },
-    "details": {
-      "header": "블렌딩 디테일",
-      "name":"블렌더 이름",
-      "category":"범주",
-      "Mainraw":"주요 원료",
-      "submaterial":"하위 재료",
-      "pilltype":"알 약 유형",
-      "Tags":"Tags (KO)",
-      "blendingtags":"태그(EN)",
-      "efficacy":"효능 (KO)",
-      "blendingefficacy":"효능 (EN)",
-      "appearance":"외관(KO)",
-      "blendingappearance":"외관(EN)",
-      "productdescription":"Product Description (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "DetailImage":"세부 이미지",
-      "Thumbnail":"첫 번째 섬네일",
-      "blendingthumbnail":"2번째 썸네일",
-      "SimilarProductImage":"유사한 제품 이미지",
-      "viewstatus":"상태"
-    },
-    "edit":{
-      "name":"블렌딩 이름 (KO)",
-      "blendingname":"블렌딩 이름 (EN)",
-      "Category":"범주",
-      "edit":"블렌드 편집",
-      "Mainrawmaterial":"주요 원료",
-      "SubRawMaterial":"서브 원료",
-      "PillTypeSelect":"알 약 유형 선택",
-      "Tags":"Add tags (KO)",
-      "AddTags":"태그 추가(EN)",
-      "Efficacy":"Efficacy (KO)",
-      "blendingEfficacy":"효능(EN)",
-      "ingredientsdetails":"성상 (KO)",
-      "blendingingredientsdetails":"성분 정보(EN)",
-      "productdescription":"제품 설명 (KO)",
-      "blendingproductdescription":"제품 설명(EN)",
-      "detailimage":"세부 이미지",
-      "similarproductimage":"유사한 제품 이미지",
-      "1stThumnail":"첫 번째 둠네일",
-      "2stThumnail":"2차 둠네일",
-      "status":"노출"
-      
-    }
-  },
-  "nft": {
-    "s-header": "검색",
-    "addnew_nft": "새 NFT 추가",
-    "edit_nft": "Edit NFT",
-    "search": {
-      "type": "유형"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "NFT 목록",
-      "image": "이미지",
-      "title": "제목",
-      "type": "유형",
-      "url": "URL",
-      "status": "노출",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "생성날짜",
-      "see_more": "더보기",
-      "link": "URL",
-      "deskbanner": "PC 배너",
-      "mobbanner": "모바일 배너"
-    },
-    "details": {
-      "header": "NFT 상세"
-    }
-  },
-  "cardnews": {
-    "s-header": "검색",
-    "addnew_cardnews": "새 카드 뉴스 추가",
-    "edit_cardnews": "Edit 카드 뉴스",
-    "search": {
-      "type": "유형"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "카드 뉴스 목록",
-      "image": "이미지",
-      "title": "제목",
-      "written": "작성자",
-      "type": "유형",
-      "url": "URL",
-      "status": "노출",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "생성날짜",
-      "see_more": "더보기",
-      "link": "Link",
-      "deskbanner": "PC 배너",
-      "mobbanner": "모바일 배너",
-      "description": "설명"
-    },
-    "details": {
-      "header": "카드 뉴스 상세"
-    }
-  },
-  "mediapress": {
-    "s-header": "검색",
-    "addnew_mediapress": "미디어 프레스 추가",
-    "edit_mediapress": "Edit 미디어 프레스",
-    "search": {
-      "type": "유형"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "미디어 프레스 목록",
-      "image": "이미지",
-      "title": "제목",
-      "written": "Written By",
-      "type": "유형",
-      "url": "URL",
-      "status": "노출",
-      "changeorder": "순서 변경",
-      "createddate": "날짜",
-      "created_dt": "생성날짜",
-      "see_more": "더보기",
-      "y_link": "유튜브 URL",
-      "link": "URL",
-      "deskbanner": "PC 배너",
-      "mobbanner": "모바일 배너",
-      "description": "설명"
-    },
-    "details": {
-      "header": "미디어 프레스 상세"
-    }
-  },
-  "popup": {
-    "s-header": "검색",
-    "addnew_banner": "새 배너 추가",
-    "edit_banner": "Edit Banner",
-    "search": {
-      "type": "유형",
-      "title": "제목"
-    },
-    "placeholder": {
-      "select": "선택"
-    },
-    "list": {
-      "header": "팝업 목록",
-      "title": "제목",
-      "status": "상태",
-      "p_date": "기간",
-      "see_more": "더보기",
-      "startDate": "시작날짜",
-      "lastDate": "마지막날짜"
-    },
-    "details": {
-      "header": "팝업 상세",
-      "popuptype": "팝업 유형",
-      "description": "설명"
-    }
-  },
-  "googleform": {
-    "s-header": "Google form 추가",
-    "list": {
-      "formurl": "URL",
-      "title": "제목",
-      "status": "상태",
-      "p_date": "Period Date",
-      "see_more": "더보기",
-      "startDate": "시작날짜",
-      "lastDate": "마지막날짜"
-    },
-    "details": {
-      "header": "팝업 상세",
-      "popuptype": "팝업 유형",
-      "description": "설명"
-    }
-  },
+"module": {
+  "title": {
+    "DFCMangement": "Nutrabbit 관리",
+    "BannerMangement": "배너 관리",
+    "PopupMangement": "팝업 관리",
+    "NFTMangement": "NFT 관리",
+    "CardnewsMangement": "카드뉴스 관리",
+    "MediaPressMangement": "미디어 프레스 관리",
+    "GoogleformsMangement": "구글 양식 관리",
+    "Client-lookup": "클라이언트 조회",
+    "PilltypeManagement":"알약 종류 관리",
+    "Packagemanagement":"패키지 관리",
+    "Nutriblending": "영양 3.3 관리",
+    "ApplicationManagement": "응용 관리",
+    "UserManagement":"사용자 관리",
+    "IndividualManagement": "개인 경영",
+    "BusinessManagement":"경영 관리",
+    "ProductRegistration": "제품 등록",
+    "CategoryRegistration": "카테고리 등록",
+    "RawRegistration":"원시 등록",
+    "RecommendedRegistration":"추천 블랜딩 등록",
+    "Customercenter":"고객센터",
+    "Faq":"자주하는 질문",
+    "Inquiry":"문의",
+    "Notice":"통지"
+  }
+},
+"validation":{
+  "pass":"비밀번호는 8 - 15자의 대문자, 소문자, 특수문자 조합으로 입력해주세요",
+  "invalidFile":"지원하지 않는 파일입니다"
+},
+"DFC": {
+  "s-header": "검색",
+  "addnew_dfc": "새 DFC 추가",
   "search": {
-    "title": "검색",
-    "label": {
-      "name": "이름",
-      "phoneNumber": "휴대폰번호",
-      "email": "이메일",
-      "startDate": "시작날짜",
-      "lastDate": "마지막날짜"
-    },
-    "placeholder": {
-      "search": "검색",
-      "date": "YYYY.MM.DD"
-    }
+    "Referralcode": "추천 코드"
   },
-  "table": {
-    "userlist": {
-      "heading": "사용자 목록",
-      "thead": {
-        "id": "번호",
-        "name": "이름",
-        "email": "이메일",
-        "mobile": "휴대폰 번호",
-        "createdDate": "가입일",
-        "actions": "관리"
-      }
-    }
+  "placeholder": {
+    "refcode": "레퍼럴 코드를 입력해주세요"
   },
-  "dfc_user": {
-    "personal_info": "개인정보 조회",
-    "upload_doc": "문서 업로드",
-    "details_header": "고객 정보",
-    "list": {
-      "header": "고객 목록",
-      "slNo": "번호",
-      "RefUserCode": "유저코드",
-      "Depositproductname": "예금 상품명",
-      "CoinType": "코인 종류",
-      "CoinAmount": "코인 금액",
-      "StartDate": "시작 날짜",
-      "EndDate": "종료일",
-      "Totalpayabledepositinterest": "총 지급 예금 이자",
-      "Totaladditionalinterestpaid": "추가 지급된 총 이자",
-      "DepositWon": "예치 원화",
-      "Status": "상태",
-      "ReferralCode": "레퍼럴코드",
-      "Actions": "상태"
-    },
-    "popup": {
-      "header": "예치상태 알림"
-    },
-    "p_Info": {
-      "name": "DFC명",
-      "Grade": "등급",
-      "Location": "위치",
-      "E-mail": "이메일",
-      "PhoneNumber": "핸드폰 번호",
-      "ReferralCode": "추천 코드",
-      "RegDate": "등록 날짜 및 시간",
-      "RecentPerfomance": "최근 실적",
-      "address":"위치",
-      "remark":"비고"
-    }
+  "list": {
+    "header": "DFC 목록",
+    "Referralcode": "추천 코드",
+    "name": "이름",
+    "email": "이메일",
+    "location": "위치",
+    "mobile": "핸드폰 번호",
+    "rec-perfomance": "최근 실적",
+    "created_dt": "생성날짜 (날짜&시간)",
+    "see_more": "더보기",
+    "address": "주소",
+    "grade": "등급"
   },
-  "upload-doc": {
-    "doc_title": "문서 제목",
-    "doc_type": "문서 유형",
-    "upload_dt": "업로드 날짜",
-    "uploadNewdoc": "문서 업로드",
-    "download":"다운로드",
-    "upload_doc_header":"문서 업로드",
-    "upload":"업로드 ",
-    "list":{
-      "slNo":"번호",
-      "header":"Document List",
-      "Actions": "상태"
+  "details": {
+    "header": "상세",
+    "Referralcode": "추천 코드",
+    "name": "이름",
+    "email": "이메일",
+    "location": "등록 날짜 및 시간:",
+    "mobile": "휴대폰 번호",
+    "rec-perfomance": "최근 실적",
+    "created_dt": "생성날짜 (날짜&시간)",
+    "grade": "신분증",
+    "designation": "유통 매체",
+    "address": "레지던스 주소",
+    "remark": "비고",
+    "password":"비밀번호",
+    "editindividual":"개별 회원 정보 편집",
+    "Cancel":"취소합니다",
+    "confirm":"저장",
+    "Goback":"Go Back",
+    "individualheader":"회원의 세부 정보"
+  },
+  "add": {
+    "header": "새로운 DFC 등록 (Excel Upload)",
+    "feildheader": "Excel 업로드",
+    "placeholder": "파일 선택",
+    "message": "업로드 된 DFC 관리자는 재업로드 할 수 없습니다.",
+    "exceldownload": "샘플 다운로드"
+  }
+},
+"Banner": {
+  "s-header": "검색",
+  "addnew_banner": "배너 추가",
+  "edit_banner": "배너 수정",
+  "active":"활동적인",
+  "inactive":"비활성",
+  "search": {
+    "type": "제목"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "배너 목록",
+    "image": "이미지",
+    "title": "제목",
+    "bannertitle":"배너 제목",
+    "type": "유형",
+    "url": "URL",
+    "status": "노출",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "날짜 시간",
+    "see_more": "기능",
+    "link": "URL",
+    "deskbanner": "데스크탑 배너",
+    "mobbanner": "모바일 배너"
+  },
+  "details": {
+    "header": "배너 상세"
+  }
+},
+"Category": {
+  "s-header": "검색",
+  "addnew_category": "새 카테고리 추가",
+  "edit_category": "카테고리 편집",
+  "excel_category": "엑셀 업로드",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "카테고리 목록",
+    "image": "이미지",
+    "title": "1차 카테고리 (KO)",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "url": "1차 카테고리 (EN)",
+    "status": "2차 카테고리 (KO)",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "2차 카테고리 (EN)",
+    "see_more": "동작",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리 입력"
+  },
+  "details": {
+    "header": "카테고리 세부 정보"
+  }
+},
 
-    }
+"PillType": {
+  "s-header": "검색",
+  "addnew_pilltype": "제형 추가",
+  "edit_pilltype": "제형 수정",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "제형 리스트",
+    "sr":"번호",
+    "image": "이미지",
+    "name":"제형명",
+    "title": "1차 카테고리 (KO)",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "url": "1차 카테고리 (EN)",
+    "status": "2차 카테고리 (KO)",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "2차 카테고리 (EN)",
+    "see_more": "동작",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리 입력",
+    "addname":"제형명 (KO)",
+    "addnamepill":"제형명 (EN)",
+    "uploadimage":"이미지 업로드",
+    "Description":"설명 (KO)",
+    "AddDescription":"설명 (EN)"
+  },
+  "details": {
+    "header": "제형 정보"
+  }
+},
+"Business": {
+  "list": {
+    "header": "비즈니스 회원 목록",
+    "slNo": "slNo",
+    "BusinessNumber": "사업자번호",
+    "BusinessName":"비즈니스 이름",
+    "Username": "사용자 이름",
+    "Email": "이메일",
+    "ID": "신분증",
+    "RegistrationDate": "등록 날짜",
+    "Function": "제구실",
+    "Businessheader":"비즈니스 세부 정보",
+    "Departmentname":"부서 이름",
+    "Personincharge":"이름 의 사람 in 충전",
+    "Password":"비밀번호",
+    "mobile": "Mobile 번호",
+    "Area":"지역",
+    "EditBusiness":"비즈니스 회원 정보 편집",
+    "EditAdress":"주소"
+  }
+},
+"Individual": {
+  "list": {
+    "header": "비즈니스 회원 목록",
+    "slNo": "#",
+    "Username": "사용자 이름",
+    "Email": "이메일",
+    "ID": "신분증",
+    "RegistrationDate": "등록 날짜",
+    "Function": "제구실",
+    "cancel":"취소",
+    "confirm":"확인",
+    "newpassword":"새 비밀번호",
+    "changepass":"비밀번호 재설정"
+  }
+},
+"PackageType": {
+  "list": {
+    "header": "패키지 리스트",
+    "slNo": "SlNo",
+    "Image": "이미지",
+    "PackageName": "패키지 명",
+    "Actions": "기능",
+    "addnew_packagetype":"패키지 추가"
+  },
+  "view":{
+    "header":"패키지 정보",
+    "packagename(ko)":"패키지명 (KO)",
+    "packagename(en)":"패키지명 (EN)",
+    "image":"이미지:",
+    "description(ko)":"설명 (KO)",
+    "description(en)":"설명 (EN)"
+  },
+  "Edit":{
+    "editPackageHeader":"패키지 유형 편집",
+    "package(ko)":"패키지명 (KO)",
+    "package(en)":"패키지명 (EN)",
+    "image":"이미지 업로드:",
+    "desc(ko)":"설명 (KO)",
+    "desc(en)":"설명 (EN)",
+    "update":"업데이",
+    "back":"뒤로가기"
+  },
+  "Add":{
+    "addPackageHeader":"패키지 추가",
+    "addpackage(ko)":"패키지명 (KO)",
+    "addpackage(en)":"패키지명 (EN)",
+    "addimage":"이미지 업로드:",
+    "adddesc(ko)":"설명 (KO)",
+    "adddesc(en)":"설명 (EN)",
+    "addpublish":"출판하다"
+  }
+},
+
+"RawMaterialadd": {
+  "addnew_raw":"원료 추가",
+  "list": {
+    "header": "원료 목록",
+    "slNo": "slNo",
+    "RawMaterial": "원료",
+    "startDate":"날짜",
+    "category": "범주",
+    "name": "원료",
+    "Categories": "범주",
+    "status": "지위",
+    "Function": "제구실",
+    "editRawHeader":"원료 편집",
+    "viewRawHeader":"원료 상세",
+    "categorylist":"카테고리 선택",
+    "Rawmaterialname(KO)":"원료명(KO)",
+    "Rawmaterialname(EN)":"원료명(EN)",
+    "Standard(KO)": "기준 (KO)",
+    "Standard(EN)":"표준(EN)",
+    "Rawmarterialdescription(KO)":"날것의 재료 설명 (KO)",
+    "Rawmarterialdescription(EN)":"원료 설명(EN)",
+    "DailyIntakeAmount(KO)":"1일 섭취량 (KO)",
+    "DailyIntakeAmount(EN)":"일일 섭취량 금액(EN)",
+    "Prequotion(KO)":"주의사항 (KO)",
+    "Prequotion(EN)":"프리쿼션 (EN)",
+    "Extrainfo(KO)":"기타사항 (KO)",
+    "Extrainfo(EN)":"엑스트라정보(EN)",
+    "Function(KO)":"기능성 (KO)",
+    "Fucntion(EN)":"기능(EN)",
+    "banner":"유사 제품 이미지",
+    "thumbnail1":"첫 번째 썸네일",
+    "thumbnail2":"두 번째 썸네일",
+    "rawdetails":"상세 페이지의 원료 이미지",
+    "tags(KO)":"태그 추가(KO)",
+    "tags(EN)":"태그 추가(EN)",
+    "Rawname(KO)":"날것의 재료 이름 (KO)",
+  "Rawname(EN)":"날것의 재료 이름  (EN)",
+  "excel_raw":"엑셀 업로드",
+  "addnew_rawmaterial":"새로운 원료 추가",
+  "addnew_raw":"원료 추가",
+  "Add":"추가",
+  "Back":"뒤로!",
+  "tag1":"태그 (KO)",
+  "tag2":"태그 (EN)"
+  }
+  
+  
+},
+
+"Application":{
+  "s-header": "검색",
+  "addnew_pilltype": "제형 추가",
+  "edit_pilltype": "제형 수정",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록",
+    "ApplicantName":"신청자/업체명",
+    "RegisterDate":"등록일",
+    "date":"시작일",
+    "status":"상태",
+    "product":"상품",
+    "service":"서비스"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "신청서 목록",
+    "companyname":"신청자명 / 업체명",
+    "sr":"번호",
+    "image": "이미지",
+    "name":"제형명",
+    "title": "1차 카테고리 (KO)",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "product": "상품",
+    "service":"서비스",
+    "status": "상태",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "등록일",
+    "see_more": "동작",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리 입력",
+    "addname":"제형명 (KO)",
+    "addnamepill":"제형명 (EN)",
+    "uploadimage":"이미지 업로드",
+    "Description":"설명 (KO)",
+    "AddDescription":"설명 (EN)"
+  },
+  "details": {
+    "header": "신청서 정보",
+    "adminheader":"어드민 답변",
+    "status":"상태",
+    "answer":"어드민 답변",
+    "memo":"어드민 메모",
+    "name":"이름",
+    "id":"ID",
+    "password":"비밀번호",
+    "email":"이메일",
+    "mobile":"휴대폰 번호",
+    "address":"주소",
+    "datetime":"날짜 시간",
+    "application":"서비스",
+    "client":"요청사항",
+    "applicationlist":"신청 사항",
+    "category":"카테고리",
+    "description":"설명",
+    "save":"저장"
     
+  }
+
+},
+
+"Blending": {
+  "s-header": "검색",
+  "addnew_blending": "새 블렌드 추가",
+  "edit_category": "배너 수정",
+  "excel_category": "엑셀 업로드",
+  "confirm":"추가",
+  "back":"뒤로가기",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록",
+    "category":"범주",
+    "blending":"블렌딩"
   },
-  "password": {
-    "header": "비밀번호 변경",
-    "current": "현재 비밀번호",
-    "new": "새로운 비밀번호",
-    "confirm": "비밀번호 확인",
-    "foget_dfc_pass":"비밀번호를 잊으셨나요 ?",
-    "recovery_DFC":"Nutrabbit 관리자 비밀번호 재설정",
-    "p_email":"이메일 주소",
-    "help":"비밀번호를 새로 발급받으실 이메일 주소를 입력해주세요.",
-    "send_mail":"이메일 보내기"
+  "placeholder": {
+    "select": "선택"
   },
-  "button": {
-    "uploadfile": "파일 업로드",
-    "uploadimage": "이미지 업로드",
-    "reset": "초기화",
-    "back": "뒤로가기",
+  "list": {
+    "header": "권장 블렌딩 목록",
+    "image": "이미지",
+    "title": "1st Category (KO)",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "url": "1st Category (EN)",
+    "status": "Status",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "2nd Category (EN)",
+    "see_more": "Action",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리 입력",
+    "name":"블렌딩 이름 (KO)",
+    "blendingname1":"블렌딩 이름(EN)",
+    "addcategory":"범주",
+    "mainraw":"주요 원료",
+    "subraw":"서브 원료",
+    "piltype":"알 약 유형 고르다",
+    "addtag":"태그 추가 (KO)",
+    "tag": "태그 추가(EN)",
+    "addefficacy":"효능 (KO)",
+    "efficacy":"효능 (EN)",
+    "ingredients":"성분 세부 사항  (KO)",
+    "ingredientsdetails":"성분 세부 사항 (EN)",
+    "product":"제품 설명 (KO)",
+    "productdescription":"제품 설명(EN)",
+    "detail":"세부 이미지",
+    "similar":"유사한 제품 이미지",
+    "addthumnail":"1번 썸네일",
+    "newthumnail":"2번 썸네일",
+    "addstatus":"노출"
+  },
+  "details": {
+    "header": "블렌딩 디테일",
+    "name":"블렌더 이름",
+    "category":"범주",
+    "Mainraw":"주요 원료",
+    "submaterial":"하위 재료",
+    "pilltype":"알 약 유형",
+    "Tags":"Tags (KO)",
+    "blendingtags":"태그(EN)",
+    "efficacy":"효능 (KO)",
+    "blendingefficacy":"효능 (EN)",
+    "appearance":"외관(KO)",
+    "blendingappearance":"외관(EN)",
+    "productdescription":"Product Description (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "DetailImage":"세부 이미지",
+    "Thumbnail":"첫 번째 섬네일",
+    "blendingthumbnail":"2번째 썸네일",
+    "SimilarProductImage":"유사한 제품 이미지",
+    "viewstatus":"상태"
+  },
+  "edit":{
+    "name":"블렌딩 이름 (KO)",
+    "blendingname":"블렌딩 이름 (EN)",
+    "Category":"범주",
+    "edit":"블렌드 편집",
+    "Mainrawmaterial":"주요 원료",
+    "SubRawMaterial":"서브 원료",
+    "PillTypeSelect":"알 약 유형 선택",
+    "Tags":"Add tags (KO)",
+    "AddTags":"태그 추가(EN)",
+    "Efficacy":"Efficacy (KO)",
+    "blendingEfficacy":"효능(EN)",
+    "ingredientsdetails":"성상 (KO)",
+    "blendingingredientsdetails":"성분 정보(EN)",
+    "productdescription":"제품 설명 (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "detailimage":"세부 이미지",
+    "similarproductimage":"유사한 제품 이미지",
+    "1stThumnail":"첫 번째 둠네일",
+    "2stThumnail":"2차 둠네일",
+    "status":"노출"
+    
+  }
+},
+
+"Faq": {
+  "s-header": "검색",
+  "viewfaq":"FAQ 정보",
+  "addnew_faq": "FAQ 추가",
+  "edit_category": "배너 수정",
+  "excel_category": "엑셀 업로드",
+  "confirm":"추가",
+  "back":"뒤로가기",
+  "editnew_faq":"FAQ 수정",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록",
+    "category":"범주",
+    "blending":"블렌딩"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "add":{
+    "addnew_faq": "새 FAQ 추가",
+    "title":"제목 (KO)",
+    "addtitle":"제목 (EN)",
+    "answer":"내용 (KO)",
+    "addanswer":"내용 (EN)",
+    "status":"노출",
+    "top":"탑 10",
+    "createdate":"Date & Time"
+  },
+  "list": {
+    "header": "FAQ 목록",
+    "image": "이미지",
+    "title": "제목",
+    "Order":"Order",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "url": "1st Category (EN)",
+    "status": "상태",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "2nd Category (EN)",
+    "see_more": "동작",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리",
+    "name":"블렌딩 이름 (KO)",
+    "blendingname1":"블렌딩 이름(EN)",
+    "addcategory":"범주",
+    "mainraw":"주요 원료",
+    "subraw":"서브 원료",
+    "piltype":"알 약 유형 고르다",
+    "addtag":"태그 추가 (KO)",
+    "tag": "태그 추가(EN)",
+    "addefficacy":"효능 (KO)",
+    "efficacy":"효능 (EN)",
+    "ingredients":"성분 세부 사항  (KO)",
+    "ingredientsdetails":"성분 세부 사항 (EN)",
+    "product":"제품 설명 (KO)",
+    "productdescription":"제품 설명(EN)",
+    "detail":"세부 이미지",
+    "similar":"유사한 제품 이미지",
+    "addthumnail":"1번 썸네일",
+    "newthumnail":"2번 썸네일",
+    "addstatus":"노출"
+  },
+  "details": {
+    "header": "블렌딩 디테일",
+    "name":"블렌더 이름",
+    "category":"범주",
+    "Mainraw":"주요 원료",
+    "submaterial":"하위 재료",
+    "pilltype":"알 약 유형",
+    "Tags":"Tags (KO)",
+    "blendingtags":"태그(EN)",
+    "efficacy":"효능 (KO)",
+    "blendingefficacy":"효능 (EN)",
+    "appearance":"외관(KO)",
+    "blendingappearance":"외관(EN)",
+    "productdescription":"Product Description (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "DetailImage":"세부 이미지",
+    "Thumbnail":"첫 번째 섬네일",
+    "blendingthumbnail":"2번째 썸네일",
+    "SimilarProductImage":"유사한 제품 이미지",
+    "viewstatus":"상태"
+  },
+  "edit":{
+    "name":"블렌딩 이름 (KO)",
+    "blendingname":"블렌딩 이름 (EN)",
+    "Category":"범주",
+    "edit":"블렌드 편집",
+    "Mainrawmaterial":"주요 원료",
+    "SubRawMaterial":"서브 원료",
+    "PillTypeSelect":"알 약 유형 선택",
+    "Tags":"Add tags (KO)",
+    "AddTags":"태그 추가(EN)",
+    "Efficacy":"Efficacy (KO)",
+    "blendingEfficacy":"효능(EN)",
+    "ingredientsdetails":"성상 (KO)",
+    "blendingingredientsdetails":"성분 정보(EN)",
+    "productdescription":"제품 설명 (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "detailimage":"세부 이미지",
+    "similarproductimage":"유사한 제품 이미지",
+    "1stThumnail":"첫 번째 둠네일",
+    "2stThumnail":"2차 둠네일",
+    "status":"노출"
+    
+  }
+},
+
+"Inquiry": {
+  "list": {
+    "header": "1:1 문의 목록",
+    "appname":"신청자명/업체명",
+    "slNo": "#",
+    "title": "제목",
+    "QuestionType": "문의 타입",
+    "inqurydate":"문의 날짜",
+    "Reopenby":"답변자",
+    "status":"지위",
+    "Action": "기능",
+    "cancel":"취소",
+    "confirm":"확인",
+    "Blending":"제목",
+    "Tag":"태그",
+    "add_nutri":"새로운 Nutri3.3 블렌딩 추가",
+    "inqury1":"질문 제목 게시"
+  }
+},
+
+"Notice": {
+  "s-header": "검색",
+  "viewfaq":"FAQ 정보",
+  "addnew_notice": "공지사항 추가",
+  "edit_notice": "공지사항 수정",
+  "excel_category": "엑셀 업로드",
+  "confirm":"추가",
+  "back":"뒤로가기",
+  "editnew_faq":"FAQ 수정",
+  "search": {
+    "type": "범주",
+    "Register": "카테고리 등록",
+    "category":"범주",
+    "blending":"블렌딩"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "add":{
+    "addnew_faq": "새 FAQ 추가",
+    "title":"제목 (KO)",
+    "addtitle":"제목 (EN)",
+    "image":"이미지 업로드 (필수 아님)",
+    "description":"공지사항 내용 (KO)",
+    "adddescroption":"공지사항 내용 (EN)",
+    "answer":"내용 (KO)",
+    "addanswer":"내용 (EN)",
+    "status":"노출",
+    "top":"탑 10",
+    "createdate":"Date & Time"
+  },
+  "list": {
+    "header": "공지사항 목록",
+    "image": "이미지",
+    "title": "제목",
+   
+    "Order":"Order",
+    "categorytitle":"배너 제목",
+    "type": "유형",
+    "url": "1st Category (EN)",
+    "status": "상태",
+    "changeorder": "순서 변경",
+    "createddate": "발행일",
+    "created_dt": "2nd Category (EN)",
+    "see_more": "동작",
+    "link": "URL",
+    "deskcategory": "유사한 제품 이미지:",
+    "mobcategory": "모바일 배너",
+    "thumnail":"두 번째 카테고리 썸네일",
+    "category":"카테고리",
+    "name":"블렌딩 이름 (KO)",
+    "blendingname1":"블렌딩 이름(EN)",
+    "addcategory":"범주",
+    "mainraw":"주요 원료",
+    "subraw":"서브 원료",
+    "piltype":"알 약 유형 고르다",
+    "addtag":"태그 추가 (KO)",
+    "tag": "태그 추가(EN)",
+    "addefficacy":"효능 (KO)",
+    "efficacy":"효능 (EN)",
+    "ingredients":"성분 세부 사항  (KO)",
+    "ingredientsdetails":"성분 세부 사항 (EN)",
+    "product":"제품 설명 (KO)",
+    "productdescription":"제품 설명(EN)",
+    "detail":"세부 이미지",
+    "similar":"유사한 제품 이미지",
+    "addthumnail":"1번 썸네일",
+    "newthumnail":"2번 썸네일",
+    "addstatus":"노출"
+  },
+  "details": {
+    "header": "블렌딩 디테일",
+    "name":"블렌더 이름",
+    "category":"범주",
+    "Mainraw":"주요 원료",
+    "submaterial":"하위 재료",
+    "pilltype":"알 약 유형",
+    "Tags":"Tags (KO)",
+    "blendingtags":"태그(EN)",
+    "efficacy":"효능 (KO)",
+    "blendingefficacy":"효능 (EN)",
+    "appearance":"외관(KO)",
+    "blendingappearance":"외관(EN)",
+    "productdescription":"Product Description (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "DetailImage":"세부 이미지",
+    "Thumbnail":"첫 번째 섬네일",
+    "blendingthumbnail":"2번째 썸네일",
+    "SimilarProductImage":"유사한 제품 이미지",
+    "viewstatus":"상태"
+  },
+  "edit":{
+    "name":"블렌딩 이름 (KO)",
+    "blendingname":"블렌딩 이름 (EN)",
+    "Category":"범주",
+    "edit":"블렌드 편집",
+    "Mainrawmaterial":"주요 원료",
+    "SubRawMaterial":"서브 원료",
+    "PillTypeSelect":"알 약 유형 선택",
+    "Tags":"Add tags (KO)",
+    "AddTags":"태그 추가(EN)",
+    "Efficacy":"Efficacy (KO)",
+    "blendingEfficacy":"효능(EN)",
+    "ingredientsdetails":"성상 (KO)",
+    "blendingingredientsdetails":"성분 정보(EN)",
+    "productdescription":"제품 설명 (KO)",
+    "blendingproductdescription":"제품 설명(EN)",
+    "detailimage":"세부 이미지",
+    "similarproductimage":"유사한 제품 이미지",
+    "1stThumnail":"첫 번째 둠네일",
+    "2stThumnail":"2차 둠네일",
+    "status":"노출"
+    
+  }
+},
+"nft": {
+  "s-header": "검색",
+  "addnew_nft": "새 NFT 추가",
+  "edit_nft": "Edit NFT",
+  "search": {
+    "type": "유형"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "NFT 목록",
+    "image": "이미지",
+    "title": "제목",
+    "type": "유형",
+    "url": "URL",
+    "status": "노출",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "생성날짜",
+    "see_more": "더보기",
+    "link": "URL",
+    "deskbanner": "PC 배너",
+    "mobbanner": "모바일 배너"
+  },
+  "details": {
+    "header": "NFT 상세"
+  }
+},
+"cardnews": {
+  "s-header": "검색",
+  "addnew_cardnews": "새 카드 뉴스 추가",
+  "edit_cardnews": "Edit 카드 뉴스",
+  "search": {
+    "type": "유형"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "카드 뉴스 목록",
+    "image": "이미지",
+    "title": "제목",
+    "written": "작성자",
+    "type": "유형",
+    "url": "URL",
+    "status": "노출",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "생성날짜",
+    "see_more": "더보기",
+    "link": "Link",
+    "deskbanner": "PC 배너",
+    "mobbanner": "모바일 배너",
+    "description": "설명"
+  },
+  "details": {
+    "header": "카드 뉴스 상세"
+  }
+},
+"mediapress": {
+  "s-header": "검색",
+  "addnew_mediapress": "미디어 프레스 추가",
+  "edit_mediapress": "Edit 미디어 프레스",
+  "search": {
+    "type": "유형"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "미디어 프레스 목록",
+    "image": "이미지",
+    "title": "제목",
+    "written": "Written By",
+    "type": "유형",
+    "url": "URL",
+    "status": "노출",
+    "changeorder": "순서 변경",
+    "createddate": "날짜",
+    "created_dt": "생성날짜",
+    "see_more": "더보기",
+    "y_link": "유튜브 URL",
+    "link": "URL",
+    "deskbanner": "PC 배너",
+    "mobbanner": "모바일 배너",
+    "description": "설명"
+  },
+  "details": {
+    "header": "미디어 프레스 상세"
+  }
+},
+"popup": {
+  "s-header": "검색",
+  "addnew_banner": "새 배너 추가",
+  "edit_banner": "Edit Banner",
+  "search": {
+    "type": "유형",
+    "title": "제목"
+  },
+  "placeholder": {
+    "select": "선택"
+  },
+  "list": {
+    "header": "팝업 목록",
+    "title": "제목",
+    "status": "상태",
+    "p_date": "기간",
+    "see_more": "더보기",
+    "startDate": "시작날짜",
+    "lastDate": "마지막날짜"
+  },
+  "details": {
+    "header": "팝업 상세",
+    "popuptype": "팝업 유형",
+    "description": "설명"
+  }
+},
+"googleform": {
+  "s-header": "Google form 추가",
+  "list": {
+    "formurl": "URL",
+    "title": "제목",
+    "status": "상태",
+    "p_date": "Period Date",
+    "see_more": "더보기",
+    "startDate": "시작날짜",
+    "lastDate": "마지막날짜"
+  },
+  "details": {
+    "header": "팝업 상세",
+    "popuptype": "팝업 유형",
+    "description": "설명"
+  }
+},
+"search": {
+  "title": "검색",
+  "label": {
+    "name": "이름",
+    "phoneNumber": "휴대폰번호",
+    "email": "이메일",
+    "startDate": "시작날짜",
+    "lastDate": "마지막날짜"
+  },
+  "placeholder": {
     "search": "검색",
-    "new": "새로 만들기",
-    "downloadExcel": "엑셀 다운로드",
-    "view": "보기",
-    "edit": "편집하다",
-    "delete": "삭제",
-    "today": "오늘",
-    "lastWeek": "지난주",
-    "lastMonth": "지난 달",
-    "last6Months": "지난 6 개월",
-    "lastYear": "작년",
-    "createUser": "만들기",
-    "Cancel": "카클",
-    "confirm": "출판하다",
-    "preview": "미리보기",
-    "publish": "등록하기",
-    "login": "로그인",
-    "logout": "로그아웃",
-    "viewDetails": "세부 정보보기",
-    "ok":"닫기",
-    "select_file":"파일 업로드",
-    "yes":"네",
-    "no":"아니요",
-    "save":"저장",
-    "update":"업데이트"
-  },
-  
-  "rawmaterial": {
-    "list": {
-      "header": "원료 목록",
-      "slNo": "slNo",
-      "RawMaterial": "원료",
-      "startDate":"날짜",
-      "category": "범주",
-      "name": "원료",
-      "Categories": "범주",
-      "status": "지위",
-      "Function": "제구실",
-      "editRawHeader":"원료 편집",
-      "categorylist":"카테고리 선택",
-      "Rawmaterialname(KO)":"원료명(KO)",
-      "Rawmaterialname(EN)":"원료명(EN)",
-      "Standard(KO)": "Standard(KO)",
-      "Standard(EN)":"표준(EN)",
-      "Rawmarterialdescription(KO)":"Raw Material Description (KO)",
-      "Rawmarterialdescription(EN)":"원료 설명(EN)",
-      "Fucntion(KO)":"Fucntion(KO)",
-      "DailyIntakeAmount(KO)":"DailyIntakeAmount(KO)",
-      "DailyIntakeAmount(EN)":"일일 섭취량 금액(EN)",
-      "Prequotion(KO)":"Prequotion(KO)",
-      "Prequotion(EN)":"프리쿼션 (KO)",
-      "Extrainfo(KO)":"Extra info (KO)",
-      "Extrainfo(EN)":"엑스트라정보(EN)",
-      "Fucntion(EN)":"기능(EN)",
-      "banner":"유사 제품 이미지",
-      "thumbnail1":"첫 번째 썸네일",
-      "thumbnail2":"두 번째 썸네일",
-      "rawdetails":"상세 페이지의 원료 이미지",
-      "tags(KO)":"Add Tags(KO)",
-      "tags(EN)":"태그 추가(EN)"
-    }
-  },
-  
-  "alert":{
-     "confirm":"이대로 진행하시겠습니까?"
-  },
-  "page": {
-    "user": {
-      "addUser": {
-        "heading": "새로 만들기"
-      },
-      "editUser": {
-        "heading": "수정"
-      },
-      "viewUser": {
-        "heading": "상세정보"
-      }
+    "date": "YYYY.MM.DD"
+  }
+},
+"table": {
+  "userlist": {
+    "heading": "사용자 목록",
+    "thead": {
+      "id": "번호",
+      "name": "이름",
+      "email": "이메일",
+      "mobile": "휴대폰 번호",
+      "createdDate": "가입일",
+      "actions": "관리"
     }
   }
+},
+"dfc_user": {
+  "personal_info": "개인정보 조회",
+  "upload_doc": "문서 업로드",
+  "details_header": "고객 정보",
+  "list": {
+    "header": "고객 목록",
+    "slNo": "번호",
+    "RefUserCode": "유저코드",
+    "Depositproductname": "예금 상품명",
+    "CoinType": "코인 종류",
+    "CoinAmount": "코인 금액",
+    "StartDate": "시작 날짜",
+    "EndDate": "종료일",
+    "Totalpayabledepositinterest": "총 지급 예금 이자",
+    "Totaladditionalinterestpaid": "추가 지급된 총 이자",
+    "DepositWon": "예치 원화",
+    "Status": "상태",
+    "ReferralCode": "레퍼럴코드",
+    "Actions": "상태"
+  },
+  "popup": {
+    "header": "예치상태 알림"
+  },
+  "p_Info": {
+    "name": "DFC명",
+    "Grade": "등급",
+    "Location": "위치",
+    "E-mail": "이메일",
+    "PhoneNumber": "핸드폰 번호",
+    "ReferralCode": "추천 코드",
+    "RegDate": "등록 날짜 및 시간",
+    "RecentPerfomance": "최근 실적",
+    "address":"위치",
+    "remark":"비고"
+  }
+},
+"upload-doc": {
+  "doc_title": "문서 제목",
+  "doc_type": "문서 유형",
+  "upload_dt": "업로드 날짜",
+  "uploadNewdoc": "문서 업로드",
+  "download":"다운로드",
+  "upload_doc_header":"문서 업로드",
+  "upload":"업로드 ",
+  "list":{
+    "slNo":"번호",
+    "header":"Document List",
+    "Actions": "상태"
+
+  }
+  
+},
+"password": {
+  "header": "비밀번호 변경",
+  "current": "현재 비밀번호",
+  "new": "새로운 비밀번호",
+  "confirm": "비밀번호 확인",
+  "foget_dfc_pass":"비밀번호를 잊으셨나요 ?",
+  "recovery_DFC":"Nutrabbit 관리자 비밀번호 재설정",
+  "p_email":"이메일 주소",
+  "help":"비밀번호를 새로 발급받으실 이메일 주소를 입력해주세요.",
+  "send_mail":"이메일 보내기"
+},
+"button": {
+  "uploadfile": "파일 업로드",
+  "uploadimage": "이미지 업로드",
+  "reset": "초기화",
+  "back": "뒤로가기",
+  "search": "검색",
+  "new": "새로 만들기",
+  "downloadExcel": "엑셀 다운로드",
+  "view": "보기",
+  "edit": "편집하다",
+  "delete": "삭제",
+  "today": "오늘",
+  "lastWeek": "지난주",
+  "lastMonth": "지난 달",
+  "last6Months": "지난 6 개월",
+  "lastYear": "작년",
+  "createUser": "만들기",
+  "Cancel": "카클",
+  "confirm": "출판하다",
+  "preview": "미리보기",
+  "publish": "등록하기",
+  "login": "로그인",
+  "logout": "로그아웃",
+  "viewDetails": "세부 정보보기",
+  "ok":"닫기",
+  "select_file":"파일 업로드",
+  "yes":"네",
+  "no":"아니요",
+  "save":"저장",
+  "update":"업데이트"
+},
+
+"rawmaterial": {
+  "list": {
+    "header": "원료 목록",
+    "slNo": "slNo",
+    "RawMaterial": "원료",
+    "startDate":"날짜",
+    "category": "범주",
+    "name": "원료",
+    "Categories": "범주",
+    "status": "지위",
+    "Function": "제구실",
+    "editRawHeader":"원료 편집",
+    "categorylist":"카테고리 선택",
+    "Rawmaterialname(KO)":"원료명(KO)",
+    "Rawmaterialname(EN)":"원료명(EN)",
+    "Standard(KO)": "Standard(KO)",
+    "Standard(EN)":"표준(EN)",
+    "Rawmarterialdescription(KO)":"Raw Material Description (KO)",
+    "Rawmarterialdescription(EN)":"원료 설명(EN)",
+    "Fucntion(KO)":"Fucntion(KO)",
+    "DailyIntakeAmount(KO)":"DailyIntakeAmount(KO)",
+    "DailyIntakeAmount(EN)":"일일 섭취량 금액(EN)",
+    "Prequotion(KO)":"Prequotion(KO)",
+    "Prequotion(EN)":"프리쿼션 (KO)",
+    "Extrainfo(KO)":"Extra info (KO)",
+    "Extrainfo(EN)":"엑스트라정보(EN)",
+    "Fucntion(EN)":"기능(EN)",
+    "banner":"유사 제품 이미지",
+    "thumbnail1":"첫 번째 썸네일",
+    "thumbnail2":"두 번째 썸네일",
+    "rawdetails":"상세 페이지의 원료 이미지",
+    "tags(KO)":"Add Tags(KO)",
+    "tags(EN)":"태그 추가(EN)"
+  }
+},
+"Nutri3": {
+  "list": {
+    "header": "nutri 3.3 관리 목록",
+    "slNo": "SLNO",
+    "Nutri3-Blending": "Nutri3.3 블렌딩",
+    "Tags": "태그",
+    "status":"지위",
+    "Action": "기능",
+    "cancel":"취소",
+    "confirm":"확인",
+    "Blending":"제목",
+    "Tag":"태그",
+    "add_nutri":"새로운 Nutri3.3 블렌딩 추가"
+  },
+  "Add":{
+    "header":"nutri 3.3 제품 등록",
+    "Nutri3-name":"nutri 3.3 제품명(KO)",
+    "Nutri3-name1":"nutri 3.3 제품명(EN)",
+    "Category":"카테고리",
+    "MainRaw":"주원료",
+    "Piltype":"알약타입 선택",
+    "Package":"패키지선택",
+    "AddTags(KO)":"태그 추가 (KO)",
+    "AddTags(EN)":"태그 추가 (EN)",
+    "Description(KO)":"설명 (KO)",
+    "Description(EN)":"설명 (EN)",
+    "Thumbnailimg":"썸네일 이미지 업로드",
+    "productsubimg":"제품 서브 이미지",
+    "productdetailimg":"상세 페이지 이미지 업로드",
+    "Exposure":"노출",
+    "publish":"추가",
+    "Back":"뒤로가기"
+  },
+  "View":{
+    "header":"nutri 3.3 제품 정보",
+    "Nutri3-name":"nutri 3.3 제품명",
+    "Category":"카테고리",
+    "MainRaw1":"주요 원료",
+    "Piltype1":"알 약 유형",
+    "Package1":"패키지",
+    "AddTags1(KO)":"태그 추가 (KO)",
+    "AddTags2(EN)":"태그 추가 (EN)",
+    "Description1(KO)":"설명 (KO)",
+    "Description2(EN)":"설명 (EN)",
+    "Thumbnailimg":"썸네일 이미지 업로드",
+    "productsubimg1":"제품 서브 이미지",
+    "productdetailimg1":"상세 페이지 이미지 업로드",
+    "Exposure1":"노출",
+    "publish1":"추가",
+    "Back1":"뒤로가기"
+  },
+  "Edit":{
+    "Editheader":"nutri 3.3 제품 수정",
+    "EditNutri3-name":"nutri 3.3 제품명",
+    "EditNutri3-name3":"nutri 3.3 제품명(KO)",
+    "EditNutri3-name4":"nutri 3.3 제품명(EN)",
+    "EditCategory":"카테고리",
+    "EditMainRaw1":"주요 원료",
+    "EditPiltype1":"알 약 유형",
+    "EditPackage1":"패키지",
+    "EditTags1(KO)":"태그 추가 (KO)",
+    "EditTags2(EN)":"태그 추가 (EN)",
+    "EditDescription1(KO)":"설명 (KO)",
+    "EditDescription2(EN)":"설명 (EN)",
+    "EditThumbnailimg":"썸네일 이미지 업로드",
+    "Editproductsubimg1":"제품 서브 이미지",
+    "Editproductdetailimg1":"상세 페이지 이미지 업로드",
+    "EditExposure1":"노출",
+    "Editpublish1":"추가",
+    "EditBack1":"뒤로가기"
+  }
+},
+
+"alert":{
+   "confirm":"이대로 진행하시겠습니까?"
+},
+"page": {
+  "user": {
+    "addUser": {
+      "heading": "새로 만들기"
+    },
+    "editUser": {
+      "heading": "수정"
+    },
+    "viewUser": {
+      "heading": "상세정보"
+    }
+  }
+}
 }
