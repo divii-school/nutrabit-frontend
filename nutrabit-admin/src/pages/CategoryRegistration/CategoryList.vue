@@ -21,13 +21,14 @@
                             <p for="type">{{ $t('Category.search.type') }}</p>
                             <!-- <InputText id="googlurl" type="text" placeholder="search title" v-model="searchData" /> -->
                             <AutoComplete
-                                placeholder="Search"
+                                placeholder="검색"
                                 :dropdown="true"
                                 :multiple="false"
                                 v-model="selectedAutoValue"
                                 :suggestions="autoFilteredValue"
                                 @complete="searchCountry($event)"
                                 field="category_name_ko"
+                                @keyup="resetdata"
                             />
                         </div>
 
@@ -331,13 +332,25 @@ export default {
 
         },
 
+        resetdata(){
+            if (this.selectedAutoValue === ''){
+                this.categoryService
+                 .getCategoryList(this.status, this.selectedAutoValue?.category_name_ko, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .then((data) => {
+                        this.products = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
 
 
         searchCategory() {
             console.log(this.selectedAutoValue);
             // alert(this.dropdownValue?.category_name_ko);
             if (this.selectedAutoValue === '') {
-                this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+                // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.categoryService
                     .getCategoryList(this.status, this.selectedAutoValue?.category_name_ko, this.startDate, this.endDate, this.sortBy, this.sortOrder)

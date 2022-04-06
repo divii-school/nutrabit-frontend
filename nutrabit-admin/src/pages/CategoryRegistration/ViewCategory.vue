@@ -3,64 +3,93 @@
     <div class="p-grid">
         <!-- <div class="p-col-12 p-pb-0">
             <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+        </div>-->
         <div class="p-col-12">
             <div class="card p-fluid">
-                <h4><strong>{{$t('Category.details.header')}}</strong></h4>
+                <h4>
+                    <strong>{{ $t('Category.details.header') }}</strong>
+                </h4>
 
                 <div class="p-field p-grid">
-					<label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Category.list.title') }}:</label>
-					<div class="p-col-12 p-md-10">
-						<p >{{ mydata.fst_category_name_ko }}</p>
-					</div> 
-				</div>
+                    <label
+                        for="fst_category_name_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Category.list.title') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.fst_category_name_ko }}</p>
+                    </div>
+                </div>
 
                 <div class="p-field p-grid">
-					<label for="fst_category_name_en" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Category.list.url') }}:</label>
-					<div class="p-col-12 p-md-10">
-						<p >{{ mydata.fst_category_name_en }}</p>
-					</div> 
-				</div>
+                    <label
+                        for="fst_category_name_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Category.list.url') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.fst_category_name_en }}</p>
+                    </div>
+                </div>
 
                 <div class="p-field p-grid">
-					<label for="scnd_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Category.list.status') }}:</label>
-					<div class="p-col-12 p-md-10">
-						<p >{{ mydata.scnd_category_name_ko }}</p>
-					</div> 
-				</div>
+                    <label
+                        for="scnd_category_name_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Category.list.status') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.scnd_category_name_ko }}</p>
+                    </div>
+                </div>
 
                 <div class="p-field p-grid">
-					<label for="scnd_category_name_en" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Category.list.created_dt') }}:</label>
-					<div class="p-col-12 p-md-10">
-						<p >{{ mydata.scnd_category_name_en }}</p>
-					</div> 
-				</div>
+                    <label
+                        for="scnd_category_name_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Category.list.created_dt') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.scnd_category_name_en }}</p>
+                    </div>
+                </div>
 
                 <div class="p-field p-grid">
-					<label for="categoryimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Category.list.deskcategory') }}:</label>
-					<div class="p-col-12 p-md-10">
-						
-                         <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image" :alt="mydata.category_image" class="product-image" />
-					</div> 
-				</div>
-               
-                 
-                
-                    <!-- <div class="p-field p-col p-md-4">
+                    <label
+                        for="categoryimage"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Category.list.deskcategory') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <img
+                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image"
+                            :alt="mydata.category_image"
+                            class="product-image"
+                        />
+                    </div>
+                </div>
+
+                <!-- <div class="p-field p-col p-md-4">
                         <strong><label for="state">{{$t('Category.list.mobbanner')}} :</label></strong>
                         <div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.mobile_banner" :alt="mydata.mobile_banner" class="product-image" />
                         </div>
-                    </div> -->
-                
+                </div>-->
+
                 <div class="p-d-flex p-jc-end" style="float:left;">
-                     <router-link :to="'/edit-category/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{$t('button.edit')}}</Button></router-link
-                    >
+                    <router-link :to="'/edit-category/' + $route.params.id">
+                        <Button
+                            label="help"
+                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
+                        >
+                            <i class="pi pi-user-edit p-mr-2"></i>
+                            {{ $t('button.edit') }}
+                        </Button>
+                    </router-link>
                 </div>
                 <div class="p-d-flex p-jc-end">
-                   
-                   <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    <Button
+                        :label="$t('button.back')"
+                        icon="pi pi-replay"
+                        iconPos="left"
+                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
+                        @click="$router.go(-1)"
+                    ></Button>
                 </div>
             </div>
         </div>
@@ -86,16 +115,16 @@ export default {
                 // desktop_banner: '',
                 // mobile_banner: '',
                 fst_category_name_ko: '',
-                fst_category_name_en:'',
-                scnd_category_name_ko:'',
-                scnd_category_name_en:'',
+                fst_category_name_en: '',
+                scnd_category_name_ko: '',
+                scnd_category_name_en: '',
                 category_image: '',
                 // type:''
             },
         };
     },
-     created() {
-         this.categoryService = new CategoryService();
+    created() {
+        this.categoryService = new CategoryService();
     },
     methods: {
         del(id) {
@@ -144,9 +173,9 @@ export default {
     width: auto;
 }
 
-.p-button{
+.p-button {
     background: #000000;
     border: 1px solid #0a0a0a;
-        color: white;
+    color: white;
 }
 </style>
