@@ -223,6 +223,7 @@ const routes = [
         name: 'notice',
         path: '/notice',
         component: Notice,
+        beforeEnter: guard,
 
     },
     {

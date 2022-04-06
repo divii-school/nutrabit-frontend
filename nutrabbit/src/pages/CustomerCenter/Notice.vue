@@ -22,7 +22,6 @@
             </li>
             </ul>
         </div>
-         
          <Pagination />
       </div>
     </div>
@@ -85,6 +84,9 @@ export default {
         }
       ]
     }
+  },
+  mathods:{
+    
   }
 };
 </script>

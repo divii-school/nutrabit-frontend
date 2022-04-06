@@ -71,22 +71,23 @@
               <i class="icon-search-black"></i>
             </router-link>
           </div>
-          <div
-            class="after-login-dropdown flex items-center"
-            v-if="this.logedInUserDetails"
-          >
-            <div class="dropdown">
-              <button class="dropbtn">
-                <i class="login-icon"></i>
-                {{ userDetails.name }}
-              </button>
-              <div class="dropdown-content">
-                <router-link to>Change of personal information</router-link>
-                <router-link to @click="logOut()">Log out</router-link>
+          <template v-if="this.logedInUserDetails">
+            <div class="after-login-dropdown flex items-center">
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <i class="login-icon"></i>
+                  {{ userDetails.name }}
+                </button>
+                <div class="dropdown-content">
+                  <router-link to>Change of personal information</router-link>
+                  <router-link to @click="logOut()">Log out</router-link>
+                </div>
               </div>
             </div>
-          </div>
-          <router-link to="/login" class="login-item" v-else>login</router-link>
+          </template>
+          <template v-else>
+            <router-link to="/login" class="login-item">login</router-link>
+          </template>
 
           <div class="header-dropdown">
             <vue-select
@@ -239,7 +240,7 @@ export default {
           subItemData: [
             {
               label: "Notice",
-              link: "/",
+              link: "/notice",
             },
             {
               label: "FAQ",
@@ -265,6 +266,7 @@ export default {
   mounted() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.get;
     } else {
       this.logedInUserDetails = false;
     }
@@ -311,9 +313,7 @@ export default {
     getUserInfo() {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
-          console.log("userDetails res", res.data.data[0]);
           this.userDetails = res.data.data[0];
-          console.log(res.data.data[0].name);
         });
       }
     },
