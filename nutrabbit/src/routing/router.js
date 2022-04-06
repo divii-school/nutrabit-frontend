@@ -52,8 +52,10 @@ function guard(to, from, next) {
         next();
     } else {
         next({ name: 'Login' });
-        alert('Please login to access');
         // this.$swal("Please login to access");
+        console.log('hhhh')
+        alert('Please login to access');
+        
     }
 }
 

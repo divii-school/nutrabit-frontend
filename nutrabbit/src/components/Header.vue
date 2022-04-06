@@ -201,7 +201,7 @@ export default {
           subItemData: [
             {
               label: "About Us",
-              link: "/",
+              link: "/about-us",
             },
             {
               label: "my choice",
@@ -293,7 +293,7 @@ export default {
       if (this.logedInUserDetails) {
         this.$router.push(link);
         this.active = false;
-      } else if (link == "/login" || link == "/faq") {
+      } else if (link == "/about-us" || link == "/faq") {
         this.$router.push(link);
         this.active = false;
       } else {
