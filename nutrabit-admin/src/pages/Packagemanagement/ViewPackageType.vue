@@ -7,39 +7,59 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>{{$t('PackageType.view.header')}}</strong></h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong> <label for="nameuser">{{ $t('PackageType.view.packagename(ko)') }}:</label></strong>
-                        <p style="float:right;">{{name_ko }}</p>
+                 <div class="p-field p-grid">
+                    <label
+                        for="name_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PackageType.view.packagename(ko)') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{name_ko }}</p>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong><label for="emailuser">{{ $t('PackageType.view.packagename(en)') }}:</label></strong>
-                        <p style="float:right;">{{name_en }}</p>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="name_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PackageType.view.packagename(en)') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{name_en }}</p>
                     </div>
                 </div>
-               <div class="p-grid p-formgrid p-mb-3 browse">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="subtitle2" style="font-weight:bold;">
-                                {{ $t('PackageType.view.image') }}
-                            </label>
-                                <div class="text-red" v-show="render1" >{{$t('validation.invalidFile')}}</div>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="image"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PackageType.view.image') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                       <div class="text-red" v-show="render1" >{{$t('validation.invalidFile')}}</div>
                                 <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + image" :alt="image" class="product-image" />
-                        </div>
-                 </div>
-                    <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong><label for="state">{{ $t('PackageType.view.description(ko)') }}:</label></strong>
-                        <p style="float:right;">{{description_ko }}</p>
                     </div>
+                </div>
+               
+                
+               <div class="p-field p-grid">
+                    <label
+                        for="description_ko"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PackageType.view.description(ko)') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{description_ko }}</p>
                     </div>
-                    <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong><label for="state">{{ $t('PackageType.view.description(en)') }}:</label></strong>
-                        <p style="float:right;">{{description_en }}</p>
+                </div>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="description_en"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('PackageType.view.description(en)') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{description_en }}</p>
                     </div>
-                    </div>
+                </div>
+                    
+                    
                 <div class="p-d-flex p-jc-end" style="float:left;">
                     <!-- <router-link to="/view-user"
                         ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2" disabled><i class="pi pi-eye p-mr-2"></i>point</Button>
@@ -179,7 +199,7 @@ export default {
     padding: 5px;
     width: 150px;
     height: 100px;
-    float: right;
+    
 }
 .custom-select {
     position: relative;
