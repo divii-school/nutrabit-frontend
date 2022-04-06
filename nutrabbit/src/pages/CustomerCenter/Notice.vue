@@ -11,15 +11,15 @@
         </div>
         <div class="notice-list bBtm-0">
           <ul>
-            <!-- <li v-for="(item, index) of NoticeList" :key="index">
-            <div class="item-left">-->
-            <!-- <span v-if="item.tag">{{ item.tag }}</span> -->
-            <!-- <p>{{ item.title_ko }}</p>
+            <li v-for="(item, index) of NoticeList" :key="index">
+              <div class="item-left">
+                <span v-if="item.top10 == 1">Important</span>
+                <p>{{ item.title_ko }}</p>
               </div>
-            <div class="item-right">-->
-            <!-- <p>{{ item.date }}</p> -->
-            <!-- </div>
-            </li>-->
+              <div class="item-right">
+                <p>{{ dateformat(item.createdDate) }}</p>
+              </div>
+            </li>
           </ul>
         </div>
         <Pagination />
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+import moment from 'moment';
 import Pagination from "../../components/Pagination.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
@@ -44,19 +45,25 @@ export default {
     this.CustomerCenterService = new CustomerCenterService();
   },
   mounted() {
-    this.allNoticeList()
+    this.allNoticeList();
+    this.dateformat();
   },
   methods: {
     allNoticeList() {
       this.CustomerCenterService.getNoticeList().then((res) => {
         if (res.status == 200) {
-          console.log(res.data);
-          // this.NoticeList = res.data;
-          // console.log(this.NoticeList);
+          console.log(res.data.notice);
+          this.NoticeList = res.data.notice;
+          console.log(this.NoticeList);
         } else {
           console.log("ghj");
         }
       });
+    },
+    dateformat(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY/MM/DD");
+      }
     },
   },
 };
