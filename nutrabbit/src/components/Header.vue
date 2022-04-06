@@ -8,7 +8,7 @@
           </router-link>
           <ul class="flex">
             <li>
-              <router-link to='/my-choice'>my choice</router-link>
+              <router-link to="/my-choice">my choice</router-link>
             </li>
             <li>
               <router-link to>nutri 3.3 blending</router-link>
@@ -17,7 +17,10 @@
         </div>
         <div class="manuRight">
           <div class="search-wrap-outer">
-            <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : '' ">
+            <div
+              class="search-wrap"
+              :class="showMobSearch ? 'search-wrap-mob' : ''"
+            >
               <div class="input-group">
                 <input
                   type="text"
@@ -55,13 +58,16 @@
                   <router-link to @click="this.searchData = []">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="toCloseBtn"
-                    >to close</router-link
-                  >
+                  <router-link to @click="toCloseBtn">to close</router-link>
                 </div>
               </div>
             </div>
-            <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : '' " @click="showMobSearchF">
+            <router-link
+              to
+              class="mobile-search-icon"
+              :class="showMobSearch ? 'icon-show' : ''"
+              @click="showMobSearchF"
+            >
               <i class="icon-search-black"></i>
             </router-link>
           </div>
@@ -112,9 +118,12 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <router-link to v-if="token && index == 0"
-                >{{ userDetails.name }} <i class="icon-leftArw"></i
-              ></router-link>
+              <template v-if="token && index == 0">
+                <router-link to :class="token ? 'login-item' : ''"
+                  >{{ userDetails.name }}
+                </router-link>
+                <i class="icon-leftArw"></i>
+              </template>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">{{
                 item.mainItem
               }}</router-link>
@@ -262,11 +271,11 @@ export default {
     this.getUserInfo();
   },
   methods: {
-    showMobSearchF(){
+    showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
     },
-    toCloseBtn(){
+    toCloseBtn() {
       this.showMobSearch = false;
       this.activeSearch = false;
     },
@@ -284,12 +293,10 @@ export default {
       if (this.logedInUserDetails) {
         this.$router.push(link);
         this.active = false;
-      }
-      else if (link == "/login" || link == "/faq") {
+      } else if (link == "/login" || link == "/faq") {
         this.$router.push(link);
         this.active = false;
-      }
-      else {
+      } else {
         this.isModalVisible = true;
         this.active = false;
       }
@@ -306,7 +313,7 @@ export default {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
           console.log("userDetails res", res.data.data[0]);
           this.userDetails = res.data.data[0];
-          console.log(res.data.data[0].name)
+          console.log(res.data.data[0].name);
         });
       }
     },

@@ -495,6 +495,9 @@ header {
             @media screen and (max-width: 768px) {
               width: 100%;
               margin: 0;
+              // a{
+              //   width: 150px;
+              // }
             }
 
             a {
@@ -502,12 +505,14 @@ header {
               font-size: 32px;
               line-height: 38px;
               color: $black-18;
-              display: flex;
-              align-items: flex-start;
               pointer-events: auto;
               padding-bottom: 10px;
               border-bottom: 3px solid transparent;
-
+              &.login-item{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
               .icon-leftArw {
                 margin: 8px 0 0 10px;
 
