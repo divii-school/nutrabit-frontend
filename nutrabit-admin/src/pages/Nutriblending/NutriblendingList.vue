@@ -9,12 +9,12 @@
                 <div class="p-formgrid p-grid p-mb-3">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="nameuser">{{ $t('Blending.search.blending') }}</label>
-                        <InputText id="nameuser" type="text" :placeholder="$t('Blending.search.blending')" v-model="name" />
+                        <InputText id="nameuser" type="text" :placeholder="$t('Blending.search.blending')" v-model="name" @keyup="resetdata" />
                     </div>
 
                      <div class="p-field p-col-12 p-md-3">
                         <label for="nameuser">{{ $t('Blending.search.category') }}</label>
-                         <select
+                         <!-- <select
                                 class="p-dropdown-label p-inputtext"
                                 name="category_id"
                                 id="category_id"
@@ -27,7 +27,9 @@
                                     v-bind:key="index"
                                     :value="item.id"
                                 >{{ item.category_name_ko }}</option>
-                            </select>
+                            </select> -->
+                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"   optionLabel="category_name_ko" :placeholder="$t('Blending.search.category')"  name="sub_category_id"
+                            id="sub_category_id" />
                     </div>
                 </div>
                 
@@ -202,22 +204,24 @@ export default {
                 console.log(this.calendarValue1);
             }
         },
-        // resetUser() {
-        //     this.refercode = '';
-        //     this.calendarValue = '';
-        //     this.calendarValue1 = '';
-        //     this.blendingService.getBlendingList(this.refercode, this.calendarValue, this.calendarValue1).then((data) => {
-        //         this.customer1 = data;
-        //         this.loading1 = false;
-        //         this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-        //     });
-        // },
+       resetdata(){
+            if (this.name === ''){
+                this.blendingService
+                 .getBlendingList(this.name,this.category_id)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchNewtriBlending() {
             // console.log(this.name);
             // console.log(this.id);
             
-            if (this.name === '' ) {
-               this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            if (this.name === '' && this.category_id ) {
+            //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.blendingService
                     .getBlendingList(this.name,this.category_id)
