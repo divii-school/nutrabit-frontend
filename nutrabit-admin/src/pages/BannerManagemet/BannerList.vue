@@ -218,7 +218,7 @@ export default {
         },
         searchBannner() {
             if (this.searchData === '') {
-               this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.bannerService
                     .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
