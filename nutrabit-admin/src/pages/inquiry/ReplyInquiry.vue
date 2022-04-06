@@ -3,33 +3,60 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>1:1 문의</strong></h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong> <label for="nameuser">신청자명 / 업체명:</label></strong>
-                        <p style="float: right">{{ business_name }}</p>
+                 <div class="p-field p-grid">
+                     
+                    <label
+                        for="business_name"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >신청자명 / 업체명:</label>
+                    
+                    <div class="p-col-12 p-md-10" style="display:flex;justify-content: space-between;">
+                        <p>{{ business_name }}
+                            
+                        </p>
+
+                         <p >{{dateformat(createdDate)}}</p>
+                       
+                    </div>
+
+                </div>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="title"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >문의 제목:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ title }}</p>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong><label for="emailuser">문의 제목:</label></strong>
-                        <p style="float: right">{{ title }}</p>
+
+                  <div class="p-field p-grid">
+                    <label
+                        for="title"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >문의:</label>
+                    <div class="p-col-12 p-md-10">
+                        
+                        <p>{{ description }}</p>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong><label for="state">문의:</label></strong>
-                        <p style="float: right">{{ description }}</p>
-                    </div>
-                </div>
-                <div class="p-grid p-formgrid p-mb-3 browse">
-                    <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="subtitle2" style="font-weight: bold"> 첨부 파일: </label>
-                        <div v-for="(attachment, img) in attachment" :key="img">
-                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="title"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >첨부 파일:</label>
+                    <div class="p-col-12 p-md-10" v-for="(attachment, img) in attachment" :key="img">
+                        
+                       <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + attachment" :alt="attachment" class="product-image" />
-                        </div>
                     </div>
-                </div>    
+                </div>
+                
+                
+                
+                  
             </div>
         </div>
     </div>
@@ -53,6 +80,7 @@
 </template>
 <script>
 import InquiryService from '../../service/API/InquiryService';
+import moment from 'moment';
 export default {
     // name: 'Inquiry',
     data() {
@@ -82,6 +110,7 @@ export default {
             description: '',
             id: '',
             replyText: '',
+            createdDate:'',
             dropdownItems: [
                 { name: 'Member information related enquries', code: 'Member information related enquries' },
                 { name: 'HJCBT mobile app error', code: 'HJCBT mobile app error' },
@@ -108,6 +137,11 @@ export default {
         this.inquiryService = new InquiryService();
     },
     methods: {
+         dateformat(value) {
+            if (value) {
+                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+            }
+        },
         replayans() {
             this.inquiryService.ReplyInquiry(this.$route.params.id, this.replyText).then((res) => {
                 console.warn(res);
@@ -121,6 +155,7 @@ export default {
         this.inquiryService.viewInquiry(this.$route.params.id).then((res) => {
             //this.type = res.data.data[0].inqueryTypeTitle;
             this.description = res.data.data[0].description;
+            this.createdDate = res.data.data[0].createdDate;
             this.status = res.data.data[0].status;
             this.business_name = res.data.data[0].business_name;
             this.title = res.data.data[0].title;
@@ -164,6 +199,6 @@ export default {
     padding: 5px;
     width: 150px;
     height: 100px;
-    float: right;
+
 }
 </style>
