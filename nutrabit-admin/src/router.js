@@ -1207,6 +1207,48 @@ const routes = [
         },
     },
 
+     // Nutri Management start
+     {
+        path: '/nutri-management', 
+        name: 'NutriManagement',
+        exact: true,
+        component: () => import('./pages/NutriManagement/NutriManagementList.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'NutriManagement' }],
+        },
+    },
+    {
+        path: '/addnutri-management', 
+        name: 'AddNutriManagement',
+        exact: true,
+        component: () => import('./pages/NutriManagement/AddNutriManagement.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'AddNutriManagement' }],
+        },
+    },
+    {
+        path: '/viewnutri-management/:id', 
+        name: 'ViewNutriManagement',
+        exact: true,
+        component: () => import('./pages/NutriManagement/ViewNutriManagement.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ViewNutriManagement' }],
+        },
+    },
+    {
+        path: '/editnutri-management/:id', 
+        name: 'EditNutriManagement',
+        exact: true,
+        component: () => import('./pages/NutriManagement/EditNutriManagement.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'EditNutriManagement' }],
+        },
+    },
+
     
 ];
 
