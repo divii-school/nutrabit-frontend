@@ -9,91 +9,107 @@
                 <h4>
                     <strong>{{ $t('Application.details.header') }}</strong>
                 </h4>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('Application.details.name') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.name }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="id">{{ $t('Application.details.id') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 16%">{{ mydata.ID }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="password">{{ $t('Application.details.password') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">******</p>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="name"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.name') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.name }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="email">{{ $t('Application.details.email') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 14%">{{ mydata.email }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="ID"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.id') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.ID }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="mobile">{{ $t('Application.details.mobile') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.mobile }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="password"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.password') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>******</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="address">{{ $t('Application.details.address') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.address }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="email"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.email') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.email }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="date">{{ $t('Application.details.datetime') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">{{ dateformat(mydata.createdDate) }}</p>
+                 <div class="p-field p-grid">
+                    <label
+                        for="mobile"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.mobile') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.mobile }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="application">{{ $t('Application.details.application') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.Application_mode }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="address"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.address') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.address }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-9">
-                        <strong>
-                            <label for="client">{{ $t('Application.details.client') }} :</label>
-                        </strong>
-                        <p style="float: right; margin-left: 25%">{{ mydata.additional_request }}</p>
+                <div class="p-field p-grid">
+                    <label
+                        for="date"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.datetime') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ dateformat(mydata.createdDate) }}</p>
+                    </div>
+                </div>
+                
+               
+                
+                 <div class="p-field p-grid">
+                    <label
+                        for="Application_mode"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.application') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.Application_mode }}</p>
                     </div>
                 </div>
 
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-4">
-                        <strong>
-                            <label for="applicationlist">{{ $t('Application.details.applicationlist') }} :</label>
-                        </strong>
-                        <table id="firstTable">
+                <div class="p-field p-grid">
+                    <label
+                        for="additional_request"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.client') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.additional_request }}</p>
+                    </div>
+                </div>
+
+
+                <div class="p-field p-grid">
+                    <label
+                        for="additional_request"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.applicationlist') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                         <table id="firstTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -101,22 +117,26 @@
                                     <th>설명</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!-- <tr v-for="(value, index) in mydata.options" :key="value">
-                                    <td>{{ index + 1 }}</td>
-                                    <td>{{ getoptiondetailsname(value.split(':')[0], value.split(':')[1]) }}</td>
-                                    <td>{{ getoptiondetailsValue(value.split(':')[0], value.split(':')[1]) }}</td> 
-                                </tr> -->
-
-                                <tr v-for="(item, index) in items" :key="index">
+                             <tbody>
+                                 <tr v-for="(item, index) in items" :key="index">
                                     <td>{{ index + 1 }}</td>
                                     <td>{{ item.category }}</td>
                                     <td>{{ item.explanation }}</td>
                                 </tr>
                             </tbody>
-                        </table>
+                            </table>
                     </div>
                 </div>
+
+               
+
+               
+
+            
+
+              
+
+               
                 <!-- <div class="p-field p-col p-md-3">
                         <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
                         <p>{{ mydata.type }}</p>
@@ -325,7 +345,7 @@ table {
     width: 750px;
     border-collapse: collapse;
     border: 1px solid #cfcfcf;
-    margin: 10px 10px 0 252px;
+    /* margin: 10px 10px 0 252px; */
 }
 
 table th {

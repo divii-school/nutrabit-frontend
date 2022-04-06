@@ -351,7 +351,7 @@ export default {
         },
         searchApplicationmanagement() {
             if (this.name === '' ) {
-                this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+                // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.applicationmanagementService
                     .getApplicationmanagemenList(this.name, this.status_by_admin, this.startDate, this.goods, this.service)
