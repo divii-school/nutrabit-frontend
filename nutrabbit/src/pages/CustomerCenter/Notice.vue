@@ -12,14 +12,14 @@
         <div class="notice-list bBtm-0">
           <ul>
             <!-- <li v-for="(item, index) of NoticeList" :key="index">
-              <div class="item-left"> -->
-                <!-- <span v-if="item.tag">{{ item.tag }}</span> -->
-                <!-- <p>{{ item.title_ko }}</p>
+            <div class="item-left">-->
+            <!-- <span v-if="item.tag">{{ item.tag }}</span> -->
+            <!-- <p>{{ item.title_ko }}</p>
               </div>
-              <div class="item-right"> -->
-                <!-- <p>{{ item.date }}</p> -->
-              <!-- </div>
-            </li> -->
+            <div class="item-right">-->
+            <!-- <p>{{ item.date }}</p> -->
+            <!-- </div>
+            </li>-->
           </ul>
         </div>
         <Pagination />
@@ -46,7 +46,7 @@ export default {
   mounted() {
     this.allNoticeList()
   },
-  mathods: {
+  methods: {
     allNoticeList() {
       this.CustomerCenterService.getNoticeList().then((res) => {
         if (res.status == 200) {
