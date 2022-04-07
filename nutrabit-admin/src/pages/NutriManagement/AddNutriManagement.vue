@@ -42,7 +42,7 @@
                             {{item.material_name_ko}}
                             </option>
                             </select> -->
-                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="raw_material_id" name="raw_material_id" optionLabel="material_name_ko" :filter="false"></MultiSelect>
+                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
 
                             <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                             <!-- <Button
@@ -225,7 +225,8 @@ export default {
             fileExtension: '',
             filesExtension: '',
             fileExtensions: '',
-
+            select_items:[],
+            selectedItems:[],
             Multiselect: '',
             filesExtensions: '',
 
@@ -333,6 +334,15 @@ export default {
         //     //console.log(demo.)
 
         // },
+        selects(){
+           let items = [];
+            let data = this.select_items;
+            for (var a = 0; a < data.length; a++) {
+                items.push(data[a].id);
+            }
+            this.selectedItems=items.toString();
+            console.log(this.selectedItems);
+        },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
@@ -441,7 +451,7 @@ export default {
             //console.log(this.raw_material_id)
             let vcheckData = {
                 category_id: this.category_id,
-                raw_material_id: this.raw_material_id,
+                raw_material_id: this.selectedItems,
                 package_id: this.package_id,
                 pill_id: this.pill_id,
                 name_ko: this.name_ko,
@@ -467,7 +477,7 @@ export default {
             } else {
                 // console.log(this.file);
                 this.formData.append('category_id', this.category_id);
-                this.formData.append('raw_material_id', this.raw_material_id);
+                this.formData.append('raw_material_id', this.selectedItems);
                 this.formData.append('pill_id', this.pill_id);
                 this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);

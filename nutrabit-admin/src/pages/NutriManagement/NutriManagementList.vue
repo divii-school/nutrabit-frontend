@@ -289,7 +289,6 @@ export default {
         searchNutri() {
             // console.log(this.name);
             // console.log(this.id);
-            
             if (this.name === '' && this.tags_ko === '' ) {
             //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {

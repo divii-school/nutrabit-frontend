@@ -53,12 +53,16 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
                         <!-- <label for="type">ID</label> -->
-                        <select class="p-dropdown-label p-inputtext" name="raw_material_id" id="raw_material_id" v-model="raw_material_id">
+                        <!-- <select class="p-dropdown-label p-inputtext" name="raw_material_id" id="raw_material_id" v-model="raw_material_id">
                             <option value="">Select</option>
                             <option v-for="(item, index) in mainRawDropdownValues" v-bind:key="index" :value="item.id">
                                 {{ item.material_name_ko }}
                             </option>
-                        </select>
+                        </select> -->
+
+                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects">
+
+                        </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                 </div>
@@ -248,7 +252,8 @@ export default {
             fileExtensions: '',
             filesExtensions: '',
             filesimilar:'',
-
+             select_items:[],
+            selectedItems:[],
             name_ko: '',
             name_en: '',
             description_ko: '',
@@ -320,7 +325,7 @@ export default {
         });
         this.nutriManagementService.ViewNurtiManagementList(this.$route.params.id).then((res) => {
             this.category_id = res.data.data[0].category_id;
-            this.raw_material_id = res.data.data[0].raw_material_id;
+            this.raw_material_id = res.data.data[0].selectedItems;
             this.pill_id = res.data.data[0].pill_id;
             this.package_id = res.data.data[0].package_id;
 
@@ -342,6 +347,15 @@ export default {
     methods: {
         reinitialize() {
             (this.name_ko = null), (this.name_en = null),(this.description_ko = null),(this.description_en = null),(this.tags_ko = null),(this.tags_en = null),(this.thumbnail = null),(this.product_sub_image = null),(this.detail_image = null),(this.status = null), (this.dropdownValue = null),(this.file = {});
+        },
+         selects(){
+           let items = [];
+            let data = this.select_items;
+            for (var a = 0; a < data.length; a++) {
+                items.push(data[a].id);
+            }
+            this.selectedItems=items.toString();
+            console.log(this.selectedItems);
         },
        onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -450,7 +464,7 @@ export default {
         editNutri() {
             let vcheckData = {
                 category_id:this.category_id,
-                raw_material_id:this.raw_material_id,
+                raw_material_id:this.selectedItems,
                 pill_id:this.pill_id,
                 package_id:this.package_id,
                 name_ko: this.name_ko,
@@ -473,7 +487,7 @@ export default {
             } else {
                 this.formData.append('id', this.$route.params.id);
                 this.formData.append('category_id', this.category_id);
-                 this.formData.append('raw_material_id', this.raw_material_id);
+                 this.formData.append('raw_material_id', this.selectedItems);
                   this.formData.append('pill_id', this.pill_id);
                    this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);

@@ -3,18 +3,18 @@ import validator from 'validator';
 const validateEditNutri = (data) => {
   let errors = {}
   
-  const { material_name_ko, material_name_en} = data;
+  const { name_ko, name_en} = data;
   // if(validator.isEmpty(category_id)) {
   //   errors.category_id =  "Please don't keep it blank";
   // }
   // if(validator.isEmpty(sub_category_id)) {
   //   errors.sub_category_id =  "Please don't keep it blank";
   // }
-  if(validator.isEmpty(material_name_ko)) {
-    errors.material_name_ko =  "Please don't keep it blank";
+  if(validator.isEmpty(name_ko)) {
+    errors.name_ko =  "Please don't keep it blank";
   }
-  if(validator.isEmpty(material_name_en)) {
-    errors.material_name_en =  "Please don't keep it blank";
+  if(validator.isEmpty(name_en)) {
+    errors.name_en =  "Please don't keep it blank";
   }
   // if(validator.isEmpty(standard_ko)) {
   //   errors.standard_ko =  "Please don't keep it blank";
