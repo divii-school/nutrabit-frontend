@@ -1,91 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <div class="p-col-12" v-show="detailsclient">
-            <div class="card p-fluid">
-                <h4>
-                    <strong>{{ $t('dfc_user.details_header') }}</strong>
-                </h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.ReferralCode') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.referralCode }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.Depositproductname') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositProductName == null ? '-empty-' : clientdata.depositProductName }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.CoinType') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinType }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.CoinAmount') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinAmount }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.StartDate') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.startDate }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.EndDate') }}:</label>
-                        </strong>
-                        <p>{{ clientdata.endDate }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.TotalDepositedInterest') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalPayableDepositInterest }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label
-                                for="emailuser"
-                            >{{ $t('dfc_user.list.Totaladditionalinterestpaid') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalAdditionalInterestPaid }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.DepositWon') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositWon }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.Status') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.status }}</p>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
-                    <Button
-                        @click="backList()"
-                        :label="$t('button.back')"
-                        icon="pi pi-angle-left"
-                        class="p-button-primary p-mr-2 p-mb-2"
-                    />
-                </div>
-            </div>
-        </div>
+        
         <!-- <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -133,12 +49,12 @@
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column header="번호" style="min-width: 12rem">
-                                <template #body="{ index }">
+                                <template #body="{ data }">
                                     <span class="p-column-title">번호</span>
                                     <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
                                 {{ data.id }}
                                     </span>-->
-                                    {{ index + 1 }}
+                                    {{ data.sl_no }}
                                 </template>
                             </Column>
 
@@ -255,6 +171,7 @@ export default {
             refercode: '',
             error: {},
             clientdata: '',
+            sl_no:'',
             status: '',
             id: '',
             email: '',
