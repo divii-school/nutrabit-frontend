@@ -1,17 +1,21 @@
 <template>
-  <div id="app-container" :class="theme">
+  <div id="app-container">
+    <!-- header -->
     <Header />
+    <!--ENd header -->
     <router-view :key="$route.path" v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
+    <!-- Footer -->
     <Footer />
+    <!-- Footer -->
   </div>
 </template>
 
 <script>
-import {provide} from 'vue';
+import { provide } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import common from "./store/common";

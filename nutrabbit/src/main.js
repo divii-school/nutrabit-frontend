@@ -18,6 +18,7 @@ import VueNextSelect from 'vue-next-select';
 import "vue-next-select/dist/index.css";
 import './config/axios-interceptor';
 import "../src/assets/js/postcode.v2.js";
+import Pagination from 'v-pagination-3';
 
 // cookie
 import { globalCookiesConfig } from "vue3-cookies";
@@ -67,6 +68,7 @@ app.use(VueLoading);
 app.use(VueSweetalert2);
 app.use(VueAxios, axios);
 app.use(i18n);
-app.use(router).mount("#app")
-app.component('vue-select', VueNextSelect)
+app.use(router).mount("#app");
+app.component('vue-select', VueNextSelect);
+app.component('pagination', Pagination);
 

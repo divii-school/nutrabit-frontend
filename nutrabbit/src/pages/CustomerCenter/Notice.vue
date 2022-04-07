@@ -9,82 +9,79 @@
           <p class="title">title</p>
           <p class="date">Published date</p>
         </div>
-        <div class="notice-list">
+        <div class="notice-list bBtm-0">
           <ul>
-            <li v-for="(item, index) in NoticeList" :key="index">
-              <div class="item-left">
-                <span v-if="item.tag">{{item.tag}}</span>
-                <p>{{item.title}}</p>
+            <li v-for="(item, index) of UpdatedNoticeList" :key="index">
+              <div
+                class="item-left"
+                @click="this.$router.push(`/notice-detail-page/${item.id}`)"
+              >
+                <span v-if="item.top10 == 1">Important</span>
+                <p>{{ item.title_ko }}</p>
               </div>
               <div class="item-right">
-                <p>{{item.date}}</p>
+                <p>{{ dateformat(item.createdDate) }}</p>
               </div>
             </li>
-            </ul>
+          </ul>
         </div>
-         
-         <Pagination />
+        <pagination
+          v-model="page"
+          :records="5"
+          :per-page="1"
+          @paginate="myCallback"
+        />
+        <!-- <Pagination /> -->
       </div>
     </div>
   </div>
 </template>
 <script>
-import Pagination from "../../components/Pagination.vue";
+import moment from 'moment';
+import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "Notice",
-  components: {
-    Pagination,
+  // components: {
+  //   Pagination,
+  // },
+  data() {
+    return {
+      NoticeList: [],
+      UpdatedNoticeList: [],
+      page: 1,
+      perPage: 10,
+    };
   },
-   data(){
-    return{
-      NoticeList:[
-        {
-          tag:"important",
-          title:"This is the announcement title. This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          tag:"important",
-          title:"This is the announcement title. This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          tag:"important",
-          title:"This is the announcement title. This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          tag:"important",
-          title:"This is the announcement title. This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          tag:"important",
-          title:"This is the announcement title. This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
-          date:"2022.01.10"
-        },
-        {
-          title:"This is the announcement title. This is the announcement title.This is the announcement title.This is the announcement title.",
-          date:"2022.01.10"
+  created() {
+    this.CustomerCenterService = new CustomerCenterService();
+  },
+  mounted() {
+    this.allNoticeList();
+    this.dateformat();
+  },
+  methods: {
+    myCallback(ClickPage){
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
+    },
+    allNoticeList() {
+      this.CustomerCenterService.getNoticeList().then((res) => {
+        if (res.status == 200) {
+          this.NoticeList = res.data.data.notice;
+          this.myCallback(1);
         }
-      ]
-    }
-  }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    },
+    dateformat(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY.MM.DD");
+      }
+    },
+  },
 };
 </script>

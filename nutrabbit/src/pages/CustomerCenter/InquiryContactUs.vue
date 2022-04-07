@@ -1,9 +1,9 @@
 <template>
     <div class="main-body">
     <div class="signUp-container">
-      <div class="login-signup-wrap membership-wrap personal-info">
+      <div class="login-signup-wrap membership-wrap personal-info inquery">
           <h1 class="inquiry-heading">1.1 Inquiry</h1>
-        <div class="login-signup-inner ">
+        <div class="login-signup-inner">
           <form action="" class="signUp-form">
            <div class="individuals-form">
                <div class="form-group">
@@ -25,13 +25,22 @@
             <div class="form-group">
               <label for="">file upload</label>
               <div class="input-group">
-                <div class="input-inner">
+                <!-- <div class="input-inner">
                   <input
-                    class="form-control"
-                    type="text"
+                    class="form-control custom-file-input"
+                    type="file"
                    placeholder="file upload"
                   />
+                </div> -->
+
+                <div class="file-input">
+                  <input type="file" id="file" class="file">
+                  <label for="file">
+                    Select file <img src="../../assets/icons/upload.png">
+                    <p class="file-name"></p>
+                  </label>
                 </div>
+
               </div>
             </div>
            </div>
@@ -49,6 +58,16 @@
 
 export default {
   name: "InquiryContactUs",
+  methods() {
+    // upload file
+    const file = document.querySelector('#file');
+    file.addEventListener('change', (e) => {
+      const [file] = e.target.files;
+      const { name: fileName, size } = file;
+      const fileSize = (size / 1000).toFixed(2);
+      const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+      document.querySelector('.file-name').textContent = fileNameAndSize;
+    });
+  }
 };
 </script>
-

@@ -7,8 +7,15 @@
       }
       .my-notice-heading {
         @include flex-align-center;
-        padding-bottom: 20px;
+        padding-bottom: 40px;
         border-bottom: 1px solid $grey-CF;
+        &.noFlex{
+          justify-content: space-between !important;
+          button{
+            width: auto !important;
+            display: inline-block !important;
+          }
+        }
         h2 {
           font-weight: bold;
           font-size: 30px;
@@ -27,6 +34,9 @@
         font-size: 18px;
         line-height: 18px;
         color: $grey-A4;
+        @media screen and (max-width: 640px){
+          font-size: 14px;
+        }
         .title {
           margin-left: 9px;
         }
@@ -35,11 +45,21 @@
         }
       }
       .notice-list {
+        &.noBorder{
+          li{
+            border-bottom: 0 !important
+          }
+        }
         ul {
+          width: 100%;
           li {
             @include flex-justify-between;
             border-bottom: 1px solid $grey-CF;
             padding: 15px 20px;
+            cursor: pointer;
+            @media screen and (max-width: 640px){
+              padding: 15px 0px;
+            }
             .item-left {
               @include flex-align-center;
               span {
@@ -49,7 +69,7 @@
                 text-align: center;
                 color: $green-68;
                 border: 1px solid $green-68;
-                border-radius: 9px;
+                border-radius: 15px;
                 padding: 5px 15px;
                 margin-right: 10px;
               }
@@ -57,6 +77,13 @@
                 font-size: 18px;
                 line-height: 22px;
                 color: $black-33;
+                @media screen and (max-width: 640px){
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  max-width: 100px;
+                  font-size: 14px;
+                }
               }
               
             }
@@ -65,6 +92,9 @@
               font-size: 17px;
               line-height: 20px;
               color: $grey-A4;
+              @media screen and (max-width: 640px) {
+                font-size: 14px;
+              }
             }
           }
         }
@@ -75,13 +105,16 @@
       }
       .details {
         // margin-top:35px;
-        border-bottom: 1px solid $grey-CF;
+        // border-bottom: 1px solid $grey-CF;
         p {
           font-weight: 400;
           font-size: 16px;
           line-height: 19px;
           color: $black-33;
-          margin:35px;
+          margin:20px 0;
+          @media screen and (max-width: 640px){
+            margin: 20px 0;
+          }
         }
       }
       .btn{
@@ -91,23 +124,133 @@
       .faq-heading{
         @include flex-align-center;
         border-bottom: 1px solid $grey-CF;
-        padding: 20px 40px;
+        padding: 20px 40px 20px 30px;
         font-size: 18px;
         line-height: 18px;
         color: $grey-A4;
+        @media screen and (max-width: 640px){
+          padding: 20px 0;
+        }
+        &.inquiry{
+          @media screen and (max-width: 640px) {
+            display: none;
+          }
+          .category{
+            width: 135px;
+          }
+          .status{
+            width: 100px;
+            text-align: center;
+          }
+        }
         .title{
           padding-left: 37px;
         }
       }
       .notice-list{
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        width: 100%;
+        padding: 18px 0;
+        border-bottom: 1px solid $grey-E0;
         .item-left{
-            .para-category{
-              font-size: 17px;
-              line-height: 20px;
-              color:$grey-66;
-              
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          &.lp-2{
+            padding-left: 15px;
+            @media screen and (max-width: 640px){
+              padding-left: 0;
             }
-          
+          }
+          @media screen and (max-width: 640px){
+            flex-direction: column;
+            width: 100%;
+          }
+          .item-left-inner{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            @media screen and (max-width: 640px){
+              width: 100%;
+            }
+          }
+          .item-right-inner{
+            @media screen and (max-width: 640px){
+              width: 100%;
+              text-align: justify;
+              padding-right: 15px;
+              margin-top: 10px;
+            }
+          }
+          span {
+            @include flex-justify-center;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
+            color: $green-68;
+            border: 1px solid $green-68;
+            border-radius: 15px;
+            padding: 5px 15px;
+            margin-right: 10px;
+            &.mr-2{
+              margin-right: 35px;
+            }
+            &.grey{
+              color: $grey-A4;
+              border: 1px solid $grey-A4;
+            }
+          }
+          p {
+            font-size: 18px;
+            line-height: 22px;
+            color: $black-33;
+            @media screen and (max-width: 640px){
+              font-size: 14px;
+            }
+          }
+          .para-category{
+            font-size: 17px;
+            line-height: 20px;
+            color:$grey-66;
+            min-width: 145px;
+            text-align: center;
+            @media screen and (max-width: 640px){
+              text-align: justify;
+              min-width: auto;
+              margin-right: 10px;
+            }
+          }
+      }
+      }
+      .accroCont{
+        padding: 35px 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        @media screen and (max-width: 640px){
+          font-size: 14px;
+          padding: 15px 0 30px;
+          flex-direction: column;
+        }
+        h4{
+          width: 200px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #A4A4A4;
+          @media screen and (max-width: 640px){
+            margin-bottom: 10px;
+          }
+        }
+        p{
+          font-size: 16px;
+          line-height: 130%;
+          color: #333;
+          width: calc(100% - 200px);
+          @media screen and (max-width: 640px){
+            width: auto;
+          }
         }
       }
       .pagination-wrap{

@@ -55,7 +55,7 @@
             </div>
             <div class="product-list-wrap">
               <ul class="raw-material-list">
-                <li v-for="(item, index) in rwaMaterialData" :key="index">
+                <li v-for="(item, index) of blendingFormulationData" :key="index">
                   <ProductList :item="item"/>
                 </li>
               </ul>
@@ -77,6 +77,7 @@
 <script>
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
@@ -85,24 +86,44 @@ export default {
   },
   data() {
     return {
-      rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
-      ],
+      blendingFormulationData:[]
+      // rwaMaterialData: [
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "Bottle",
+      //     desc: [
+      //       "Choose from a variety of sizes and shapes of bottles and caps.",
+      //     ],
+      //   },
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "PTP",
+      //     desc: [
+      //       "It is hygienic and convenient.",
+      //       "The packaging volume is slightly larger.",
+      //     ],
+      //   },
+      // ],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.blendingFormulation();
+  },
+  methods: {
+    blendingFormulation() {
+      this.mychoiceService.getBlendingFormulation().then((res) => {
+        //  console.log(res);
+        if (res.status == 200) {
+          this.blendingFormulationData = res.data.pillData;
+          //  console.log(res.data.pillData);
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+  }
 };
 </script>

@@ -9,8 +9,11 @@
         :modules="modules"
         class="mySwiper"
       >
-        <swiper-slide v-for="(slider, index) in MainSlider" :key="index">
-          <img :src="slider.img" alt="" />
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <img
+            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + slider.desktop_banner_path"
+            alt
+          />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
       </swiper>
@@ -21,13 +24,20 @@
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
           <h2 class="nutri-choice-heading text-center">
-            Direct health functional food recipes<br />Opportunity to create!
+            Direct health functional food recipes
+            <br />Opportunity to create!
           </h2>
-          <p class="desc text-center">
-            Create your own recipe with just one combination of your choice!
-          </p>
-          <button class="btn-small-solid">Go to my choice</button>
+          <p
+            class="desc text-center"
+          >Create your own recipe with just one combination of your choice!</p>
+          <router-link to="/my-choice" v-if="token">
+            <button class="btn-small-solid">Go to my choice</button>
+          </router-link>
+          <router-link to="/" v-else @click="accessPage()">
+            <button class="btn-small-solid">Go to my choice</button>
+          </router-link>
         </div>
+            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
@@ -38,19 +48,19 @@
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">nutri 3.3 blending</p>
             <h2 class="nutri-choice-heading text-center">
-              service only for you<br />Easily seize the opportunity to launch
+              service only for you
+              <br />Easily seize the opportunity to launch
               your own product!
             </h2>
-            <p class="desc text-center">
-              We provide all services from A to Z of health functional food.
-            </p>
-            <button class="btn-small-solid green">
-              What is nutri 3.3 Blending?
-            </button>
+            <p
+              class="desc text-center"
+            >We provide all services from A to Z of health functional food.</p>
+            <button class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) in ProductData" :key="index">
+              <li v-for="(item, index) of ProductData" :key="index">
                 <MainProductCard :item="item" />
               </li>
             </ul>
@@ -89,87 +99,16 @@ export default {
   },
   data() {
     return {
-      MainSlider: [
-        {
-          img: "../../../src/assets/images/main-banner.png",
-          title: "Event Banner",
-        },
-        {
-          img: "../../../src/assets/images/main-banner.png",
-          title: "Event Banner",
-        },
-        {
-          img: "../../../src/assets/images/main-banner.png",
-          title: "Event Banner",
-        },
-      ],
-      ProductData: [
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Nutri ODM Product Title",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-        {
-          img: "../../../src/assets/images/dom-pimg.png",
-          title: "Event Banner",
-          tags: [
-            {
-              tag1: "nutri 3.3",
-              tag1: "nutri 3.3",
-            },
-          ],
-        },
-      ],
+      MainSlider: [],
+      ProductData: [],
+      token: localStorage.getItem('token'),
     };
   },
   setup() {
+    const common = inject("common");
     return {
       modules: [Pagination],
+      common
     };
   },
   created() {
@@ -224,5 +163,38 @@ export default {
       this.$swal("Unauthorized Access.Please Login.");
     }
   },
+  methods: {
+    // allBanner list
+    allBanner() {
+      this.MainService.getSlider().then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          // console.log('getBanner res', res.data.bannerData);
+          this.MainSlider = res.data.bannerData;
+
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    // allNutidata list
+    allNutidata() {
+      this.MainService.getNutriData().then((res) => {
+        //console.log(res);
+        if (res.status == 200) {
+          this.ProductData = res.data.blendingData;
+
+        } else {
+          // console.log('getNutridata res', res.data.blendingData);
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+
+    accessPage() {
+      this.$swal("Unauthorized Access.Please Login.");
+    }
+  }
+
 };
 </script>

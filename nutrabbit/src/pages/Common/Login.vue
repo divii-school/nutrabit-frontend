@@ -11,7 +11,12 @@
               <label for>{{ $t("ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter ID"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -46,19 +51,19 @@
                     <router-link to="/find-id">{{ $t("findID") }}</router-link>
                   </li>
                   <li>
-                    <a href>{{ $t("findpassword") }}</a>
+                    <router-link to="/forgot-password">{{ $t("findpassword") }}</router-link>
                   </li>
                 </ul>
               </div>
               <div class="form-link-right">
                 <router-link to="/member-registration-type-selection">
-                  {{
-                    $t("SignUp")
-                  }}
+                  {{ $t("SignUp") }}
                 </router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
+            <button class="btn-primary" @click="onSubmit">
+              {{ $t("login") }}
+            </button>
           </form>
           <div class="getting-started">
             <button class="btn-primary with-icon yellow-btn">
@@ -78,11 +83,9 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import axios from "axios";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
-
 
 export default {
   name: "Login",
@@ -129,57 +132,26 @@ export default {
       } else if (setPassword == "") {
         this.errorPassword = "Please enter password";
       } else {
-        // try {
-        //   const data = await axios
-        //     .post("/v1/sites/auth/login", {
-        //       login_id: setEmail,
-        //       password: setPassword,
-        //     })
-        //     .then((response) => {
-        //       if (response.data.status == 200) {
-        //         console.log(response.data.status);
-        //         localStorage.setItem(
-        //           "logedInUserDetails",
-        //           JSON.stringify(response.data.data)
-        //         );
-        //         if (this.checkBox) {
-        //           this.cookies.set("rememberUserEmail", setEmail);
-        //           this.cookies.set("rememberUserPassword", setPassword);
-        //         }
-        //         window.location = "/";
-        //       }
-        //     });
-        // } catch (error) {
-        //   let text =
-        //     error && error.response && error.response.data
-        //       ? error.response.data.message
-        //       : "";
-        //   let result = text.match("Password");
-        //   let result1 = text.match("Email");
-        //   if (result == "Password") {
-        //     this.errorPassword = "Enter a valid password.";
-        //     this.errorEmail = "";
-        //   } else if (result1 == "Email") {
-        //     this.errorPassword = "";
-        //     this.errorEmail = "Enter a valid email.";
-        //   }
-        //   // else {
-        //   //   alert("Email or, password is incorrect");
-        //   // }
-        // }
-
-        //API
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
-          console.log(res.data);
-          if (res.data.status == 200) {
-            console.log(res.data.status);
-            localStorage.setItem('token', res.data.data.token);
-            this.common.state.userId = res.data.data.userId;
-            if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+          if (res.response) {
+            if (res.response.data.status == 400) {
+              this.$swal(res.response.data.message);
             }
-            this.$router.push("/");
+          } else {
+            if (res.data.status == 200) {
+              console.log("login res", res.data.data);
+              this.common.state.userId = res.data.data.userId;
+              this.common.state.name = res.data.data.name;
+              localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("uid", res.data.data.userId);
+              localStorage.setItem("uname", res.data.data.name);
+              localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              if (this.checkBox) {
+                this.cookies.set("rememberUserEmail", setEmail);
+                this.cookies.set("rememberUserPassword", setPassword);
+              }
+              this.$router.push("/");
+            }
           }
         });
       }

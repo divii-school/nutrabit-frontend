@@ -26,7 +26,7 @@
                 </li>
               </ul>
               <ul class="raw-material-list">
-                <li v-for="(item, index) in rwaMaterialData" :key="index">
+                <li v-for="(item, index) of rwaMaterialData" :key="index">
                   <ProductList :item="item"/>
                 </li>
               </ul>

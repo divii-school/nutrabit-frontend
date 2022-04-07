@@ -70,10 +70,11 @@
               <div class="fGroup">
                 <label>Additional Requests</label>
                 <span>If you provide more details, it will help you get an accurate quote.</span>
-                <textarea placeholder="Please write freely"></textarea>
+                <textarea v-model="additional_request" placeholder="Please write freely"></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0">Select service
+                <label class="mb0">
+                  Select service
                   <span>* Multiple selection possible</span>
                 </label>
               </div>
@@ -81,7 +82,13 @@
                 <div class="product-item with-input">
                   <div class="radio-wrap">
                     <label class="custom-radio">
-                      <input type="radio" checked="checked" name="radio" />
+                      <input
+                        type="radio"
+                        value="2"
+                        v-model="servicetype"
+                        checked="checked"
+                        name="radio"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -92,12 +99,38 @@
                 <div class="product-item with-input">
                   <div class="radio-wrap">
                     <label class="custom-radio">
-                      <input type="radio" checked="checked" name="radio" />
+                      <input
+                        type="radio"
+                        value="1"
+                        v-model="servicetype"
+                        checked="checked"
+                        name="radio"
+                      />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="material-details">
-                    <h2>sample application <span>(Sample cost 300,000 won/paid)</span></h2>
+                    <h2>
+                      sample application
+                      <span>(Sample cost 300,000 won/paid)</span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="product-item with-input">
+                  <div class="radio-wrap">
+                    <label class="custom-radio">
+                      <input
+                        type="radio"
+                        value="3"
+                        v-model="servicetype"
+                        checked="checked"
+                        name="radio"
+                      />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="material-details">
+                    <h2>Both</h2>
                   </div>
                 </div>
                 <ul>
@@ -107,13 +140,24 @@
                   <li>* It may differ from the detailed estimate at the time of completion.</li>
                 </ul>
                 <div class="btn-wrap">
-                  <button class="btn-small-solid grey">Previous</button>
+                  <button
+                    @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
+                    class="btn-small-solid grey"
+                  >Previous</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue">temporary storage</button>
-                    <button class="btn-small-solid blue ml-4">next</button>
+                    <button class="btn-green-outline blue"  @click="package_temporary_add">temporary storage</button>
+                    <button class="btn-small-solid blue ml-4" @click="package_add">next</button>
                   </div>
+                  <my-modal-component v-show="showModal">
+                  <Modal
+                    @close="closeModal"
+                    bodytext1="Temporary storage is complete"
+                    btnText2="confirm"
+                    link="/"
+                  />
+                </my-modal-component>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -127,14 +171,22 @@
 <script>
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyChoiceService from "../../services/MyChoiceService";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "RawMaterialEstimation",
   components: {
     // Popper,
     ProductList,
+    Modal
   },
   data() {
     return {
+      blending_id: this.$route.query.blending_id,
+      package_id: this.$route.query.package_id,
+      servicetype: 3,
+      additional_request: '',
+       showModal: false,
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -154,5 +206,37 @@ export default {
       // ],
     };
   },
+  closeModal() {
+      this.showModal = false;
+    },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  methods: {
+    package_add() {
+      let is_temporary_storage = 'N';
+      this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.additional_request, this.servicetype, is_temporary_storage).then((res) => {
+        // console.log(res);
+        if (res.status=200) {
+          this.$swal("Application Data is successfuly submitted");
+          this.$router.push("/");
+        } else {
+           this.$swal(res.message, "error");
+        }
+      });
+    },
+    package_temporary_add() {
+      let is_temporary_storage = 'Y';
+      this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.additional_request, this.servicetype, is_temporary_storage).then((res) => {
+        // console.log(res);
+        if (res.status=200) {
+          // this.$router.push("/");
+          this.showModal = true;
+        } else {
+           this.$swal(res.message, "error");
+        }
+      });
+    }
+  }
 };
 </script>

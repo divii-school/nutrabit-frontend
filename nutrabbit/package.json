@@ -1,28 +1,33 @@
 {
   "name": "nutrabbit",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
+    "production": "vite --mode production",
+    "build-dev": "vite build --mode dev",
+    "build-production": "vite build --mode production",
+    "serve": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "jw-vue-pagination": "^1.0.3",
+    "moment": "^2.29.1",
     "swiper": "^8.0.7",
+    "v-pagination-3": "^0.1.7",
     "validator": "^13.7.0",
     "vue": "^3.2.25",
     "vue-axios": "^3.4.0",
     "vue-i18n": "^9.2.0-beta.30",
     "vue-loading-overlay": "^4.0.4",
     "vue-next-select": "^2.10.2",
-    "vue-plain-pagination": "^0.3.0",
+    "vue-paginate-3": "^3.6.1",
     "vue-router": "^4.0.12",
     "vue-sweetalert2": "^5.0.2",
     "vue-toastify": "^1.8.1",
     "vue3-cookies": "^1.0.6",
-    "vue3-pagination": "^1.0.16",
     "vue3-popper": "^1.4.2"
   },
   "devDependencies": {
