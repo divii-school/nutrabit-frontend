@@ -9,22 +9,22 @@
           <p class="category">category</p>
           <p class="title">title</p>
         </div>
-        <FaqAccordion v-for="(item, index) of FaqList" :key="index">
+        <FaqAccordion v-for="(item, index) of updatedFaqList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
-                <p class="para-category">{{ item.categoryname }}</p>
-                <span v-if="item.tag">{{ item.tag }}</span>
+                <p class="para-category">{{ item.category_name_en }}</p>
+                <span v-if="item.top10 == y">Important</span>
               </div>
               <div class="item-right-inner">
-                <p>{{ item.title }}</p>
+                <p>{{ item.title_en }}</p>
               </div>
             </div>
           </template>
           <template v-slot:content>
             <h4>Answred</h4>
             <p>
-              {{ item.content }}
+              {{ item.description_en }}
             </p>
           </template>
         </FaqAccordion>
@@ -40,13 +40,11 @@
 </template>
 <script>
 import FaqAccordion from "../../components/FaqAccordion.vue";
-import Pagination from "../../components/Pagination.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "FAQ",
   components: {
-    FaqAccordion,
-    Pagination,
+    FaqAccordion
   },
   data() {
     return {
@@ -139,9 +137,10 @@ export default {
     },
     allFaqList() {
       this.CustomerCenterService.getFAQList()
+      
         .then((res) => {
           if (res.status == 200) {
-            // this.FaqList = res.data.data.notice;
+            this.FaqList = res.data.data.faq;
             this.myCallback(1);
             console.log(res.data.data.faq)
           }

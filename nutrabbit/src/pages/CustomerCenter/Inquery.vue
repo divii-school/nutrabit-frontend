@@ -81,9 +81,9 @@ export default {
       this.UpdatedEnqueryList = this.enqueryList.slice(startIndex, endIndex);
     },
     allEnqueryList() {
-      this.CustomerCenterService.getEnqueryList({userID: this.inqId}).then((res) => {
+      this.CustomerCenterService.getEnqueryList(this.inqId).then((res) => {
         if (res.status == 200) {
-          console.log(res.data.data.inquery)
+          console.log(res.data.data)
           this.enqueryList = res.data.data.inquery;
           this.myCallback(1);
         }
