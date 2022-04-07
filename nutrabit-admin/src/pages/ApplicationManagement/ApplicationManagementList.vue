@@ -13,6 +13,7 @@
                                 type="text"
                                 placeholder="검색어 입력"
                                 v-model="name"
+                                @keyup="resetdata"
                             />
                         </div>
                         <div class="p-field p-col-12 p-md-4">
@@ -28,55 +29,23 @@
 
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.status') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="status"
-                                id="status"
-                                v-model="status_by_admin"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in dropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.name"
-                                >{{ item.name }}</option>
-                            </select>
-                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                           
+                            <Dropdown v-model="status_by_admin" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="$t('Application.search.status')" />
                         </div>
 
-                        <!-- <div class="p-field p-col-12 p-md-3">
-                            <label for="name2">{{ $t('search.label.startDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue1" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="email2">{{ $t('search.label.lastDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" :minDate="calendarValue1" v-model="calendarValue2" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>-->
                     </div>
 
                     <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.product') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="product"
-                                id="product"
-                                v-model="goods"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in productdropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.value"
-                                >{{ item.name }}</option>
-                            </select>
-                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                           
+                            <Dropdown v-model="goods" modelValue="productdropdownValues[0].name" :options="productdropdownValues" optionLabel="name" :placeholder="$t('Application.search.product') " />
                         </div>
 
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.service') }}</label>
 
-                            <select
+                            <!-- <select
                                 class="p-dropdown-label p-inputtext"
                                 name="service"
                                 id="service"
@@ -88,7 +57,9 @@
                                     v-bind:key="index"
                                     :value="service_item.value"
                                 >{{ service_item.name }}</option>
-                            </select>
+                            </select> -->
+
+                             <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" :placeholder="$t('Application.search.service') " />
                         </div>
                     </div>
                 </div>
@@ -288,7 +259,7 @@ export default {
             service: '',
             sortBy: '',
             status_by_admin: '',
-
+            searchdate:'',
             createdDate: '',
             product: '',
 
@@ -319,6 +290,19 @@ export default {
             .catch((err) => console.log(err));
     },
     methods: {
+        addDay(val){
+            const date = new Date(val);
+            var dd = date.getDate();
+            var mm = date.getMonth() + 1;
+            var yyyy = date.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            return (val = yyyy + '-' + mm + '-' + dd );
+        },
         switchValue(ids, switchstatus) {
             console.log(ids, switchstatus);
             axios({ method: 'put', url: '/admin/banner/activate-deactivate', data: { id: ids, status: switchstatus === false ? 'inactive' : 'active' } }).then(function (response) {
@@ -349,12 +333,30 @@ export default {
                 });
             }, 500);
         },
+
+        resetdata(){
+            if (this.name === ''){
+                this.applicationmanagementService
+                 .getApplicationmanagemenList(this.name, this.status_by_admin?.name, this.searchdate, this.goods?.value, this.service?.value)
+                    .then((data) => {
+                        this.products = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchApplicationmanagement() {
-            if (this.name === '' ) {
+            if (this.name === '' && this.startDate === '' && this.status_by_admin === '' && this.goods === '' && this.service === '') {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                if(this.startDate!=''){
+                    this.searchdate = this.addDay(this.startDate)
+                } else {
+                    this.searchdate = ""
+                }
                 this.applicationmanagementService
-                    .getApplicationmanagemenList(this.name, this.status_by_admin, this.startDate, this.goods, this.service)
+                    .getApplicationmanagemenList(this.name, this.status_by_admin?.name, this.searchdate, this.goods?.value, this.service?.value)
                     .then((data) => {
                         this.products = data;
                         // this.total = res.data.data.total;
