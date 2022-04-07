@@ -228,9 +228,10 @@ const routes = [
     },
     {
         name: 'noticeDetailPage',
-        path: '/notice-detail-page',
+        // path: '/notice-detail-page',
+        path: '/notice-detail-page/:id',
         component: NoticeDetailPage,
-
+        beforeEnter: guard,
     },
     {
         path: '/faq',

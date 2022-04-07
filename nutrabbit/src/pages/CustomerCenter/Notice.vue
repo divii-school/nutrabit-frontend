@@ -11,8 +11,11 @@
         </div>
         <div class="notice-list bBtm-0">
           <ul>
-            <li v-for="(item, index) of NoticeList" :key="index">
-              <div class="item-left">
+            <li v-for="(item, index) of UpdatedNoticeList" :key="index">
+              <div
+                class="item-left"
+                @click="this.$router.push(`/notice-detail-page/${item.id}`)"
+              >
                 <span v-if="item.top10 == 1">Important</span>
                 <p>{{ item.title_ko }}</p>
               </div>
@@ -22,23 +25,31 @@
             </li>
           </ul>
         </div>
-        <Pagination />
+        <pagination
+          v-model="page"
+          :records="3"
+          :per-page="1"
+          @paginate="myCallback"
+        />
+        <!-- <Pagination /> -->
       </div>
     </div>
   </div>
 </template>
 <script>
 import moment from 'moment';
-import Pagination from "../../components/Pagination.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "Notice",
-  components: {
-    Pagination,
-  },
+  // components: {
+  //   Pagination,
+  // },
   data() {
     return {
       NoticeList: [],
+      UpdatedNoticeList: [],
+      page: 1,
+      perPage: 1,
     };
   },
   created() {
@@ -49,20 +60,26 @@ export default {
     this.dateformat();
   },
   methods: {
+    myCallback(ClickPage){
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
+    },
     allNoticeList() {
       this.CustomerCenterService.getNoticeList().then((res) => {
         if (res.status == 200) {
-          console.log(res.data.notice);
-          this.NoticeList = res.data.notice;
-          console.log(this.NoticeList);
-        } else {
-          console.log("ghj");
+          this.NoticeList = res.data.data.notice;
+          this.myCallback(1);
         }
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
     },
     dateformat(value) {
       if (value) {
-        return moment(String(value)).format("YYYY/MM/DD");
+        return moment(String(value)).format("YYYY.MM.DD");
       }
     },
   },

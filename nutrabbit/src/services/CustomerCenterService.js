@@ -5,6 +5,11 @@ export default class CustomerCenterService {
 
     // Notice List
     async getNoticeList() {
-        return await axios.post(`/notice`, { lang: 'KO', title: '' }).then((res) => res.data).catch((err) => err);
+        return await axios.post(`/notice`, { lang: 'KO', title: '' }).then((res) => res).catch((err) => err);
+    }
+
+    // Notice Details
+    async getNoticeDetails(noticeId) {
+        return await axios.post(`/notice/id`, { lang: 'EN', id: noticeId }).then((res) => res).catch((err) => err);
     }
 }
