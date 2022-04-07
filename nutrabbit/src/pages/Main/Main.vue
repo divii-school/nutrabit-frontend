@@ -18,7 +18,7 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div v-if="token" class="main-page-body">
+    <div class="main-page-body">
       <div class="container-medium">
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
@@ -30,10 +30,14 @@
           <p
             class="desc text-center"
           >Create your own recipe with just one combination of your choice!</p>
-          <router-link to="/my-choice">
+          <router-link to="/my-choice" v-if="token">
+            <button class="btn-small-solid">Go to my choice</button>
+          </router-link>
+          <router-link to="/" v-else @click="accessPage()">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
+            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
@@ -52,6 +56,7 @@
               class="desc text-center"
             >We provide all services from A to Z of health functional food.</p>
             <button class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
@@ -99,31 +104,27 @@ export default {
     this.MainService = new MainService();
   },
   mounted() {
-    // this.allBanner();
-
-    if (localStorage.getItem("token")) {
-      this.allBanner();
-      this.allNutidata();
-    } else {
-      this.allBanner();
-    }
+    this.allBanner();
+    this.allNutidata();
   },
   methods: {
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
+        // console.log(res);
+        if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;
+
+        } else {
+          this.$swal(res.message, "error");
         }
       });
     },
     // allNutidata list
     allNutidata() {
       this.MainService.getNutriData().then((res) => {
-        // console.log(res);
+        //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
 
@@ -133,6 +134,10 @@ export default {
         }
       });
     },
+
+    accessPage() {
+      this.$swal("Unauthorized Access.Please Login.");
+    }
   }
 
 };

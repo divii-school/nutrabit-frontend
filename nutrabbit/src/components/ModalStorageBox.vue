@@ -13,9 +13,9 @@
           <button
             type="button"
             class="btn-primary grey-btn-solid"
-            @click="addRawMaterial()"
+            @click="this.$router.push('/add-ingredient')"
           >{{ btnText1 }}</button>
-          <button type="button" class="btn-primary grenn-btn2" @click="close">{{ btnText2 }}</button>
+          <button type="button" class="btn-primary grenn-btn2" @click="addRawMaterial()">{{ btnText2 }}</button>
         </div>
       </footer>
     </div>
@@ -38,13 +38,13 @@ export default {
     addRawMaterial() {
       //  console.log(this.raw_material_id);
       this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
-        // console.log(res.data);
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
+        console.log(res.data);
+        if (res.data.status=200) {
+          this.$swal("Successfully Added");
+           this.$emit('close');
+         
         } else {
-          console.log(this.sub_category_id);
-          // this.$router.push({name: '/my-choice-category-selection/', params: { id: this.sub_category_id }})
-          this.$router.push({ path: `/my-choice-category-selection/${this.sub_category_id}` });
+            this.$swal(res.data.message, "error");
         }
       });
     },

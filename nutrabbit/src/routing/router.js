@@ -19,42 +19,45 @@ import MyChoiceCategorySelection from '../pages/MyChoice/MyChoiceCategorySelecti
 import InquiryContactUs from '../pages/CustomerCenter/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoice/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
-import MobileSearch from '../pages/GNB/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/MyChoice/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
 import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
-import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
+import RawMaterialPackage from '../pages/MyChoice/RawMaterialPackage.vue';
 import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
 import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
 import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
 import MyChoiceRawMaterialDetailedPage from '../pages/MyChoice/MyChoiceRawMaterialDetailedPage.vue';
 import Inquery from '../pages/CustomerCenter/Inquery.vue';
+import MyRecipeDetails from '../pages/OnlyMe/MyRecipeDetails.vue';
+import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
+import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
+import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
+import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
-// function guest(to, from, next) {
-//     if (localStorage.token) {
-//         next({ name: 'home' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'You already logged in',
-//         });
-//     } else next();
-// }
+function guest(to, from, next) {
+    if (localStorage.token) {
+        next({ name: 'Main' });
+        alert('You already logged in');
+        // this.$swal('You already logged in', "error");
+    } else next();
+}
 
-// function guard(to, from, next) {
-//     if (localStorage.token) {
-//         next();
-//     } else {
-//         next({ name: 'login' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'Please login to access',
-//         });
-//     }
-// }
+function guard(to, from, next) {
+    if (localStorage.token) {
+        next();
+    } else {
+        next({ name: 'Login' });
+        // this.$swal("Please login to access");
+        console.log('hhhh')
+        alert('Please login to access');
+        
+    }
+}
 
 const routes = [
     // {
@@ -70,11 +73,13 @@ const routes = [
         name: 'Main',
         path: '/',
         component: Main,
+        // beforeEnter: guard,
     },
     {
         name: 'Login',
         path: '/login',
         component: Login,
+        beforeEnter: guest,
 
     },
     {
@@ -157,7 +162,7 @@ const routes = [
         name: 'MyChoice',
         path: '/my-choice',
         component: MyChoice,
-        // beforeEnter: guest,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceCategorySelection',
@@ -180,13 +185,8 @@ const routes = [
         component: SampleMaking,
     },
     {
-        name: 'MobileSearch',
-        path: '/mobile-search',
-        component: MobileSearch,
-    },
-    {
         name: 'ChoiceRecommendedBlendingDetailedPage',
-        path: '/choice-recommended-blending-detailed-page',
+        path: '/choice-recommended-blending-detailed-page/:id',
         component: ChoiceRecommendedBlendingDetailedPage,
     },
     {
@@ -205,9 +205,9 @@ const routes = [
         component: RawMaterialEstimation,
     },
     {
-        name: 'RawMMaterialPackage',
+        name: 'RawMaterialPackage',
         path: '/raw-material-package',
-        component: RawMMaterialPackage,
+        component: RawMaterialPackage,
     },
     {
         name: 'IngredientFormulation',
@@ -223,18 +223,48 @@ const routes = [
         name: 'notice',
         path: '/notice',
         component: Notice,
+        beforeEnter: guard,
 
     },
     {
         name: 'noticeDetailPage',
-        path: '/notice-detail-page',
+        // path: '/notice-detail-page',
+        path: '/notice-detail-page/:id',
         component: NoticeDetailPage,
+        beforeEnter: guard,
+    },
+    {
+        path: '/faq',
+        name: 'Faq',
+        component: FAQ,
+    },
+    {
+        name: 'MyRecipeDetails',
+        path: '/my-recipe-details',
+        component: MyRecipeDetails,
+    },
+    {
+        name: 'MyApplicationDetails',
+        path: '/my-allpication-detail',
+        component: MyApplicationDetails,
 
     },
     {
-        name: 'Faq',
-        path: '/faq',
-        component: FAQ,
+        name: 'MyRecipeDetailsEdit',
+        path: '/my-recipe-detail-edit',
+        component: MyRecipeDetailsEdit,
+
+    },
+    {
+        name: 'MyRecipeDetailsSample',
+        path: '/my-recipe-details-sample',
+        component: MyRecipeDetailsSample,
+
+    },
+    {
+        name: 'MyRecipe',
+        path: '/my-recipe',
+        component: MyRecipe,
 
     },
 
@@ -244,7 +274,6 @@ const routes = [
         component: MyRecipeDetail,
 
     },
-
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

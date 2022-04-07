@@ -1,29 +1,26 @@
 <template>
-  <template v-if="showHeader">
-    <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
-      <div class="header-container">
-        <div class="header-menu flex">
-          <div class="manuLeft">
-            <router-link class="header-logo" to="/">
-              <img src="../assets/images/logo.svg" alt="Logo" />
-            </router-link>
-            <ul class="flex">
-              <li>
-                <router-link to>my choice</router-link>
-              </li>
-              <li>
-                <router-link to>nutri 3.3 blending</router-link>
-              </li>
-              <!-- this is for testing purpose only -->
-              <!-- <li>
-                <router-link to="/personal-information"
-                  >Personal Info</router-link
-                >
-              </li> -->
-            </ul>
-          </div>
-          <div class="manuRight">
-            <div class="search-wrap">
+  <header :class="isHeaderPositionAbsolute ? 'main-page-header' : ''">
+    <div class="header-container">
+      <div class="header-menu flex">
+        <div class="manuLeft">
+          <router-link class="header-logo" to="/">
+            <img src="../assets/images/logo.svg" alt="Logo" />
+          </router-link>
+          <ul class="flex">
+            <li>
+              <router-link to="/my-choice">my choice</router-link>
+            </li>
+            <li>
+              <router-link to>nutri 3.3 blending</router-link>
+            </li>
+          </ul>
+        </div>
+        <div class="manuRight">
+          <div class="search-wrap-outer">
+            <div
+              class="search-wrap"
+              :class="showMobSearch ? 'search-wrap-mob' : ''"
+            >
               <div class="input-group">
                 <input
                   type="text"
@@ -40,41 +37,42 @@
               >
                 <div class="search-data-inner">
                   <ul>
-                    <li>
-                      <p>muscular system</p>
-                      <router-link to>
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                    <li>
-                      <p>aloe</p>
-                      <router-link to>
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                    <li>
-                      <p>nervous system</p>
-                      <router-link to>
+                    <li v-for="(item, index) in searchData" :key="index">
+                      <router-link to class="search-title">{{
+                        item
+                      }}</router-link>
+                      <router-link
+                        to
+                        class="search-item-close"
+                        @click="removeGoal(index)"
+                      >
                         <i class="icon-close-search"></i>
                       </router-link>
                     </li>
                   </ul>
+                  <!-- <div class="no-search-data">
+                  <p>There are no recent searches.</p>
+                </div> -->
                 </div>
                 <div class="delete-close">
-                  <router-link to>
+                  <router-link to @click="this.searchData = []">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="activeSearch = false"
-                    >to close</router-link
-                  >
+                  <router-link to @click="toCloseBtn">to close</router-link>
                 </div>
               </div>
             </div>
-            <!-- <p>{{this.logedInUserDetails}}</p> -->
-            <div
-              class="after-login-dropdown flex items-center"
-              v-if="this.logedInUserDetails"
+            <router-link
+              to
+              class="mobile-search-icon"
+              :class="showMobSearch ? 'icon-show' : ''"
+              @click="showMobSearchF"
             >
+              <i class="icon-search-black"></i>
+            </router-link>
+          </div>
+          <template v-if="this.logedInUserDetails">
+            <div class="after-login-dropdown flex items-center">
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
@@ -86,102 +84,34 @@
                 </div>
               </div>
             </div>
-            <router-link to="/login" class="login-item" v-else
-              >login</router-link
-            >
+          </template>
+          <template v-else>
+            <router-link to="/login" class="login-item">login</router-link>
+          </template>
 
-            <div class="header-dropdown">
-              <vue-select
-                :options="['EN', 'KO']"
-                placeholder="EN"
-                close-on-select
-              ></vue-select>
-            </div>
-            <router-link
-              to="/mobile-search"
-              class="mobile-search flex items-center justify-center"
-            >
-              <i class="icon-mobile-search"></i>
-            </router-link>
-
-            <router-link
-              to
-              class="menu-toggle"
-              @click="sideMenuOpen"
-              :aria-pressed="active ? 'true' : 'false'"
-            >
-              <img src="../assets/images/menu-toggle.png" alt />
-            </router-link>
+          <div class="header-dropdown">
+            <vue-select
+              :options="['EN', 'KO']"
+              placeholder="EN"
+              close-on-select
+            ></vue-select>
           </div>
-        </div>
-      </div>
-    </header>
-  </template>
-  <template v-else>
-    <div class="search-wrap mobile-search-wrap">
-      <div class="input-group">
-        <input
-          type="text"
-          placeholder="Enter your desired search term."
-          @click="activeSearch = true"
-          :class="activeSearch ? 'activeSearchInput' : ''"
-        />
-        <router-link to :class="activeSearch ? 'activeSearchIcon' : ''">
-          <i class="icon-mobile-search"></i>
-        </router-link>
-      </div>
-      <div
-        class="header-search-data"
-        :class="activeSearch ? 'activeSearch' : ''"
-      >
-        <div class="search-data-inner">
-          <ul>
-            <li>
-              <p>muscular system</p>
-              <router-link to>
-                <i class="icon-close-search"></i>
-              </router-link>
-            </li>
-            <li>
-              <p>aloe</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
-            </li>
-            <li>
-              <p>nervous system</p>
-              <router-link to=""><i class="icon-close-search"></i></router-link>
-            </li>
-          </ul>
-          <!-- <div class="no-search-data">
-            <p>There are no recent searches.</p>
-          </div>-->
-        </div>
-        <div class="delete-close">
-          <router-link to=""><i class="icon-delete"></i>Delete all</router-link>
-          <router-link to="" @click="activeSearch = false"
-            >to close</router-link
-          >
+          <router-link to class="menu-toggle" @click="sideMenuOpen">
+            <img src="../assets/images/menu-toggle.png" alt />
+          </router-link>
         </div>
       </div>
     </div>
-  </template>
-  <div
-    class="right-menu-screen"
-    :class="{ active: active }"
-    v-if="this.logedInUserDetails"
-  >
+  </header>
+  <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
-      <div
-        class="closeMenu"
-        @click="active = !active"
-        :aria-pressed="active ? 'true' : 'false'"
-      >
-        <a href="javascript:void(0)">
-          <img src="/src/assets/icons/menu-close.svg" />
-        </a>
-      </div>
-
       <div class="black-box"></div>
       <div class="white-box">
+        <div class="closeMenu" @click="active = !active">
+          <router-link to>
+            <img src="/src/assets/icons/menu-close.svg" />
+          </router-link>
+        </div>
         <ul class="right-menu-items">
           <li
             v-for="(item, index) of rightMenuItem"
@@ -189,59 +119,58 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <!-- <a href="#" v-if="token">{{ userDetails.name }}</a>
-              <a href="#" v-else>{{ item.mainItem }}</a> -->
+              <template v-if="token && index == 0">
+                <router-link to :class="token ? 'login-item' : ''"
+                  >{{ userDetails.name }}
+                </router-link>
+                <i class="icon-leftArw"></i>
+              </template>
+              <router-link to v-else @click="index == 0 ? goToLogin() : ''">{{
+                item.mainItem
+              }}</router-link>
               <i
                 class="icon-menu-downArw"
                 :class="
-                  typeof item.subItemData !== 'undefined' &&
-                  item.subItemData.length
-                    ? ''
-                    : 'no-arrow'
+                  item.subItemData && item.subItemData.length ? '' : 'no-arrow'
                 "
               ></i>
             </div>
             <div
               class="side-menu-list"
-              v-for="(item, index2) of item.subItemData"
-              :key="index2"
               :class="activeSubmenu === index ? 'activeSubmenu' : ''"
             >
-              <router-link href="javascript:void(0)">{{
-                item.subItem1
-              }}</router-link>
-              <router-link href="javascript:void(0)">{{
-                item.subItem2
-              }}</router-link>
-              <router-link href="javascript:void(0)">{{
-                item.subItem3
-              }}</router-link>
-              <router-link href="javascript:void(0)">{{
-                item.subItem4
-              }}</router-link>
+              <router-link
+                to
+                @click="onClickLink(item.link)"
+                v-for="(item, index2) of item.subItemData"
+                :key="index2"
+                >{{ item.label }}</router-link
+              >
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li><router-link href="">KO</router-link></li>
-          <li><router-link href="">EN</router-link></li>
+          <li><router-link to>KO</router-link></li>
+          <li><router-link to>EN</router-link></li>
         </ul>
       </div>
     </div>
   </div>
-  <div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-      bodytext1="This service requires login."
-      bodytext2="Please use the service after logging in."
-      btnText1="cancellation"
-      btnText2="log in"
-      link = '/login'
-    />
-  </div>
-
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
+  <div
+    :class="activeSearch ? 'overlay-click-out-side' : ''"
+    @click="activeSearch = false"
+  ></div>
 </template>
+
 <script>
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
@@ -253,7 +182,6 @@ export default {
     "vue-select": VueNextSelect,
     Modal,
   },
-
   data() {
     return {
       token: localStorage.token ? true : false,
@@ -263,6 +191,8 @@ export default {
       active: false,
       activeSearch: false,
       isModalVisible: false,
+      activeSubmenu: false,
+      showMobSearch: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -271,10 +201,20 @@ export default {
           mainItem: "nutri 3.3",
           subItemData: [
             {
-              subItem1: "About Us",
-              subItem2: "my choice",
-              subItem3: "nutri 3.3 blending",
-              subItem4: "Sample making guide",
+              label: "About Us",
+              link: "/about-us",
+            },
+            {
+              label: "my choice",
+              link: "/",
+            },
+            {
+              label: "nutri 3.3 blending",
+              link: "/",
+            },
+            {
+              label: "Sample making guide",
+              link: "/",
             },
           ],
         },
@@ -282,9 +222,16 @@ export default {
           mainItem: "ONLY ONE",
           subItemData: [
             {
-              subItem1: "raw material storage box",
-              subItem2: "my recipe",
-              subItem3: "my application",
+              label: "raw material storage box",
+              link: "/",
+            },
+            {
+              label: "my recipe",
+              link: "/",
+            },
+            {
+              label: "my application",
+              link: "/",
             },
           ],
         },
@@ -292,13 +239,21 @@ export default {
           mainItem: "CUSTOMER CENTER",
           subItemData: [
             {
-              subItem1: "Notice",
-              subItem2: "FAQ",
-              subItem3: "1:1 inquiry",
+              label: "Notice",
+              link: "/notice",
+            },
+            {
+              label: "FAQ",
+              link: "/faq",
+            },
+            {
+              label: "1:1 inquiry",
+              link: "/",
             },
           ],
         },
       ],
+      searchData: ["muscular system", "aloe", "nervous system"],
     };
   },
   setup() {
@@ -311,12 +266,21 @@ export default {
   mounted() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.get;
     } else {
       this.logedInUserDetails = false;
     }
     this.getUserInfo();
   },
   methods: {
+    showMobSearchF() {
+      this.showMobSearch = true;
+      this.activeSearch = true;
+    },
+    toCloseBtn() {
+      this.showMobSearch = false;
+      this.activeSearch = false;
+    },
     changeLanguage() {},
     logOut() {
       if (this.logedInUserDetails) {
@@ -324,25 +288,37 @@ export default {
         window.location = "/login";
       }
     },
-    showModal() {
-      this.isModalVisible = true;
-    },
     closeModal() {
       this.isModalVisible = false;
     },
+    onClickLink(link) {
+      if (this.logedInUserDetails) {
+        this.$router.push(link);
+        this.active = false;
+      } else if (link == "/about-us" || link == "/faq") {
+        this.$router.push(link);
+        this.active = false;
+      } else {
+        this.isModalVisible = true;
+        this.active = false;
+      }
+    },
+    goToLogin() {
+      this.$router.push("/login");
+      this.active = false;
+    },
     sideMenuOpen() {
       this.active = true;
-      // if (this.logedInUserDetails) {
-      //   this.active = true;
-      // } else {
-      //   this.showModal();
-      // }
     },
     getUserInfo() {
-      this.personalInfoService.getPersonalData(this.userId).then((res) => {
-        console.log('userDetails res', res.data.data[0]);
-        this.userDetails = res.data.data[0];
-      });
+      if (this.userId) {
+        this.personalInfoService.getPersonalData(this.userId).then((res) => {
+          this.userDetails = res.data.data[0];
+        });
+      }
+    },
+    removeGoal(index) {
+      this.searchData.splice(index, 1);
     },
   },
   computed: {

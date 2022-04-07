@@ -38,7 +38,9 @@
                 <h2>Choose a package</h2>
                 <div class="tolltip-outer">
                   <Popper>
-                    <button><i class="icon-info"></i></button>
+                    <button>
+                      <i class="icon-info"></i>
+                    </button>
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
@@ -61,28 +63,40 @@
             </div>
             <div class="product-list-wrap">
               <ul class="raw-material-list">
-                <li v-for="(item, index) of rwaMaterialData" :key="index">
-                  <ProductList :item="item"/>
+                <li v-for="(item, index) of blendingPackageData" :key="index">
+                  <ProductList :item="item" @changeId="UpdatedId($event)" />
                 </li>
               </ul>
               <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                    <input
+                      type="radio"
+                      value="etc"
+                      checked="checked"
+                      name="radio"
+                      @change="filterChanged"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="material-details">
-                  <h2>unchecked</h2>
+                  <h2>Etc</h2>
                   <div class="input-group">
-                    <input type="text" placeholder="Direct input">
+                    <input type="text" placeholder="Direct input" />
                   </div>
                 </div>
               </div>
               <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                    <input
+                      type="radio"
+                      value="unchecked"
+                      checked="checked"
+                      name="radio"
+                      @change="filterChanged"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -92,8 +106,10 @@
               </div>
 
               <div class="btn-wrap">
-                <button class="btn-small-solid grey">Previous</button>
-                <button class="btn-small-solid blue">next</button>
+                <router-link to="/ingredient-formulation">
+                  <button class="btn-small-solid grey">Previous</button>
+                </router-link>
+                <button @click="checkPackageId" class="btn-small-solid blue">next</button>
               </div>
             </div>
           </div>
@@ -108,6 +124,7 @@
 <script>
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
@@ -116,6 +133,9 @@ export default {
   },
   data() {
     return {
+      blending_id: this.$route.query.blending_id,
+      blendingPackageData: '',
+      package_id: '',
       rwaMaterialData: [
         {
           img: "../../../src/assets/images/pkgSelection.png",
@@ -135,5 +155,40 @@ export default {
       ],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.blendingPackage();
+  },
+  methods: {
+    // blending package Details
+    blendingPackage() {
+      this.mychoiceService.getRecommendedBlendingPackage().then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          this.blendingPackageData = res.data.packageData;
+          // console.log(res.data.packageData);
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    UpdatedId(e) {
+      this.package_id = e;
+    },
+    checkPackageId() {
+      console.log(this.blending_id);
+      if (this.package_id == "") {
+        this.$swal("Please Choose a Package");
+      }
+      else {
+        this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', query: { blending_id: this.blending_id, package_id: this.package_id } });
+      }
+    },
+    filterChanged(event) {
+      console.log(event.target.value);
+    }
+  }
 };
 </script>

@@ -36,11 +36,16 @@
               </div>
               <div class="heading-left">
                 <div class="dropdown">
-                  <vue-select
-                    :options="['in order of popularity', 'in order of popularity']"
+                  <!-- <vue-select
+                    :options="['in order of popularity', 'in alphabetical Order']"
                     placeholder="in order of popularity"
                     close-on-select
-                  ></vue-select>
+                  ></vue-select> -->
+                  <select @change="onChange">
+                    <option value="">Sort By</option>
+                    <option value="popularity">in order of popularity</option>
+                    <option value="alphabetical">in alphabetical order</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -85,13 +90,34 @@ export default {
     // allBlendingData list
     allBlendingData() {
       this.mychoiceService.getRecommendedData().then((res) => {
-        if (res.response) {
-          this.$swal(res.response.data.message, "error");
-        } else {
-          //  console.log('allBlendingData res', res.data.blendingData);
+        // console.log(res);
+         if (res.status == 200) {
+         //  console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
+        } else {
+          
+           this.$swal(res.data.message, "error");
         }
       });
+    },
+    onChange(event) {
+      // console.log(event.target.value);
+      if (event.target.value == 'popularity') {
+         this.allBlendingData();
+      }
+       else if (event.target.value == 'alphabetical') {
+
+        this.mychoiceService.getRecommendedBlendingAlphabetical().then((res) => {
+          // console.log(res.data);
+          if (res.data.status == 200) {
+            // console.log('getRawMaterial res', res.data.data.rawMaterialData);
+            this.blendingData = res.data.data.blendingData;
+
+          } else {
+            this.$swal(res.data.message, "error");
+          }
+        });
+      }
     },
   }
 };

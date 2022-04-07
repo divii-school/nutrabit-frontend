@@ -153,72 +153,77 @@
         align-items: center;
         display: flex;
         width: 100%;
-        padding: 18px 0;
-        border-bottom: 1px solid #E0E0E0;
-        .item-left{
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            &.lp-2{
-              padding-left: 15px;
-              @media screen and (max-width: 640px){
-                padding-left: 0;
-              }
-            }
-            @media screen and (max-width: 640px){
-              flex-direction: column;
-              width: 100%;
-            }
-            .item-left-inner{
+        // padding: 18px 0;
+        border-bottom: 1px solid $grey-E0;
+        ul{
+          width: 100%;
+          li{
+            .item-left{
               display: flex;
               align-items: center;
               justify-content: flex-start;
+              &.lp-2{
+                padding-left: 15px;
+                @media screen and (max-width: 640px){
+                  padding-left: 0;
+                }
+              }
               @media screen and (max-width: 640px){
+                flex-direction: column;
                 width: 100%;
               }
-            }
-            .item-right-inner{
-              @media screen and (max-width: 640px){
-                width: 100%;
-                text-align: justify;
-                padding-right: 15px;
-                margin-top: 10px;
+              .item-left-inner{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                @media screen and (max-width: 640px){
+                  width: 100%;
+                }
               }
-            }
-            span {
-              @include flex-justify-center;
-              font-size: 14px;
-              line-height: 17px;
-              text-align: center;
-              color: $green-68;
-              border: 1px solid $green-68;
-              border-radius: 15px;
-              padding: 5px 15px;
-              margin-right: 10px;
-              &.mr-2{
-                margin-right: 35px;
+              .item-right-inner{
+                @media screen and (max-width: 640px){
+                  width: 100%;
+                  text-align: justify;
+                  padding-right: 15px;
+                  margin-top: 10px;
+                }
               }
-            }
-            p {
-              font-size: 18px;
-              line-height: 22px;
-              color: $black-33;
-              @media screen and (max-width: 640px){
+              span {
+                @include flex-justify-center;
                 font-size: 14px;
-              }
-            }
-            .para-category{
-              font-size: 17px;
-              line-height: 20px;
-              color:$grey-66;
-              min-width: 145px;
-              text-align: center;
-              @media screen and (max-width: 640px){
-                text-align: justify;
-                min-width: auto;
+                line-height: 17px;
+                text-align: center;
+                color: $green-68;
+                border: 1px solid $green-68;
+                border-radius: 15px;
+                padding: 5px 15px;
                 margin-right: 10px;
+                &.mr-2{
+                  margin-right: 35px;
+                }
               }
-            }
+              p {
+                font-size: 18px;
+                line-height: 22px;
+                color: $black-33;
+                @media screen and (max-width: 640px){
+                  font-size: 14px;
+                }
+              }
+              .para-category{
+                font-size: 17px;
+                line-height: 20px;
+                color:$grey-66;
+                min-width: 145px;
+                text-align: center;
+                @media screen and (max-width: 640px){
+                  text-align: justify;
+                  min-width: auto;
+                  margin-right: 10px;
+                }
+              }
+          }
+          }
         }
       }
       .accroCont{

@@ -134,7 +134,6 @@ export default {
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
-            console.log(res.response);
             if (res.response.data.status == 400) {
               this.$swal(res.response.data.message);
             }
@@ -143,8 +142,9 @@ export default {
               console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
-              localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("uid", res.data.data.userId);
+              localStorage.setItem("uname", res.data.data.name);
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
