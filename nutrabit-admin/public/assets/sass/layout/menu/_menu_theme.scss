@@ -23,15 +23,15 @@
                     }
                 }
 
-                &.active-menuitem {
-                    > a {
-                        color: $primaryColor;
-                        color: $activeRootMenuItemTextColor;
-                        &::before {
-                            background-color: $primaryColor;
-                            background-color: $activeRootMenuItemTextColor;
-                        }
-                    }
+                // &.active-menuitem {
+                //     > a {
+                //         color: $primaryColor;
+                //         color: $activeRootMenuItemTextColor;
+                //         &::before {
+                //             background-color: $primaryColor;
+                //             background-color: $activeRootMenuItemTextColor;
+                //         }
+                //     }
 
                     > ul {
                         > li {
