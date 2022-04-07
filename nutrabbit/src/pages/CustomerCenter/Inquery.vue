@@ -4,7 +4,7 @@
       <div class="my-notice-wrap">
         <div class="my-notice-heading noFlex">
           <h2>1:1 inquiry</h2>
-          <button class="btn-primary grenn-btn2">1:1 Inquiry</button>
+          <button class="btn-primary grenn-btn2" @click="this.$router.push('/inquiry-contactUs')">1:1 Inquiry</button>
         </div>
         <div class="faq-heading inquiry">
           <p class="category">Published date</p>
@@ -15,8 +15,12 @@
           <template v-slot:title>
             <div class="item-left lp-2">
               <div class="item-left-inner">
-                <p class="para-category">{{ item.date }}</p>
-                <span class="mr-2" :class="item.status == 'Not Answered' ? 'grey' : '' ">{{ item.status }}</span>
+                <p class="para-category">{{ dateformat(item.createdDate) }}</p>
+                <span
+                  class="mr-2"
+                  :class="item.status == 'Not Answered' ? 'grey' : ''"
+                  >{{ item.status }}</span
+                >
               </div>
               <div class="item-right-inner">
                 <p>{{ item.title }}</p>
@@ -28,8 +32,14 @@
               <div class="contCol">
                 <h4>attachment</h4>
                 <p>
-                  <a :href="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.attachment_path" target="_blank">
-                  {{item.attachment}}
+                  <a
+                    :href="
+                      'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                      item.attachment_path
+                    "
+                    target="_blank"
+                  >
+                    {{ item.attachment }}
                   </a>
                 </p>
               </div>
@@ -39,8 +49,11 @@
                   {{ item.description }}
                 </p>
               </div>
-               <div class="contCol" :class="item.status == 'Answer Complete' ? 'show' : 'hide' ">
-                <h4>Inquiries</h4>
+              <div
+                class="contCol"
+                :class="item.status == 'Answer Complete' ? 'show' : 'hide'"
+              >
+                <h4>Answer content</h4>
                 <p>
                   {{ item.replyText }}
                 </p>
@@ -59,6 +72,7 @@
   </div>
 </template>
 <script>
+import moment from 'moment';
 import FaqAccordion from "../../components/FaqAccordion.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
@@ -80,6 +94,7 @@ export default {
   },
   mounted() {
     this.allEnqueryList();
+    this.dateformat();
   },
   methods: {
     myCallback(ClickPage) {
@@ -100,6 +115,11 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    dateformat(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY.MM.DD");
+      }
     },
   },
 };
