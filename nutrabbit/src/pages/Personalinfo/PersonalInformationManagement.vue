@@ -138,7 +138,8 @@
           <div class="logout-withdraw">
             <ul>
               <li>
-                <a href>Log out</a>
+                <router-link to @click="logOut()">Log out</router-link>
+                <!-- <a href>Log out</a> -->
               </li>
               <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
                 <!-- <a href>Withdrawal</a> -->
@@ -158,6 +159,7 @@ export default {
   name: "PersonalInformationManagement",
   data() {
     return {
+      // userId: 21,
       userId: this.common.state.userId,
       name: "",
       userID: "",
@@ -262,6 +264,13 @@ export default {
       }).open();
     },
 
+    // logOut() {
+    //   if (this.logedInUserDetails) {
+    //     localStorage.clear();
+    //     window.location = "/login";
+    //   }
+    // },
+
     //     async apiFunctionName(){
     //   try{
     //     const personalData = await axios.post('url',{
@@ -280,6 +289,8 @@ export default {
 
   mounted() {
     this.personalInfo();
+    var token = this.common.state.token;
+    console.log("token",token);
   },
 };
 </script>
