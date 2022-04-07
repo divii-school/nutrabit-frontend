@@ -123,6 +123,7 @@ const routes = [
         name: 'Inquery',
         path: '/inquiry',
         component: Inquery,
+        beforeEnter: guard,
     },
     {
         name: 'MemberRegistrationMethod',

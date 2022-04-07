@@ -11,15 +11,15 @@
           <p class="status">Status</p>
           <p class="title">title</p>
         </div>
-        <FaqAccordion v-for="(item, index) in NoticeList" :key="index">
+        <FaqAccordion v-for="(item, index) in EnqueryList" :key="index">
           <template v-slot:title>
             <div class="item-left lp-2">
               <div class="item-left-inner">
-                <p class="para-category"> {{item.date}}</p>
-                <span class="mr-2" v-if="item.tag">{{item.tag}}</span>
+                <p class="para-category">{{ item.date }}</p>
+                <span class="mr-2" v-if="item.tag">{{ item.tag }}</span>
               </div>
               <div class="item-right-inner">
-                <p>{{item.title}}</p>
+                <p>{{ item.title }}</p>
               </div>
             </div>
           </template>
@@ -34,61 +34,64 @@
               <div class="contCol">
                 <h4>Inquiries</h4>
                 <p>
-                  {{item.content}}
+                  {{ item.content }}
                 </p>
               </div>
             </div>
           </template>
         </FaqAccordion>
-         <Pagination />
+        <pagination
+          v-model="page"
+          :records="5"
+          :per-page="1"
+          @paginate="myCallback"
+        />
       </div>
     </div>
   </div>
 </template>
 <script>
 import FaqAccordion from "../../components/FaqAccordion.vue";
-import Pagination from "../../components/Pagination.vue";
+import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
-  name: "FAQ",
+  name: "Inquery",
   components: {
     FaqAccordion,
-    Pagination,
   },
-  data(){
-    return{
-      NoticeList:[
-        {
-          date:"2022.01.19",
-          tag:"Unanswered",
-          title:"Please inquire about a quote.",
-          content:"1 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
-        },
-        {
-          date:"2022.01.19",
-          tag:"Unanswered",
-          title:"Please inquire about a quote.",
-          content:"1 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
-        },
-        {
-          date:"2022.01.19",
-          tag:"Unanswered",
-          title:"Please inquire about a quote.",
-          content:"1 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
-        },
-        {
-          date:"2022.01.19",
-          tag:"Unanswered",
-          title:"Please inquire about a quote.",
-          content:"1 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
-        },
-        {
-          date:"2022.01.19",
-          tag:"Unanswered",
-          title:"Please inquire about a quote.",
-          content:"1 ipsum dolor sit amet consectetur adipisicing elit. Quia,porro. Non a excepturi, voluptatibus ipsam magnam, eligendi,accusantium ipsa quae quis praesentium voluptate saepe ullam sint ea itaque consectetur impedit?"
-        },
-      ]
-    }
+  data() {
+    return {
+      enqueryList: [],
+      UpdatedEnqueryList: [],
+      page: 1,
+      perPage: 10,
+      inqId: localStorage.getItem('uid')
+    };
+  },
+  created() {
+    this.CustomerCenterService = new CustomerCenterService();
+  },
+  mounted() {
+    this.allEnqueryList();
+  },
+  methods:{
+     myCallback(ClickPage){
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.UpdatedEnqueryList = this.enqueryList.slice(startIndex, endIndex);
     },
+    allEnqueryList() {
+      this.CustomerCenterService.getEnqueryList({userID: this.inqId}).then((res) => {
+        if (res.status == 200) {
+          console.log(res.data.data.inquery)
+          this.enqueryList = res.data.data.inquery;
+          this.myCallback(1);
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    },
+  }
 };
 </script>
