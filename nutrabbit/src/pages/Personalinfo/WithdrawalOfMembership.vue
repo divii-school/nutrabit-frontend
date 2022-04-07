@@ -26,22 +26,43 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+        <div>
+          <Modal 
+            v-show="isModalVisible"
+            @close="closeModal"
+            bodytext1="Are you sure you want to close this account?"
+            btnText1="cancellation"
+            btnText2="Confirm"
+            link = ''
+          />
+        </div>
+
+      <div>
+        <Modal
+        v-show="confirmModal"
+        @close="closeModal1"
+        bodytext1="Your Withdrawal is complete."
+        btnText2="Confirm"
+        link = '/'
+      />
+      </div>
 </template>
 <script>
-// import Modal from "./Modal.vue";
+import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
-// import personalBusinessValidation from "../../Validation/personalBusinessValidation";
 export default {
   name: "WithdrawalOfMembership",
-  // components: {
-  //   "vue-select": VueNextSelect,
-  //   Modal,
-  // },
+  components: {
+    // "vue-select": VueNextSelect,
+    Modal,
+  },
   data() {
     return{
       reason:"",
       error: {},
+      isModalVisible: false,
+      confirmModal: false,
     }
   },
 
@@ -54,18 +75,13 @@ export default {
     reasonkeyup(){
       if (this.reason == "") {
         this.error.reason = "Please enter the reason";
-      } else{
+      } else {
         this.error.reason = ""
       }
     },
 
     async businessWithdraw() {
       console.log("aaaaaa");
-      // let credential = {
-      //   reason: this.reason,
-      //   withdraw_type: "bussiness",
-      // };
-      // const { isInvalid, error } = personalBusinessValidation(credential);
       if (this.reason == "") {
         console.log("bbbbb");
         this.error.reason = "Please enter the reason";
@@ -73,20 +89,33 @@ export default {
         console.log("ccccc");
         this.personalBusinessService
           .businessWithdraw(
-            this.reason,
+            this.reason
           )
           .then((res) => {
             console.log(res);
             if (res.data.status == 200) {
               console.log("ddddd");
               console.log(res.data.status);
-              // this.$router.push("member-registration-completed");
+              this.isModalVisible =  true;
             }
           });
       }
     },
 
+    closeModal() {
+      this.isModalVisible = false;
+      // this.$router.push(" ");
+      this.confirmModal = true;
+      // window.location.href = "";
+    },
+
+    closeModal1() {
+      // this.$router.push("/");
+      this.confirmModal = false;
+    },
+
   },
+ 
 };
 </script>
 
