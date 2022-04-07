@@ -1,91 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <div class="p-col-12" v-show="detailsclient">
-            <div class="card p-fluid">
-                <h4>
-                    <strong>{{ $t('dfc_user.details_header') }}</strong>
-                </h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.ReferralCode') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.referralCode }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.Depositproductname') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositProductName == null ? '-empty-' : clientdata.depositProductName }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.CoinType') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinType }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.CoinAmount') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.coinAmount }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="emailuser">{{ $t('dfc_user.list.StartDate') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.startDate }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.EndDate') }}:</label>
-                        </strong>
-                        <p>{{ clientdata.endDate }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.TotalDepositedInterest') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalPayableDepositInterest }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label
-                                for="emailuser"
-                            >{{ $t('dfc_user.list.Totaladditionalinterestpaid') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.totalAdditionalInterestPaid }}</p>
-                    </div>
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="mobileuser">{{ $t('dfc_user.list.DepositWon') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.depositWon }}</p>
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-4">
-                        <strong>
-                            <label for="nameuser">{{ $t('dfc_user.list.Status') }} :</label>
-                        </strong>
-                        <p>{{ clientdata.status }}</p>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-end">
-                    <Button
-                        @click="backList()"
-                        :label="$t('button.back')"
-                        icon="pi pi-angle-left"
-                        class="p-button-primary p-mr-2 p-mb-2"
-                    />
-                </div>
-            </div>
-        </div>
+        
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -98,8 +14,9 @@
                         <InputText
                             id="googlurl"
                             type="text"
-                            placeholder="input text"
+                            placeholder="제목 입력"
                             v-model="title"
+                            @keyup="resetdata"
                         />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
@@ -380,7 +297,7 @@ export default {
         console.log(route.params);
         this.loading1 = true;
         this.inquiryService
-            .getInquryList(this.status, this.title, this.business_name, this.type_title, this.repliedBy, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+            .getInquryList(this.title,this.name,this.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
             .then((data) => {
                 this.customer1 = data;
                 this.loading1 = false;
@@ -409,27 +326,7 @@ export default {
                 console.log(data);
             })
 
-            //  this.inquiryService
-            // .getRawCategoryDropdown()
-            //     .then((data) => {
-            //         this.dropdownValues = data;
-            //         // this.products = data;
-            //         this.loading1 = false;
-            //         // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //         console.log(this.dropdownValues);
-            //         console.log(data);
-            //     })
-
-
-            // .then((data) => {
-            //     this.customer1 = data.userDataList;
-            //     this.loading1 = false;
-            //     localStorage.setItem('client', JSON.stringify(data.userDataList));
-            //     this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //     this.records = data.popUpInformation;
-            //     console.log(this.records);
-            //     this.display = true;
-            // })
+            
             .catch((err) => {
                 this.loading1 = false;
                 this.customer1 = [];
@@ -464,16 +361,29 @@ export default {
                 return moment(String(value)).format('LL - hh:mm:ss')
             }
         },
+
+        resetdata(){
+            if (this.title === ''){
+                this.inquiryService
+                 .getInquryList(this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchInquiry() {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.title === '') {
+            if (this.title === '' && this.name === '' && this.status === '' ) {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } 
             else {
                 this.inquiryService
-                    .getInquryList(this.status, this.title, this.name, this.type_title, this.repliedBy, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .getInquryList(this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
