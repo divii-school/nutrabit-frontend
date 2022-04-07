@@ -198,6 +198,10 @@
             &.mr-2{
               margin-right: 35px;
             }
+            &.grey{
+              color: $grey-A4;
+              border: 1px solid $grey-A4;
+            }
           }
           p {
             font-size: 18px;
