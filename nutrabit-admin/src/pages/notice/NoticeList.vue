@@ -13,6 +13,7 @@
                                 type="text"
                                 placeholder="검색어 입력"
                                 v-model="title"
+                                 @keyup="resetdata"
                             />
                         </div>
 
@@ -292,6 +293,19 @@ export default {
                     this.loading1 = false;
                 });
             }, 500);
+        },
+
+         resetdata(){
+            if (this.title === ''){
+                this.noticeService
+                .getNoticeList(this.title)
+                    .then((res) => {
+                        this.products = res.data.data.notice;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
         },
       
         searchNotice() {
