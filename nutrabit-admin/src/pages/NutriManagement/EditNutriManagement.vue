@@ -1,9 +1,6 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -21,9 +18,7 @@
                         <div class="text-red">{{ error.name_en }}</div>
                     </div>
                 </div>
-                 <!-- <div class="p-formgrid p-grid">
-                   
-                </div> -->
+               
                 <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditCategory') }}</label>
@@ -41,26 +36,11 @@
                                     :value="item.id"
                                 >{{ item.category_name_ko }}</option>
                             </select>
-                        <!-- <label for="type">ID</label> -->
-                        <!-- <select class="p-dropdown-label p-inputtext" name="category_id" id="category_id" v-model="category_id">
-                            <option value="">Select</option>
-                            <option v-for="(item, index) in categoryDropdownValues" v-bind:key="index" :value="item.id">
-                                {{ item.category_name_ko }}
-                            </option>
-                        </select> -->
-                        <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
-                        <!-- <label for="type">ID</label> -->
-                        <!-- <select class="p-dropdown-label p-inputtext" name="raw_material_id" id="raw_material_id" v-model="raw_material_id">
-                            <option value="">Select</option>
-                            <option v-for="(item, index) in mainRawDropdownValues" v-bind:key="index" :value="item.id">
-                                {{ item.material_name_ko }}
-                            </option>
-                        </select> -->
 
-                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects">
+                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
 
                         </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
@@ -179,30 +159,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="p-grid p-formgrid p-mb-3 browse">
-                    <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="subtitle2">
-                            {{ $t('rawmaterial.list.rawdetails') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )</span>
-                        </label>
-                        <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
-                            <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
-                            <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                        </div>
-                        <div style="display: flex; justify-content: flex-end">
-                            <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
-                                <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                                <div class="raw-image">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
-                                    <a href="javascript:;" @click="remove_raw(id,raw_material_img)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
                   <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('Nutri3.list.status') }}</label>
@@ -252,7 +208,7 @@ export default {
             fileExtensions: '',
             filesExtensions: '',
             filesimilar:'',
-             select_items:[],
+            select_items:[],
             selectedItems:[],
             name_ko: '',
             name_en: '',
@@ -342,6 +298,12 @@ export default {
             this.tags_ko = res.data.data[0].tags_ko;
             this.tags_en = res.data.data[0].tags_en;
             this.status = res.data.data[0].status;
+            
+            let a = res.data.data[0].raw_material_id.split(',');
+            let result = a.map(function (x) { 
+            return parseInt(x, 10); 
+            });
+            this.select_items = result;
         });
     },
     methods: {

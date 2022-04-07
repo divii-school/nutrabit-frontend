@@ -31,27 +31,11 @@
                                     {{ item.category_name_ko }}
                                 </option>
                             </select>
-                            <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
+                            <!-- <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" /> -->
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.MainRaw') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <!-- <select class="p-dropdown-label p-inputtext" name="category_id" id="category_id" v-model="raw_material_id">
-                            <option value="">Select</option>
-                            <option v-for="(item , index) in mainRawDropdownValues" v-bind:key="index" :value="item.id" >
-                            {{item.material_name_ko}}
-                            </option>
-                            </select> -->
                             <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
-
-                            <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
-                            <!-- <Button
-                        :label="$t('Nutri3.Add.publish')"
-                        icon="pi pi-check"
-                        iconPos="left"
-                        class="p-button p-button-sm p-mr-2 p-mb-2"
-                        @click="xyz"
-                        ></Button> -->
                         </div>
                     </div>
 
@@ -188,27 +172,14 @@ import axios from 'axios';
 import { useRoute } from 'vue-router';
 import NutriManagementService from '../../service/API/NutriManagementService';
 import validateAddNutri from '../../validations/NutriManagement/validateAddNutri';
-//   import Multiselect from '@vueform/multiselect'
-// import { MultiSelectPlugin } from "@syncfusion/ej2-vue-dropdowns";
-// import Vue from "vue";
-// Vue.use(MultiSelectPlugin);
-//import Multiselect from 'vue-multiselect'
+
 
 export default {
     name: 'AddNutriManagement',
-    // Multiselect,
-    // props: ['dog', 'image'],
-    // components: {
-    //    Multiselect,
-    // },
+
     data() {
         return {
-            // value: null,
-            // options: [
-            //     'Batman',
-            //     'Robin',
-            //     'Joker',
-            // ],
+          
             value12: '',
             render1: false,
             render2: false,
@@ -278,26 +249,19 @@ export default {
             this.categoryDropdownValues = data;
             // this.products = data;
             this.loading1 = false;
-            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //console.log(this.customer1);
-            //console.log(data);
         });
 
         this.nutriManagementService.getPillCategoryDropdown().then((data) => {
             this.pilltypeDropdownValues = data;
             // this.products = data;
             this.loading1 = false;
-            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //console.log(this.customer1);
-            //console.log(data);
+         
         });
         this.nutriManagementService.getPackageNutriDropdown().then((data) => {
             this.packageDropdownValues = data;
             // this.products = data;
             this.loading1 = false;
-            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            // console.log(this.customer1);
-            //console.log(data);
+            
         });
     },
     methods: {
@@ -322,18 +286,6 @@ export default {
             for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
             return output;
         },
-        // xyz(){
-        //     let demo = this.value12;
-        //     //let demo2 = JSON.parse(JSON.stringify(demo));
-        //     //console.log(JSON.stringify(demo))
-
-        //     //console.log(demo2[0])
-        //     //console.log(this.getFields(Array(demo2),"id"))
-        //     //console.log(Object.values(demo))
-        //     //console.log(this.getFields(this.value12),"id")
-        //     //console.log(demo.)
-
-        // },
         selects(){
            let items = [];
             let data = this.select_items;
@@ -359,24 +311,6 @@ export default {
             this.fileExtension = this.detail.replace(/^.*\./, '');
             console.log(this.detail);
         },
-        // onFileChanges(e) {
-        //     var files = e.target.files || e.dataTransfer.files;
-        //     if (!files.length) return;
-        //     this.files = files[0];
-        //     if (!files.length) return;
-        //     this.files = files[0];
-        //     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-        //     if (!allowedExtensions.exec(this.files.name)) {
-        //         this.render2=true;
-        //         return false;
-        //     } else {
-        //          this.render2=false;
-        //         this.similar = this.files.name;
-        //         this.formData.append('product_sub_image', files[0]);
-        //     }
-        //     this.filesExtension = this.similar.replace(/^.*\./, '');
-        //     console.log(this.similar);
-        // },
         onFileChangethum(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
@@ -466,9 +400,7 @@ export default {
                 files: this.similar == '' ? '' : 'something',
                 addthumnail: this.addthumnail == '' ? '' : 'something',
                 newthumnail: this.newthumnail == '' ? '' : 'something',
-                //exposure: this.exposure == null ? '' : 'something',
-                // type: this.dropdownValueType == null ? '' : 'something',
-                //file: this.detail == '' ? '' : 'something',
+             
             };
             const { isInvalid, error } = validateAddNutri(vcheckData);
             if (isInvalid) {
@@ -487,10 +419,7 @@ export default {
                 this.formData.append('description_ko', this.description_ko);
                 this.formData.append('description_en', this.description_en);
 
-                // this.formData.append('type', this.dropdownValueType?.name);
-                //this.formData.append('status', this.status.name===undefined ? this.status :this.status.name);
                 this.formData.append('status', this.status);
-                //dropdownValues: [{ name: 'active'}, { name: 'inactive' }],
                 console.log(this.formData);
                 return axios.post('/admin/nutriBlending/add', this.formData).then(() => {
                     this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });

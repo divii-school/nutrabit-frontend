@@ -1,9 +1,6 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -69,15 +66,7 @@
                         <p>{{ description_en }}</p>
                     </div>
                 </div>
-                <!-- <div class="p-grid p-formgrid p-mb-3 browse">
-                    <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="thumbnail" style="font-weight: bold">
-                            {{ $t('Nutri3.View.Thumbnailimg') }}
-                        </label>
-                        <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" :alt="thumbnail" class="product-image" />
-                    </div>
-                </div> -->
+                
                 <div class="p-field p-grid">
                     <label for="thumbnail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Thumbnailimg') }}:</label>
                     <div class="p-col-12 p-md-10">
@@ -85,34 +74,16 @@
                         <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" :alt="thumbnail" class="product-image" />
                     </div>
                 </div>
-
-                <!-- <div class="p-grid p-formgrid p-mb-3 browse">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="subtitle2" style="font-weight:bold;">
-                                {{ $t('Nutri3.View.productsubimg1') }}
-                            </label>
-                            <div  v-for="(product_sub,img) in product_sub" :key="img">
-                                <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
-                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub" :alt="product_sub_image" class="product-image" />
-                            </div>
-                        </div>
-                        </div> -->
                 <div class="p-field p-grid">
                     <label for="product_sub_image" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.productsubimg1') }}:</label>
-                    <div class="p-col-12 p-md-10" v-for="(product_sub, img) in product_sub" :key="img" style="display: flex">
-                        <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub" :alt="product_sub_image" class="product-image" />
+                    <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
+                        <div v-for="(product_sub, img) in product_sub" :key="img" style="margin:5px;">
+                            <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub" :alt="product_sub_image" class="product-image" />
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="p-grid p-formgrid p-mb-3 browse">
-                    <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="subtitle2" style="font-weight: bold">
-                            {{ $t('Nutri3.View.productdetailimg1') }}
-                        </label>
-                        <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + detail_image" :alt="detail_image" class="product-image" />
-                    </div>
-                </div> -->
+           
                 <div class="p-field p-grid">
                     <label for="detail_image" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.productdetailimg1') }}:</label>
                     <div class="p-col-12 p-md-10">
@@ -122,14 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="p-formgrid p-grid">
-                    <div class="p-field p-col p-md-6">
-                        <strong
-                            ><label for="mobileuser">{{ $t('Nutri3.View.Exposure1') }} :</label></strong
-                        >
-                        <p style="float: right">{{ status }}</p>
-                    </div>
-                </div> -->
+             
                 <div class="p-field p-grid">
                     <label for="status" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Exposure1') }}:</label>
                     <div class="p-col-12 p-md-10">
@@ -137,9 +101,7 @@
                     </div>
                 </div>
                 <div class="p-d-flex p-jc-end" style="float: left">
-                    <!-- <router-link to="/view-user"
-                        ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2" disabled><i class="pi pi-eye p-mr-2"></i>point</Button>
-                    </router-link> -->
+                   
                     <router-link :to="'/editnutri-management/' + $route.params.id"
                         ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
                     >
