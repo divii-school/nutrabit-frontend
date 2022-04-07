@@ -16,7 +16,7 @@
             <div class="item-left lp-2">
               <div class="item-left-inner">
                 <p class="para-category">{{ item.date }}</p>
-                <span class="mr-2" :class="item.status == 'Not Answered' ? 'grey' : 'ppp' ">{{ item.status }}</span>
+                <span class="mr-2" :class="item.status == 'Not Answered' ? 'grey' : '' ">{{ item.status }}</span>
               </div>
               <div class="item-right-inner">
                 <p>{{ item.title }}</p>
@@ -39,10 +39,10 @@
                   {{ item.description }}
                 </p>
               </div>
-               <div class="contCol">
+               <div class="contCol" :class="item.status == 'Answer Complete' ? 'show' : 'hide' ">
                 <h4>Inquiries</h4>
                 <p>
-                  {{ item.description }}
+                  {{ item.replyText }}
                 </p>
               </div>
             </div>
