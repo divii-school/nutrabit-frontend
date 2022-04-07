@@ -66,9 +66,9 @@
                     <template #empty>데이터가 없습니다 </template>
                     <template #loading> Loading data. Please wait. </template>
                     <Column field="name" :header="$t('Sl.No.')">
-                        <template #body="{ index }">
+                        <template #body="{ data }">
                             <span class="p-column-title">Sl.No.</span>
-                            {{ index + 1 }}
+                            {{ data.sl_no }}
                         </template>
                     </Column>
                     <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
@@ -150,6 +150,7 @@ export default {
             dropdownItem: null,
             error: {},
             name_ko:'',
+            sl_no:'',
             name_en:'',
             category_id:'',
             sub_category_id:'',
@@ -306,7 +307,7 @@ export default {
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/blending/delete', data: { deleteIdArray: id } }).then(function (response) {
                         self.blendingService
-                            .getBlendingList(self.refercode, self.calendarValue, self.calendarValue1)
+                            .getBlendingList(self.name, self.category_id)
                             .then((data) => {
                                 self.customer1 = data;
                                 self.loading1 = false;
