@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// var token = localStorage.getItem('token');
+var token = localStorage.getItem('token');
 
 console.log('Toekn Value:'+ token);
 window.axios = axios;

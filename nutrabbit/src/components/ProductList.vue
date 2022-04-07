@@ -2,7 +2,7 @@
   <div class="product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
-        <input type="radio" checked="checked" name="radio" id="radio" :value="item.id" v-model="package_id" />
+        <input type="radio" name="radio" id="radio" :value="item.id" @click="getPackageId" />
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
@@ -23,15 +23,11 @@
 export default {
   name: "ProductList",
   props:["item"],
-  data() {
-    return {
-      package_id:''
-    }
-  },
-    created() {
-      // Emit this information to the parents component
-      this.$emit('name', this.package_id);
-      // console.log(this.package_id);
-    }
+   methods: {
+     getPackageId(event) {
+       this.$emit('changeId',event.target.value);
+       console.log(event.target.value)
+     }
+   }
 };
 </script>
