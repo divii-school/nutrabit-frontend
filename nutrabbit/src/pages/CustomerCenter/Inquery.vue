@@ -39,6 +39,12 @@
                   {{ item.description }}
                 </p>
               </div>
+               <div class="contCol">
+                <h4>Inquiries</h4>
+                <p>
+                  {{ item.description }}
+                </p>
+              </div>
             </div>
           </template>
         </FaqAccordion>

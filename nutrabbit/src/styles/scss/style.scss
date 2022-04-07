@@ -592,7 +592,8 @@ textarea{
     @media screen and (max-width: 640px) {
       flex-direction: column;
     }
-    &:first-child{
+    &:nth-child(1), 
+    &:nth-child(2){
       margin-bottom: 60px;
       @media screen and (max-width: 640px) {
         margin-bottom: 20px;
