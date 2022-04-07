@@ -13,6 +13,7 @@
                                 type="text"
                                 placeholder="검색어 입력"
                                 v-model="searchData"
+                                 @keyup="resetdata"
                             />
                         </div>
 
@@ -47,27 +48,9 @@
             <div class="p-grid">
                 <div class="p-col-12">
                     <div class="p-d-flex p-jc-between p-mb-2">
-                        <h4>{{ $t('Faq.list.header') }}</h4>
-                        <div class="p-formgrid p-grid">
-                            <div class="p-field p-col-12 p-md-3">
-                                <select
-                                    class="p-dropdown-label p-inputtext"
-                                    name="category_id"
-                                    id="category_id"
-                                    v-model="searchData1"
-                                    style="width: 200px;
-                                    margin-right: 230px;
-                                    float: right"
-                                    @change="searchcategory"
-                                >
-                                    <option value>Select Category</option>
-                                    <option
-                                        v-for="(item, index) in categoryDropdownValues"
-                                        v-bind:key="index"
-                                        :value="item.name_ko"
-                                    >{{ item.name_ko }}</option>
-                                </select>
-                            </div>
+                        <div style="display:flex;">
+                            <h4>{{ $t('Faq.list.header') }}</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Dropdown v-model="searchData1"  :options="categoryDropdownValues" optionLabel="name_ko" placeholder="카테고리 선택" @change="searchcategory" />
                         </div>
 
                         <div>
@@ -339,21 +322,35 @@ export default {
             }, 500);
         },
         searchcategory() {
+            console.log(this.searchData1?this.searchData1.id:this.searchData1)
             this.faqService
-                .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                .getFaqSearch(this.searchData1?this.searchData1.id:this.searchData1, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
                 .then((res) => {
                     // this.products = res.data.data.faq;
                     //  this.total = res.data.data.total;
                     this.loading1 = false;
                     // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                    let items = res.data.data.faq.filter((item) => item.category_name_ko.match(this.searchData1));
-                    this.products = items;
+                    // let items = res.data.data.faq.filter((item) => item.category_name_ko.match(this.searchData1));
+                    this.products = res.data.data.faq;
                     // alert(this.searchData1)
-                    //console.log(res.data.data.faq);
+                    console.log(res.data.data.faq);
                 })
             //   if (this.refercode != '') {
 
             // }
+        },
+
+         resetdata(){
+            if (this.searchData === ''){
+                this.faqService
+                .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.faq;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
         },
         searchFaq() {
             if (this.searchData === '') {
