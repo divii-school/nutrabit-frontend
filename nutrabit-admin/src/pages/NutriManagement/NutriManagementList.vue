@@ -11,18 +11,18 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Blending') }}</label>
                             <!-- <label for="type">Raw Material Name</label> -->
-                            <InputText id="googlurl" type="text" placeholder="search blending name" v-model="searchData" />
+                            <InputText id="googlurl" type="text" placeholder="search blending name" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Tag') }}</label>
                             <!-- <label for="type">ID</label> -->
-                            <select class="p-dropdown-label p-inputtext" name="tags_ko" id="category_id" v-model="tags_ko">
+                            <!-- <select class="p-dropdown-label p-inputtext" name="tags_ko" id="category_id" v-model="tags_ko">
                             <option value="">Select</option>
                             <option v-for="(item , index) in dropdownValues" v-bind:key="index" :value="item.id" >
                             {{item.tags_ko}}
                             </option>
-                            </select>
-                           <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
+                            </select> -->
+                           <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" :placeholder="$t('Nutri3.list.Tag')" />
                         </div>
                     <!-- <div class="p-field p-col-12 p-md-3">
                         <label for="pass">{{ $t('rawmaterial.list.startDate') }}</label>
@@ -175,7 +175,8 @@ export default {
             category_id:'',
             dropdownValue:null,
             dropdownValues: '',
-            searchData:'',
+            name:'',
+            
             
         };
     },
@@ -189,7 +190,7 @@ export default {
         console.log(route.params);
         this.loading1 = true;
         this.nutriManagementService
-            .getNurtiManagementList(this.status,this.name_ko,this.tags_ko,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+            .getNurtiManagementList(this.status,this.searchData,this.tags_ko,this.startDate,this.endDate,this.sortBy,this.sortOrder)
              .then((data) => {
             this.customer1 = data;
             this.loading1 = false;
@@ -256,12 +257,12 @@ export default {
             this.clientdata = myObj;
         },
         resetUser() {
-            this.name_ko = '';
+            this.name = '';
             this.tags_ko = '';
             // this.calendarValue1 = '';
             this.loading1 = true;
             this.nutriManagementService
-                .getNurtiManagementList(this.status,this.name_ko,this.tags_ko,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -272,15 +273,28 @@ export default {
                         this.loading1 = false;
                     });
         },
+
+         resetdata(){
+            if (this.name === ''){
+                this.nutriManagementService
+                 .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
         searchNutri() {
             // console.log(this.name);
             // console.log(this.id);
             
-            if (this.searchData === '') {
-               this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            if (this.name === '' && this.tags_ko === '' ) {
+            //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.nutriManagementService
-                    .getNurtiManagementList(this.status,this.searchData,this.tags_ko,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
