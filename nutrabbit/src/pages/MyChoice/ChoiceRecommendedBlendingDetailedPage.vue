@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <swiper
+          <!-- <swiper
             :pagination="pagination"
             :modules="modules"
             class="mySwiper"
@@ -13,7 +13,13 @@
             <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
             </swiper-slide>
-          </swiper>
+          </swiper>-->
+          <swiper :pagination="pagination"
+            :modules="modules" class="mySwiper" v-for="(items, index) of blending_data" :key="index">
+            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
+              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+            </swiper-slide>
+          </swiper> 
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
@@ -51,7 +57,7 @@
               </li>
             </ul>
             <button
-              @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', params: { blending_id: this.blending_id } })"
+              @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
               class="btn-primary blue-btn-solid"
             >next</button>
           </div>
@@ -86,8 +92,13 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper";
+// import "swiper/css/pagination";
+// import { Pagination } from "swiper";
+// import "swiper/css/free-mode"
+// import "swiper/css/navigation"
+// import "swiper/css/thumbs"
+// import required modules
+// import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
 
@@ -101,20 +112,20 @@ export default {
     return {
       blending_id: null,
       blending_data: '',
-      pagination: {
-        clickable: true,
-        renderBullet: (index, className) => {
-          return (
-            '<span class="' +
-            className +
-            '" >' +
-            `<img src="http://api-nutrabbit-dev.dvconsulting.org/${this.blending_data.detail_image_path[index]}" alt="" />` +
-            "</span>"
-          );
+      // pagination: {
+      //   clickable: true,
+      //   renderBullet: (index, className) => {
+      //     return (
+      //       '<span class="' +
+      //       className +
+      //       '" >' +
+      //       `<img src="${this.ProductImages[index]}" alt="" />` +
+      //       "</span>"
+      //     );
 
-        },
-      },
-      modules: [Pagination],
+      //   },
+      // },
+      // modules: [Pagination],
       productDetails: [
         {
           title: "dark blend",
@@ -166,7 +177,9 @@ export default {
           ],
         },
       ],
-      ProductImages: [],
+      ProductImages: [
+        "../../../src/assets/images/suggested-product-img.png",
+      ],
     };
   },
   created() {
@@ -188,12 +201,11 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        //  console.log(res.data);
+          // console.log(res.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
         } else {
           this.$swal(res.data.message, "error");
-          // console.log("error");
         }
       });
     },

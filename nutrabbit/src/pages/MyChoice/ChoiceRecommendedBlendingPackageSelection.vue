@@ -64,13 +64,19 @@
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingPackageData" :key="index">
-                  <ProductList :item="item" @name="getName" />
+                  <ProductList :item="item" @changeId="UpdatedId($event)" />
                 </li>
               </ul>
               <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                    <input
+                      type="radio"
+                      value="etc"
+                      checked="checked"
+                      name="radio"
+                      @change="filterChanged"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -84,7 +90,13 @@
               <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                    <input
+                      type="radio"
+                      value="unchecked"
+                      checked="checked"
+                      name="radio"
+                      @change="filterChanged"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -94,7 +106,7 @@
               </div>
 
               <div class="btn-wrap">
-                <router-link to="/my-choice-recomanded-blending-fquote">
+                <router-link to="/ingredient-formulation">
                   <button class="btn-small-solid grey">Previous</button>
                 </router-link>
                 <button @click="checkPackageId" class="btn-small-solid blue">next</button>
@@ -121,8 +133,9 @@ export default {
   },
   data() {
     return {
-      blending_id: this.$route.params.blending_id,
+      blending_id: this.$route.query.blending_id,
       blendingPackageData: '',
+      package_id: '',
       rwaMaterialData: [
         {
           img: "../../../src/assets/images/pkgSelection.png",
@@ -147,10 +160,9 @@ export default {
   },
   mounted() {
     this.blendingPackage();
-     console.log(this.blending_id);
   },
   methods: {
-    // blendingDetails
+    // blending package Details
     blendingPackage() {
       this.mychoiceService.getRecommendedBlendingPackage().then((res) => {
         // console.log(res);
@@ -159,23 +171,23 @@ export default {
           // console.log(res.data.packageData);
         } else {
           this.$swal(res.message, "error");
-          // console.log("error");
         }
       });
     },
-    // Gets the checkbox information from the child component
-    getName(value) {
-      console.log(value);
-   },
+    UpdatedId(e) {
+      this.package_id = e;
+    },
     checkPackageId() {
       console.log(this.blending_id);
-       this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', params: { blending_id: this.blending_id } });
-      // if (this.package_id == "") {
-      //   this.$swal("Please Choose a Package");
-      // }
-      // else {
-      //   this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', params: { blending_id: this.blending_id } });
-      // }
+      if (this.package_id == "") {
+        this.$swal("Please Choose a Package");
+      }
+      else {
+        this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', query: { blending_id: this.blending_id, package_id: this.package_id } });
+      }
+    },
+    filterChanged(event) {
+      console.log(event.target.value);
     }
   }
 };
