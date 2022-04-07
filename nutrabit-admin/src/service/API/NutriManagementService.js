@@ -5,8 +5,8 @@ export default class NutriManagementService {
     // async getUserList(name, email, mobile, date1, date2) {
     //     return await axios.post(`/user`, { status: 'active', name: name, email: email, mobile: mobile, startDate: date1, endDate: date2 }).then((res) => res.data.data.users);
     // }
-    async getNurtiManagementList(id,name_ko,tags_ko,status,startDate,endDate,sortBy,sortOrder) {
-        return await axios.post(`/admin/nutriBlending/`, {id:id,searchData:name_ko,tags_ko:tags_ko,status:'active',startDate:startDate,endDate:endDate,sortBy:sortBy,sortOrder:sortOrder}).then((res) => res.data.data.blendingData);
+    async getNurtiManagementList(name,tag_ko,page,limit,sortBy,sortOrde) {
+        return await axios.post(`/admin/nutriBlending/`, {name:name,tag:tag_ko,page:page,limit:limit,sortBy:sortBy,sortOrde:sortOrde}).then((res) => res.data.data.blendingData);
     }
     async ViewNurtiManagementList(ids) {
         return await axios.post(`/admin/nutriBlending/id`, { id: ids }).then((res) => res);
