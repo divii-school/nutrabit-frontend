@@ -102,12 +102,12 @@
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column :header="$t('Inquiry.list.slNo')" style="min-width: 12rem">
-                                <template #body="{ index }">
+                                <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
                                     <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
                                 {{ data.id }}
                                     </span>-->
-                                    {{ index + 1 }}
+                                    {{ data.sl_no }}
                                 </template>
                             </Column>
 
@@ -275,6 +275,7 @@ export default {
             title: '',
             type_id: '',
             repliedBy: '',
+            sl_no:'',
             dropdownValue: null,
             dropdownValues: '',
             statusDropdownValue: null,
