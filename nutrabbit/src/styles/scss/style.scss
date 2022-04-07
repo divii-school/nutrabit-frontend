@@ -792,6 +792,24 @@ textarea {
           }
         }
 
+        &:nth-child(2){
+          button {
+            background: url('@/assets/icons/pagination-arwl-h.svg') no-repeat center center;
+            &:disabled{
+              background: url('@/assets/icons/pagination-arwl.svg') no-repeat center center;
+            }
+          }
+        }
+        &:nth-last-child(2){
+          button {
+            background: url('@/assets/icons/pagination-arwl.svg') no-repeat center center;
+            rotate: 180deg;
+            &:disabled{
+              background: url('@/assets/icons/pagination-arwl-h.svg') no-repeat center center;
+            }
+          }
+        }
+
         &.VuePagination__pagination-item-prev-chunk,
         &.VuePagination__pagination-item-next-chunk,
         &.VuePagination__pagination-item-prev-page,
