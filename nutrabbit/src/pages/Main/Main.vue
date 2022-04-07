@@ -57,6 +57,14 @@
           </div>
         </div>
       </div>
+
+      <div class="devider">
+        <i class="icon-grey-star"></i>
+      </div>
+
+      <div class="payment-test" style="padding:40px">
+        <button type="button" class="btn-small-solid" @click="makePay">Make Payment</button>
+      </div>
     </div>
   </div>
 </template>
@@ -67,12 +75,17 @@ import { Pagination } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
+import { inject } from "vue";
+import MainService from "../../services/MainService";
+import Button from '../../components/Button.vue';
+import PaymentService from "../../services/PaymentService";
 export default {
   name: "Main",
   components: {
     Swiper,
     SwiperSlide,
     MainProductCard,
+    Button,
   },
   data() {
     return {
@@ -159,12 +172,56 @@ export default {
       modules: [Pagination],
     };
   },
+  created() {
+    this.MainService = new MainService();
+    this.paymentService = new PaymentService();
+  },
   mounted() {
-    if (localStorage.getItem("logedInUserDetails")) {
-      this.logedInUserDetails =
-        JSON.parse(localStorage.getItem("logedInUserDetails")) || {};
-    } else {
-      this.logedInUserDetails = null;
+    this.allBanner();
+    this.allNutidata();
+  },
+  methods: {
+
+    // makePay test function
+    makePay() {
+      alert('makePay');
+      this.paymentService.requestPay();
+    },
+
+
+
+
+
+
+    // allBanner list
+    allBanner() {
+      this.MainService.getSlider().then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          // console.log('getBanner res', res.data.bannerData);
+          this.MainSlider = res.data.bannerData;
+
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    // allNutidata list
+    allNutidata() {
+      this.MainService.getNutriData().then((res) => {
+        //console.log(res);
+        if (res.status == 200) {
+          this.ProductData = res.data.blendingData;
+
+        } else {
+          // console.log('getNutridata res', res.data.blendingData);
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+
+    accessPage() {
+      this.$swal("Unauthorized Access.Please Login.");
     }
   },
 };
