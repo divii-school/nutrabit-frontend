@@ -141,74 +141,48 @@
                 </div>
 
                 <div class="p-field p-grid">
-                    <label
-                        for="detailimage"
-                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.DetailImage') }}:</label>
-                    <div
-                        class="p-col-12 p-md-10"
-                        v-for="(detailimage, img) in mydata.detailimage"
-                        :key="img"
-                    >
-                        <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                        <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage"
-                            :alt="mydata.detail_image"
-                            class="product-image"
-                        />
+                    <label for="detailimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.DetailImage') }}:</label>
+                    <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
+                        <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
+                            <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" />
+                        </div>
                     </div>
                 </div>
 
                 <div class="p-field p-grid">
-                    <label
-                        for="similarimage"
-                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.SimilarProductImage') }}:</label>
-                    <div
-                        class="p-col-12 p-md-10"
-                        v-for="(similarimage, img) in mydata.similarimage"
-                        :key="img"
-                    >
-                        <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                        <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage"
-                            :alt="mydata.similar_image"
-                            class="product-image"
-                        />
+                    <label for="similarimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.SimilarProductImage') }}:</label>
+                    <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
+                        <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
+                            <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" />
+                        </div>
                     </div>
                 </div>
 
-
-
-                <div class="p-field p-grid">
-                    <label
-                        for="thumbnail1"
-                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.Thumbnail') }}:</label>
-                    <div class="p-col-12 p-md-10">
-                         <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                        <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + mydata.thumbnail1"
-                            :alt="mydata.thumbnail1"
-                            class="product-image"
-                        />
+                 <div class="p-field p-grid">
+                    <label for="thumbnail1" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.Thumbnail') }}:</label>
+                    <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
+                        <div style="margin:5px;">
+                            <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" :alt="mydata.thumbnail1" class="product-image" />
+                        </div>
                     </div>
                 </div>
 
                 <div class="p-field p-grid">
-                    <label
-                        for="thumbnail2"
-                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.blendingthumbnail') }}:</label>
-                    <div class="p-col-12 p-md-10">
-                        <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                        <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + mydata.thumbnail2"
-                            :alt="mydata.thumbnail2"
-                            class="product-image"
-                        />
+                    <label for="thumbnail2" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.blendingthumbnail') }}:</label>
+                    <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
+                        <div style="margin:5px;">
+                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" :alt="mydata.thumbnail2" class="product-image" />
+                        </div>
                     </div>
                 </div>
+
+
+
+                
 
                 <div class="p-field p-grid">
                     <label
