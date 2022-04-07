@@ -168,7 +168,7 @@
                     position: relative;
                     &:after{
                         position: absolute;
-                        background: url(../../../src/assets/images/nutri-choice-symbol.svg) no-repeat top left;
+                        background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
                         background-size: auto 142px;
                         height: 142px;
                         width: 129px;
@@ -185,7 +185,7 @@
                             top: -69px;
                         }
                         @media screen and (max-width: 640px){
-                            background: url(../../../src/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
+                            background: url(@/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
                             height: 70px;
                             background-size: auto 70px;
                             width: 68px;

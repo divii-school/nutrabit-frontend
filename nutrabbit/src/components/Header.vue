@@ -8,7 +8,7 @@
           </router-link>
           <ul class="flex">
             <li>
-              <router-link to>my choice</router-link>
+              <router-link to="/my-choice">my choice</router-link>
             </li>
             <li>
               <router-link to>nutri 3.3 blending</router-link>
@@ -17,7 +17,10 @@
         </div>
         <div class="manuRight">
           <div class="search-wrap-outer">
-            <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : '' ">
+            <div
+              class="search-wrap"
+              :class="showMobSearch ? 'search-wrap-mob' : ''"
+            >
               <div class="input-group">
                 <input
                   type="text"
@@ -55,32 +58,36 @@
                   <router-link to @click="this.searchData = []">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="toCloseBtn"
-                    >to close</router-link
-                  >
+                  <router-link to @click="toCloseBtn">to close</router-link>
                 </div>
               </div>
             </div>
-            <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : '' " @click="showMobSearchF">
+            <router-link
+              to
+              class="mobile-search-icon"
+              :class="showMobSearch ? 'icon-show' : ''"
+              @click="showMobSearchF"
+            >
               <i class="icon-search-black"></i>
             </router-link>
           </div>
-          <div
-            class="after-login-dropdown flex items-center"
-            v-if="this.logedInUserDetails"
-          >
-            <div class="dropdown">
-              <button class="dropbtn">
-                <i class="login-icon"></i>
-                {{ userDetails.name }}
-              </button>
-              <div class="dropdown-content">
-                <router-link to>Change of personal information</router-link>
-                <router-link to @click="logOut()">Log out</router-link>
+          <template v-if="this.logedInUserDetails">
+            <div class="after-login-dropdown flex items-center">
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <i class="login-icon"></i>
+                  {{ userDetails.name }}
+                </button>
+                <div class="dropdown-content">
+                  <router-link to>Change of personal information</router-link>
+                  <router-link to @click="logOut()">Log out</router-link>
+                </div>
               </div>
             </div>
-          </div>
-          <router-link to="/login" class="login-item" v-else>login</router-link>
+          </template>
+          <template v-else>
+            <router-link to="/login" class="login-item">login</router-link>
+          </template>
 
           <div class="header-dropdown">
             <vue-select
@@ -112,9 +119,12 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <router-link to v-if="token && index == 0"
-                >{{ userDetails.name }} <i class="icon-leftArw"></i
-              ></router-link>
+              <template v-if="token && index == 0">
+                <router-link to :class="token ? 'login-item' : ''"
+                  >{{ userDetails.name }}
+                </router-link>
+                <i class="icon-leftArw"></i>
+              </template>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">{{
                 item.mainItem
               }}</router-link>
@@ -192,7 +202,7 @@ export default {
           subItemData: [
             {
               label: "About Us",
-              link: "/login",
+              link: "/about-us",
             },
             {
               label: "my choice",
@@ -230,7 +240,7 @@ export default {
           subItemData: [
             {
               label: "Notice",
-              link: "/",
+              link: "/notice",
             },
             {
               label: "FAQ",
@@ -256,17 +266,18 @@ export default {
   mounted() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.get;
     } else {
       this.logedInUserDetails = false;
     }
     this.getUserInfo();
   },
   methods: {
-    showMobSearchF(){
+    showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
     },
-    toCloseBtn(){
+    toCloseBtn() {
       this.showMobSearch = false;
       this.activeSearch = false;
     },
@@ -281,10 +292,10 @@ export default {
       this.isModalVisible = false;
     },
     onClickLink(link) {
-      if (this.userId) {
+      if (this.logedInUserDetails) {
         this.$router.push(link);
-      }
-      if (link == "/login" || link == "/faq") {
+        this.active = false;
+      } else if (link == "/about-us" || link == "/faq") {
         this.$router.push(link);
         this.active = false;
       } else {
@@ -302,7 +313,6 @@ export default {
     getUserInfo() {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
-          console.log("userDetails res", res.data.data[0]);
           this.userDetails = res.data.data[0];
         });
       }

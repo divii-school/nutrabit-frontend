@@ -1,12 +1,16 @@
 <template>
-  <div id="app-container" :class="theme">
+  <div id="app-container">
+    <!-- header -->
     <Header />
+    <!--ENd header -->
     <router-view :key="$route.path" v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
+    <!-- Footer -->
     <Footer />
+    <!-- Footer -->
   </div>
 </template>
 

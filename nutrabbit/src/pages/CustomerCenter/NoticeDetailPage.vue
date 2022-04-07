@@ -11,7 +11,9 @@
               <div class="item-left">
                 <span>important</span>
                 <p>
-                  This is the announcement title. This is the announcement title. This is the announcement title. This is the announcement title.
+                  This is the announcement title. This is the announcement
+                  title. This is the announcement title. This is the
+                  announcement title.
                 </p>
               </div>
               <div class="item-right">
@@ -21,7 +23,7 @@
           </ul>
         </div>
         <div class="background">
-        <img src="src/assets/images/background.png" />
+          <img src="../../assets/images/background.png" />
         </div>
         <div class="details">
           <p>
@@ -41,14 +43,41 @@
           </p>
         </div>
         <div class="btn flex justify-end">
-        <button class="btn-small-solid grey">as a list</button>
+          <button class="btn-small-solid grey">as a list</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+
+import { useRoute } from 'vue-router'
+import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "NoticeDetailPage",
+  data(){
+    return{
+      noticeDetailsID: null,
+    }
+  },
+  created() {
+    this.CustomerCenterService = new CustomerCenterService();
+  },
+  mounted() {
+    this.NoticeDetails();
+  },
+  methods: {
+    NoticeDetails() {
+      let noticeListId = useRoute();
+      this.noticeDetailsID = noticeListId.params.id;
+      this.CustomerCenterService.getNoticeDetails(this.noticeDetailsID).then((res) => {
+        if (res.status == 200) {
+          console.log("data comming");
+        } else {
+          console.log("error");
+        }
+      });
+    },
+  },
 };
 </script>

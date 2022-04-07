@@ -134,7 +134,6 @@ export default {
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
-            console.log(res.response);
             if (res.response.data.status == 400) {
               this.$swal(res.response.data.message);
             }
