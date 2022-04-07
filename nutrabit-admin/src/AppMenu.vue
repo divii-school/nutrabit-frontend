@@ -2,7 +2,7 @@
     <div class="menu-wrapper" :class="{ 'layout-sidebar-active': sidebarActive }" @click="onMenuClick" @mouseover="onSidebarMouseOver" @mouseleave="onSidebarMouseLeave">
         <div class="sidebar-logo">
             <router-link to="/">
-                <!-- <img src="assets/layout/images/logo.png" style="height:35px;width:auto;" alt="Nutrabbit" /> -->
+                <img v-show="rend2" src="assets/layout/images/logo.png" style="height:35px;width:auto;" alt="Nutrabbit" />
                 <img v-show="rend" src="assets/layout/images/logonutrabit.png" alt="Nutrabbit" style="width:auto;height:35px;" />
                 <!-- <b style="padding-left: 15px; font-size: 23px;color:#728FCE">{{ title }}</b> -->
             </router-link>
@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             rend:false,
+            rend2: true,
             
             superadmin: [
                 // { label: 'Dashboard', icon: 'pi pi-home', to: '/' },
@@ -228,6 +229,7 @@ export default {
             if (this.layoutMode === 'sidebar' && !this.sidebarStatic) {
                 this.$emit('sidebar-mouse-over');
                 this.rend = true;
+                this.rend2 = false ;
             }
         },
         onSidebarMouseLeave() {
@@ -235,6 +237,7 @@ export default {
                 setTimeout(() => {
                     this.$emit('sidebar-mouse-leave');
                     this.rend = false;
+                    this.rend2 = true ;
                 }, 250);
             }
         },
@@ -255,4 +258,8 @@ export default {
 };
 </script>
 <style scoped>
+/* .layout-menu-light .menu-wrapper{
+    background: #666666;
+   
+} */
 </style>
