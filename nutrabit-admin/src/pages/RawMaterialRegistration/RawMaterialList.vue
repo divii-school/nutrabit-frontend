@@ -266,7 +266,7 @@ export default {
             sortOrder: '',
             createdDate: '',
             material_name_ko: '',
-          
+            searchdate:'',
             category_id: '',
             dropdownValue: null,
             dropdownValues: '',
@@ -323,6 +323,19 @@ export default {
     },
     watch: {},
     methods: {
+         addDay(val){
+            const date = new Date(val);
+            var dd = date.getDate();
+            var mm = date.getMonth() + 1;
+            var yyyy = date.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            return (val = yyyy + '-' + mm + '-' + dd );
+        },
         showdetails() {
             this.clientlist = false;
             this.detailsclient = true;
@@ -382,9 +395,14 @@ export default {
             if (this.searchData === '' && this.sub_category_id === '' && this.from_date === '') {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                if(this.from_date!=''){
+                    this.searchdate = this.addDay(this.from_date)
+                } else {
+                    this.searchdate = ""
+                }
                 console.log(  this.sub_category_id)
                 this.rawService
-                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id, this.from_date, this.endDate, this.sortBy, this.sortOrder)
+                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,  this.searchdate, this.endDate, this.sortBy, this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
