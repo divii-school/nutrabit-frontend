@@ -28,7 +28,7 @@
                                     :value="item.id"
                                 >{{ item.category_name_ko }}</option>
                             </select> -->
-                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"   optionLabel="category_name_ko" :placeholder="$t('Blending.search.category')"  name="sub_category_id"
+                            <Dropdown v-model="sub_category_id"  :options="categoryDropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
                             id="sub_category_id" />
                     </div>
                 </div>
@@ -50,9 +50,9 @@
                     </div>
                     <div>
 
-                        <router-link to="/addnutri-blending">
+                        <!-- <router-link to="/addnutri-blending">
                             <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-download p-mr-2"></i> {{ $t('Blending.excel_category') }}</Button>
-                        </router-link>
+                        </router-link> -->
 
                         <router-link to="/addnutri-blending">
                             <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-plus p-mr-2"></i> {{ $t('Blending.addnew_blending') }}</Button>
@@ -152,6 +152,7 @@ export default {
             name_ko:'',
             name_en:'',
             category_id:'',
+            sub_category_id:'',
              categoryDropdownValues: '',
             categoryDropdownValue: null,
         };
@@ -207,7 +208,7 @@ export default {
        resetdata(){
             if (this.name === ''){
                 this.blendingService
-                 .getBlendingList(this.name,this.category_id)
+                 .getBlendingList(this.name,this.category_id?this.category_id.id:this.category_id)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -220,11 +221,12 @@ export default {
             // console.log(this.name);
             // console.log(this.id);
             
-            if (this.name === '' && this.category_id ) {
+            if (this.name === '' && this.sub_category_id === '' ) {
             //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                console.log(this.sub_category_id)
                 this.blendingService
-                    .getBlendingList(this.name,this.category_id)
+                    .getBlendingList(this.name,this.sub_category_id?this.sub_category_id.id:this.sub_category_id)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -296,9 +298,11 @@ export default {
             var self = this;
             this.$confirm.require({
                 group: 'dialog',
-                header: 'Confirmation',
-                message: '삭제 하시겠습니까?',
-                icon: 'pi pi-exclamation-triangle',
+                header: '확인',
+                message: '삭제하시겠습니까?',
+                icon: 'pi pi-trash',
+                acceptLabel:"확인",
+                rejectLabel:"취소",
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/blending/delete', data: { deleteIdArray: id } }).then(function (response) {
                         self.blendingService
