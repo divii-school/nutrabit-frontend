@@ -160,5 +160,53 @@
             }
         }
     }
-    
+}
+.about-recom{
+    .samllTitle{
+        color: $green-68;
+    }
+    .recom-section{
+        max-width: 1166px;
+        margin: 0 auto;
+        .row-type{
+            @include flex-justify-between;
+            &.type-1{
+                .text-box{
+                    p{
+                        font-weight: 700;
+                        font-size: 26px;
+                        line-height: 130%;
+                        color: $green-68;
+                    }
+                }
+            }
+            &.rev{
+                flex-direction: row-reverse;
+            }
+            .num{
+                font-weight: 600;
+                font-size: 250px;
+                line-height: 300px;
+                color: $green-d0;
+                width: 221px;
+                @include flex-justify-center;
+            }
+            figure{
+                img{
+                    height: auto;
+                }
+            }
+            .text-box{
+                width: 375px;
+                @include flex-justify-center;
+                p{
+                    font-weight: 500;
+                    font-size: 26px;
+                    line-height: 140%;
+                    color: $grey-4C;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }
