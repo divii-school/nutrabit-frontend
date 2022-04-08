@@ -82,6 +82,7 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="sortingMethod($event)">
+                    <option value>Sort By</option>
                     <option value="popularity">in order of popularity</option>
                     <option value="alphabetical">alphabetical order</option>
                   </select>
@@ -98,8 +99,13 @@
                     />
                   </div>
                   <div class="material-details">
-                    <h2>{{ data.material_name_ko }}</h2>
-                    <div class="description">
+                    <h2
+                      @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${data.id}`)"
+                    >{{ data.material_name_ko }}</h2>
+                    <div
+                      @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${data.id}`)"
+                      class="description"
+                    >
                       <p>{{ data.material_description_ko }}</p>
                     </div>
                   </div>
@@ -150,7 +156,7 @@ export default {
       sub_category_id: null,
       showModal: false,
       raw_material_id: null,
-      key:null
+      key: null
     };
   },
   created() {
@@ -203,7 +209,7 @@ export default {
     },
 
     sortingMethod(event) {
-       this.key = event.target.value;
+      this.key = event.target.value;
       // console.log(this.key);
       if (this.key == 'alphabetical') {
 
@@ -221,16 +227,16 @@ export default {
 
       }
       else {
-        this.mychoiceService.getRawMaterial(this.sub_category_id).then((res) => {
-        //console.log(res.data);
-        if (res.status == 200) {
-          // console.log('getRawMaterial res', res.data.data.rawMaterialData);
-          this.rawMaterialData = res.data.data.rawMaterialData;
+        this.mychoiceService.getRawMaterialAlPopularity(this.sub_category_id).then((res) => {
+          //console.log(res.data);
+          if (res.status == 200) {
+            // console.log('getRawMaterial res', res.data.data.rawMaterialData);
+            this.rawMaterialData = res.data.data.rawMaterialData;
 
-        } else {
-          this.$swal(res.data.message, "error");
-        }
-      });
+          } else {
+            this.$swal(res.data.message, "error");
+          }
+        });
       }
     }
 

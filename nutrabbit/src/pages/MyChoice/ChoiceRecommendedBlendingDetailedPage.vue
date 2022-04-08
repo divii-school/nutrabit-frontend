@@ -14,12 +14,33 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
             </swiper-slide>
           </swiper>-->
-          <swiper :pagination="pagination"
-            :modules="modules" class="mySwiper" v-for="(items, index) of blending_data" :key="index">
+          <swiper
+            :spaceBetween="10"
+            :modules="[Thumbs]"
+            :thumbs="{ swiper: thumbsSwiper }"
+            class="mySwiper"
+            v-for="(items, index) of blending_data"
+            :key="index"
+          >
             <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
             </swiper-slide>
-          </swiper> 
+          </swiper>
+          <swiper
+            :spaceBetween="10"
+            :slidesPerView="4"
+            :freeMode="true"
+            :modules="[Thumbs]"
+            watch-slides-progress
+            @swiper="setThumbsSwiper"
+            class="mySwiper2"
+            v-for="(items, index) of blending_data"
+            :key="index"
+          >
+            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
+              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+            </swiper-slide>
+          </swiper>
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
@@ -68,18 +89,6 @@
               <li v-for="(items, index) of item.similar_image_path" :key="index">
                 <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + items" alt />
               </li>
-              <!-- <li>
-                <img :src="item.img2" alt />
-              </li>
-              <li>
-                <img :src="item.img3" alt />
-              </li>
-              <li>
-                <img :src="item.img4" alt />
-              </li>
-              <li>
-                <img :src="item.img5" alt />
-              </li>-->
             </ul>
           </div>
         </div>
@@ -92,13 +101,14 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
+import { ref } from 'vue';
 // import "swiper/css/pagination";
 // import { Pagination } from "swiper";
-// import "swiper/css/free-mode"
-// import "swiper/css/navigation"
-// import "swiper/css/thumbs"
-// import required modules
-// import { FreeMode, Navigation, Thumbs } from 'swiper';
+import 'swiper/css';
+import "swiper/css/free-mode"
+import "swiper/css/navigation"
+import "swiper/css/thumbs"
+import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
 
@@ -107,6 +117,20 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+  },
+  setup() {
+    const thumbsSwiper = ref(null);
+    const setThumbsSwiper = (swiper) => {
+      thumbsSwiper.value = swiper;
+    };
+
+    return {
+      Thumbs,
+      thumbsSwiper,
+      setThumbsSwiper,
+      FreeMode,
+      Navigation,
+    };
   },
   data() {
     return {
@@ -201,7 +225,7 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-          // console.log(res.data);
+        // console.log(res.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
         } else {
@@ -212,3 +236,21 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mySwiper2 {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper2 .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper2 .swiper-slide-thumb-active {
+  opacity: 1;
+}
+</style>
