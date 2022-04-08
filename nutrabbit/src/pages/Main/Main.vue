@@ -74,7 +74,7 @@
       </div>
 
       <div class="payment-test" style="padding:40px">
-        <button type="button" class="btn-small-solid" @click="makePay">Make Payment</button>
+        <button type="button" class="btn-small-solid" @click="doPay">Make Payment Test</button>
       </div>
       <!-- payment-test -->
     </div>
@@ -123,10 +123,15 @@ export default {
   },
   methods: {
 
+    doPay() {
+      alert('doPay');
+    },
+
     // makePay test function
     makePay() {
+      console.log('makePay');
       alert('makePay');
-      this.paymentService.requestPay();
+      // this.paymentService.requestPay();
     },
 
 
