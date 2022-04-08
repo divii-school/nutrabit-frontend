@@ -37,7 +37,7 @@
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
-            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
+        <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
@@ -68,6 +68,7 @@
         </div>
       </div>
 
+      <!-- payment-test -->
       <div class="devider">
         <i class="icon-grey-star"></i>
       </div>
@@ -75,6 +76,7 @@
       <div class="payment-test" style="padding:40px">
         <button type="button" class="btn-small-solid" @click="makePay">Make Payment</button>
       </div>
+      <!-- payment-test -->
     </div>
   </div>
 </template>
