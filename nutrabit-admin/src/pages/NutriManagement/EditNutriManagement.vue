@@ -133,10 +133,10 @@
                             <input type="file" class="select-file" v-on:change="onFilesChange" />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
-                        <div style="display: flex; justify-content: flex-end">
+                        <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                                <div class="raw-image">
+                                <div class="raw-image" style="margin:5px;">
                                     <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image" :alt="product_sub_image" class="product-image" />
                                     <a href="javascript:;" @click="remove_raw(id,product_sub_image)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
                                 </div>
