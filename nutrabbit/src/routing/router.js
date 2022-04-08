@@ -196,7 +196,7 @@ const routes = [
     },
     {
         name: 'MyChoiceRawMaterialDetailedPage',
-        path: '/mychoice-rawMaterial-detailed-page',
+        path: '/mychoice-rawMaterial-detailed-page/:id',
         component: MyChoiceRawMaterialDetailedPage,
     },
     {
@@ -216,7 +216,7 @@ const routes = [
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient',
+        path: '/add-ingredient/:id',
         component: AddIngredient,
     },
     {

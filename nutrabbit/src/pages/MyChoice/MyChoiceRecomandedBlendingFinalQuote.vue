@@ -49,20 +49,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>One</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
+                    <tr v-for="(item, index) in items" :key="index">
+                      <td>{{ index + 1 }}</td>
+                                    <td>{{ item.category }}</td>
+                                    <td>{{ item.explanation }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -145,17 +135,20 @@
                     class="btn-small-solid grey"
                   >Previous</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue"  @click="package_temporary_add">temporary storage</button>
+                    <button
+                      class="btn-green-outline blue"
+                      @click="package_temporary_add"
+                    >temporary storage</button>
                     <button class="btn-small-solid blue ml-4" @click="package_add">next</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                  <Modal
-                    @close="closeModal"
-                    bodytext1="Temporary storage is complete"
-                    btnText2="confirm"
-                    link="/"
-                  />
-                </my-modal-component>
+                    <Modal
+                      @close="closeModal"
+                      bodytext1="Temporary storage is complete"
+                      btnText2="confirm"
+                      link="/"
+                    />
+                  </my-modal-component>
                 </div>
               </div>
             </div>
@@ -186,7 +179,8 @@ export default {
       package_id: this.$route.query.package_id,
       servicetype: 3,
       additional_request: '',
-       showModal: false,
+      showModal: false,
+      items: [],
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -207,21 +201,24 @@ export default {
     };
   },
   closeModal() {
-      this.showModal = false;
-    },
+    this.showModal = false;
+  },
   created() {
     this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.option_list();
   },
   methods: {
     package_add() {
       let is_temporary_storage = 'N';
       this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.additional_request, this.servicetype, is_temporary_storage).then((res) => {
         // console.log(res);
-        if (res.status=200) {
+        if (res.status = 200) {
           this.$swal("Application Data is successfuly submitted");
           this.$router.push("/");
         } else {
-           this.$swal(res.message, "error");
+          this.$swal(res.message, "error");
         }
       });
     },
@@ -229,13 +226,37 @@ export default {
       let is_temporary_storage = 'Y';
       this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.additional_request, this.servicetype, is_temporary_storage).then((res) => {
         // console.log(res);
-        if (res.status=200) {
+        if (res.status = 200) {
           // this.$router.push("/");
           this.showModal = true;
         } else {
-           this.$swal(res.message, "error");
+          this.$swal(res.message, "error");
         }
       });
+    },
+    option_list() {
+      this.mychoiceService.getRecommendedBlendingDetail(this.blending_id).then((res) => {
+        //  console.log(res.data);
+        if (res.data.status == 200) {
+          var option_data = res.data.data[0].options;
+          for (let i = 0; i <= option_data.length; i++) {
+
+            var res_option_type = option_data[i].split(':')[0]; // raw_material:1
+            var res_option_value = option_data[i].split(':')[1];
+            // console.log(res_option_type);
+            // console.log(res_option_value);
+            this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
+              this.items.push({'category':res.data.data[0].category,'explanation':res.data.data[0].explanation});
+              console.log(res);
+            });
+          }
+        }
+        else {
+          this.$swal(res.data.message, "error");
+        }
+
+      });
+
     }
   }
 };

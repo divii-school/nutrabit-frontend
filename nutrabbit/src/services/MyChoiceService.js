@@ -21,6 +21,11 @@ export default class MyChoiceService {
     return await axios.post(`/blending/alphabetic/`, { lang: 'KO' }).then((res) => res).catch((err) => err);
   }
 
+  //recommended blending popularity API Functions
+  async getRecommendedBlendingPopularity() {
+    return await axios.post(`/blending/popularity/`, { lang: 'KO' }).then((res) => res).catch((err) => err);
+  }
+
   //RawMaterial API Functions
   async getRawMaterial(sub_cat_id) {
     return await axios.post(`/product/raw_material`, { sub_category_id: sub_cat_id, lang: 'KO' }).then((res) => res).catch((err) => err);
@@ -31,7 +36,12 @@ export default class MyChoiceService {
     return await axios.post(`/product/raw_material/alphabetic/`, { sub_category_id: sub_cat_id, lang: 'KO' }).then((res) => res).catch((err) => err);
   }
 
-  //RawMaterial storage box API Functions
+  //RawMaterial popularity API Functions
+  async getRawMaterialAlPopularity(sub_cat_id) {
+    return await axios.post(`/product/raw_material/popularity`, { sub_category_id: sub_cat_id, lang: 'KO' }).then((res) => res).catch((err) => err);
+  }
+
+  //RawMaterial storage box add API Functions
   async rawMaterialStorageBoxAdd(raw_material_id) {
     return await axios.post(`/product/raw_material_storage_box/add`, { raw_material_id: raw_material_id }).then((res) => res).catch((err) => err);
   }
@@ -54,6 +64,26 @@ export default class MyChoiceService {
   //blending formulation API Functions
   async getBlendingFormulation() {
     return await axios.post(`/blending/formulation`, { lang: 'KO' }).then((res) => res.data).catch((err) => err);
+  }
+
+  //Recommended blending final quote application details detail API Functions
+  async getRecommnededApplicationDetails(blending_id) {
+    return await axios.post(`/application/my_choice/details`, { id: blending_id }).then((res) => res).catch((err) => err);
+  }
+
+  //option details
+  async optiondetails(type, val) {
+    return await axios.post(`/application/options_details`, { lang: 'KO', option_type: type, option_val: val }).then((res) => res).catch((err) => err);
+  }
+
+  //my choice detail API Functions
+  async getRawMaterialDetail(raw_material_id) {
+    return await axios.post(`/product/raw_material/details`, { raw_material_id: raw_material_id, lang: 'KO' }).then((res) => res).catch((err) => err);
+  }
+
+  //my choice detail API Functions
+  async getRawMaterialImage(raw_material_id) {
+    return await axios.post(`/product/raw_material/images`, { raw_material_id: raw_material_id }).then((res) => res).catch((err) => err);
   }
 
 }
