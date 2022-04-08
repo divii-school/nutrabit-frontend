@@ -10,19 +10,24 @@
             <ul>
               <li>
                 <div class="item-left">
-                  <span>important</span>
+                  <span v-if="item.top10 == 1">important</span>
                   <p>
                     {{ item.title_en }}
                   </p>
                 </div>
                 <div class="item-right">
-                  <p>2022.01.10</p>
+                  <p>{{ dateformat(item.createdDate) }}</p>
                 </div>
               </li>
             </ul>
           </div>
           <div class="background">
-            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" />
+            <img
+              :src="
+                'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                item.image_path
+              "
+            />
           </div>
           <div class="details">
             <p>
@@ -30,7 +35,12 @@
             </p>
           </div>
           <div class="btn flex justify-end">
-            <button class="btn-small-solid grey">as a list</button>
+            <button
+              class="btn-small-solid grey"
+              @click="this.$router.push('/notice')"
+            >
+              as a list
+            </button>
           </div>
         </div>
       </div>
@@ -38,6 +48,8 @@
   </div>
 </template>
 <script>
+
+import moment from 'moment';
 import { useRoute } from "vue-router";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
@@ -53,6 +65,7 @@ export default {
   },
   mounted() {
     this.NoticeDetails();
+     this.dateformat();
   },
   methods: {
     NoticeDetails() {
@@ -67,6 +80,11 @@ export default {
           }
         }
       );
+    },
+    dateformat(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY.MM.DD");
+      }
     },
   },
 };

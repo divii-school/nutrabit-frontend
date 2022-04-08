@@ -103,7 +103,17 @@ export default {
     onChange(event) {
       // console.log(event.target.value);
       if (event.target.value == 'popularity') {
-         this.allBlendingData();
+
+        this.mychoiceService.getRecommendedBlendingPopularity().then((res) => {
+          //  console.log(res.data);
+          if (res.data.status == 200) {
+            // console.log('getRawMaterial res', res.data.data.rawMaterialData);
+            this.blendingData = res.data.data.blendingData;
+
+          } else {
+            this.$swal(res.data.message, "error");
+          }
+        });
       }
        else if (event.target.value == 'alphabetical') {
 

@@ -106,9 +106,7 @@
               </div>
 
               <div class="btn-wrap">
-                <router-link to="/ingredient-formulation">
-                  <button class="btn-small-solid grey">Previous</button>
-                </router-link>
+                  <button  @click="this.$router.push(`/choice-recommended-blending-detailed-page/${this.blending_id}`)" class="btn-small-solid grey">Previous</button>
                 <button @click="checkPackageId" class="btn-small-solid blue">next</button>
               </div>
             </div>
