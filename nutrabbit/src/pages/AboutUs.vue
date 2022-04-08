@@ -12,60 +12,66 @@
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
           <div class="container-medium">
-          <div class="sampleServices about-recom">
-            <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center">I recommend it to these people!</h4>
-            <div class="recom-section">
-              <div class="row-type type-1">
-                <div class="num">1</div>
-                <figure><img src="../../../src/assets/images/about1.png"></figure>
-                <div class="text-box"><p>I don't know how to start!</p></div>
-              </div>
-              <div class="row-type rev">
-                <div class="num">2</div>
-                <figure><img src="../../../src/assets/images/about2.png"></figure>
-                <div class="text-box">
-                  <p>Complex FDA approval process, as there are many prohibitions like drugs, 
-                    professional manpower is a must!</p>
+            <div class="sampleServices about-recom">
+              <p class="title text-center samllTitle">nutri 3.3</p>
+              <h4 class="title text-center">I recommend it to these people!</h4>
+              <div class="recom-section">
+                <div class="row-type type-1">
+                  <div class="num">1</div>
+                  <figure><img src="../../../src/assets/images/about1.png"></figure>
+                  <div class="text-box"><p>I don't know how to start!</p></div>
+                </div>
+                <div class="row-type rev">
+                  <div class="num">2</div>
+                  <figure><img src="../../../src/assets/images/about2.png"></figure>
+                  <div class="text-box">
+                    <p>Complex FDA approval process, as there are many prohibitions like drugs, 
+                      professional manpower is a must!</p>
+                  </div>
+                </div>
+                <div class="row-type">
+                  <div class="num">3</div>
+                  <figure><img src="../../../src/assets/images/about3.png"></figure>
+                  <div class="text-box"><p>Minimum quantity and high cost I'm worried.</p></div>
                 </div>
               </div>
-              <div class="row-type">
-                <div class="num">3</div>
-                <figure><img src="../../../src/assets/images/about3.png"></figure>
-                <div class="text-box"><p>Minimum quantity and high cost I'm worried.</p></div>
+            </div>
+          </div>
+          <div class="green-belt">
+            <div class="container-medium">
+              <h2>Nutri3.3 provides A-Z full service in the manufacturing process. <br>
+It is a One Step Nutrition Platform.</h2>
+            </div>
+          </div>
+          <div class="container-medium">
+            <div class="sampleServices questionSection">
+              <p class="title text-center samllTitle">my choice</p>
+              <h4 class="title text-center">Frequently Asked Questions</h4>
+              <div id="app" class="accCont">
+                <accordion class="mb-4">
+                  <template v-slot:title>
+                    <span class="font-semibold text-xl accTItle">How long does it take to make a sample?</span>
+                  </template>
+                  <template v-slot:content>
+                    <p class="accBody">
+                      It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
+                    </p>
+                  </template>
+                </accordion>
+
+                <accordion class="mb-4">
+                  <template v-slot:title>
+                    <span class="font-semibold text-xl accTItle">What is the volume and quantity of samples provided?</span>
+                  </template>
+                  <template v-slot:content>
+                    <p class="accBody">
+                      Sample quantity offered is as follows:
+                    </p>
+                  </template>
+                </accordion>
               </div>
             </div>
           </div>
-          </div>
-          <div class="container-medium">
-          <div class="sampleServices questionSection">
-            <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">Frequently Asked Questions</h4>
-            <div id="app" class="accCont">
-              <accordion class="mb-4">
-                <template v-slot:title>
-                  <span class="font-semibold text-xl accTItle">How long does it take to make a sample?</span>
-                </template>
-                <template v-slot:content>
-                  <p class="accBody">
-                    It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
-                  </p>
-                </template>
-              </accordion>
-
-              <accordion class="mb-4">
-                <template v-slot:title>
-                  <span class="font-semibold text-xl accTItle">What is the volume and quantity of samples provided?</span>
-                </template>
-                <template v-slot:content>
-                  <p class="accBody">
-                    Sample quantity offered is as follows:
-                  </p>
-                </template>
-              </accordion>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

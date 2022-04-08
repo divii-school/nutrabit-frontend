@@ -166,10 +166,13 @@
         color: $green-68;
     }
     .recom-section{
-        max-width: 1166px;
-        margin: 0 auto;
+        
         .row-type{
             @include flex-justify-between;
+            margin-top: 90px;
+            &:first-child{
+                margin-top: 0;
+            }
             &.type-1{
                 .text-box{
                     p{
@@ -207,6 +210,34 @@
                     text-align: center;
                 }
             }
+        }
+    }
+}
+
+.green-belt{
+    background: $green-68;
+    padding: 150px 0;
+    h2{
+        text-align: center;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 120%;
+        color: $white-1;
+        position: relative;
+        @include flex-justify-center;
+        &::before{
+            content: "";
+            background: url(@/assets/images/decor-left.svg) no-repeat top left;
+            width: 74px;
+            height: 120px;
+            display: block;
+        }
+        &::after{
+            content: "";
+            background: url(@/assets/images/decor-right.svg) no-repeat top left;
+            width: 74px;
+            height: 120px;
+            display: block;
         }
     }
 }
