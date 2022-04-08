@@ -307,6 +307,7 @@ export default {
             return parseInt(x, 10); 
             });
             this.select_items = result;
+            this.selectedItems = res.data.data[0].raw_material_id;
         });
     },
     methods: {
@@ -322,7 +323,7 @@ export default {
            let items = [];
             let data = this.select_items;
             for (var a = 0; a < data.length; a++) {
-                items.push(data[a].id);
+                items.push(data[a]);
             }
             this.selectedItems=items.toString();
             console.log(this.selectedItems);
@@ -432,6 +433,8 @@ export default {
 
 
         editNutri() {
+            // console.log(this.select_items)
+            // console.log(this.selectedItems)
             let vcheckData = {
                 category_id:this.category_id,
                 raw_material_id:this.selectedItems,
@@ -457,7 +460,7 @@ export default {
             } else {
                 this.formData.append('id', this.$route.params.id);
                 this.formData.append('category_id', this.category_id);
-                 this.formData.append('raw_material_id', this.selectedItems);
+                 this.formData.append('raw_material_id',this.selectedItems);
                   this.formData.append('pill_id', this.pill_id);
                    this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);
