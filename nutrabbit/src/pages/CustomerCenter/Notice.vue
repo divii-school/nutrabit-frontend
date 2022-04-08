@@ -27,7 +27,7 @@
         </div>
         <pagination
           v-model="page"
-          :records="3"
+          :records="5"
           :per-page="1"
           @paginate="myCallback"
         />
@@ -49,7 +49,7 @@ export default {
       NoticeList: [],
       UpdatedNoticeList: [],
       page: 1,
-      perPage: 1,
+      perPage: 10,
     };
   },
   created() {

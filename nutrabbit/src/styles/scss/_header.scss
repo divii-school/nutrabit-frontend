@@ -264,7 +264,7 @@ header {
 
             .dropbtn {
               @include flex-align-center;
-
+              min-height: 41px;
               i {
                 margin-right: 5px;
               }
@@ -278,7 +278,7 @@ header {
               box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
               z-index: 1;
               left: -125px;
-              top: 31px;
+              top: 40px;
 
               a {
                 padding: 16px;

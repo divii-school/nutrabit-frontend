@@ -160,8 +160,8 @@
           </form>
            <div class="logout-withdraw">
             <ul>
-              <li>
-                <a href="">Log out</a>
+              <li><router-link to @click="logOut()">Log out</router-link>
+                <!-- <a href="">Log out</a> -->
               </li>
                <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
                 <!-- <a href=""></a> -->
@@ -283,6 +283,13 @@ export default {
         },
       }).open();
     },
+
+    // logOut() {
+    //   if (this.logedInUserDetails) {
+    //     localStorage.clear();
+    //     window.location = "/login";
+    //   }
+    // },
 
   },
 

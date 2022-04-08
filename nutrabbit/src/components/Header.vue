@@ -248,7 +248,7 @@ export default {
             },
             {
               label: "1:1 inquiry",
-              link: "/",
+              link: "/inquiry",
             },
           ],
         },

@@ -12,4 +12,14 @@ export default class CustomerCenterService {
     async getNoticeDetails(noticeId) {
         return await axios.post(`/notice/id`, { lang: 'EN', id: noticeId }).then((res) => res).catch((err) => err);
     }
+
+    // Faq
+    async getFAQList() {
+        return await axios.post(`/faq`, { lang: 'EN'}).then((res) => res).catch((err) => err);
+    }
+
+    // Faq
+    async getEnqueryList(inqId) {
+        return await axios.post(`/inquery`, { lang: 'EN', userID: inqId}).then((res) => res).catch((err) => err);
+    }
 }

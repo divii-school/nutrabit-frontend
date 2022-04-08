@@ -25,5 +25,12 @@ export default class PersonalInfoService {
       distribution_medium: checkName,   
     }).then((res) => res);
   }
+
+  async personalInfoWithdraw(reason) {
+    return await axios.post(`/profile/withdrawal`,
+      {
+        reason:reason,
+      }).then((res) => res).catch((err) => err);
+  }
   
 }

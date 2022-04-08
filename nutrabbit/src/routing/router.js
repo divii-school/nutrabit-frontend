@@ -123,6 +123,7 @@ const routes = [
         name: 'Inquery',
         path: '/inquiry',
         component: Inquery,
+        beforeEnter: guard,
     },
     {
         name: 'MemberRegistrationMethod',
@@ -228,7 +229,6 @@ const routes = [
     },
     {
         name: 'noticeDetailPage',
-        // path: '/notice-detail-page',
         path: '/notice-detail-page/:id',
         component: NoticeDetailPage,
         beforeEnter: guard,
@@ -237,6 +237,7 @@ const routes = [
         path: '/faq',
         name: 'Faq',
         component: FAQ,
+        beforeEnter: guard,
     },
     {
         name: 'MyRecipeDetails',
