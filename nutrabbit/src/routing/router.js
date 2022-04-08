@@ -212,7 +212,7 @@ const routes = [
     },
     {
         name: 'IngredientFormulation',
-        path: '/ingredient-formulation',
+        path: '/ingredient-formulation/:id',
         component: IngredientFormulation,
     },
     {

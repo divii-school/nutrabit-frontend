@@ -38,14 +38,14 @@
                 <h2>Formulation selection</h2>
                 <div class="tolltip-outer">
                   <Popper>
-                    <button><i class="icon-info"></i></button>
+                    <button>
+                      <i class="icon-info"></i>
+                    </button>
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>Please select the desired format.</li>
-                          <li>
-                            Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.
-                          </li>
+                          <li>Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.</li>
                         </ul>
                       </div>
                     </template>
@@ -56,13 +56,16 @@
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingFormulationData" :key="index">
-                  <ProductList :item="item"/>
+                  <ProductList :item="item" @changeId="UpdatedId($event)" />
                 </li>
               </ul>
-              
+
               <div class="btn-wrap">
-                <button class="btn-small-solid grey">Previous</button>
-                <button class="btn-small-solid blue">next</button>
+                <button
+                  @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${this.$route.params.id}`)"
+                  class="btn-small-solid grey"
+                >Previous</button>
+                <button @click="checkPillId" class="btn-small-solid blue">next</button>
               </div>
             </div>
           </div>
@@ -86,7 +89,8 @@ export default {
   },
   data() {
     return {
-      blendingFormulationData:[]
+      blendingFormulationData: [],
+      pill_id: '',
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -124,6 +128,21 @@ export default {
         }
       });
     },
-  }
+    UpdatedId(e) {
+      this.pill_id = e;
+      console.log(this.pill_id);
+    },
+    checkPillId() {
+      // console.log(this.blending_id);
+      if (this.pill_id == "") {
+        this.$swal("Please Choose a Formulation");
+      }
+      else {
+        this.$router.push({ name: 'RawMaterialPackage', query: { raw_material_id: this.$route.params.id, pill_id: this.pill_id } });
+        console.log("success");
+      }
+    },
+  },
+
 };
 </script>
