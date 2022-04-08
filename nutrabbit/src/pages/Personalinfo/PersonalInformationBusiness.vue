@@ -82,10 +82,11 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="password"
                    placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
                    maxlength="20"
                    v-model="password"
+                   autocomplete="off"
                   />
                 </div>
               </div>
@@ -97,9 +98,10 @@
                 <div class="input-inner">
                   <input
                     class="form-control"
-                    type="text"
+                    type="password"
                     placeholder="Sankyu password confirmation"
                     v-model="confirmPassword"
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -161,10 +163,8 @@
            <div class="logout-withdraw">
             <ul>
               <li><router-link to @click="logOut()">Log out</router-link>
-                <!-- <a href="">Log out</a> -->
               </li>
-               <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
-                <!-- <a href=""></a> -->
+              <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
               </li>
             </ul>
           </div>
@@ -284,12 +284,10 @@ export default {
       }).open();
     },
 
-    // logOut() {
-    //   if (this.logedInUserDetails) {
-    //     localStorage.clear();
-    //     window.location = "/login";
-    //   }
-    // },
+    logOut() {
+        localStorage.clear();
+        window.location = "/login";
+    },
 
   },
 
