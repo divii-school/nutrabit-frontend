@@ -36,6 +36,8 @@ import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
 import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
 import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
 import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+import AboutUs from '../pages/AboutUs.vue';
+
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
@@ -266,6 +268,12 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
+
+    },
+    {
+        name: 'AboutUs',
+        path: '/about-us',
+        component: AboutUs,
 
     },
 
