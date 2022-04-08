@@ -31,7 +31,7 @@ export default class PersonalBusinessService {
   async businessWithdraw(reason) {
     return await axios.post(`/profile/withdrawal`,
       {
-        reason:reason,
+        reason:reason
       }).then((res) => res).catch((err) => err);
   }
 }

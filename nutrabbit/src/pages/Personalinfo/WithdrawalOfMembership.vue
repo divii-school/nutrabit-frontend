@@ -47,6 +47,17 @@
         link = '/'
       />
       </div>
+
+      <!-- <div>
+        <Modal
+        v-show="saveModal"
+        @close="closeModal2"
+        bodytext1="Saved"
+        btnText2="Confirm"
+        link = '/'
+      />
+      </div> -->
+
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
@@ -63,6 +74,7 @@ export default {
       error: {},
       isModalVisible: false,
       confirmModal: false,
+      saveModal: false,
     }
   },
 
@@ -81,12 +93,9 @@ export default {
     },
 
     async businessWithdraw() {
-      console.log("aaaaaa");
       if (this.reason == "") {
-        console.log("bbbbb");
         this.error.reason = "Please enter the reason";
       } else {
-        console.log("ccccc");
         this.personalBusinessService
           .businessWithdraw(
             this.reason
@@ -94,13 +103,13 @@ export default {
           .then((res) => {
             console.log(res);
             if (res.data.status == 200) {
-              console.log("ddddd");
               console.log(res.data.status);
               this.isModalVisible =  true;
             }
           });
       }
     },
+
 
     closeModal() {
       this.isModalVisible = false;
@@ -113,6 +122,13 @@ export default {
       // this.$router.push("/");
       this.confirmModal = false;
     },
+
+    // closeModal2() {
+    //   // this.$router.push("/");
+    //   this.isModalVisible = false;
+    //   this.confirmModal = false;
+    //   this.saveModal = true;
+    // },
 
   },
  

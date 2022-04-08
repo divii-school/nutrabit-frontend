@@ -3,62 +3,113 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice">
-            <span class="my-choice-title-top">Sample Guide</span>
+          <div class="nutri-choice theme-green">
+            <span class="my-choice-title-top">Nutri 3.3</span>
+            <p class="title text-center">If you want to have your own health functional food brand easily and conveniently</p>
             <h2 class="nutri-choice-heading text-center">
-              Sample making guide
+              nutri 3.3
             </h2>
-            <p class="title text-center sampleBLueAfter">nuitri 3.3 sample service</p>
-            <p class="desc text-center">
-              Make the health functional core food sample you want in nutri 3.3! It can be produced at a sampling cost of 300,000 won (VAT included) per one time.
-            </p>
-            <button class="btn-small-solid">go to sample</button>
-            <p class="sampleNote">*Sample service is a paid service, and it usually takes 2 weeks for delivery after payment is completed.</p>
-          </div>
-          <div class="devider"><i class="icon-grey-star"></i></div>
-          <div class="sampleServices">
-            <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">nutri 3.3 blending</h4>
-            <ul>
-              <li v-for="(item, index) of processData" :key="index">
-                <div class="imgCont">
-                  <img :src="item.img">
-                </div>
-                <span>{{ item.step }}</span>
-                <h5>{{ item.title }}</h5>
-                <p>{{ item.desc }}</p>
-              </li>
-            </ul>
-          </div>
-          <div class="devider"><i class="icon-grey-star"></i></div>
-          <div class="sampleServices questionSection">
-            <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">Frequently Asked Questions</h4>
-            <div id="app" class="accCont">
-              <accordion class="mb-4">
-                <template v-slot:title>
-                  <span class="font-semibold text-xl accTItle">How long does it take to make a sample?</span>
-                </template>
-                <template v-slot:content>
-                  <p class="accBody">
-                    It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
-                  </p>
-                </template>
-              </accordion>
-
-              <accordion class="mb-4">
-                <template v-slot:title>
-                  <span class="font-semibold text-xl accTItle">What is the volume and quantity of samples provided?</span>
-                </template>
-                <template v-slot:content>
-                  <p class="accBody">
-                    Sample quantity offered is as follows:
-                  </p>
-                </template>
-              </accordion>
-            </div>
           </div>
         </div>
+        <div class="devider"><i class="icon-grey-star"></i></div>
+          <div class="container-medium">
+            <div class="sampleServices about-recom">
+              <p class="title text-center samllTitle">nutri 3.3</p>
+              <h4 class="title text-center">I recommend it to these people!</h4>
+              <div class="recom-section">
+                <div class="row-type type-1">
+                  <div class="num">1</div>
+                  <figure><img src="../../../src/assets/images/about1.png"></figure>
+                  <div class="text-box"><p>I don't know how to start!</p></div>
+                </div>
+                <div class="row-type">
+                  <div class="num">2</div>
+                  <figure><img src="../../../src/assets/images/about2.png"></figure>
+                  <div class="text-box">
+                    <p>Complex FDA approval process, as there are many prohibitions like drugs, 
+                      professional manpower is a must!</p>
+                  </div>
+                </div>
+                <div class="row-type">
+                  <div class="num">3</div>
+                  <figure><img src="../../../src/assets/images/about3.png"></figure>
+                  <div class="text-box"><p>Minimum quantity and high cost I'm worried.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="green-belt">
+            <div class="container-medium">
+              <h2>Nutri3.3 provides A-Z full service in the manufacturing process. <br>
+It is a One Step Nutrition Platform.</h2>
+            </div>
+          </div>
+          <div class="container-medium">
+            <div class="nutri-choice theme-green">
+              <span class="my-choice-title-top">Nutri 3.3</span>
+              <p class="title text-center">Dry manufacturing navigation in the palm of your hand</p>
+              <h2 class="nutri-choice-heading text-center">
+                nutri 3.3 service
+              </h2>
+            </div>
+            <div class="about-servcie">
+              <div class="row-type">
+                <div class="num">
+                  1
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  2
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  3
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  4
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  5
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
