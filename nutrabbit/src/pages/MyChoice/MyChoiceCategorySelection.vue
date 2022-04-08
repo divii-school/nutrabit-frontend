@@ -97,6 +97,13 @@
                       :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
                       alt
                     />
+
+                    <div class="img-wrap-hover">
+                      <img
+                      :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
+                      alt
+                    />
+                    </div>
                   </div>
                   <div class="material-details">
                     <h2
