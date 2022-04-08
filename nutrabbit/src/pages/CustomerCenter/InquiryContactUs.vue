@@ -15,6 +15,7 @@
                 <div class="input-group">
                   <div class="header-dropdown">
                     <select v-model="selected">
+                      <option value="" disabled hidden>Choose the subject of your inquiry</option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
                         :key="index"
