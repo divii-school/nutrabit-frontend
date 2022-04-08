@@ -840,24 +840,26 @@ textarea {
             }
           }
         }
-
-        // &.VuePagination__pagination-item-prev-page {
-        //   button {
-        //     background: url('@/assets/icons/pagination-arwl.svg') no-repeat center center;
-        //   }
-        // }
-
-        // &.VuePagination__pagination-item-next-page {
-        //   button {
-        //     background: url('@/assets/icons/pagination-arwll.svg') no-repeat center center;
-        //     rotate: 180deg;
-        //   }
-        // }
       }
     }
 
     .VuePagination__count {
       display: none;
+    }
+  }
+}
+
+// custom dropdown
+
+.dropdown{
+  select{
+    background: $white-1;
+    font-size: 16px;
+    color: #181818;
+    border: 0;
+    width: 100%;
+    option{
+      background: #fff;
     }
   }
 }

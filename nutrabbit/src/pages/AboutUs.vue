@@ -3,7 +3,8 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice">
+          <div class="nutri-choice theme-green">
+            <span class="my-choice-title-top">Nutri 3.3</span>
             <p class="title text-center">If you want to have your own health functional food brand easily and conveniently</p>
             <h2 class="nutri-choice-heading text-center">
               nutri 3.3
@@ -21,7 +22,7 @@
                   <figure><img src="../../../src/assets/images/about1.png"></figure>
                   <div class="text-box"><p>I don't know how to start!</p></div>
                 </div>
-                <div class="row-type rev">
+                <div class="row-type">
                   <div class="num">2</div>
                   <figure><img src="../../../src/assets/images/about2.png"></figure>
                   <div class="text-box">
@@ -44,31 +45,68 @@ It is a One Step Nutrition Platform.</h2>
             </div>
           </div>
           <div class="container-medium">
-            <div class="sampleServices questionSection">
-              <p class="title text-center samllTitle">my choice</p>
-              <h4 class="title text-center">Frequently Asked Questions</h4>
-              <div id="app" class="accCont">
-                <accordion class="mb-4">
-                  <template v-slot:title>
-                    <span class="font-semibold text-xl accTItle">How long does it take to make a sample?</span>
-                  </template>
-                  <template v-slot:content>
-                    <p class="accBody">
-                      It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
-                    </p>
-                  </template>
-                </accordion>
-
-                <accordion class="mb-4">
-                  <template v-slot:title>
-                    <span class="font-semibold text-xl accTItle">What is the volume and quantity of samples provided?</span>
-                  </template>
-                  <template v-slot:content>
-                    <p class="accBody">
-                      Sample quantity offered is as follows:
-                    </p>
-                  </template>
-                </accordion>
+            <div class="nutri-choice theme-green">
+              <span class="my-choice-title-top">Nutri 3.3</span>
+              <p class="title text-center">Dry manufacturing navigation in the palm of your hand</p>
+              <h2 class="nutri-choice-heading text-center">
+                nutri 3.3 service
+              </h2>
+            </div>
+            <div class="about-servcie">
+              <div class="row-type">
+                <div class="num">
+                  1
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  2
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  3
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  4
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  5
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
               </div>
             </div>
           </div>

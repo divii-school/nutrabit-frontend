@@ -13,7 +13,7 @@
               <div class="form-group">
                 <label for="">Inquiry subject</label>
                 <div class="input-group">
-                  <div class="header-dropdown">
+                  <div class="header-dropdown dropdown">
                     <select v-model="selected">
                       <option value="" disabled hidden>
                         Choose the subject of your inquiry
