@@ -120,6 +120,7 @@ const routes = [
         name: 'InquiryContactUs',
         path: '/inquiry-contactUs',
         component: InquiryContactUs,
+        beforeEnter: guard,
     },
     {
         name: 'Inquery',
