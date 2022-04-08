@@ -32,39 +32,15 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Category">{{ $t('Blending.edit.Category') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="category_id"
-                                id="category_id"
-                                :placholder="category_name_ko"
-                                v-model="category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.category_name_ko }}</option>
-                            </select>
+                            
+                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Mainrawmaterial">{{ $t('Blending.edit.Mainrawmaterial') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="raw_material_id"
-                                id="raw_material_id"
-                                :placholder="material_name_ko"
-                                v-model="raw_material_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in RawDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.material_name_ko }}</option>
-                            </select>
+                            
+                            <Dropdown v-model="raw_material_id"  :options="RawDropdownValues"  optionLabel="material_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -82,20 +58,8 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="PillTypeSelect">{{ $t('Blending.edit.PillTypeSelect') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="pill_id"
-                                id="pill_id"
-                                :placholder="name_ko"
-                                v-model="pill_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in PillDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.name_ko }}</option>
-                            </select>
+                            
+                            <Dropdown v-model="pill_id"  :options="PillDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">

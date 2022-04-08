@@ -14,21 +14,12 @@
                                 :placeholder="$t('Blending.list.name')"
                                 id="title2"
                                 v-model="name_ko"
-                                @keyup="addBlending"
+                                
                             ></InputText>
                             <div class="text-red">{{ error.name_ko }}</div>
                         </div>
                     </div>
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                    </div>-->
+                  
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.blendingname1') }}</label>
@@ -38,7 +29,7 @@
                                 :placeholder="$t('Blending.list.blendingname1')"
                                 id="title2"
                                 v-model="name_en"
-                                 @keyup="addBlending"
+                                
                             ></InputText>
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
@@ -47,72 +38,19 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="type">{{ $t('Blending.list.addcategory') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="category_id"
-                                id="category_id"
-                                v-model="category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.category_name_ko }}</option>
-                            </select>
-                            <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
+                           
+                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.mainraw') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="raw_material_id"
-                                id="raw_material_id"
-                                v-model="raw_material_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in RawDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.material_name_ko }}</option>
-                            </select>
+                         
+                            <Dropdown v-model="raw_material_id"  :options="RawDropdownValues"  optionLabel="material_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
 
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{$t('Blending.list.deskbanner')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!fileName">파일 선택</span>
-                                <span v-else>{{$t('button.select_file')}}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red">{{ error.file }}</div>
-                            <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                            <img id="frame" src width="100px" height="100px" />
-                        </div>
-
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{$t('Banner.list.mobbanner')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div class="custom-select">
-                                <span v-if="!filesName">{{$t('button.select_file')}}</span>
-                                <span v-else>{{ filesName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
-                            <img id="frame" src width="100px" height="100px" />
-                        </div>-->
+                        
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
@@ -123,7 +61,7 @@
                                 :placeholder="$t('Blending.list.subraw')"
                                 id="title2"
                                 v-model="sub_raw_materials"
-                                 @keyup="addBlending"
+                                
                             ></InputText>
                             <div class="text-red">{{ error.sub_raw_materials }}</div>
                         </div>
@@ -132,20 +70,8 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.piltype') }}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="pill_id"
-                                id="pill_id"
-                                v-model="pill_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in PillDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                    
-                                >{{ item.name_ko }}</option>
-                            </select>
+                          
+                            <Dropdown v-model="pill_id"  :options="PillDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
 
@@ -158,7 +84,7 @@
                                 :placeholder="$t('Blending.list.addtag')"
                                 id="title2"
                                 v-model="tags_ko"
-                                 @keyup="addBlending"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.tags_ko }}</div>
                         </div>
@@ -173,7 +99,7 @@
                                 :placeholder="$t('Blending.list.tag')"
                                 id="title2"
                                 v-model="tags_en"
-                                 @keyup="addBlending"
+                              
                             ></InputText>
                             <div class="text-red">{{ error.tags_en }}</div>
                         </div>
@@ -188,7 +114,7 @@
                                 :placeholder="$t('Blending.list.addefficacy')"
                                 id="title2"
                                 v-model="efficiency_ko"
-                                 @keyup="addBlending"
+                                
                             ></Textarea>
                             <div class="text-red">{{ error.efficiency_ko }}</div>
                         </div>
@@ -203,7 +129,7 @@
                                 :placeholder="$t('Blending.list.efficacy')"
                                 id="title2"
                                 v-model="efficiency_en"
-                                 @keyup="addBlending"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.efficiency_en }}</div>
                         </div>
@@ -218,7 +144,7 @@
                                 :placeholder="$t('Blending.list.ingredients')"
                                 id="title2"
                                 v-model="ingredients_ko"
-                                 @keyup="addBlending"
+                                
                             ></Textarea>
                             <div class="text-red">{{ error.ingredients_ko }}</div>
                         </div>
@@ -233,7 +159,7 @@
                                 :placeholder="$t('Blending.list.ingredientsdetails')"
                                 id="title2"
                                 v-model="ingredients_en"
-                                 @keyup="addBlending"
+                                
                             ></Textarea>
                             <div class="text-red">{{ error.ingredients_en }}</div>
                         </div>
@@ -248,7 +174,7 @@
                                 :placeholder="$t('Blending.list.product')"
                                 id="title2"
                                 v-model="description_ko"
-                                 @keyup="addBlending"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
@@ -263,7 +189,7 @@
                                 :placeholder="$t('Blending.list.productdescription')"
                                 id="title2"
                                 v-model="description_en"
-                                 @keyup="addBlending"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
