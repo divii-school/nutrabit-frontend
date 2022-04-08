@@ -8,20 +8,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
                             <label for="title2">{{$t('Faq.list.category')}}</label>
-                           <select
-                                class="p-dropdown-label p-inputtext"
-                                name="category_id"
-                                id="category_id"
-                                :placholder="name_ko"
-                                v-model="category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.name_ko }}</option>
-                            </select>
+                           <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                       <div class="p-grid p-formgrid p-mb-3">

@@ -8,26 +8,16 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Faq.list.category')}}</label>
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="category_id"
-                                id="category_id"
-                                v-model="category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.name_ko }}</option>
-                            </select>
+                            
+
+                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Faq.add.title')}}</label>
-                            <InputText :class="`${error.title_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.title')" id="title2" v-model="title_ko"  @keyup="addFaq"></InputText>
+                            <InputText :class="`${error.title_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.title')" id="title2" v-model="title_ko"  ></InputText>
                             <div class="text-red">{{ error.title_ko }}</div>
                         </div>
                     </div>
@@ -35,7 +25,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Faq.add.addtitle')}}</label>
-                            <InputText :class="`${error.title_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addtitle')" id="title2" v-model="title_en" @keyup="addFaq"></InputText>
+                            <InputText :class="`${error.title_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addtitle')" id="title2" v-model="title_en" ></InputText>
                             <div class="text-red">{{ error.title_en }}</div>
                         </div>
                     </div>
@@ -43,7 +33,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Faq.add.answer')}}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.answer')" id="title2" v-model="description_ko" @keyup="addFaq"></Textarea>
+                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.answer')" id="title2" v-model="description_ko" ></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
@@ -51,7 +41,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Faq.add.addanswer')}}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addanswer')" id="title2" v-model="description_en" @keyup="addFaq"></Textarea>
+                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addanswer')" id="title2" v-model="description_en" ></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
