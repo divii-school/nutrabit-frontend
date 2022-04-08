@@ -36,6 +36,8 @@ import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
 import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
 import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
 import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+import AboutUs from '../pages/AboutUs.vue';
+
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
@@ -123,6 +125,7 @@ const routes = [
         name: 'Inquery',
         path: '/inquiry',
         component: Inquery,
+        beforeEnter: guard,
     },
     {
         name: 'MemberRegistrationMethod',
@@ -196,7 +199,7 @@ const routes = [
     },
     {
         name: 'MyChoiceRawMaterialDetailedPage',
-        path: '/mychoice-rawMaterial-detailed-page',
+        path: '/mychoice-rawMaterial-detailed-page/:id',
         component: MyChoiceRawMaterialDetailedPage,
     },
     {
@@ -216,7 +219,7 @@ const routes = [
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient',
+        path: '/add-ingredient/:id',
         component: AddIngredient,
     },
     {
@@ -228,7 +231,6 @@ const routes = [
     },
     {
         name: 'noticeDetailPage',
-        // path: '/notice-detail-page',
         path: '/notice-detail-page/:id',
         component: NoticeDetailPage,
         beforeEnter: guard,
@@ -237,6 +239,7 @@ const routes = [
         path: '/faq',
         name: 'Faq',
         component: FAQ,
+        beforeEnter: guard,
     },
     {
         name: 'MyRecipeDetails',
@@ -265,6 +268,12 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
+
+    },
+    {
+        name: 'AboutUs',
+        path: '/about-us',
+        component: AboutUs,
 
     },
 
