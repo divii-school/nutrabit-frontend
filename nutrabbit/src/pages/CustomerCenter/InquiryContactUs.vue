@@ -15,7 +15,9 @@
                 <div class="input-group">
                   <div class="header-dropdown">
                     <select v-model="selected">
-                      <option value="" disabled hidden>Choose the subject of your inquiry</option>
+                      <option value="" disabled hidden>
+                        Choose the subject of your inquiry
+                      </option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
                         :key="index"
@@ -53,12 +55,18 @@
                       <img src="../../assets/icons/upload.png" />
                     </label>
                   </div>
-                  <span>{{ fileName }}</span>
+                  <div class="file-name-details" v-if="fileName">
+                    <span>{{ fileName }}</span>
+                    <i class="icon-close-gry" @click="removeFile"></i>
+                  </div>
+                  <span class="fileErrorMsg">{{ errorMsg }}</span>
                 </div>
               </div>
             </div>
             <div class="btn-wrap flex dual-btn">
-              <button class="btn-primary grey-btn-solid">cancellation</button>
+              <button class="btn-primary grey-btn-solid" @click="resetForm">
+                cancellation
+              </button>
               <button class="btn-primary grenn-btn2" @click="submitData">
                 Enrollment
               </button>
@@ -68,11 +76,22 @@
       </div>
     </div>
   </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="1:1 inquiry registration has been completed."
+    btnText2="Confirm"
+    link="/"
+  />
 </template>
 <script>
+import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "InquiryContactUs",
+  components: {
+    Modal,
+  },
   data() {
     return {
       EnqueryTypeList: "",
@@ -82,6 +101,8 @@ export default {
       files: null,
       selected: "",
       InqDesc: "",
+      isModalVisible: false,
+      errorMsg: "",
     };
   },
   created() {
@@ -110,13 +131,15 @@ export default {
       let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
       if (!allowedExtensions.exec(this.file.name)) {
         this.render = true;
+        this.errorMsg = "please upload .jpg, .jpeg and .png only";
         return false;
-      } else {
+      } else if (allowedExtensions.exec(this.file.name)) {
+        this.errorMsg = '';
         this.render = false;
         this.fileName = this.file.name;
-      }
+      } 
       this.fileExtension = this.fileName.replace(/^.*\./, "");
-      console.log(this.fileName);
+      this.this.errorMsg = "";
     },
     async submitData() {
       let formData = new FormData();
@@ -126,10 +149,19 @@ export default {
       // const data1 = await axios.post("/inquery/add", formData);
       try {
         const res = await axios.post("/inquery/add", formData);
+        this.isModalVisible = true;
       } catch (error) {
         console.log(error);
       }
       console.log(formData);
+    },
+    removeFile() {
+      this.fileName = "";
+    },
+    resetForm() {
+      this.fileName = "";
+      this.InqDesc = "";
+      this.selected = "";
     },
   },
 };
