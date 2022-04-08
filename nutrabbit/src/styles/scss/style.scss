@@ -580,14 +580,15 @@ textarea {
 
 // file input 
 
-.file {
-  opacity: 0;
-  width: 0.1px;
-  height: 0.1px;
-  position: absolute;
-}
-
 .file-input {
+  input{
+    height: 45px;
+    width: 100%;
+    text-indent: -999px;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+  }
   label {
     display: block;
     position: relative;

@@ -22,4 +22,9 @@ export default class CustomerCenterService {
     async getEnqueryList(inqId) {
         return await axios.post(`/inquery`, { lang: 'EN', userID: inqId}).then((res) => res).catch((err) => err);
     }
+
+    async getEnqueryType() {
+        return await axios.get(`/inquery/get_inquery_type`).then((res) => res).catch((err) => err);
+    }
+
 }
