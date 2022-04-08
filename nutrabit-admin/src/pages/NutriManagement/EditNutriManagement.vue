@@ -22,7 +22,7 @@
                 <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditCategory') }}</label>
-                        <select
+                        <!-- <select
                                 class="p-dropdown-label p-inputtext"
                                 name="category_id"
                                 id="category_id"
@@ -35,12 +35,13 @@
                                     v-bind:key="index"
                                     :value="item.id"
                                 >{{ item.category_name_ko }}</option>
-                            </select>
+                            </select> -->
+                            <Dropdown v-model="category_id"  :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
 
-                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
+                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
 
                         </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
@@ -48,25 +49,27 @@
                 </div>
                 <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
                     <div class="p-field p-col-12 p-md-3">
-                        <label for="type">{{ $t('Nutri3.Edit.EditPiltype1') }}</label>
+                         <label for="type">{{ $t('Nutri3.Edit.EditPiltype1') }}</label>
                         <!-- <label for="type">ID</label> -->
-                        <select class="p-dropdown-label p-inputtext" name="pill_id" id="pill_id" v-model="pill_id">
+                        <!-- <select class="p-dropdown-label p-inputtext" name="pill_id" id="pill_id" v-model="pill_id">
                             <option value="">Select</option>
                             <option v-for="(pill_item, index) in pilltypeDropdownValues" v-bind:key="index" :value="pill_item.id">
                                 {{ pill_item.name_ko }}
                             </option>
-                        </select>
+                        </select> -->
+                        <Dropdown v-model="pill_id"  :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPiltype1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditPackage1') }}</label>
                         <!-- <label for="type">ID</label> -->
-                        <select class="p-dropdown-label p-inputtext" name="package_id" id="package_id" v-model="package_id">
+                        <!-- <select class="p-dropdown-label p-inputtext" name="package_id" id="package_id" v-model="package_id">
                             <option value="">Select</option>
                             <option v-for="(item, index) in packageDropdownValues" v-bind:key="index" :value="item.id">
                                 {{ item.name_ko }}
                             </option>
-                        </select>
+                        </select> -->
+                         <Dropdown v-model="package_id"  :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPackage1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                 </div>
@@ -309,6 +312,11 @@ export default {
     methods: {
         reinitialize() {
             (this.name_ko = null), (this.name_en = null),(this.description_ko = null),(this.description_en = null),(this.tags_ko = null),(this.tags_en = null),(this.thumbnail = null),(this.product_sub_image = null),(this.detail_image = null),(this.status = null), (this.dropdownValue = null),(this.file = {});
+        },
+        getFields(input, field) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
+            return output;
         },
          selects(){
            let items = [];

@@ -21,25 +21,25 @@
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Category') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ category_id }}</p>
+                        <p>{{ category_name_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.MainRaw1') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ raw_material_id }}</p>
+                        <p>{{ material_name_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Piltype1') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ pill_id }}</p>
+                        <p>{{ pillName_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Package1') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ package_id }}</p>
+                        <p>{{ packageName_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
@@ -163,6 +163,10 @@ export default {
             fileExtension: '',
             filesExtension: '',
             DropdownValue: '',
+            category_name_ko:'',
+            material_name_ko:'',
+            pillName_ko:'',
+            packageName_ko:'',
             formData: new FormData(),
             mydata: {
                 // name: '',
@@ -212,10 +216,10 @@ export default {
     },
     mounted() {
         this.nutriManagementService.ViewNurtiManagementList(this.$route.params.id).then((res) => {
-            this.category_id = res.data.data[0].category_id;
-            this.raw_material_id = res.data.data[0].raw_material_id;
-            this.pill_id = res.data.data[0].pill_id;
-            this.package_id = res.data.data[0].package_id;
+            this.category_name_ko = res.data.data[0].category_name_ko;
+            this.material_name_ko = res.data.data[0].raw_material_name_ko;
+            this.pillName_ko = res.data.data[0].pillName_ko;
+            this.packageName_ko = res.data.data[0].packageName_ko;
 
             this.name_ko = res.data.data[0].name_ko;
             this.name_en = res.data.data[0].name_en;
