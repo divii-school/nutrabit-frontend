@@ -12,12 +12,8 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="nameuser">{{ $t('RawMaterialadd.list.categorylist') }}</label>
-                        <select class="p-dropdown-label p-inputtext" name="sub_category_id" id="sub_category_id" :placholder="sub_category_id" v-model="sub_category_id">
-                            <option value="">Select</option>
-                            <option v-for="(item , index) in categoryDropdownValues" v-bind:key="index" :value="item.id" >
-                            {{item.category_name_ko}}
-                            </option>
-                            </select>
+                        
+                            <Dropdown v-model="sub_category_id"  :options="categoryDropdownValues"  optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -212,13 +208,12 @@
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="state2">{{ $t('RawMaterialadd.list.status') }}</label>
-                        <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="name" :placeholder="status" /> -->
-                        <select class="p-dropdown-label p-inputtext" name="status" id="status" v-model="status">
-                            <option value="">Select</option>
-                                <option v-for="(item , index) in statusdropdownValues" v-bind:key="index" :value="item.name" >
-                                   {{item.name}}
-                                </option>
-                        </select>
+                       <br/>
+                        <input type="radio" id="yes" value="active" name="status" v-model="status">
+                                <label for="yes">Yes</label>
+                                
+                                <input type="radio" id="no" name="status" value="inactive" v-model="status">
+                                <label for="no">No</label>
                         <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>

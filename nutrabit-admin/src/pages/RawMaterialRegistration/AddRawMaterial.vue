@@ -9,21 +9,8 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <select
-                                class="p-dropdown-label p-inputtext"
-                                name="sub_category_id"
-                                id="sub_category_id"
-                                v-model="sub_category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.category_name_ko }}</option>
-                            </select>
-                            <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
+                           
+                            <Dropdown v-model="sub_category_id"  :options="categoryDropdownValues"  optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -342,19 +329,23 @@
                                     optionLabel="name"
                                     :placeholder="dropdownValue"   
                             />-->
-                            <select
-                                class="p-dropdown-label p-inputtext"
+                            <br/>
+                            <input
+                                type="radio"
+                                id="yes"
+                                value="active"
                                 name="status"
-                                id="status"
                                 v-model="status"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in statusdropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.name"
-                                >{{ item.name }}</option>
-                            </select>
+                            />
+                            <label for="yes">Yes</label>
+
+                            <input
+                                type="radio"
+                                id="no"
+                                name="status"
+                                value="inactive"
+                                v-model="status"
+                            />
                             <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>
@@ -577,7 +568,7 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-                // console.log(this.file);
+                //  console.log(this.sub_category_id);
               
                 this.formData.append('sub_category_id', this.sub_category_id);
                 this.formData.append('material_name_ko', this.material_name_ko);
