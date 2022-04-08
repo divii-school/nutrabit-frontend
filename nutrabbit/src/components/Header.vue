@@ -26,8 +26,9 @@
                   type="text"
                   placeholder="Enter your desired search term."
                   @click="activeSearch = true"
+                  v-model="sarchInput"
                 />
-                <router-link to>
+                <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
                 </router-link>
               </div>
@@ -175,6 +176,7 @@
 import VueNextSelect from "vue-next-select";
 import { inject } from "vue";
 import PersonalInfoService from "../services/PersonalInfoService";
+import CommonService from "../services/CommonService";
 import Modal from "./Modal.vue";
 export default {
   name: "Header",
@@ -193,6 +195,8 @@ export default {
       isModalVisible: false,
       activeSubmenu: false,
       showMobSearch: false,
+      sarchInput: "",
+      myIp: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -262,6 +266,7 @@ export default {
   },
   created() {
     this.personalInfoService = new PersonalInfoService();
+    this.commonService = new CommonService();
   },
   mounted() {
     if (localStorage.token) {
@@ -271,6 +276,7 @@ export default {
       this.logedInUserDetails = false;
     }
     this.getUserInfo();
+    this.getIp();
   },
   methods: {
     showMobSearchF() {
@@ -319,6 +325,28 @@ export default {
     },
     removeGoal(index) {
       this.searchData.splice(index, 1);
+    },
+
+    // search API
+    getIp() {
+      fetch("https://api.ipify.org?format=json")
+        .then((res) => res.json())
+        .then(({ ip }) => {
+          this.myIp = ip;
+        });
+    },
+    getSearch() {
+      if (this.sarchInput == "") {
+        this.$swal("Please add searchData");
+      } else {
+        this.commonService
+          .getSearchResult(this.sarchInput, this.myIp)
+          .then((res) => {
+            if (res.status == 200) {
+              this.$router.push("/search-result");
+            }
+          });
+      }
     },
   },
   computed: {

@@ -18,8 +18,11 @@
               :key="item"
             >
               <h1 class="list-heading">{{ item.title }}</h1>
-              <div class="search-list-inner-wrap" v-if="item && item.searchListData && item.searchListData.length">
-                <ul class="search-list-inner" >
+              <div
+                class="search-list-inner-wrap"
+                v-if="item && item.searchListData && item.searchListData.length"
+              >
+                <ul class="search-list-inner">
                   <li
                     class="search-list-item"
                     v-for="item in item.searchListData"
@@ -63,6 +66,7 @@
 import Pagination from "../../components/Pagination.vue";
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
+import CommonService from "../../services/CommonService";
 export default {
   name: "SearchResult",
   components: {
@@ -87,45 +91,68 @@ export default {
   data() {
     return {
       //   search: "",
-      searchResultData: [
-        {
-          title: "nutri 3.3",
-          searchListData: [
-            {
-              img: "../../../src/assets/images/aloe-img1.png",
-              desc: "Aloe A B",
-            },
-            {
-              img: "../../../src/assets/images/aloe-img2.png",
-              desc: "Aloe A B C",
-            },
-          ],
-        },
-
-        {
-          title: "Recommended blending",
-          searchListData: [
-            {
-              img: "../../../src/assets/images/aloe-img3.png",
-              desc: "Aloe Blending",
-            },
-            {
-              img: "../../../src/assets/images/aloe-img4.png",
-              desc: "Aloe gel blending",
-            },
-          ],
-        },
-        {
-          title: "Raw material",
-          searchListData: [
-            {
-              img: "../../../src/assets/images/aloe-img5.png",
-              desc: "aloe",
-            },
-          ],
-        },
-      ],
+      // searchResultData: [
+      //   {
+      //     title: "nutri 3.3",
+      //     searchListData: [
+      //       {
+      //         img: "../../../src/assets/images/aloe-img1.png",
+      //         desc: "Aloe A B",
+      //       },
+      //       {
+      //         img: "../../../src/assets/images/aloe-img2.png",
+      //         desc: "Aloe A B C",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "Recommended blending",
+      //     searchListData: [
+      //       {
+      //         img: "../../../src/assets/images/aloe-img3.png",
+      //         desc: "Aloe Blending",
+      //       },
+      //       {
+      //         img: "../../../src/assets/images/aloe-img4.png",
+      //         desc: "Aloe gel blending",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "Raw material",
+      //     searchListData: [
+      //       {
+      //         img: "../../../src/assets/images/aloe-img5.png",
+      //         desc: "aloe",
+      //       },
+      //     ],
+      //   },
+      // ],
     };
+  },
+    created() {
+    this.commonService = new CommonService();
+  },
+  mounted() {
+    this.getIp();
+    this.getSearch();
+  },
+  methods: {
+    getIp() {
+      fetch("https://api.ipify.org?format=json")
+        .then((res) => res.json())
+        .then(({ ip }) => {
+          this.myIp = ip;
+        });
+    },
+    getSearch() {
+      this.commonService.showSearchResult(this.myIp).then((res) => {
+        if (res.status == 200) {
+          this.searchResultData = res.data.search;
+          console.log(res.data.search)
+        }
+      });
+    },
   },
 };
 </script>

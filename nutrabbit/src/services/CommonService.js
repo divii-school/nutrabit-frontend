@@ -104,4 +104,18 @@ export default class CommonService {
       .then((res) => res)
       .catch((err) => err)
   }
+
+  // search
+  async getSearchResult(searchInput, ip) {
+    return await axios.post(`/search`, { searchData: searchInput, ipAddress: ip })
+      .then((res) => res)
+      .catch((err) => err)
+  }
+
+  async showSearchResult(ip) {
+    return await axios.post(`/search`, { ipAddress: ip })
+      .then((res) => res)
+      .catch((err) => err)
+  }
+
 }
