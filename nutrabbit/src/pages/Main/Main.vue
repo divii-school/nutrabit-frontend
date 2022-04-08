@@ -74,7 +74,7 @@
       </div>
 
       <div class="payment-test" style="padding:40px">
-        <button type="button" class="btn-small-solid" @click="doPay">Make Payment Test</button>
+        <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
       </div>
       <!-- payment-test -->
     </div>
@@ -122,23 +122,12 @@ export default {
     this.allNutidata();
   },
   methods: {
-
-    doPay() {
-      alert('doPay');
-    },
-
     // makePay test function
     makePay() {
       console.log('makePay');
       alert('makePay');
-      // this.paymentService.requestPay();
+      this.paymentService.requestPay();
     },
-
-
-
-
-
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
@@ -165,43 +154,9 @@ export default {
         }
       });
     },
-
     accessPage() {
       this.$swal("Unauthorized Access.Please Login.");
     }
   },
-  methods: {
-    // allBanner list
-    allBanner() {
-      this.MainService.getSlider().then((res) => {
-        // console.log(res);
-        if (res.status == 200) {
-          // console.log('getBanner res', res.data.bannerData);
-          this.MainSlider = res.data.bannerData;
-
-        } else {
-          this.$swal(res.message, "error");
-        }
-      });
-    },
-    // allNutidata list
-    allNutidata() {
-      this.MainService.getNutriData().then((res) => {
-        //console.log(res);
-        if (res.status == 200) {
-          this.ProductData = res.data.blendingData;
-
-        } else {
-          // console.log('getNutridata res', res.data.blendingData);
-          this.$swal(res.message, "error");
-        }
-      });
-    },
-
-    accessPage() {
-      this.$swal("Unauthorized Access.Please Login.");
-    }
-  }
-
 };
 </script>

@@ -1,5 +1,6 @@
 var IMP = window.IMP;
-IMP.init("imp75847396");
+// IMP.init("imp75847396");
+IMP.init("imp55488636");
 
 // const IMP = window.IMP; 
 // IMP.init("{INIpayTest}"); 
@@ -21,6 +22,7 @@ export default class PaymentService {
       //m_redirect_url :'{URL to redirect to after payment approval on Mobile}'
     }, function (rsp) {
       if (rsp.success) { // payment successful: payment accepted or virtual account issued
+        console.log(rsp);
         /*
         // jQuery HTTP request
         jQuery.ajax({
@@ -36,6 +38,7 @@ export default class PaymentService {
         })
         */
       } else {
+        console.log(rsp);
         alert("Payment failed. Error: " + rsp.error_msg);
       }
 
