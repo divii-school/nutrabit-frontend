@@ -241,7 +241,7 @@ const routes = [
     },
     {
         name: 'MyRecipeDetails',
-        path: '/my-recipe-details',
+        path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
     },
     {
@@ -252,7 +252,7 @@ const routes = [
     },
     {
         name: 'MyRecipeDetailsEdit',
-        path: '/my-recipe-detail-edit',
+        path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
 
     },
