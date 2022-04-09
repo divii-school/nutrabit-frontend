@@ -220,7 +220,7 @@ const routes = [
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient/:id',
+        path: '/add-ingredient/',
         component: AddIngredient,
     },
     {
