@@ -68,7 +68,7 @@ export default class MyChoiceService {
 
   //Recommended blending final quote application details detail API Functions
   async getRecommnededApplicationDetails(id) {
-    return await axios.post(`/application/my_choice/details`, { id: id,application_type:'my_choice' }).then((res) => res).catch((err) => err);
+    return await axios.post(`/application/my_choice/details`, { id: id, application_type: 'my_choice' }).then((res) => res).catch((err) => err);
   }
 
   //option details
@@ -88,7 +88,17 @@ export default class MyChoiceService {
 
   //raw material package add API Functions
   async getRawMaterialPackageAdd(raw_material_ids, pill_id, package_id, title, additional_request, service_type, is_temporary_storage) {
-    return await axios.post(`/blending/raw_material/add`, { raw_material_ids: raw_material_ids, pill_id: pill_id, package_id: package_id, title:title, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage }).then((res) => res.data).catch((err) => err);
+    return await axios.post(`/blending/raw_material/add`, { raw_material_ids: raw_material_ids, pill_id: pill_id, package_id: package_id, title: title, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage }).then((res) => res.data).catch((err) => err);
+  }
+
+  //raw material storage box API Functions
+  async getRawMaterialStorageBox(user_id) {
+    return await axios.post(`/product/raw_material_storage_box/`, { lang: "KO", user_id: user_id }).then((res) => res.data).catch((err) => err);
+  }
+
+  //delete storage box API Functions
+  async deleteIngredientsStorageBox(user_id, raw_material_id) {
+    return await axios.post(`/product/raw_material_storage_box/delete`, { user_id: user_id, raw_material_id: raw_material_id }).then((res) => res.data).catch((err) => err);
   }
 
 }

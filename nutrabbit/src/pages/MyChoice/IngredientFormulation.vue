@@ -130,7 +130,7 @@ export default {
     },
     UpdatedId(e) {
       this.pill_id = e;
-      console.log(this.pill_id);
+      //console.log(this.pill_id);
     },
     checkPillId() {
       // console.log(this.blending_id);
