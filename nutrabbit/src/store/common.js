@@ -5,7 +5,6 @@ const state = reactive({
   userId: localStorage.getItem("uid"),
   name: '',
   SearchResult: undefined,
-  TotalSearchResult: undefined,
 });
 
 const methods = {

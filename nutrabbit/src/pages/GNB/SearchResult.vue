@@ -10,41 +10,85 @@
           </div>
         </div>
         <div class="search-result-body">
-          <p class="search-result-title" v-if="this.totalResult">
-            Total<span>{{ this.totalResult }} </span>result
+          <p class="search-result-title" v-if="this.newSearchResult">
+            Total<span>{{ this.newSearchResult.length }} </span>result
           </p>
-          <p class="search-result-title" v-else>
-            Total<span>0 </span>result
-          </p>
+          <p class="search-result-title" v-else>Total<span>0 </span>result</p>
           <ul class="search-resul-list-wrap">
             <li class="search-resul-list">
               <h1 class="list-heading">nutri 3.3</h1>
-              <div class="search-list-inner-wrap">
-                <ul class="search-list-inner">
-                  <li
-                    class="search-list-item"
-                    v-for="(item, index) of newSearchResult"
-                    :key="index"
-                  >
-                    <div v-if="item.type == 'recommended_blending'">
-                      <div class="img-wrap">
-                        <img
-                          :src="
-                            'http://api-nutrabbit-dev.dvconsulting.org/public/' +
-                            item.image
-                          "
-                          alt
-                        />
-                      </div>
-                      <p>{{ item.name_en }}</p>
-                    </div>
-                  </li>
-                </ul>
+              <div class="search-list-inner">
+                <div class="search-list-item">
+                  <template v-for="(item, index) of NewNutriBlending" :key="index">
+                    <SearchCard
+                      :category="item.name_en"
+                      :image="item.image"
+                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                    />
+                  </template>
+                </div>
+                <pagination
+                  v-model="page"
+                  :records="4"
+                  :per-page="2"
+                  @paginate="myCallback3"
+                />
               </div>
               <!-- <div class="no-result-found">
                 <span>No results were found for your search.</span>
               </div> -->
-              <Pagination />
+            </li>
+            <li class="search-resul-list">
+              <h1 class="list-heading">Recommended Blending</h1>
+              <div class="search-list-inner">
+                <div class="search-list-item">
+                  <template
+                    v-for="(item, index) of NewRecomanedBlending"
+                    :key="index"
+                  >
+                    <SearchCard
+                      :category="item.name_en"
+                      :image="item.image"
+                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                    />
+                  </template>
+                </div>
+                <pagination
+                  v-model="page"
+                  :records="4"
+                  :per-page="1"
+                  @paginate="myCallback2"
+                />
+              </div>
+              <!-- <div class="no-result-found">
+                <span>No results were found for your search.</span>
+              </div> -->
+            </li>
+            <li class="search-resul-list">
+              <h1 class="list-heading">Raw Material</h1>
+              <div class="search-list-inner">
+                <div class="search-list-item">
+                  <template
+                    v-for="(item, index) of NewRawMaterial"
+                    :key="index"
+                  >
+                    <SearchCard
+                      :category="item.name_en"
+                      :image="item.image"
+                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                    />
+                  </template>
+                </div>
+                <pagination
+                  v-model="page"
+                  :records="pagi"
+                  :per-page="1"
+                  @paginate="myCallback1"
+                />
+              </div>
+              <!-- <div class="no-result-found">
+                <span>No results were found for your search.</span>
+              </div> -->
             </li>
           </ul>
 
@@ -97,7 +141,16 @@ export default {
   data() {
     return {
       newSearchResult: [],
-      totalResult: "",
+      nutriBlending: [],
+      recomanedBlending: [],
+      rawMaterial: [],
+      NewRawMaterial: [],
+      NewNutriBlending: [],
+      NewRecomanedBlending: [],
+      page: 1,
+      perPage: 4,
+      res_data: "",
+      pagi: 5,
     };
   },
   setup() {
@@ -105,8 +158,55 @@ export default {
     return { common };
   },
   mounted() {
-    this.newSearchResult = this.common.state.SearchResult;
-    this.totalResult = this.common.state.TotalSearchResult;
+    if (this.common.state.SearchResult != undefined) {
+      this.newSearchResult = this.common.state.SearchResult;
+      this.newSearchResult.map((value) => {
+        if (value.type == "nutri_blending") {
+          return this.nutriBlending.push({
+            id: value.id,
+            name_en: value.name_en,
+            image: value.image,
+          });
+        }
+        if (value.type == "recommended_blending") {
+          return this.recomanedBlending.push({
+            id: value.id,
+            name_en: value.name_en,
+            image: value.image,
+          });
+        }
+        if (value.type == "raw_material") {
+          return this.rawMaterial.push({
+            id: value.id,
+            name_en: value.name_en,
+            image: value.image,
+          });
+        }
+      });
+      this.myCallback1(1);
+      this.myCallback2(1);
+      this.myCallback3(1);
+    }
+  },
+  methods: {
+    myCallback1(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.NewRawMaterial = this.rawMaterial.slice(startIndex, endIndex);
+    },
+    myCallback2(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.NewNutriBlending = this.nutriBlending.slice(startIndex, endIndex);
+    },
+    myCallback3(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      // const endIndex = (this.perPage * ClickPage);
+      const endIndex = startIndex + this.perPage;
+      this.NewRecomanedBlending = this.recomanedBlending.slice(startIndex, endIndex);
+    },
   },
 };
 </script>
