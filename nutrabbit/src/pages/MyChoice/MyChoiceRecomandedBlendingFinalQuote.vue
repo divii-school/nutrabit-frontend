@@ -51,8 +51,8 @@
                   <tbody>
                     <tr v-for="(item, index) in items" :key="index">
                       <td>{{ index + 1 }}</td>
-                                    <td>{{ item.category }}</td>
-                                    <td>{{ item.explanation }}</td>
+                      <td>{{ item.category }}</td>
+                      <td>{{ item.explanation }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -246,8 +246,8 @@ export default {
             // console.log(res_option_type);
             // console.log(res_option_value);
             this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
-              this.items.push({'category':res.data.data[0].category,'explanation':res.data.data[0].explanation});
-              console.log(res);
+              this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
+              // console.log(res);
             });
           }
         }

@@ -69,7 +69,7 @@
             </ul>
             <div class="blendBtnList">
               <button  @click="this.$router.push(`/add-ingredient/${item.id}`)" class="btn-primary purple-btn-outline">add</button>
-              <button  @click="this.$router.push('/ingredient-formulation')" class="btn-primary blue-btn-solid">next</button>
+              <button  @click="this.$router.push(`/ingredient-formulation/${item.id}`)" class="btn-primary blue-btn-solid">next</button>
             </div>
           </div>
           <div class="suggested-product">
