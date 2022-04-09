@@ -11,10 +11,15 @@
         </div>
         <div class="search-result-body">
           <p class="search-result-title">gun<span>5 pieces</span>result</p>
-          <ul class="search-resul-list-wrap">
+          <ul>
+            <li v-for="(item, index) of newSearchResult" :key="index">
+              {{ item.title }}
+            </li>
+          </ul>
+          <!-- <ul class="search-resul-list-wrap">
             <li
               class="search-resul-list"
-              v-for="item of searchResultData"
+              v-for="item of newSearchResult"
               :key="item"
             >
               <h1 class="list-heading">{{ item.title }}</h1>
@@ -37,7 +42,7 @@
               </div>
               <Pagination />
             </li>
-          </ul>
+          </ul> -->
 
           <!-- this is for no data -->
 
@@ -50,12 +55,12 @@
             </li>
           </ul> -->
 
-          <ul class="search-resul-list-wrap faq">
+          <!-- <ul class="search-resul-list-wrap faq">
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
               <SearchAccordion />
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
@@ -66,7 +71,7 @@
 import Pagination from "../../components/Pagination.vue";
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
-import CommonService from "../../services/CommonService";
+import { inject } from "vue";
 export default {
   name: "SearchResult",
   components: {
@@ -74,85 +79,18 @@ export default {
     Pagination,
     SearchAccordion,
   },
-  //   computed: {
-  //     filteresult() {
-  //       return this.searchResultData.filter((item) => {
-  //         for (const { desc } of item.searchListData) {
-  //           if (desc.indexOf(this.search) > -1) {
-  //             return item;
-  //           }
-  //           else{
-  //               return "no data"
-  //           }
-  //         }
-  //       });
-  //     },
-  //   },
   data() {
     return {
-      //   search: "",
-      // searchResultData: [
-      //   {
-      //     title: "nutri 3.3",
-      //     searchListData: [
-      //       {
-      //         img: "../../../src/assets/images/aloe-img1.png",
-      //         desc: "Aloe A B",
-      //       },
-      //       {
-      //         img: "../../../src/assets/images/aloe-img2.png",
-      //         desc: "Aloe A B C",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "Recommended blending",
-      //     searchListData: [
-      //       {
-      //         img: "../../../src/assets/images/aloe-img3.png",
-      //         desc: "Aloe Blending",
-      //       },
-      //       {
-      //         img: "../../../src/assets/images/aloe-img4.png",
-      //         desc: "Aloe gel blending",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: "Raw material",
-      //     searchListData: [
-      //       {
-      //         img: "../../../src/assets/images/aloe-img5.png",
-      //         desc: "aloe",
-      //       },
-      //     ],
-      //   },
-      // ],
+      newSearchResult: [],
     };
   },
-    created() {
-    this.commonService = new CommonService();
+  setup() {
+    const common = inject("common");
+    return { common };
   },
   mounted() {
-    this.getIp();
-    this.getSearch();
-  },
-  methods: {
-    getIp() {
-      fetch("https://api.ipify.org?format=json")
-        .then((res) => res.json())
-        .then(({ ip }) => {
-          this.myIp = ip;
-        });
-    },
-    getSearch() {
-      this.commonService.showSearchResult(this.myIp).then((res) => {
-        if (res.status == 200) {
-          this.searchResultData = res.data.search;
-          console.log(res.data.search)
-        }
-      });
-    },
+    this.newSearchResult = this.common.state.SearchResult;
+    console.log(this.newSearchResult);
   },
 };
 </script>
