@@ -25,7 +25,7 @@
                 <input
                   type="text"
                   placeholder="Enter your desired search term."
-                  @click="activeSearch = true"
+                  @click="getHistory"
                   v-model="sarchInput"
                 />
                 <router-link to @click="getSearch">
@@ -37,26 +37,30 @@
                 :class="activeSearch ? 'activeSearch' : ''"
               >
                 <div class="search-data-inner">
-                  <ul>
-                    <li v-for="(item, index) in searchData" :key="index">
-                      <router-link to class="search-title">{{
-                        item
-                      }}</router-link>
-                      <router-link
-                        to
-                        class="search-item-close"
-                        @click="removeGoal(index)"
-                      >
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                  </ul>
-                  <!-- <div class="no-search-data">
-                  <p>There are no recent searches.</p>
-                </div> -->
+                  <template v-if="searchData.length > 0">
+                    <ul>
+                      <li v-for="(item, index) in searchData" :key="index">
+                        <router-link to class="search-title">{{
+                          item.search_data
+                        }}</router-link>
+                        <router-link
+                          to
+                          class="search-item-close"
+                          @click="deleteHistory(item.id)"
+                        >
+                          <i class="icon-close-search"></i>
+                        </router-link>
+                      </li>
+                    </ul>
+                  </template>
+                  <template v-else>
+                    <div class="no-search-data">
+                      <p>There are no recent searches.</p>
+                    </div>
+                  </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="this.searchData = []">
+                  <router-link to @click="this.searchData.id">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -257,7 +261,7 @@ export default {
           ],
         },
       ],
-      searchData: ["muscular system", "aloe", "nervous system"],
+      searchData: [],
     };
   },
   setup() {
@@ -323,9 +327,6 @@ export default {
         });
       }
     },
-    removeGoal(index) {
-      this.searchData.splice(index, 1);
-    },
 
     // search API
     getIp() {
@@ -350,6 +351,22 @@ export default {
             }
           });
       }
+    },
+    getHistory() {
+      this.commonService.getSearchHistory(this.myIp).then((res) => {
+        this.activeSearch = true;
+        this.searchData = res.data.data;
+      })
+      .catch((err)=>{
+        return false
+      })
+    },
+    deleteHistory(searchId) {
+      this.commonService.deleteSearchHistory(searchId).then((res) => {
+        if (res.status == 200) {
+          this.getHistory();
+        }
+      });
     },
   },
   computed: {

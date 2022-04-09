@@ -111,9 +111,17 @@ export default class CommonService {
       .then((res) => res)
       .catch((err) => err)
   }
+  // get history
+  async getSearchHistory(ip) {
+    return await axios.post(`/search/getHistory`, { ipAddress: ip })
+      .then((res) => res)
+      .catch((err) => err)
+  }
 
-  async showSearchResult(ip) {
-    return await axios.post(`/search`, { ipAddress: ip })
+  // delete history
+  async deleteSearchHistory(searchId) {
+    console.log(searchId)
+    return await axios.post(`/search/delete`, {deleteIdArray: searchId})
       .then((res) => res)
       .catch((err) => err)
   }
