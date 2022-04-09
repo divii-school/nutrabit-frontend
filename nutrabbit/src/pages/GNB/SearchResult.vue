@@ -10,39 +10,43 @@
           </div>
         </div>
         <div class="search-result-body">
-          <p class="search-result-title">gun<span>5 pieces</span>result</p>
-          <ul>
-            <li v-for="(item, index) of newSearchResult" :key="index">
-              {{ item.title }}
-            </li>
-          </ul>
-          <!-- <ul class="search-resul-list-wrap">
-            <li
-              class="search-resul-list"
-              v-for="item of newSearchResult"
-              :key="item"
-            >
-              <h1 class="list-heading">{{ item.title }}</h1>
-              <div
-                class="search-list-inner-wrap"
-                v-if="item && item.searchListData && item.searchListData.length"
-              >
+          <p class="search-result-title" v-if="this.totalResult">
+            Total<span>{{ this.totalResult }} </span>result
+          </p>
+          <p class="search-result-title" v-else>
+            Total<span>0 </span>result
+          </p>
+          <ul class="search-resul-list-wrap">
+            <li class="search-resul-list">
+              <h1 class="list-heading">nutri 3.3</h1>
+              <div class="search-list-inner-wrap">
                 <ul class="search-list-inner">
                   <li
                     class="search-list-item"
-                    v-for="item in item.searchListData"
-                    :key="item"
+                    v-for="(item, index) of newSearchResult"
+                    :key="index"
                   >
-                    <SearchCard :item="item" />
+                    <div v-if="item.type == 'recommended_blending'">
+                      <div class="img-wrap">
+                        <img
+                          :src="
+                            'http://api-nutrabbit-dev.dvconsulting.org/public/' +
+                            item.image
+                          "
+                          alt
+                        />
+                      </div>
+                      <p>{{ item.name_en }}</p>
+                    </div>
                   </li>
                 </ul>
               </div>
-              <div class="no-result-found" v-else>
+              <!-- <div class="no-result-found">
                 <span>No results were found for your search.</span>
-              </div>
+              </div> -->
               <Pagination />
             </li>
-          </ul> -->
+          </ul>
 
           <!-- this is for no data -->
 
@@ -68,7 +72,6 @@
 </template>
 
 <script>
-import Pagination from "../../components/Pagination.vue";
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import { inject } from "vue";
@@ -76,12 +79,25 @@ export default {
   name: "SearchResult",
   components: {
     SearchCard,
-    Pagination,
     SearchAccordion,
   },
+  // computed: {
+  //   filteresult() {
+  //     return this.searchResultData.filter((item) => {
+  //       for (const { desc } of item.searchListData) {
+  //         if (desc.indexOf(this.search) > -1) {
+  //           return item;
+  //         } else {
+  //           return "no data";
+  //         }
+  //       }
+  //     });
+  //   },
+  // },
   data() {
     return {
       newSearchResult: [],
+      totalResult: "",
     };
   },
   setup() {
@@ -90,7 +106,7 @@ export default {
   },
   mounted() {
     this.newSearchResult = this.common.state.SearchResult;
-    console.log(this.newSearchResult);
+    this.totalResult = this.common.state.TotalSearchResult;
   },
 };
 </script>

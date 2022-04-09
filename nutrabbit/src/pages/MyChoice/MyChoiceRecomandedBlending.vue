@@ -62,7 +62,6 @@
 </template>
 
           
-
 <script>
 import Popper from "vue3-popper";
 import SearchCard from "../../components/SearchCard.vue";

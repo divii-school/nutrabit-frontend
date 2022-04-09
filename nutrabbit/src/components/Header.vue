@@ -344,6 +344,7 @@ export default {
           .then((res) => {
             if (res.status == 200) {
               this.common.state.SearchResult = res.data.data.search;
+              this.common.state.TotalSearchResult = res.data.data.total;
               this.$router.push("/search-result");
               this.showMobSearch = false;
               this.activeSearch = false;
