@@ -115,13 +115,28 @@ export default {
         }
       });
     },
+    selectAll() {
+
+      if (!this.allSelected) {
+        //  console.log(this.storage_box_list_data.length);
+        for (let i = 0; i < this.storage_box_list_data.length; i++) {
+          let box_id = this.storage_box_list_data[i];
+          this.box_id_data.push(box_id.id);
+          // console.log(box_id.id);
+        }
+
+      } else {
+        this.box_id_data = [];
+      }
+
+    },
     UpdatedId(e) {
       this.box_id_data.push(e);
-      //console.log(this.box_id_data);
+      console.log(this.box_id_data);
     },
     deleteStorageBox() {
 
-      console.log(this.box_id_data.length);
+      //console.log(this.box_id_data.length);
 
        if (this.box_id_data.length == 0) {
         this.$swal("Please Select at Least one");

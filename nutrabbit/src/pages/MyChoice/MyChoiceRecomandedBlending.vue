@@ -40,9 +40,9 @@
                     :options="['in order of popularity', 'in alphabetical Order']"
                     placeholder="in order of popularity"
                     close-on-select
-                  ></vue-select> -->
+                  ></vue-select>-->
                   <select @change="onChange">
-                    <option value="">Sort By</option>
+                    <option value>Sort By</option>
                     <option value="popularity">in order of popularity</option>
                     <option value="alphabetical">in alphabetical order</option>
                   </select>
@@ -51,7 +51,15 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :item="item" type="recomandedBlending" />
+                <SearchCard
+                  type="recomandedBlending"
+                  :category="item.category_name_ko"
+                  :name="item.name_ko"
+                  :desc="item.description_ko"
+                  :image="item.thumbnail_1_path"
+                  image_link="http://api-nutrabbit-dev.dvconsulting.org/"
+                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
+                />
               </li>
             </ul>
           </div>
@@ -91,12 +99,12 @@ export default {
     allBlendingData() {
       this.mychoiceService.getRecommendedData().then((res) => {
         // console.log(res);
-         if (res.status == 200) {
-         //  console.log('allBlendingData res', res.data.blendingData);
+        if (res.status == 200) {
+          //  console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
         } else {
-          
-           this.$swal(res.data.message, "error");
+
+          this.$swal(res.data.message, "error");
         }
       });
     },
@@ -115,7 +123,7 @@ export default {
           }
         });
       }
-       else if (event.target.value == 'alphabetical') {
+      else if (event.target.value == 'alphabetical') {
 
         this.mychoiceService.getRecommendedBlendingAlphabetical().then((res) => {
           // console.log(res.data);
