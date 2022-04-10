@@ -55,7 +55,7 @@
               <div class="product-list-wrap">
                 <div class="product-item with-input without-input">
                   <div class="material-details">
-                    <h2 v-if="serviceType.length > 2" >{{serviceType}}</h2>
+                    <h2 v-if="serviceType.length < 2" >{{serviceType[0]}}</h2>
                     <div v-else>
                       <h2 v-for="(service, index) in serviceType"  :key="index">{{service}}</h2>
                     </div>
@@ -145,8 +145,11 @@ export default {
                this.serviceType = ["Sample Application", "Get A Quote"]
           }
          Array.from(res.data[0].options).forEach((ele)=>{
-               console.log(Object.keys(ele)[0], Object.values(ele)[0])
-               this.myRecipe.getOptionDetails(Object.keys(ele)[0].toString(), Object.values(ele)[0].toString()).then(res => 
+               //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+               let op_type = Object.keys(ele)[0].toString();
+               let op_val = Object.values(ele)[0].toString();
+
+               this.myRecipe.getOptionDetails(op_type, op_val).then(res => 
                //console.log(res.data[0])
                this.option_items.push( res.data[0] ),
                console.log(this.option_items)
