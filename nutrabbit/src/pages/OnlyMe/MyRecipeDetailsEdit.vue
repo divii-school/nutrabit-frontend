@@ -83,7 +83,7 @@
                         <input
                           type="checkbox"
                           v-model="services"
-                          value="1"
+                          value="2"
                         /><span class="checkmark"></span>
                       </label>
                     </div>
@@ -99,7 +99,7 @@
                         <input
                           type="checkbox"
                           v-model="services"
-                          value='2'
+                          value='1'
                         /><span class="checkmark"></span>
                       </label>
                     </div>
@@ -128,7 +128,7 @@
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey">Cancel</button>
                   <div class="btnWrapRight">
-                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id)">Save</button>
+                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">Save</button>
                   </div>
                 </div>
               </div>
@@ -178,7 +178,8 @@ export default {
       services: [],
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
-      option_items : []
+      option_items : [],
+      
     };
   },
 
@@ -194,7 +195,7 @@ export default {
   },
 
   updated() {
-    console.log(this.services);
+    //console.log(this.services);
   },
 
   methods: {
@@ -208,14 +209,7 @@ export default {
           this.rwaMaterialData = res.data
           this.add_req = res.data[0].additional_request;
           this.title = res.data[0].title;
-          // if(res.data[0].service_type == 1){
-          //     this.serviceType = ["Sample Application"]
-          // }else if(res.data[0].service_type == 2){
-          //     this.serviceType = ["Get A Quote"]
-          // }
-          // else{
-          //      this.serviceType = ["Sample Application", "Get A Quote"]
-          // }
+         
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();
@@ -236,12 +230,41 @@ export default {
     })
     },
 
-    saveRecipeDetails(_id) {
-      //this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
-      editRecipeDetail(_id, _title, _additional_req).then(res => {
-          console.log(res.data)
+    saveRecipeDetails(_id, _title, _additional_req, _services) {
+      if(!_id || !_title || !_additional_req || _services.length < 0){
+          this.$swal('Need to fill all the fields')
+          return
+      }
+      
+      let ser_tp = (_services.length > 1) ? '3' : _services[0]
+
+      console.log(_id, _title, _additional_req, ser_tp)
+      this.myRecipe.editRecipeDetail(_id, _title, _additional_req, ser_tp).then(res => {
+        // console.log(_id, _title, _additional_req, ser_tp)
+        // console.log(res)
+        if(res.status == 200){
+
+          if(ser_tp == 1 || ser_tp == 3){
+             this.myRecipe.submitRecipeApplication(_id).then(res => {
+            if(res.status == 200){
+               this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+            }else{
+              this.$swal(res.message, "error");
+            }
+          })
+          }
+          
+           this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+          console.log(res.message)
+        } else {
+
+          this.$swal(res.message, "error");
+        }
+    
       })
     },
+
+    
   },
 };
 </script>

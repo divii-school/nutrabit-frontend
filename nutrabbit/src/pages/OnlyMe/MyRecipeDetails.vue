@@ -64,7 +64,7 @@
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey" @click="deleteRecipeDetail(product_id)">Delete</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="toEditRecipeDetails(product_id)">Edit</button>
+                    <button class="btn-green-outline blue" @click="toEditRecipeDetails(product_id, app_type)">Edit</button>
                     <button class="btn-small-solid blue ml-4">Next</button>
                   </div>
                 </div>
@@ -114,7 +114,8 @@ export default {
       // ],
 
       product_id : this.$route.params.id,
-      application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending'
+      application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
+      app_type : this.$route.params.type
     };
   },
   
@@ -164,12 +165,12 @@ export default {
     })
     },
 
-    toEditRecipeDetails(_id){
+    toEditRecipeDetails(_id, _type){
      if(!this.product_id){
        return;
      }
      //console.log(`to next id ${_id}`)
-     this.$router.push({ name : 'MyRecipeDetailsEdit', params : { id : _id, type : this.application_type}})
+     this.$router.push({ name : 'MyRecipeDetailsEdit', params : { id : _id, type : _type}})
    },
 
    deleteRecipeDetail(id){

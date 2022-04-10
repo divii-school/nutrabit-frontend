@@ -36,13 +36,16 @@ export default class MyRecipeService{
     }
 
 
+// Sending Edited data for single product reff : MyRecipeDetailsEdit
 
-    async editRecipeDetail(_id, _title, _additional_req){
-        return await axios.post(`recipe/details`, { id : _id, additional_request : _additional_req, title : _title}).then((res) => res.data).catch((err) => err);
+    async editRecipeDetail(_id, _title, _additional_req, ser_tp){
+        return await axios.post(`recipe/my_choice/edit`, { id : _id, additional_request : _additional_req, title : _title, service_type : ser_tp}).then((res) => res.data).catch((err) => err);
     }
 
+// Ssubmitting application option data for single product reff : MyRecipeDetailsEdit
+
     async submitRecipeApplication(app_id){
-        return await axios.post(`recipe/details`, { application_id : app_id }).then((res) => res.data).catch((err) => err);
+        return await axios.post(`application/submit`, { application_id : app_id }).then((res) => res.data).catch((err) => err);
     }
 
 // Delete data for a specific product reff : MyRecipe, MyRecipeDetails
