@@ -22,13 +22,13 @@
                       <th>Explanation</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody v-for="(option_item, index) in option_items" :key="index">
                     <tr>
-                      <td>One</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
+                      <td>{{index + 1 }}</td>
+                      <td>{{ option_item.category }}</td>
+                      <td>{{ option_item.explanation }}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td>2</td>
                       <td>Raw material</td>
                       <td>aloe gel</td>
@@ -37,7 +37,7 @@
                       <td>3</td>
                       <td>Raw material</td>
                       <td>aloe gel</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -55,13 +55,16 @@
               <div class="product-list-wrap">
                 <div class="product-item with-input without-input">
                   <div class="material-details">
-                    <h2 >{{serviceType}}</h2>
+                    <h2 v-if="serviceType.length > 2" >{{serviceType}}</h2>
+                    <div v-else>
+                      <h2 v-for="(service, index) in serviceType"  :key="index">{{service}}</h2>
+                    </div>
                   </div>
                 </div>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey" @click="deleteRecipeDetail(product_id)">Delete</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="toEditRecipeDetails">Edit</button>
+                    <button class="btn-green-outline blue" @click="toEditRecipeDetails(product_id)">Edit</button>
                     <button class="btn-small-solid blue ml-4">Next</button>
                   </div>
                 </div>
@@ -91,7 +94,8 @@ export default {
       rwaMaterialData: [],
       additionalRequest : '',
       title : '',
-      serviceType : '',
+      serviceType : [],
+      option_items : [],
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -113,11 +117,7 @@ export default {
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending'
     };
   },
-  computed : {
-    // serviceType(){
-    //   if(this.rwaMaterialData.service_type
-    // }
-  },
+  
   created(){
     this.myRecipe = new MyRecipeService();
     console.log(`product id is : ${this.product_id} and type is ${this.application_type}`)
@@ -130,13 +130,29 @@ export default {
       recipeSingleProductDetails(_productID, _type){
       this.myRecipe.getSingleRecipeProductDetails(_productID, _type)
     .then((res)=>{
-      
+     console.log(res.data[0])
         if (res.status == 200) {
           
-          // this.rwaMaterialData = res.data
-          // this.additionalRequest = res.data[0].additional_request;
-          // this.title = res.data[0].title;
-          // this.serviceType = (res.data[0].service_type == 1) ? 'Sample Application' : 'Get a Quote';
+          this.rwaMaterialData = res.data
+          this.additionalRequest = res.data[0].additional_request;
+          this.title = res.data[0].title;
+          if(res.data[0].service_type == 1){
+              this.serviceType = ["Sample Application"]
+          }else if(res.data[0].service_type == 2){
+              this.serviceType = ["Get A Quote"]
+          }
+          else{
+               this.serviceType = ["Sample Application", "Get A Quote"]
+          }
+         Array.from(res.data[0].options).forEach((ele)=>{
+               console.log(Object.keys(ele)[0], Object.values(ele)[0])
+               this.myRecipe.getOptionDetails(Object.keys(ele)[0].toString(), Object.values(ele)[0].toString()).then(res => 
+               //console.log(res.data[0])
+               this.option_items.push( res.data[0] ),
+               console.log(this.option_items)
+               )
+         
+         })
       
         } else {
 
@@ -145,11 +161,12 @@ export default {
     })
     },
 
-    toEditRecipeDetails(){
+    toEditRecipeDetails(_id){
      if(!this.product_id){
        return;
      }
-     this.$router.push({ name : 'MyRecipeDetailsEdit', params : { id : this.product_id, type : this.application_type}})
+     //console.log(`to next id ${_id}`)
+     this.$router.push({ name : 'MyRecipeDetailsEdit', params : { id : _id, type : this.application_type}})
    },
 
    deleteRecipeDetail(id){

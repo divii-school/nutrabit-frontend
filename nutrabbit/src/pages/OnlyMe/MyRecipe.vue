@@ -78,21 +78,21 @@ export default {
   data() {
     return {
       rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
+        // {
+        //   img: "../../../src/assets/images/pkgSelection.png",
+        //   title: "Bottle",
+        //   desc: [
+        //     "Choose from a variety of sizes and shapes of bottles and caps.",
+        //   ],
+        // },
+        // {
+        //   img: "../../../src/assets/images/pkgSelection.png",
+        //   title: "PTP",
+        //   desc: [
+        //     "It is hygienic and convenient.",
+        //     "The packaging volume is slightly larger.",
+        //   ],
+        // },
       ],
       user_id : this.common.state.userId,
       product_id : '',
@@ -131,6 +131,7 @@ export default {
    allChoiceData(){
       this.myRecipe.getMyMyChoiceData(this.user_id)
     .then((res)=>{
+      //console.log(res)
         if (res.status == 200) {
           this.myChoiceData = res.data.recipeData;
           console.table(res.data.recipeData)
@@ -144,13 +145,17 @@ export default {
 
    deleteRecipeItem(id){
      if(!this.product_id){
-       return;
+       return
      }
      //console.log(`delete item product id : ${id}`)
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
-          console.table(res)
+          this.$swal(`Delete ${res.message}`)
+          setTimeout(()=>{
+            window.location.reload()
+          }, 2500)
+          console.log(res)
         } else {
 
           this.$swal(res.data.message, "error");

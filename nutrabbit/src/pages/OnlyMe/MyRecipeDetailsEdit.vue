@@ -43,16 +43,31 @@
               </div>
               <div class="fGroup">
                 <label>Title</label>
-                <input type="text" name="" placeholder="My own recipe made with guar gum hydrolyzate">
+                <input
+                  type="text"
+                  name=""
+                  placeholder="My own recipe made with guar gum hydrolyzate"
+                  v-model="title"
+                />
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
-                <span>The more detailed you are, the more accurate your estimate will be.</span>
-                <textarea placeholder="Please write freely"></textarea>
+                <span
+                  >The more detailed you are, the more accurate your estimate
+                  will be.</span
+                >
+                <textarea
+                  placeholder="Please write freely"
+                  v-model="add_req"
+                ></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0">Select service
-                  <span>* Duplicate selection possible (package is excluded when requesting a sample.)</span>
+                <label class="mb0"
+                  >Select service
+                  <span
+                    >* Duplicate selection possible (package is excluded when
+                    requesting a sample.)</span
+                  >
                 </label>
               </div>
               <div class="product-list-wrap">
@@ -60,7 +75,11 @@
                   <div class="form-group">
                     <div class="check-box-wrap">
                       <label class="custom-check">
-                         <input type="checkbox"><span class="checkmark"></span>
+                        <input
+                          type="checkbox"
+                          v-model="services"
+                          value="1"
+                        /><span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
@@ -72,26 +91,42 @@
                   <div class="form-group">
                     <div class="check-box-wrap">
                       <label class="custom-check">
-                         <input type="checkbox"><span class="checkmark"></span>
+                        <input
+                          type="checkbox"
+                          v-model="services"
+                          value="2"
+                        /><span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2>sample application <span>(Sample cost 300,000 won/paid)</span></h2>
+                    <h2>
+                      sample application
+                      <span>(Sample cost 300,000 won/paid)</span>
+                    </h2>
                   </div>
                 </div>
                 <ul>
-                  <li>* The quotation will be sent to the registered email address within 2 business days.</li>
-                  <li>* Unit price may vary depending on quantity & package design.</li>
-                  <li>* It may differ from the detailed estimate at the time of completion.</li>
+                  <li>
+                    * The quotation will be sent to the registered email address
+                    within 2 business days.
+                  </li>
+                  <li>
+                    * Unit price may vary depending on quantity & package
+                    design.
+                  </li>
+                  <li>
+                    * It may differ from the detailed estimate at the time of
+                    completion.
+                  </li>
                 </ul>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey">Cancel</button>
                   <div class="btnWrapRight">
-                    <button class="btn-small-solid blue ml-4">Save</button>
+                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id)">Save</button>
                   </div>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -105,6 +140,8 @@
 <script>
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyRecipeService from "../../services/MyRecipeService";
+
 export default {
   name: "MyRecipeDetailsEdit",
   components: {
@@ -130,7 +167,42 @@ export default {
       //     ],
       //   },
       // ],
+
+      title: "",
+      add_req: "",
+      services: [],
+      product_id: this.$route.params.id,
     };
+  },
+
+  created() {
+    this.myRecipe = new MyRecipeService();
+    console.log(
+      `product id is : ${this.product_id} and type is ${this.application_type}`
+    );
+  },
+
+  updated() {
+    console.log(this.services);
+  },
+
+  methods: {
+    saveRecipeDetails(_id) {
+      this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+      // this.myRecipe
+      //   .getSingleRecipeProductDetails(_productID, _type)
+      //   .then((res) => {
+      //     // console.log(res)
+      //     if (res.status == 200) {
+      //       this.$router.push({
+      //         name: "MyRecipeDetailsEdit",
+      //         params: { id: _id },
+      //       });
+      //     } else {
+      //       this.$swal(res.data.message, "error");
+      //     }
+      //   });
+    },
   },
 };
 </script>
