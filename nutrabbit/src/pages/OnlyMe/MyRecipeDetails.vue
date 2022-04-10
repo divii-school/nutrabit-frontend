@@ -176,7 +176,7 @@ export default {
      if(!this.product_id){
        return;
      }
-     console.log(`delete item product id : ${id}`)
+     //console.log(`delete item product id : ${id}`)
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {

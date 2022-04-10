@@ -22,8 +22,13 @@
                       <th>Explanation</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody v-for="(option_item, index) in option_items" :key="index">
                     <tr>
+                      <td>{{index + 1 }}</td>
+                      <td>{{ option_item.category }}</td>
+                      <td>{{ option_item.explanation }}</td>
+                    </tr>
+                    <!-- <tr>
                       <td>One</td>
                       <td>Raw material</td>
                       <td>aloe gel</td>
@@ -37,7 +42,7 @@
                       <td>3</td>
                       <td>Raw material</td>
                       <td>aloe gel</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -94,7 +99,7 @@
                         <input
                           type="checkbox"
                           v-model="services"
-                          value="2"
+                          value='2'
                         /><span class="checkmark"></span>
                       </label>
                     </div>
@@ -150,7 +155,7 @@ export default {
   },
   data() {
     return {
-      // rwaMaterialData: [
+       rwaMaterialData: [],
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -172,6 +177,8 @@ export default {
       add_req: "",
       services: [],
       product_id: this.$route.params.id,
+      application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
+      option_items : []
     };
   },
 
@@ -182,26 +189,58 @@ export default {
     );
   },
 
+  mounted(){
+      this.recipeSingleProductDetails(this.product_id, this.application_type);
+  },
+
   updated() {
     console.log(this.services);
   },
 
   methods: {
+
+     recipeSingleProductDetails(_productID, _type){
+      this.myRecipe.getSingleRecipeProductDetails(_productID, _type)
+    .then((res)=>{
+     console.log(res.data[0])
+        if (res.status == 200) {
+          
+          this.rwaMaterialData = res.data
+          this.add_req = res.data[0].additional_request;
+          this.title = res.data[0].title;
+          // if(res.data[0].service_type == 1){
+          //     this.serviceType = ["Sample Application"]
+          // }else if(res.data[0].service_type == 2){
+          //     this.serviceType = ["Get A Quote"]
+          // }
+          // else{
+          //      this.serviceType = ["Sample Application", "Get A Quote"]
+          // }
+         Array.from(res.data[0].options).forEach((ele)=>{
+               //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+               let op_type = Object.keys(ele)[0].toString();
+               let op_val = Object.values(ele)[0].toString();
+
+               this.myRecipe.getOptionDetails(op_type, op_val).then(res => 
+              //  console.log(res.data[0])
+               this.option_items.push( res.data[0] ),
+              //  console.log(this.option_items)
+               )
+         
+         })
+      
+        } else {
+
+          this.$swal(res.data.message, "error");
+        }
+    })
+    },
+
     saveRecipeDetails(_id) {
-      this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
-      // this.myRecipe
-      //   .getSingleRecipeProductDetails(_productID, _type)
-      //   .then((res) => {
-      //     // console.log(res)
-      //     if (res.status == 200) {
-      //       this.$router.push({
-      //         name: "MyRecipeDetailsEdit",
-      //         params: { id: _id },
-      //       });
-      //     } else {
-      //       this.$swal(res.data.message, "error");
-      //     }
-      //   });
+      //this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+      editRecipeDetail(_id, _title, _additional_req).then(res => {
+          console.log(res.data)
+      })
     },
   },
 };
