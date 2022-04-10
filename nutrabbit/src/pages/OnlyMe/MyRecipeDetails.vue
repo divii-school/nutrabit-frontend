@@ -22,9 +22,12 @@
                       <th>Explanation</th>
                     </tr>
                   </thead>
-                  <tbody v-for="(option_item, index) in option_items" :key="index">
+                  <tbody
+                    v-for="(option_item, index) in option_items"
+                    :key="index"
+                  >
                     <tr>
-                      <td>{{index + 1 }}</td>
+                      <td>{{ index + 1 }}</td>
                       <td>{{ option_item.category }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
@@ -43,11 +46,19 @@
               </div>
               <div class="fGroup">
                 <label>Title</label>
-                <input type="text" name="" placeholder="My own recipe made with guar gum hydrolyzate" v-model="title">
+                <input
+                  type="text"
+                  name=""
+                  placeholder="My own recipe made with guar gum hydrolyzate"
+                  v-model="title"
+                />
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
-                <textarea placeholder="Please write freely" v-model="additionalRequest" ></textarea>
+                <textarea
+                  placeholder="Please write freely"
+                  v-model="additionalRequest"
+                ></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">Service</label>
@@ -55,20 +66,32 @@
               <div class="product-list-wrap">
                 <div class="product-item with-input without-input">
                   <div class="material-details">
-                    <h2 v-if="serviceType.length < 2" >{{serviceType[0]}}</h2>
+                    <h2 v-if="serviceType.length < 2">{{ serviceType[0] }}</h2>
                     <div v-else>
-                      <h2 v-for="(service, index) in serviceType"  :key="index">{{service}}</h2>
+                      <h2 v-for="(service, index) in serviceType" :key="index">
+                        {{ service }}
+                      </h2>
                     </div>
                   </div>
                 </div>
                 <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="deleteRecipeDetail(product_id)">Delete</button>
+                  <button
+                    class="btn-small-solid grey"
+                    @click="deleteRecipeDetail(product_id)"
+                  >
+                    Delete
+                  </button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="toEditRecipeDetails(product_id, app_type)">Edit</button>
+                    <button
+                      class="btn-green-outline blue"
+                      @click="toEditRecipeDetails(product_id, app_type)"
+                    >
+                      Edit
+                    </button>
                     <button class="btn-small-solid blue ml-4">Next</button>
                   </div>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -181,10 +204,14 @@ export default {
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
-          console.log(res)
+          console.log(res.message)
+          this.additionalRequest = '';
+          this.title = '';
+          this.serviceType = [];
+          this.option_items = [];
         } else {
 
-          this.$swal(res.data.message, "error");
+          this.$swal(res.message, "error");
         }
     })
    },
