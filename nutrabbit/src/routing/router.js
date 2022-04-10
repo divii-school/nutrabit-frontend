@@ -243,17 +243,20 @@ const routes = [
         name: 'MyRecipeDetails',
         path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
+        //beforeEnter : guard
     },
     {
         name: 'MyApplicationDetails',
         path: '/my-allpication-detail/:id',
         component: MyApplicationDetails,
+        //beforeEnter : guard
 
     },
     {
         name: 'MyRecipeDetailsEdit',
         path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
+        //beforeEnter : guard
 
     },
     {
@@ -266,6 +269,7 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
+        //beforeEnter : guard
 
     },
 
