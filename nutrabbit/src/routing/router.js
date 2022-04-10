@@ -246,7 +246,7 @@ const routes = [
     },
     {
         name: 'MyApplicationDetails',
-        path: '/my-allpication-detail',
+        path: '/my-allpication-detail/:id',
         component: MyApplicationDetails,
 
     },
