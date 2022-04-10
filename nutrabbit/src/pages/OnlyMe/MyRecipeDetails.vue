@@ -172,18 +172,23 @@ export default {
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();
                let op_val = Object.values(ele)[0].toString();
-
-               this.myRecipe.getOptionDetails(op_type, op_val).then(res => 
+               
+               this.myRecipe.getOptionDetails(op_type, op_val).then(res => {
                //console.log(res.data[0])
-               this.option_items.push( res.data[0] ),
-               console.log(this.option_items)
-               )
+               if(res.status == 200){
+                 this.option_items.push( res.data[0] ),
+                  console.log(this.option_items)
+               }else{
+                 this.$swal(res.message, "error")
+               }
+               
+         })
          
          })
       
         } else {
 
-          this.$swal(res.data.message, "error");
+          this.$swal(res.message, "error");
         }
     })
     },

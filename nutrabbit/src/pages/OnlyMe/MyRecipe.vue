@@ -137,7 +137,7 @@ export default {
           console.table(res.data.recipeData)
         } else {
 
-          this.$swal(res.data.message, "error");
+          this.$swal(res.message, "error");
         }
     })
     },
@@ -158,7 +158,7 @@ export default {
           console.log(res)
         } else {
 
-          this.$swal(res.data.message, "error");
+          this.$swal(res.message, "error");
         }
     })
    },
