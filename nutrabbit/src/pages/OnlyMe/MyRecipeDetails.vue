@@ -173,19 +173,19 @@ export default {
    },
 
    deleteRecipeDetail(id){
-    //  if(!this.product_id){
-    //    return;
-    //  }
+     if(!this.product_id){
+       return;
+     }
      console.log(`delete item product id : ${id}`)
-    //   this.myRecipe.deleteRecipeData(id)
-    // .then((res)=>{
-    //     if (res.status == 200) {
-    //       console.log(res)
-    //     } else {
+      this.myRecipe.deleteRecipeData(id)
+    .then((res)=>{
+        if (res.status == 200) {
+          console.log(res)
+        } else {
 
-    //       this.$swal(res.data.message, "error");
-    //     }
-    // })
+          this.$swal(res.data.message, "error");
+        }
+    })
    },
   }
 };

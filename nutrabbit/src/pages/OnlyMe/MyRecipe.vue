@@ -129,7 +129,7 @@ export default {
     },
    
    allChoiceData(){
-      this.myRecipe.getMyMyChoiceData(this.user_id)
+      this.myRecipe.getMyChoiceData(this.user_id)
     .then((res)=>{
       //console.log(res)
         if (res.status == 200) {

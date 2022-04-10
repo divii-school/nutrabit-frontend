@@ -5,25 +5,37 @@ var token = localStorage.getItem('token');
 
 export default class MyRecipeService{
 
+// Fetching all recipe data for recomended blending reff : MyRecipe
+
    async getMyRecomendedBlendingData(uid){
         return await axios.post(`/recipe`, { lang: 'KO',  user_id : uid, application_type : 'recommended_blending'}).then((res) => res.data).catch((err) => err);
     };
 
-    async getMyMyChoiceData(uid){
+// Fetching all recipe data for my choice reff : MyRecipe
+
+    async getMyChoiceData(uid){
         return await axios.post(`/recipe`, { lang: 'KO',  user_id : uid, application_type : 'my_choice'}).then((res) => res.data).catch((err) => err);
     }
 
-    async getRecipeDetails(_id){
-        return await axios.post(`recipe/details`, { id : _id, application_type : 'my_choice'}).then((res) => res.data).catch((err) => err);
-    }
+
+    // async getRecipeDetails(_id){
+    //     return await axios.post(`recipe/details`, { id : _id, application_type : 'my_choice'}).then((res) => res.data).catch((err) => err);
+    // }
+
+// Fetching  data for option detail table for single product reff: MyRecipeDetails
 
     async getOptionDetails(op_type, op_val){
         return await axios.post(`application/options_details`, { lang : 'KO', option_type: op_type, option_val : op_val }).then((res) => res.data).catch((err) => err);
     }
 
+// Fetching data for recipe details like title, additional requests for single product reff: MyRecipeDetails
+
+
     async getSingleRecipeProductDetails(_id, type){
         return await axios.post(`recipe/details`, { id : _id, application_type : type}).then((res) => res.data).catch((err) => err);
     }
+
+
 
     async editRecipeDetail(_id, _title, _additional_req){
         return await axios.post(`recipe/details`, { id : _id, additional_request : _additional_req, title : _title}).then((res) => res.data).catch((err) => err);
@@ -32,6 +44,8 @@ export default class MyRecipeService{
     async submitRecipeApplication(app_id){
         return await axios.post(`recipe/details`, { application_id : app_id }).then((res) => res.data).catch((err) => err);
     }
+
+// Delete data for a specific product reff : MyRecipe, MyRecipeDetails
 
     async deleteRecipeData(_id){
         return await axios.post(`recipe/delete`, { deleteID : _id }).then((res) => res.data).catch((err) => err);
