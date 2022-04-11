@@ -255,6 +255,23 @@ const routes = [
         //beforeEnter : guard
 
     },
+
+    {
+        name: 'MyApplicationQuoteRequestChoice',
+        path: '/my-application-quote-request/:id',
+        component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestChoice.vue'),
+        
+
+    },
+
+    {
+        name: 'MyApplicationQuoteRequestBlending',
+        path: '/my-application-quote-request/:type/:id',
+        component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestBlending.vue'),
+        
+
+    },
+
     {
         name: 'MyRecipeDetailsEdit',
         path: '/my-recipe-detail-edit/:type/:id',
