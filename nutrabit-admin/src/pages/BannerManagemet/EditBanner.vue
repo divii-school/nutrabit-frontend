@@ -14,14 +14,14 @@
                     </div>
                       <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
+                            <label for="subtitle2" >
                                 {{ $t('Banner.list.deskbanner') }}
                                 <span class="img-info">(File Type jpg,jpeg,png )</span>
                             </label>
                             <div class="custom-select" >
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
+                                <input type="file" class="select-file" v-on:change="onFileChange"  />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div>

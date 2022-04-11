@@ -19,16 +19,7 @@
                             <div class="text-red">{{ error.title }}</div>
                         </div>
                     </div>
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                    </div>-->
+                   
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
