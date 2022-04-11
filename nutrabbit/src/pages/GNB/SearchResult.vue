@@ -5,23 +5,26 @@
         <!-- <div class="search-wrap">
           <div class="search-inner">
             <input type="text" placeholder="Search" />
-            <a href="#"><i class="icon-search-black"></i></a>
+            <a href="#">
+              <i class="icon-search-black"></i>
+            </a>
           </div>
         </div> -->
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
-            Total<span>{{ this.newSearchResult.length }} </span>result
+            Total
+            <span>{{ this.newSearchResult.length }}</span>result
           </p>
-          <p class="search-result-title" v-else>Total<span>0 </span>result</p>
+          <p class="search-result-title" v-else>
+            Total
+            <span>0</span>result
+          </p>
           <ul class="search-resul-list-wrap">
             <li class="search-resul-list">
               <h1 class="list-heading">nutri 3.3</h1>
               <div class="search-list-inner" v-if="nutriBlending.length > 0">
                 <div class="search-list-item">
-                  <template
-                    v-for="(item, index) of NewNutriBlending"
-                    :key="index"
-                  >
+                  <template v-for="(item, index) of NewNutriBlending" :key="index">
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -42,15 +45,9 @@
             </li>
             <li class="search-resul-list">
               <h1 class="list-heading">Recommended Blending</h1>
-              <div
-                class="search-list-inner"
-                v-if="recomanedBlending.length > 0"
-              >
+              <div class="search-list-inner" v-if="recomanedBlending.length > 0">
                 <div class="search-list-item">
-                  <template
-                    v-for="(item, index) of NewRecomanedBlending"
-                    :key="index"
-                  >
+                  <template v-for="(item, index) of NewRecomanedBlending" :key="index">
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -73,10 +70,7 @@
               <h1 class="list-heading">Raw Material</h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
-                  <template
-                    v-for="(item, index) of NewRawMaterial"
-                    :key="index"
-                  >
+                  <template v-for="(item, index) of NewRawMaterial" :key="index">
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -106,17 +100,14 @@
                 <span>No results were found for your search.</span>
               </div>
             </li>
-          </ul> -->
+          </ul>-->
 
           <ul class="search-resul-list-wrap faq">
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
               <template v-if="faq.length > 0">
                 <template v-for="(item, index) in NewFaq" :key="index">
-                  <SearchAccordion
-                    :title="item.name_en"
-                    :description="item.description_en"
-                  />
+                  <SearchAccordion :title="item.name_en" :description="item.description_en" />
                 </template>
                 <pagination
                   v-model="page4"
@@ -185,10 +176,29 @@ export default {
     const common = inject("common");
     return { common };
   },
-  mounted() {
+  created() {
+    console.log("created")
     this.showSarchResult();
+    this.callme();
+  },
+  mounted() {
+    console.log("mounted");
+    this.callme();
+  },
+  updated() {
+    console.log("updated");
+    this.callme();
+  },
+  watch: {
+    $route() {
+      console.log("watch");
+      this.callme();
+    }
   },
   methods: {
+    callme() {
+      console.log("callme");
+    },
     showSarchResult() {
       if (this.common.state.SearchResult != undefined) {
         this.newSearchResult = this.common.state.SearchResult;
