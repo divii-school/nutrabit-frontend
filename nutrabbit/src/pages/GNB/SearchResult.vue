@@ -176,25 +176,28 @@ export default {
     const common = inject("common");
     return { common };
   },
-  created() {
-    console.log("created")
+  mounted(){
     this.showSarchResult();
-    this.callme();
   },
-  mounted() {
-    console.log("mounted");
-    this.callme();
-  },
-  updated() {
-    console.log("updated");
-    this.callme();
-  },
-  watch: {
-    $route() {
-      console.log("watch");
-      this.callme();
-    }
-  },
+  // created() {
+  //   console.log("created")
+  //   this.showSarchResult();
+  //   this.callme();
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  //   this.callme();
+  // },
+  // updated() {
+  //   console.log("updated");
+  //   this.callme();
+  // },
+  // watch: {
+  //   $route() {
+  //     console.log("watch");
+  //     this.callme();
+  //   }
+  // },
   methods: {
     callme() {
       console.log("callme");
