@@ -81,7 +81,7 @@ export default {
           this.categories = res.data.parentCategoryData;
         } else {
 
-          this.$swal(res.data.message, "error");
+          this.$swal(res.message, "error");
         }
       });
     },

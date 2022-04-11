@@ -27,14 +27,16 @@
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for>password</label>
+                <label for="">password</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
+                      maxlength="20"
                       v-model="password"
+                      autocomplete="off"
                     />
                   </div>
                 </div>
@@ -46,9 +48,10 @@
                   <div class="input-inner">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
                       placeholder="Sankyu password confirmation"
                       v-model="confirmPassword"
+                      autocomplete="off"
                     />
                   </div>
                 </div>
@@ -133,16 +136,16 @@
               </div>
             </div>
             <!-- <p>{{common.state.userId}}</p> -->
-            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">Save</button>
+            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">Save
+              <!-- <router-link to="/withdrawal-of-membership"></router-link> -->
+            </button>
           </form>
           <div class="logout-withdraw">
             <ul>
               <li>
                 <router-link to @click="logOut()">Log out</router-link>
-                <!-- <a href>Log out</a> -->
               </li>
               <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
-                <!-- <a href>Withdrawal</a> -->
               </li>
             </ul>
           </div>
@@ -184,21 +187,21 @@ export default {
   },
 
   methods: {
-    // async save() {
-    //   this.personalInfoservice.updatePersonalInfo(
-    //     this.userID, 
-    //     this.name, 
-    //     this.password, 
-    //     this.confirmPassword, 
-    //     this.mobile, 
-    //     this.address, 
-    //     this.checkName.join(",")
-    //     )
-    //     .then((res) => {
-    //       console.warn(res);
-    //       console.log("response",res);
-    //   });
-    // },
+
+     async personalInfo() {
+
+      this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+        console.log(res.data); 
+        let data = res.data;
+        this.name = data.data[0].name;
+        this.uuid = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
+        this.userID = this.common.state.userId;
+      });
+
+    },
 
     async updatePersonalInfo() {
       console.log("aaaaaa");
@@ -240,21 +243,6 @@ export default {
       }
     },
 
-    async personalInfo() {
-
-      this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-        console.log(res.data); 
-        let data = res.data;
-        this.name = data.data[0].name;
-        this.uuid = data.data[0].uuid;
-        this.email = data.data[0].email;
-        this.phoneNumber = data.data[0].mobile;
-        this.address = data.data[0].address;
-        this.userID = this.common.state.userId;
-      });
-
-    },
-
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
@@ -264,12 +252,10 @@ export default {
       }).open();
     },
 
-    // logOut() {
-    //   if (this.logedInUserDetails) {
-    //     localStorage.clear();
-    //     window.location = "/login";
-    //   }
-    // },
+    logOut() {
+        localStorage.clear();
+        window.location = "/login";
+    },
 
     //     async apiFunctionName(){
     //   try{

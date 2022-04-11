@@ -106,9 +106,7 @@
               </div>
 
               <div class="btn-wrap">
-                <router-link to="/ingredient-formulation">
-                  <button class="btn-small-solid grey">Previous</button>
-                </router-link>
+                  <button  @click="this.$router.push(`/choice-recommended-blending-detailed-page/${this.blending_id}`)" class="btn-small-solid grey">Previous</button>
                 <button @click="checkPackageId" class="btn-small-solid blue">next</button>
               </div>
             </div>
@@ -136,23 +134,23 @@ export default {
       blending_id: this.$route.query.blending_id,
       blendingPackageData: '',
       package_id: '',
-      rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
-      ],
+      // rwaMaterialData: [
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "Bottle",
+      //     desc: [
+      //       "Choose from a variety of sizes and shapes of bottles and caps.",
+      //     ],
+      //   },
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "PTP",
+      //     desc: [
+      //       "It is hygienic and convenient.",
+      //       "The packaging volume is slightly larger.",
+      //     ],
+      //   },
+      // ],
     };
   },
   created() {
@@ -178,7 +176,7 @@ export default {
       this.package_id = e;
     },
     checkPackageId() {
-      console.log(this.blending_id);
+      // console.log(this.blending_id);
       if (this.package_id == "") {
         this.$swal("Please Choose a Package");
       }

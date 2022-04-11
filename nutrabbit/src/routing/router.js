@@ -36,6 +36,8 @@ import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
 import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
 import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
 import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+import AboutUs from '../pages/AboutUs.vue';
+
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
@@ -118,6 +120,7 @@ const routes = [
         name: 'InquiryContactUs',
         path: '/inquiry-contactUs',
         component: InquiryContactUs,
+        beforeEnter: guard,
     },
     {
         name: 'Inquery',
@@ -197,7 +200,7 @@ const routes = [
     },
     {
         name: 'MyChoiceRawMaterialDetailedPage',
-        path: '/mychoice-rawMaterial-detailed-page',
+        path: '/mychoice-rawMaterial-detailed-page/:id',
         component: MyChoiceRawMaterialDetailedPage,
     },
     {
@@ -212,12 +215,12 @@ const routes = [
     },
     {
         name: 'IngredientFormulation',
-        path: '/ingredient-formulation',
+        path: '/ingredient-formulation/:id',
         component: IngredientFormulation,
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient',
+        path: '/add-ingredient/',
         component: AddIngredient,
     },
     {
@@ -270,6 +273,12 @@ const routes = [
         path: '/my-recipe',
         component: MyRecipe,
         //beforeEnter : guard
+
+    },
+    {
+        name: 'AboutUs',
+        path: '/about-us',
+        component: AboutUs,
 
     },
 
