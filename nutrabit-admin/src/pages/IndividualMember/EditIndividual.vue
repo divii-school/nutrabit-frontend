@@ -1,9 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+        
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -23,11 +21,7 @@
                         <div class="text-red">{{ error.uuid }}</div>
                     </div>
                 </div>
-                    <!-- <div class="p-field p-col-12 p-md-6">
-                        <label for="passworduser">{{ $t('DFC.details.password') }}</label>
-                        <InputText id="passworduser" :class="`${error.password ? 'p-invalid' : ''}`" type="text" placeholder="Password" :modelValue="mydata.password" v-model="mydata.password" />
-                        <div class="text-red">{{ error.password }}</div>
-                    </div> -->
+                   
                     <div class="p-formgrid p-grid">
                      <div class="p-field p-col-12 p-md-6">
                         <label for="emailuser">{{ $t('DFC.details.email') }}</label>
@@ -61,14 +55,7 @@
                         <InputText id="medium" type="text" placeholder="distribution medium" v-model="mydata.findings" disabled/>
                     </div>
                     </div>
-                <!-- <div class="p-formgrid p-grid">
-                    
-                    
-                    <div class="p-field p-col-12 p-md-6">
-                        <label for="remark">{{ $t('DFC.details.remark') }}</label>
-                        <Textarea id="remark" type="text" placeholder="write your remark" v-model="mydata.remark" />
-                    </div>
-                </div> -->
+              
                 <div class="p-d-flex p-jc-end" style="float:left;">
                     <ConfirmPopup group="popup"></ConfirmPopup>
                     <Button ref="popup" @click="editIndividual" icon="pi pi-check" :label="$t('DFC.details.confirm')" class="p-mr-2"></Button>
@@ -105,14 +92,7 @@ export default {
             products: null,
             selectedProduct: null,
             mydata: {
-                // name: '',
-                // grade: '',
-                // phone: '',
-                // location: '',
-                // designation: '',
-                // address1: '',
-                // remark: '',
-                // page:'',
+               
             limit:'',
             name:'',
             id:'',

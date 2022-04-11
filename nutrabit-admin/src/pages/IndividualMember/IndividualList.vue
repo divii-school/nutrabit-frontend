@@ -9,7 +9,7 @@
                 </h4>
                 <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
-                            <!-- <label for="type">{{ $t('individual.list.UserName') }}</label> -->
+                          
                             <label for="type">담당자명</label>
                             <InputText id="googlurl" type="text" placeholder="유형 이름" v-model="name" @keyup="resetdata"/>
                         </div>
@@ -19,16 +19,7 @@
                             <InputText id="googlurl" type="text" placeholder="ID 번호" v-model="id"  @keyup="resetiddata"/>
                         </div>
                     </div>
-                <!-- <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="pass">{{ $t('search.label.startDate') }}</label>
-                        <Calendar :showIcon="true"  :showButtonBar="true" v-model="calendarValue" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="verify-pass">{{ $t('search.label.lastDate') }}</label>
-                        <Calendar :showIcon="true" :minDate="calendarValue" :showButtonBar="true" v-model="calendarValue1" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div>
-                </div> -->
+               
                 <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                     <div class="p-mb-4 p-mb-lg-0"></div>
                     <div>
@@ -52,108 +43,43 @@
                     <template #empty> 데이터가 없습니다 </template>
                     <template #loading> Loading data. Please wait. </template>
 
-                    <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
+                    
                     <Column :header="$t('Individual.list.slNo')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">#</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.id }}
-                            </span> -->
+                            
                             {{ data.sl_no }}
                         </template>
                     </Column>
                     <Column field="ReferralCode" :header="$t('Individual.list.Username')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">User Name</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.username == null ? '- Empty -' : data.username }}
-                            </span> -->
+                            
                             {{ data.name }}
                         </template>
                     </Column>
                     <Column :header="$t('Individual.list.Email')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">Email</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                            </span> -->
+                            
                              {{ data.email }}
                         </template>
                     </Column>
                     <Column :header="$t('Individual.list.ID')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">ID</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.uuid }}
-                            </span> -->
+                           
                             {{ data.uuid }}
                         </template>
                     </Column>
                     <Column :header="$t('Individual.list.RegistrationDate')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">Registration Date</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.createdDate }}
-                            </span> -->
+                         
                             {{ dateformat(data.createdDate) }}
                         </template>
                     </Column>
-                    <!-- <Column :header="$t('dfc_user.list.StartDate')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title" style="background-color: lightblue">Start Date</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.startDate }}
-                            </span>
-                        </template>
-                    </Column>
-                    <Column :header="$t('dfc_user.list.EndDate')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">End Date</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.endDate }}
-                            </span>
-                        </template>
-                    </Column>
-                    <Column :header="$t('dfc_user.list.Totalpayabledepositinterest')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">interest</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.totalPayableDepositInterest }}
-                            </span>
-                        </template>
-                    </Column> -->
-                    <!-- <Column :header="$t('dfc_user.list.Totaladditionalinterestpaid')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">additional interest</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.totalAdditionalInterestPaid }}
-                            </span>
-                        </template>
-                    </Column>
-                    <Column :header="$t('dfc_user.list.DepositWon')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Deposit Won</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.depositWon }}
-                            </span>
-                        </template>
-                    </Column>
-                    <Column :header="$t('dfc_user.list.Status')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Status</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.status }}
-                            </span>
-                        </template>
-                    </Column>
-                    <Column :header="$t('dfc_user.list.ReferralCode')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Referral Code</span>
-                            <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.referralCode }}
-                            </span>
-                        </template>
-                    </Column> -->
+                   
                     <Column :header="$t('Individual.list.Function')">
                         <template #body="{ data }">
                             <span class="p-column-title">Balance</span>
@@ -244,15 +170,7 @@ export default {
         })
 
 
-            // .then((data) => {
-            //     this.customer1 = data.userDataList;
-            //     this.loading1 = false;
-            //     localStorage.setItem('client', JSON.stringify(data.userDataList));
-            //     this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //     this.records = data.popUpInformation;
-            //     console.log(this.records);
-            //     this.display = true;
-            // })
+        
             .catch((err) => {
                 this.loading1 = false;
                 this.customer1 = [];
