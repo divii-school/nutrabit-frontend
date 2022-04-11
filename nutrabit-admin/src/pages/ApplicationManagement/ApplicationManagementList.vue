@@ -206,7 +206,7 @@
                                         @click.prevent="deleteNote(data.id)"
                                         data-toggle="tooltip"
                                         data-placement="right"
-                                        title="Delete Note"
+                                        title="메모 삭제"
                                     >
                                         <Button
                                             icon="pi pi-trash"

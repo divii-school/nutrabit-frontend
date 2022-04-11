@@ -108,7 +108,7 @@
                                     <router-link :to="'/edit-banner/' + data.id">
                                         <Button label="help" class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"> <i class="pi pi-pencil p-mr-2"></i> </Button>
                                     </router-link>
-                                    <a :href="'/admin/banner/delete/' + data.id" @click.prevent="deleteNote(data.id)"  data-toggle="tooltip" data-placement="right" title="Delete Note">
+                                    <a :href="'/admin/banner/delete/' + data.id" @click.prevent="deleteNote(data.id)"  data-toggle="tooltip" data-placement="right" title="메모 삭제">
                    <Button  icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2"  />
                 </a>
                                     <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
