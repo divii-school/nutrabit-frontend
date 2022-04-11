@@ -1,9 +1,7 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+    
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>{{$t('PackageType.view.header')}}</strong></h4>
@@ -61,9 +59,7 @@
                     
                     
                 <div class="p-d-flex p-jc-end" style="float:left;">
-                    <!-- <router-link to="/view-user"
-                        ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2" disabled><i class="pi pi-eye p-mr-2"></i>point</Button>
-                    </router-link> -->
+                   
                     <router-link :to="'/edit-package-type/' + $route.params.id"
                         ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
                     >

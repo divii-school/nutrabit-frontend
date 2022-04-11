@@ -1,9 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+       
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -118,19 +116,9 @@ export default {
         this.packageTypeService = new PackageTypeService();
     },
     mounted() {
-         //const route = useRoute();
-        //console.log(route.params);
+         
         this.loading1 = true;
-        //this.updateRawService
-        // .getRawCategoryDropdown()
-        //     .then((data) => {
-        //         this.categoryDropdownValues = data;
-        //         // this.products = data;
-        //         this.loading1 = false;
-        //         // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-        //         console.log(this.customer1);
-        //         console.log(data);
-        //     })
+        
         this.packageTypeService.viewPackageType(this.$route.params.id).then((res) => {
            this.id = res.data.data[0].id;
             this.name_ko = res.data.data[0].name_ko;
@@ -172,11 +160,7 @@ export default {
         },
 
         remove_image(id,image){
-            //console.log(id)
-           // console.log(similar_product_img)
-            //let similar_prod_image_arr = similar_product_img.toString().split("/");
-            //let image_name = similar_prod_image_arr[3];
-           // console.log(similar_prod_image_arr[3])
+            
             if(confirm("성공적으로 삭제되었습니다?")){
                  axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image: image } }).then(function (response) {
                         console.log(response);
@@ -194,9 +178,7 @@ export default {
                 name_en: this.name_en,
                 description_ko: this.description_ko,
                 description_en: this.description_en,
-                // type: this.dropdownValueType ? 'something' : 'something',
-                // file: this.fileName == '' ? '' : 'something',
-                // files: this.filesName == '' ? '' : 'something',
+                
                 status : this.status,
                 files: this.fileNames == '' ? '' : 'something',
             };

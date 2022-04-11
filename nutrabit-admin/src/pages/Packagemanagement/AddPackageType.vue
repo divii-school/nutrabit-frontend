@@ -15,7 +15,7 @@
                                 :placeholder="$t('PackageType.Add.addpackage(ko)')"
                                 id="title2"
                                 v-model="name_ko"
-                                @keyup="addPackageType"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.name_ko }}</div>
                         </div>
@@ -29,7 +29,7 @@
                                 :placeholder="$t('PackageType.Add.addpackage(en)')"
                                 id="title2"
                                 v-model="name_en"
-                                @keyup="addPackageType"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
@@ -65,7 +65,7 @@
                                 :placeholder="$t('PackageType.Add.adddesc(ko)')"
                                 id="title2"
                                 v-model="description_ko"
-                                @keyup="addPackageType"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
@@ -79,7 +79,7 @@
                                 :placeholder="$t('PackageType.Add.adddesc(en)')"
                                 id="title2"
                                 v-model="description_en"
-                                @keyup="addPackageType"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
@@ -97,17 +97,7 @@
                     ></Button>
                 </div>
             </div>
-            <!-- <div class="p-d-flex p-jc-end p-ai-center">
-                <div>
-                    <Button
-                        :label="$t('rawmaterial.Back')"
-                        icon="pi pi-replay"
-                        iconPos="left"
-                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
-                        @click="$router.go(-1)"
-                    ></Button>
-                </div>
-            </div>-->
+            
         </form>
     </div>
 </template>
@@ -150,15 +140,7 @@ export default {
         console.log(route.params);
         this.loading1 = true;
         this.packageTypeService
-        // .getRawCategoryDropdown()
-        //     .then((data) => {
-        //         this.categoryDropdownValues = data;
-        //         // this.products = data;
-        //         this.loading1 = false;
-        //         // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-        //         console.log(this.customer1);
-        //         console.log(data);
-        //     })
+      
     },
     methods: {
         reinitialize() {
@@ -188,9 +170,7 @@ export default {
                 description_en: this.description_en,
                 status: this.status,
                 file: this.detail == '' ? '' : 'something',
-                //exposure: this.exposure == null ? '' : 'something',
-                // type: this.dropdownValueType == null ? '' : 'something',
-                //file: this.detail == '' ? '' : 'something',
+                
 
             };
             const { isInvalid, error } = validateAddPackage(vcheckData);
@@ -204,8 +184,7 @@ export default {
                 this.formData.append('description_ko', this.description_ko);
                 this.formData.append('description_en', this.description_en);
 
-                // this.formData.append('type', this.dropdownValueType?.name);
-                //this.formData.append('status', this.status.name===undefined ? this.status :this.status.name);
+                
                 this.formData.append('status', this.status);
                 //dropdownValues: [{ name: 'active'}, { name: 'inactive' }],
                 console.log(this.formData);

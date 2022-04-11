@@ -2,13 +2,7 @@
     <div class="p-grid">
         <Toast />
         
-        <!-- <div class="p-col-12" v-show="clientlist">
-            <div class="card p-fluid">
-                <h4>
-                    <strong>{{ $t('search') }}</strong>
-                </h4>
-        </div>
-        </div>-->
+       
         <div class="p-col-12" v-show="clientlist">
             <div class="card">
                 <div class="p-grid">
@@ -16,9 +10,7 @@
                         <div class="p-d-flex p-jc-between p-mb-2">
                             <h5>{{ $t('PackageType.list.header') }}</h5>
                             <div>
-                                <!-- <router-link to="/addrawmaterial">
-                                <Button :label="$t('rawmaterial.excel_raw')" icon="pi pi-download" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
-                                </router-link>-->
+                            
                                 <router-link to="/addpackagetype">
                                     <Button
                                         :label="$t('PackageType.list.addnew_packagetype')"
@@ -51,9 +43,7 @@
                             <Column header="번호" style="min-width: 12rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">번호</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.id }}
-                                    </span>-->
+                                    
                                     {{ data.sl_no }}
                                 </template>
                             </Column>
@@ -79,13 +69,11 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Package Name</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                                    </span>-->
+                                  
                                     {{ data.name_ko }}
                                 </template>
                             </Column>
-                            <!--  -->
+                   
 
                             <Column :header="$t('PackageType.list.Actions')">
                                 <template #body="{ data }">
@@ -220,12 +208,7 @@ export default {
             this.clientlist = false;
             this.detailsclient = true;
         },
-        // dropdownCategory() {
-        //     axios({ method: 'get', url: '/admin/product_raw_material/categoryDropdown' }).then(function (response) {
-        //         console.log(response);
-        //         this.dropdownValue = response.data.data.rawMaterials;
-        //     });
-        // },
+       
         backList() {
             this.clientlist = true;
             this.detailsclient = false;
@@ -255,26 +238,7 @@ export default {
                     this.loading1 = false;
                 });
         },
-        // searchRaw() {
-        //     // console.log(this.name);
-        //     // console.log(this.id);
-
-        //     if (this.material_name_ko === '' || this.dropdownValue === '' || this.startDate === '') {
-        //        this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
-        //     } else {
-        //         this.rawService
-        //             .getRawList(this.status,this.material_name_ko, this.dropdownValue?.category_name_ko, this.startDate,this.endDate,this.sortBy,this.sortOrder)
-        //             .then((data) => {
-        //                 this.customer1 = data;
-        //                 this.loading1 = false;
-        //                 console.log(data);
-        //             })
-        //             .catch(() => {
-        //                 this.customer1 = [];
-        //                 this.loading1 = false;
-        //             });
-        //     }
-        // },
+      
         open() {
             this.display = true;
         },
@@ -307,9 +271,7 @@ export default {
             var dd = date.getDate();
             var mm = date.getMonth() + 1;
             var yyyy = date.getFullYear();
-            // var hr = date.getHours();
-            // var min = date.getMinutes();
-            // var sec = date.getSeconds();
+           
             if (dd < 10) {
                 dd = '0' + dd;
             }
