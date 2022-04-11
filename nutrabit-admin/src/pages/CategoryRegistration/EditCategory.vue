@@ -5,18 +5,7 @@
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
                     <h5>{{ $t('Category.edit_category') }}</h5>
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Category.list.title') }}</label>
-                            <InputText
-                                type="text"
-                                placeholder="Title"
-                                id="title2"
-                                v-model="fst_category_name_ko"
-                            ></InputText> -->
-                            <!-- <p>{{ mydata.fst_category_name_ko }}</p> -->
-                        <!-- </div>
-                    </div> -->
+                    
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
@@ -66,27 +55,7 @@
                             ></InputText>
                         </div>
                     </div>
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{ $t('Banner.list.type') }}</label>
-                            <Dropdown v-model="dropdownValueType" :options="dropdownValueTypes" optionLabel="name" :placeholder="type" />
-                            <div class="text-red">{{ error.type }}</div>
-                    </div>-->
-
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{ $t('Banner.list.mobbanner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!filesName">{{$t('button.select_file')}}</span>
-                                <span v-else>{{ filesName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
-                            <div class="text-red">{{ error.file }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + fileName2" :alt="fileName1" class="product-image" />
-                    </div>-->
+                   
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
@@ -114,29 +83,7 @@
                         </div>
                     </div>
 
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{ $t('Category.list.thumnail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div class="custom-select">
-                                <span v-if="!fileName">{{$t('button.select_file')}}</span>
-                                <span v-else>{{ fileName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div>
-                                <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.category_image" :alt="mydata.category_image" class="product-image" />
-                            </div>
-                    </div>-->
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Banner.list.status') }}</label>
-                            <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="name" :placeholder="status" />
-                            <div class="text-red">{{ error.state }}</div>
-                        </div>
-                    </div>-->
+                   
                 </div>
             </div>
 
@@ -203,22 +150,7 @@ export default {
 
             category_image: '',
 
-            //  mydata: {
-            //     // title: '',
-            //     // link: '',
-            //     // status: '',
-            //     // desktop_banner: '',
-            //     // mobile_banner: '',
-
-            //     fst_category_name_ko: '',
-            //     fst_category_name_en:'',
-            //     scnd_category_name_ko:'',
-            //     scnd_category_name_en:'',
-            //     //  category_image: '',
-
-
-            // },
-
+            
         };
     },
     created() {
@@ -234,9 +166,7 @@ export default {
                 this.autoValue = data;
                 // this.products = data;
                 this.loading1 = false;
-                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-               // console.log(this.products);
-                //console.log(this.dropdownValues);
+                
             })
             .catch((err) => console.log(err));
         this.categoryService.viewCategory(this.$route.params.id).then((res) => {
@@ -281,24 +211,7 @@ export default {
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
         },
-        // onFileChanges(e) {
-        //     var files = e.target.files || e.dataTransfer.files;
-        //     if (!files.length) return;
-        //     this.files = files[0];
-        //     if (!files.length) return;
-        //     this.files = files[0];
-        //     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-        //     if (!allowedExtensions.exec(this.files.name)) {
-        //          this.render2=true;
-        //         return false;
-        //     } else {
-        //          this.render2=false;
-        //         this.filesName = this.files.name;
-        //         this.formData.append('mobile_banner', files[0]);
-        //     }
-        //     this.filesExtension = this.filesName.replace(/^.*\./, '');
-        //     console.log(this.filesName);
-        // },
+        
         editCategory() {
             let vcheckData = {
                 fst_category_name_ko: this.fst_category_name_ko,

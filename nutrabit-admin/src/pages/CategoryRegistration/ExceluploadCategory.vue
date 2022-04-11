@@ -1,7 +1,5 @@
 <template>
-    <!-- <div class="p-col-12 p-pb-0">
-        
-    </div> -->
+    
     <div class="card">
         <Toast />
        
@@ -14,11 +12,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('upload-doc.doc_title') }}</label>
-                            <InputText :class="`${error.title ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.title')" id="title2" v-model="title"></InputText>
-                            <div class="text-red">{{ error.title }}</div>
-                        </div> -->
+                       
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="subtitle2">
@@ -56,8 +50,7 @@
 </template>
 
 <script>
-// import validateUploadDoc from '../../validations/doc/uploadDoc';
-// import CardnewsService from '../../service/API/CardnewsService';
+
 import axios from 'axios';
 export default {
     name: 'CreateDocument',
@@ -80,10 +73,7 @@ export default {
     },
 
     methods: {
-        // reset() {
-        //     this.title = '';
-        //     this.fileName = '';
-        // },
+       
         onFileChange(e) {
             this.formData.delete('file');
             var files = e.target.files || e.dataTransfer.files;
@@ -111,17 +101,7 @@ export default {
                 acceptLabel:"네",
                 rejectLabel:"아니요",
                 accept: () => {
-                    // let vcheckData = {
-                    //     title: this.title,
-                    //     file: this.fileName == '' ? '' : 'something',
-                    // };
-                   
-                    // const { isInvalid, error } = validateUploadDoc(vcheckData);
-                    // if (isInvalid) {
-                    //     this.error = error;
-                    //     console.log(error);
-                    // } 
-                    // else
+                    
                      {
                        
                         console.log(this.formData);

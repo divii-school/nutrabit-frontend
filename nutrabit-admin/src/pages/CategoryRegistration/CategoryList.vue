@@ -6,20 +6,11 @@
                 <div class="p-col-12">
                     <h5>{{ $t('Category.s-header') }}</h5>
                     <div class="p-formgrid p-grid">
-                        <!-- <div class="p-field p-col-12 p-md-3" :key="list">
-                        <p for="type">{{ $t('Category.search.type') }}</p>-->
-                        <!-- <InputText id="googlurl" type="text" placeholder="search title" v-model="searchData" /> -->
-                        <!-- <Dropdown
-                                v-model="dropdownValue"
-                                :options="dropdownValues"
-                                optionLabel="category_name_ko"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                        </div>-->
+                       
 
                         <div class="p-field p-col-12 p-md-3" :key="list">
                             <p for="type">{{ $t('Category.search.type') }}</p>
-                            <!-- <InputText id="googlurl" type="text" placeholder="search title" v-model="searchData" /> -->
+                            
                             <AutoComplete
                                 placeholder="검색"
                                 :dropdown="true"
@@ -32,14 +23,7 @@
                             />
                         </div>
 
-                        <!-- <div class="p-field p-col-12 p-md-3">
-                            <label for="name2">{{ $t('search.label.startDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue1" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="email2">{{ $t('search.label.lastDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" :minDate="calendarValue1" v-model="calendarValue2" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>-->
+                        
                     </div>
                 </div>
             </div>
@@ -149,19 +133,7 @@
                                 {{ data.scnd_category_name_en }}
                             </template>
                         </Column>
-                        <!-- <Column field="Image" :header="$t('Banner.list.image')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Image</span>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + data.imageUrl" :alt="data.imageUrl" class="product-image" />
-                            </template>
-                        </Column>-->
-                        <!--                        
-                        <Column field="Type" :header="$t('Banner.list.type')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Type</span>
-                                {{ data.type }}
-                            </template>
-                        </Column>-->
+                       
 
                         <Column field="Actions" :header="$t('Category.list.see_more')">
                             <template #body="{ data }">
@@ -222,25 +194,10 @@ export default {
             selectedAutoValue: null,
             autoFilteredValue: [],
 
-            // serial: 0,
-            // dropdownValue: '',
-            // calendarValue1: '',
-            // calendarValue2: '',
-            // link:'',
-            // status:'',
-            // createdDate:'',
-            // isModalVisible: false,
-            // products: null,
-            // title: '',
             loading1: true,
 
 
-            // deletedID: null,
-            // searchData: '',
-            // startDate: '',
-            // endDate: '',
-            // sortBy: '',
-            // sortOrder: '',
+           
             fst_category_name_ko: '',
             fst_category_name_en: '',
             scnd_category_name_ko: '',
@@ -266,14 +223,12 @@ export default {
         console.log(route.params);
 
         this.categoryService
-            //this.fst_category_name_ko,this.fst_category_name_en,this.scnd_category_name_ko,this.scnd_category_name_en
+            
             .getCategoryList(this.fst_category_name_ko, this.fst_category_name_en, this.scnd_category_name_ko, this.scnd_category_name_en)
             .then((data) => {
                 this.products = data;
                 this.loading1 = false;
-                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                // console.log(this.products);
-                // console.log(data);
+                
             })
             .catch((err) => console.log(err));
         this.categoryService
@@ -306,24 +261,6 @@ export default {
         },
 
 
-        // switchValue(ids, switchstatus) {
-        //     console.log(ids, switchstatus);
-        //     axios({ method: 'put', url: '/admin/product_category/activate-deactivate', data: { id: ids, status: switchstatus === false ? 'inactive' : 'active' } }).then(function (response) {
-        //         console.log(response);
-        //     });
-        // },
-        // up(ids) {
-        //     axios({ method: 'post', url: '/admin/product_category/up', data: { id: ids } }).then(function (response) {
-        //         console.log(response);
-        //     });
-        //     setTimeout(() => {
-        //         this.categoryService.getCategoryList().then((data) => {
-        //             this.products = data;
-        //             console.log(data);
-        //             this.loading1 = false;
-        //         });
-        //     }, 500);
-        // },
         dropdownCategory() {
             axios({ method: 'get', url: '/admin/product_raw_material/categoryDropdown' }).then(function (response) {
                 console.log(response);

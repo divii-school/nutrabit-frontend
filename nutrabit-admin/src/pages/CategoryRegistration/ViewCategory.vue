@@ -1,9 +1,7 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div>-->
+       
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -64,13 +62,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="p-field p-col p-md-4">
-                        <strong><label for="state">{{$t('Category.list.mobbanner')}} :</label></strong>
-                        <div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.mobile_banner" :alt="mydata.mobile_banner" class="product-image" />
-                        </div>
-                </div>-->
-
+                
                 <div class="p-d-flex p-jc-end" style="float:left;">
                     <router-link :to="'/edit-category/' + $route.params.id">
                         <Button

@@ -6,12 +6,7 @@
                 <div class="p-col-12">
                     <h5>{{$t('Category.search.Register')}}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Category.list.title')}}</label>
-                           
-                            <InputText :class="`${error.fst_category_name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.title')" id="title2" v-model="fst_category_name_ko" ></InputText>
-                            <div class="text-red">{{ error.fst_category_name_ko }}</div>
-                        </div> -->
+                       
 
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
@@ -28,22 +23,13 @@
                             />
                             
                         </div>
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                        </div> -->
+                        
                        
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Category.list.url')}}</label>
                            
-                            <InputText :class="`${error.fst_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.url')" id="title2" v-model="fst_category_name_en" @keyup="addCategory"></InputText>
+                            <InputText :class="`${error.fst_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.url')" id="title2" v-model="fst_category_name_en" ></InputText>
                             <div class="text-red">{{ error.fst_category_name_en }}</div>
                         </div>
                         
@@ -51,33 +37,20 @@
                     <div class="p-grid p-formgrid p-mb-3">
                          <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Category.list.status')}}</label>
-                            <InputText :class="`${error.scnd_category_name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.status')" id="title2" v-model="scnd_category_name_ko" @keyup="addCategory"></InputText>
+                            <InputText :class="`${error.scnd_category_name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.status')" id="title2" v-model="scnd_category_name_ko" ></InputText>
                             <div class="text-red">{{ error.scnd_category_name_ko }}</div>
 
                         </div>
                          <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Category.list.created_dt')}}</label>
-                            <InputText :class="`${error.scnd_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.created_dt')" id="title2" v-model="scnd_category_name_en" @keyup="addCategory"></InputText>
+                            <InputText :class="`${error.scnd_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.created_dt')" id="title2" v-model="scnd_category_name_en"></InputText>
                             <div class="text-red">{{ error.scnd_category_name_en }}</div>
 
                         </div>
                     </div>
 
 
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{$t('Banner.list.mobbanner')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div class="custom-select">
-                                <span v-if="!filesName">{{$t('button.select_file')}}</span>
-                                <span v-else>{{ filesName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red" v-show="render2">{{$t('validation.invalidFile')}}</div>
-                            <img id="frame" src width="100px" height="100px" />
-                        </div> -->
+                      
                         
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
@@ -95,35 +68,7 @@
                             <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
-                    <!-- </div> -->
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="subtitle2">
-                                {{$t('Category.list.thumnail')}}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
-                            </label>
-                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!fileName">파일 선택</span>
-                                <span v-else>{{$t('button.select_file')}}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
-                            </div>
-                            <div class="text-red">{{ error.file }}</div>
-                            <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                            <img id="frame" src width="100px" height="100px" />
-                        </div> -->
-                        
-                         <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="state2">{{$t('Banner.list.status')}}</label>
-                            <Dropdown
-                            :class="`${error.state ? 'p-invalid' : ''}`"
-                                v-model="dropdownValue"
-                                :options="dropdownValues"
-                                optionLabel="code"
-                                :placeholder="dropdownValue"   
-                            />
-                            <div class="text-red">{{ error.state }}</div>
-                        </div> -->
+                  
                     </div>
                 </div>
             </div>
