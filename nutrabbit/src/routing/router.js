@@ -37,7 +37,8 @@ import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
 import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
 import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
 import AboutUs from '../pages/AboutUs.vue';
-
+import ServiceIntro from '../pages/Nutri/ServiceIntro.vue';
+import NutriDetail from '../pages/Nutri/NutriDetail.vue';
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
@@ -275,6 +276,18 @@ const routes = [
         name: 'AboutUs',
         path: '/about-us',
         component: AboutUs,
+
+    },
+    {
+        name: 'ServiceIntro',
+        path: '/service-intro',
+        component: ServiceIntro,
+
+    },
+    {
+        name: 'NutriDetail',
+        path: '/nutri-detail',
+        component: NutriDetail,
 
     },
 
