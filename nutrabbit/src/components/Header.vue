@@ -60,7 +60,7 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="this.searchData.id">
+                  <router-link to @click="deleteAllHistory">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -262,6 +262,8 @@ export default {
         },
       ],
       searchData: [],
+      AllSearchId: [],
+      // SearchHistoryTitle: [],
     };
   },
   setup() {
@@ -348,34 +350,63 @@ export default {
               this.$router.push("/search-result");
               this.showMobSearch = false;
               this.activeSearch = false;
-              this.sarchInput = '';
+              this.sarchInput = "";
             }
           });
       }
     },
     getHistory() {
-      this.commonService.getSearchHistory(this.myIp).then((res) => {
-        this.activeSearch = true;
-        console.log(res)
-        if(res.data.data.length>0){
-          this.searchData = res.data.data;
-        }
-        else{
-          this.searchData.splice(0)
-        }
-      })
-      .catch((err)=>{
-        this.searchData = [];
-        return false;
-      })
+      this.commonService
+        .getSearchHistory(this.myIp)
+        .then((res) => {
+          this.activeSearch = true;
+          if (res.data.data.length > 0) {
+            this.searchData = res.data.data;
+          }
+        })
+        .catch((err) => {
+          this.searchData = [];
+          return false;
+        });
     },
+    // getSearchFromHistory() {
+    //   this.searchData.map((value) => {
+    //     return this.nutriBlending.push({
+    //       id: value.id,
+    //       name_en: value.name_en,
+    //       image: value.image,
+    //     });
+    //   });
+
+    //   this.commonService
+    //     .getSearchResult(this.sarchInput, this.myIp)
+    //     .then((res) => {
+    //       if (res.status == 200) {
+    //         this.common.state.SearchResult = res.data.data.search;
+    //         this.$router.push("/search-result");
+    //         this.showMobSearch = false;
+    //         this.activeSearch = false;
+    //         this.sarchInput = "";
+    //       }
+    //     });
+    // },
     deleteHistory(searchId) {
       this.commonService.deleteSearchHistory(searchId).then((res) => {
-        console.log(res.status)
+        console.log(res.status);
         if (res.status == 200) {
           this.getHistory();
         }
       });
+    },
+    deleteAllHistory() {
+      this.commonService
+        .deleteAllHistory(this.myIp)
+        .then((res) => {
+          this.getHistory();
+        })
+        .catch((err) => {
+          return false;
+        });
     },
   },
   computed: {
