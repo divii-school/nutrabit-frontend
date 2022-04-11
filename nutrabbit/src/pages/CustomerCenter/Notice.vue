@@ -25,19 +25,21 @@
             </li>
           </ul>
         </div>
-        <pagination
-          v-model="page"
-          :records="5"
-          :per-page="1"
-          @paginate="myCallback"
-        />
+        <template v-if="this.UpdatedNoticeList.length > 0">
+          <pagination
+            v-model="page"
+            :records="totalItems"
+            :per-page="perPage"
+            @paginate="myCallback"
+          />
+        </template>
         <!-- <Pagination /> -->
       </div>
     </div>
   </div>
 </template>
 <script>
-import moment from 'moment';
+import moment from "moment";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "Notice",
@@ -50,6 +52,7 @@ export default {
       UpdatedNoticeList: [],
       page: 1,
       perPage: 10,
+      totalItems: 0,
     };
   },
   created() {
@@ -60,22 +63,24 @@ export default {
     this.dateformat();
   },
   methods: {
-    myCallback(ClickPage){
+    myCallback(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
       // const endIndex = (this.perPage * ClickPage);
       const endIndex = startIndex + this.perPage;
       this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
     },
     allNoticeList() {
-      this.CustomerCenterService.getNoticeList().then((res) => {
-        if (res.status == 200) {
-          this.NoticeList = res.data.data.notice;
-          this.myCallback(1);
-        }
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+      this.CustomerCenterService.getNoticeList()
+        .then((res) => {
+          if (res.status == 200) {
+            this.NoticeList = res.data.data.notice;
+            this.totalItems = res.data.data.total;
+            this.myCallback(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     dateformat(value) {
       if (value) {

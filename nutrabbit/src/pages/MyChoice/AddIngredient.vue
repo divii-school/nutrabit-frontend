@@ -17,17 +17,17 @@
                 <li>
                   <div class="radio-wrap">
                     <label class="custom-radio">
-                      <input type="radio" checked="checked" name="radio" />
+                      <input type="checkbox" @click="selectAll" v-model="allSelected" />
                       <span class="checkmark"></span>
                       Select All
                     </label>
                   </div>
-                  <button class="deleteBtn">delete selection <i class="icon-menu-delete"></i></button>
+                  <button  @click="deleteStorageBox" class="deleteBtn">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
-                <li v-for="(item, index) of rwaMaterialData" :key="index">
-                  <ProductList :item="item"/>
+                <li v-for="(item, index) of storage_box_list_data" :key="index">
+                  <ProductListStorageBox :item="item" :allSelected="allSelected" @storageBoxId="UpdatedId($event)" />
                 </li>
               </ul>
               <div class="addIng">
@@ -63,34 +63,104 @@
 <script>
 import Popper from "vue3-popper";
 import Button from '../../components/Button.vue';
-import ProductList from "../../components/ProductList.vue";
+import ProductListStorageBox from "../../components/ProductListStorageBox.vue";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
-    ProductList,
+    ProductListStorageBox,
     Button,
   },
   data() {
     return {
-      rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
-      ],
+      storage_box_list_data:'',
+      box_id_data:[],
+      allSelected: false,
+      // rwaMaterialData: [
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "Bottle",
+      //     desc: [
+      //       "Choose from a variety of sizes and shapes of bottles and caps.",
+      //     ],
+      //   },
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "PTP",
+      //     desc: [
+      //       "It is hygienic and convenient.",
+      //       "The packaging volume is slightly larger.",
+      //     ],
+      //   },
+      // ],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.storage_box_list();
+  },
+  methods: {
+    storage_box_list() {
+      let uid = localStorage.getItem('uid');
+      this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
+         //console.log(res);
+        if (res.status == 200) {
+          this.storage_box_list_data = res.data.data;
+          // console.log(res.data.data);
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    selectAll() {
+
+      if (!this.allSelected) {
+        //  console.log(this.storage_box_list_data.length);
+        for (let i = 0; i < this.storage_box_list_data.length; i++) {
+          let box_id = this.storage_box_list_data[i];
+          this.box_id_data.push(box_id.id);
+          // console.log(box_id.id);
+        }
+
+      } else {
+        this.box_id_data = [];
+      }
+
+    },
+    UpdatedId(e) {
+      this.box_id_data.push(e);
+      console.log(this.box_id_data);
+    },
+    deleteStorageBox() {
+
+      //console.log(this.box_id_data.length);
+
+       if (this.box_id_data.length == 0) {
+        this.$swal("Please Select at Least one");
+      }
+      else {
+         for (let i = 0; i < this.box_id_data.length; i++) {
+         let box_id = this.box_id_data[i];
+         let uid = localStorage.getItem('uid');
+        this.mychoiceService.deleteIngredientsStorageBox(uid,box_id).then((res) => {
+        //console.log(res.data);
+        if (res.status=200) {
+           this.$swal("Successfully Deleted");
+          setTimeout(function(){
+   window.location.reload();
+}, 3000);
+         
+        } else {
+            this.$swal(res.data.message, "error");
+        }
+      });
+
+      }
+      }
+    },
+  }
 };
 </script>

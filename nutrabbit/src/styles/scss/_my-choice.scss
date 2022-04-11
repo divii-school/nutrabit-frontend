@@ -305,6 +305,7 @@
                                     height: 180px;
                                     width: 180px;
                                     margin-right: 40px;
+                                    position: relative;
                                     @media screen and (max-width: 992px){
                                         margin-right: 20px;
                                     } 
@@ -314,6 +315,19 @@
                                     img{
                                         height: 180px;
                                         min-width: 180px;
+                                    }
+                                    .img-wrap-hover{
+                                        position: absolute;
+                                        left: 100px;
+                                        top: 50px;
+                                        display: none;
+                                        width: 230px;
+                                        height: 230px;
+                                    }
+                                    &:hover{
+                                        .img-wrap-hover{
+                                            display: block;
+                                        }
                                     }
                                 }
                                 .material-details{

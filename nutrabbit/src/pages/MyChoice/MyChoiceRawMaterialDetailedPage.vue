@@ -68,8 +68,8 @@
               </li>
             </ul>
             <div class="blendBtnList">
-              <button  @click="this.$router.push(`/add-ingredient/${item.id}`)" class="btn-primary purple-btn-outline">add</button>
-              <button  @click="this.$router.push('/ingredient-formulation')" class="btn-primary blue-btn-solid">next</button>
+              <button  @click="addRawMaterial()" class="btn-primary purple-btn-outline">add</button>
+              <button  @click="this.$router.push(`/ingredient-formulation/${item.id}`)" class="btn-primary blue-btn-solid">next</button>
             </div>
           </div>
           <div class="suggested-product">
@@ -280,6 +280,18 @@ export default {
 
         } else {
           this.$swal(res.data.message, "error");
+        }
+      });
+    },
+    addRawMaterial() {
+      //  console.log(this.raw_material_id);
+      this.mychoiceService.rawMaterialStorageBoxAdd(this.$route.params.id).then((res) => {
+        //console.log(res.data);
+        if (res.data.status=200) {
+          this.$router.push('/add-ingredient')
+         
+        } else {
+            this.$swal(res.data.message, "error");
         }
       });
     },

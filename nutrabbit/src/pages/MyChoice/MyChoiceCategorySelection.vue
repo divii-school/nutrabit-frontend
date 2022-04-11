@@ -44,7 +44,14 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :item="item" />
+                <SearchCard
+                  :category="item.category_name_ko"
+                  :name="item.name_ko"
+                  :desc="item.description_ko"
+                  :image="item.thumbnail_1_path"
+                  image_link="http://api-nutrabbit-dev.dvconsulting.org/"
+                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
+                />
               </li>
             </ul>
           </div>
@@ -97,6 +104,13 @@
                       :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
                       alt
                     />
+
+                    <div class="img-wrap-hover">
+                      <img
+                        :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
+                        alt
+                      />
+                    </div>
                   </div>
                   <div class="material-details">
                     <h2

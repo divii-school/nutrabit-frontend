@@ -37,7 +37,8 @@ import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
 import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
 import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
 import AboutUs from '../pages/AboutUs.vue';
-
+import ServiceIntro from '../pages/Nutri/ServiceIntro.vue';
+import NutriDetail from '../pages/Nutri/NutriDetail.vue';
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
@@ -120,6 +121,7 @@ const routes = [
         name: 'InquiryContactUs',
         path: '/inquiry-contactUs',
         component: InquiryContactUs,
+        beforeEnter: guard,
     },
     {
         name: 'Inquery',
@@ -214,12 +216,12 @@ const routes = [
     },
     {
         name: 'IngredientFormulation',
-        path: '/ingredient-formulation',
+        path: '/ingredient-formulation/:id',
         component: IngredientFormulation,
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient/:id',
+        path: '/add-ingredient/',
         component: AddIngredient,
     },
     {
@@ -243,24 +245,27 @@ const routes = [
     },
     {
         name: 'MyRecipeDetails',
-        path: '/my-recipe-details',
+        path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
+        //beforeEnter : guard
     },
     {
         name: 'MyApplicationDetails',
-        path: '/my-allpication-detail',
+        path: '/my-appllication-detail',
         component: MyApplicationDetails,
+        //beforeEnter : guard
 
     },
     {
         name: 'MyRecipeDetailsEdit',
-        path: '/my-recipe-detail-edit',
+        path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
+        //beforeEnter : guard
 
     },
     {
         name: 'MyRecipeDetailsSample',
-        path: '/my-recipe-details-sample',
+        path: '/my-recipe-details-sample/:id',
         component: MyRecipeDetailsSample,
 
     },
@@ -268,12 +273,25 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
+        //beforeEnter : guard
 
     },
     {
         name: 'AboutUs',
         path: '/about-us',
         component: AboutUs,
+
+    },
+    {
+        name: 'ServiceIntro',
+        path: '/service-intro',
+        component: ServiceIntro,
+
+    },
+    {
+        name: 'NutriDetail',
+        path: '/nutri-detail',
+        component: NutriDetail,
 
     },
 
