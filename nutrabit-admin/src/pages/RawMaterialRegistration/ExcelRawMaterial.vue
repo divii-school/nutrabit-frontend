@@ -6,6 +6,9 @@
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
                     <h5>{{ $t('upload-doc.upload_doc_header') }}</h5>
+                    <div class="sample">
+                          <a href="" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">Sample Download </a>
+                    </div>
                     <div class="p-grid p-formgrid p-mb-3">
                       
 
@@ -169,6 +172,10 @@ export default {
     height: 200px;
 }
 
+.sample{
+    float: right;
+    margin-top: -3%;
+}
 .p-button{
     background: #000000;
     border: 1px solid #0a0a0a;

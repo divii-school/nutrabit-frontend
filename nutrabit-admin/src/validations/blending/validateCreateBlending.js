@@ -13,6 +13,7 @@ const validateCreateBlending = (data) => {
     if (validator.isEmpty(name_en)) {
         errors.name_en = '블렌딩 이름을 입력해 주세요';
     }
+
     // if (validator.isEmpty(category_id)) {
     //     errors.category_id = '카테고리를 입력하십시오';
     // }
