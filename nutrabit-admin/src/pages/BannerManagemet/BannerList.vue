@@ -11,14 +11,7 @@
                              <InputText id="googlurl" type="text" placeholder="검색어 입력" v-model="searchData" @keyup="resetdata" />
                         </div>
 
-                        <!-- <div class="p-field p-col-12 p-md-3">
-                            <label for="name2">{{ $t('search.label.startDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue1" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="email2">{{ $t('search.label.lastDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" :minDate="calendarValue1" v-model="calendarValue2" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div> -->
+                      
                     </div>
                 </div>
             </div>
@@ -80,19 +73,7 @@
                                 {{ dateformat(data.createdDate) }}
                             </template>
                         </Column>
-                        <!-- <Column field="Image" :header="$t('Banner.list.image')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Image</span>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + data.imageUrl" :alt="data.imageUrl" class="product-image" />
-                            </template>
-                        </Column> -->
-<!--                        
-                        <Column field="Type" :header="$t('Banner.list.type')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Type</span>
-                                {{ data.type }}
-                            </template>
-                        </Column> -->
+                       
 
                        
                        

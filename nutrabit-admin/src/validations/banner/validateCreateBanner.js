@@ -17,7 +17,7 @@ const validateCreateBanner = (data) => {
         errors.link = 'URL을 입력해주세요';
     }
     if (!validator.isURL(link)) {
-        errors.link = '유효하지 않은 URL입니다';
+        errors.link = 'URL을 입력해주세요';
     }
     if (validator.isEmpty(file)) {
         errors.file = '파일을 업로드 해주세요';

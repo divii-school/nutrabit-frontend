@@ -14,7 +14,7 @@
                                 :placeholder="$t('Banner.list.bannertitle')"
                                 id="title2"
                                 v-model="title"
-                                @keyup="addBanner"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.title }}</div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="custom-select">
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange"   @keyup="addBanner"/>
+                                <input type="file" class="select-file" v-on:change="onFileChange"   />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -51,7 +51,7 @@
                             <div class="custom-select">
                                 <span v-if="!filesName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ filesName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges"  @keyup="addBanner" />
+                                <input type="file" class="select-file" v-on:change="onFileChanges"  />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -68,7 +68,7 @@
                                 :placeholder="$t('Banner.list.link')"
                                 id="title2"
                                 v-model="link"
-                                @keyup="addBanner"
+                                
                             ></InputText>
                             
                             <div class="text-red">{{ error.link }}</div>
