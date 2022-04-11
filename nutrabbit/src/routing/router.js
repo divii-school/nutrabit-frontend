@@ -261,7 +261,7 @@ const routes = [
     },
     {
         name: 'MyRecipeDetailsSample',
-        path: '/my-recipe-details-sample',
+        path: '/my-recipe-details-sample/:id',
         component: MyRecipeDetailsSample,
 
     },
