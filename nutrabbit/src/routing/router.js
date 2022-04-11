@@ -247,7 +247,7 @@ const routes = [
     },
     {
         name: 'MyApplicationDetails',
-        path: '/my-allpication-detail/:id',
+        path: '/my-appllication-detail',
         component: MyApplicationDetails,
         //beforeEnter : guard
 

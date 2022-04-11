@@ -6,7 +6,7 @@
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
-        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org//public' + item.thumbnail_image_path[1]" v-bind:alt="item.title" />
+        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org//public' + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
       </div>
     </div>
     <div class="material-details">
