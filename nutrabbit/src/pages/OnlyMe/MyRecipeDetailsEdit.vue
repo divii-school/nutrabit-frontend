@@ -126,7 +126,7 @@
                   </li>
                 </ul>
                 <div class="btn-wrap">
-                  <button class="btn-small-solid grey">Cancel</button>
+                  <button class="btn-small-solid grey" @click="$router.push('/my-recipe')">Cancel</button>
                   <div class="btnWrapRight">
                     <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">Save</button>
                   </div>
