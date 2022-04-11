@@ -45,16 +45,7 @@
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                        </div> -->
+                       
                      
                    
                     <div class="p-grid p-formgrid p-mb-3">
@@ -212,15 +203,7 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-              // console.log(this.file);
-            // this.formData.append('category_id', this.category_id);
-            // this.formData.append('title_ko', this.title_ko);
-            // this.formData.append('title_en', this.title_en);
-            // this.formData.append('description_ko', this.description_ko);
-            // this.formData.append('description_en', this.description_en);
-            // this.formData.append('top_10', this.top_10);
-            // this.formData.append('status', this.status);
-            // this.formData.append('type', this.dropdownValueType?.name);
+              
            
             console.log( this.formData);
             return axios

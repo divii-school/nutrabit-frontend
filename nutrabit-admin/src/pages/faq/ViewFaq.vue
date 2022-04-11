@@ -1,9 +1,7 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div>-->
+       
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -92,10 +90,7 @@
                 </div>
 
 
-                <!-- <div class="p-field p-col p-md-3">
-                        <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
-                        <p>{{ mydata.type }}</p>
-                </div>-->
+             
 
                 <div class="p-d-flex p-jc-end" style="float:left;">
                     <router-link :to="'/faq/edit/' + $route.params.id">
