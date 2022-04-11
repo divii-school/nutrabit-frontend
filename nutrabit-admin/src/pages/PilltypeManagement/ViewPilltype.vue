@@ -1,9 +1,7 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+       
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4><strong>{{$t('PillType.details.header')}}</strong></h4>
@@ -113,27 +111,7 @@ export default {
      created() {
         this.pillTypeService = new PillTypeService();
     },
-    // methods: {
-    //     del(id) {
-    //         this.$confirm.require({
-    //             group: 'dialog',
-    //             header: 'Confirmation',
-    //             message: 'Are you sure you want to delete?',
-    //             icon: 'pi pi-exclamation-triangle',
-    //             accept: () => {
-    //                 axios({ method: 'delete', url: `/admin/banner/delete`, data: { deleteIdArray: id } }).then((res) => {
-    //                     console.warn(res);
-    //                     this.$router.push({ name: 'BannerManagement' });
-    //                 });
-
-    //                 this.$toast.add({ severity: 'info', summary: 'Deleted', detail: 'Deleted successfully', life: 3000 });
-    //             },
-    //             reject: () => {
-    //                 this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-    //             },
-    //         });
-    //     },
-    // },
+    
     mounted() {
         this.pillTypeService.viewPilltype(this.$route.params.id).then((res) => {
             this.mydata.name_ko = res.data.data[0].name_ko;
@@ -150,15 +128,7 @@ export default {
 
 <style scoped>
 
-/* .product-image {
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 837px;
-    height: 120px;
-    margin-left:74%;
-} */
+
 .p-fluid .p-button {
     width: auto;
 }

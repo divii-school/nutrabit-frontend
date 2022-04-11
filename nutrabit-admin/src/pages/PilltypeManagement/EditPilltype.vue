@@ -53,11 +53,7 @@
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{ $t('Banner.list.type') }}</label>
-                            <Dropdown v-model="dropdownValueType" :options="dropdownValueTypes" optionLabel="name" :placeholder="type" />
-                            <div class="text-red">{{ error.type }}</div>
-                        </div> -->
+                      
                   
                         
                     

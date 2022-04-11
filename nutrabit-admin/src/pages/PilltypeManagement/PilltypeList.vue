@@ -1,35 +1,7 @@
 <template>
     <div>
         <Toast />
-        <!-- <div class="card">
-            <div class="p-grid p-fluid">
-                <div class="p-col-12">
-                    <h5>{{ $t('Banner.s-header') }}</h5>
-                    <div class="p-formgrid p-grid">
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="type">{{ $t('Banner.search.type') }}</label>
-                             <InputText id="googlurl" type="text" placeholder="search title" v-model="searchData" />
-                        </div>
-
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="name2">{{ $t('search.label.startDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue1" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="email2">{{ $t('search.label.lastDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" :minDate="calendarValue1" v-model="calendarValue2" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
-                <div class="p-mb-4 p-mb-lg-0"></div>
-                <div>
-                    <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchBannner"></Button>
-                    <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button>
-                </div>
-            </div>
-        </div> -->
+        
         <div class="card">
             <div class="p-grid">
                 <div class="p-col-12">
@@ -65,33 +37,7 @@
                                 {{ data.name_ko }}
                             </template>
                         </Column>
-                        <!-- <Column field="Status" :header="$t('Banner.list.status')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Status</span>
-                                
-                                <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" />
-                            </template>
-                        </Column>
-                         
-                        <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Creation-Date</span>
-                                {{ dateformat(data.createdDate) }}
-                            </template>
-                        </Column> -->
-                        <!-- <Column field="Image" :header="$t('Banner.list.image')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Image</span>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + data.imageUrl" :alt="data.imageUrl" class="product-image" />
-                            </template>
-                        </Column> -->
-<!--                        
-                        <Column field="Type" :header="$t('Banner.list.type')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Type</span>
-                                {{ data.type }}
-                            </template>
-                        </Column> -->
+                       
 
                        
                        
@@ -170,53 +116,7 @@ export default {
             .catch((err) => console.log(err));
     },
     methods: {
-        // switchValue(ids, switchstatus) {
-        //     console.log(ids, switchstatus);
-        //     axios({ method: 'put', url: '/admin/banner/activate-deactivate', data: { id: ids, status: switchstatus === false ? 'inactive' : 'active' } }).then(function (response) {
-        //         console.log(response);
-        //     });
-        // },
-        // up(ids) {
-        //     axios({ method: 'post', url: '/admin/banner/up', data: { id: ids } }).then(function (response) {
-        //         console.log(response);
-        //     });
-        //     setTimeout(() => {
-        //         this.bannerService.getBannerList().then((data) => {
-        //             this.products = data;
-        //             console.log(data);
-        //             this.loading1 = false;
-        //         });
-        //     }, 500);
-        // },
-        // down(ids) {
-        //     axios({ method: 'post', url: '/admin/banner/down', data: { id: ids } }).then(function (response) {
-        //         console.log(response);
-        //     });
-        //     setTimeout(() => {
-        //         this.bannerService.getBannerList().then((data) => {
-        //             this.products = data;
-        //             console.log(data);
-        //             this.loading1 = false;
-        //         });
-        //     }, 500);
-        // },
-        // searchBannner() {
-        //     if (this.searchData === '') {
-        //        this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
-        //     } else {
-        //         this.bannerService
-        //             .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
-        //             .then((data) => {
-        //                 this.products = data;
-        //                 this.loading1 = false;
-        //                 console.log(data);
-        //             })
-        //             .catch(() => {
-        //                 this.products = [];
-        //                 this.loading1 = false;
-        //             });
-        //     }
-        // },
+       
         reInitialize() {
             this.name_ko = null;
             this.pillImage = null;
@@ -310,13 +210,7 @@ export default {
                
                 
             });
-            //  setTimeout(() => {
-            //     this.bannerService.getBannerList().then((data) => {
-            //         this.products = data;
-            //         console.log(data);
-            //         this.loading1 = false;
-            //     });
-            // }, 500);
+        
             
         },
         onRowExpand(event) {
