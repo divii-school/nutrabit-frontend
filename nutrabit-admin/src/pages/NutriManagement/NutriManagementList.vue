@@ -10,31 +10,19 @@
                 <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Blending') }}</label>
-                            <!-- <label for="type">Raw Material Name</label> -->
+                           
                             <InputText id="googlurl" type="text" placeholder="search blending name" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Tag') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <!-- <select class="p-dropdown-label p-inputtext" name="tags_ko" id="category_id" v-model="tags_ko">
-                            <option value="">Select</option>
-                            <option v-for="(item , index) in dropdownValues" v-bind:key="index" :value="item.id" >
-                            {{item.tags_ko}}
-                            </option>
-                            </select> -->
+                            
                            <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" :placeholder="$t('Nutri3.list.Tag')" />
                         </div>
-                    <!-- <div class="p-field p-col-12 p-md-3">
-                        <label for="pass">{{ $t('rawmaterial.list.startDate') }}</label>
-                        <Calendar :showIcon="true"  :showButtonBar="true" v-model="startDate" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div> -->
+                    
                     </div>
                  <div class="p-formgrid p-grid p-mb-3">
                      
-                    <!-- <div class="p-field p-col-12 p-md-3">
-                        <label for="verify-pass">{{ $t('search.label.lastDate') }}</label>
-                        <Calendar :showIcon="true" :minDate="calendarValue" :showButtonBar="true" v-model="calendarValue1" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div> -->
+                  
                 </div>
                 <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                     <div class="p-mb-4 p-mb-lg-0"></div>
@@ -53,9 +41,7 @@
                         
                             <h5>{{ $t('Nutri3.list.header') }}</h5>
                          <div>
-                            <!-- <router-link to="/excelrawmaterial">
-                                <Button :label="$t('rawmaterial.excel_raw')" icon="pi pi-download" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
-                            </router-link> -->
+                            
                             <router-link to="/addnutri-management">
                                 <Button :label="$t('Nutri3.list.add_nutri')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
@@ -68,13 +54,11 @@
                     <template #empty> No Data found. </template>
                     <template #loading> Loading data. Please wait. </template>
                      
-                    <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
+                    
                     <Column :header="$t('Nutri3.list.slNo')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.id }}
-                            </span> -->
+                            
                             {{ data.sl_no + 1 }}
                         </template>
                     </Column>
@@ -82,25 +66,21 @@
                     <Column field="ReferralCode" :header="$t('Nutri3.list.Nutri3-Blending')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.username == null ? '- Empty -' : data.username }}
-                            </span> -->
+                           
                             {{ data.name_ko }}
                         </template>
                     </Column>
                     <Column :header="$t('Nutri3.list.Tags')" style="min-width: 12rem">
                         <template #body="{ data }">
                             <span class="p-column-title">Category</span>
-                            <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                            </span> -->
+                          
                              {{ data.tags_ko }}
                         </template>
                     </Column>
                     <Column field="Exposure" :header="$t('Nutri3.list.status')" style="min-width: 12rem">
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
-                                <!-- {{ data.id }}-->
+                                
                                 {{ data.status }}
                                 <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
                             </template>
@@ -219,15 +199,7 @@ export default {
             })
 
 
-            // .then((data) => {
-            //     this.customer1 = data.userDataList;
-            //     this.loading1 = false;
-            //     localStorage.setItem('client', JSON.stringify(data.userDataList));
-            //     this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //     this.records = data.popUpInformation;
-            //     console.log(this.records);
-            //     this.display = true;
-            // })
+      
             .catch((err) => {
                 this.loading1 = false;
                 this.customer1 = [];
@@ -288,8 +260,7 @@ export default {
             } 
         },
         searchNutri() {
-            // console.log(this.name);
-            // console.log(this.id);
+           
             if (this.name === '' && this.tags_ko === '' ) {
             //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
@@ -338,9 +309,7 @@ export default {
             var dd = date.getDate();
             var mm = date.getMonth() + 1;
             var yyyy = date.getFullYear();
-            // var hr = date.getHours();
-            // var min = date.getMinutes();
-            // var sec = date.getSeconds();
+            
             if (dd < 10) {
                 dd = '0' + dd;
             }
@@ -363,15 +332,7 @@ export default {
         },
         confirm(id) {
             this.$confirm.require({
-//                   header: '확인',
-//                 message: '삭제하시겠습니까?',
-//                 icon: 'pi pi-trash',
-//                 acceptLabel:"확인",
-//                 rejectLabel:"취소",
-// white_check_mark
-// eyes
-// raised_hands
-// delete me 성공적으로 삭제되었습니다
+                 
                 group: 'dialog',
                 header: '확인',
                 message: '삭제하시겠습니까?',

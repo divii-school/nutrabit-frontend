@@ -18,19 +18,11 @@
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
                     </div>
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                        
-                       </div> -->
+                    
                     <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Category') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <!-- <select class="p-dropdown-label p-inputtext" name="category_id" id="category_id" v-model="category_id">
-                                <option value="">Select</option>
-                                <option v-for="(item, index) in categoryDropdownValues" v-bind:key="index" :value="item.id">
-                                    {{ item.category_name_ko }}
-                                </option>
-                            </select> -->
+                            
                             <Dropdown v-model="category_id"  :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" />
                         </div>
                         <div class="p-field p-col-12 p-md-3">
@@ -42,24 +34,12 @@
                     <div class="dropdowns" style="display: flex; width: 100%; margin-left:-13px;">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Piltype') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <!-- <select class="p-dropdown-label p-inputtext" name="category_id" id="category_id" v-model="pill_id">
-                                <option value="">Select</option>
-                                <option v-for="(item, index) in pilltypeDropdownValues" v-bind:key="index" :value="item.id">
-                                    {{ item.name_ko }}
-                                </option>
-                            </select> -->
+                           
                             <Dropdown v-model="pill_id"  :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Piltype')" />
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Package') }}</label>
-                            <!-- <label for="type">ID</label> -->
-                            <!-- <select class="p-dropdown-label p-inputtext" name="category_id" id="category_id" v-model="package_id">
-                                <option value="">Select</option>
-                                <option v-for="(item, index) in packageDropdownValues" v-bind:key="index" :value="item.id">
-                                    {{ item.name_ko }}
-                                </option>
-                            </select> -->
+                           
                             <Dropdown v-model="package_id"  :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Package')" />
                         </div>
                     </div>
