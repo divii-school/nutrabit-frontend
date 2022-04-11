@@ -40,9 +40,12 @@
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
-                        <router-link to class="search-title" @click="getSearchFromHistory">{{
-                          item.search_data
-                        }}</router-link>
+                        <router-link
+                          to
+                          class="search-title"
+                          @click="getSearchFromHistory(item.search_data)"
+                          >{{ item.search_data }}</router-link
+                        >
                         <router-link
                           to
                           class="search-item-close"
@@ -294,7 +297,7 @@ export default {
       this.activeSearch = false;
     },
     changeLanguage() {},
-// logout
+    // logout
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();
@@ -375,25 +378,20 @@ export default {
         });
     },
     // search with saerch history
-    getSearchFromHistory() {
-      this.searchData.map((value) => {
-        return this.commonService
-          .getSearchResult(value.search_data, this.myIp)
-          .then((res) => {
-            if (res.status == 200) {
-              this.common.state.SearchResult = res.data.data.search;
-              this.$router.push("/search-result");
-              this.showMobSearch = false;
-              this.activeSearch = false;
-              this.sarchInput = "";
-            }
-          });
+    getSearchFromHistory(search_data) {
+      this.commonService.getSearchResult(search_data, this.myIp).then((res) => {
+        if (res.status == 200) {
+          this.common.state.SearchResult = res.data.data.search;
+          this.$router.push("/search-result");
+          this.showMobSearch = false;
+          this.activeSearch = false;
+          this.sarchInput = "";
+        }
       });
     },
     // delete single search history itema
     deleteHistory(searchId) {
       this.commonService.deleteSearchHistory(searchId).then((res) => {
-        console.log(res.status);
         if (res.status == 200) {
           this.getHistory();
         }

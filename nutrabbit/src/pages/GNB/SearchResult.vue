@@ -185,18 +185,11 @@ export default {
     const common = inject("common");
     return { common };
   },
-  created() {
-    this.showSarchResult();
-  },
   mounted() {
-  console.log("mounted")
-  },
-  updated() {
-  console.log("updated")
+    this.showSarchResult();
   },
   methods: {
     showSarchResult() {
-      console.log(this.common.state.SearchResult);
       if (this.common.state.SearchResult != undefined) {
         this.newSearchResult = this.common.state.SearchResult;
         this.newSearchResult.map((value) => {
