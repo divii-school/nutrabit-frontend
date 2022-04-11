@@ -45,19 +45,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.service') }}</label>
 
-                            <!-- <select
-                                class="p-dropdown-label p-inputtext"
-                                name="service"
-                                id="service"
-                                v-model="service"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(service_item, index) in servicedropdownValues"
-                                    v-bind:key="index"
-                                    :value="service_item.value"
-                                >{{ service_item.name }}</option>
-                            </select> -->
+                            
 
                              <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" :placeholder="$t('Application.search.service') " />
                         </div>
@@ -85,11 +73,7 @@
                 <div class="p-col-12">
                     <div class="p-d-flex p-jc-between p-mb-2">
                         <h4>{{ $t('Application.list.header') }}</h4>
-                        <!-- <div>
-                            <router-link to="/add-banner">
-                                <Button :label="$t('Application.addnew_banner')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
-                            </router-link>
-                        </div>-->
+                        
                     </div>
                     <DataTable
                         :value="products"
@@ -150,8 +134,7 @@
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
-                                <!-- {{ data.id }}
-                                {{ data.status }}-->
+                               
                                 {{ data.status_by_admin }}
                             </template>
                         </Column>
@@ -166,19 +149,7 @@
                                 {{ dateformat(data.createdDate) }}
                             </template>
                         </Column>
-                        <!-- <Column field="Image" :header="$t('Banner.list.image')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Image</span>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + data.imageUrl" :alt="data.imageUrl" class="product-image" />
-                            </template>
-                        </Column>-->
-                        <!--                        
-                        <Column field="Type" :header="$t('Banner.list.type')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Type</span>
-                                {{ data.type }}
-                            </template>
-                        </Column>-->
+                       
 
                         <Column field="Actions" :header="$t('Application.list.see_more')">
                             <template #body="{ data }">
@@ -434,13 +405,7 @@ export default {
 
 
             });
-            //  setTimeout(() => {
-            //     this.bannerService.getBannerList().then((data) => {
-            //         this.products = data;
-            //         console.log(data);
-            //         this.loading1 = false;
-            //     });
-            // }, 500);
+            
 
         },
         onRowExpand(event) {

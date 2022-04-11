@@ -1,9 +1,7 @@
 <template>
     <ConfirmDialog group="dialog" />
     <div class="p-grid">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div>-->
+       
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -137,10 +135,7 @@
               
 
                
-                <!-- <div class="p-field p-col p-md-3">
-                        <strong><label for="mobileuser">{{$t('Banner.list.type')}} :</label></strong>
-                        <p>{{ mydata.type }}</p>
-                </div>-->
+               
 
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <Button @click="isShowing ^= true" label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"> <i class="pi pi-user-edit p-mr-2"></i> 어드민 메모 </Button>
@@ -158,9 +153,7 @@
     </div>
 
     <div class="p-grid" id="app">
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div>-->
+        
         <div class="p-col-12">
             <div class="card p-fluid" v-show="isShowing">
                 <h4>
@@ -228,13 +221,7 @@ export default {
                 { name: 'others', code: 'others' },
             ],
             dropdownItem: null,
-            // options: {
-            //         raw_material: '1',
-            //         // raw_material: '2',
-            //         pill: '1',
-            //         package: '1',
-
-            //     },
+           
             type: '',
             value: '',
             category: '',

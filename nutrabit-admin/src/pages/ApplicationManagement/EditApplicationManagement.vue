@@ -153,28 +153,7 @@
                             <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
-                            <label for="status">{{ $t('Application.details.status') }}</label>
-                            <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" />
-                            <div class="text-red">{{ error.status_by_admin }}</div>
-                        </div>
-                    </div>-->
-
-                    <!-- <div class="p-col-12 p-field p-mb-3">
-                    <label>{{ $t('Application.details.answer') }} :</label>
-                    <span class="p-float-label">
-                        <div :class="`${error.admin ? 'quill-invalid' : 'quill-valid'}`">
-                            <Quill-Editor style="height: 230px" v-model:content="answer_by_admin" ref="myQuillEditor" :options="editorOption" contentType="html" />
-                        </div>
-                    </span>
-                    <div class="text-red">{{ error.admin }}</div>
-                </div> 
-                
-                <br>
-                    <br>
-                    <br>
-                    <br>-->
+                   
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
@@ -202,11 +181,7 @@
                         </div>
                     </div>
 
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{ $t('Banner.list.type') }}</label>
-                            <Dropdown v-model="dropdownValueType" :options="dropdownValueTypes" optionLabel="name" :placeholder="type" />
-                            <div class="text-red">{{ error.type }}</div>
-                    </div>-->
+                    
                 </div>
             </div>
 
