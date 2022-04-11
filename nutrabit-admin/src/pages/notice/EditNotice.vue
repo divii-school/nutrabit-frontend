@@ -88,12 +88,7 @@
             <div class="p-d-flex p-jc-end p-ai-center"  style="float:left;">
                 <Button :label="$t('button.update')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editNotice"></Button>
             </div>
-            <!-- <div class="p-d-flex p-jc-end p-ai-center">
-                <div>
-                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
-                    
-                </div>
-            </div> -->
+            
         </form>
     </div>
 </template>
