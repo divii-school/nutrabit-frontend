@@ -17,10 +17,7 @@
         </div>
         <div class="manuRight">
           <div class="search-wrap-outer">
-            <div
-              class="search-wrap"
-              :class="showMobSearch ? 'search-wrap-mob' : ''"
-            >
+            <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
                 <input
                   type="text"
@@ -31,28 +28,23 @@
                   <i class="icon-search-black"></i>
                 </router-link>
               </div>
-              <div
-                class="header-search-data"
-                :class="activeSearch ? 'activeSearch' : ''"
-              >
+              <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
                 <div class="search-data-inner">
                   <ul>
                     <li v-for="(item, index) in searchData" :key="index">
-                      <router-link to class="search-title">{{
-                        item
-                      }}</router-link>
-                      <router-link
-                        to
-                        class="search-item-close"
-                        @click="removeGoal(index)"
-                      >
+                      <router-link to class="search-title">
+                        {{
+                          item
+                        }}
+                      </router-link>
+                      <router-link to class="search-item-close" @click="removeGoal(index)">
                         <i class="icon-close-search"></i>
                       </router-link>
                     </li>
                   </ul>
                   <!-- <div class="no-search-data">
                   <p>There are no recent searches.</p>
-                </div> -->
+                  </div>-->
                 </div>
                 <div class="delete-close">
                   <router-link to @click="this.searchData = []">
@@ -90,11 +82,7 @@
           </template>
 
           <div class="header-dropdown">
-            <vue-select
-              :options="['EN', 'KO']"
-              placeholder="EN"
-              close-on-select
-            ></vue-select>
+            <vue-select :options="['EN', 'KO']" placeholder="EN" close-on-select></vue-select>
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
             <img src="../assets/images/menu-toggle.png" alt />
@@ -120,14 +108,18 @@
           >
             <div class="side-menu-heading">
               <template v-if="token && index == 0">
-                <router-link to :class="token ? 'login-item' : ''"
-                  >{{ userDetails.name }}
-                </router-link>
+                <router-link
+                  to
+                  :class="token ? 'login-item' : ''"
+                >{{ userDetails.name ? userDetails.name : localuser }}</router-link>
                 <i class="icon-leftArw"></i>
+                {{ localuser }}
               </template>
-              <router-link to v-else @click="index == 0 ? goToLogin() : ''">{{
-                item.mainItem
-              }}</router-link>
+              <router-link to v-else @click="index == 0 ? goToLogin() : ''">
+                {{
+                  item.mainItem
+                }}
+              </router-link>
               <i
                 class="icon-menu-downArw"
                 :class="
@@ -135,23 +127,23 @@
                 "
               ></i>
             </div>
-            <div
-              class="side-menu-list"
-              :class="activeSubmenu === index ? 'activeSubmenu' : ''"
-            >
+            <div class="side-menu-list" :class="activeSubmenu === index ? 'activeSubmenu' : ''">
               <router-link
                 to
                 @click="onClickLink(item.link)"
                 v-for="(item, index2) of item.subItemData"
                 :key="index2"
-                >{{ item.label }}</router-link
-              >
+              >{{ item.label }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li><router-link to>KO</router-link></li>
-          <li><router-link to>EN</router-link></li>
+          <li>
+            <router-link to>KO</router-link>
+          </li>
+          <li>
+            <router-link to>EN</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -165,10 +157,7 @@
     btnText2="Login"
     link="/login"
   />
-  <div
-    :class="activeSearch ? 'overlay-click-out-side' : ''"
-    @click="activeSearch = false"
-  ></div>
+  <div :class="activeSearch ? 'overlay-click-out-side' : ''" @click="activeSearch = false"></div>
 </template>
 
 <script>
@@ -187,6 +176,7 @@ export default {
       token: localStorage.token ? true : false,
       userId: this.common.state.userId,
       userDetails: "",
+      localuser: localStorage.getItem('uname') ? localStorage.getItem('uname') : 'no-name',
       logedInUserDetails: false,
       active: false,
       activeSearch: false,
@@ -281,7 +271,7 @@ export default {
       this.showMobSearch = false;
       this.activeSearch = false;
     },
-    changeLanguage() {},
+    changeLanguage() { },
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();

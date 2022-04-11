@@ -58,10 +58,16 @@
             <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
           </form>
           <div class="getting-started">
-            <button class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
+            <button
+              id="kakao_login"
+              class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao"
+            >
               <i class="icon-chat-black"></i>
               {{ $t("Startwithcacao") }}
             </button>
+
+            <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
             <button id="naver_Login" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
@@ -88,6 +94,7 @@ import Button from "../../components/Button.vue";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
+// import axios from "axios";
 
 export default {
   name: "Login",
@@ -101,6 +108,7 @@ export default {
       errorEmail: "",
       errorPassword: "",
       checkBox: "",
+      loader: undefined,
     };
   },
   setup() {
@@ -124,8 +132,10 @@ export default {
           (this.password = rememberUserEmailCookie);
       }
     }
-    this.naverLogin();
-    this.displayToken();
+    // this.naverLogin();
+    // this.createLoginButton();
+    // this.kakaoAuthManage();
+    // this.displayToken();
   },
   methods: {
     onSubmit() {
@@ -164,87 +174,91 @@ export default {
 
 
     // naver login
-    naverLogin() {
-      // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-      // var state = naver_id_login.getUniqState();
-      // naver_id_login.setButton("green", 5, 50);
-      // naver_id_login.setDomain("http://localhost:8082/login");
-      // naver_id_login.setState(state);
-      // // naver_id_login.setPopup();
-      // naver_id_login.init_naver_id_login();
-      // // this.naverLoginCallback();
+    // naverLogin() {
+    //   // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   // var state = naver_id_login.getUniqState();
+    //   // naver_id_login.setButton("green", 5, 50);
+    //   // naver_id_login.setDomain("http://localhost:8082/login");
+    //   // naver_id_login.setState(state);
+    //   // // naver_id_login.setPopup();
+    //   // naver_id_login.init_naver_id_login();
+    //   // // this.naverLoginCallback();
 
 
 
-      var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-      var state = naverLogin.getUniqState();
+    //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   var state = naverLogin.getUniqState();
 
-      naverLogin.setButton(); //initialize Naver Login Button
-      naverLogin.setDomain("http://localhost:8082/login");
-      naverLogin.setState(state);
-      naverLogin.init_naver_id_login();
+    //   naverLogin.setButton(); //initialize Naver Login Button
+    //   naverLogin.setDomain("http://localhost:8082/login");
+    //   naverLogin.setState(state);
+    //   naverLogin.init_naver_id_login();
 
-      $(document).on("click", "#naver_Login", function () {
-        var btnNaverLogin = document.getElementById("naver_Login");
-        btnNaverLogin.click();
-      });
-
-
-
-
+    //   $(document).on("click", "#naver_Login", function () {
+    //     var btnNaverLogin = document.getElementById("naver_Login");
+    //     btnNaverLogin.click();
+    //   });
 
 
 
 
 
-    },
 
-    naverLoginCallback() {
-      var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-      // 접근 토큰 값 출력
-      alert(naver_id_login.oauthParams.access_token);
-      // 네이버 사용자 프로필 조회
-      naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-      // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-      this.naverSignInCallback();
-    },
 
-    naverSignInCallback() {
-      alert(naver_id_login.getProfileData('email'));
-      alert(naver_id_login.getProfileData('nickname'));
-      alert(naver_id_login.getProfileData('age'));
-    },
+
+
+    // },
+
+    // naverLoginCallback() {
+    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   // 접근 토큰 값 출력
+    //   alert(naver_id_login.oauthParams.access_token);
+    //   // 네이버 사용자 프로필 조회
+    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
+    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    //   this.naverSignInCallback();
+    // },
+
+    // naverSignInCallback() {
+    //   alert(naver_id_login.getProfileData('email'));
+    //   alert(naver_id_login.getProfileData('nickname'));
+    //   alert(naver_id_login.getProfileData('age'));
+    // },
 
 
     // kakao
-
     loginWithKakao() {
-      window.Kakao.Auth.authorize({
-        // redirectUri: 'https://developers.kakao.com/tool/demo/loginForm/oauth',
-        redirectUri: 'http://localhost:8082/login', 
-        prompts: 'login'
+      this.loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: false,
+        width: 30,
+        height: 30,
+        onCancel: this.onCancel,
+      });
+      window.Kakao.Auth.login({
+        success: function (authObj) {
+          console.log(authObj)
+          Kakao.Auth.setAccessToken(authObj.access_token);
+          localStorage.setItem("token", authObj.access_token);
+          localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function (res) {
+              console.log('res-', res);
+              localStorage.setItem("uid", res.id);
+              localStorage.setItem("uname", res.kakao_account.profile.nickname);
+            }
+          });
+          this.loader.hide();
+        },
+        fail: function (err) {
+          console.log(err)
+        },
       })
-    },
-    // 아래는 데모를 위한 UI 코드입니다.
-
-    displayToken() {
-      const token = this.getCookie('reauthenticate-access-token')
-      if (token) {
-        Kakao.Auth.setAccessToken(token)
-        Kakao.Auth.getStatusInfo(({ status }) => {
-          if (status === 'connected') {
-            document.getElementById('token-result').innerText = 'login success. token: ' + Kakao.Auth.getAccessToken()
-          } else {
-            Kakao.Auth.setAccessToken(null)
-          }
-        })
-      }
-    },
-    getCookie(name) {
-      const value = "; " + document.cookie;
-      const parts = value.split("; " + name + "=");
-      if (parts.length === 2) return parts.pop().split(";").shift();
     }
+
+
 
 
 
