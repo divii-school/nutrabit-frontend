@@ -257,20 +257,6 @@ export default {
         window.location = "/login";
     },
 
-    //     async apiFunctionName(){
-    //   try{
-    //     const personalData = await axios.post('url',{
-    //       userId: this.common.state.userId,
-    //     })
-    //     .then((response)=>{
-    //       console.log(response)
-    //     })
-    //   }
-    //   catch(error){
-    //     console.log(error)
-    //   }
-    // }
-
   },
 
   mounted() {

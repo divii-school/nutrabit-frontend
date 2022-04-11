@@ -293,6 +293,7 @@ export default {
 
   mounted() {
     this.personalInfo();
+    console.log("userId", this.userId);
   },
 
 };
