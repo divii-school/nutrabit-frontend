@@ -356,15 +356,22 @@ export default {
     getHistory() {
       this.commonService.getSearchHistory(this.myIp).then((res) => {
         this.activeSearch = true;
-        this.searchData = res.data.data;
         console.log(res)
+        if(res.data.data.length>0){
+          this.searchData = res.data.data;
+        }
+        else{
+          this.searchData.splice(0)
+        }
       })
       .catch((err)=>{
-        return false
+        this.searchData = [];
+        return false;
       })
     },
     deleteHistory(searchId) {
       this.commonService.deleteSearchHistory(searchId).then((res) => {
+        console.log(res.status)
         if (res.status == 200) {
           this.getHistory();
         }
