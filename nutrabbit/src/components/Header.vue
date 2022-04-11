@@ -40,7 +40,7 @@
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
-                        <router-link to class="search-title">{{
+                        <router-link to class="search-title" @click="getSearchFromHistory">{{
                           item.search_data
                         }}</router-link>
                         <router-link
@@ -294,6 +294,7 @@ export default {
       this.activeSearch = false;
     },
     changeLanguage() {},
+// logout
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();
@@ -303,6 +304,7 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    // side menu restriction before login
     onClickLink(link) {
       if (this.logedInUserDetails) {
         this.$router.push(link);
@@ -322,6 +324,7 @@ export default {
     sideMenuOpen() {
       this.active = true;
     },
+    // user details
     getUserInfo() {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
@@ -338,6 +341,7 @@ export default {
           this.myIp = ip;
         });
     },
+    // search api (main)
     getSearch() {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
@@ -355,6 +359,7 @@ export default {
           });
       }
     },
+    // get search history
     getHistory() {
       this.commonService
         .getSearchHistory(this.myIp)
@@ -369,27 +374,23 @@ export default {
           return false;
         });
     },
-    // getSearchFromHistory() {
-    //   this.searchData.map((value) => {
-    //     return this.nutriBlending.push({
-    //       id: value.id,
-    //       name_en: value.name_en,
-    //       image: value.image,
-    //     });
-    //   });
-
-    //   this.commonService
-    //     .getSearchResult(this.sarchInput, this.myIp)
-    //     .then((res) => {
-    //       if (res.status == 200) {
-    //         this.common.state.SearchResult = res.data.data.search;
-    //         this.$router.push("/search-result");
-    //         this.showMobSearch = false;
-    //         this.activeSearch = false;
-    //         this.sarchInput = "";
-    //       }
-    //     });
-    // },
+    // search with saerch history
+    getSearchFromHistory() {
+      this.searchData.map((value) => {
+        return this.commonService
+          .getSearchResult(value.search_data, this.myIp)
+          .then((res) => {
+            if (res.status == 200) {
+              this.common.state.SearchResult = res.data.data.search;
+              this.$router.push("/search-result");
+              this.showMobSearch = false;
+              this.activeSearch = false;
+              this.sarchInput = "";
+            }
+          });
+      });
+    },
+    // delete single search history itema
     deleteHistory(searchId) {
       this.commonService.deleteSearchHistory(searchId).then((res) => {
         console.log(res.status);
@@ -398,6 +399,7 @@ export default {
         }
       });
     },
+    // delete all search history itema
     deleteAllHistory() {
       this.commonService
         .deleteAllHistory(this.myIp)
