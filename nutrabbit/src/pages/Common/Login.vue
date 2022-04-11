@@ -11,12 +11,7 @@
               <label for>{{ $t("ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter ID"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -46,6 +41,7 @@
             </div>
             <div class="form-links">
               <div class="form-links-left">
+                <p id="token-result"></p>
                 <ul>
                   <li>
                     <router-link to="/find-id">{{ $t("findID") }}</router-link>
@@ -56,23 +52,29 @@
                 </ul>
               </div>
               <div class="form-link-right">
-                <router-link to="/member-registration-type-selection">
-                  {{ $t("SignUp") }}
-                </router-link>
+                <router-link to="/member-registration-type-selection">{{ $t("SignUp") }}</router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">
-              {{ $t("login") }}
-            </button>
+            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
           </form>
           <div class="getting-started">
-            <button class="btn-primary with-icon yellow-btn">
+            <button class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("Startwithcacao") }}
             </button>
-            <button class="btn-primary with-icon green-btn">
+
+            <button id="naver_Login" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
               {{ $t("GettingStartedwithNaver") }}
+            </button>
+            <button
+              type="button"
+              class="btn-primary with-icon green-btn"
+              id="naver_id_login"
+              @click="naverLogin"
+            >
+              Naver
+              Login
             </button>
           </div>
         </div>
@@ -122,6 +124,8 @@ export default {
           (this.password = rememberUserEmailCookie);
       }
     }
+    this.naverLogin();
+    this.displayToken();
   },
   methods: {
     onSubmit() {
@@ -156,6 +160,97 @@ export default {
         });
       }
     },
+
+
+
+    // naver login
+    naverLogin() {
+      // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+      // var state = naver_id_login.getUniqState();
+      // naver_id_login.setButton("green", 5, 50);
+      // naver_id_login.setDomain("http://localhost:8082/login");
+      // naver_id_login.setState(state);
+      // // naver_id_login.setPopup();
+      // naver_id_login.init_naver_id_login();
+      // // this.naverLoginCallback();
+
+
+
+      var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+      var state = naverLogin.getUniqState();
+
+      naverLogin.setButton(); //initialize Naver Login Button
+      naverLogin.setDomain("http://localhost:8082/login");
+      naverLogin.setState(state);
+      naverLogin.init_naver_id_login();
+
+      $(document).on("click", "#naver_Login", function () {
+        var btnNaverLogin = document.getElementById("naver_Login");
+        btnNaverLogin.click();
+      });
+
+
+
+
+
+
+
+
+
+    },
+
+    naverLoginCallback() {
+      var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+      // 접근 토큰 값 출력
+      alert(naver_id_login.oauthParams.access_token);
+      // 네이버 사용자 프로필 조회
+      naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
+      // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+      this.naverSignInCallback();
+    },
+
+    naverSignInCallback() {
+      alert(naver_id_login.getProfileData('email'));
+      alert(naver_id_login.getProfileData('nickname'));
+      alert(naver_id_login.getProfileData('age'));
+    },
+
+
+    // kakao
+
+    loginWithKakao() {
+      window.Kakao.Auth.authorize({
+        // redirectUri: 'https://developers.kakao.com/tool/demo/loginForm/oauth',
+        redirectUri: 'http://localhost:8082/login', 
+        prompts: 'login'
+      })
+    },
+    // 아래는 데모를 위한 UI 코드입니다.
+
+    displayToken() {
+      const token = this.getCookie('reauthenticate-access-token')
+      if (token) {
+        Kakao.Auth.setAccessToken(token)
+        Kakao.Auth.getStatusInfo(({ status }) => {
+          if (status === 'connected') {
+            document.getElementById('token-result').innerText = 'login success. token: ' + Kakao.Auth.getAccessToken()
+          } else {
+            Kakao.Auth.setAccessToken(null)
+          }
+        })
+      }
+    },
+    getCookie(name) {
+      const value = "; " + document.cookie;
+      const parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+
+
+
+
+
   },
 };
 </script>

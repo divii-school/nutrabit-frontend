@@ -13,7 +13,7 @@ export default class PaymentService {
       pay_method: "card",
       merchant_uid: "ORD20180131-0000011",
       name: "Norway swivel chair",
-      amount: 64900,
+      amount: 64000,
       buyer_email: "johndoe@gmail.com",
       buyer_name: "John Doe",
       buyer_tel: "010-4242-4242",
