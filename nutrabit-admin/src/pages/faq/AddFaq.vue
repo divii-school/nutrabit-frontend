@@ -92,6 +92,7 @@
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"
                         @click="addFaq"
+                        style="margin-top: -20px;"
                     ></Button>
 
                     <Button
@@ -100,6 +101,7 @@
                         iconPos="left"
                         class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         @click="$router.go(-1)"
+                        style="margin-top: -20px;"
                     ></Button>
                     
             </div>
@@ -275,7 +277,7 @@ export default {
 
 .card{
     
-    height: 670px;
+    
 
 }
 </style>

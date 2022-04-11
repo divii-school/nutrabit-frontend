@@ -14,7 +14,7 @@
                                 :placeholder="$t('Notice.add.title')"
                                 id="title2"
                                 v-model="title_ko"
-                                @keyup="addNotice"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.title_ko }}</div>
                         </div>
@@ -28,21 +28,12 @@
                                 :placeholder="$t('Notice.add.addtitle')"
                                 id="title2"
                                 v-model="title_en"
-                                @keyup="addNotice"
+                               
                             ></InputText>
                             <div class="text-red">{{ error.title_en }}</div>
                         </div>
                     </div>
-                    <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                    </div>-->
+                    
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
@@ -76,7 +67,7 @@
                                 :placeholder="$t('Notice.add.description')"
                                 id="title2"
                                 v-model="description_ko"
-                                @keyup="addNotice"
+                                
                             ></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
@@ -91,7 +82,7 @@
                                 :placeholder="$t('Notice.add.adddescroption')"
                                 id="title2"
                                 v-model="description_en"
-                                @keyup="addNotice"
+                               
                             ></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
@@ -147,6 +138,7 @@
                     iconPos="left"
                     class="p-button p-button-sm p-mr-2 p-mb-2"
                     @click="addNotice"
+                    style="margin-top: -20px;"
                 ></Button>
             </div>
         </form>
@@ -309,9 +301,10 @@ export default {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
+    margin-top: 2%;
 }
 
 .card {
-    height: 700px;
+   
 }
 </style>
