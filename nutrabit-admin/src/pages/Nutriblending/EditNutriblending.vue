@@ -49,7 +49,7 @@
                             <InputText
                                 id="SubRawMaterial"
                                 type="text"
-                                placeholder="Sub Raw Material"
+                                :placeholder="$t('Blending.edit.SubRawMaterial')"
                                 v-model="sub_raw_materials"
                             />
                             <div class="text-red">{{ error.sub_raw_materials }}</div>
