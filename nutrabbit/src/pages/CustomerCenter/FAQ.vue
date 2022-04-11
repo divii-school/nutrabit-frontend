@@ -28,12 +28,14 @@
             </p>
           </template>
         </FaqAccordion>
-        <pagination
-          v-model="page"
-          :records="FaqList.length"
-          :per-page="perPage"
-          @paginate="myCallback"
-        />
+        <template v-if="this.updatedFaqList.length > 0">
+          <pagination
+            v-model="page"
+            :records="FaqList.length"
+            :per-page="perPage"
+            @paginate="myCallback"
+          />
+        </template>
       </div>
     </div>
   </div>
@@ -44,7 +46,7 @@ import CustomerCenterService from "../../services/CustomerCenterService";
 export default {
   name: "FAQ",
   components: {
-    FaqAccordion
+    FaqAccordion,
   },
   data() {
     return {
@@ -137,12 +139,12 @@ export default {
     },
     allFaqList() {
       this.CustomerCenterService.getFAQList()
-      
+
         .then((res) => {
           if (res.status == 200) {
             this.FaqList = res.data.data.faq;
             this.myCallback(1);
-            console.log(res.data.data.faq)
+            console.log(res.data.data.faq);
           }
         })
         .catch((err) => {

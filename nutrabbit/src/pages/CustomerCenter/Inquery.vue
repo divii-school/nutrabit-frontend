@@ -4,7 +4,12 @@
       <div class="my-notice-wrap">
         <div class="my-notice-heading noFlex">
           <h2>1:1 inquiry</h2>
-          <button class="btn-primary grenn-btn2" @click="this.$router.push('/inquiry-contactUs')">1:1 Inquiry</button>
+          <button
+            class="btn-primary grenn-btn2"
+            @click="this.$router.push('/inquiry-contactUs')"
+          >
+            1:1 Inquiry
+          </button>
         </div>
         <div class="faq-heading inquiry">
           <p class="category">Published date</p>
@@ -61,18 +66,20 @@
             </div>
           </template>
         </FaqAccordion>
-        <pagination
-          v-model="page"
-          :records="enqueryList.length"
-          :per-page="perPage"
-          @paginate="myCallback"
-        />
+        <template v-if="this.UpdatedEnqueryList.length > 0">
+          <pagination
+            v-model="page"
+            :records="enqueryList.length"
+            :per-page="perPage"
+            @paginate="myCallback"
+          />
+        </template>
       </div>
     </div>
   </div>
 </template>
 <script>
-import moment from 'moment';
+import moment from "moment";
 import FaqAccordion from "../../components/FaqAccordion.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 export default {

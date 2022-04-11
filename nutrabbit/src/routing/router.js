@@ -245,24 +245,27 @@ const routes = [
     },
     {
         name: 'MyRecipeDetails',
-        path: '/my-recipe-details',
+        path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
+        //beforeEnter : guard
     },
     {
         name: 'MyApplicationDetails',
-        path: '/my-allpication-detail',
+        path: '/my-appllication-detail',
         component: MyApplicationDetails,
+        //beforeEnter : guard
 
     },
     {
         name: 'MyRecipeDetailsEdit',
-        path: '/my-recipe-detail-edit',
+        path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
+        //beforeEnter : guard
 
     },
     {
         name: 'MyRecipeDetailsSample',
-        path: '/my-recipe-details-sample',
+        path: '/my-recipe-details-sample/:id',
         component: MyRecipeDetailsSample,
 
     },
@@ -270,6 +273,7 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
+        //beforeEnter : guard
 
     },
     {

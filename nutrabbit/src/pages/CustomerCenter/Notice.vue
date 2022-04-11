@@ -25,12 +25,14 @@
             </li>
           </ul>
         </div>
-        <pagination
-          v-model="page"
-          :records="totalItems"
-          :per-page="perPage"
-          @paginate="myCallback"
-        />
+        <template v-if="this.UpdatedNoticeList.length > 0">
+          <pagination
+            v-model="page"
+            :records="totalItems"
+            :per-page="perPage"
+            @paginate="myCallback"
+          />
+        </template>
         <!-- <Pagination /> -->
       </div>
     </div>

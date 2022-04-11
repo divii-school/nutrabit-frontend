@@ -4,9 +4,9 @@
       <slot name="title"> {{title}} </slot>
     </button>
     <div class="accordion-details" v-show="isOpen" :id="`collapse${_uid}`">
-      <!-- <p class="no-data">
-        <slot name="description">No results were found for your search.</slot>
-      </p> -->
+      <p class="no-data">
+        <slot name="description">{{description}}</slot>
+      </p>
     </div>
   </div>
 </template>
