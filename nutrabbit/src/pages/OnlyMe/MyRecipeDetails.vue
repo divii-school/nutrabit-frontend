@@ -64,16 +64,6 @@
                 <label class="mb0">Service</label>
               </div>
               <div class="product-list-wrap">
-                <!-- <div class="product-item with-input without-input">
-                  <div class="material-details">
-                    <h2 v-if="serviceType.length < 2">{{ serviceType[0] }}</h2>
-                    <div v-else>
-                      <h2 v-for="(service, index) in serviceType" :key="index">
-                        {{ service }}
-                      </h2>
-                    </div>
-                  </div>
-                </div> -->
                 <div v-if="serviceType.length < 2">
                   <div class="product-item with-input without-input">
                     <div class="material-details">
@@ -171,9 +161,9 @@ export default {
 
   created() {
     this.myRecipe = new MyRecipeService();
-    console.log(
-      `product id is : ${this.product_id} and type is ${this.application_type}`
-    );
+    // console.log(
+    //   `product id is : ${this.product_id} and type is ${this.application_type}`
+    // );
   },
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
