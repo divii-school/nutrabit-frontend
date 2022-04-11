@@ -14,20 +14,7 @@
 
                      <div class="p-field p-col-12 p-md-3">
                         <label for="nameuser">{{ $t('Blending.search.category') }}</label>
-                         <!-- <select
-                                class="p-dropdown-label p-inputtext"
-                                name="category_id"
-                                id="category_id"
-                                :placholder="category_name_ko"
-                                v-model="category_id"
-                            >
-                                <option value>Select</option>
-                                <option
-                                    v-for="(item, index) in categoryDropdownValues"
-                                    v-bind:key="index"
-                                    :value="item.id"
-                                >{{ item.category_name_ko }}</option>
-                            </select> -->
+                        
                             <Dropdown v-model="sub_category_id"  :options="categoryDropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
                             id="sub_category_id" />
                     </div>
@@ -50,9 +37,7 @@
                     </div>
                     <div>
 
-                        <!-- <router-link to="/addnutri-blending">
-                            <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-download p-mr-2"></i> {{ $t('Blending.excel_category') }}</Button>
-                        </router-link> -->
+                        
 
                         <router-link to="/addnutri-blending">
                             <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-plus p-mr-2"></i> {{ $t('Blending.addnew_blending') }}</Button>

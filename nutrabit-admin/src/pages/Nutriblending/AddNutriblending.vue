@@ -356,10 +356,7 @@ export default {
              dropdownValues: [{ name: 'active',code:'활성' }, { name: 'inactive',code:'비활성' }],
             // dropdownValueTypes: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
              exposure: '1',
-            // dropdownValueType: null,
-            // title:"",
-            // subtitle: null,
-            // link:"",
+           
             name_ko: '',
             name_en: '',
             category_id: '',
