@@ -776,6 +776,7 @@ textarea {
 
   nav {
     ul {
+      display: flex !important;
       @include flex-justify-center;
       li {
         .page-link {

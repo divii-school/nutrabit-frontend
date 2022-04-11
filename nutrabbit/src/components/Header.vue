@@ -40,7 +40,7 @@
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
-                        <router-link to class="search-title">{{
+                        <router-link to class="search-title" @click="getSearchFromHistory">{{
                           item.search_data
                         }}</router-link>
                         <router-link
@@ -60,7 +60,7 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="this.searchData.id">
+                  <router-link to @click="deleteAllHistory">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -262,6 +262,8 @@ export default {
         },
       ],
       searchData: [],
+      AllSearchId: [],
+      // SearchHistoryTitle: [],
     };
   },
   setup() {
@@ -292,6 +294,7 @@ export default {
       this.activeSearch = false;
     },
     changeLanguage() {},
+// logout
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();
@@ -301,6 +304,7 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    // side menu restriction before login
     onClickLink(link) {
       if (this.logedInUserDetails) {
         this.$router.push(link);
@@ -320,6 +324,7 @@ export default {
     sideMenuOpen() {
       this.active = true;
     },
+    // user details
     getUserInfo() {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
@@ -336,6 +341,7 @@ export default {
           this.myIp = ip;
         });
     },
+    // search api (main)
     getSearch() {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
@@ -349,34 +355,61 @@ export default {
               this.$router.push("/search-result");
               this.showMobSearch = false;
               this.activeSearch = false;
-              this.sarchInput = '';
+              this.sarchInput = "";
             }
           });
       }
     },
+    // get search history
     getHistory() {
-      this.commonService.getSearchHistory(this.myIp).then((res) => {
-        this.activeSearch = true;
-        console.log(res)
-        if(res.data.data.length>0){
-          this.searchData = res.data.data;
-        }
-        else{
-          this.searchData.splice(0)
-        }
-      })
-      .catch((err)=>{
-        this.searchData = [];
-        return false;
-      })
+      this.commonService
+        .getSearchHistory(this.myIp)
+        .then((res) => {
+          this.activeSearch = true;
+          if (res.data.data.length > 0) {
+            this.searchData = res.data.data;
+          }
+        })
+        .catch((err) => {
+          this.searchData = [];
+          return false;
+        });
     },
+    // search with saerch history
+    getSearchFromHistory() {
+      this.searchData.map((value) => {
+        return this.commonService
+          .getSearchResult(value.search_data, this.myIp)
+          .then((res) => {
+            if (res.status == 200) {
+              this.common.state.SearchResult = res.data.data.search;
+              this.$router.push("/search-result");
+              this.showMobSearch = false;
+              this.activeSearch = false;
+              this.sarchInput = "";
+            }
+          });
+      });
+    },
+    // delete single search history itema
     deleteHistory(searchId) {
       this.commonService.deleteSearchHistory(searchId).then((res) => {
-        console.log(res.status)
+        console.log(res.status);
         if (res.status == 200) {
           this.getHistory();
         }
       });
+    },
+    // delete all search history itema
+    deleteAllHistory() {
+      this.commonService
+        .deleteAllHistory(this.myIp)
+        .then((res) => {
+          this.getHistory();
+        })
+        .catch((err) => {
+          return false;
+        });
     },
   },
   computed: {

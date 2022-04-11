@@ -2,15 +2,14 @@
   <div class="main-body">
     <div class="container-medium">
       <div class="search-result-main">
-        <div class="search-wrap">
+        <!-- <div class="search-wrap">
           <div class="search-inner">
-            <!-- <input v-model="search" type="text" placeholder="Search" /> -->
             <input type="text" placeholder="Search" />
             <a href="#">
               <i class="icon-search-black"></i>
             </a>
           </div>
-        </div>
+        </div> -->
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
             Total
