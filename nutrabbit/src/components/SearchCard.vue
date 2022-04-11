@@ -2,14 +2,14 @@
   <div class="search-card-inner">
     <img
       class="search-result-img"
-      v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org/' + item.thumbnail_1_path"
+      v-bind:src="image_link + image"
       alt
     />
-    <p class="text-center">{{ item.category_name_ko }}</p>
+    <p class="text-center">{{ category }}</p>
     <template v-if="type == 'recomandedBlending'">
-      <router-link :to="'/choice-recommended-blending-detailed-page/' + item.id">
-        <p class="recomanded-vitamin text-center">{{ item.name_ko }}</p>
-        <p class="recomanded-quality text-center">{{ item.description_ko }}</p>
+      <router-link :to="route_link">
+        <p class="recomanded-vitamin text-center">{{ name }}</p>
+        <p class="recomanded-quality text-center">{{ desc }}</p>
       </router-link>
     </template>
   </div>
@@ -18,6 +18,6 @@
 <script>
 export default {
   name: "SearchCard",
-  props: ["item", "type"],
+  props: ["image", "type", "category", "name", "desc", "image_link", "route_link"],
 };
 </script>

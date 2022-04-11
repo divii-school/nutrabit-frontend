@@ -63,8 +63,8 @@
         </FaqAccordion>
         <pagination
           v-model="page"
-          :records="5"
-          :per-page="1"
+          :records="enqueryList.length"
+          :per-page="perPage"
           @paginate="myCallback"
         />
       </div>

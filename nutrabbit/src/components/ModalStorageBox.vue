@@ -38,7 +38,7 @@ export default {
     addRawMaterial() {
       //  console.log(this.raw_material_id);
       this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.status=200) {
           this.$swal("Successfully Added");
            this.$emit('close');

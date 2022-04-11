@@ -41,14 +41,14 @@
 
 <script>
 export default {
-  name: "Modal",
-  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link"],
+  name: "ModalWarning",
+  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "confirm"],
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit("close2");
     },
     close2(link) {
-      this.$router.push(link);
+      this.$emit("confirm");
     },
   },
 };

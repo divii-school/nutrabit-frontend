@@ -61,8 +61,8 @@
             </div>
             <div class="product-list-wrap">
               <ul class="raw-material-list">
-                <li v-for="(item, index) of rwaMaterialData" :key="index">
-                  <ProductList :item="item"/>
+                <li v-for="(item, index) of blendingPackageData" :key="index">
+                  <ProductList :item="item" @changeId="UpdatedId($event)" />
                 </li>
               </ul>
               <div class="product-item with-input">
@@ -92,8 +92,8 @@
               </div>
 
               <div class="btn-wrap">
-                <button class="btn-small-solid grey">Previous</button>
-                <button class="btn-small-solid blue">next</button>
+                <button  @click="this.$router.push(`/ingredient-formulation/${this.$route.query.raw_material_id}`)" class="btn-small-solid grey">Previous</button>
+                <button @click="checkPackageId" class="btn-small-solid blue">next</button>
               </div>
             </div>
           </div>
@@ -108,6 +108,7 @@
 <script>
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
@@ -116,24 +117,60 @@ export default {
   },
   data() {
     return {
-      rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
-      ],
+      blendingPackageData:'',
+      package_id:''
+      // rwaMaterialData: [
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "Bottle",
+      //     desc: [
+      //       "Choose from a variety of sizes and shapes of bottles and caps.",
+      //     ],
+      //   },
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "PTP",
+      //     desc: [
+      //       "It is hygienic and convenient.",
+      //       "The packaging volume is slightly larger.",
+      //     ],
+      //   },
+      // ],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.blendingPackage();
+  },
+  methods: {
+    // blending package Details
+    blendingPackage() {
+      this.mychoiceService.getRecommendedBlendingPackage().then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          this.blendingPackageData = res.data.packageData;
+          // console.log(res.data.packageData);
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    UpdatedId(e) {
+      this.package_id = e;
+    },
+    checkPackageId() {
+      if (this.package_id == "") {
+        this.$swal("Please Choose a Package");
+      }
+      else {
+        this.$router.push({ name: 'RawMaterialEstimation', query: { raw_material_id: this.$route.query.raw_material_id, pill_id: this.$route.query.pill_id, package_id:this.package_id } });
+      }
+    },
+    filterChanged(event) {
+      console.log(event.target.value);
+    }
+  }
 };
 </script>

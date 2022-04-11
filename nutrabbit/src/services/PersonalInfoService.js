@@ -26,7 +26,7 @@ export default class PersonalInfoService {
     }).then((res) => res);
   }
 
-  async personalInfoWithdraw(reason) {
+  async businessWithdraw(reason) {
     return await axios.post(`/profile/withdrawal`,
       {
         reason:reason,
