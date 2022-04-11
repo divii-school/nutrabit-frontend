@@ -254,14 +254,14 @@ export default {
           if(ser_tp == 1 || ser_tp == 3){
              this.myRecipe.submitRecipeApplication(_id).then(res => {
             if(res.status == 200){
-               this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+               this.$router.push({ name: "MyRecipeDetails", params: { id: _id,  type : this.$route.params.type} });
             }else{
               this.$swal(res.message, "error");
             }
           })
           }
           
-           this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+           this.$router.push({ name: "MyRecipeDetails", params: { id: _id, type : this.$route.params.type } });
           console.log(res.message)
         } else {
 
