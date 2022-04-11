@@ -31,7 +31,7 @@
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
-                            <div>
+                            <div style="float: right;">
                                 <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                                 <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + image" :alt="image" class="product-image" />
                             </div>
@@ -192,7 +192,7 @@ export default {
     padding: 5px;
     width: 150px;
     height: 100px;
-    float: right;
+    
 }
 .custom-select {
     position: relative;

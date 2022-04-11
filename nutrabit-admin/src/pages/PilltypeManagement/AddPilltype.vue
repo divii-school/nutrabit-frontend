@@ -8,27 +8,18 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('PillType.list.addname')}}</label>
-                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.addname')" id="title2" v-model="name_ko" @keyup="addPill"></InputText>
+                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.addname')" id="title2" v-model="name_ko"></InputText>
                             <div class="text-red">{{ error.name_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('PillType.list.addnamepill')}}</label>
-                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.addnamepill')" id="title2" v-model="name_en" @keyup="addPill"></InputText>
+                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.addnamepill')" id="title2" v-model="name_en" ></InputText>
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
                     </div>
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="type">{{$t('Banner.list.type')}}</label>
-                            <Dropdown :class="`${error.type ? 'p-invalid' : ''}`"
-                                v-model="dropdownValueType"
-                                :options="dropdownValueTypes"
-                                optionLabel="code"
-                                :placeholder="$t('Banner.placeholder.select')"
-                            />
-                            <div class="text-red">{{ error.type }}</div>
-                        </div> -->
+                        
                      
                    
                     <div class="p-grid p-formgrid p-mb-3">
@@ -40,7 +31,7 @@
                             <div class="custom-select">
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" @keyup="addPill" />
+                                <input type="file" class="select-file" v-on:change="onFileChange"  />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -52,7 +43,7 @@
                     <div class="p-grid p-formgrid p-mb-3">  
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('PillType.list.Description')}}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.Description')" id="title2" v-model="description_ko" @keyup="addPill"></Textarea>
+                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.Description')" id="title2" v-model="description_ko" ></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
 
                         </div>
@@ -61,27 +52,13 @@
                     <div class="p-grid p-formgrid p-mb-3">  
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('PillType.list.AddDescription')}}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.AddDescription')" id="title2" v-model="description_en" @keyup="addPill"></Textarea>
+                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('PillType.list.AddDescription')" id="title2" v-model="description_en"></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
 
                         </div>
                     </div>
                    
-                    <!-- <div class="p-grid p-formgrid p-mb-3">
-                        
-                        
-                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{$t('PillType.list.status')}}</label>
-                            <Dropdown
-                            :class="`${error.state ? 'p-invalid' : ''}`"
-                                v-model="dropdownValue"
-                                :options="dropdownValues"
-                                optionLabel="code"
-                                :placeholder="dropdownValue"   
-                            />
-                            <div class="text-red">{{ error.state }}</div>
-                        </div>
-                    </div> -->
+                   
                 </div>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
@@ -93,18 +70,7 @@
                         @click="addPill"
                     ></Button>
             </div>
-            <!-- <div class="p-d-flex p-jc-end p-ai-center">
-                <div>
-                    <Button
-                        :label="$t('button.back')"
-                        icon="pi pi-replay"
-                        iconPos="left"
-                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
-                        @click="$router.go(-1)"
-                    ></Button>
-                   
-                </div>
-            </div> -->
+          
             
         </form>
     </div>
@@ -120,11 +86,7 @@ export default {
     data() {
         return {
             render1:false,
-            // render2:false,
-            // dropdownValues: [{ name: 'active',code:'활성' }, { name: 'inactive',code:'비활성' }],
-            // dropdownValueTypes: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
-            // dropdownValue: '활동적인',
-            // dropdownValueType: null,
+           
             name_ko:"",
             name_en: "",
             description_ko:"",

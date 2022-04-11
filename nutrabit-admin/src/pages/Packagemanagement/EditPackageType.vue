@@ -33,7 +33,7 @@
                             <input type="file" class="select-file" v-on:change="onFilesChanges" />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
-                        <div class="raw-image" style="float:left;">
+                        <div class="raw-image" style="float:right;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + image" :alt="image" class="product-image" />
                             <a href="javascript:;" @click="remove_image(id,image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a>
@@ -227,7 +227,7 @@ export default {
     padding: 5px;
     width: 150px;
     height: 100px;
-    float: right;
+    
 }
 .custom-select {
     position: relative;
