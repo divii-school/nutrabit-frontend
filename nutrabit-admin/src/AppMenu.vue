@@ -59,8 +59,8 @@ export default {
                     label: this.$t(`module.title.UserManagement`),
                     icon: 'pi pi-users',
                     items: [
-                        { label: this.$t(`module.title.IndividualManagement`), to: '/individual-member',  },
-                        { label: this.$t(`module.title.BusinessManagement`), to: '/business-member' },
+                        { label: this.$t(`module.title.IndividualManagement`),icon:'pi pi-user', to: '/individual-member',  },
+                        { label: this.$t(`module.title.BusinessManagement`),icon:'pi pi-user', to: '/business-member' },
                     ],
                 },
                 { label: this.$t(`module.title.BannerMangement`), icon: 'pi pi-images', to: '/banner-management' },
@@ -70,9 +70,9 @@ export default {
                     label: this.$t(`module.title.ProductRegistration`),
                     icon: 'pi pi-th-large',
                     items: [
-                        { label: this.$t(`module.title.CategoryRegistration`),  to: '/category-registration' },
-                        { label: this.$t(`module.title.RawRegistration`),  to: '/raw-material-registration' },
-                     { label: this.$t(`module.title.RecommendedRegistration`),  to: '/nutri-blending' },
+                        { label: this.$t(`module.title.CategoryRegistration`), icon:'pi pi-table', to: '/category-registration' },
+                        { label: this.$t(`module.title.RawRegistration`), icon:'pi pi-table', to: '/raw-material-registration' },
+                     { label: this.$t(`module.title.RecommendedRegistration`), icon:'pi pi-table', to: '/nutri-blending' },
                     ],
                 },
                 { label: this.$t(`module.title.PilltypeManagement`), icon: 'pi pi-star', to: '/pill-type-management' },
@@ -83,9 +83,9 @@ export default {
                     label: this.$t(`module.title.Customercenter`),
                     icon: 'pi pi-play',
                     items: [
-                        { label: this.$t(`module.title.Faq`),  to: '/faq' },
-                        { label: this.$t(`module.title.Inquiry`),  to: '/inquiry' },
-                        { label: this.$t(`module.title.Notice`),  to: '/notice' },
+                        { label: this.$t(`module.title.Faq`), icon:'pi pi-send', to: '/faq' },
+                        { label: this.$t(`module.title.Inquiry`),  icon:'pi pi-send', to: '/inquiry' },
+                        { label: this.$t(`module.title.Notice`),  icon:'pi pi-send', to: '/notice' },
                     ],
                 },
                 
