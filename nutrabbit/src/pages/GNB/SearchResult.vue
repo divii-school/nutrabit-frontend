@@ -2,13 +2,12 @@
   <div class="main-body">
     <div class="container-medium">
       <div class="search-result-main">
-        <div class="search-wrap">
+        <!-- <div class="search-wrap">
           <div class="search-inner">
-            <!-- <input v-model="search" type="text" placeholder="Search" /> -->
             <input type="text" placeholder="Search" />
             <a href="#"><i class="icon-search-black"></i></a>
           </div>
-        </div>
+        </div> -->
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
             Total<span>{{ this.newSearchResult.length }} </span>result
@@ -114,7 +113,10 @@
               <h1 class="list-heading">FAQ</h1>
               <template v-if="faq.length > 0">
                 <template v-for="(item, index) in NewFaq" :key="index">
-                  <SearchAccordion :title="item.name_en" />
+                  <SearchAccordion
+                    :title="item.name_en"
+                    :description="item.description_en"
+                  />
                 </template>
                 <pagination
                   v-model="page4"
@@ -183,17 +185,18 @@ export default {
     const common = inject("common");
     return { common };
   },
-  mounted() {
+  created() {
     this.showSarchResult();
   },
-  // watch:{
-  //   'this.common.state.SearchResult' : ()=>{
-  //     console.log("comming")
-  //     this.showSarchResult();
-  //   }
-  // },
+  mounted() {
+  console.log("mounted")
+  },
+  updated() {
+  console.log("updated")
+  },
   methods: {
     showSarchResult() {
+      console.log(this.common.state.SearchResult);
       if (this.common.state.SearchResult != undefined) {
         this.newSearchResult = this.common.state.SearchResult;
         this.newSearchResult.map((value) => {
@@ -222,6 +225,7 @@ export default {
             return this.faq.push({
               id: value.id,
               name_en: value.name_en,
+              description_en: value.description_en,
             });
           }
         });
