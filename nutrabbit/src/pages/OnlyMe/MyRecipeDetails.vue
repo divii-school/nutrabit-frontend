@@ -64,7 +64,7 @@
                 <label class="mb0">Service</label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item with-input without-input">
+                <!-- <div class="product-item with-input without-input">
                   <div class="material-details">
                     <h2 v-if="serviceType.length < 2">{{ serviceType[0] }}</h2>
                     <div v-else>
@@ -73,11 +73,25 @@
                       </h2>
                     </div>
                   </div>
+                </div> -->
+                <div v-if="serviceType.length < 2">
+                  <div class="product-item with-input without-input">
+                    <div class="material-details">
+                      <h2>{{ serviceType[0] }}</h2>
+                    </div>
+                  </div>
+                </div>
+                <div v-else>
+                  <div v-for="(service, index) in serviceType" :key="index" class="product-item with-input without-input">
+                    <div class="material-details">
+                      <h2>{{ service }}</h2>
+                    </div>
+                  </div>
                 </div>
                 <div class="btn-wrap">
                   <button
                     class="btn-small-solid grey"
-                    @click="deleteRecipeDetail(product_id)"
+                    @click="openModal"
                   >
                     Delete
                   </button>
@@ -97,7 +111,14 @@
         </div>
       </div>
     </div>
+    <Modal
+    v-show="isModalVisible"
+    @close="closeModal(true)"
+    bodytext1="Are you sure you want to delete?"
+    btnText1="OK"
+  />
   </div>
+  
 </template>
 
           
@@ -106,19 +127,22 @@
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
-    ProductList,
+    ProductList, 
+    Modal
   },
   data() {
     return {
       rwaMaterialData: [],
-      additionalRequest : '',
-      title : '',
-      serviceType : [],
-      option_items : [],
+      additionalRequest: "",
+      title: "",
+      serviceType: [],
+      option_items: [],
+      isModalVisible : false,
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -136,90 +160,102 @@ export default {
       //   },
       // ],
 
-      product_id : this.$route.params.id,
-      application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
-      app_type : this.$route.params.type
+      product_id: this.$route.params.id,
+      application_type:
+        this.$route.params.type == "my-choice"
+          ? "my_choice"
+          : "recommended_blending",
+      app_type: this.$route.params.type,
     };
   },
-  
-  created(){
-    this.myRecipe = new MyRecipeService();
-    console.log(`product id is : ${this.product_id} and type is ${this.application_type}`)
-    
-  },
-  mounted(){
-      this.recipeSingleProductDetails(this.product_id, this.application_type);
-  },
-  methods : {
-      recipeSingleProductDetails(_productID, _type){
-      this.myRecipe.getSingleRecipeProductDetails(_productID, _type)
-    .then((res)=>{
-     console.log(res.data[0])
-        if (res.status == 200) {
-          
-          this.rwaMaterialData = res.data
-          this.additionalRequest = res.data[0].additional_request;
-          this.title = res.data[0].title;
-          if(res.data[0].service_type == 1){
-              this.serviceType = ["Sample Application"]
-          }else if(res.data[0].service_type == 2){
-              this.serviceType = ["Get A Quote"]
-          }
-          else{
-               this.serviceType = ["Sample Application", "Get A Quote"]
-          }
-         Array.from(res.data[0].options).forEach((ele)=>{
-               //console.log(Object.keys(ele)[0], Object.values(ele)[0])
-               let op_type = Object.keys(ele)[0].toString();
-               let op_val = Object.values(ele)[0].toString();
-               
-               this.myRecipe.getOptionDetails(op_type, op_val).then(res => {
-               //console.log(res.data[0])
-               if(res.status == 200){
-                 this.option_items.push( res.data[0] ),
-                  console.log(this.option_items)
-               }else{
-                 this.$swal(res.message, "error")
-               }
-               
-         })
-         
-         })
-      
-        } else {
 
-          this.$swal(res.message, "error");
-        }
-    })
+  created() {
+    this.myRecipe = new MyRecipeService();
+    console.log(
+      `product id is : ${this.product_id} and type is ${this.application_type}`
+    );
+  },
+  mounted() {
+    this.recipeSingleProductDetails(this.product_id, this.application_type);
+  },
+  methods: {
+    recipeSingleProductDetails(_productID, _type) {
+      this.myRecipe
+        .getSingleRecipeProductDetails(_productID, _type)
+        .then((res) => {
+          console.log(res.data[0]);
+          if (res.status == 200) {
+            this.rwaMaterialData = res.data;
+            this.additionalRequest = res.data[0].additional_request;
+            this.title = res.data[0].title;
+            if (res.data[0].service_type == 1) {
+              this.serviceType = ["Sample Application"];
+            } else if (res.data[0].service_type == 2) {
+              this.serviceType = ["Get A Quote"];
+            } else {
+              this.serviceType = ["Sample Application", "Get A Quote"];
+            }
+            Array.from(res.data[0].options).forEach((ele) => {
+              //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+              let op_type = Object.keys(ele)[0].toString();
+              let op_val = Object.values(ele)[0].toString();
+
+              this.myRecipe.getOptionDetails(op_type, op_val).then((res) => {
+                //console.log(res.data[0])
+                if (res.status == 200) {
+                  this.option_items.push(res.data[0]),
+                    console.log(this.option_items);
+                } else {
+                  this.$swal(res.message, "error");
+                }
+              });
+            });
+          } else {
+            this.$swal(res.message, "error");
+          }
+        });
     },
 
-    toEditRecipeDetails(_id, _type){
-     if(!this.product_id){
-       return;
-     }
-     //console.log(`to next id ${_id}`)
-     this.$router.push({ name : 'MyRecipeDetailsEdit', params : { id : _id, type : _type}})
-   },
+    openModal(){
+       this.isModalVisible = true
+    },
 
-   deleteRecipeDetail(id){
-     if(!this.product_id){
-       return;
-     }
-     //console.log(`delete item product id : ${id}`)
-      this.myRecipe.deleteRecipeData(id)
-    .then((res)=>{
-        if (res.status == 200) {
-          console.log(res.message)
-          this.additionalRequest = '';
-          this.title = '';
-          this.serviceType = [];
-          this.option_items = [];
-        } else {
+    closeModal(del){
 
-          this.$swal(res.message, "error");
-        }
-    })
-   },
-  }
+       this.isModalVisible = false
+       this.deleteRecipeDetail(this.product_id)
+       
+    },
+
+    toEditRecipeDetails(_id, _type) {
+      if (!this.product_id) {
+        return;
+      }
+      //console.log(`to next id ${_id}`)
+      this.$router.push({
+        name: "MyRecipeDetailsEdit",
+        params: { id: _id, type: _type },
+      });
+    },
+
+    deleteRecipeDetail(id) {
+      if (!id) {
+        return;
+      }
+      //console.log(`delete item product id : ${id}`)
+       
+      // this.myRecipe.deleteRecipeData(id).then((res) => {
+      //   if (res.status == 200) {
+      //     console.log(res.message);
+      //     this.additionalRequest = "";
+      //     this.title = "";
+      //     this.serviceType = [];
+      //     this.option_items = [];
+      //   } else {
+      //     this.$swal(res.message, "error");
+      //   }
+      // });
+    },
+  },
 };
 </script>
