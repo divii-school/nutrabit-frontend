@@ -10,7 +10,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
-                        <!-- <label for="type">Raw Material Name</label> -->
+                      
                         <InputText
                             id="googlurl"
                             type="text"
@@ -21,34 +21,18 @@
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.appname') }}</label>
-                        <!-- <label for="type">ID</label> -->
-                        <!-- <select
-                            class="p-dropdown-label p-inputtext "
-                            name="business_name"
-                            id="business_name"
-                            v-model="name"
-                        >
-                            <option value>Select </option>
-                            <option
-                                v-for="(item, index) in businessDropdownValues"
-                                v-bind:key="index"
-                                :value="item.id"
-                            >{{ item.business_name }}</option>
-                        </select> -->
+                        
                         <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" :placeholder="$t('Inquiry.list.appname')" />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.status') }}</label>
-                        <!-- <label for="type">ID</label> -->
+                        
                       
                         <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" :placeholder="$t('Inquiry.list.status')" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
-                    <!-- <div class="p-field p-col-12 p-md-3">
-                        <label for="verify-pass">{{ $t('search.label.lastDate') }}</label>
-                        <Calendar :showIcon="true" :minDate="calendarValue" :showButtonBar="true" v-model="calendarValue1" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div>-->
+                    
                 </div>
                 <div
                     class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
@@ -74,12 +58,7 @@
                         <div class="p-d-flex p-jc-between p-mb-2">
                             <h5>{{ $t('Inquiry.list.header') }}</h5>
                             <div>
-                                <!-- <router-link to="/excelrawmaterial">
-                                <Button :label="$t('rawmaterial.excel_raw')" icon="pi pi-download" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
-                            </router-link>
-                            <router-link to="/addrawmaterial">
-                                <Button :label="$t('rawmaterial.addnew_rawmaterial')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
-                                </router-link>-->
+                               
                             </div>
                         </div>
 
@@ -100,13 +79,11 @@
                             <template #empty>데이터가 없습니다.</template>
                             <template #loading>Loading data. Please wait.</template>
 
-                            <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
+                            
                             <Column :header="$t('Inquiry.list.slNo')" style="min-width: 12rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.id }}
-                                    </span>-->
+                                   
                                     {{ data.sl_no }}
                                 </template>
                             </Column>
@@ -118,9 +95,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Title</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.username == null ? '- Empty -' : data.username }}
-                                    </span>-->
+                                    
                                     {{ data.title }}
                                 </template>
                             </Column>
@@ -131,9 +106,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Quetion Type</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                                    </span>-->
+                                   
                                     {{ data.type_title }}
                                 </template>
                             </Column>
@@ -141,18 +114,14 @@
                             <Column :header="$t('Inquiry.list.appname')" style="min-width: 12rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                                    </span>-->
+                                    
                                     {{ data.business_name }}
                                 </template>
                             </Column>
                             <Column :header="$t('Inquiry.list.Reopenby')" style="min-width: 12rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Responded by</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                                    </span>-->
+                                   
                                     {{ data.repliedBy }}
                                 </template>
                             </Column>
@@ -162,9 +131,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Registration Date</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.createdDate }}
-                                    </span>-->
+                                  
                                     {{ dateformat(data.createdDate) }}
                                 </template>
                             </Column>
@@ -175,9 +142,9 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
-                                    <!-- {{ data.id }}-->
+                                   
                                     {{ data.status }}
-                                    <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
+                                  
                                 </template>
                             </Column>
 
@@ -186,9 +153,7 @@
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>
                                     <div style="display: flex">
-                                        <!-- <router-link :to="'/viewraw-material-registration/' + data.id"
-                                    ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i> {{ $t('button.view') }}</Button>
-                                        </router-link>-->
+                                       
                                         <router-link :to="'/reply-inquiry/' + data.id">
                                             <Button
                                                 label="help"
@@ -343,12 +308,7 @@ export default {
             this.clientlist = false;
             this.detailsclient = true;
         },
-        // dropdownCategory() {
-        //     axios({ method: 'get', url: '/admin/product_category/category2Dropdown/' }).then(function (response) {
-        //         console.log(response);
-        //         this.dropdownValue = response.data.data.productCategory;
-        //     });
-        // },
+       
         backList() {
             this.clientlist = true;
             this.detailsclient = false;
