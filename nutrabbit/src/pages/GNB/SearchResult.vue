@@ -199,9 +199,9 @@ export default {
   //   }
   // },
   methods: {
-    callme() {
-      console.log("callme");
-    },
+    // callme() {
+    //   console.log("callme");
+    // },
     showSarchResult() {
       if (this.common.state.SearchResult != undefined) {
         this.newSearchResult = this.common.state.SearchResult;
