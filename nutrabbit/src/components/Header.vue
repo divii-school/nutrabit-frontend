@@ -348,6 +348,7 @@ export default {
               this.$router.push("/search-result");
               this.showMobSearch = false;
               this.activeSearch = false;
+              this.sarchInput = '';
             }
           });
       }
@@ -356,6 +357,7 @@ export default {
       this.commonService.getSearchHistory(this.myIp).then((res) => {
         this.activeSearch = true;
         this.searchData = res.data.data;
+        console.log(res)
       })
       .catch((err)=>{
         return false
