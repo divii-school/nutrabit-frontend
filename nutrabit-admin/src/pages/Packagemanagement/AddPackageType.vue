@@ -93,6 +93,7 @@
                         icon="pi pi-check"
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"
+                        style="margin-top:-20%;"
                         @click="addPackageType"
                     ></Button>
                 </div>
@@ -254,6 +255,6 @@ export default {
     color: white;
 }
 .card {
-    height: 560px;
+    /* height: 560px; */
 }
 </style>

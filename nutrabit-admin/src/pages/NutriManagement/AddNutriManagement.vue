@@ -83,6 +83,7 @@
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
+                            <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
@@ -99,6 +100,7 @@
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
+                            <div class="text-red">{{ error.addthumnail }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
@@ -135,12 +137,12 @@
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
                 <div>
-                    <Button :label="$t('Nutri3.Add.publish')" icon="pi pi-check" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="addNutri"></Button>
+                    <Button :label="$t('Nutri3.Add.publish')" icon="pi pi-check" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="addNutri" style="margin-top:-20%;"></Button>
                 </div>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('Nutri3.Add.Back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    <Button :label="$t('Nutri3.Add.Back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)" style="margin-top:-20%;"></Button>
                 </div>
             </div>
         </form>
@@ -463,7 +465,7 @@ export default {
     color: white;
 }
 .card {
-    height: 1200px;
+    /* height: 1200px; */
 }
 .multiselect-option.is-selected.is-pointed {
     background: var(--ms-option-bg-selected-pointed, #f8f6f6);

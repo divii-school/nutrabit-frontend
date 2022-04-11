@@ -68,6 +68,7 @@
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"
                         @click="addPill"
+                        style="margin-top:-20%;"
                     ></Button>
             </div>
           
@@ -212,6 +213,6 @@ export default {
 }
 
 .card{
-    height: 550px;
+    /* height: 550px; */
 }
 </style>
