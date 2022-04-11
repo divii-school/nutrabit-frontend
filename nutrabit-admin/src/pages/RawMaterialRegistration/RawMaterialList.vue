@@ -21,20 +21,7 @@
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
-                        <!-- <label for="type">ID</label> -->
-                        <!-- <select
-                            class="p-dropdown-label p-inputtext"
-                            name="sub_category_id"
-                            id="sub_category_id"
-                            v-model="sub_category_id"
-                        >
-                            <option value>Select</option>
-                            <option
-                                v-for="(item, index) in dropdownValues"
-                                v-bind:key="index"
-                                :value="item.id"
-                            >{{ item.category_name_ko }}</option>
-                        </select> -->
+                       
                         <Dropdown v-model="sub_category_id"  :options="dropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
                             id="sub_category_id" />
                     </div>
@@ -50,10 +37,7 @@
                     </div>
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
-                    <!-- <div class="p-field p-col-12 p-md-3">
-                        <label for="verify-pass">{{ $t('search.label.lastDate') }}</label>
-                        <Calendar :showIcon="true" :minDate="calendarValue" :showButtonBar="true" v-model="calendarValue1" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                    </div>-->
+                    
                 </div>
                 <div
                     class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
@@ -122,9 +106,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.id }}
-                                    </span>-->
+                                  
                                     {{ data.sl_no }}
                                 </template>
                             </Column>
@@ -136,9 +118,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Name</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.username == null ? '- Empty -' : data.username }}
-                                    </span>-->
+                                  
                                     {{ data.material_name_ko }}
                                 </template>
                             </Column>
@@ -148,9 +128,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Category</span>
-                                    <!-- <span :class="data.popupNotification.length == 0 ? '' : 'flow'">
-                                {{ data.email == null ? '-empty-' : data.email }}
-                                    </span>-->
+                                 
                                     {{ data.category_name_ko }}
                                 </template>
                             </Column>
@@ -161,7 +139,7 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
-                                    <!-- {{ data.id }} -->
+                                   
                                     {{ data.status }}
                                     <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
                                 </template>
@@ -303,15 +281,7 @@ export default {
             })
 
 
-            // .then((data) => {
-            //     this.customer1 = data.userDataList;
-            //     this.loading1 = false;
-            //     localStorage.setItem('client', JSON.stringify(data.userDataList));
-            //     this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            //     this.records = data.popUpInformation;
-            //     console.log(this.records);
-            //     this.display = true;
-            // })
+        
             .catch((err) => {
                 this.loading1 = false;
                 this.customer1 = [];

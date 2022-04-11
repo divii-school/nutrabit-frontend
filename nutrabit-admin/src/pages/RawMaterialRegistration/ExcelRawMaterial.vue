@@ -1,7 +1,5 @@
 <template>
-    <!-- <div class="p-col-12 p-pb-0">
-        
-    </div> -->
+    
     <div class="card">
         <Toast />
         <form>
@@ -9,11 +7,7 @@
                 <div class="p-col-12">
                     <h5>{{ $t('upload-doc.upload_doc_header') }}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
-                        <!-- <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('upload-doc.doc_title') }}</label>
-                            <InputText :class="`${error.title ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.title')" id="title2" v-model="title"></InputText>
-                            <div class="text-red">{{ error.title }}</div>
-                        </div> -->
+                      
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="subtitle2">
@@ -104,17 +98,7 @@ export default {
                 acceptLabel:"네",
                 rejectLabel:"아니요",
                 accept: () => {
-                    // let vcheckData = {
-                    //     title: this.title,
-                    //     file: this.fileName == '' ? '' : 'something',
-                    // };
-                   
-                    // const { isInvalid, error } = validateUploadDoc(vcheckData);
-                    // if (isInvalid) {
-                    //     this.error = error;
-                    //     console.log(error);
-                    // } 
-                    // else
+                 
                      {
                        
                         console.log(this.formData);

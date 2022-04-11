@@ -1,9 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        <!-- <div class="p-col-12 p-pb-0">
-            <Button @click="$router.go(-1)" :label="$t('button.back')" icon="pi pi-angle-left" class="p-button-text p-mr-2 p-mb-2" />
-        </div> -->
+     
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
@@ -23,11 +21,7 @@
                         <div class="text-red">{{ error.material_name_ko }}</div>
                     </div>
                 </div>
-                <!-- <div class="p-field p-col-12 p-md-3">
-                        <label for="passworduser">{{ $t('DFC.details.password') }}</label>
-                        <InputText id="passworduser" :class="`${error.password ? 'p-invalid' : ''}`" type="text" placeholder="Password" :modelValue="mydata.password" v-model="mydata.password" />
-                        <div class="text-red">{{ error.password }}</div>
-                    </div> -->
+               
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="emailuser">{{ $t('RawMaterialadd.list.Rawmaterialname(EN)') }}</label>

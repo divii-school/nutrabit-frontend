@@ -322,13 +322,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('RawMaterialadd.list.status') }}</label>
-                            <!-- <Dropdown
-                                    :class="`${error.status ? 'p-invalid' : ''}`"
-                                    v-model="dropdownValue"
-                                    :options="dropdownValues"
-                                    optionLabel="name"
-                                    :placeholder="dropdownValue"   
-                            />-->
+                           
                             <br/>
                             <input
                                 type="radio"
