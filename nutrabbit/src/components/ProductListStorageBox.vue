@@ -27,7 +27,7 @@ export default {
    methods: {
      getStorageBoxId(event) {
        this.$emit('storageBoxId',event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
      }
    }
 };

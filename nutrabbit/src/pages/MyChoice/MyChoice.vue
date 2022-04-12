@@ -30,8 +30,7 @@
                   v-for="(item, i) of item.sub_category_arr"
                   :key="i + 1"
                 >
-                  <router-link :to="'/my-choice-category-selection/' + item.sub_category_id">
-                    <div class="choice-card">
+                    <div class="choice-card" @click="gotoNextPage(item.sub_category_id)">
                       <img
                         :src="
                           'http://api-nutrabbit-dev.dvconsulting.org/public' +
@@ -41,7 +40,6 @@
                       />
                     </div>
                     <p class="desc">{{ item.sub_category_name }}</p>
-                  </router-link>
                 </li>
               </ul>
             </li>
@@ -70,12 +68,25 @@ export default {
   },
   mounted() {
     this.allCategories();
+    localStorage.removeItem('sub_category_id');
+    localStorage.removeItem('raw_material_id');
+    localStorage.removeItem('package_id');
+    localStorage.removeItem('pill_id');
+    localStorage.removeItem('option');
+    localStorage.removeItem('etc');
+    localStorage.removeItem('storage_box');
   },
   methods: {
+    gotoNextPage(sub_category_id) {
+
+      localStorage.setItem('sub_category_id',sub_category_id);
+      this.$router.push('/my-choice-category-selection/');
+
+    },
     // allCategories list
     allCategories() {
       this.mychoiceService.getCategories().then((res) => {
-        //  console.log(res);
+         //console.log(res);
         if (res.status == 200) {
           // console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
