@@ -805,7 +805,7 @@ textarea {
         &:nth-last-child(2){
           button {
             background: url('@/assets/icons/pagination-arwl-h.svg') no-repeat center center;
-            rotate: 180deg;
+            transform: rotate(180deg); 
             &:disabled{
               background: url('@/assets/icons/pagination-arwl.svg') no-repeat center center;
             }
@@ -834,7 +834,7 @@ textarea {
         &.VuePagination__pagination-item-next-chunk {
           button{
             background: url('@/assets/icons/pagination-dual-arwl-h.svg') no-repeat center center;
-            rotate: 180deg;
+            transform: rotate(180deg); 
             &:disabled{
               background: url('@/assets/icons/pagination-dual-arwl.svg') no-repeat center center;
             }
