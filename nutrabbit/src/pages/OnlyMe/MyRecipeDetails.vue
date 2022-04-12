@@ -103,8 +103,8 @@
     </div>
     <Modal
     v-show="isModalVisible"
-    @close="closeModal(true)"
-    bodytext1="Are you sure you want to delete?"
+    @close="closeModal()"
+    bodytext1="Are you sure?"
     btnText1="OK"
   />
   </div>
@@ -228,23 +228,21 @@ export default {
       });
     },
 
-    deleteRecipeDetail(id) {
-      if (!id) {
-        return;
-      }
-      //console.log(`delete item product id : ${id}`)
+    deleteRecipeDetail() {
+      
+      console.log(`delete item product id : ${id}`)
        
-      // this.myRecipe.deleteRecipeData(id).then((res) => {
-      //   if (res.status == 200) {
-      //     console.log(res.message);
-      //     this.additionalRequest = "";
-      //     this.title = "";
-      //     this.serviceType = [];
-      //     this.option_items = [];
-      //   } else {
-      //     this.$swal(res.message, "error");
-      //   }
-      // });
+      this.myRecipe.deleteRecipeData(id).then((res) => {
+        if (res.status == 200) {
+          console.log(res.message);
+          this.additionalRequest = "";
+          this.title = "";
+          this.serviceType = [];
+          this.option_items = [];
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
     },
   },
 };
