@@ -48,7 +48,7 @@
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey">Previous</button>
+                  <button class="btn-small-solid grey" @click="$router.push('/my-appllication-detail')">Previous</button>
                 </div>
               </div>
             </div>
