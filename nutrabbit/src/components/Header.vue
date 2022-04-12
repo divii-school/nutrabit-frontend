@@ -98,11 +98,12 @@
           </template>
 
           <div class="header-dropdown">
-            <vue-select
+            <LanguageInput />
+            <!-- <vue-select
               :options="['EN', 'KO']"
               placeholder="EN"
               close-on-select
-            ></vue-select>
+            ></vue-select> -->
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
             <img src="../assets/images/menu-toggle.png" alt />
@@ -185,11 +186,13 @@ import { inject } from "vue";
 import PersonalInfoService from "../services/PersonalInfoService";
 import CommonService from "../services/CommonService";
 import Modal from "./Modal.vue";
+import LanguageInput from "./LanguageInput.vue";
 export default {
   name: "Header",
   components: {
     "vue-select": VueNextSelect,
     Modal,
+    LanguageInput,
   },
   data() {
     return {

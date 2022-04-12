@@ -1,10 +1,33 @@
 {
-    "message":"Hello !",
-    "address" :{
-        "city" :""
+    "message": "Hello!",
+    "address": {
+        "city": "Kolkata"
     },
-    "module":{
-        
-    }
+    "common":{
+        "title":{
+            "login":"Login"
+        },
+        "SubTitle":{
+            "PersonalMember": "Personal Member"
+        },
+        "label":{
+            "ID": "ID",
+            "Password": "Password"
+        },
+        "placeholder":{
+            "EnterId": "Enter ID",
+            "EnterPassword": "Enter Password"
+        },
+        "QuickLinks":{
+            "RememberId": "Remember ID",
+            "FindID": "Find ID",
+            "FindPassword": "Find Password",
+            "SignUp": "Sign Up",
+            "CacaoLogin": "Login with Kakao",
+            "NaverLogin": "Login with Naver"
+        }
+    },
+    "button":{
 
+    }
 }
