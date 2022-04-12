@@ -239,7 +239,7 @@ export default {
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
       if(!_id || !_title || !_additional_req || _services.length < 0){
-          this.$swal('Need to fill all the fields')
+          // this.$swal('Need to fill all the fields')
           return
       }
       
@@ -250,18 +250,7 @@ export default {
         // console.log(_id, _title, _additional_req, ser_tp)
         // console.log(res)
         if(res.status == 200){
-
-          if(ser_tp == 1 || ser_tp == 3){
-             this.myRecipe.submitRecipeApplication(_id).then(res => {
-            if(res.status == 200){
-               this.$router.push({ name: "MyRecipeDetails", params: { id: _id,  type : this.$route.params.type} });
-            }else{
-              this.$swal(res.message, "error");
-            }
-          })
-          }
-          
-           this.$router.push({ name: "MyRecipeDetails", params: { id: _id, type : this.$route.params.type } });
+           this.$router.go(-1);
           console.log(res.message)
         } else {
 
