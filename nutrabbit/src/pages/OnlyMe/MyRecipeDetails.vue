@@ -72,17 +72,18 @@
                   </div>
                 </div>
                 <div v-else>
-                  <div v-for="(service, index) in serviceType" :key="index" class="product-item with-input without-input">
+                  <div
+                    v-for="(service, index) in serviceType"
+                    :key="index"
+                    class="product-item with-input without-input"
+                  >
                     <div class="material-details">
                       <h2>{{ service }}</h2>
                     </div>
                   </div>
                 </div>
                 <div class="btn-wrap">
-                  <button
-                    class="btn-small-solid grey"
-                    @click="openModal"
-                  >
+                  <button class="btn-small-solid grey" @click="openModal">
                     Delete
                   </button>
                   <div class="btnWrapRight">
@@ -92,7 +93,12 @@
                     >
                       Edit
                     </button>
-                    <button class="btn-small-solid blue ml-4">Next</button>
+                    <button
+                      class="btn-small-solid blue ml-4"
+                      @click="toPaymentGateway(product_id)"
+                    >
+                      Next
+                    </button>
                   </div>
                 </div>
               </div>
@@ -102,13 +108,12 @@
       </div>
     </div>
     <Modal
-    v-show="isModalVisible"
-    @close="closeModal()"
-    bodytext1="Are you sure?"
-    btnText1="OK"
-  />
+      v-show="isModalVisible"
+      @close="closeModal()"
+      bodytext1="Are you sure?"
+      btnText1="OK"
+    />
   </div>
-  
 </template>
 
           
@@ -122,8 +127,8 @@ export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
-    ProductList, 
-    Modal
+    ProductList,
+    Modal,
   },
   data() {
     return {
@@ -132,7 +137,8 @@ export default {
       title: "",
       serviceType: [],
       option_items: [],
-      isModalVisible : false,
+      isModalVisible: false,
+      serviceNum: "",
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -178,9 +184,10 @@ export default {
             this.rwaMaterialData = res.data;
             this.additionalRequest = res.data[0].additional_request;
             this.title = res.data[0].title;
-            if (res.data[0].service_type == 1) {
+            this.serviceNum = res.data[0].service_type;
+            if (this.serviceNum == 1) {
               this.serviceType = ["Sample Application"];
-            } else if (res.data[0].service_type == 2) {
+            } else if (this.serviceNum == 2) {
               this.serviceType = ["Get A Quote"];
             } else {
               this.serviceType = ["Sample Application", "Get A Quote"];
@@ -206,19 +213,17 @@ export default {
         });
     },
 
-    openModal(){
-       this.isModalVisible = true
+    openModal() {
+      this.isModalVisible = true;
     },
 
-    closeModal(del){
-
-       this.isModalVisible = false
-       this.deleteRecipeDetail(this.product_id)
-       
+    closeModal() {
+      this.isModalVisible = false;
+      this.deleteRecipeDetail(this.product_id);
     },
 
     toEditRecipeDetails(_id, _type) {
-      if (!this.product_id) {
+      if (!_id) {
         return;
       }
       //console.log(`to next id ${_id}`)
@@ -228,10 +233,27 @@ export default {
       });
     },
 
+    toPaymentGateway(_id) {
+      //console.log(this.serviceNum)
+
+      this.myRecipe.submitRecipeApplication(_id).then((res) => {
+        if (res.status == 200) {
+         // console.log(`application submit status : ${res.message}`);
+
+
+          if (this.serviceNum == 1 || this.serviceNum == 3) {
+            // for payment gatteway
+            console.log(`product id for payment is  : ${_id}`);
+          }
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+
     deleteRecipeDetail() {
-      
-      console.log(`delete item product id : ${id}`)
-       
+      console.log(`delete item product id : ${id}`);
+
       this.myRecipe.deleteRecipeData(id).then((res) => {
         if (res.status == 200) {
           console.log(res.message);

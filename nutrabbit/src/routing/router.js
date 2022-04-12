@@ -246,11 +246,11 @@ const routes = [
         name: 'MyRecipeDetails',
         path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
-        //beforeEnter : guard
+        beforeEnter : guard
     },
     {
         name: 'MyApplicationDetails',
-        path: '/my-appllication-detail',
+        path: '/my-application-detail',
         component: MyApplicationDetails,
         //beforeEnter : guard
 
@@ -260,7 +260,7 @@ const routes = [
         name: 'MyApplicationQuoteRequestChoice',
         path: '/my-application-quote-request-choice/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestChoice.vue'),
-        //beforeEnter : guard
+        beforeEnter : guard
 
     },
 
@@ -268,7 +268,7 @@ const routes = [
         name: 'MyApplicationQuoteRequestBlending',
         path: '/my-application-quote-request-blend/:type/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestBlending.vue'),
-        //beforeEnter : guard
+        beforeEnter : guard
 
     },
 
@@ -276,7 +276,7 @@ const routes = [
         name: 'MyRecipeDetailsEdit',
         path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
-        //beforeEnter : guard
+        beforeEnter : guard
 
     },
     {
@@ -289,7 +289,7 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
-        //beforeEnter : guard
+        beforeEnter : guard
 
     },
     {
