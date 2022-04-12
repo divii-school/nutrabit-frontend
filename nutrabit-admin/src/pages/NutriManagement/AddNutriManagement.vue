@@ -125,7 +125,8 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Nutri3.list.status') }}</label>
+                            <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
+                            <br/>
                             <input type="radio" id="yes" value="active" name="status" v-model="status" />
                             <label for="yes">Yes</label>
                             <input type="radio" id="no" name="status" value="inactive" v-model="status" />

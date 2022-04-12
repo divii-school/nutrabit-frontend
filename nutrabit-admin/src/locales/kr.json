@@ -1043,7 +1043,7 @@
     "Nutri3-name1":"nutri 3.3 제품명(EN)",
     "Category":"카테고리",
     "MainRaw":"주원료",
-    "Piltype":"알약타입 선택",
+    "Piltype":"정제선택",
     "Package":"패키지선택",
     "AddTags(KO)":"태그 추가 (KO)",
     "AddTags(EN)":"태그 추가 (EN)",
@@ -1054,7 +1054,8 @@
     "productdetailimg":"상세 페이지 이미지 업로드",
     "Exposure":"노출",
     "publish":"추가",
-    "Back":"뒤로가기"
+    "Back":"뒤로가기",
+    "status":"노출"
   },
   "View":{
     "header":"nutri 3.3 제품 정보",
@@ -1081,8 +1082,8 @@
     "EditNutri3-name4":"nutri 3.3 제품명(EN)",
     "EditCategory":"카테고리",
     "EditMainRaw1":"주요 원료",
-    "EditPiltype1":"알 약 유형",
-    "EditPackage1":"패키지",
+    "EditPiltype1":"정제선택",
+    "EditPackage1":"패키지선택",
     "EditTags1(KO)":"태그 추가 (KO)",
     "EditTags2(EN)":"태그 추가 (EN)",
     "EditDescription1(KO)":"설명 (KO)",
@@ -1091,7 +1092,7 @@
     "Editproductsubimg1":"제품 서브 이미지",
     "Editproductdetailimg1":"상세 페이지 이미지 업로드",
     "EditExposure1":"노출",
-    "Editpublish1":"추가",
+    "Editpublish1":"저장",
     "EditBack1":"뒤로가기"
   }
 },

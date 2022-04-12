@@ -9,12 +9,12 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name3') }}</label>
-                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" placeholder="Package Name(KO)" v-model="name_ko" />
+                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
                         <div class="text-red">{{ error.name_ko }}</div>
                     </div>
                      <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name4') }}</label>
-                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" placeholder="Package Name(EN)" v-model="name_en" />
+                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
                         <div class="text-red">{{ error.name_en }}</div>
                     </div>
                 </div>
@@ -52,27 +52,27 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags1(KO)') }}</label>
-                        <InputText id="remark" type="text" placeholder="Tags.." v-model="tags_ko" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags1(KO)')" v-model="tags_ko" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags2(EN)') }}</label>
-                        <InputText id="remark" type="text" placeholder="Tags.." v-model="tags_en" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags2(EN)') " v-model="tags_en" />
                     </div>
                 </div>
 
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
-                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" placeholder="description(KO)" v-model="description_ko" />
+                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
-                        <InputText id="medium" type="text" placeholder=" description(EN)" v-model="description_en" />
+                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')" v-model="description_en" />
                     </div>
                 </div>
                <div class="p-grid p-formgrid p-mb-3 browse">
@@ -139,7 +139,8 @@
                 </div>
                   <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Nutri3.list.status') }}</label>
+                            <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
+                            <br/>
                             <input type="radio" id="yes" value="active" name="status" v-model="status">
                                 <label for="yes">Yes</label>
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status">
