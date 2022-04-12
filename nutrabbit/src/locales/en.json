@@ -20,11 +20,24 @@
             "Email": "Email",
             "EmailVerification": "Email Verification Number",
             "PhoneNumber": "Phone Number",
-            "Address": "Address"
+            "Address": "Address",
+            "OfflineCheck": "Offline",
+            "OnlineCheck": "Online",
+            "NetworkCheck": "Network (door-to-door sales)",
+            "SNSCheck": "SNS",
+            "EtcCheck": "Etc"
         },
         "placeholder":{
             "EnterId": "Enter ID",
-            "EnterPassword": "Enter Password"
+            "EnterPassword": "Enter Password",
+            "Name": "Enter your name",
+            "PasswordFormatSignup": "10-20 characters including uppercase and lowercase letters, numbers, and special symbols",
+            "VerifyPassword": "Verify Password",
+            "Email": "Enter your Email",
+            "EnterVerificationCode": "Enter your email verification code",
+            "PhoneNumber": "Enter your mobile phone number",
+            "EnterAddress": "Enter address",
+            "EnterDetailedAddress": "Enter detailed address"
         },
         "QuickLinks":{
             "RememberId": "Remember ID",

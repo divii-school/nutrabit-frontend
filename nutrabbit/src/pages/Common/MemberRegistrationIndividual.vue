@@ -5,7 +5,7 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-               {{ $t("common.QuickLinks.SignUp") }}
+              {{ $t("common.QuickLinks.SignUp") }}
               <span>{{ $t("common.SubTitle.PersonalMember") }}</span>
             </h1>
             <span>{{ $t("common.Error.Resquired") }}</span>
@@ -19,8 +19,12 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                   {{ $t("common.label.TermsCheckBox") }}
-                    <input type="checkbox" v-model="termsCheck" @change="checkError" />
+                    {{ $t("common.label.TermsCheckBox") }}
+                    <input
+                      type="checkbox"
+                      v-model="termsCheck"
+                      @change="checkError"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -33,7 +37,11 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.PersonalInfoCheckBox") }}
-                    <input type="checkbox" v-model="personalCheck" @change="checkError" />
+                    <input
+                      type="checkbox"
+                      v-model="personalCheck"
+                      @change="checkError"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -42,13 +50,16 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i> {{ $t("common.label.Name") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i>
+                  {{ $t("common.label.Name") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your name"
+                      :placeholder="$t('common.placeholder.Name')"
                       v-model="name"
                       @keyup="checkError"
                     />
@@ -57,13 +68,16 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.ID") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.ID") }}</label
+                >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter ID"
+                      :placeholder="$t('common.placeholder.EnterId')"
                       v-model="username"
                       @keyup="checkError"
                     />
@@ -75,13 +89,18 @@
                 <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Password") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Password") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
+                      :placeholder="
+                        $t('common.placeholder.PasswordFormatSignup')
+                      "
                       v-model="password"
                       @keyup="checkError"
                     />
@@ -94,14 +113,15 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>{{ $t("common.label.VerifyPassword") }}</label
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.VerifyPassword") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="verify password"
+                      :placeholder="$t('common.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
                       @keyup="checkError"
                     />
@@ -110,13 +130,16 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Email") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Email") }}</label
+                >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your email"
+                      :placeholder="$t('common.placeholder.Email')"
                       v-model="email"
                       @keyup="checkError"
                     />
@@ -134,14 +157,17 @@
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
-                  ><i class="icon-required"></i>{{ $t("common.label.EmailVerification") }}</label
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.EmailVerification") }}</label
                 >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your email verification code"
+                      :placeholder="
+                        $t('common.placeholder.EnterVerificationCode')
+                      "
                       v-model="emailOTP"
                       maxlength="6"
                       @keyup="checkError"
@@ -169,13 +195,16 @@
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.PhoneNumber") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your mobile phone number"
+                      :placeholder="$t('common.placeholder.PhoneNumber')"
                       v-model="phoneNumber"
                       @keyup="checkError"
                     />
@@ -187,13 +216,16 @@
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Address") }}</label
+                >
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter address"
+                      :placeholder="$t('common.placeholder.EnterAddress')"
                       v-model="address"
                       disabled
                       @keyup="checkError"
@@ -208,7 +240,7 @@
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter detailed address"
+                      :placeholder="$t('common.placeholder.EnterDetailedAddress')"
                       v-model="detsilAddress"
                       @keyup="checkError"
                     />
@@ -221,7 +253,7 @@
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check"
-                      >offline
+                      >{{ $t("common.label.OfflineCheck") }}
                       <input
                         type="checkbox"
                         value="offline"
@@ -232,7 +264,7 @@
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
-                      >online
+                      >{{ $t("common.label.OnlineCheck") }}
                       <input
                         type="checkbox"
                         value="online"
@@ -243,7 +275,7 @@
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
-                      >Network (door-to-door sales)
+                      >{{ $t("common.label.NetworkCheck") }}
                       <input
                         type="checkbox"
                         value="network"
@@ -254,14 +286,14 @@
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
-                      >SNS
+                      >{{ $t("common.label.SNSCheck") }}
                       <input type="checkbox" value="sns" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check"
-                      >Etc
+                      >{{ $t("common.label.EtcCheck") }}
                       <input type="checkbox" value="etc" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
@@ -274,7 +306,7 @@
               class="btn-primary grenn-btn2"
               @click="individalRegistration"
             >
-              Sign Up
+              {{ $t("common.QuickLinks.SignUp") }}
             </button>
           </form>
         </div>

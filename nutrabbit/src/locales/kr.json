@@ -20,11 +20,24 @@
             "Email": "이메일",
             "EmailVerification": "이메일 인증번호",
             "PhoneNumber": "휴대폰번호",
-            "Address": "주소"
+            "Address": "주소",
+            "OfflineCheck": "오프라인",
+            "OnlineCheck": "온라인",
+            "NetworkCheck": "네트워크 (방문판매)",
+            "SNSCheck": "SNS",
+            "EtcCheck": "기타"
         },
         "placeholder":{
             "EnterId": "아이디 입력",
-            "EnterPassword": "비밀번호 입력"
+            "EnterPassword": "비밀번호 입력",
+            "Name": "이름 입력",
+            "PasswordFormatSignup": "10~20자 영문 대소문자, 숫자, 특수기호 포함",
+            "VerifyPassword": "비밀번호 확인",
+            "Email": "이메일 입력",
+            "EnterVerificationCode": "이메일 인증번호 입력",
+            "PhoneNumber": "휴대폰번호 입력",
+            "EnterAddress": "주소 입력 ",
+            "EnterDetailedAddress": "상세 주소 입력 "
         },
         "QuickLinks":{
             "RememberId": "아이디 저장",
