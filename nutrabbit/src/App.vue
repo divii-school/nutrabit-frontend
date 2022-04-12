@@ -37,7 +37,8 @@ export default {
     sendPushNotificationData(res) {
       if (res) {
         alert('sendPushNotificationData');
-        alert(res);
+        alert(JSON.stringify(res));
+        console.log(res);
       } else {
         return false
       }
