@@ -146,6 +146,7 @@ export default {
             this.inquiryService.ReplyInquiry(this.$route.params.id, this.replyText).then((res) => {
                 console.warn(res);
                 console.log(this.replyText);
+                alert('업데이트 완료')
                 this.$router.push({ name: 'Inquiry' });
             });
         },

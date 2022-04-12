@@ -6,6 +6,8 @@ const validateCreateFaq = (data) => {
 
     const { title_ko, title_en, description_ko,description_en} = data;
 
+    
+    
     if (validator.isEmpty(title_ko)) {
         errors.title_ko = '제목을 입력하세요 ko';
     }

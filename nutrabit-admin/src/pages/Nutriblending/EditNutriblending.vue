@@ -665,6 +665,7 @@ export default {
                 this.formData.append('exposure', this.exposure);
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
+                 alert('업데이트 완료')
                 return axios.put('/admin/blending/edit', this.formData).then((res) => {
                     this.$router.push({ name: 'nutri' });
                     console.log(res);

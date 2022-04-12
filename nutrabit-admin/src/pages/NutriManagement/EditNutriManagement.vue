@@ -450,6 +450,7 @@ export default {
 
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
+                 alert('업데이트 완료')
                 return axios.put('/admin/nutriBlending/edit', this.formData).then((res) => {
                     this.$router.push({ name: 'NutriManagement' });
                     console.log(res);

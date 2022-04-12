@@ -191,6 +191,7 @@ export default {
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 return axios.put('/admin/banner/edit', this.formData).then((res) => {
+                     alert('업데이트 완료')
                     this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
                      this.$router.push({ name: 'BannerManagement' });
                     console.log(res);

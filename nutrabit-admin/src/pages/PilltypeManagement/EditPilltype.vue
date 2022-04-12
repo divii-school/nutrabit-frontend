@@ -165,6 +165,7 @@ export default {
             this.formData.append('description_en', this.description_en);
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
+                 alert('업데이트 완료')
                 return axios.put('/admin/pill/edit', this.formData).then((res) => {
                     this.$router.push({ name: 'Pill' });
                     console.log(res);

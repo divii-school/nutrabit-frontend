@@ -142,6 +142,7 @@ export default {
              
             this.userservice.updateBusinessUser(this.$route.params.id,this.mydata.name, this.mydata.mobile, this.mydata.email, 
              this.mydata.address, this.mydata.business_name, this.mydata.department,this.mydata.person_in_charge).then(() => {
+                 alert('업데이트 완료')
             this.$router.push({ name: 'BusinessMember' });
         });
         },
@@ -165,6 +166,7 @@ export default {
                     } else {
                         this.error = {};
                         console.log('pass');
+                         
                         this.userservice.updateBusinessUser(this.$route.params.id,this.mydata.name, this.mydata.mobile, this.mydata.email, 
              this.mydata.address, this.mydata.business_name, this.mydata.department,this.mydata.person_in_charge).then((res) => {
                             console.warn(res);

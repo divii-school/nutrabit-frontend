@@ -126,6 +126,7 @@ export default {
         editIndividual() {
             
             this.userservice.updateIndividualUser(this.$route.params.id,this.mydata.name, this.mydata.mobile,  this.mydata.address).then(() => {
+                alert('업데이트 완료')
             this.$router.push({ name: 'IndividualMember' });
         });
         },
@@ -149,11 +150,13 @@ export default {
                     } else {
                         this.error = {};
                         console.log('pass');
+                        
                         this.userservice.updateIndividualUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.uuid, this.mydata.findings, this.mydata.address, this.mydata.createdDate).then((res) => {
                             console.warn(res);
+                             
                             this.$router.push({ name: 'IndividualMember' });
                         });
-
+                        
                         this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
                     }
                 },

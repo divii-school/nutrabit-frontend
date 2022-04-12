@@ -10,7 +10,8 @@
                             <label for="title2">{{$t('Faq.list.category')}}</label>
                             
 
-                            <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown    v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            
                         </div>
                     </div>
 
@@ -211,7 +212,7 @@ export default {
             return axios
                 .post('/admin/faq/add', {'category_id':this.category_id,'title_ko':this.title_ko,'title_en':this.title_en,'description_ko':this.description_ko,'description_en':this.description_en,'top_10':this.top_10,'status':this.status})
                 .then(() => {
-                
+                 alert('성공적으로 저장')
                    this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
                     this.$router.push({ name: 'Faq' });
                 })

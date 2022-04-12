@@ -194,6 +194,7 @@ export default {
                // this.formData.append('status', this.dropdownValue?.name === undefined ? this.status : this.dropdownValue?.name);
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
+                 alert('업데이트 완료')
                 return axios.put('/admin/faq/edit', {'id':this.$route.params.id,'category_id':this.category_id,'title_ko':this.title_ko,'title_en':this.title_en,'description_ko':this.description_ko,'description_en':this.description_en,'top_10':this.top_10,'status':this.status}).then((res) => {
                     this.$router.push({ name: 'Faq' });
                     console.log(res);

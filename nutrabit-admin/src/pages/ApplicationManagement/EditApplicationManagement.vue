@@ -300,7 +300,7 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-
+                    alert('업데이트 완료')
                 return axios.put('/admin/application/edit', { "id": this.$route.params.id, "answer_by_admin": this.answer_by_admin, "status_by_admin": this.status_by_admin, "memo_by_admin": this.memo_by_admin }).then((res) => {
                     this.$router.push({ name: 'appmanagement' });
                     console.log(res);

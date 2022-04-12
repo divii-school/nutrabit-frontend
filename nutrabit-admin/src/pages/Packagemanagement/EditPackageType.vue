@@ -36,7 +36,7 @@
                         <div class="raw-image" style="float:right;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + image" :alt="image" class="product-image" />
-                            <a href="javascript:;" @click="remove_image(id,image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a>
+                            <!-- <a href="javascript:;" @click="remove_image(id,image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                         </div>
                     </div>
                 </div>
@@ -196,6 +196,7 @@ export default {
 
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
+                 alert('업데이트 완료')
                 return axios.put('/admin/package/edit', this.formData).then((res) => {
                     this.$router.push({ name: 'package' });
                     console.log(res);

@@ -590,6 +590,7 @@ export default {
                 return axios
                     .post('/admin/product_raw_material/add', this.formData)
                     .then(() => {
+                         alert('성공적으로 저장')
                         this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
                         this.$router.push({ name: 'RawProduct' });
                     })
