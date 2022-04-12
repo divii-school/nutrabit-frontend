@@ -39,15 +39,16 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of applicationList"
+                              v-for="(item, index) of updateAppNutri_List"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
                               <td
-                                @click="
-                                  this.$router.push(
-                                    `/my-recipe-details-sample/${item.id}`
-                                  )
+                               @click="
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'nutri' },
+                                  })
                                 "
                               >
                                 {{ item.explanation }}
@@ -59,12 +60,12 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <pagination
-                          v-model="page"
-                          :records="5"
-                          :per-page="1"
-                          @paginate="myCallback"
-                        /> -->
+                  <pagination
+                    v-model="page1"
+                    :records="appNutriTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback1"
+                  />
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -85,15 +86,16 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of applicationList2"
+                              v-for="(item, index) of updateAppRecom_List"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
                               <td
                                 @click="
-                                  this.$router.push(
-                                    `/my-recipe-details-sample/${item.id}`
-                                  )
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'recommended' },
+                                  })
                                 "
                               >
                                 {{ item.explanation }}
@@ -105,7 +107,12 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <Pagination /> -->
+                  <pagination
+                    v-model="page2"
+                    :records="appRecommendedTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback2"
+                  />
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -126,15 +133,16 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of newApplicationList3"
+                              v-for="(item, index) of updateAppMychoiceList"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
                               <td
                                 @click="
-                                  this.$router.push(
-                                    `/my-recipe-details-sample/${item.id}`
-                                  )
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'choice' },
+                                  })
                                 "
                               >
                                 {{ item.explanation }}
@@ -147,10 +155,10 @@
                     </div>
                   </div>
                   <pagination
-                    v-model="page"
-                    :records="mychoice_total"
+                    v-model="page3"
+                    :records="appMychoiceTotal"
                     :per-page="perPage"
-                    @paginate="myCallback"
+                    @paginate="myCallback3"
                   />
                 </div>
               </div>
@@ -174,7 +182,7 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of quotationList"
+                              v-for="(item, index) of updateQuoteNutri_List"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
@@ -195,7 +203,12 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <Pagination /> -->
+                  <pagination
+                    v-model="page4"
+                    :records="quoteNutriTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback4"
+                  />
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -216,7 +229,7 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of quotationList2"
+                              v-for="(item, index) of updateQuoteRecom_List"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
@@ -240,7 +253,12 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <Pagination /> -->
+                  <pagination
+                    v-model="page5"
+                    :records="quoteRecommendedTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback5"
+                  />
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -261,17 +279,14 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(item, index) of quotationList3"
+                              v-for="(item, index) of updateQuoteMychoiceList"
                               :key="index"
                             >
                               <td>{{ index + 1 }}</td>
-                              <td
-                                @click="
-                                  $router.push({
+                              <td @click="$router.push({
                                     name: 'MyApplicationQuoteRequestChoice',
                                     params: { id: item.id },
-                                  })
-                                "
+                                  })"
                               >
                                 {{ item.explanation }}
                               </td>
@@ -282,7 +297,12 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <Pagination /> -->
+                  <pagination
+                    v-model="page6"
+                    :records="quoteMychoiceTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback6"
+                  />
                 </div>
               </div>
             </div>
@@ -313,29 +333,45 @@ export default {
     return {
       currentTab: 0,
       tabs: ["Sample Application Details", "Quotation Request Details"],
-      applicationList: [],
-      applicationList2: [],
-      applicationList3: [],
+      appNutriList: [],
+      appRecommendedList: [],
+      appMychoiceList: [],
+
       application_type: "nutri_blending",
       application_type2: "recommended_blending",
       application_type3: "my_choice",
-      quotationList: [],
-      quotationList2: [],
+
+      QuoteNutri_List: [],
+      QuoteRecommendedList: [],
       quotationList3: [],
-      // UpdatedapplicationList: [],
-      // page: 1,
-      // perPage: 5,
+
       userId: this.common.state.userId,
       lang: "KO",
-      page: 1,
+      page1:1,
+      page2: 1,
+      page3:1,
+      page4:1,
+      page5: 1,
+      page6:1,
       perPage: 5,
-      limit: 80,
+      limit: "",
       sortBy: "",
       sortOrder: "",
-      nutri_blending_total: "",
-      mychoice_total: "",
-      recommended_total: "",
-      newApplicationList3: [],
+      appMychoiceTotal: 0,
+      appRecommendedTotal: 0,
+      appNutriTotal:0,
+
+      quoteMychoiceTotal: 0,
+      quoteRecommendedTotal: 0,
+      quoteNutriTotal:0,
+
+      updateAppMychoiceList: [],
+      updateAppRecom_List: [],
+      updateAppNutri_List:[],
+
+      updateQuoteMychoiceList: [],
+      updateQuoteRecom_List: [],
+      updateQuoteNutri_List:[],
     };
   },
 
@@ -349,20 +385,45 @@ export default {
   },
 
   methods: {
-    myCallback(ClickPage) {
+    myCallback1(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
-      // const endIndex = (this.perPage * ClickPage);
       const endIndex = startIndex + this.perPage;
-      this.newApplicationList3 = this.applicationList3.slice(
-        startIndex,
-        endIndex
-      );
-      console.log("this.newApplicationList3", this.newApplicationList3);
+      this.updateAppNutri_List = this.appNutriList.slice(startIndex,endIndex);
     },
 
-    applicationlist() {
+    myCallback2(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateAppRecom_List = this.appRecommendedList.slice(startIndex,endIndex);
+    },
+
+    myCallback3(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateAppMychoiceList = this.appMychoiceList.slice(startIndex,endIndex);
+    },
+
+    myCallback4(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteNutri_List = this.QuoteNutri_List.slice(startIndex,endIndex);
+    },
+
+    myCallback5(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteRecom_List = this.QuoteRecommendedList.slice(startIndex,endIndex);
+    },
+
+    myCallback6(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteMychoiceList = this.QuoteMyChoice_List.slice(startIndex,endIndex);
+    },
+
+    appNutri() {
       this.myApplicationDetails
-        .applicationlist(
+        .appNutri(
           this.userId,
           this.lang,
           this.application_type,
@@ -374,10 +435,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.applicationList = res.data.data.applicationData;
-            this.nutri_blending_total = res.data.data.total;
-            console.log("nutri_blending", this.nutri_blending_total);
-            // this.myCallback(1);
+            this.appNutriList = res.data.data.applicationData;
+            this.appNutriTotal = res.data.data.total;
+            console.log("appNutriTotal", this.appNutriTotal);
+            this.myCallback1(1);
           }
         })
         .catch((err) => {
@@ -385,9 +446,9 @@ export default {
         });
     },
 
-    applicationlist2() {
+    appRecommended() {
       this.myApplicationDetails
-        .applicationlist2(
+        .appRecommended(
           this.userId,
           this.lang,
           this.application_type2,
@@ -399,10 +460,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.applicationList2 = res.data.data.applicationData;
-            this.recommended_total = res.data.data.total;
-            console.log("MyChoice", this.recommended_total);
-            // this.myCallback(1);
+            this.appRecommendedList = res.data.data.applicationData;
+            this.appRecommendedTotal = res.data.data.total;
+            console.log("appRecommendedTotal", this.appRecommendedTotal);
+            this.myCallback2(1);
           }
         })
         .catch((err) => {
@@ -410,9 +471,9 @@ export default {
         });
     },
 
-    applicationlist3() {
+    appMychoice() {
       this.myApplicationDetails
-        .applicationlist3(
+        .appMychoice(
           this.userId,
           this.lang,
           this.application_type3,
@@ -424,10 +485,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.applicationList3 = res.data.data.applicationData;
-            this.mychoice_total = res.data.data.total;
-            console.log("MyChoice", this.mychoice_total);
-            this.myCallback(1);
+            this.appMychoiceList = res.data.data.applicationData;
+            this.appMychoiceTotal = res.data.data.total;
+            console.log("MyChoice", this.appMychoiceTotal);
+            this.myCallback3(1);
           }
         })
         .catch((err) => {
@@ -435,9 +496,9 @@ export default {
         });
     },
 
-    quotationlist() {
+    QuoteNutri() {
       this.myApplicationDetails
-        .quotationlist(
+        .QuoteNutri(
           this.userId,
           this.lang,
           this.application_type,
@@ -449,9 +510,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.quotationList = res.data.data.applicationData;
-            console.log("quotation_nutri_blending", this.quotationList);
-            // this.myCallback(1);
+            this.QuoteNutri_List = res.data.data.applicationData;
+            this.quoteNutriTotal = res.data.data.total;
+            console.log("quoteNutriTotal", this.quoteNutriTotal);
+            this.myCallback4(1);
           }
         })
         .catch((err) => {
@@ -459,9 +521,9 @@ export default {
         });
     },
 
-    quotationlist2() {
+    QuoteRecommended() {
       this.myApplicationDetails
-        .quotationlist2(
+        .QuoteRecommended(
           this.userId,
           this.lang,
           this.application_type2,
@@ -473,9 +535,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.quotationList2 = res.data.data.applicationData;
-            console.log("quotationRecommended", this.quotationList2);
-            // this.myCallback(1);
+            this.QuoteRecommendedList = res.data.data.applicationData;
+            this.quoteRecommendedTotal = res.data.data.total;
+            console.log("quoteRecommendedTotal", this.quoteRecommendedTotal);
+            this.myCallback5(1);
           }
         })
         .catch((err) => {
@@ -483,9 +546,9 @@ export default {
         });
     },
 
-    quotationlist3() {
+    QuoteMyChoice() {
       this.myApplicationDetails
-        .quotationlist3(
+        .QuoteMyChoice(
           this.userId,
           this.lang,
           this.application_type3,
@@ -497,9 +560,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("res", res);
-            this.quotationList3 = res.data.data.applicationData;
-            console.log("quotationMyChoice", this.quotationList3);
-            // this.myCallback(1);
+            this.QuoteMyChoice_List = res.data.data.applicationData;
+            this.quoteMychoiceTotal = res.data.data.total;
+            console.log("quoteMychoiceTotal", this.quoteMychoiceTotal);
+            this.myCallback6(1);
           }
         })
         .catch((err) => {
@@ -515,14 +579,15 @@ export default {
   },
 
   mounted() {
-    this.applicationlist();
+    
     this.dateformat();
-    this.quotationlist();
-    this.quotationlist2();
-    this.quotationlist3();
+    this.QuoteNutri();
+    this.QuoteRecommended();
+    this.QuoteMyChoice();
 
-    this.applicationlist2();
-    this.applicationlist3();
+    this.appNutri();
+    this.appRecommended();
+    this.appMychoice();
   },
 };
 </script>
