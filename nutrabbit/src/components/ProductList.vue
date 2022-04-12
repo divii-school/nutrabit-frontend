@@ -12,28 +12,28 @@
     <div class="material-details">
       <h2>{{item.title}}</h2>
       <div class="description">
-        <!-- <p>{{item.description_ko}}</p> -->
+        <!-- <p>{{description}}</p> -->
         <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
         <table>
           <tr>
-            <th>Raw material</th>
-            <td>{{ item.raw_material_name }}</td>
+            <th><p>Raw material</p></th>
+            <td><p>{{ item.raw_material_name }}</p></td>
           </tr>
           <tr>
-            <th>Formulation</th>
-            <td>{{ item.formulation }}</td>
+            <th><p>Formulation</p></th>
+            <td><p>{{ item.formulation }}</p></td>
           </tr>
           <tr>
-            <th>Package</th>
-            <td>{{ item.package }}</td>
+            <th><p>Package</p></th>
+            <td><p>{{ item.package }}</p></td>
           </tr>
           <tr>
-            <th>Additional Request</th>
-            <td>{{ item.additional_request }}</td>
+            <th><p>Additional Request</p></th>
+            <td><p>{{ item.additional_request }}</p></td>
           </tr>
           <tr>
-            <th>Service</th>
-            <td>{{ item.service }}</td>
+            <th><p>Service</p></th>
+            <td><p>{{ item.service }}</p></td>
           </tr>
           </table>
       </div>
