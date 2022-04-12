@@ -149,7 +149,7 @@
                   <pagination
                     v-model="page"
                     :records="mychoice_total"
-                    :per-page="limit"
+                    :per-page="perPage"
                     @paginate="myCallback"
                   />
                 </div>
@@ -328,13 +328,13 @@ export default {
       userId: this.common.state.userId,
       lang: "KO",
       page: 1,
-      limit: 5,
+      perPage: 5,
+      limit: 80,
       sortBy: "",
       sortOrder: "",
       nutri_blending_total: "",
       mychoice_total: "",
       recommended_total: "",
-
       newApplicationList3: [],
     };
   },
@@ -350,9 +350,9 @@ export default {
 
   methods: {
     myCallback(ClickPage) {
-      const startIndex = (ClickPage - 1) * this.limit;
+      const startIndex = (ClickPage - 1) * this.perPage;
       // const endIndex = (this.perPage * ClickPage);
-      const endIndex = startIndex + this.limit;
+      const endIndex = startIndex + this.perPage;
       this.newApplicationList3 = this.applicationList3.slice(
         startIndex,
         endIndex
