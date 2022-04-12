@@ -258,7 +258,7 @@ const routes = [
 
     {
         name: 'MyApplicationQuoteRequestChoice',
-        path: '/my-application-quote-request/:id',
+        path: '/my-application-quote-request-choice/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestChoice.vue'),
         
 
@@ -266,7 +266,7 @@ const routes = [
 
     {
         name: 'MyApplicationQuoteRequestBlending',
-        path: '/my-application-quote-request/:type/:id',
+        path: '/my-application-quote-request-blend/:type/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestBlending.vue'),
         
 

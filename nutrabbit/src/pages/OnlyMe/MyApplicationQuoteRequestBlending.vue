@@ -22,21 +22,14 @@
                       <th>Explanation</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody
+                    v-for="(option, index) in options"
+                    :key="index"
+                  >
                     <tr>
-                      <td>One</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
+                      <td>{{ index + 1 }}</td>
+                      <td>{{ option.category }}</td>
+                      <td>{{ option.explanation }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -78,7 +71,7 @@ export default {
       answer: "",
       product_id: this.$route.params.id,
       application_type:
-        this.$route.params.type == "recommended-blending"
+        this.$route.params.type == "recommended"
           ? "recommended_blending"
           : 'nutri_blending',
       
@@ -100,28 +93,29 @@ export default {
     getQuotionBlendingDetails(_id, _app_type) {
       this.myApplication.getApplicationBlendingDetails(_id, _app_type).then(res=>{
                 console.log(res.data[0])
-              // if(res.status == 200){
-              //      this.additionalRequest = res.data[0].additional_request;
-              //      this.title = res.data[0].title;
+              if(res.status == 200){
+                   this.title = res.data[0].title;
+                   this.add_req = res.data[0].additional_request;
+                   this.answer = res.data[0].answer_by_admin;
 
-              //      Array.from(res.data[0].options).forEach((ele)=>{
-              //        //console.log(Object.keys(ele)[0], Object.values(ele)[0])
-              //         let op_type = Object.keys(ele)[0].toString();
-              //         let op_val = Object.values(ele)[0].toString();
+                   Array.from(res.data[0].options).forEach((ele)=>{
+                     //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+                      let op_type = ele.split(':')[0];
+                      let op_val = ele.split(':')[1];
 
-              //         this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
+                      this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
 
-              //           if(res.status == 200){
-              //                this.options.push( res.data[0] )
-              //           }else{
-              //              $swal(res.message)
-              //           }
+                        if(res.status == 200){
+                             this.options.push( res.data[0] )
+                        }else{
+                           $swal(res.message)
+                        }
                         
-              //         })
-              //      })
-              // }else{
-              //   this.$swal(res.message)
-              // }
+                      })
+                   })
+              }else{
+                this.$swal(res.message)
+              }
       })
     },
   },
