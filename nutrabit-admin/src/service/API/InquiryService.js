@@ -5,12 +5,11 @@ export default class InquiryService {
     // async getUserList(name, email, mobile, date1, date2) {
     //     return await axios.post(`/user`, { status: 'active', name: name, email: email, mobile: mobile, startDate: date1, endDate: date2 }).then((res) => res.data.data.users);
     // }
-        async getInquryList(id,title,business_name,repliedBy,status,startDate,endDate,sortBy,sortOrder) {
+        async getInquryList(title,business_name,status,startDate,endDate,sortBy,sortOrder) {
             return await axios
                 .post(`/admin/inquery`, {
-                    id:id,
+                    
                     business_name:business_name,
-                    repliedBy:repliedBy,
                     title: title,
                     status: status,
                     // searchData: searchData,
