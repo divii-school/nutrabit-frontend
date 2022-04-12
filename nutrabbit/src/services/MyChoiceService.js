@@ -57,8 +57,8 @@ export default class MyChoiceService {
   }
 
   //recommended blending package add API Functions
-  async getRecommendedBlendingPackageAdd(blending_id, package_id, additional_request, service_type, is_temporary_storage) {
-    return await axios.post(`/blending/recommended/add`, { blending_id: blending_id, package_id: package_id, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage }).then((res) => res.data).catch((err) => err);
+  async getRecommendedBlendingPackageAdd(blending_id, package_id, etc, additional_request, service_type, is_temporary_storage) {
+    return await axios.post(`/blending/recommended/add`, { blending_id: blending_id, package_id: package_id, etc:etc, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage }).then((res) => res.data).catch((err) => err);
   }
 
   //blending formulation API Functions

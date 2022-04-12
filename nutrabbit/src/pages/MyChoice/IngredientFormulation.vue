@@ -45,7 +45,8 @@
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>Please select the desired format.</li>
-                          <li>Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.</li>
+                          <li>Formulations that cannot be made with the selected raw materials may be changed to other
+                            formulations at the time of quotation.</li>
                         </ul>
                       </div>
                     </template>
@@ -61,10 +62,11 @@
               </ul>
 
               <div class="btn-wrap">
-                <button
-                  @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${this.$route.params.id}`)"
-                  class="btn-small-solid grey"
-                >Previous</button>
+                <button v-if="storage_box" @click="this.$router.push(`/add-ingredient/`)"
+                  class="btn-small-solid grey">Previous</button>
+                <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
+                  class="btn-small-solid grey">Previous</button>
+                  
                 <button @click="checkPillId" class="btn-small-solid blue">next</button>
               </div>
             </div>
@@ -91,6 +93,7 @@ export default {
     return {
       blendingFormulationData: [],
       pill_id: '',
+      storage_box: localStorage.getItem('storage_box'),
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -131,6 +134,7 @@ export default {
     UpdatedId(e) {
       this.pill_id = e;
       //console.log(this.pill_id);
+
     },
     checkPillId() {
       // console.log(this.blending_id);
@@ -138,8 +142,24 @@ export default {
         this.$swal("Please Choose a Formulation");
       }
       else {
-        this.$router.push({ name: 'RawMaterialPackage', query: { raw_material_id: this.$route.params.id, pill_id: this.pill_id } });
-        console.log("success");
+        var option_data = JSON.parse(localStorage.getItem("option") || "[]");
+
+        for (let i = 0; i < option_data.length; i++) {
+          var option_array = option_data[i];
+          var res_option_type = Object.keys(option_array).toString();
+          if (res_option_type == "pill") { option_data.pop(option_data[i]); };
+        }
+
+        var put_pill = {
+          pill: this.pill_id
+        };
+        option_data.push(put_pill);
+        // Saving
+        localStorage.setItem("option", JSON.stringify(option_data));
+
+        localStorage.setItem('pill_id', this.pill_id);
+        this.$router.push('/raw-material-package/');
+        //console.log("success");
       }
     },
   },

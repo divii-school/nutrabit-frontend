@@ -170,18 +170,21 @@ const routes = [
     },
     {
         name: 'MyChoiceCategorySelection',
-        path: '/my-choice-category-selection/:id',
+        path: '/my-choice-category-selection/',
         component: MyChoiceCategorySelection,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceRecomandedBlending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceRecomandedBlendingFinalQuote',
         path: '/my-choice-recomanded-blending-fquote',
         component: MyChoiceRecomandedBlendingFinalQuote,
+        beforeEnter: guard,
     },
     {
         name: 'sample-making',
@@ -192,36 +195,43 @@ const routes = [
         name: 'ChoiceRecommendedBlendingDetailedPage',
         path: '/choice-recommended-blending-detailed-page/:id',
         component: ChoiceRecommendedBlendingDetailedPage,
+        beforeEnter: guard,
     },
     {
         name: 'ChoiceRecommendedBlendingPackageSelection',
         path: '/choice-recommended-blending-package-selection',
         component: ChoiceRecommendedBlendingPackageSelection,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceRawMaterialDetailedPage',
-        path: '/mychoice-rawMaterial-detailed-page/:id',
+        path: '/mychoice-rawMaterial-detailed-page/',
         component: MyChoiceRawMaterialDetailedPage,
+        beforeEnter: guard,
     },
     {
         name: 'RawMaterialEstimation',
         path: '/raw-material-estimation',
         component: RawMaterialEstimation,
+        beforeEnter: guard,
     },
     {
         name: 'RawMaterialPackage',
         path: '/raw-material-package',
         component: RawMaterialPackage,
+        beforeEnter: guard,
     },
     {
         name: 'IngredientFormulation',
-        path: '/ingredient-formulation/:id',
+        path: '/ingredient-formulation/',
         component: IngredientFormulation,
+        beforeEnter: guard,
     },
     {
         name: 'AddIngredient',
         path: '/add-ingredient/',
         component: AddIngredient,
+        beforeEnter: guard,
     },
     {
         name: 'notice',
