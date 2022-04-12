@@ -12,8 +12,28 @@
     <div class="material-details">
       <h2>{{item.title}}</h2>
       <div class="description">
-        <!-- <p>{{description}}</p> -->
-        <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
+        <table>
+          <tr>
+            <th><p>Raw material</p></th>
+            <td><p>{{ item.raw_material_name }}</p></td>
+          </tr>
+          <tr>
+            <th><p>Formulation</p></th>
+            <td><p>{{ item.formulation }}</p></td>
+          </tr>
+          <tr>
+            <th><p>Package</p></th>
+            <td><p>{{ item.package }}</p></td>
+          </tr>
+          <tr>
+            <th><p>Additional Request</p></th>
+            <td><p>{{ item.additional_request }}</p></td>
+          </tr>
+          <tr>
+            <th><p>Service</p></th>
+            <td><p>{{ item.service }}</p></td>
+          </tr>
+          </table>
       </div>
     </div>
   </div>
