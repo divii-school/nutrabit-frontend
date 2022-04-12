@@ -1,9 +1,30 @@
 {
-    "message":"안녕하세요!",
-    "address":{
-        "city": " "
+    "message": "안녕하세요!",
+    "address": {
+        "city": "콜카타"
     },
-    "module":{
-        
+    "common": {
+        "title": {
+            "login": "로그인"
+        },
+        "SubTitle":{
+            "PersonalMember": "개인회원"
+        },
+        "label":{
+            "ID": "아이디",
+            "Password": "비밀번호"
+        },
+        "placeholder":{
+            "EnterId": "아이디 입력",
+            "EnterPassword": "비밀번호 입력"
+        },
+        "QuickLinks":{
+            "RememberId": "아이디 저장",
+            "FindID": "아이디 찾기",
+            "FindPassword": "비밀번호 찾기",
+            "SignUp": "회원가입",
+            "CacaoLogin": "카카오로 시작하기",
+            "NaverLogin": "네이버로 시작하기"
+        }
     }
 }

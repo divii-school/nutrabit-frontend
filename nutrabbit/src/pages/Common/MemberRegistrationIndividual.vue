@@ -5,8 +5,8 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              Sign Up
-              <span>individual member</span>
+               {{ $t("common.QuickLinks.SignUp") }}
+              <span>{{ $t("common.SubTitle.PersonalMember") }}</span>
             </h1>
             <span>* Required</span>
           </div>
