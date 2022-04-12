@@ -229,7 +229,7 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
@@ -245,6 +245,8 @@
                         </div>
                     </div>
 
+                   
+
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
@@ -254,7 +256,7 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.addthumnailfile ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
@@ -279,7 +281,7 @@
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
                             <div
-                                :class="`${error.newthumnailfile ? 'custom-select-invalid' : 'custom-select'}`"
+                                :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
                             >
                                 <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ newthumnail }}</span>

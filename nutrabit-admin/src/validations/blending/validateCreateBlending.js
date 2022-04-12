@@ -59,6 +59,8 @@ const validateCreateBlending = (data) => {
     if (validator.isEmpty(file)) {
         errors.file = '파일을 업로드 해주세요';
     }
+
+    
     return {
         isInvalid: Object.keys(errors).length > 0,
         error: errors,

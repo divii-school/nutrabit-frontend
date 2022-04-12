@@ -51,25 +51,26 @@
 
 
                       
-                        
-                    <div class="p-grid p-formgrid p-mb-3">
+
+                      <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
-                                 {{$t('Category.list.thumnail')}}
+                                {{ $t('RawMaterialadd.list.banner') }}
                                 <span class="img-info">(File Type jpg,jpeg,png )</span>
                             </label>
-                            <div class="custom-select">
-                                <span v-if="!fileName">{{$t('button.select_file')}}</span>
+                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
+                                <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
-                            <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
+                            <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
-                  
                     </div>
+                        
+                    
                 </div>
             </div>
 

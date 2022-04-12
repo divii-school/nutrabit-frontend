@@ -43,7 +43,7 @@
                                     class="img-info"
                                 >(File Type jpg,jpeg,png )</span>
                             </label>
-                            <div class="custom-select">
+                            <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
@@ -301,7 +301,7 @@ export default {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
-    margin-top: 2%;
+    
 }
 
 .card {
