@@ -80,7 +80,7 @@
                             <template #loading>Loading data. Please wait.</template>
 
                             
-                            <Column :header="$t('Inquiry.list.slNo')" style="min-width: 12rem">
+                            <Column header="번호" style="min-width: 12rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
                                    

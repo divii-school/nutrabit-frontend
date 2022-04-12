@@ -101,7 +101,7 @@
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column
-                                :header="$t('RawMaterialadd.list.slNo')"
+                                header="번호"
                                 style="min-width: 12rem"
                             >
                                 <template #body="{ data }">
