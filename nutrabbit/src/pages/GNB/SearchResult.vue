@@ -155,7 +155,6 @@ export default {
       perPage: 4,
       FaqPerPage: 1,
       res_data: "",
-      myIp: '',
     };
   },
   setup() {
@@ -166,7 +165,6 @@ export default {
     if (this.searchKeyword) {
       this.showSarchResult(this.searchKeyword);
     }
-    this.getIp();
   },
   created() {
     this.commonService = new CommonService();
@@ -179,56 +177,46 @@ export default {
     },
   },
   methods: {
-    // get IP address
-    getIp() {
-      fetch("https://api.ipify.org?format=json")
-        .then((res) => res.json())
-        .then(({ ip }) => {
-          this.myIp = ip;
-        });
-    },
-    // get search result
-
     showSarchResult(searchKeyword) {
       this.commonService
-        .getSearchResult(searchKeyword, this.myIp)
+        .getSearchResult(searchKeyword, this.common.state.myIP)
         .then((res) => {
           const nutriBlending = [];
           const recomanedBlending = [];
           const rawMaterial = [];
           const faq = [];
           this.newSearchResult = res.data.data.search;
-          this.newSearchResult.map((value) => {
-            console.log({ value });
+          this.newSearchResult.map((value)=> {
+            console.log({value})
             if (value.type == "nutri_blending") {
-              nutriBlending.push({
-                id: value.id,
-                name_en: value.name_en,
-                image: value.image,
-              });
-            }
-            if (value.type == "recommended_blending") {
-              recomanedBlending.push({
-                id: value.id,
-                name_en: value.name_en,
-                image: value.image,
-              });
-            }
-            if (value.type == "raw_material") {
-              rawMaterial.push({
-                id: value.id,
-                name_en: value.name_en,
-                image: value.image,
-              });
-            }
-            if (value.type == "faq") {
-              faq.push({
-                id: value.id,
-                name_en: value.name_en,
-                description_en: value.description_en,
-              });
-            }
-          });
+                nutriBlending.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "recommended_blending") {
+                recomanedBlending.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "raw_material") {
+                rawMaterial.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "faq") {
+                faq.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  description_en: value.description_en,
+                });
+              }
+          })
           this.nutriBlending = nutriBlending;
           this.recomanedBlending = recomanedBlending;
           this.rawMaterial = rawMaterial;

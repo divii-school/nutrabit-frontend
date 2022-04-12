@@ -203,7 +203,6 @@ export default {
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
-      myIp: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -341,7 +340,7 @@ export default {
       fetch("https://api.ipify.org?format=json")
         .then((res) => res.json())
         .then(({ ip }) => {
-          this.myIp = ip;
+          this.common.state.myIP = ip;
         });
     },
     // search api (main)
@@ -359,7 +358,7 @@ export default {
     // get search history
     getHistory() {
       this.commonService
-        .getSearchHistory(this.myIp)
+        .getSearchHistory(this.common.state.myIP)
         .then((res) => {
           this.activeSearch = true;
           if (res.data.data.length > 0) {
@@ -390,7 +389,7 @@ export default {
     // delete all search history itema
     deleteAllHistory() {
       this.commonService
-        .deleteAllHistory(this.myIp)
+        .deleteAllHistory(this.common.state.myIP)
         .then((res) => {
           this.getHistory();
         })
