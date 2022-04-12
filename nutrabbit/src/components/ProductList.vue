@@ -1,20 +1,20 @@
 <template>
-  <div class="product-item">
+  <div class="product-item" :class="item.name_ko == 'ETC' ? 'with-input' : ''">
     <div class="radio-wrap">
       <label class="custom-radio">
         <input type="radio" name="radio" id="radio" :value="item.id" @click="getPackageId" />
         <span class="checkmark"></span>
       </label>
-      <div class="img-wrap">
-        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org//public' + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
+      <div class="img-wrap" v-if="item.name_ko != 'ETC' && item.name_ko != 'Unchecked'">
+        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org' + item.image_path" alt />
       </div>
     </div>
     <div class="material-details">
-      <h2>{{item.title}}</h2>
-      <div class="description">
-        <!-- <p>{{item.description_ko}}</p> -->
+      <h2>{{ item.name_ko }}</h2>
+      <div v-if="item.name_ko != 'ETC' && item.name_ko != 'Unchecked'" class="description">
+        <p>{{ item.description_ko }}</p>
         <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
-        <table>
+        <!-- <table>
           <tr>
             <th>Raw material</th>
             <td>{{ item.raw_material_name }}</td>
@@ -35,7 +35,10 @@
             <th>Service</th>
             <td>{{ item.service }}</td>
           </tr>
-          </table>
+          </table> -->
+      </div>
+      <div v-if="item.name_ko == 'ETC'" class="input-group">
+        <input type="text" @keyup="getEtc" placeholder="Etc input" />
       </div>
     </div>
   </div>
@@ -44,12 +47,22 @@
 <script>
 export default {
   name: "ProductList",
-  props:["item", "deleteRecommended", "deleteChoice"],
-   methods: {
-         getPackageId(event) {
-           this.$emit('changeId',event.target.value);
-           console.log(event.target.value)
-         }
-   }
+  props: ["item"],
+  methods: {
+    getPackageId(event) {
+      this.$emit('changeId', event.target.value);
+      if (this.item.name_ko == 'ETC') {
+        this.$emit('etcChecked', 'ETC');
+      }
+      else {
+        this.$emit('etcChecked', '');
+      }
+      //console.log(event.target.value)
+    },
+    getEtc(event) {
+      this.$emit('etcInput', event.target.value);
+      //console.log(event.target.value)
+    }
+  }
 };
 </script>

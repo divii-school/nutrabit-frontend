@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              Sign Up
-              <span>individual member</span>
+               {{ $t("common.QuickLinks.SignUp") }}
+              <span>{{ $t("common.SubTitle.PersonalMember") }}</span>
             </h1>
-            <span>* Required</span>
+            <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
           <form
             action=""
@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the Terms of Use.
+                   {{ $t("common.label.TermsCheckBox") }}
                     <input type="checkbox" v-model="termsCheck" @change="checkError" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,8 +32,7 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the collection and use of personal
-                    information.
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck" @change="checkError" />
                     <span class="checkmark"></span>
                   </label>
@@ -43,7 +42,7 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>name</label>
+                <label for=""><i class="icon-required"></i> {{ $t("common.label.Name") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -58,7 +57,7 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>ID</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.ID") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -76,7 +75,7 @@
                 <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>password</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Password") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -95,7 +94,7 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>verify password</label
+                  ><i class="icon-required"></i>{{ $t("common.label.VerifyPassword") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
@@ -111,7 +110,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>e-mail</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Email") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -135,7 +134,7 @@
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
-                  ><i class="icon-required"></i>Email Verification Number</label
+                  ><i class="icon-required"></i>{{ $t("common.label.EmailVerification") }}</label
                 >
                 <div class="input-group with-btn">
                   <div class="input-inner">
@@ -170,7 +169,7 @@
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>phone number</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -188,7 +187,7 @@
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>address</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input

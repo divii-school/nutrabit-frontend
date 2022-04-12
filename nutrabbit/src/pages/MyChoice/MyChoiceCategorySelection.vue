@@ -49,8 +49,10 @@
                   :name="item.name_ko"
                   :desc="item.description_ko"
                   :image="item.thumbnail_1_path"
+                  :image_hover="item.thumbnail_2_path"
                   image_link="http://api-nutrabbit-dev.dvconsulting.org/"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
+                  v-on:mouseover="hoverEffect($event)"
                 />
               </li>
             </ul>
@@ -107,14 +109,13 @@
 
                     <div class="img-wrap-hover">
                       <img
-                        :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
+                        :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_scnd_path"
                         alt
                       />
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2
-                      @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${data.id}`)"
+                    <h2 @click="gotoNextPage(data.id)"
                     >{{ data.material_name_ko }}</h2>
                     <div
                       @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${data.id}`)"
@@ -170,7 +171,8 @@ export default {
       sub_category_id: null,
       showModal: false,
       raw_material_id: null,
-      key: null
+      key: null,
+      close:false
     };
   },
   created() {
@@ -179,6 +181,7 @@ export default {
   mounted() {
     this.rawMaterial();
     this.allBlendingData();
+    localStorage.removeItem('raw_material_id');
   },
   methods: {
     showDetails(id) {
@@ -188,10 +191,18 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    hoverEffect(e){
+      this.close=true;
+    },
+     gotoNextPage(raw_material_id) {
+
+      localStorage.setItem('raw_material_id',raw_material_id);
+      this.$router.push('/mychoice-rawMaterial-detailed-page/');
+
+    },
     // rawMaterial list
     rawMaterial() {
-      let sub_cat = useRoute();
-      this.sub_category_id = sub_cat.params.id;
+      this.sub_category_id = localStorage.getItem('sub_category_id');
       const setSubCategory = this.sub_category_id;
 
       this.mychoiceService.getRawMaterial(setSubCategory).then((res) => {
@@ -213,7 +224,7 @@ export default {
       this.mychoiceService.getRecommendedData(limit, page).then((res) => {
         //console.log(res);
         if (res.status == 200) {
-          //  console.log('allBlendingData res', res.data.blendingData);
+           console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
 
         } else {
