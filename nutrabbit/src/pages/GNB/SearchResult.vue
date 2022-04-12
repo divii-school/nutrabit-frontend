@@ -166,6 +166,7 @@ export default {
     if (this.searchKeyword) {
       this.showSarchResult(this.searchKeyword);
     }
+    this.getIp();
   },
   created() {
     this.commonService = new CommonService();
@@ -190,7 +191,7 @@ export default {
 
     showSarchResult(searchKeyword) {
       this.commonService
-        .getSearchResult(searchKeyword, "115.187.38.46")
+        .getSearchResult(searchKeyword, this.myIp)
         .then((res) => {
           const nutriBlending = [];
           const recomanedBlending = [];
