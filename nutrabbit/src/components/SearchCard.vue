@@ -1,7 +1,7 @@
 <template>
   <div class="search-card-inner">
     <img class="search-result-img" v-bind:src="image_link + image" alt />
-    <div><img v-bind:src="image_link + image_hover" alt /></div>
+    <!-- <div><img v-bind:src="image_link + image_hover" alt /></div> -->
     <p class="text-center">{{ category }}</p>
     <template v-if="type == 'recomandedBlending'">
       <router-link :to="route_link">
