@@ -4,13 +4,13 @@ import validator from 'validator';
 const validateCreateBanner = (data) => {
     let errors = {};
 
-    const { title, link, file,state} = data;
+    const { title, link, file,status} = data;
 
     if (validator.isEmpty(title)) {
         errors.title = '제목을 입력해주세요';
     }
-    if (validator.isEmpty(state)) {
-        errors.state = '선택 해주세요';
+    if (validator.isEmpty(status)) {
+        errors.status = '선택 해주세요';
     }
     
     if (validator.isEmpty(link)) {

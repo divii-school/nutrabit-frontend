@@ -33,7 +33,10 @@
                             >
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
+
+
+                                <input type="file"  class="select-file p-inputtext p-component"  :class="`${error.file ? 'p-invalid' : ''}`"  v-on:change="onFileChange"   />
+
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -80,7 +83,7 @@
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
                             <label for="state2">{{ $t('Banner.list.status') }}</label>
                             <br />
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
@@ -90,6 +93,7 @@
                                 value="active"
                                 name="status"
                                 v-model="status"
+                                
                             />
                             <label for="yes">Yes</label>
 
@@ -102,7 +106,7 @@
                             />
                             <label for="no">No</label>
 
-                            <div class="text-red">{{ error.state }}</div>
+                            <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>
                 </div>
@@ -210,7 +214,7 @@ export default {
         addBanner() {
             let vcheckData = {
                 title: this.title,
-                state: this.dropdownValue == null ? '' : 'something',
+                status: this.dropdownValue == null ? '' : 'something',
                 sorting_order: this.sorting_order,
                 // type: this.dropdownValueType == null ? '' : 'something',
                 link: this.link,
@@ -257,6 +261,10 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-left: 15px;
+}
+
+.p-inputtext.p-invalid.p-component {
+    border-color: #f44336;
 }
 .custom-select-invalid {
     position: relative;

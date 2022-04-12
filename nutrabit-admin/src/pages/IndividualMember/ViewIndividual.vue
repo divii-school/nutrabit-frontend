@@ -130,7 +130,7 @@
         >
             <div class="p-field p-fluid">
                 <label for="username">{{ $t('Individual.list.newpassword') }}:</label>
-                <InputText id="password" type="password" v-model="new_password" />
+                <InputText id="password" type="text" v-model="new_password"  />
                 <small v-show="helptxt">{{ $t('password.help') }}</small>
                 <!-- <div class="text-redx">{{ error.new_password }}{{ errmsg }}</div> -->
             </div>

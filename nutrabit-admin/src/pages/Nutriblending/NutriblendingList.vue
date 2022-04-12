@@ -50,7 +50,7 @@
 
                     <template #empty>데이터가 없습니다 </template>
                     <template #loading> Loading data. Please wait. </template>
-                    <Column field="name" :header="$t('Sl.No.')">
+                    <Column field="name" header="번호">
                         <template #body="{ data }">
                             <span class="p-column-title">Sl.No.</span>
                             {{ data.sl_no }}
