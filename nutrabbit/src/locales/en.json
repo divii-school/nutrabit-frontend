@@ -12,7 +12,15 @@
         },
         "label":{
             "ID": "ID",
-            "Password": "Password"
+            "Password": "Password",
+            "TermsCheckBox": "(Required) I agree to the Terms of Use.",
+            "PersonalInfoCheckBox": "(Required) I agree to the collection and use of personal information.",
+            "Name": "Name",
+            "VerifyPassword": "Verify Password",
+            "Email": "Email",
+            "EmailVerification": "Email Verification Number",
+            "PhoneNumber": "Phone Number",
+            "Address": "Address"
         },
         "placeholder":{
             "EnterId": "Enter ID",
@@ -25,6 +33,9 @@
             "SignUp": "Sign Up",
             "CacaoLogin": "Login with Kakao",
             "NaverLogin": "Login with Naver"
+        },
+        "Error":{
+            "Resquired": "* Required"
         }
     },
     "button":{

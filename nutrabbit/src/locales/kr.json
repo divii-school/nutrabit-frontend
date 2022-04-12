@@ -12,7 +12,15 @@
         },
         "label":{
             "ID": "아이디",
-            "Password": "비밀번호"
+            "Password": "비밀번호",
+            "TermsCheckBox": "(필수) 이용약관에 동의합니다.",
+            "PersonalInfoCheckBox": "(필수) 개인정보 수집·이용에 동의합니다.",
+            "Name": "이름",
+            "VerifyPassword": "비밀번호 확인",
+            "Email": "이메일",
+            "EmailVerification": "이메일 인증번호",
+            "PhoneNumber": "휴대폰번호",
+            "Address": "주소"
         },
         "placeholder":{
             "EnterId": "아이디 입력",
@@ -25,6 +33,9 @@
             "SignUp": "회원가입",
             "CacaoLogin": "카카오로 시작하기",
             "NaverLogin": "네이버로 시작하기"
+        },
+        "Error":{
+            "Resquired": "* 필수항목"
         }
     }
 }
