@@ -25,7 +25,7 @@
                 <input
                   type="text"
                   placeholder="Enter your desired search term."
-                  @click="activeSearch = true"
+                  @click="getHistory"
                   v-model="sarchInput"
                 />
                 <router-link to @click="getSearch">
@@ -37,26 +37,33 @@
                 :class="activeSearch ? 'activeSearch' : ''"
               >
                 <div class="search-data-inner">
-                  <ul>
-                    <li v-for="(item, index) in searchData" :key="index">
-                      <router-link to class="search-title">{{
-                        item
-                      }}</router-link>
-                      <router-link
-                        to
-                        class="search-item-close"
-                        @click="removeGoal(index)"
-                      >
-                        <i class="icon-close-search"></i>
-                      </router-link>
-                    </li>
-                  </ul>
-                  <!-- <div class="no-search-data">
-                  <p>There are no recent searches.</p>
-                </div> -->
+                  <template v-if="searchData.length > 0">
+                    <ul>
+                      <li v-for="(item, index) in searchData" :key="index">
+                        <router-link
+                          to
+                          class="search-title"
+                          @click="getSearchFromHistory(item.search_data)"
+                          >{{ item.search_data }}</router-link
+                        >
+                        <router-link
+                          to
+                          class="search-item-close"
+                          @click="deleteHistory(item.id)"
+                        >
+                          <i class="icon-close-search"></i>
+                        </router-link>
+                      </li>
+                    </ul>
+                  </template>
+                  <template v-else>
+                    <div class="no-search-data">
+                      <p>There are no recent searches.</p>
+                    </div>
+                  </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="this.searchData = []">
+                  <router-link to @click="deleteAllHistory">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -196,7 +203,6 @@ export default {
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
-      myIp: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -257,7 +263,9 @@ export default {
           ],
         },
       ],
-      searchData: ["muscular system", "aloe", "nervous system"],
+      searchData: [],
+      AllSearchId: [],
+      // SearchHistoryTitle: [],
     };
   },
   setup() {
@@ -288,6 +296,7 @@ export default {
       this.activeSearch = false;
     },
     changeLanguage() {},
+    // logout
     logOut() {
       if (this.logedInUserDetails) {
         localStorage.clear();
@@ -297,6 +306,7 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    // side menu restriction before login
     onClickLink(link) {
       if (this.logedInUserDetails) {
         this.$router.push(link);
@@ -316,6 +326,7 @@ export default {
     sideMenuOpen() {
       this.active = true;
     },
+    // user details
     getUserInfo() {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
@@ -323,33 +334,68 @@ export default {
         });
       }
     },
-    removeGoal(index) {
-      this.searchData.splice(index, 1);
-    },
 
     // search API
     getIp() {
       fetch("https://api.ipify.org?format=json")
         .then((res) => res.json())
         .then(({ ip }) => {
-          this.myIp = ip;
+          this.common.state.myIP = ip;
         });
     },
+    // search api (main)
     getSearch() {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
       } else {
-        this.commonService
-          .getSearchResult(this.sarchInput, this.myIp)
-          .then((res) => {
-            if (res.status == 200) {
-              this.common.state.SearchResult = res.data.data.search;
-              this.$router.push("/search-result");
-              this.showMobSearch = false;
-              this.activeSearch = false;
-            }
-          });
+        this.common.state.searchKeyword = this.sarchInput;
+        this.showMobSearch = false;
+        this.activeSearch = false;
+        this.sarchInput = "";
+        this.$router.push("/search-result");
       }
+    },
+    // get search history
+    getHistory() {
+      this.commonService
+        .getSearchHistory(this.common.state.myIP)
+        .then((res) => {
+          this.activeSearch = true;
+          if (res.data.data.length > 0) {
+            this.searchData = res.data.data;
+          }
+        })
+        .catch((err) => {
+          this.searchData = [];
+          return false;
+        });
+    },
+    // search with saerch history
+    getSearchFromHistory(search_data) {
+      this.common.state.searchKeyword = search_data;
+      this.showMobSearch = false;
+      this.activeSearch = false;
+      this.sarchInput = "";
+      this.$router.push("/search-result");
+    },
+    // delete single search history itema
+    deleteHistory(searchId) {
+      this.commonService.deleteSearchHistory(searchId).then((res) => {
+        if (res.status == 200) {
+          this.getHistory();
+        }
+      });
+    },
+    // delete all search history itema
+    deleteAllHistory() {
+      this.commonService
+        .deleteAllHistory(this.common.state.myIP)
+        .then((res) => {
+          this.getHistory();
+        })
+        .catch((err) => {
+          return false;
+        });
     },
   },
   computed: {

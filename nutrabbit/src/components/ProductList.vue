@@ -14,6 +14,28 @@
       <div v-if="item.name_ko != 'ETC' && item.name_ko != 'Unchecked'" class="description">
         <p>{{ item.description_ko }}</p>
         <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
+        <!-- <table>
+          <tr>
+            <th>Raw material</th>
+            <td>{{ item.raw_material_name }}</td>
+          </tr>
+          <tr>
+            <th>Formulation</th>
+            <td>{{ item.formulation }}</td>
+          </tr>
+          <tr>
+            <th>Package</th>
+            <td>{{ item.package }}</td>
+          </tr>
+          <tr>
+            <th>Additional Request</th>
+            <td>{{ item.additional_request }}</td>
+          </tr>
+          <tr>
+            <th>Service</th>
+            <td>{{ item.service }}</td>
+          </tr>
+          </table> -->
       </div>
       <div v-if="item.name_ko == 'ETC'" class="input-group">
         <input type="text" @keyup="getEtc" placeholder="Etc input" />
