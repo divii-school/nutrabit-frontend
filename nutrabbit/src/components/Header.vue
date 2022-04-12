@@ -349,18 +349,11 @@ export default {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
       } else {
-        this.commonService
-          .getSearchResult(this.sarchInput, this.myIp)
-          .then((res) => {
-            if (res.status == 200) {
-              this.common.state.SearchResult = res.data.data.search;
-              alert("searchData");
-              this.$router.push("/search-result");
-              this.showMobSearch = false;
-              this.activeSearch = false;
-              this.sarchInput = "";
-            }
-          });
+        this.common.state.searchKeyword = this.sarchInput;
+        this.showMobSearch = false;
+        this.activeSearch = false;
+        this.sarchInput = "";
+        this.$router.push("/search-result");
       }
     },
     // get search history
@@ -380,15 +373,11 @@ export default {
     },
     // search with saerch history
     getSearchFromHistory(search_data) {
-      this.commonService.getSearchResult(search_data, this.myIp).then((res) => {
-        if (res.status == 200) {
-          this.common.state.SearchResult = res.data.data.search;
-          this.$router.push("/search-result");
-          this.showMobSearch = false;
-          this.activeSearch = false;
-          this.sarchInput = "";
-        }
-      });
+      this.common.state.searchKeyword = search_data;
+      this.showMobSearch = false;
+      this.activeSearch = false;
+      this.sarchInput = "";
+      this.$router.push("/search-result");
     },
     // delete single search history itema
     deleteHistory(searchId) {

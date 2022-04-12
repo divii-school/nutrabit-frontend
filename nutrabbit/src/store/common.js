@@ -4,6 +4,7 @@ const state = reactive({
   AppData: undefined,
   userId: localStorage.getItem("uid"),
   name: '',
+  searchKeyword: '',
   SearchResult: undefined,
 });
 
