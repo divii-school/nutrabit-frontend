@@ -2,18 +2,11 @@
   <div class="main-body">
     <div class="container-medium">
       <div class="search-result-main">
-        <!-- <div class="search-wrap">
-          <div class="search-inner">
-            <input type="text" placeholder="Search" />
-            <a href="#">
-              <i class="icon-search-black"></i>
-            </a>
-          </div>
-        </div> -->
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
             Total
-            <span>{{ this.newSearchResult.length }}</span>result
+            <span>{{ this.newSearchResult.length }}</span
+            >result
           </p>
           <p class="search-result-title" v-else>
             Total
@@ -24,7 +17,10 @@
               <h1 class="list-heading">nutri 3.3</h1>
               <div class="search-list-inner" v-if="nutriBlending.length > 0">
                 <div class="search-list-item">
-                  <template v-for="(item, index) of NewNutriBlending" :key="index">
+                  <template
+                    v-for="(item, index) of NewNutriBlending"
+                    :key="index"
+                  >
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -45,9 +41,15 @@
             </li>
             <li class="search-resul-list">
               <h1 class="list-heading">Recommended Blending</h1>
-              <div class="search-list-inner" v-if="recomanedBlending.length > 0">
+              <div
+                class="search-list-inner"
+                v-if="recomanedBlending.length > 0"
+              >
                 <div class="search-list-item">
-                  <template v-for="(item, index) of NewRecomanedBlending" :key="index">
+                  <template
+                    v-for="(item, index) of NewRecomanedBlending"
+                    :key="index"
+                  >
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -70,7 +72,10 @@
               <h1 class="list-heading">Raw Material</h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
-                  <template v-for="(item, index) of NewRawMaterial" :key="index">
+                  <template
+                    v-for="(item, index) of NewRawMaterial"
+                    :key="index"
+                  >
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
@@ -91,23 +96,15 @@
             </li>
           </ul>
 
-          <!-- this is for no data -->
-
-          <!-- <ul class="search-resul-list-wrap faq">
-            <li class="search-resul-list">
-              <h1 class="list-heading">No Data Sec</h1>
-              <div class="no-result-found">
-                <span>No results were found for your search.</span>
-              </div>
-            </li>
-          </ul>-->
-
           <ul class="search-resul-list-wrap faq">
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
               <template v-if="faq.length > 0">
                 <template v-for="(item, index) in NewFaq" :key="index">
-                  <SearchAccordion :title="item.name_en" :description="item.description_en" />
+                  <SearchAccordion
+                    :title="item.name_en"
+                    :description="item.description_en"
+                  />
                 </template>
                 <pagination
                   v-model="page4"
@@ -132,6 +129,7 @@
 <script>
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
+import CommonService from "../../services/CommonService";
 import { inject } from "vue";
 export default {
   name: "SearchResult",
@@ -139,19 +137,6 @@ export default {
     SearchCard,
     SearchAccordion,
   },
-  // computed: {
-  //   filteresult() {
-  //     return this.searchResultData.filter((item) => {
-  //       for (const { desc } of item.searchListData) {
-  //         if (desc.indexOf(this.search) > -1) {
-  //           return item;
-  //         } else {
-  //           return "no data";
-  //         }
-  //       }
-  //     });
-  //   },
-  // },
   data() {
     return {
       newSearchResult: [],
@@ -176,71 +161,74 @@ export default {
     const common = inject("common");
     return { common };
   },
-  mounted(){
-    this.showSarchResult();
+  mounted() {
+    if (this.searchKeyword) {
+      this.showSarchResult(this.searchKeyword);
+    }
   },
-  // created() {
-  //   console.log("created")
-  //   this.showSarchResult();
-  //   this.callme();
-  // },
-  // mounted() {
-  //   console.log("mounted");
-  //   this.callme();
-  // },
-  // updated() {
-  //   console.log("updated");
-  //   this.callme();
-  // },
-  // watch: {
-  //   $route() {
-  //     console.log("watch");
-  //     this.callme();
-  //   }
-  // },
-  methods: {
-    // callme() {
-    //   console.log("callme");
-    // },
-    showSarchResult() {
-      if (this.common.state.SearchResult != undefined) {
-        this.newSearchResult = this.common.state.SearchResult;
-        this.newSearchResult.map((value) => {
-          if (value.type == "nutri_blending") {
-            return this.nutriBlending.push({
-              id: value.id,
-              name_en: value.name_en,
-              image: value.image,
-            });
-          }
-          if (value.type == "recommended_blending") {
-            return this.recomanedBlending.push({
-              id: value.id,
-              name_en: value.name_en,
-              image: value.image,
-            });
-          }
-          if (value.type == "raw_material") {
-            return this.rawMaterial.push({
-              id: value.id,
-              name_en: value.name_en,
-              image: value.image,
-            });
-          }
-          if (value.type == "faq") {
-            return this.faq.push({
-              id: value.id,
-              name_en: value.name_en,
-              description_en: value.description_en,
-            });
-          }
-        });
-
-        this.myCallback1(1);
-        this.myCallback2(1);
-        this.myCallback3(1);
-        this.myCallback4(1);
+  created() {
+    this.commonService = new CommonService();
+  },
+  watch: {
+    searchKeyword(newkeyword) {
+      if (newkeyword) {
+        this.showSarchResult(newkeyword);
       }
+    },
+  },
+  methods: {
+    showSarchResult(searchKeyword) {
+      this.commonService
+        .getSearchResult(searchKeyword, this.common.state.myIP)
+        .then((res) => {
+          const nutriBlending = [];
+          const recomanedBlending = [];
+          const rawMaterial = [];
+          const faq = [];
+          this.newSearchResult = res.data.data.search;
+          this.newSearchResult.map((value)=> {
+            console.log({value})
+            if (value.type == "nutri_blending") {
+                nutriBlending.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "recommended_blending") {
+                recomanedBlending.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "raw_material") {
+                rawMaterial.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  image: value.image,
+                });
+              }
+              if (value.type == "faq") {
+                faq.push({
+                  id: value.id,
+                  name_en: value.name_en,
+                  description_en: value.description_en,
+                });
+              }
+          })
+          this.nutriBlending = nutriBlending;
+          this.recomanedBlending = recomanedBlending;
+          this.rawMaterial = rawMaterial;
+          this.faq = faq;
+          this.myCallback1(1);
+          this.myCallback2(1);
+          this.myCallback3(1);
+          this.myCallback4(1);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
     },
 
     // paginations
@@ -267,6 +255,11 @@ export default {
       const startIndex = (ClickPage - 1) * this.perPage;
       const endIndex = startIndex + this.perPage;
       this.NewFaq = this.faq.slice(startIndex, endIndex);
+    },
+  },
+  computed: {
+    searchKeyword() {
+      return this.common.state.searchKeyword;
     },
   },
 };

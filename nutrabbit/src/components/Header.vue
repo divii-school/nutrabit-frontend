@@ -195,7 +195,6 @@ export default {
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
-      myIp: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -333,7 +332,7 @@ export default {
       fetch("https://api.ipify.org?format=json")
         .then((res) => res.json())
         .then(({ ip }) => {
-          this.myIp = ip;
+          this.common.state.myIP = ip;
         });
     },
     // search api (main)
@@ -341,24 +340,17 @@ export default {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
       } else {
-        this.commonService
-          .getSearchResult(this.sarchInput, this.myIp)
-          .then((res) => {
-            if (res.status == 200) {
-              this.common.state.SearchResult = res.data.data.search;
-              alert("searchData");
-              this.$router.push("/search-result");
-              this.showMobSearch = false;
-              this.activeSearch = false;
-              this.sarchInput = "";
-            }
-          });
+        this.common.state.searchKeyword = this.sarchInput;
+        this.showMobSearch = false;
+        this.activeSearch = false;
+        this.sarchInput = "";
+        this.$router.push("/search-result");
       }
     },
     // get search history
     getHistory() {
       this.commonService
-        .getSearchHistory(this.myIp)
+        .getSearchHistory(this.common.state.myIP)
         .then((res) => {
           this.activeSearch = true;
           if (res.data.data.length > 0) {
@@ -372,15 +364,11 @@ export default {
     },
     // search with saerch history
     getSearchFromHistory(search_data) {
-      this.commonService.getSearchResult(search_data, this.myIp).then((res) => {
-        if (res.status == 200) {
-          this.common.state.SearchResult = res.data.data.search;
-          this.$router.push("/search-result");
-          this.showMobSearch = false;
-          this.activeSearch = false;
-          this.sarchInput = "";
-        }
-      });
+      this.common.state.searchKeyword = search_data;
+      this.showMobSearch = false;
+      this.activeSearch = false;
+      this.sarchInput = "";
+      this.$router.push("/search-result");
     },
     // delete single search history itema
     deleteHistory(searchId) {
@@ -393,7 +381,7 @@ export default {
     // delete all search history itema
     deleteAllHistory() {
       this.commonService
-        .deleteAllHistory(this.myIp)
+        .deleteAllHistory(this.common.state.myIP)
         .then((res) => {
           this.getHistory();
         })

@@ -111,24 +111,25 @@
                 }
                 .search-list-inner{
                     .search-list-item {
-                        margin-bottom: 40px;
-                        margin-top: 20px;
+                        margin: 20px -1% 40px;
                         display: flex;
                         align-items: flex-start;
                         padding: 0 27px;
-    
+                        
                         @media screen and (max-width: 1200px) {
                             padding: 0 10px;
                         }
     
                         @media screen and (max-width: 768px) {
                             margin-bottom: 20px;
+                            flex-direction: column;
                         }
     
                         .search-card-inner {
                             flex: 0 0 25%;
                             max-width: 25%;
                             width: 25%;
+                            padding:  0 1%;
                             @media screen and (max-width: 768px) {
                                 width: 100%;
                                 max-width: 100%;
@@ -139,6 +140,7 @@
                             .search-result-img {
                                 width: 240px;
                                 height: 240px;
+                                object-fit: cover;
     
                                 @media screen and (max-width: 768px) {
                                     display: none;

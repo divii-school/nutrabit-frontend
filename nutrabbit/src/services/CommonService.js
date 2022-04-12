@@ -107,9 +107,11 @@ export default class CommonService {
 
   // search
   async getSearchResult(searchInput, ip) {
-    return await axios.post(`/search`, { searchData: searchInput, ipAddress: ip })
-      .then((res) => res)
-      .catch((err) => err)
+    return new Promise((resolve, reject) => {
+      axios.post(`/search`, { searchData: searchInput, ipAddress: ip })
+      .then((res) => resolve(res))
+      .catch((err) => reject(err))
+    }) 
   }
   // get history
   async getSearchHistory(ip) {

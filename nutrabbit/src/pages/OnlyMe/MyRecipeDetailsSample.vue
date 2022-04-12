@@ -23,43 +23,34 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>One</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
+                    <tr v-for="(item, index) of options" :key="index">
+                      <!-- <tr> -->
+                        <td>{{ index +1 }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.explanation }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="fGroup">
                 <label>Title</label>
-                <input type="text" name="" placeholder="My own recipe made with guar gum hydrolyzate">
+                <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
                 <div class="ansBlock">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ipsum adipiscing malesuada neque. Ut tincidunt vestibulum elementum leo scelerisque. Id consequat mi tempus etiam arcu neque, neque, diam tortor. Etiam amet commodo placerat elementum, laoreet ut scelerisque euismod. Pretium viverra id massa in eu vitae tellus. Nibh at ut tincidunt dignissim. Varius vulputate amet commodo netus. Consectetur proin convallis tincidunt sed tellus ornare diam dolor. Nulla nibh fringilla lacus consequat eget. Tellus mattis ullamcorper commodo, lacus. Aliquam feugiat id lectus aenean semper donec. Phasellus laoreet quis nulla placerat tempus vivamus. Libero tempor habitant pharetra, faucibus amet.</p>
+                    <p>{{additional_request}}</p>
                 </div>
               </div>
               <div class="fGroup">
                 <label>Answer</label>
                 <div class="ansBlock">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ipsum adipiscing malesuada neque. Ut tincidunt vestibulum elementum leo scelerisque. Id consequat mi tempus etiam arcu neque, neque, diam tortor. Etiam amet commodo placerat elementum, laoreet ut scelerisque euismod. Pretium viverra id massa in eu vitae tellus. Nibh at ut tincidunt dignissim. Varius vulputate amet commodo netus. Consectetur proin convallis tincidunt sed tellus ornare diam dolor. Nulla nibh fringilla lacus consequat eget. Tellus mattis ullamcorper commodo, lacus. Aliquam feugiat id lectus aenean semper donec. Phasellus laoreet quis nulla placerat tempus vivamus. Libero tempor habitant pharetra, faucibus amet.</p>
+                    <p>{{answer_by_admin}}</p>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey">Previous</button>
+                  <button class="btn-small-solid grey" @click="$router.go(-1)">Previous</button>
                 </div>
             </div>
             </div>
@@ -75,6 +66,8 @@
 <script>
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyApplicationDetails from "../../services/MyApplicationDetails";
+import { useRoute } from "vue-router";
 export default {
   name: "MyRecipeDetails",
   components: {
@@ -83,6 +76,11 @@ export default {
   },
   data() {
     return {
+      sampleDetailID:"",
+      title:"",
+      answer_by_admin:"",
+      additional_request:"",
+      options: [],
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -102,5 +100,51 @@ export default {
       // ],
     };
   },
+
+  created() {
+    this.myApplicationDetails = new MyApplicationDetails();
+  },
+
+  methods: {
+
+    sampledetail() {
+      this.sampleDetailID = this.$route.params.id;
+      console.log("this.sampleDetailID",this.sampleDetailID);
+
+      this.myApplicationDetails.sampledetail(this.sampleDetailID)
+        .then((res) => {
+        if (res.status == 200) {
+          console.log("res",res);
+          // this.options = res.data.data[0].options;
+          this.title = res.data.data[0].title;
+          this.answer_by_admin = res.data.data[0].answer_by_admin;
+          this.additional_request = res.data.data[0].additional_request;
+
+          Array.from(res.data.data[0].options).forEach((ele)=>{
+              //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+              let op_type = ele.split(':')[0];
+              let op_val = ele.split(':')[1];
+
+              this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
+
+                if(res.status == 200){
+                      this.options.push( res.data[0] )
+                }
+                
+              })
+            })
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    },
+
+  },
+
+  mounted() {
+    this.sampledetail();
+  }
+
 };
 </script>
