@@ -21,7 +21,7 @@
                     type="password"
                     placeholder="Enter new password"
                     v-model="password"
-                    @keyup="checkError"
+                   
                   />
                 </div>
               </div>
@@ -41,7 +41,7 @@
                     type="password"
                     placeholder="New password confirmation"
                     v-model="confirmPassword"
-                    @keyup="checkError"
+                   
                   />
                 </div>
               </div>
