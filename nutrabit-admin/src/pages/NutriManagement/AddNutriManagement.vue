@@ -27,7 +27,7 @@
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.MainRaw') }}</label>
-                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
+                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" :placeholder="$t('Nutri3.Add.MainRaw')" optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
                         </div>
                     </div>
 
