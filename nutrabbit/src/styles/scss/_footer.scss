@@ -209,10 +209,10 @@ footer{
                         &::before{
                             position: absolute;
                             content: "";
-                            background: $grey-BD;
-                            height: 15px;
+                            background: $grey-4C;
+                            height: 10px;
                             width: 1px;
-                            top: 4px;
+                            top: 7px;
                             left: 0;
                             @media screen and (max-width: 768px){
                                 height: 10px;
