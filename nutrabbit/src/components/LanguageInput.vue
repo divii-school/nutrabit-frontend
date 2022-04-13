@@ -1,6 +1,6 @@
 <template>
   <div class="lang-dropdown">
-    <select v-model="$i18n.locale">
+    <select v-model="$i18n.locale" class="select-dropdown">
       <option v-for="lang in langs" :key="lang.code" :value="lang.code">
         {{ lang.name }}
       </option>
@@ -38,12 +38,10 @@ export default {
     font-size: 14px;
     line-height: 17px;
     color: $black-33;
-    background: transparent;
     appearance: none;
-    background: url("@/assets/icons/header-dropdown-arrow.png") no-repeat 70% center;
+    background: $white-1 url("@/assets/icons/header-dropdown-arrow.png") no-repeat 70% center;
     background-size: auto 18px;
-    display: inline-block;
-    &:focus{
+    &:focus {
       outline: none;
     }
   }
