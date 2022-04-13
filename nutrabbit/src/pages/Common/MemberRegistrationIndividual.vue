@@ -23,7 +23,7 @@
                     <input
                       type="checkbox"
                       v-model="termsCheck"
-                      @change="checkError"
+                      
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -40,7 +40,7 @@
                     <input
                       type="checkbox"
                       v-model="personalCheck"
-                      @change="checkError"
+                      
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -61,7 +61,7 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Name')"
                       v-model="name"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EnterId')"
                       v-model="username"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -102,7 +102,7 @@
                         $t('common.placeholder.PasswordFormatSignup')
                       "
                       v-model="password"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -123,7 +123,7 @@
                       type="password"
                       :placeholder="$t('common.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -141,7 +141,7 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Email')"
                       v-model="email"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button
@@ -150,7 +150,7 @@
                     :class="{ grey: isVerification }"
                     :disabled="emailValidated"
                   >
-                    Send verification code
+                    {{ verificationStatus }}
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
@@ -170,7 +170,7 @@
                       "
                       v-model="emailOTP"
                       maxlength="6"
-                      @keyup="checkError"
+                      
                     />
                     <span
                       class="time"
@@ -187,7 +187,7 @@
                     :class="{ grey: isActive }"
                     @click="verifyOTP"
                     :disabled="otpValidate"
-                    @keyup="checkError"
+                    
                   >
                     certification
                   </button>
@@ -206,7 +206,7 @@
                       type="text"
                       :placeholder="$t('common.placeholder.PhoneNumber')"
                       v-model="phoneNumber"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -228,7 +228,7 @@
                       :placeholder="$t('common.placeholder.EnterAddress')"
                       v-model="address"
                       disabled
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
@@ -242,7 +242,7 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EnterDetailedAddress')"
                       v-model="detsilAddress"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -335,7 +335,7 @@ export default {
       detsilAddress: "",
       checkName: [],
       error: {},
-      timer: 130,
+      timer: 180,
       newTime: "",
       isActive: true,
       isVerification: false,
@@ -345,6 +345,7 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
+      verificationStatus : 'Send verification code'
     };
   },
   created() {
@@ -435,7 +436,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 130;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -453,6 +454,7 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
+              this.verificationStatus = 'Resend verification code'
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             return this.$swal(res.response.data.message);

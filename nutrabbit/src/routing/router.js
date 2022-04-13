@@ -257,7 +257,7 @@ const routes = [
         name: 'MyRecipeDetails',
         path: '/my-recipe-details/:type/:id',
         component: MyRecipeDetails,
-        beforeEnter : guard
+        //beforeEnter : guard
     },
     {
         name: 'MyApplicationDetails',

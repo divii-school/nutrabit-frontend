@@ -20,7 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     (Required) I agree to the Terms of Use.
-                    <input type="checkbox" v-model="termsCheck" @change="checkError"/>
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -34,7 +34,7 @@
                   <label class="custom-check">
                     (Required) I agree to the collection and use of personal
                     information.
-                    <input type="checkbox" v-model="personalCheck" @change="checkError" />
+                    <input type="checkbox" v-model="personalCheck"  />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -56,7 +56,7 @@
                       type="text"
                       placeholder="Enter business number"
                       v-model="businessNumber"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -74,7 +74,7 @@
                       type="text"
                       placeholder="Enter business name"
                       v-model="businessName"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -89,7 +89,7 @@
                       type="text"
                       placeholder="Enter depertment name"
                       v-model="depertment"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -109,7 +109,7 @@
                       type="text"
                       placeholder="Enter the person in charge"
                       v-model="contactPerson"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -126,7 +126,7 @@
                       type="text"
                       placeholder="Enter your name"
                       v-model="name"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -141,7 +141,7 @@
                       type="text"
                       placeholder="Enter ID"
                       v-model="username"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -159,7 +159,7 @@
                       type="password"
                       placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
                       v-model="password"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@
                       type="password"
                       placeholder="verify password"
                       v-model="confirmPassword"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -194,7 +194,7 @@
                       type="text"
                       placeholder="Enter your email"
                       v-model="email"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button
@@ -203,7 +203,7 @@
                     :class="{ grey: isVerification }"
                     :disabled="emailValidated"
                   >
-                    Send verification code
+                    {{ verificationStatus }}
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
@@ -220,7 +220,7 @@
                       placeholder="Enter your email verification code"
                       v-model="emailOTP"
                       maxlength="6"
-                      @keyup="checkError"
+                      
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
                       newTime
@@ -249,7 +249,7 @@
                       type="text"
                       placeholder="Enter your mobile phone number"
                       v-model="phoneNumber"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -268,7 +268,7 @@
                       placeholder="Enter address"
                       v-model="address"
                       disabled
-                      @keyup="checkError"
+                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
@@ -282,7 +282,7 @@
                       type="text"
                       placeholder="Enter detailed address"
                       v-model="detsilAddress"
-                      @keyup="checkError"
+                      
                     />
                   </div>
                 </div>
@@ -325,7 +325,7 @@ export default {
       depertment: "",
       contactPerson: "",
       error: {},
-      timer: 130,
+      timer: 180,
       isActive: true,
       isVerification: false,
       emailValidated: 0,
@@ -334,6 +334,7 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
+      verificationStatus : 'Send verification code'
     };
   },
   created() {
@@ -432,7 +433,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 130;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -450,6 +451,7 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
+              this.verificationStatus = 'Resend verification code'
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             return this.$swal(res.response.data.message);

@@ -63,7 +63,7 @@
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
-                  {{ userDetails.name }}
+                  {{ userName }}
                 </button>
                 <div class="dropdown-content">
                   <router-link to>Change of personal information</router-link>
@@ -160,6 +160,7 @@ export default {
       token: localStorage.token ? true : false,
       userId: this.common.state.userId,
       userDetails: "",
+      userName : "",
       localuser: localStorage.getItem('uname') ? localStorage.getItem('uname') : 'no-name',
       logedInUserDetails: false,
       active: false,
@@ -241,13 +242,25 @@ export default {
     this.personalInfoService = new PersonalInfoService();
     this.commonService = new CommonService();
   },
-  mounted() {
+
+  updated(){
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.userName = localStorage.getItem('uname');
       this.get;
+      console.log(this.userDetails)
     } else {
       this.logedInUserDetails = false;
     }
+  },
+
+  mounted() {
+    // if (localStorage.token) {
+    //   this.logedInUserDetails = true;
+    //   this.get;
+    // } else {
+    //   this.logedInUserDetails = false;
+    // }
     this.getUserInfo();
     this.getIp();
   },
