@@ -498,7 +498,10 @@ textarea {
   .blue {
     background: $green-68;
   }
-
+  .blue-btn-solid{
+    border-color: $green-68 !important;
+    background: $green-68 !important;
+  }
   .my-choice-heading {
     h2 {
       color: $green-68 !important;

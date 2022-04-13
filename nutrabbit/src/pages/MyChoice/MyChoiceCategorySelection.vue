@@ -50,7 +50,7 @@
                   :desc="item.description_ko"
                   :image="item.thumbnail_1_path"
                   :image_hover="item.thumbnail_2_path"
-                  image_link="http://api-nutrabbit-dev.dvconsulting.org/"
+                  :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
                   v-on:mouseover="hoverEffect($event)"
                 />
@@ -118,7 +118,7 @@
                     <h2 @click="gotoNextPage(data.id)"
                     >{{ data.material_name_ko }}</h2>
                     <div
-                      @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/${data.id}`)"
+                      @click="gotoNextPage(data.id)"
                       class="description"
                     >
                       <p>{{ data.material_description_ko }}</p>

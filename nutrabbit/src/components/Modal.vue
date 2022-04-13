@@ -50,7 +50,7 @@ export default {
     close2(link) {
       this.$router.push(link);
       this.$emit("confirm","confirm");
-      
+      this.$emit("close");
     },
   },
 };

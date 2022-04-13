@@ -374,7 +374,7 @@ export default {
         return;
       } else {
         this.commonService
-          .individalRegistration(
+          .BusinessRegistration(
             this.name,
             this.username,
             this.password,
