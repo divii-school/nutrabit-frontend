@@ -57,7 +57,7 @@
                   :name="item.name_ko"
                   :desc="item.description_ko"
                   :image="item.thumbnail_1_path"
-                  image_link="http://api-nutrabbit-dev.dvconsulting.org/"
+                  :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
                 />
               </li>
@@ -85,6 +85,7 @@ export default {
   data() {
     return {
       blendingData: [],
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
   created() {

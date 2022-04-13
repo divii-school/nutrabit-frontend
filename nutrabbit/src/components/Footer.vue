@@ -1,4 +1,9 @@
 <template>
+  <!-- <div class="totop-wrap">
+    <a href="javascript:void(0)" class="totop">
+      <span class="round"><img src="../assets/images/chat-icon.png" /></span>
+    </a>
+  </div> -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
@@ -12,7 +17,11 @@
             </div>
             <div class="link-right">
               <div class="footer-dropdown">
-                <vue-select :options="['English', 'Korean']" placeholder="English" close-on-select>
+                <vue-select
+                  :options="['English', 'Korean']"
+                  placeholder="English"
+                  close-on-select
+                >
                 </vue-select>
               </div>
             </div>
@@ -20,22 +29,22 @@
         </div>
       </div>
       <div class="footer-container">
-      <div class="footer-address">
-        <a class="footer-logo" href="">
-          <img src="../assets/images/footer-logo.svg" alt="" />
-        </a>
-        <div class="address">
-          <ul>
-            <li>Newtrabit Co., Ltd.</li>
-            <li>CEO: Min Kyung-ran</li>
-            <li class="active">Business registration number: 603-88-01301</li>
-          </ul>
-          <p>
-            Headquarters: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul
-          </p>
-          <a href="">Copyright 2020 Nutrabbit. All right saved.</a>
+        <div class="footer-address">
+          <a class="footer-logo" href="">
+            <img src="../assets/images/footer-logo.svg" alt="" />
+          </a>
+          <div class="address">
+            <ul>
+              <li>Newtrabit Co., Ltd.</li>
+              <li>CEO: Min Kyung-ran</li>
+              <li class="active">Business registration number: 603-88-01301</li>
+            </ul>
+            <p>
+              Headquarters: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul
+            </p>
+            <a href="">Copyright 2020 Nutrabbit. All right saved.</a>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </footer>

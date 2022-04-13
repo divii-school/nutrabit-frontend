@@ -11,7 +11,7 @@
               <router-link to="/my-choice">my choice</router-link>
             </li>
             <li>
-              <router-link to>nutri 3.3 blending</router-link>
+              <router-link to="/service-intro">nutri 3.3 blending</router-link>
             </li>
           </ul>
         </div>
@@ -19,7 +19,7 @@
           <div class="search-wrap-outer">
             <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
-                <input type="text" placeholder="Enter your desired search term." @click="getHistory"
+                <input type="text" placeholder="Enter search term" @click="getHistory"
                   v-model="sarchInput" />
                 <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
@@ -63,10 +63,10 @@
               <div class="dropdown">
                 <button class="dropbtn">
                   <i class="login-icon"></i>
-                  {{ userDetails.name }}
+                  {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to>Change of personal information</router-link>
+                  <router-link to="/personal-information">Change of personal information</router-link>
                   <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
@@ -92,9 +92,9 @@
     </div>
   </header>
   <div class="right-menu-screen" :class="{ active: active }">
-    <div class="top-box right-small-box">
-      <div class="black-box"></div>
-      <div class="white-box">
+    <div class="right-small-box">
+      <!-- <div class="black-box"></div> -->
+      <div class="white-box" :class="{ active: active }">
         <div class="closeMenu" @click="active = !active">
           <router-link to>
             <img src="/src/assets/icons/menu-close.svg" />
@@ -108,7 +108,6 @@
                 <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
                 </router-link>
                 <i class="icon-leftArw"></i>
-                {{ localuser }}
               </template>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{
@@ -160,6 +159,7 @@ export default {
       token: localStorage.token ? true : false,
       userId: this.common.state.userId,
       userDetails: "",
+      userName : "",
       localuser: localStorage.getItem('uname') ? localStorage.getItem('uname') : 'no-name',
       logedInUserDetails: false,
       active: false,
@@ -181,15 +181,15 @@ export default {
             },
             {
               label: "my choice",
-              link: "/",
+              link: "/my-choice",
             },
             {
               label: "nutri 3.3 blending",
-              link: "/",
+              link: "/service-intro",
             },
             {
               label: "Sample making guide",
-              link: "/",
+              link: "/sample-making",
             },
           ],
         },
@@ -198,15 +198,15 @@ export default {
           subItemData: [
             {
               label: "raw material storage box",
-              link: "/",
+              link: "/add-ingredient",
             },
             {
               label: "my recipe",
-              link: "/",
+              link: "/my-recipe",
             },
             {
               label: "my application",
-              link: "/",
+              link: "/my-application-detail",
             },
           ],
         },
@@ -241,13 +241,25 @@ export default {
     this.personalInfoService = new PersonalInfoService();
     this.commonService = new CommonService();
   },
-  mounted() {
+
+  updated(){
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.userName = localStorage.getItem('uname');
       this.get;
+      console.log(this.userDetails)
     } else {
       this.logedInUserDetails = false;
     }
+  },
+
+  mounted() {
+    // if (localStorage.token) {
+    //   this.logedInUserDetails = true;
+    //   this.get;
+    // } else {
+    //   this.logedInUserDetails = false;
+    // }
     this.getUserInfo();
     this.getIp();
   },
