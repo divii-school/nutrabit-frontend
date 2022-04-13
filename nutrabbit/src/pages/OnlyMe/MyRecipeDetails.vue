@@ -240,11 +240,15 @@ export default {
         if (res.status == 200) {
          // console.log(`application submit status : ${res.message}`);
 
-
           if (this.serviceNum == 1 || this.serviceNum == 3) {
             // for payment gatteway
             console.log(`product id for payment is  : ${_id}`);
+          }else{
+              // if service is quote
+              this.$router.push('/my-application-detail')
           }
+
+
         } else {
           this.$swal(res.message, "error");
         }

@@ -210,6 +210,7 @@ export default {
           this.add_req = res.data[0].additional_request;
           this.title = res.data[0].title;
          
+
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();

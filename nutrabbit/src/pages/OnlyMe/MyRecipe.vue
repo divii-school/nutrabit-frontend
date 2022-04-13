@@ -20,7 +20,7 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of recommendedBlendingData" :key="index">
-                  <ProductList :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId"/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
@@ -44,7 +44,7 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
-                  <ProductList :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId"/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
@@ -63,15 +63,14 @@
 <script>
 import Popper from "vue3-popper";
 import Button from '../../components/Button.vue';
-import ProductList from "../../components/ProductList.vue";
-import { inject } from "vue";
+import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 export default {
   inject : ['common'],
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
-    ProductList,
+    ProductListRecipe,
     Button,
   },
   
