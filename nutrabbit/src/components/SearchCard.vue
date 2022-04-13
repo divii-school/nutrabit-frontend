@@ -1,10 +1,13 @@
 <template>
   <div class="search-card-inner">
-    <img class="search-result-img" v-bind:src="item.img" alt="" />
-    <p class="text-center">{{ item.desc }}</p>
-    <template v-if="type=='recomandedBlending'">
-      <p class="recomanded-vitamin text-center" >{{ item.desc2 }}</p>
-      <p class="recomanded-quality text-center">{{ item.desc3 }}</p>
+    <img class="search-result-img" v-bind:src="image_link + image" alt />
+    <!-- <div><img v-bind:src="image_link + image_hover" alt /></div> -->
+    <p class="text-center">{{ category }}</p>
+    <template v-if="type == 'recomandedBlending'">
+      <router-link :to="route_link">
+        <p class="recomanded-vitamin text-center">{{ name }}</p>
+        <p class="recomanded-quality text-center">{{ desc }}</p>
+      </router-link>
     </template>
   </div>
 </template>
@@ -12,6 +15,6 @@
 <script>
 export default {
   name: "SearchCard",
-  props: ["item", "type"],
+  props: ["image", "type", "category", "name", "desc", "image_link", "route_link", "image_hover"],
 };
 </script>

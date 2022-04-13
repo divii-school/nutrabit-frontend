@@ -4,7 +4,7 @@
       <div class="login-signup-wrap registration-completed">
         <div class="login-signup-inner">
           <div class="circle-tick">
-            <img src="../assets/icons/green-tick-circle.svg" alt="" />
+            <img src="../../assets/icons/green-tick-circle.svg" alt="" />
           </div>
           <h2 class="text-center">Membership registration completed</h2>
           <div class="reg-desc">
@@ -16,21 +16,13 @@
           <div class="btn-wrap flex dual-btn">
             <button
               class="btn-primary grey-btn-outline"
-              @click="
-                $router.push({
-                  name: '/',
-                })
-              "
+              @click="this.$router.push('/')"
             >
               home
             </button>
             <button
               class="btn-primary grenn-btn2"
-              @click="
-                $router.push({
-                  name: 'login',
-                })
-              "
+              @click="this.$router.push('/login')"
             >
               login
             </button>

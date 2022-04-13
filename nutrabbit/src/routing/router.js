@@ -19,39 +19,48 @@ import MyChoiceCategorySelection from '../pages/MyChoice/MyChoiceCategorySelecti
 import InquiryContactUs from '../pages/CustomerCenter/InquiryContactUs.vue'
 import MyChoiceRecomandedBlending from '../pages/MyChoice/MyChoiceRecomandedBlending.vue';
 import SampleMaking from '../pages/SampleMaking.vue';
-import MobileSearch from '../pages/GNB/MobileSearch.vue';
 import ChoiceRecommendedBlendingDetailedPage from '../pages/MyChoice/ChoiceRecommendedBlendingDetailedPage.vue';
 import ChoiceRecommendedBlendingPackageSelection from '../pages/MyChoice/ChoiceRecommendedBlendingPackageSelection.vue';
 import Notice from '../pages/CustomerCenter/Notice.vue';
 import NoticeDetailPage from '../pages/CustomerCenter/NoticeDetailPage.vue';
 import FAQ from '../pages/CustomerCenter/FAQ.vue';
 import RawMaterialEstimation from '../pages/MyChoice/RawMaterialEstimation.vue';
-import RawMMaterialPackage from '../pages/MyChoice/RawMMaterialPackage.vue';
+import RawMaterialPackage from '../pages/MyChoice/RawMaterialPackage.vue';
 import IngredientFormulation from '../pages/MyChoice/IngredientFormulation.vue';
 import AddIngredient from '../pages/MyChoice/AddIngredient.vue';
+import MyChoiceRecomandedBlendingFinalQuote from '../pages/MyChoice/MyChoiceRecomandedBlendingFinalQuote.vue';
+import MyChoiceRawMaterialDetailedPage from '../pages/MyChoice/MyChoiceRawMaterialDetailedPage.vue';
+import Inquery from '../pages/CustomerCenter/Inquery.vue';
+import MyRecipeDetails from '../pages/OnlyMe/MyRecipeDetails.vue';
+import MyRecipeDetailsEdit from '../pages/OnlyMe/MyRecipeDetailsEdit.vue';
+import MyApplicationDetails from '../pages/OnlyMe/MyApplicationDetails.vue';
+import MyRecipeDetailsSample from '../pages/OnlyMe/MyRecipeDetailsSample.vue';
+import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
+import AboutUs from '../pages/AboutUs.vue';
+import ServiceIntro from '../pages/Nutri/ServiceIntro.vue';
+import NutriDetail from '../pages/Nutri/NutriDetail.vue';
+
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
-// function guest(to, from, next) {
-//     if (localStorage.token) {
-//         next({ name: 'home' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'You already logged in',
-//         });
-//     } else next();
-// }
+function guest(to, from, next) {
+    if (localStorage.token) {
+        next({ name: 'Main' });
+        alert('You already logged in');
+        // this.$swal('You already logged in', "error");
+    } else next();
+}
 
-// function guard(to, from, next) {
-//     if (localStorage.token) {
-//         next();
-//     } else {
-//         next({ name: 'login' });
-//         Toast.fire({
-//             icon: "info",
-//             title: 'Please login to access',
-//         });
-//     }
-// }
+function guard(to, from, next) {
+    if (localStorage.token) {
+        next();
+    } else {
+        next({ name: 'Login' });
+        // this.$swal("Please login to access");
+        console.log('hhhh')
+        alert('Please login to access');
+        
+    }
+}
 
 const routes = [
     // {
@@ -67,12 +76,14 @@ const routes = [
         name: 'Main',
         path: '/',
         component: Main,
+        // beforeEnter: guard,
     },
     {
         name: 'Login',
         path: '/login',
         component: Login,
-        
+        beforeEnter: guest,
+
     },
     {
         name: 'MemberRegistrationTypeSelection',
@@ -94,12 +105,12 @@ const routes = [
     {
         name: 'personal-information',
         path: '/personal-information',
-        component:  PersonalInformation
+        component: PersonalInformation
     },
     {
         name: 'PersonalInformationBusiness',
         path: '/personal-information-business',
-        component:  PersonalInformationBusiness
+        component: PersonalInformationBusiness
     },
     {
         name: 'WithdrawalOfMembership',
@@ -110,11 +121,18 @@ const routes = [
         name: 'InquiryContactUs',
         path: '/inquiry-contactUs',
         component: InquiryContactUs,
+        beforeEnter: guard,
+    },
+    {
+        name: 'Inquery',
+        path: '/inquiry',
+        component: Inquery,
+        beforeEnter: guard,
     },
     {
         name: 'MemberRegistrationMethod',
         path: '/method-selection',
-        component:MemberRegistrationMethod,
+        component: MemberRegistrationMethod,
         // beforeEnter: guest,
     },
     {
@@ -125,7 +143,7 @@ const routes = [
     {
         name: 'FindId',
         path: '/find-id',
-        component:FindID,
+        component: FindID,
         // beforeEnter: guest,
     },
     {
@@ -136,7 +154,7 @@ const routes = [
     {
         name: 'ChangePassword',
         path: '/change-password',
-        component:ChangePassword,
+        component: ChangePassword,
         // beforeEnter: guest,
     },
     {
@@ -149,17 +167,25 @@ const routes = [
         name: 'MyChoice',
         path: '/my-choice',
         component: MyChoice,
-        // beforeEnter: guest,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceCategorySelection',
-        path: '/my-choice-category-selection',
+        path: '/my-choice-category-selection/',
         component: MyChoiceCategorySelection,
+        beforeEnter: guard,
     },
     {
         name: 'MyChoiceRecomandedBlending',
         path: '/my-choice-recomanded-blending',
         component: MyChoiceRecomandedBlending,
+        beforeEnter: guard,
+    },
+    {
+        name: 'MyChoiceRecomandedBlendingFinalQuote',
+        path: '/my-choice-recomanded-blending-fquote',
+        component: MyChoiceRecomandedBlendingFinalQuote,
+        beforeEnter: guard,
     },
     {
         name: 'sample-making',
@@ -167,66 +193,141 @@ const routes = [
         component: SampleMaking,
     },
     {
-        name: 'MobileSearch',
-        path: '/mobile-search',
-        component: MobileSearch,
-    },
-    {
         name: 'ChoiceRecommendedBlendingDetailedPage',
-        path: '/choice-recommended-blending-detailed-page',
+        path: '/choice-recommended-blending-detailed-page/:id',
         component: ChoiceRecommendedBlendingDetailedPage,
+        beforeEnter: guard,
     },
     {
         name: 'ChoiceRecommendedBlendingPackageSelection',
         path: '/choice-recommended-blending-package-selection',
         component: ChoiceRecommendedBlendingPackageSelection,
+        beforeEnter: guard,
+    },
+    {
+        name: 'MyChoiceRawMaterialDetailedPage',
+        path: '/mychoice-rawMaterial-detailed-page/',
+        component: MyChoiceRawMaterialDetailedPage,
+        beforeEnter: guard,
     },
     {
         name: 'RawMaterialEstimation',
         path: '/raw-material-estimation',
         component: RawMaterialEstimation,
+        beforeEnter: guard,
     },
     {
-        name: 'RawMMaterialPackage',
+        name: 'RawMaterialPackage',
         path: '/raw-material-package',
-        component: RawMMaterialPackage,
+        component: RawMaterialPackage,
+        beforeEnter: guard,
     },
     {
         name: 'IngredientFormulation',
-        path: '/ingredient-formulation',
+        path: '/ingredient-formulation/',
         component: IngredientFormulation,
+        beforeEnter: guard,
     },
     {
         name: 'AddIngredient',
-        path: '/add-ingredient',
+        path: '/add-ingredient/',
         component: AddIngredient,
+        beforeEnter: guard,
     },
     {
         name: 'notice',
         path: '/notice',
         component: Notice,
-        
+        beforeEnter: guard,
+
     },
     {
         name: 'noticeDetailPage',
-        path: '/notice-detail-page',
-        component:NoticeDetailPage,
-        
+        path: '/notice-detail-page/:id',
+        component: NoticeDetailPage,
+        beforeEnter: guard,
     },
     {
-        name: 'Faq',
         path: '/faq',
+        name: 'Faq',
         component: FAQ,
-        
+        beforeEnter: guard,
     },
-  
+    {
+        name: 'MyRecipeDetails',
+        path: '/my-recipe-details/:type/:id',
+        component: MyRecipeDetails,
+        beforeEnter : guard
+    },
+    {
+        name: 'MyApplicationDetails',
+        path: '/my-application-detail',
+        component: MyApplicationDetails,
+        //beforeEnter : guard
+
+    },
+
+    {
+        name: 'MyApplicationQuoteRequestChoice',
+        path: '/my-application-quote-request-choice/:id',
+        component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestChoice.vue'),
+        beforeEnter : guard
+
+    },
+
+    {
+        name: 'MyApplicationQuoteRequestBlending',
+        path: '/my-application-quote-request-blend/:type/:id',
+        component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestBlending.vue'),
+        beforeEnter : guard
+
+    },
+
+    {
+        name: 'MyRecipeDetailsEdit',
+        path: '/my-recipe-detail-edit/:type/:id',
+        component: MyRecipeDetailsEdit,
+        beforeEnter : guard
+
+    },
+    {
+        name: 'MyRecipeDetailsSample',
+        path: '/my-recipe-details-sample/:type/:id',
+        component: MyRecipeDetailsSample,
+
+    },
+    {
+        name: 'MyRecipe',
+        path: '/my-recipe',
+        component: MyRecipe,
+        beforeEnter : guard
+
+    },
+    {
+        name: 'AboutUs',
+        path: '/about-us',
+        component: AboutUs,
+
+    },
+    {
+        name: 'ServiceIntro',
+        path: '/service-intro',
+        component: ServiceIntro,
+
+    },
+    {
+        name: 'NutriDetail',
+        path: '/nutri-detail',
+        component: NutriDetail,
+
+    },
+
     {
         name: 'MyRecipeDetail',
         path: '/my-recipe-detail',
         component: MyRecipeDetail,
-        
-    },
 
+    },
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',

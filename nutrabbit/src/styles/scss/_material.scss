@@ -38,6 +38,7 @@
             font-weight: 700;
             line-height: 110%;
             margin-bottom: 15px;
+            color: $grey-66;
             &.mb0{
                 margin-bottom: 0 !important;
             }
@@ -113,6 +114,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            &.flex-justify-end{
+                justify-content: flex-end;
+            }
             .radio-wrap{
                 color: $grey-66;
                 label{
@@ -126,9 +130,7 @@
             display: flex;
             justify-content: space-between;
             color: $grey-A4;
-            @media screen and (max-width: 640px) {
-                margin-top: -10px;
-            }
+            margin-top: -10px;
             i{
                 margin: 3px 0 0 12px;
             }

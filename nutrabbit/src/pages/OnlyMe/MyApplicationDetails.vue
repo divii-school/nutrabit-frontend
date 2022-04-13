@@ -1,0 +1,593 @@
+<template>
+  <div class="main-body themeGreen">
+    <div class="container-medium">
+      <div class="my-choce-wrap my-choice-selection package-list-section">
+        <div class="my-choice-heading">
+          <h2>My Application</h2>
+        </div>
+
+        <div id="app">
+          <ul class="overlay-panel-actions-primary">
+            <li
+              v-for="(tab, index) in tabs"
+              @click="currentTab = index"
+              :class="{ active: currentTab === index }"
+              :key="index"
+            >
+              {{ tab }}
+            </li>
+          </ul>
+          <div class="content-bd">
+            <div class="tab-content">
+              <div v-show="currentTab === 0">
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>nutri 3.3</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateAppNutri_List"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td
+                               @click="
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'nutri' },
+                                  })
+                                "
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page1"
+                    :records="appNutriTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback1"
+                  />
+                </div>
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>Recommended blending</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateAppRecom_List"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td
+                                @click="
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'recommended' },
+                                  })
+                                "
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page2"
+                    :records="appRecommendedTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback2"
+                  />
+                </div>
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>My Choice</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateAppMychoiceList"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td
+                                @click="
+                                  $router.push({
+                                    name: 'MyRecipeDetailsSample',
+                                    params: { id: item.id, type: 'choice' },
+                                  })
+                                "
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page3"
+                    :records="appMychoiceTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback3"
+                  />
+                </div>
+              </div>
+              <div v-show="currentTab === 1">
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>nutri 3.3</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateQuoteNutri_List"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td
+                                @click="
+                                  $router.push({
+                                    name: 'MyApplicationQuoteRequestBlending',
+                                    params: { id: item.id, type: 'nutri' },
+                                  })
+                                "
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page4"
+                    :records="quoteNutriTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback4"
+                  />
+                </div>
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>Recommended blending</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateQuoteRecom_List"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td
+                                @click="
+                                  $router.push({
+                                    name: 'MyApplicationQuoteRequestBlending',
+                                    params: {
+                                      id: item.id,
+                                      type: 'recommended',
+                                    },
+                                  })
+                                "
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page5"
+                    :records="quoteRecommendedTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback5"
+                  />
+                </div>
+                <div class="choice-selection-item-wrap choice-wrap-border">
+                  <div class="choice-selection-item raw-material-product">
+                    <div class="heading-wrap">
+                      <div class="heading">
+                        <h2>My Choice</h2>
+                      </div>
+                    </div>
+                    <div class="materialForm">
+                      <div class="tableWrap">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Explanation</th>
+                              <th>Application Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="(item, index) of updateQuoteMychoiceList"
+                              :key="index"
+                            >
+                              <td>{{ index + 1 }}</td>
+                              <td @click="$router.push({
+                                    name: 'MyApplicationQuoteRequestChoice',
+                                    params: { id: item.id },
+                                  })"
+                              >
+                                {{ item.explanation }}
+                              </td>
+                              <td>{{ dateformat(item.createdDate) }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination
+                    v-model="page6"
+                    :records="quoteMychoiceTotal"
+                    :per-page="perPage"
+                    @paginate="myCallback6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+          
+
+<script>
+// import Popper from "vue3-popper";
+import ProductList from "../../components/ProductList.vue";
+import MyApplicationDetails from "../../services/MyApplicationDetails";
+import moment from "moment";
+import { inject } from "vue";
+export default {
+  name: "MyRecipeDetails",
+  components: {
+    // Popper,
+    ProductList,
+  },
+  // tab code
+  el: "#app",
+  data() {
+    return {
+      currentTab: 0,
+      tabs: ["Sample Application Details", "Quotation Request Details"],
+      appNutriList: [],
+      appRecommendedList: [],
+      appMychoiceList: [],
+
+      application_type: "nutri_blending",
+      application_type2: "recommended_blending",
+      application_type3: "my_choice",
+
+      QuoteNutri_List: [],
+      QuoteRecommendedList: [],
+      quotationList3: [],
+
+      userId: this.common.state.userId,
+      lang: "KO",
+      page1:1,
+      page2: 1,
+      page3:1,
+      page4:1,
+      page5: 1,
+      page6:1,
+      perPage: 5,
+      limit: "",
+      sortBy: "",
+      sortOrder: "",
+      appMychoiceTotal: 0,
+      appRecommendedTotal: 0,
+      appNutriTotal:0,
+
+      quoteMychoiceTotal: 0,
+      quoteRecommendedTotal: 0,
+      quoteNutriTotal:0,
+
+      updateAppMychoiceList: [],
+      updateAppRecom_List: [],
+      updateAppNutri_List:[],
+
+      updateQuoteMychoiceList: [],
+      updateQuoteRecom_List: [],
+      updateQuoteNutri_List:[],
+    };
+  },
+
+  setup() {
+    const common = inject("common");
+    return { common };
+  },
+
+  created() {
+    this.myApplicationDetails = new MyApplicationDetails();
+  },
+
+  methods: {
+    myCallback1(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateAppNutri_List = this.appNutriList.slice(startIndex,endIndex);
+    },
+
+    myCallback2(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateAppRecom_List = this.appRecommendedList.slice(startIndex,endIndex);
+    },
+
+    myCallback3(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateAppMychoiceList = this.appMychoiceList.slice(startIndex,endIndex);
+    },
+
+    myCallback4(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteNutri_List = this.QuoteNutri_List.slice(startIndex,endIndex);
+    },
+
+    myCallback5(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteRecom_List = this.QuoteRecommendedList.slice(startIndex,endIndex);
+    },
+
+    myCallback6(ClickPage) {
+      const startIndex = (ClickPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.updateQuoteMychoiceList = this.QuoteMyChoice_List.slice(startIndex,endIndex);
+    },
+
+    appNutri() {
+      this.myApplicationDetails
+        .appNutri(
+          this.userId,
+          this.lang,
+          this.application_type,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.appNutriList = res.data.data.applicationData;
+            this.appNutriTotal = res.data.data.total;
+            console.log("appNutriTotal", this.appNutriTotal);
+            this.myCallback1(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    appRecommended() {
+      this.myApplicationDetails
+        .appRecommended(
+          this.userId,
+          this.lang,
+          this.application_type2,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.appRecommendedList = res.data.data.applicationData;
+            this.appRecommendedTotal = res.data.data.total;
+            console.log("appRecommendedTotal", this.appRecommendedTotal);
+            this.myCallback2(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    appMychoice() {
+      this.myApplicationDetails
+        .appMychoice(
+          this.userId,
+          this.lang,
+          this.application_type3,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.appMychoiceList = res.data.data.applicationData;
+            this.appMychoiceTotal = res.data.data.total;
+            console.log("MyChoice", this.appMychoiceTotal);
+            this.myCallback3(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    QuoteNutri() {
+      this.myApplicationDetails
+        .QuoteNutri(
+          this.userId,
+          this.lang,
+          this.application_type,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.QuoteNutri_List = res.data.data.applicationData;
+            this.quoteNutriTotal = res.data.data.total;
+            console.log("quoteNutriTotal", this.quoteNutriTotal);
+            this.myCallback4(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    QuoteRecommended() {
+      this.myApplicationDetails
+        .QuoteRecommended(
+          this.userId,
+          this.lang,
+          this.application_type2,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.QuoteRecommendedList = res.data.data.applicationData;
+            this.quoteRecommendedTotal = res.data.data.total;
+            console.log("quoteRecommendedTotal", this.quoteRecommendedTotal);
+            this.myCallback5(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    QuoteMyChoice() {
+      this.myApplicationDetails
+        .QuoteMyChoice(
+          this.userId,
+          this.lang,
+          this.application_type3,
+          this.page,
+          this.limit,
+          this.sortBy,
+          this.sortOrder
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("res", res);
+            this.QuoteMyChoice_List = res.data.data.applicationData;
+            this.quoteMychoiceTotal = res.data.data.total;
+            console.log("quoteMychoiceTotal", this.quoteMychoiceTotal);
+            this.myCallback6(1);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    dateformat(value) {
+      if (value) {
+        return moment(String(value)).format("YYYY.MM.DD");
+      }
+    },
+  },
+
+  mounted() {
+    
+    this.dateformat();
+    this.QuoteNutri();
+    this.QuoteRecommended();
+    this.QuoteMyChoice();
+
+    this.appNutri();
+    this.appRecommended();
+    this.appMychoice();
+  },
+};
+</script>

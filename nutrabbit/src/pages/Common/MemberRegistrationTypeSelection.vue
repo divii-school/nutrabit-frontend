@@ -14,11 +14,7 @@
                 :class="active ? 'active' : ''" -->
               <li
                 class="membership-item"
-                @click="
-                  $router.push({
-                    name: 'MemberRegistrationMethod',
-                  })
-                "
+                 @click="this.$router.push('/method-selection')"
               >
                 <i class="icon-user"></i>
                 <h2 class="list-heading">individual membership</h2>
@@ -26,11 +22,7 @@
               </li>
               <li
                 class="membership-item"
-                @click="
-                  $router.push({
-                    name: 'MemberRegistrationMethod',
-                  })
-                "
+                @click="this.$router.push('/membership-registration-business')"
               >
                 <i class="icon-building-symbol"></i>
                 <h2 class="list-heading">Business membership registration</h2>

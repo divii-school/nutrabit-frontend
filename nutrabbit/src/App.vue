@@ -1,17 +1,21 @@
 <template>
-  <div id="app-container" :class="theme">
+  <div id="app-container">
+    <!-- header -->
     <Header />
+    <!--ENd header -->
     <router-view :key="$route.path" v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
+    <!-- Footer -->
     <Footer />
+    <!-- Footer -->
   </div>
 </template>
 
 <script>
-import {provide} from 'vue';
+import { provide } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import common from "./store/common";
@@ -24,6 +28,22 @@ export default {
   setup() {
     provide("common", common);
   },
+  mounted() {
+    window["sendPushNotificationData"] = (res) => {
+      this.sendPushNotificationData(res);
+    };
+  },
+  methods: {
+    sendPushNotificationData(res) {
+      if (res) {
+        alert('sendPushNotificationData');
+        alert(JSON.stringify(res));
+        console.log(res);
+      } else {
+        return false
+      }
+    }
+  }
 };
 </script>
 
