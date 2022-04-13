@@ -19,12 +19,12 @@
               <div class="recom-section">
                 <div class="row-type type-1">
                   <div class="num">1</div>
-                  <figure><img src="../../../src/assets/images/about1.png"></figure>
+                  <figure><img src="~@/assets/images/about1.png"></figure>
                   <div class="text-box"><p>I don't know how to start!</p></div>
                 </div>
                 <div class="row-type">
                   <div class="num">2</div>
-                  <figure><img src="../../../src/assets/images/about2.png"></figure>
+                  <figure><img src="~@/assets/images/about2.png"></figure>
                   <div class="text-box">
                     <p>Complex FDA approval process, as there are many prohibitions like drugs, 
                       professional manpower is a must!</p>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="row-type">
                   <div class="num">3</div>
-                  <figure><img src="../../../src/assets/images/about3.png"></figure>
+                  <figure><img src="~@/assets/images/about3.png"></figure>
                   <div class="text-box"><p>Minimum quantity and high cost I'm worried.</p></div>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default {
     return {
       processData: [
         {
-          img: "../../../src/assets/images/step1.png",
+          img: "~@/assets/images/step1.png",
           step: "Step 1",
           title: "sample application",
           desc: "my choice in nutri 3.3 After using the desired sample Request a sample production! (Sample production costs 300,000 won / Additional modifications are charged separately)"

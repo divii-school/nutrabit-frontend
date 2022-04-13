@@ -11,7 +11,7 @@
       >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img
-            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + slider.desktop_banner_path"
+            :src="process.env.VITE_IMAGE_BASE_URL + slider.desktop_banner_path"
             alt
           />
           <p class="banner-title text-center">{{ slider.title }}</p>
@@ -37,7 +37,7 @@
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
         </div>
-            <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
+        <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
       <div class="devider">
         <i class="icon-grey-star"></i>
@@ -67,6 +67,18 @@
           </div>
         </div>
       </div>
+
+      <!-- payment-test -->
+      <div class="devider">
+        <i class="icon-grey-star"></i>
+      </div>
+
+      <div class="payment-test" style="padding:40px">
+        <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
+        <!-- <button type="button" class="btn-small-solid" id="naver_id_login" @click="naverLogin">Naver Login</button>
+        <div id="naver_id_login"></div> -->
+      </div>
+      <!-- payment-test -->
     </div>
   </div>
 </template>
@@ -79,12 +91,15 @@ import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
 import { inject } from "vue";
 import MainService from "../../services/MainService";
+import Button from '../../components/Button.vue';
+import PaymentService from "../../services/PaymentService";
 export default {
   name: "Main",
   components: {
     Swiper,
     SwiperSlide,
     MainProductCard,
+    Button,
   },
   data() {
     return {
@@ -102,6 +117,7 @@ export default {
   },
   created() {
     this.MainService = new MainService();
+    this.paymentService = new PaymentService();
   },
   mounted() {
     this.allBanner();
@@ -116,6 +132,45 @@ export default {
 
   },
   methods: {
+    // makePay test function
+    makePay() {
+      console.log('makePay');
+      alert('makePay');
+      this.paymentService.requestPay();
+    },
+
+    // naverLogin() {
+    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   var state = naver_id_login.getUniqState();
+    //   naver_id_login.setButton("green", 5, 50);
+    //   naver_id_login.setDomain("http://localhost:8082/login");
+    //   naver_id_login.setState(state);
+    //   // naver_id_login.setPopup();
+    //   naver_id_login.init_naver_id_login();
+    //   // this.naverLoginCallback();
+    // },
+
+    // naverLoginCallback() {
+    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   // 접근 토큰 값 출력
+    //   alert(naver_id_login.oauthParams.access_token);
+    //   // 네이버 사용자 프로필 조회
+    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
+    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    //   this.naverSignInCallback();  
+    // },
+
+    // naverSignInCallback() {
+    //   alert(naver_id_login.getProfileData('email'));
+    //   alert(naver_id_login.getProfileData('nickname'));
+    //   alert(naver_id_login.getProfileData('age'));
+    // },
+
+
+
+
+
+
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
@@ -142,11 +197,9 @@ export default {
         }
       });
     },
-
     accessPage() {
       this.$swal("Unauthorized Access.Please Login.");
     }
-  }
-
+  },
 };
 </script>

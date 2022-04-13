@@ -28,6 +28,22 @@ export default {
   setup() {
     provide("common", common);
   },
+  mounted() {
+    window["sendPushNotificationData"] = (res) => {
+      this.sendPushNotificationData(res);
+    };
+  },
+  methods: {
+    sendPushNotificationData(res) {
+      if (res) {
+        alert('sendPushNotificationData');
+        alert(JSON.stringify(res));
+        console.log(res);
+      } else {
+        return false
+      }
+    }
+  }
 };
 </script>
 

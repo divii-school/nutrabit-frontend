@@ -24,7 +24,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
                     />
                   </template>
                 </div>
@@ -53,7 +53,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
                     />
                   </template>
                 </div>
@@ -79,7 +79,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link="http://api-nutrabbit-dev.dvconsulting.org/public/"
+                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
                     />
                   </template>
                 </div>

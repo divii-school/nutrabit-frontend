@@ -210,6 +210,7 @@ export default {
           this.add_req = res.data[0].additional_request;
           this.title = res.data[0].title;
          
+
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();
@@ -239,7 +240,7 @@ export default {
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
       if(!_id || !_title || !_additional_req || _services.length < 0){
-          this.$swal('Need to fill all the fields')
+          // this.$swal('Need to fill all the fields')
           return
       }
       
@@ -250,18 +251,7 @@ export default {
         // console.log(_id, _title, _additional_req, ser_tp)
         // console.log(res)
         if(res.status == 200){
-
-          if(ser_tp == 1 || ser_tp == 3){
-             this.myRecipe.submitRecipeApplication(_id).then(res => {
-            if(res.status == 200){
-               this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
-            }else{
-              this.$swal(res.message, "error");
-            }
-          })
-          }
-          
-           this.$router.push({ name: "MyApplicationDetails", params: { id: _id } });
+           this.$router.go(-1);
           console.log(res.message)
         } else {
 
