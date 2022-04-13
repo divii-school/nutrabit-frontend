@@ -87,7 +87,7 @@
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul class="smilar-product-img">
               <li v-for="(items, index) of item.similar_image_path" :key="index">
-                <img :src="`${process.env.VITE_IMAGE_BASE_URL}` + items" alt />
+                <img :src="imgBaseUrl + items" alt />
               </li>
             </ul>
           </div>
@@ -134,6 +134,7 @@ export default {
   },
   data() {
     return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blending_id: null,
       blending_data: '',
       // pagination: {

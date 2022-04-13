@@ -24,7 +24,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
+                      :image_link= imgBaseUrl
                     />
                   </template>
                 </div>
@@ -53,7 +53,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
+                      :image_link= imgBaseUrl
                     />
                   </template>
                 </div>
@@ -79,7 +79,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      image_link= ${process.env.VITE_IMAGE_BASE_URL}
+                      :image_link= imgBaseUrl
                     />
                   </template>
                 </div>
@@ -139,6 +139,7 @@ export default {
   },
   data() {
     return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       newSearchResult: [],
       nutriBlending: [],
       recomanedBlending: [],
