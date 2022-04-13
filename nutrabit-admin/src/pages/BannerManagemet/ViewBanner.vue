@@ -25,7 +25,7 @@
                     >{{ $t('Banner.list.deskbanner') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.desktop_banner"
+                            :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.desktop_banner"
                             :alt="mydata.desktop_banner"
                             class="product-image"
                         />
@@ -39,7 +39,7 @@
                     >{{ $t('Banner.list.mobbanner') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.mobile_banner"
+                            :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.mobile_banner"
                             :alt="mydata.mobile_banner"
                             class="product-image"
                         />

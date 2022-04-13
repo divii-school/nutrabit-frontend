@@ -76,7 +76,7 @@
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="text-red">{{ error.file }}</div>
                             <img
-                                :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + category_image"
+                                :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + category_image"
                                 :alt="category_image"
                                 class="product-image"
                             />

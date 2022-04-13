@@ -55,7 +55,7 @@
                     >{{ $t('Category.list.deskcategory') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <img
-                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image"
+                            :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image"
                             :alt="mydata.category_image"
                             class="product-image"
                         />

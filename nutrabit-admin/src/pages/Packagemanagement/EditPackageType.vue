@@ -35,7 +35,7 @@
                         </div>
                         <div class="raw-image" style="float:right;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + image" :alt="image" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + image" :alt="image" class="product-image" />
                             <!-- <a href="javascript:;" @click="remove_image(id,image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                         </div>
                     </div>

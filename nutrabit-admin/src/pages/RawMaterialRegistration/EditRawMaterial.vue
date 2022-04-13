@@ -120,7 +120,7 @@
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
                                    <a href="javascript:;" @click="remove_similar(id,similar_product_img)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                             <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
                                     <a href="javascript:;" @click="remove_raw(id,raw_material_img)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
                                 </div>
                             </div>

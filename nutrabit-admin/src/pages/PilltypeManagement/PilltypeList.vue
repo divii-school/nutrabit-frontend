@@ -16,7 +16,7 @@
                     <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>No Banners found.</template>
+                        <template #empty>No Data found.</template>
                         <template #loading>Loading banner data. Please wait.</template>
 
                         <Column field="Sl. No." :header="$t('PillType.list.sr')" style="min-width: 3rem">
@@ -28,7 +28,7 @@
                            <Column field="Image" :header="$t('PillType.list.image')">
                             <template #body="{ data }">
                                 <span class="p-column-title">Image</span>
-                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + data.pillImage" :alt="data.pillImage" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.pillImage" :alt="data.pillImage" class="product-image" />
                             </template>
                         </Column>
                         <Column field="name" :header="$t('PillType.list.name')" style="min-width: 12rem">

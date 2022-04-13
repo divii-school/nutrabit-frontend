@@ -56,7 +56,7 @@
                                 <template #body="{ data }">
                                     <span class="p-column-title">Image</span>
                                     <img
-                                        :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + data.image_path"
+                                        :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.image_path"
                                         :alt="data.image_path"
                                         class="product-image"
                                     />

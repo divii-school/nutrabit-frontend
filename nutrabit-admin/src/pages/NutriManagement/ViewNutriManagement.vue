@@ -71,15 +71,15 @@
                     <label for="thumbnail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Thumbnailimg') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                        <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" :alt="thumbnail" class="product-image" />
+                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" :alt="thumbnail" class="product-image" />
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="product_sub_image" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.productsubimg1') }}:</label>
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
-                        <div v-for="(product_sub, img) in product_sub" :key="img" style="margin:5px;">
+                        <div v-for="(product_sub, img) in product_sub" :key="img" style="margin:5px;  margin-left: 1%;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub" :alt="product_sub_image" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub" :alt="product_sub_image" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                         <div class="raw-image">
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + detail_image" :alt="detail_image" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" :alt="detail_image" class="product-image" />
                         </div>
                     </div>
                 </div>

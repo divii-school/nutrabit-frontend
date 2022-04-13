@@ -183,7 +183,7 @@
                             <div v-for="(detail_image, img) in detail_image" :key="img">
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" :alt="detail_image" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" :alt="detail_image" class="product-image" />
                                    <a href="javascript:;" @click="remove_detail_image(id,detail_image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                     >{{ $t('validation.invalidFile') }}</div>
                                     <div class="raw-image">
                                         <img
-                                            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image"
+                                            :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image"
                                             :alt="similar_image"
                                             class="product-image"
                                         />
@@ -262,7 +262,7 @@
                                     v-show="render3"
                                 >{{ $t('validation.invalidFile') }}</div>
                                 <img
-                                    :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1"
+                                    :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1"
                                     :alt="thumbnail1"
                                     class="product-image"
                                 />
@@ -296,7 +296,7 @@
                                     v-show="render4"
                                 >{{ $t('validation.invalidFile') }}</div>
                                 <img
-                                    :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2"
+                                    :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2"
                                     :alt="thumbnail2"
                                     class="product-image"
                                 />
