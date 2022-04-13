@@ -2,7 +2,7 @@
     <div class="exception-body access">
         <div class="exception-topbar">
             <a id="logolink" @click="goDashboard" class="layout-topbar-logo">
-                <img :src="'assets/layout/images/logo-' + (colorScheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
+                <img :src="'assets/layout/images/logo.svg'" alt="freya-layout"/>
             </a>
         </div>
         <div class="exception-wrapper">

@@ -8,17 +8,10 @@
                     <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Banner.search.type') }}</label>
-                            <Dropdown v-model="dropdownValue" :options="dropdownValues" optionLabel="code" :placeholder="$t('Banner.placeholder.select')" />
+                             <InputText id="googlurl" type="text" placeholder="검색어 입력" v-model="searchData" @keyup="resetdata" />
                         </div>
 
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="name2">{{ $t('search.label.startDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue1" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
-                        <div class="p-field p-col-12 p-md-3">
-                            <label for="email2">{{ $t('search.label.lastDate') }}</label>
-                            <Calendar :showIcon="true" :showButtonBar="true" :minDate="calendarValue1" v-model="calendarValue2" placeholder="YYYY.MM.DD" dateFormat="yy.mm.dd"></Calendar>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -26,7 +19,7 @@
                 <div class="p-mb-4 p-mb-lg-0"></div>
                 <div>
                     <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchBannner"></Button>
-                    <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button>
+                   <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                 </div>
             </div>
         </div>
@@ -44,76 +37,62 @@
                     <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>No Banners found.</template>
+                        <template #empty>배너를 찾을 수 없습니다.</template>
                         <template #loading>Loading banner data. Please wait.</template>
 
-                        <Column field="Sl. No." header="No." style="min-width: 3rem">
-                            <template #body="{ index }">
+                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                            <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
-                                {{ index + 1 }}
+                                {{ data.sl_no }}
                             </template>
                         </Column>
-                        <Column field="Change Order" :header="$t('Banner.list.changeorder')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Change Order</span>
-                                <p style="display: none">{{ data.status }}</p>
-                                <div style="display: flex">
-                                    <Button label="" icon="pi pi-arrow-up" class="p-button-plain p-button-text p-mr-2 p-mb-2" @click="up(data.id)" />
-                                    <Button label="" icon="pi pi-arrow-down" class="p-button-plain p-button-text p-mr-2 p-mb-2" @click="down(data.id)" />
-                                </div>
-                            </template>
-                        </Column>
-                        <Column field="Image" :header="$t('Banner.list.image')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Image</span>
-                                <img :src="'http://da-lab-admin.dvconsulting.org:4040/' + data.imageUrl" :alt="data.imageUrl" class="product-image" />
-                            </template>
-                        </Column>
-                        <Column field="Title" :header="$t('Banner.list.title')" style="min-width: 12rem">
+                         <Column field="Title" :header="$t('Banner.list.title')" style="min-width: 12rem">
                             <template #body="{ data }">
                                 <span class="p-column-title">Title</span>
                                 {{ data.title }}
                             </template>
                         </Column>
-                        <Column field="Type" :header="$t('Banner.list.type')" style="min-width: 12rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Type</span>
-                                {{ data.type }}
-                            </template>
-                        </Column>
-
                         <Column field="URL" :header="$t('Banner.list.url')" style="min-width: 12rem">
                             <template #body="{ data }">
                                 <span class="p-column-title">URL</span>
                                 {{ data.link }}
                             </template>
                         </Column>
-                        <Column field="Exposure" :header="$t('Banner.list.status')" style="min-width: 12rem">
+                        <Column field="Status" :header="$t('Banner.list.status')" style="min-width: 12rem">
                             <template #body="{ data }">
-                                <span class="p-column-title">Exposure</span>
+                                <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
                                 {{ data.status }} -->
-                                <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" />
+                                {{ data.status }}
                             </template>
                         </Column>
+                         
                         <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" style="min-width: 12rem">
                             <template #body="{ data }">
                                 <span class="p-column-title">Creation-Date</span>
-                                {{ formatDate(data.createdDate) }}
+                                {{ dateformat(data.createdDate) }}
                             </template>
                         </Column>
+                       
+
+                       
+                       
+                        
                         <Column field="Actions" :header="$t('Banner.list.see_more')">
                             <template #body="{ data }">
                                 <span class="p-column-title">Actions</span>
                                 <p style="display: none">{{ data.status }}</p>
                                 <div style="display: flex">
                                     <router-link :to="'/view-banner/' + data.id"
-                                        ><Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i> {{ $t('button.view') }}</Button>
+                                        ><Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i> </Button>
                                     </router-link>
                                     <router-link :to="'/edit-banner/' + data.id">
-                                        <Button label="help" class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"> <i class="pi pi-user-edit p-mr-2"></i>{{ $t('button.edit') }} </Button>
+                                        <Button label="help" class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"> <i class="pi pi-pencil p-mr-2"></i> </Button>
                                     </router-link>
-                                    <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
+                                    <a :href="'/admin/banner/delete/' + data.id" @click.prevent="deleteNote(data.id)"  data-toggle="tooltip" data-placement="right" title="메모 삭제">
+                   <Button  icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2"  />
+                </a>
+                                    <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
                                 </div>
                             </template>
                         </Column>
@@ -125,37 +104,52 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router';
+ import { useRoute } from 'vue-router';
 import BannerService from '../../service/API/BannerService';
 import axios from 'axios';
+import moment from 'moment';
 export default {
     data() {
         return {
-            dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
+            // dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
+            dropdownValues: [{ name: '활동적인' }, { name: '비활성' }],
             serial: 0,
             dropdownValue: '',
             calendarValue1: '',
             calendarValue2: '',
+            link:'',
+            status:'',
+            createdDate:'',
             isModalVisible: false,
             products: null,
-            title: null,
+            title: '',
             loading1: true,
             deletedID: null,
+            searchData: '',
+            startDate: '',
+            endDate: '',
+            sortBy: '',
+            sortOrder: '',
+            total:'',
+            sl_no:'',
+
         };
     },
     created() {
         this.bannerService = new BannerService();
     },
     mounted() {
-        const route = useRoute();
-        console.log(route.params);
+         const route = useRoute();
+         console.log(route.params);
         this.bannerService
-            .getBannerList(this.title, this.dropdownValue, this.calendarValue1, this.calendarValue2)
-            .then((data) => {
-                this.products = data;
+            .getBannerList(this.title,this.link,this.status,this.createdDate)
+            .then((res) => {
+                this.products = res.data.data.banners;
+                 this.total = res.data.data.total;
                 this.loading1 = false;
-                this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                console.log(data);
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+           
+                 console.log(res.data.data.total);
             })
             .catch((err) => console.log(err));
     },
@@ -190,17 +184,47 @@ export default {
                 });
             }, 500);
         },
-        searchBannner() {
-            if (this.dropdownValue === '' && this.calendarValue1 === '' && this.calendarValue2 === '') {
-                this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
-            } else {
-                console.log(this.dropdownValue?.name);
-                this.bannerService
-                    .getBannerList(this.dropdownValue?.name, this.calendarValue1, this.calendarValue2)
-                    .then((data) => {
-                        this.products = data;
+        resetUser() {
+            this.searchData = '';
+           
+            this.loading1 = true;
+            this.bannerService
+                 .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.banners;
+                        this.total = res.data.data.total;
                         this.loading1 = false;
-                        console.log(data);
+                        //console.log(data);
+                    })
+                    .catch(() => {
+                        this.products = [];
+                        this.loading1 = false;
+                    });
+        },
+        resetdata(){
+            if (this.searchData === ''){
+                this.bannerService
+                .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                .then((res) => {
+                        this.products = res.data.data.banners;
+                        this.total = res.data.data.total;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            }
+        },
+        searchBannner() {
+            if (this.searchData === '') {
+            //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            } else {
+                this.bannerService
+                    .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.banners;
+                        this.total = res.data.data.total;
+                        this.loading1 = false;
+                        //console.log(data);
                     })
                     .catch(() => {
                         this.products = [];
@@ -208,58 +232,31 @@ export default {
                     });
             }
         },
+       
         reInitialize() {
-            this.dropdownValue = null;
-            this.calendarValue1 = null;
-            this.calendarValue2 = null;
             this.title = null;
+            this.link = null;
+            this.status = null;
+            this.createdDate = null;
             this.bannerService
-                .getBannerList(this.title, this.dropdownValue, this.calendarValue1, this.calendarValue2)
-                .then((data) => {
-                    this.products = data;
+                .getBannerList(this.title,this.link,this.status,this.createdDate)
+                .then((res) => {
+                    this.products = res.data.data.banners;
+                        this.total = res.data.data.total;
                     this.loading1 = false;
-                    console.log(data);
+                    // console.log(data);
                 })
                 .catch((err) => console.log(err));
         },
-        today() {
-            const utc = new Date().toJSON().slice(0, 10).replace(/-/g, '.');
-            this.calendarValue1 = utc;
-            this.calendarValue2 = utc;
+        dateformat(value) {
+             if (value) {
+            return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+            }
         },
-        lastweek() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 7);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.calendarValue1 = startDate;
-            this.calendarValue2 = edate;
-        },
-        lastmonth() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 31);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.calendarValue1 = startDate;
-            this.calendarValue2 = edate;
-        },
-        lastsixmonth() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 182);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.calendarValue1 = startDate;
-            this.calendarValue2 = edate;
-        },
-        lastyear() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 365);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.calendarValue1 = startDate;
-            this.calendarValue2 = edate;
-        },
-        confirm(id) {
+        
+        deleteNote: function (id) {
+            console.log(id);
+            var self = this;
             this.$confirm.require({
                 group: 'dialog',
                 header: '확인',
@@ -267,23 +264,42 @@ export default {
                 icon: 'pi pi-trash',
                 acceptLabel:"확인",
                 rejectLabel:"취소",
-                accept: () => {
+                accept: () => 
+                {
                     axios({ method: 'delete', url: '/admin/banner/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
+                        self.bannerService 
+                        .getBannerList(self.title,self.link,self.status,self.createdDate)
+                        .then((res) => {
+                            self.products = res.data.data.banners;
+                            self.total = res.data.data.total;
+                            self.loading1 = false; 
+                            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                    
+                            //console.log(data);
+                        })
+                        .catch((err) => console.log(err));
+                        
+                        // let i = this.products.map(data => data.id).indexOf(id);
+
+                        // this.products.splice(i, 1)
                     });
-                    this.$toast.add({ severity: 'info', summary: 'Deleted', detail: '성공적으로 삭제되었습니다.', life: 3000 });
+                    this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제되었습니다.', life: 3000 });
                 },
                 reject: () => {
-                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: 'You have rejected', life: 3000 });
+                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
                 },
+               
+                
             });
-            setTimeout(() => {
-                this.bannerService.getBannerList().then((data) => {
-                    this.products = data;
-                    console.log(data);
-                    this.loading1 = false;
-                });
-            }, 2000);
+            //  setTimeout(() => {
+            //     this.bannerService.getBannerList().then((data) => {
+            //         this.products = data;
+            //         console.log(data);
+            //         this.loading1 = false;
+            //     });
+            // }, 500);
+            
         },
         onRowExpand(event) {
             this.$toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });
@@ -457,5 +473,53 @@ export default {
 }
 .w-100 {
     width: 100%;
+}
+
+.p-button{
+    background: #000000;
+    border: 1px solid #0a0a0a;
+}
+
+.p-button.p-button-info.p-button-outlined, .p-buttonset.p-button-info > .p-button.p-button-outlined, .p-splitbutton.p-button-info > .p-button.p-button-outlined{
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+
+.p-button.p-button-info.p-button-outlined:hover , .p-buttonset.p-button-info > .p-button.p-button-outlined, .p-splitbutton.p-button-info > .p-button.p-button-outlined:hover{
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-info.p-button-outlined:enabled:active, .p-buttonset.p-button-info > .p-button.p-button-outlined:enabled:active, .p-splitbutton.p-button-info > .p-button.p-button-outlined:enabled:active {
+    background: rgba(2, 136, 209, 0.16);
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-help.p-button-outlined, .p-buttonset.p-button-help > .p-button.p-button-outlined, .p-splitbutton.p-button-help > .p-button.p-button-outlined {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-help.p-button-outlined:hover, .p-buttonset.p-button-help > .p-button.p-button-outlined, .p-splitbutton.p-button-help > .p-button.p-button-outlined:hover {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-danger.p-button-outlined, .p-buttonset.p-button-danger > .p-button.p-button-outlined, .p-splitbutton.p-button-danger > .p-button.p-button-outlined {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-danger.p-button-outlined:hover, .p-buttonset.p-button-danger > .p-button.p-button-outlined, .p-splitbutton.p-button-danger > .p-button.p-button-outlined:hover {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
 }
 </style>

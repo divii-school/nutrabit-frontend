@@ -5,13 +5,15 @@
   },
   "module":{
     "title":{
-      "DFCMangement":"DFC Mangement",
+      "DFCMangement":"Nutrabit Mangement",
       "BannerMangement":"Banner Mangement",
       "PopupMangement":"Popup Mangement",
       "NFTMangement":"NFT Mangement",
       "CardnewsMangement":"Cardnews Mangement",
       "MediaPressMangement":"Media Press Mangement",
-      "GoogleformsMangement":"Google forms Mangement"
+      "GoogleformsMangement":"Google forms Mangement",
+      "PilltypeManagement":"Pill type Management",
+      "Packagemanagement":"Package Management"
     }
   },
   "search": {
@@ -80,6 +82,16 @@
       "confirmPassword": "Enter confirm password"
     }
   },
+  "Category": {
+    "list": {
+     
+      "title": "1st Category (KO)",
+      "url": "1st Category (EN)",
+      "status": "2nd Category (KO)",
+      "created_dt": "2nd Category (EN)"
+    }
+  },
+
   "page": {
     "user": {
       "addUser": {

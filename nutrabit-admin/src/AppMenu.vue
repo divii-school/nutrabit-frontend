@@ -2,8 +2,8 @@
     <div class="menu-wrapper" :class="{ 'layout-sidebar-active': sidebarActive }" @click="onMenuClick" @mouseover="onSidebarMouseOver" @mouseleave="onSidebarMouseLeave">
         <div class="sidebar-logo">
             <router-link to="/">
-                <img src="assets/layout/images/Logo.png" style="height:35px;width:auto;" alt="D.A.LAB" />
-                <img v-show="rend" src="assets/layout/images/Logo-2.png" alt="D.A.LAB" style="width:auto;height:35px;" />
+                <img v-show="rend2" src="assets/layout/images/logo.png" style="height:35px;width:auto;" alt="Nutrabbit" />
+                <img v-show="rend" src="assets/layout/images/logonutrabit.png" alt="Nutrabbit" style="width:auto;height:35px;" />
                 <!-- <b style="padding-left: 15px; font-size: 23px;color:#728FCE">{{ title }}</b> -->
             </router-link>
             <a class="sidebar-pin" @click="onToggleMenu($event)">
@@ -14,7 +14,7 @@
         <div class="layout-menu-container">
             <AppSubmenu
                 class="layout-menu"
-                :items="adminset"
+                :items="nutrabit_menu"
                 :layoutMode="layoutMode"
                 :parentMenuItemActive="true"
                 :menuActive="menuActive"
@@ -42,19 +42,54 @@ export default {
     data() {
         return {
             rend:false,
-            adminset: '',
+            rend2: true,
+            
             superadmin: [
                 // { label: 'Dashboard', icon: 'pi pi-home', to: '/' },
                 { label: this.$t(`module.title.DFCMangement`), icon: 'pi pi-users', to: '/dfc-management' },
-                { label: this.$t(`module.title.BannerMangement`), icon: 'pi pi-images', to: '/banner-management' },
+                // { label: this.$t(`module.title.BannerMangement`), icon: 'pi pi-images', to: '/banner-management' },
                 { label: this.$t(`module.title.PopupMangement`), icon: 'pi pi-question-circle', to: '/popup-management' },
                 { label: this.$t(`module.title.NFTMangement`), icon: 'pi pi-bell', to: '/nft-management' },
                 { label: this.$t(`module.title.CardnewsMangement`), icon: 'pi pi-book', to: '/card-news' },
                 { label: this.$t(`module.title.MediaPressMangement`), icon: 'pi pi-bell', to: '/media-press' },
                 { label: this.$t(`module.title.GoogleformsMangement`), icon: 'pi pi-tags', to: '/google-form' },
             ],
-            dfc_user: [
-                 { label: this.$t(`module.title.Client-lookup`), icon: 'pi pi-users', to: '/client-lookup' },
+            nutrabit_menu: [
+                {
+                    label: this.$t(`module.title.UserManagement`),
+                    icon: 'pi pi-users',
+                    items: [
+                        { label: this.$t(`module.title.IndividualManagement`),icon:'pi pi-user', to: '/individual-member',  },
+                        { label: this.$t(`module.title.BusinessManagement`),icon:'pi pi-user', to: '/business-member' },
+                    ],
+                },
+                { label: this.$t(`module.title.BannerMangement`), icon: 'pi pi-images', to: '/banner-management' },
+                // { label: this.$t(`module.title.Client-lookup`), icon: 'pi pi-users', to: '/client-lookup' },
+                
+                {
+                    label: this.$t(`module.title.ProductRegistration`),
+                    icon: 'pi pi-th-large',
+                    items: [
+                        { label: this.$t(`module.title.CategoryRegistration`), icon:'pi pi-table', to: '/category-registration' },
+                        { label: this.$t(`module.title.RawRegistration`), icon:'pi pi-table', to: '/raw-material-registration' },
+                     { label: this.$t(`module.title.RecommendedRegistration`), icon:'pi pi-table', to: '/nutri-blending' },
+                    ],
+                },
+                { label: this.$t(`module.title.PilltypeManagement`), icon: 'pi pi-star', to: '/pill-type-management' },
+                { label: this.$t(`module.title.Packagemanagement`), icon: 'pi pi-microsoft', to: '/package-management' },
+                { label: this.$t(`module.title.Nutriblending`), icon: 'pi pi-search', to: '/nutri-management' },
+                { label: this.$t(`module.title.ApplicationManagement`), icon: 'pi pi-money-bill', to: '/app-management' },
+                {
+                    label: this.$t(`module.title.Customercenter`),
+                    icon: 'pi pi-play',
+                    items: [
+                        { label: this.$t(`module.title.Faq`), icon:'pi pi-send', to: '/faq' },
+                        { label: this.$t(`module.title.Inquiry`),  icon:'pi pi-send', to: '/inquiry' },
+                        { label: this.$t(`module.title.Notice`),  icon:'pi pi-send', to: '/notice' },
+                    ],
+                },
+                
+                 
             ],
             menu: [
                 { label: 'Dashboard', icon: 'pi pi-home', to: '/' },
@@ -182,18 +217,19 @@ export default {
             ],
         };
     },
-    mounted() {
-        if (localStorage.getItem('admin-type') === 'admin') {
-            this.adminset = this.superadmin;
-        }else{
-            this.adminset = this.dfc_user;
-        }
-    },
+    // mounted() {
+    //     if (localStorage.getItem('admin-type') === 'admin') {
+    //         this.adminset = this.superadmin;
+    //     }else{
+    //         this.adminset = this.dfc_user;
+    //     }
+    // },
     methods: {
         onSidebarMouseOver() {
             if (this.layoutMode === 'sidebar' && !this.sidebarStatic) {
                 this.$emit('sidebar-mouse-over');
                 this.rend = true;
+                this.rend2 = false ;
             }
         },
         onSidebarMouseLeave() {
@@ -201,6 +237,7 @@ export default {
                 setTimeout(() => {
                     this.$emit('sidebar-mouse-leave');
                     this.rend = false;
+                    this.rend2 = true ;
                 }, 250);
             }
         },
@@ -220,3 +257,9 @@ export default {
     components: { AppSubmenu },
 };
 </script>
+<style scoped>
+/* .layout-menu-light .menu-wrapper{
+    background: #666666;
+   
+} */
+</style>
