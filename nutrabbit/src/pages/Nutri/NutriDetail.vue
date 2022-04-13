@@ -1,19 +1,8 @@
 <template>
-  <div class="main-body">
+  <div class="main-body themeGreen">
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <!-- <swiper
-            :pagination="pagination"
-            :modules="modules"
-            class="mySwiper"
-            v-for="(items, index) of blending_data"
-            :key="index"
-          >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
-            </swiper-slide>
-          </swiper>-->
           <swiper
             :spaceBetween="10"
             :modules="[Thumbs]"
@@ -60,7 +49,7 @@
           :key="index"
         >
           <div class="right-heading">
-            <i class="login-icon"></i>
+            <i class="login-icon-green"></i>
             <h2>{{ item.name_ko }}</h2>
             <div class="blending-tag">
               <span
@@ -71,11 +60,12 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <ul>
-              <!-- <li v-for="(desc, index) of item.innderData" :key="index">
-                <h2>{{ desc.title }}</h2>
-                <p>{{ desc.desc }}</p>
-              </li>-->
+            <p>When your body and mind are healthy, work will work out well.
+              We recommend a cool Buff to you who are tired of the stress of the office.
+              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.
+              When your body and mind are healthy, work will work out well.
+              We recommend a cool Buff to you who are tired of the stress of the office.
+              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.</p><!-- <ul>
               <li>
                 <h2>Sub raw Material</h2>
                 <p>{{ item.sub_raw_materials }}</p>
@@ -96,7 +86,7 @@
                 <h2>Product Information</h2>
                 <p>{{ item.description_ko }}</p>
               </li>
-            </ul>
+            </ul> -->
             <button
               @click="
                 this.$router.push({
@@ -122,6 +112,9 @@
             </ul>
           </div>
         </div>
+      </div>
+      <div class="nutriDetail">
+        <img src="../../assets/images/nutri-info.jpg">
       </div>
     </div>
   </div>

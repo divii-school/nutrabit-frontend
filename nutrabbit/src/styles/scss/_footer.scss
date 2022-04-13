@@ -271,3 +271,21 @@ footer{
         }
     }
 }
+.totop-wrap{
+    position: fixed;
+    z-index: 10;
+    bottom: 243px;
+    right: 79px;
+    display: flex;
+    justify-content: flex-end;
+    .totop {
+      .round {
+        width: 60px;
+        height: 60px;
+        img{
+            width: auto;
+            height: 60px;
+        }
+      }
+    }
+  }
