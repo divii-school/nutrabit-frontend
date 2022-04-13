@@ -55,7 +55,7 @@
             <p
               class="desc text-center"
             >We provide all services from A to Z of health functional food.</p>
-            <button class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <button @click="this.$router.push(`/service-intro/`)" class="btn-small-solid green">What is nutri 3.3 Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
@@ -85,8 +85,9 @@
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
 import { inject } from "vue";
@@ -112,7 +113,7 @@ export default {
   setup() {
     const common = inject("common");
     return {
-      modules: [Pagination],
+      modules: [Pagination, Navigation],
       common
     };
   },
