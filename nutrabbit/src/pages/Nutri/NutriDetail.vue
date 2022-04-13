@@ -22,8 +22,14 @@
             v-for="(items, index) of blending_data"
             :key="index"
           >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+            <swiper-slide
+              v-for="(item, index) of items.detail_image_path"
+              :key="index"
+            >
+              <img
+                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
+                alt
+              />
             </swiper-slide>
           </swiper>
           <swiper
@@ -37,17 +43,31 @@
             v-for="(items, index) of blending_data"
             :key="index"
           >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+            <swiper-slide
+              v-for="(item, index) of items.detail_image_path"
+              :key="index"
+            >
+              <img
+                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
+                alt
+              />
             </swiper-slide>
           </swiper>
         </div>
-        <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
+        <div
+          class="blending-right"
+          v-for="(item, index) of blending_data"
+          :key="index"
+        >
           <div class="right-heading">
             <i class="login-icon"></i>
             <h2>{{ item.name_ko }}</h2>
             <div class="blending-tag">
-              <span v-for="(tag, index) in splitJoin(item.tags_ko)" :key="index" v-text="tag"></span>
+              <span
+                v-for="(tag, index) in splitJoin(item.tags_ko)"
+                :key="index"
+                v-text="tag"
+              ></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -78,15 +98,25 @@
               </li>
             </ul>
             <button
-              @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
+              @click="
+                this.$router.push({
+                  name: 'ChoiceRecommendedBlendingPackageSelection',
+                  query: { blending_id: this.blending_id },
+                })
+              "
               class="btn-primary blue-btn-solid"
-            >next</button>
+            >
+              next
+            </button>
           </div>
           <div class="suggested-product">
             <h2>similar products</h2>
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul class="smilar-product-img">
-              <li v-for="(items, index) of item.similar_image_path" :key="index">
+              <li
+                v-for="(items, index) of item.similar_image_path"
+                :key="index"
+              >
                 <img :src="imgBaseUrl + items" alt />
               </li>
             </ul>
@@ -101,15 +131,15 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import { ref } from 'vue';
+import { ref } from "vue";
 // import "swiper/css/pagination";
 // import { Pagination } from "swiper";
-import 'swiper/css';
-import "swiper/css/free-mode"
-import "swiper/css/navigation"
-import "swiper/css/thumbs"
-import { FreeMode, Navigation, Thumbs } from 'swiper';
-import { useRoute } from 'vue-router'
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs } from "swiper";
+import { useRoute } from "vue-router";
 import MyChoiceService from "../../services/MyChoiceService";
 
 export default {
@@ -136,7 +166,7 @@ export default {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blending_id: null,
-      blending_data: '',
+      blending_data: "",
       productDetails: [
         {
           title: "dark blend",
@@ -188,9 +218,7 @@ export default {
           ],
         },
       ],
-      ProductImages: [
-        "../../../src/assets/images/suggested-product-img.png",
-      ],
+      ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
     };
   },
   created() {
@@ -202,25 +230,28 @@ export default {
   methods: {
     splitJoin(theText) {
       // console.log(theText.split(','))
-      return theText.split(',');
+      return theText.split(",");
     },
     // blendingDetails
     blendingDetail() {
       let sub_cat = useRoute();
-      this.blending_id = sub_cat.params.id;
+      this.blending_id = "7";
+      // this.blending_id = sub_cat.params.id;
       const setBlendingId = this.blending_id;
       // console.log(setBlendingId);
 
-      this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        // console.log(res.data);
-        if (res.data.status == 200) {
-          this.blending_data = res.data.data;
-        } else {
-          this.$swal(res.data.message, "error");
-        }
-      });
+      this.mychoiceService
+        .getRecommendedBlendingDetail(setBlendingId)
+        .then((res) => {
+          // console.log(res.data);
+          if (res.data.status == 200) {
+            this.blending_data = res.data.data;
+          } else {
+            this.$swal(res.data.message, "error");
+          }
+        });
     },
-  }
+  },
 };
 </script>
 

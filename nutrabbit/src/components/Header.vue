@@ -108,7 +108,6 @@
                 <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
                 </router-link>
                 <i class="icon-leftArw"></i>
-                {{ localuser }}
               </template>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{

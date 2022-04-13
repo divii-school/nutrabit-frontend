@@ -513,13 +513,6 @@ header {
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-              .icon-leftArw {
-                margin: 8px 0 0 10px;
-
-                @media screen and (max-width: 768px) {
-                  display: none;
-                }
-              }
 
               @media screen and (max-width: 1200px) {
                 font-size: 25px;
@@ -536,7 +529,13 @@ header {
                 line-height: 19px;
               }
             }
+            .icon-leftArw {
+              margin: 0 0 0 10px;
 
+              @media screen and (max-width: 768px) {
+                display: none;
+              }
+            }
             .icon-menu-downArw {
               display: none;
 
