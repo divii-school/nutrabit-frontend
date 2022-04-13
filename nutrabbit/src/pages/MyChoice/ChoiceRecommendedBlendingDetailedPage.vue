@@ -23,7 +23,7 @@
             :key="index"
           >
             <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+              <img :src="imgBaseUrl + item" alt />
             </swiper-slide>
           </swiper>
           <swiper
@@ -38,7 +38,7 @@
             :key="index"
           >
             <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
+              <img :src="imgBaseUrl + item" alt />
             </swiper-slide>
           </swiper>
         </div>
