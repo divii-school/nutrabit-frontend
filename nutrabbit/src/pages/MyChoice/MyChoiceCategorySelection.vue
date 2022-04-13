@@ -103,13 +103,13 @@
                 <div class="list-left">
                   <div class="img-wrap">
                     <img
-                      :src="`${process.env.VITE_IMAGE_BASE_URL}` + data.thumbnail_fst_path"
+                      :src="imgBaseUrl + data.thumbnail_fst_path"
                       alt
                     />
 
                     <div class="img-wrap-hover">
                       <img
-                        :src="`${process.env.VITE_IMAGE_BASE_URL}` + data.thumbnail_scnd_path"
+                        :src="imgBaseUrl + data.thumbnail_scnd_path"
                         alt
                       />
                     </div>
@@ -166,6 +166,7 @@ export default {
   },
   data() {
     return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blendingData: [],
       rawMaterialData: [],
       sub_category_id: null,
