@@ -15,7 +15,7 @@
             class="mySwiper"
           >
             <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
+              <img :src="imgBaseUrl + item.image_path" alt="" />
             </swiper-slide>
           </swiper>
           <swiper
@@ -28,7 +28,7 @@
             class="mySwiper2"
           >
             <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
+               <img :src="imgBaseUrl + item.image_path" alt="" />
             </swiper-slide>
           </swiper>
         </div>
@@ -76,7 +76,7 @@
             <h2>Recommended Blending</h2>
             <ul class="smilar-product-img">
               <li v-for="(items, index) of blendingData" :key="index">
-                <img @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)" :src="'http://api-nutrabbit-dev.dvconsulting.org/' + items.thumbnail_1_path" alt />
+                <img @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)" :src="imgBaseUrl + items.thumbnail_1_path" alt />
               </li>
             </ul>
           </div>
@@ -152,6 +152,7 @@ export default {
   },
   data() {
     return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       raw_material_data: '',
       raw_material_id:'',
       raw_material_image:'',

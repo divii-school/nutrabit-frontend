@@ -55,7 +55,7 @@
             <p
               class="desc text-center"
             >We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro/`)" class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3 Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">

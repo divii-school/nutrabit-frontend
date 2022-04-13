@@ -11,7 +11,7 @@
               <router-link to="/my-choice">my choice</router-link>
             </li>
             <li>
-              <router-link to>nutri 3.3 blending</router-link>
+              <router-link to="/service-intro">nutri 3.3 blending</router-link>
             </li>
           </ul>
         </div>
@@ -66,7 +66,7 @@
                   {{ userDetails.name }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to>Change of personal information</router-link>
+                  <router-link to="/personal-information">Change of personal information</router-link>
                   <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
