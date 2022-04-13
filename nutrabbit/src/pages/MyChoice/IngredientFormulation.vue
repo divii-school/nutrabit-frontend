@@ -38,14 +38,15 @@
                 <h2>Formulation selection</h2>
                 <div class="tolltip-outer">
                   <Popper>
-                    <button><i class="icon-info"></i></button>
+                    <button>
+                      <i class="icon-info"></i>
+                    </button>
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
                           <li>Please select the desired format.</li>
-                          <li>
-                            Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.
-                          </li>
+                          <li>Formulations that cannot be made with the selected raw materials may be changed to other
+                            formulations at the time of quotation.</li>
                         </ul>
                       </div>
                     </template>
@@ -55,14 +56,18 @@
             </div>
             <div class="product-list-wrap">
               <ul class="raw-material-list">
-                <li v-for="(item, index) in rwaMaterialData" :key="index">
-                  <ProductList :item="item"/>
+                <li v-for="(item, index) of blendingFormulationData" :key="index">
+                  <ProductList :item="item" @changeId="UpdatedId($event)" />
                 </li>
               </ul>
-              
+
               <div class="btn-wrap">
-                <button class="btn-small-solid grey">Previous</button>
-                <button class="btn-small-solid blue">next</button>
+                <button v-if="storage_box" @click="this.$router.push(`/add-ingredient/`)"
+                  class="btn-small-solid grey">Previous</button>
+                <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
+                  class="btn-small-solid grey">Previous</button>
+                  
+                <button @click="checkPillId" class="btn-small-solid blue">next</button>
               </div>
             </div>
           </div>
@@ -77,6 +82,7 @@
 <script>
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
+import MyChoiceService from "../../services/MyChoiceService";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
@@ -85,24 +91,78 @@ export default {
   },
   data() {
     return {
-      rwaMaterialData: [
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "Bottle",
-          desc: [
-            "Choose from a variety of sizes and shapes of bottles and caps.",
-          ],
-        },
-        {
-          img: "../../../src/assets/images/pkgSelection.png",
-          title: "PTP",
-          desc: [
-            "It is hygienic and convenient.",
-            "The packaging volume is slightly larger.",
-          ],
-        },
-      ],
+      blendingFormulationData: [],
+      pill_id: '',
+      storage_box: localStorage.getItem('storage_box'),
+      // rwaMaterialData: [
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "Bottle",
+      //     desc: [
+      //       "Choose from a variety of sizes and shapes of bottles and caps.",
+      //     ],
+      //   },
+      //   {
+      //     img: "../../../src/assets/images/pkgSelection.png",
+      //     title: "PTP",
+      //     desc: [
+      //       "It is hygienic and convenient.",
+      //       "The packaging volume is slightly larger.",
+      //     ],
+      //   },
+      // ],
     };
   },
+  created() {
+    this.mychoiceService = new MyChoiceService();
+  },
+  mounted() {
+    this.blendingFormulation();
+  },
+  methods: {
+    blendingFormulation() {
+      this.mychoiceService.getBlendingFormulation().then((res) => {
+        //  console.log(res);
+        if (res.status == 200) {
+          this.blendingFormulationData = res.data.pillData;
+          //  console.log(res.data.pillData);
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    UpdatedId(e) {
+      this.pill_id = e;
+      //console.log(this.pill_id);
+
+    },
+    checkPillId() {
+      // console.log(this.blending_id);
+      if (this.pill_id == "") {
+        this.$swal("Please Choose a Formulation");
+      }
+      else {
+        var option_data = JSON.parse(localStorage.getItem("option") || "[]");
+
+        for (let i = 0; i < option_data.length; i++) {
+          var option_array = option_data[i];
+          var res_option_type = Object.keys(option_array).toString();
+          if (res_option_type == "pill") { option_data.pop(option_data[i]); };
+        }
+
+        var put_pill = {
+          pill: this.pill_id
+        };
+        option_data.push(put_pill);
+        // Saving
+        localStorage.setItem("option", JSON.stringify(option_data));
+
+        localStorage.setItem('pill_id', this.pill_id);
+        this.$router.push('/raw-material-package/');
+        //console.log("success");
+      }
+    },
+  },
+
 };
 </script>

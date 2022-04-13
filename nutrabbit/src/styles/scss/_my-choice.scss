@@ -132,11 +132,11 @@
                     .heading{
                         @include flex-align-center;
                         h2{
-                            font-weight: 600;
+                            font-weight: 700;
                             font-size: 24px;
                             line-height: 24px;
                             letter-spacing: 0.01em;
-                            color: $black-33;
+                            color: $grey-66;
                             @media screen and (max-width: 640px){
                                 font-size: 20px;
                                 line-height: 20px;
@@ -193,7 +193,7 @@
                             .arrow-downward{
                                 border-width: 0;
                                 margin: 0 0 0 5px;
-                                background: url(../../../src/assets/icons/icon-arrowDown.svg) no-repeat right center;
+                                background: url(@/assets/icons/icon-arrowDown.svg) no-repeat right center;
                                 background-size: auto;
                                 height: 24px;
                                 width: 24px;
@@ -305,6 +305,7 @@
                                     height: 180px;
                                     width: 180px;
                                     margin-right: 40px;
+                                    position: relative;
                                     @media screen and (max-width: 992px){
                                         margin-right: 20px;
                                     } 
@@ -314,6 +315,19 @@
                                     img{
                                         height: 180px;
                                         min-width: 180px;
+                                    }
+                                    .img-wrap-hover{
+                                        position: absolute;
+                                        left: 100px;
+                                        top: 50px;
+                                        display: none;
+                                        width: 230px;
+                                        height: 230px;
+                                    }
+                                    &:hover{
+                                        .img-wrap-hover{
+                                            display: block;
+                                        }
                                     }
                                 }
                                 .material-details{
@@ -378,7 +392,7 @@
                             @include flex-align-center;
                             width: 100%;
                             align-items: center;
-                            padding: 47px 30px;
+                            padding: 35px 30px;
                             border-bottom: 1px solid $grey-CF;
                             @media screen and (max-width: 640px){
                                 align-items: flex-start;
@@ -429,6 +443,10 @@
                                     }
                                 }
                             }
+                            &.without-input{
+                                border-top: 1px solid $grey-CF;
+                                margin-top: 20px;
+                            }
                             .radio-wrap{
                                 @include flex-align-center;
                                 .custom-radio{
@@ -472,6 +490,14 @@
                                     }
                                 }
                             }
+                            &.recipeCheck{
+                                .check-box-wrap{
+                                    margin-top: -7px
+                                }
+                                .material-details{
+                                    margin-left: 40px
+                                }
+                            }
                         }
                         .btn-wrap{
                             @include flex-justify-between;
@@ -483,6 +509,9 @@
                                     min-width: 162px;
                                     line-height: 14px;
                                 }
+                            }
+                            &.flex-justify-end{
+                                justify-content: flex-end;
                             }
                         }
                     }
@@ -583,6 +612,9 @@
                 }
             }
             .choice-selection-item-wrap{
+                &.recipeGap{
+                    margin-bottom: 80px;
+                }
                 .choice-selection-item{
                     .package-list-wrap{
                         .btn-wrap{
@@ -598,6 +630,12 @@
                             }
                         }
                     }
+                }
+                &.choice-wrap-border{
+                    border: 1px solid #CFCFCF;
+                    padding: 40px 20px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
                 }
             }
         }

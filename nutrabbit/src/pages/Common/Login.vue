@@ -4,26 +4,31 @@
       <div class="login-signup-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">{{ $t("login") }}</h1>
+            <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
           </div>
           <form action @submit="(e) => e.preventDefault()">
             <div class="form-group" :class="errorEmail ? 'error' : ''">
-              <label for>{{ $t("ID") }}</label>
+              <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
             </div>
             <div class="form-group" :class="errorPassword ? 'error' : ''">
-              <label for>{{ $t("password") }}</label>
+              <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="Enter Password"
+                    :placeholder="$t('common.placeholder.EnterPassword')"
                     v-model="password"
                   />
                 </div>
@@ -33,7 +38,7 @@
             <div class="form-group">
               <div class="check-box-wrap">
                 <label class="custom-check">
-                  {{ $t("saveID") }}
+                  {{ $t("common.QuickLinks.RememberId") }}
                   <input type="checkbox" v-model="checkBox" />
                   <span class="checkmark"></span>
                 </label>
@@ -41,33 +46,54 @@
             </div>
             <div class="form-links">
               <div class="form-links-left">
+                <p id="token-result"></p>
                 <ul>
                   <li>
-                    <router-link to="/find-id">{{ $t("findID") }}</router-link>
+                    <router-link to="/find-id">
+                      {{ $t("common.QuickLinks.FindID") }}</router-link
+                    >
                   </li>
                   <li>
-                    <a href>{{ $t("findpassword") }}</a>
+                    <router-link to="/forgot-password">{{
+                      $t("common.QuickLinks.FindPassword")
+                    }}</router-link>
                   </li>
                 </ul>
               </div>
               <div class="form-link-right">
                 <router-link to="/member-registration-type-selection">
-                  {{
-                    $t("SignUp")
-                  }}
+                  {{ $t("common.QuickLinks.SignUp") }}
                 </router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
+            <button class="btn-primary" @click="onSubmit">
+              {{ $t("common.title.login") }}
+            </button>
           </form>
           <div class="getting-started">
-            <button class="btn-primary with-icon yellow-btn">
+            <button
+              id="kakao_login"
+              class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao"
+            >
               <i class="icon-chat-black"></i>
-              {{ $t("Startwithcacao") }}
+              {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
-            <button class="btn-primary with-icon green-btn">
+
+            <!-- <button id="kakao-login-btn">kakao login test</button> -->
+
+            <button id="naver_Login" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
-              {{ $t("GettingStartedwithNaver") }}
+              {{ $t("common.QuickLinks.NaverLogin") }}
+            </button>
+            <button
+              type="button"
+              class="btn-primary with-icon green-btn"
+              id="naver_id_login"
+              @click="naverLogin"
+            >
+              Naver
+              Login
             </button>
           </div>
         </div>
@@ -78,11 +104,10 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import axios from "axios";
 import { inject } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
-
+// import axios from "axios";
 
 export default {
   name: "Login",
@@ -96,6 +121,7 @@ export default {
       errorEmail: "",
       errorPassword: "",
       checkBox: "",
+      loader: undefined,
     };
   },
   setup() {
@@ -119,6 +145,10 @@ export default {
           (this.password = rememberUserEmailCookie);
       }
     }
+    // this.naverLogin();
+    // this.createLoginButton();
+    // this.kakaoAuthManage();
+    // this.displayToken();
   },
   methods: {
     onSubmit() {
@@ -129,61 +159,126 @@ export default {
       } else if (setPassword == "") {
         this.errorPassword = "Please enter password";
       } else {
-        // try {
-        //   const data = await axios
-        //     .post("/v1/sites/auth/login", {
-        //       login_id: setEmail,
-        //       password: setPassword,
-        //     })
-        //     .then((response) => {
-        //       if (response.data.status == 200) {
-        //         console.log(response.data.status);
-        //         localStorage.setItem(
-        //           "logedInUserDetails",
-        //           JSON.stringify(response.data.data)
-        //         );
-        //         if (this.checkBox) {
-        //           this.cookies.set("rememberUserEmail", setEmail);
-        //           this.cookies.set("rememberUserPassword", setPassword);
-        //         }
-        //         window.location = "/";
-        //       }
-        //     });
-        // } catch (error) {
-        //   let text =
-        //     error && error.response && error.response.data
-        //       ? error.response.data.message
-        //       : "";
-        //   let result = text.match("Password");
-        //   let result1 = text.match("Email");
-        //   if (result == "Password") {
-        //     this.errorPassword = "Enter a valid password.";
-        //     this.errorEmail = "";
-        //   } else if (result1 == "Email") {
-        //     this.errorPassword = "";
-        //     this.errorEmail = "Enter a valid email.";
-        //   }
-        //   // else {
-        //   //   alert("Email or, password is incorrect");
-        //   // }
-        // }
-
-        //API
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
-          console.log(res.data);
-          if (res.data.status == 200) {
-            console.log(res.data.status);
-            localStorage.setItem('token', res.data.data.token);
-            this.common.state.userId = res.data.data.userId;
-            if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+          if (res.response) {
+            if (res.response.data.status == 400) {
+              this.$swal(res.response.data.message);
             }
-            this.$router.push("/");
+          } else {
+            if (res.data.status == 200) {
+              console.log("login res", res.data.data);
+              this.common.state.userId = res.data.data.userId;
+              this.common.state.name = res.data.data.name;
+              localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("uid", res.data.data.userId);
+              localStorage.setItem("uname", res.data.data.name);
+              localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              if (this.checkBox) {
+                this.cookies.set("rememberUserEmail", setEmail);
+                this.cookies.set("rememberUserPassword", setPassword);
+              }
+              this.$router.push("/");
+            }
           }
         });
       }
     },
+
+
+
+    // naver login
+    // naverLogin() {
+    //   // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   // var state = naver_id_login.getUniqState();
+    //   // naver_id_login.setButton("green", 5, 50);
+    //   // naver_id_login.setDomain("http://localhost:8082/login");
+    //   // naver_id_login.setState(state);
+    //   // // naver_id_login.setPopup();
+    //   // naver_id_login.init_naver_id_login();
+    //   // // this.naverLoginCallback();
+
+
+
+    //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   var state = naverLogin.getUniqState();
+
+    //   naverLogin.setButton(); //initialize Naver Login Button
+    //   naverLogin.setDomain("http://localhost:8082/login");
+    //   naverLogin.setState(state);
+    //   naverLogin.init_naver_id_login();
+
+    //   $(document).on("click", "#naver_Login", function () {
+    //     var btnNaverLogin = document.getElementById("naver_Login");
+    //     btnNaverLogin.click();
+    //   });
+
+
+
+
+
+
+
+
+
+    // },
+
+    // naverLoginCallback() {
+    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
+    //   // 접근 토큰 값 출력
+    //   alert(naver_id_login.oauthParams.access_token);
+    //   // 네이버 사용자 프로필 조회
+    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
+    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    //   this.naverSignInCallback();
+    // },
+
+    // naverSignInCallback() {
+    //   alert(naver_id_login.getProfileData('email'));
+    //   alert(naver_id_login.getProfileData('nickname'));
+    //   alert(naver_id_login.getProfileData('age'));
+    // },
+
+
+    // kakao
+    loginWithKakao() {
+      window.Kakao.init('5d14c5e0ea3ead3c0683355cba9eda57');
+      this.loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: false,
+        width: 30,
+        height: 30,
+        onCancel: this.onCancel,
+      });
+      window.Kakao.Auth.login({
+        success: function (authObj) {
+          console.log(authObj)
+          Kakao.Auth.setAccessToken(authObj.access_token);
+          localStorage.setItem("token", authObj.access_token);
+          localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function (res) {
+              console.log('res-', res);
+              localStorage.setItem("uid", res.id);
+              localStorage.setItem("uname", res.kakao_account.profile.nickname);
+            }
+          });
+          this.loader.hide();
+        },
+        fail: function (err) {
+          console.log(err)
+        },
+      })
+    }
+
+
+
+
+
+
+
+
   },
 };
 </script>

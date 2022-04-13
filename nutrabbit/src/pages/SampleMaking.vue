@@ -12,7 +12,9 @@
             <p class="desc text-center">
               Make the health functional core food sample you want in nutri 3.3! It can be produced at a sampling cost of 300,000 won (VAT included) per one time.
             </p>
-            <button class="btn-small-solid">go to sample</button>
+            <button class="btn-small-solid">
+              <router-link to="/my-choice">go to sample</router-link>
+            </button>
             <p class="sampleNote">*Sample service is a paid service, and it usually takes 2 weeks for delivery after payment is completed.</p>
           </div>
           <div class="devider"><i class="icon-grey-star"></i></div>
@@ -20,7 +22,7 @@
             <p class="title text-center samllTitle">my choice</p>
             <h4 class="title text-center">nutri 3.3 blending</h4>
             <ul>
-              <li v-for="(item, index) in processData" :key="index">
+              <li v-for="(item, index) of processData" :key="index">
                 <div class="imgCont">
                   <img :src="item.img">
                 </div>

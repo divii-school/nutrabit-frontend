@@ -3,7 +3,7 @@
     margin: 80px 0 30px 0;
     &:after{
         position: absolute;
-        background: url(../../../src/assets/images/nutri-choice-symbol.svg) no-repeat top left;
+        background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
         background-size: auto 142px;
         height: 142px;
         width: 129px;
@@ -20,7 +20,7 @@
             top: -69px;
         }
         @media screen and (max-width: 640px){
-            background: url(../../../src/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
+            background: url(@/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
             height: 70px;
             background-size: auto 70px;
             width: 68px;
@@ -160,5 +160,205 @@
             }
         }
     }
-    
+}
+.about-recom{
+    .samllTitle{
+        color: $green-68;
+    }
+    .recom-section{
+        
+        .row-type{
+            @include flex-justify-between;
+            margin-top: 90px;
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+            &:first-child{
+                margin-top: 0;
+            }
+            &.type-1{
+                .text-box{
+                    p{
+                        font-weight: 700;
+                        font-size: 26px;
+                        line-height: 130%;
+                        color: $green-68;
+                        @media screen and (max-width: 900px) {
+                            font-size: 24px;
+                            line-height: 150%;
+                        }
+                    }
+                }
+            }
+            &:nth-child(even){
+                flex-direction: row-reverse;
+                @media screen and (max-width: 900px) {
+                    flex-direction: column;
+                }
+            }
+            .num{
+                font-weight: 600;
+                font-size: 250px;
+                line-height: 300px;
+                color: $green-d0;
+                width: 221px;
+                @include flex-justify-center;
+                @media screen and (max-width: 900px) {
+                    display: none;
+                }
+            }
+            figure{
+                img{
+                    height: auto;
+                }
+                @media screen and (max-width: 900px) {
+                    margin-bottom: 30px;
+                }
+            }
+            .text-box{
+                width: 375px;
+                @include flex-justify-center;
+                @media screen and (max-width: 900px) {
+                    width: auto;
+                }
+                p{
+                    font-weight: 500;
+                    font-size: 26px;
+                    line-height: 140%;
+                    color: $grey-4C;
+                    text-align: center;
+                    @media screen and (max-width: 900px) {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.green-belt{
+    background: $green-68;
+    padding: 150px 0;
+    h2{
+        text-align: center;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 120%;
+        color: $white-1;
+        position: relative;
+        @include flex-justify-center;
+        @media screen and (max-width: 900px) {
+            font-size: 16px;
+            line-height: 170%;
+        }
+        &::before{
+            content: "";
+            background: url(@/assets/images/decor-left.svg) no-repeat top left;
+            width: 74px;
+            height: 120px;
+            display: block;
+            background-size: auto 120px;
+            @media screen and (max-width: 900px) {
+                width: 28px;
+                min-width: 28px;
+                height: 48px;
+                background-size: 28px;
+            }
+        }
+        &::after{
+            content: "";
+            background: url(@/assets/images/decor-right.svg) no-repeat top left;
+            width: 74px;
+            height: 120px;
+            display: block;
+            background-size: auto 120px;
+            @media screen and (max-width: 900px) {
+                width: 28px;
+                min-width: 28px;
+                height: 48px;
+                background-size: 28px;
+            }
+        }
+    }
+}
+
+.about-servcie{
+    margin-bottom: 150px;
+    @media screen and (max-width: 900px) {
+        margin-bottom: 130px;
+    }
+    .row-type{
+        @include flex-align-center;
+        margin-top: 90px;
+        &:first-child{
+            margin-top: 0;
+            .num{
+                color: $green-d0;
+            }
+        }
+        &:nth-child(2), &:nth-child(4){
+            .num{
+                color: $purple-dc;
+            }
+        }
+        &:nth-child(3){
+            .num{
+                color: $purple-ea;
+            }
+        }
+        &:last-child{
+            .num{
+                color: $green-d0;
+            }
+        }
+        &:nth-child(even){
+            flex-direction: row-reverse;
+            .desc{
+                text-align: right;
+                p{
+                    margin-left: 0;
+                    margin-right: 10px;
+                }
+            }
+        }
+        .num{
+            font-weight: 600;
+            font-size: 250px;
+            line-height: 300px;
+            min-width: 221px;
+            @include flex-justify-center;
+            margin-right: 40px;
+            @media screen and (max-width: 900px) {
+                min-width: 70px;
+                font-weight: 800;
+                font-size: 100px;
+                line-height: 120px;
+            }
+        }
+        .desc{
+            h3{
+                font-weight: 700;
+                font-size: 40px;
+                line-height: 130%;
+                color: $black-33;
+                @media screen and (max-width: 900px) {
+                    font-size: 24px;
+                }
+            }
+            p{
+                margin-left: 10px;
+                font-weight: 400;
+                font-size: 26px;
+                line-height: 130%;
+                color: $grey-66;
+                margin-top: 20px;
+                @media screen and (max-width: 900px) {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 150%;
+                }
+            }
+        }
+    }
 }

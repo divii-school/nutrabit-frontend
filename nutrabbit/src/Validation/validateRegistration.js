@@ -3,7 +3,7 @@ import validator from "validator";
 const validateRegistration = (data) => {
   let errors = {};
 
-  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address } = data;
+  const { termsCheck, personalCheck, name, username, password, confirmPassword, email, emailOTP, phoneNumber, address, detsilAddress, account_type, businessNumber, businessName, depertment, contactPerson } = data;
 
 
   if (termsCheck == false) {
@@ -12,24 +12,23 @@ const validateRegistration = (data) => {
   if (personalCheck == false) {
     errors.personalCheck = "Please check personal information";
   }
-  // if (validator.isEmpty(businessNumber)) {
-  //   errors.name = "Please enter your business number";
-  // }
-  // if (validator.isEmpty(businessName)) {
-  //   errors.name = "Please enter your business name";
-  // }
-  // if (validator.isEmpty(depertment)) {
-  //   errors.name = "Please enter the department name";
-  // }
-  // if (validator.isEmpty(contactPerson)) {
-  //   errors.name = "Please enter the name of the person in charge";
-  // }
+  if (account_type == 'business') {
+    if (validator.isEmpty(businessNumber)) {
+      errors.businessNumber = "Please enter your business number";
+    }
+    if (validator.isEmpty(businessName)) {
+      errors.businessName = "Please enter your business name";
+    }
+    if (validator.isEmpty(depertment)) {
+      errors.depertment = "Please enter the department name";
+    }
+    if (validator.isEmpty(contactPerson)) {
+      errors.contactPerson = "Please enter the name of the person in charge";
+    }
+  }
   if (validator.isEmpty(name)) {
     errors.name = "Enter your name please";
   }
-  // else if (validator.isEmpty(!(name))) {
-  //   errors.name = "";
-  // }
   if (validator.isEmpty(username)) {
     errors.username = "Please enter your ID";
   }
@@ -41,7 +40,6 @@ const validateRegistration = (data) => {
   }
   else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
     errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
-    console.log('working')
   }
   if (validator.isEmpty(confirmPassword)) {
     errors.confirmPassword = "Please confirm your password";
@@ -61,7 +59,7 @@ const validateRegistration = (data) => {
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = "Please enter your mobile phone number";
   }
-  if (validator.isEmpty(address)) {
+  if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
     errors.address = "Please enter your address";
   }
 

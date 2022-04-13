@@ -1,0 +1,48 @@
+<template>
+  <div class="lang-dropdown">
+    <select v-model="$i18n.locale">
+      <option v-for="lang in langs" :key="lang.code" :value="lang.code">
+        {{ lang.name }}
+      </option>
+    </select>
+  </div>
+</template>
+<script>
+export default {
+  name: "LanguageInput",
+  data() {
+    return {
+      langs: [
+        {
+          code: "en",
+          name: "EN",
+        },
+        {
+          code: "kr",
+          name: "KO",
+        },
+      ],
+    };
+  },
+};
+</script>
+<style lang="scss" scoped>
+.lang-dropdown {
+  display: flex;
+  justify-content: center;
+  select {
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: $black-33;
+    background: transparent;
+    appearance: none;
+    background: url("@/assets/icons/header-dropdown-arrow.png") no-repeat center right;
+    background-size: auto 18px;
+    height: 18px;
+    min-width: 18px;
+    display: inline-block;
+  }
+}
+</style>

@@ -8,6 +8,10 @@
         font-size: 30px;
         line-height: 100%;
         margin-bottom: 40px;
+        font-weight: 700;
+        @media screen and (max-width: 640px){
+            padding: 0 16px;
+        }
     }
     .login-signup-inner {
         padding: 70px 90px;
