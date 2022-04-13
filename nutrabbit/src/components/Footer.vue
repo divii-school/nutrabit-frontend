@@ -1,9 +1,9 @@
 <template>
-  <div class="totop-wrap">
+  <!-- <div class="totop-wrap">
     <a href="javascript:void(0)" class="totop">
       <span class="round"><img src="../assets/images/chat-icon.png" /></span>
     </a>
-  </div>
+  </div> -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
