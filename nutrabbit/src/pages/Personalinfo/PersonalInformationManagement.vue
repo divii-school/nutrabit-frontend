@@ -21,7 +21,7 @@
                 <label for>ID</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control disabled" type="text" v-model="uuid" />
+                    <input class="form-control disabled" disabled type="text" v-model="uuid" />
                   </div>
                 </div>
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
@@ -61,7 +61,7 @@
                 <label for>e-mail</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control disabled" type="text" v-model="email" />
+                    <input class="form-control disabled" disabled type="text" v-model="email" />
                   </div>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default {
 
   methods: {
 
-     async personalInfo() {
+    async personalInfo() {
 
       this.personalInfoservice.getPersonalData(this.userId).then((res) => {
         console.log(res.data); 
@@ -204,23 +204,21 @@ export default {
     },
 
     async updatePersonalInfo() {
-      console.log("aaaaaa");
+      
       let credential = {
         name: this.name,
-        // username: this.username,
         password: this.password,
         confirmPassword: this.confirmPassword,
         email: this.email,
-        // emailOTP: this.emailOTP,
         phoneNumber: this.phoneNumber,
         address: this.address,
       };
       const { isInvalid, error } = personalInfoValidation(credential);
       if (isInvalid) {
-        console.log("bbbbb");
+        
         this.error = error;
       } else {
-        console.log("ccccc");
+        
         this.personalInfoservice
           .updatePersonalInfo(
             this.userID,
@@ -233,9 +231,7 @@ export default {
             this.checkName.join(",")
           )
           .then((res) => {
-            console.log(res);
             if (res.data.status == 200) {
-              console.log("ddddd");
               console.log(res.data.status);
               // this.$router.push("member-registration-completed");
             }
@@ -261,8 +257,6 @@ export default {
 
   mounted() {
     this.personalInfo();
-    var token = this.common.state.token;
-    console.log("token",token);
   },
 };
 </script>

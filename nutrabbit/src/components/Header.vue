@@ -66,7 +66,7 @@
                   {{ userDetails.name }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to>Change of personal information</router-link>
+                  <router-link to="/personal-information">Change of personal information</router-link>
                   <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
