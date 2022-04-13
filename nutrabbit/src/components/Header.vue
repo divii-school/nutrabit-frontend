@@ -92,7 +92,7 @@
     </div>
   </header>
   <div class="right-menu-screen" :class="{ active: active }">
-    <div class="top-box right-small-box">
+    <div class="right-small-box">
       <!-- <div class="black-box"></div> -->
       <div class="white-box" :class="{ active: active }">
         <div class="closeMenu" @click="active = !active">
