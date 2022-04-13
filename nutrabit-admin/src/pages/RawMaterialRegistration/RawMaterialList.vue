@@ -51,7 +51,7 @@
                             class="p-button p-button-sm p-mr-2 p-mb-2"
                             @click="searchRaw"
                         ></Button>
-                        <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="resetUser"></Button> -->
+                        <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                     </div>
                 </div>
             </div>
@@ -324,26 +324,28 @@ export default {
             // localStorage.setItem('detail_dafc', JSON.stringify(myObj));
             this.clientdata = myObj;
         },
-        resetUser() {
-            this.refercode = '';
-            this.calendarValue = '';
-            this.calendarValue1 = '';
+         resetUser() {
+            this.searchData = '';
+            this.sub_category_id = '';
+            this.from_date = '';
+           
             this.loading1 = true;
-            this.dfcuserService
-                .getDfcList()
-                .then((data) => {
-                    this.customer1 = data.userDataList;
-                    this.loading1 = false;
-                    this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                })
-                .catch((err) => {
-                    if (err.response.data.status == '403') {
-                        localStorage.clear();
-                        this.$router.push({ name: 'login' });
-                    }
-                    this.customer1 = [];
-                    this.loading1 = false;
-                });
+            if(this.from_date!=''){
+                    this.searchdate = this.addDay(this.from_date)
+                } else {
+                    this.searchdate = ""
+                }
+           this.rawService
+                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,  this.searchdate, this.endDate, this.sortBy, this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        console.log(data);
+                    })
+                    .catch(() => {
+                        this.customer1 = [];
+                        this.loading1 = false;
+                    });
         },
 
         resetdata(){

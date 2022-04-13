@@ -24,7 +24,7 @@
                     <div class="p-mb-4 p-mb-lg-0"></div>
                     <div>
                         <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchIndividual"></Button>
-                        <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="resetUser"></Button> -->
+                        <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                     </div>
                 </div>
             </div>
@@ -195,25 +195,20 @@ export default {
             this.clientdata = myObj;
         },
         resetUser() {
-            this.refercode = '';
-            this.calendarValue = '';
-            this.calendarValue1 = '';
+            this.name = '';
+            this.id = '';
             this.loading1 = true;
-            this.dfcuserService
-                .getDfcList()
-                .then((data) => {
-                    this.customer1 = data.userDataList;
-                    this.loading1 = false;
-                    this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                })
-                .catch((err) => {
-                    if (err.response.data.status == '403') {
-                        localStorage.clear();
-                        this.$router.push({ name: 'login' });
-                    }
-                    this.customer1 = [];
-                    this.loading1 = false;
-                });
+            this.userservice
+                 .getIndividualUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((data) => {
+                        this.customer1 = data;
+                        this.loading1 = false;
+                        console.log(data);
+                    })
+                    .catch(() => {
+                        this.customer1 = [];
+                        this.loading1 = false;
+                    });
         },
          resetiddata(){
             if (this.id === ''){

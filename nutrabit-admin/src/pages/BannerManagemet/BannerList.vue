@@ -19,7 +19,7 @@
                 <div class="p-mb-4 p-mb-lg-0"></div>
                 <div>
                     <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchBannner"></Button>
-                    <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button> -->
+                   <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                 </div>
             </div>
         </div>
@@ -183,6 +183,23 @@ export default {
                     this.loading1 = false;
                 });
             }, 500);
+        },
+        resetUser() {
+            this.searchData = '';
+           
+            this.loading1 = true;
+            this.bannerService
+                 .getBannerList(this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.banners;
+                        this.total = res.data.data.total;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    .catch(() => {
+                        this.products = [];
+                        this.loading1 = false;
+                    });
         },
         resetdata(){
             if (this.searchData === ''){

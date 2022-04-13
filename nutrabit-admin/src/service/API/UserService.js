@@ -6,8 +6,8 @@ export default class UserService {
     async getIndividualUserList(account_type,status,page,limit,name,id,email,startDate,endDate,sortBy,sortOrder) {
         return await axios.post(`/admin/user`, {account_type: 'personal_member',status:'active',page:page,limit:'10',name:name,id:id,email:email,startDate:startDate,endDate:endDate,sortBy:sortBy,sortOrder:sortOrder}).then((res) => res.data.data.users);
     }
-    async getBusinessUserList(account_type,status,page,limit,username,id,email,business_number,business_name,startDate,endDate,sortBy,sortOrder) {
-        return await axios.post(`/admin/user`, {account_type: 'business_member',status:'active',page:page,limit:'10',username:username,id:id,email:email,business_number:business_number,business_name:business_name,startDate:startDate,endDate:endDate,sortBy:sortBy,sortOrder:sortOrder}).then((res) => res.data.data.users);
+    async getBusinessUserList(account_type,status,page,limit,name,id,email,business_number,startDate,endDate,sortBy,sortOrder) {
+        return await axios.post(`/admin/user`, {account_type: 'business_member',status:'active',page:page,limit:'10',name:name,id:id,email:email,business_number:business_number,startDate:startDate,endDate:endDate,sortBy:sortBy,sortOrder:sortOrder}).then((res) => res.data.data.users);
     }
     async getUserListsingle(startdate) {
         return await axios.post(`/user`, { status: 'active', startDate: startdate }).then((res) => res.data.data.users);

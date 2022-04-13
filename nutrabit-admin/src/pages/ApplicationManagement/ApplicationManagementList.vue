@@ -64,7 +64,7 @@
                         class="p-button p-button-sm p-mr-2 p-mb-2"
                         @click="searchApplicationmanagement"
                     ></Button>
-                    <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button> -->
+                    <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@ export default {
             dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
             serial: 0,
             dropdownValue: null,
-            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommended' }],
+            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommanded' }],
 
             servicedropdownValues: [{ name: 'Sample Request', value: '1' }, { name: 'Get a quote', value: '2' }, { name: 'Both', value: '3' }],
 
@@ -303,6 +303,33 @@ export default {
                     this.loading1 = false;
                 });
             }, 500);
+        },
+
+         resetUser() {
+            this.name = '';
+            this.startDate = '';
+            this.status_by_admin = '';
+            this.goods = '';
+            this.service = '';
+            // this.calendarValue1 = '';
+            this.loading1 = true;
+             if(this.startDate!=''){
+                    this.searchdate = this.addDay(this.startDate)
+                } else {
+                    this.searchdate = ""
+                }
+            this.applicationmanagementService
+            
+                 .getApplicationmanagemenList(this.name, this.status_by_admin?.name, this.searchdate, this.goods?.value, this.service?.value)
+                    .then((data) => {
+                        this.products = data;
+                        this.loading1 = false;
+                        console.log(data);
+                    })
+                    .catch(() => {
+                        this.products = [];
+                        this.loading1 = false;
+                    });
         },
 
         resetdata(){
