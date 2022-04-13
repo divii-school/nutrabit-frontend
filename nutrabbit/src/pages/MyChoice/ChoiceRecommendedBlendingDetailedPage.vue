@@ -87,7 +87,7 @@
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul class="smilar-product-img">
               <li v-for="(items, index) of item.similar_image_path" :key="index">
-                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + items" alt />
+                <img :src="`${process.env.VITE_IMAGE_BASE_URL}` + items" alt />
               </li>
             </ul>
           </div>

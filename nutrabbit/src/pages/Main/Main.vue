@@ -11,7 +11,7 @@
       >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img
-            :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + slider.desktop_banner_path"
+            :src="process.env.VITE_IMAGE_BASE_URL + slider.desktop_banner_path"
             alt
           />
           <p class="banner-title text-center">{{ slider.title }}</p>

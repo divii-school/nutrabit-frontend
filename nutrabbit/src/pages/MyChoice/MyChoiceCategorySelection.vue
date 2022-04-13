@@ -101,13 +101,13 @@
                 <div class="list-left">
                   <div class="img-wrap">
                     <img
-                      :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
+                      :src="`${process.env.VITE_IMAGE_BASE_URL}` + data.thumbnail_fst_path"
                       alt
                     />
 
                     <div class="img-wrap-hover">
                       <img
-                        :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + data.thumbnail_fst_path"
+                        :src="`${process.env.VITE_IMAGE_BASE_URL}` + data.thumbnail_fst_path"
                         alt
                       />
                     </div>
