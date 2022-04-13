@@ -63,35 +63,37 @@
             </div>
             <div class="product-list-wrap">
               <ul class="raw-material-list">
-                <li v-for="(item, index) of blendingPackageData" :key="index">
-                  <ProductList
-                    :item="item"
-                    @changeId="UpdatedId($event)"
-                    @etcChecked="etcCheckedValue($event)"
-                    @etcInput="UpdatedEtcInput($event)"
-                  />
+                  <li v-for="(item, index) of blendingPackageData" :key="index">
+                  <!-- <ProductList :item="item" @changeId="UpdatedId($event)" @etcChecked="etcCheckedValue($event)"
+                    @etcInput="UpdatedEtcInput($event)" /> -->
+                  <ProductList :item="item" @changeId="UpdatedId($event)"  @etcChecked="etcCheckedValue($event)" />
                 </li>
               </ul>
-              <!-- <div class="product-item with-input">
+              <div class="product-item with-input">
                 <div class="radio-wrap">
-                  <label class="custom-radio">
-                    <input
-                      type="radio"
-                      value="etc"
-                      checked="checked"
-                      name="radio"
-                      @change="filterChanged"
-                    />
+                  <label class="custom-radio" for="17">
+                    <input type="radio" name="radio" id="17" value="17" v-model="package_id" @click="getetcbtn" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="material-details">
                   <h2>Etc</h2>
                   <div class="input-group">
-                    <input type="text" placeholder="Direct input" />
+                    <input type="text" placeholder="Direct input" v-model="etc" />
                   </div>
                 </div>
-              </div>-->
+              </div>
+              <div class="product-item with-input">
+                <div class="radio-wrap">
+                  <label class="custom-radio" for="18">
+                    <input type="radio" checked="checked" id="18" name="radio" v-model="package_id" value="18" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="material-details">
+                  <h2>unchecked</h2>
+                </div>
+              </div>
 
               <div class="btn-wrap">
                 <button
@@ -124,7 +126,7 @@ export default {
     return {
       blending_id: this.$route.query.blending_id,
       blendingPackageData: '',
-      package_id: '',
+      package_id: 18,
       etc: '',
       etcbtn: ''
     };
@@ -154,6 +156,9 @@ export default {
     UpdatedEtcInput(e) {
       this.etc = e;
     },
+    getetcbtn() {
+      this.etcbtn = "ETC";
+    },
     etcCheckedValue(e) {
       this.etcbtn = e;
     },
@@ -166,7 +171,7 @@ export default {
         if (this.etcbtn == "ETC") {
 
           if (this.etc == "") {
-            this.$swal("Please add custom package");
+            this.$swal("Please add custom package input");
           }
           else {
             localStorage.setItem('etc', this.etc);

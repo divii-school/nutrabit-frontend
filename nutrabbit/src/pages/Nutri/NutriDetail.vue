@@ -31,18 +31,33 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">nutri 3.3 blending product</h4>
             <div class="nutri-dom-product blendedPro">
-              <ul v-for="(item, index) of nutriList" :key="index">
-                <!-- <ul> -->
+              <ul>
                 <li>
                   <div class="nutri-product-item">
-                    <!-- <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt=""> -->
-                    <!-- <img class="nutri-pimg" :src="`https://backend.da-lab.io/${cardDetails.imageUrl}`" /> -->
-
-                    <img class="nutri-pimg" :src="'http://api-nutrabbit-dev.dvconsulting.org' + item.detail_image_path" alt=""/>
+                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
+                      <span>nutri 3.3</span>
                     </div>
-                    <p>{{item.name_ko}}</p>
+                    <p>Nutri ODM Product Title</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="nutri-product-item">
+                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                  </div>
+                    <p class="title">Nutri ODM Product Title</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="nutri-product-item">
+                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                  </div>
+                    <p class="title">Nutri ODM Product Title</p>
                   </div>
                 </li>
               </ul>
@@ -55,7 +70,6 @@
 </template>
 
 <script>
-import NutriService from "../../services/NutriService";
 export default {
   
   name: "NutriDetail",
@@ -85,38 +99,7 @@ export default {
           desc: "After checking in nutri 3.3 We will contact you"
         },
       ],
-      lang:"",
-      nutriList:[],
     };
   },
-
-  created() {
-    this.nutriService = new NutriService();
-  },
-
-  methods: {
-
-    getNutriService() {
-      this.nutriService
-        .getNutriService(
-          this.lang,
-        )
-        .then((res) => {
-          if (res.status == 200) {
-            console.log("res", res);
-            this.nutriList = res.data.data.blendingData;
-            console.log("nutriList", this.nutriList);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-  },
-
-  mounted() {
-    this.getNutriService();
-  }
 };
 </script>

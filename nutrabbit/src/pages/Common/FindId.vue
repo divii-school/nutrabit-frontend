@@ -20,7 +20,7 @@
                     type="email"
                     placeholder="Enter your email"
                     v-model="email"
-                    @keyup="checkError"
+                    
                   />
                 </div>
                 <button
@@ -46,7 +46,7 @@
                     placeholder="Enter your email verification code"
                     v-model="emailOTP"
                     maxlength="6"
-                    @keyup="checkError"
+                    
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime

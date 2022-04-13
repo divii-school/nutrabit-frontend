@@ -64,36 +64,36 @@
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingPackageData" :key="index">
-                  <ProductList :item="item" @changeId="UpdatedId($event)" @etcChecked="etcCheckedValue($event)"
-                    @etcInput="UpdatedEtcInput($event)" />
+                  <!-- <ProductList :item="item" @changeId="UpdatedId($event)" @etcChecked="etcCheckedValue($event)"
+                    @etcInput="UpdatedEtcInput($event)" /> -->
+                  <ProductList :item="item" @changeId="UpdatedId($event)"  @etcChecked="etcCheckedValue($event)" />
                 </li>
               </ul>
-              <!-- <div class="product-item with-input">
+              <div class="product-item with-input">
                 <div class="radio-wrap">
-                  <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                  <label class="custom-radio" for="17">
+                    <input type="radio" name="radio" id="17" value="17" v-model="package_id" @click="getetcbtn" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="material-details">
                   <h2>Etc</h2>
                   <div class="input-group">
-                    <input type="text" placeholder="Direct input" />
+                    <input type="text" placeholder="Direct input" v-model="etc" />
                   </div>
                 </div>
               </div>
               <div class="product-item with-input">
                 <div class="radio-wrap">
-                  <label class="custom-radio">
-                    <input type="radio" checked="checked" name="radio" />
+                  <label class="custom-radio" for="18">
+                    <input type="radio" checked="checked" id="18" name="radio" v-model="package_id" value="18" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="material-details">
                   <h2>unchecked</h2>
                 </div>
-              </div> -->
-
+              </div>
               <div class="btn-wrap">
                 <button @click="this.$router.push(`/ingredient-formulation/`)"
                   class="btn-small-solid grey">Previous</button>
@@ -122,7 +122,7 @@ export default {
   data() {
     return {
       blendingPackageData: '',
-      package_id: '',
+      package_id: 18,
       etc: '',
       etcbtn: ''
     };
@@ -154,6 +154,9 @@ export default {
     },
     etcCheckedValue(e) {
       this.etcbtn = e;
+    },
+    getetcbtn() {
+      this.etcbtn = "ETC";
     },
     checkPackageId() {
       if (this.package_id == "") {
@@ -189,25 +192,25 @@ export default {
           }
         }
         else {
-          
+
           var option_data = JSON.parse(localStorage.getItem("option") || "[]");
 
-            for (let i = 0; i < option_data.length; i++) {
-              var option_array = option_data[i];
-              var res_option_type = Object.keys(option_array).toString();
-              //console.log(res_option_type);
-              if (res_option_type == "package") {
-                 option_data.pop(option_data[i]);
-                  // console.log("hello");
-                  };
-            }
-
-            var put_package = {
-              package: this.package_id
+          for (let i = 0; i < option_data.length; i++) {
+            var option_array = option_data[i];
+            var res_option_type = Object.keys(option_array).toString();
+            //console.log(res_option_type);
+            if (res_option_type == "package") {
+              option_data.pop(option_data[i]);
+              // console.log("hello");
             };
-            option_data.push(put_package);
-            // Saving
-            localStorage.setItem("option", JSON.stringify(option_data));
+          }
+
+          var put_package = {
+            package: this.package_id
+          };
+          option_data.push(put_package);
+          // Saving
+          localStorage.setItem("option", JSON.stringify(option_data));
 
           localStorage.setItem('package_id', this.package_id);
           this.$router.push('/raw-material-estimation/');
