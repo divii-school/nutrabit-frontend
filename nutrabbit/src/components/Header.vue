@@ -19,7 +19,7 @@
           <div class="search-wrap-outer">
             <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
-                <input type="text" placeholder="Enter your desired search term." @click="getHistory"
+                <input type="text" placeholder="Enter search term" @click="getHistory"
                   v-model="sarchInput" />
                 <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
@@ -93,8 +93,8 @@
   </header>
   <div class="right-menu-screen" :class="{ active: active }">
     <div class="top-box right-small-box">
-      <div class="black-box"></div>
-      <div class="white-box">
+      <!-- <div class="black-box"></div> -->
+      <div class="white-box" :class="{ active: active }">
         <div class="closeMenu" @click="active = !active">
           <router-link to>
             <img src="/src/assets/icons/menu-close.svg" />
@@ -108,7 +108,6 @@
                 <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
                 </router-link>
                 <i class="icon-leftArw"></i>
-                {{ localuser }}
               </template>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{
@@ -181,15 +180,15 @@ export default {
             },
             {
               label: "my choice",
-              link: "/",
+              link: "/my-choice",
             },
             {
               label: "nutri 3.3 blending",
-              link: "/",
+              link: "/service-intro",
             },
             {
               label: "Sample making guide",
-              link: "/",
+              link: "/sample-making",
             },
           ],
         },
@@ -198,15 +197,15 @@ export default {
           subItemData: [
             {
               label: "raw material storage box",
-              link: "/",
+              link: "/add-ingredient",
             },
             {
               label: "my recipe",
-              link: "/",
+              link: "/my-recipe",
             },
             {
               label: "my application",
-              link: "/",
+              link: "/my-application-detail",
             },
           ],
         },
