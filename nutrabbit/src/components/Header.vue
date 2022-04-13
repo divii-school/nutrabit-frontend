@@ -19,12 +19,8 @@
           <div class="search-wrap-outer">
             <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="Enter your desired search term."
-                  @click="getHistory"
-                  v-model="sarchInput"
-                />
+                <input type="text" placeholder="Enter your desired search term." @click="getHistory"
+                  v-model="sarchInput" />
                 <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
                 </router-link>
@@ -34,17 +30,10 @@
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
-                        <router-link
-                          to
-                          class="search-title"
-                          @click="getSearchFromHistory(item.search_data)"
-                          >{{ item.search_data }}</router-link
-                        >
-                        <router-link
-                          to
-                          class="search-item-close"
-                          @click="deleteHistory(item.id)"
-                        >
+                        <router-link to class="search-title" @click="getSearchFromHistory(item.search_data)">{{
+                          item.search_data
+                        }}</router-link>
+                        <router-link to class="search-item-close" @click="deleteHistory(item.id)">
                           <i class="icon-close-search"></i>
                         </router-link>
                       </li>
@@ -64,12 +53,8 @@
                 </div>
               </div>
             </div>
-            <router-link
-              to
-              class="mobile-search-icon"
-              :class="showMobSearch ? 'icon-show' : ''"
-              @click="showMobSearchF"
-            >
+            <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : ''"
+              @click="showMobSearchF">
               <i class="icon-search-black"></i>
             </router-link>
           </div>
@@ -116,17 +101,12 @@
           </router-link>
         </div>
         <ul class="right-menu-items">
-          <li
-            v-for="(item, index) of rightMenuItem"
-            :key="index"
-            @click="activeSubmenu = activeSubmenu == index ? '' : index"
-          >
+          <li v-for="(item, index) of rightMenuItem" :key="index"
+            @click="activeSubmenu = activeSubmenu == index ? '' : index">
             <div class="side-menu-heading">
               <template v-if="token && index == 0">
-                <router-link
-                  to
-                  :class="token ? 'login-item' : ''"
-                >{{ userDetails.name ? userDetails.name : localuser }}</router-link>
+                <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
+                </router-link>
                 <i class="icon-leftArw"></i>
                 {{ localuser }}
               </template>
@@ -135,20 +115,13 @@
                   item.mainItem
                 }}
               </router-link>
-              <i
-                class="icon-menu-downArw"
-                :class="
-                  item.subItemData && item.subItemData.length ? '' : 'no-arrow'
-                "
-              ></i>
+              <i class="icon-menu-downArw" :class="
+                item.subItemData && item.subItemData.length ? '' : 'no-arrow'
+              "></i>
             </div>
             <div class="side-menu-list" :class="activeSubmenu === index ? 'activeSubmenu' : ''">
-              <router-link
-                to
-                @click="onClickLink(item.link)"
-                v-for="(item, index2) of item.subItemData"
-                :key="index2"
-              >{{ item.label }}</router-link>
+              <router-link to @click="onClickLink(item.link)" v-for="(item, index2) of item.subItemData" :key="index2">
+                {{ item.label }}</router-link>
             </div>
           </li>
         </ul>
@@ -163,15 +136,8 @@
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    bodytext1="This service requires login."
-    bodytext2="Please use the service after logging in."
-    btnText1="Cancel"
-    btnText2="Login"
-    link="/login"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in." btnText1="Cancel" btnText2="Login" link="/login" />
   <div :class="activeSearch ? 'overlay-click-out-side' : ''" @click="activeSearch = false"></div>
 </template>
 
@@ -294,7 +260,7 @@ export default {
       this.showMobSearch = false;
       this.activeSearch = false;
     },
-    changeLanguage() {},
+    changeLanguage() { },
     // logout
     logOut() {
       if (this.logedInUserDetails) {

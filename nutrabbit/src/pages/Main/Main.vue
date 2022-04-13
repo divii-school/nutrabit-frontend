@@ -11,8 +11,8 @@
       >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img
-            :src="process.env.VITE_IMAGE_BASE_URL + slider.desktop_banner_path"
-            alt
+            :src="imgBaseUrl + slider.desktop_banner_path"
+            alt=""
           />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
@@ -106,6 +106,7 @@ export default {
       MainSlider: [],
       ProductData: [],
       token: localStorage.getItem('token'),
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
   setup() {
