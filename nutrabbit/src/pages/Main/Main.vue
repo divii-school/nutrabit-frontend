@@ -122,7 +122,14 @@ export default {
   mounted() {
     this.allBanner();
     this.allNutidata();
-    // this.naverLogin();
+    localStorage.removeItem('sub_category_id');
+    localStorage.removeItem('raw_material_id');
+    localStorage.removeItem('package_id');
+    localStorage.removeItem('pill_id');
+    localStorage.removeItem('option');
+    localStorage.removeItem('etc');
+    localStorage.removeItem('storage_box');
+
   },
   methods: {
     // makePay test function

@@ -69,7 +69,7 @@
             </ul>
             <div class="blendBtnList">
               <button  @click="addRawMaterial()" class="btn-primary purple-btn-outline">add</button>
-              <button  @click="this.$router.push(`/ingredient-formulation/${item.id}`)" class="btn-primary blue-btn-solid">next</button>
+              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">next</button>
             </div>
           </div>
           <div class="suggested-product">
@@ -156,19 +156,7 @@ export default {
       raw_material_id:'',
       raw_material_image:'',
       blendingData:'',
-      // pagination: {
-      //   clickable: true,
-      //   renderBullet: (index, className) => {
-      //     return (
-      //       '<span class="' +
-      //       className +
-      //       '">' +
-      //       `<img src="${this.ProductImages[index]}" alt="" />` +
-      //       "</span>"
-      //     );
-      //   },
-      // },
-      // modules: [Pagination],
+      item_exist:'',
       productDetails: [
         {
           title: "aloe gel",
@@ -242,10 +230,30 @@ export default {
       // console.log(theText.split(','))
       return theText.split(',');
     },
+    gotoNextPage() {
+
+       var option_data = JSON.parse(localStorage.getItem("option") || "[]");
+
+            for (let i = 0; i < option_data.length; i++) {
+              var option_array = option_data[i];
+              var res_option_type = Object.keys(option_array).toString();
+              console.log(res_option_type);
+              if (res_option_type == "raw_material") { option_data.pop(option_data[i]); };
+            }
+
+          var put_raw = {
+            raw_material: localStorage.getItem('raw_material_id')
+          };
+          option_data.push(put_raw);
+          // Saving
+          localStorage.setItem("option", JSON.stringify(option_data));
+
+      this.$router.push('/ingredient-formulation/');
+
+    },
     // rawmaterial details
     rawMaterialDetail() {
-      let sub_cat = useRoute();
-      this.raw_material_id = sub_cat.params.id;
+      this.raw_material_id =localStorage.getItem('raw_material_id');
       const setRawMaterialId = this.raw_material_id;
       //  console.log(setRawMaterialId);
 
@@ -259,7 +267,7 @@ export default {
       });
     },
      rawMaterialImage() {
-      this.mychoiceService.getRawMaterialImage(this.$route.params.id).then((res) => {
+      this.mychoiceService.getRawMaterialImage(localStorage.getItem('raw_material_id')).then((res) => {
         //  console.log(res.data);
         if (res.data.status == 200) {
           this.raw_material_image = res.data.data;
@@ -284,14 +292,35 @@ export default {
       });
     },
     addRawMaterial() {
-      //  console.log(this.raw_material_id);
-      this.mychoiceService.rawMaterialStorageBoxAdd(this.$route.params.id).then((res) => {
+      let uid = localStorage.getItem('uid');
+      this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          for (let i = 0; i < res.data.data.length; i++) {
+
+            if(localStorage.getItem('raw_material_id')==res.data.data[i].id) {
+              this.item_exist="yes";
+            }
+            
+          }
+          if(this.item_exist=="yes"){
+            this.$swal("You have already added this item");
+            this.$router.push('/add-ingredient')
+
+          }
+          else{
+             this.mychoiceService.rawMaterialStorageBoxAdd(localStorage.getItem('raw_material_id')).then((res) => {
         //console.log(res.data);
         if (res.data.status=200) {
           this.$router.push('/add-ingredient')
          
         } else {
             this.$swal(res.data.message, "error");
+        }
+      });
+          }
+        } else {
+          this.$swal(res.message, "error");
         }
       });
     },

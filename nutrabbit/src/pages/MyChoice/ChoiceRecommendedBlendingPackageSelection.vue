@@ -64,10 +64,15 @@
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingPackageData" :key="index">
-                  <ProductList :item="item" @changeId="UpdatedId($event)" />
+                  <ProductList
+                    :item="item"
+                    @changeId="UpdatedId($event)"
+                    @etcChecked="etcCheckedValue($event)"
+                    @etcInput="UpdatedEtcInput($event)"
+                  />
                 </li>
               </ul>
-              <div class="product-item with-input">
+              <!-- <div class="product-item with-input">
                 <div class="radio-wrap">
                   <label class="custom-radio">
                     <input
@@ -86,27 +91,13 @@
                     <input type="text" placeholder="Direct input" />
                   </div>
                 </div>
-              </div>
-              <div class="product-item with-input">
-                <div class="radio-wrap">
-                  <label class="custom-radio">
-                    <input
-                      type="radio"
-                      value="unchecked"
-                      checked="checked"
-                      name="radio"
-                      @change="filterChanged"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="material-details">
-                  <h2>unchecked</h2>
-                </div>
-              </div>
+              </div>-->
 
               <div class="btn-wrap">
-                  <button  @click="this.$router.push(`/choice-recommended-blending-detailed-page/${this.blending_id}`)" class="btn-small-solid grey">Previous</button>
+                <button
+                  @click="this.$router.push(`/choice-recommended-blending-detailed-page/${this.blending_id}`)"
+                  class="btn-small-solid grey"
+                >Previous</button>
                 <button @click="checkPackageId" class="btn-small-solid blue">next</button>
               </div>
             </div>
@@ -134,23 +125,8 @@ export default {
       blending_id: this.$route.query.blending_id,
       blendingPackageData: '',
       package_id: '',
-      // rwaMaterialData: [
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "Bottle",
-      //     desc: [
-      //       "Choose from a variety of sizes and shapes of bottles and caps.",
-      //     ],
-      //   },
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "PTP",
-      //     desc: [
-      //       "It is hygienic and convenient.",
-      //       "The packaging volume is slightly larger.",
-      //     ],
-      //   },
-      // ],
+      etc: '',
+      etcbtn: ''
     };
   },
   created() {
@@ -175,13 +151,33 @@ export default {
     UpdatedId(e) {
       this.package_id = e;
     },
+    UpdatedEtcInput(e) {
+      this.etc = e;
+    },
+    etcCheckedValue(e) {
+      this.etcbtn = e;
+    },
     checkPackageId() {
       // console.log(this.blending_id);
       if (this.package_id == "") {
         this.$swal("Please Choose a Package");
       }
       else {
-        this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', query: { blending_id: this.blending_id, package_id: this.package_id } });
+        if (this.etcbtn == "ETC") {
+
+          if (this.etc == "") {
+            this.$swal("Please add custom package");
+          }
+          else {
+            localStorage.setItem('etc', this.etc);
+            this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', query: { blending_id: this.blending_id, package_id: this.package_id } });
+          }
+
+        }
+        else {
+          localStorage.setItem('etc', this.etc);
+          this.$router.push({ name: 'MyChoiceRecomandedBlendingFinalQuote', query: { blending_id: this.blending_id, package_id: this.package_id } });
+        }
       }
     },
     filterChanged(event) {

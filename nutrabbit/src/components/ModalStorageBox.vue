@@ -13,7 +13,7 @@
           <button
             type="button"
             class="btn-primary grey-btn-solid"
-            @click="this.$router.push('/add-ingredient')"
+            @click="gotolocker()"
           >{{ btnText1 }}</button>
           <button type="button" class="btn-primary grenn-btn2" @click="addRawMaterial()">{{ btnText2 }}</button>
         </div>
@@ -37,7 +37,24 @@ export default {
     },
     addRawMaterial() {
       //  console.log(this.raw_material_id);
-      this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
+      let uid = localStorage.getItem('uid');
+      this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          for (let i = 0; i < res.data.data.length; i++) {
+
+            if(this.raw_material_id==res.data.data[i].id) {
+              this.item_exist="yes";
+            }
+            
+          }
+          if(this.item_exist=="yes"){
+            this.$swal("You have already added this item");
+            this.$emit('close');
+
+          }
+          else{
+             this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
         //console.log(res.data);
         if (res.data.status=200) {
           this.$swal("Successfully Added");
@@ -47,7 +64,49 @@ export default {
             this.$swal(res.data.message, "error");
         }
       });
+          }
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
     },
+    gotolocker() {
+       //  console.log(this.raw_material_id);
+      let uid = localStorage.getItem('uid');
+      this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          for (let i = 0; i < res.data.data.length; i++) {
+
+            if(this.raw_material_id==res.data.data[i].id) {
+              this.item_exist="yes";
+            }
+            
+          }
+          if(this.item_exist=="yes"){
+            this.$swal("You have already added this item");
+            this.$router.push('/add-ingredient');
+
+          }
+          else{
+             this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
+        //console.log(res.data);
+        if (res.data.status=200) {
+          this.$swal("Successfully Added");
+           this.$router.push('/add-ingredient');
+         
+        } else {
+            this.$swal(res.data.message, "error");
+        }
+      });
+          }
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+
+    }
+    
   },
 };
 </script>

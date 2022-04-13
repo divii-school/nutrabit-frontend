@@ -8,7 +8,7 @@ export default class MyApplicationDetails {
 
   // API Functions
 
-    async applicationlist(userId, lang, application_type, page, limit, sortBy, sortOrder) {
+    async appNutri(userId, lang, application_type, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/sample_application`,
         {
           userId: userId,
@@ -21,7 +21,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
-    async applicationlist2(userId, lang, application_type2, page, limit, sortBy, sortOrder) {
+    async appRecommended(userId, lang, application_type2, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/sample_application`,
         {
           userId: userId,
@@ -34,7 +34,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
-    async applicationlist3(userId, lang, application_type3, page, limit, sortBy, sortOrder) {
+    async appMychoice(userId, lang, application_type3, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/sample_application`,
         {
           userId: userId,
@@ -47,7 +47,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
-    async quotationlist(userId, lang, application_type, page, limit, sortBy, sortOrder) {
+    async QuoteNutri(userId, lang, application_type, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/get_quote`,
         {
           userId: userId,
@@ -60,7 +60,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
-    async quotationlist2(userId, lang, application_type2, page, limit, sortBy, sortOrder) {
+    async QuoteRecommended(userId, lang, application_type2, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/get_quote`,
         {
           userId: userId,
@@ -73,7 +73,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
-    async quotationlist3(userId, lang, application_type3, page, limit, sortBy, sortOrder) {
+    async QuoteMyChoice(userId, lang, application_type3, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/get_quote`,
         {
           userId: userId,
@@ -96,8 +96,26 @@ export default class MyApplicationDetails {
     async getsampleDetails(op_type,op_val) {
       return await axios.post(`/application/options_details`,
         {
+          lang:"KO",
           option_type:op_type,
           option_val:op_val,
         }).then((res) => res).catch((err) => err);
     }
+
+    async sampleBlendingDetails(id, application_type) {
+      return await axios.post(`/application/blending/details`,
+        {
+          id:id,
+          application_type:application_type,
+        }).then((res) => res).catch((err) => err);
+    }
+
+    // async getsampleBlendingDetails(op_type,op_val) {
+    //   return await axios.post(`/application/options_details`,
+    //     {
+    //       lang:"KO",
+    //       option_type:op_type,
+    //       option_val:op_val,
+    //     }).then((res) => res).catch((err) => err);
+    // }
 }

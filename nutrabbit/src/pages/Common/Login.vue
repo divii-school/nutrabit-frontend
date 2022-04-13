@@ -4,26 +4,31 @@
       <div class="login-signup-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">{{ $t("login") }}</h1>
+            <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
           </div>
           <form action @submit="(e) => e.preventDefault()">
             <div class="form-group" :class="errorEmail ? 'error' : ''">
-              <label for>{{ $t("ID") }}</label>
+              <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" placeholder="Enter ID" v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
             </div>
             <div class="form-group" :class="errorPassword ? 'error' : ''">
-              <label for>{{ $t("password") }}</label>
+              <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="Enter Password"
+                    :placeholder="$t('common.placeholder.EnterPassword')"
                     v-model="password"
                   />
                 </div>
@@ -33,7 +38,7 @@
             <div class="form-group">
               <div class="check-box-wrap">
                 <label class="custom-check">
-                  {{ $t("saveID") }}
+                  {{ $t("common.QuickLinks.RememberId") }}
                   <input type="checkbox" v-model="checkBox" />
                   <span class="checkmark"></span>
                 </label>
@@ -44,18 +49,26 @@
                 <p id="token-result"></p>
                 <ul>
                   <li>
-                    <router-link to="/find-id">{{ $t("findID") }}</router-link>
+                    <router-link to="/find-id">
+                      {{ $t("common.QuickLinks.FindID") }}</router-link
+                    >
                   </li>
                   <li>
-                    <router-link to="/forgot-password">{{ $t("findpassword") }}</router-link>
+                    <router-link to="/forgot-password">{{
+                      $t("common.QuickLinks.FindPassword")
+                    }}</router-link>
                   </li>
                 </ul>
               </div>
               <div class="form-link-right">
-                <router-link to="/member-registration-type-selection">{{ $t("SignUp") }}</router-link>
+                <router-link to="/member-registration-type-selection">
+                  {{ $t("common.QuickLinks.SignUp") }}
+                </router-link>
               </div>
             </div>
-            <button class="btn-primary" @click="onSubmit">{{ $t("login") }}</button>
+            <button class="btn-primary" @click="onSubmit">
+              {{ $t("common.title.login") }}
+            </button>
           </form>
           <div class="getting-started">
             <button
@@ -64,14 +77,14 @@
               @click="loginWithKakao"
             >
               <i class="icon-chat-black"></i>
-              {{ $t("Startwithcacao") }}
+              {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
             <button id="naver_Login" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
-              {{ $t("GettingStartedwithNaver") }}
+              {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <button
               type="button"
