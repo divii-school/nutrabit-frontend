@@ -5,13 +5,11 @@ const validateCreateRaw = (data) => {
   
   const {  material_name_ko, material_name_en,tag_ko,tag_en,standard_ko,standard_en,material_description_ko,material_description_en,
     material_function_ko,material_function_en,material_prequotion_ko,material_prequotion_en,material_extra_info_ko,material_extra_info_en,
-    daily_intake_amount_ko,daily_intake_amount_en,file,files} = data;
+    daily_intake_amount_ko,daily_intake_amount_en,file,files ,status} = data;
   // if(validator.isEmpty(category_id)) {
   //   errors.category_id =  "카테고리를 선택하세요";
   // }
-  // if(validator.isEmpty(sub_category)) {
-  //   errors.sub_category =  "하위 카테고리 ID는 필수 항목입니다";
-  // }
+  
   if(validator.isEmpty(material_name_ko)) {
     errors.material_name_ko =  "재료 이름 Ko는 필수 항목입니다";
   }
@@ -68,6 +66,10 @@ const validateCreateRaw = (data) => {
 if (validator.isEmpty(files)) {
   errors.files = '파일을 업로드 해주세요';
 }
+if (validator.isEmpty(status)) {
+  errors.status = '선택 해주세요';
+}
+
  
   return {
     isInvalid: Object.keys(errors).length > 0,

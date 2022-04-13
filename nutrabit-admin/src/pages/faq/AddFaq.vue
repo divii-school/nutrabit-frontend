@@ -4,116 +4,112 @@
         <form>
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
-                    <h5>{{$t('Faq.add.addnew_faq')}}</h5>
+                    <h5>{{ $t('Faq.add.addnew_faq') }}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Faq.list.category')}}</label>
-                            
+                            <label for="title2">{{ $t('Faq.list.category') }}</label>
 
-                            <Dropdown    v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
-                            
+
+                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionLabel="name_ko"
+                                optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Faq.add.title')}}</label>
-                            <InputText :class="`${error.title_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.title')" id="title2" v-model="title_ko"  ></InputText>
+                            <label for="title2">{{ $t('Faq.add.title') }}</label>
+                            <InputText :class="`${error.title_ko ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Faq.add.title')" id="title2" v-model="title_ko"></InputText>
                             <div class="text-red">{{ error.title_ko }}</div>
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Faq.add.addtitle')}}</label>
-                            <InputText :class="`${error.title_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addtitle')" id="title2" v-model="title_en" ></InputText>
+                            <label for="title2">{{ $t('Faq.add.addtitle') }}</label>
+                            <InputText :class="`${error.title_en ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Faq.add.addtitle')" id="title2" v-model="title_en"></InputText>
                             <div class="text-red">{{ error.title_en }}</div>
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Faq.add.answer')}}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.answer')" id="title2" v-model="description_ko" ></Textarea>
+                            <label for="title2">{{ $t('Faq.add.answer') }}</label>
+                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Faq.add.answer')" id="title2" v-model="description_ko"></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Faq.add.addanswer')}}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Faq.add.addanswer')" id="title2" v-model="description_en" ></Textarea>
+                            <label for="title2">{{ $t('Faq.add.addanswer') }}</label>
+                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Faq.add.addanswer')" id="title2" v-model="description_en"></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
-                       
-                     
-                   
+
+
+
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                           <label for="state2">{{ $t('Faq.add.status') }}</label>
+                            <label for="state2">{{ $t('Faq.add.status') }}</label>
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
-                             <input type="radio" id="yes" value="active" name="status" v-model="status">
+                            <div :class="`${error.state ? 'p-invalid' : ''}`">
+                                <input type="radio" id="yes" value="active" name="status" v-model="status">
                                 <label for="yes">Yes</label>
-                                
+
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status">
                                 <label for="no">No</label>
-                            
+                            </div>
                             <div class="text-red">{{ error.state }}</div>
                         </div>
                     </div>
-                   
-                    
-                   
+
+
+
                     <div class="p-grid p-formgrid p-mb-3">
-                        
-                        
-                        
-                            <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
+
+
+
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="top_10">{{ $t('Faq.add.top') }}</label>
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
-                             <input type="radio" id="yes" value="y" name="top_10" v-model="top_10">
+                            <div :class="`${error.top_10 ? 'p-invalid' : ''}`">
+                                <input type="radio" id="yes" value="y" name="top_10" v-model="top_10">
                                 <label for="yes">Yes</label>
-                                
+
                                 <input type="radio" id="no" name="top_10" value="n" v-model="top_10">
                                 <label for="no">No</label>
-                            
-                            <div class="text-red">{{ error.top }}</div>
+                            </div>
+                            <div class="text-red">{{ error.top_10 }}</div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
-                 <Button
-                        :label="$t('button.save')"
-                        icon="pi pi-check"
-                        iconPos="left"
-                        class="p-button p-button-sm p-mr-2 p-mb-2"
-                        @click="addFaq"
-                        style="margin-top: -20px;"
-                    ></Button>
+                <Button :label="$t('button.save')" icon="pi pi-check" iconPos="left"
+                    class="p-button p-button-sm p-mr-2 p-mb-2" @click="addFaq" style="margin-top: -20px;"></Button>
 
-                    <Button
-                        :label="$t('button.back')"
-                        icon="pi pi-replay"
-                        iconPos="left"
-                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
-                        @click="$router.go(-1)"
-                        style="margin-top: -20px;"
-                    ></Button>
-                    
+                <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
+                    class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"
+                    style="margin-top: -20px;"></Button>
+
             </div>
-            <div class="p-d-flex p-jc-end p-ai-center" >
+            <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    
-                    
-                   
+
+
+
                 </div>
             </div>
-            
+
         </form>
     </div>
 
@@ -123,27 +119,27 @@
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 import FaqService from '../../service/API/FaqService';
-import validateCreateFaq from  '../../validations/faq/validateCreateFaq';
+import validateCreateFaq from '../../validations/faq/validateCreateFaq';
 export default {
     name: 'AddBanner',
     // props: ['dog', 'image'],
     data() {
         return {
-            render1:false,
-            render2:false,
-             dropdownValues: [{ name: 'active',code:'활성' }, { name: 'inactive',code:'비활성' }],
+            render1: false,
+            render2: false,
+            dropdownValues: [{ name: 'active', code: '활성' }, { name: 'inactive', code: '비활성' }],
             // dropdownValueTypes: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
-             dropdownValue: '',
+            dropdownValue: '',
             // dropdownValueType: null,
-            category_id:'',
-            title_ko:'',
-            title_en:'',
-            description_ko:'',
-             
-            description_en:'',
-            top_10:'',
+            category_id: '',
+            title_ko: '',
+            title_en: '',
+            description_ko: '',
+
+            description_en: '',
+            top_10: '',
             subtitle: null,
-            link:"",
+            link: "",
             files: null,
             filesName: '',
             file: '',
@@ -151,11 +147,11 @@ export default {
             fileName: '',
             fileExtension: '',
             filesExtension: '',
-            status:'',
+            status: '',
             categoryDropdownValues: '',
             categoryDropdownValue: null,
-            
-            
+
+
             formData: new FormData(),
             error: {},
         };
@@ -180,7 +176,7 @@ export default {
     },
     methods: {
         reinitialize() {
-            (this.category_id = null), (this.title_ko = null), (this.title_en = null), (this.description_ko = null), (this.description_en = null),(this.top_10 = null),(this.dropdownValue = null);
+            (this.category_id = null), (this.title_ko = null), (this.title_en = null), (this.description_ko = null), (this.description_en = null), (this.top_10 = null), (this.dropdownValue = null);
         },
         open() {
             this.display = true;
@@ -188,7 +184,7 @@ export default {
         close() {
             this.display = false;
         },
-       
+
         addFaq() {
             let vcheckData = {
                 category_id: this.category_id,
@@ -197,28 +193,28 @@ export default {
                 description_ko: this.description_ko,
                 description_en: this.description_en,
                 top_10: this.top_10,
-                state: this.status ,
+                state: this.status,
                 // type: this.dropdownValueType == null ? '' : 'something',
-                
+
             };
             const { isInvalid, error } = validateCreateFaq(vcheckData);
             if (isInvalid) {
                 this.error = error;
                 console.log(error);
             } else {
-              
-           
-            console.log( this.formData);
-            return axios
-                .post('/admin/faq/add', {'category_id':this.category_id,'title_ko':this.title_ko,'title_en':this.title_en,'description_ko':this.description_ko,'description_en':this.description_en,'top_10':this.top_10,'status':this.status})
-                .then(() => {
-                 alert('성공적으로 저장')
-                   this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
-                    this.$router.push({ name: 'Faq' });
-                })
-                
+
+
+                console.log(this.formData);
+                return axios
+                    .post('/admin/faq/add', { 'category_id': this.category_id, 'title_ko': this.title_ko, 'title_en': this.title_en, 'description_ko': this.description_ko, 'description_en': this.description_en, 'top_10': this.top_10, 'status': this.status })
+                    .then(() => {
+                        alert('성공적으로 저장')
+                        this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
+                        this.$router.push({ name: 'Faq' });
+                    })
+
             }
-           
+
         },
     },
 };
@@ -230,6 +226,7 @@ export default {
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -239,6 +236,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -248,6 +246,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -259,9 +258,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -270,15 +271,11 @@ export default {
     text-overflow: ellipsis;
 }
 
-.p-button{
+.p-button {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
 }
 
-.card{
-    
-    
-
-}
+.card {}
 </style>
