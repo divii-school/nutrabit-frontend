@@ -3,8 +3,9 @@ export default class RawService {
     // async getUserList(name, email, mobile, date1, date2) {
     //     return await axios.post(`/user`, { status: 'active', name: name, email: email, mobile: mobile, startDate: date1, endDate: date2 }).then((res) => res.data.data.users);
     // }
-    async getRawList(id,material_name_ko,category_id,searchdate,endDate,sortBy,sortOrder) {
-        return await axios.post(`/admin/product_raw_material/`, {id:id,searchData:material_name_ko,category_id:category_id,startDate:searchdate,endDate:endDate,sortBy:sortBy,sortOrder:sortOrder}).then((res) => res.data.data.productRawMaterialData);
+   
+    async getRawList(id,material_name_ko,category_id,searchdate,status,endDate,page,limit,sortBy,sortOrder,to_date) {
+        return await axios.post(`/admin/product_raw_material/`, {id:id,searchData:material_name_ko,category_id:category_id,from_date:searchdate,status:status,endDate:endDate,page:page,limit:limit,sortBy:sortBy,sortOrder:sortOrder,to_date:to_date}).then((res) => res.data.data.productRawMaterialData);
     }
     async viewRaw(ids) {
         return await axios.post(`/admin/product_raw_material/id`, { id: ids }).then((res) => res);

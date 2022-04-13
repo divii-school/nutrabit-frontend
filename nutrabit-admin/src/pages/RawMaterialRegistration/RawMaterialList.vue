@@ -374,7 +374,8 @@ export default {
                 }
                 console.log(  this.sub_category_id)
                 this.rawService
-                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,  this.searchdate, this.endDate, this.sortBy, this.sortOrder)
+                
+                    .getRawList(this.status, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,  this.searchdate, this.endDate,this.page,this.limit, this.sortBy, this.sortOrder,this.to_date)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
