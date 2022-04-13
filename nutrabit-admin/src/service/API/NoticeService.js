@@ -1,39 +1,24 @@
 import axios from 'axios';
 export default class NoticeService {
-    async getNoticeList(titl, stat, sdate, edate) {
+    async getNoticeList(title) {
         return await axios
             .post(`/admin/notice`, {
-                title: titl,
-                status: stat,
-                startDate: sdate,
-                endDate: edate,
-            })
-            .then((res) => res.data.data.notice);
-    }
-    async addNotice(titl, desc, stat) {
-        return await axios
-            .post(`/admin/notice/add`, {
-                title: titl,
-                description: desc,
-                status: stat,
+                // title: title,
+                title: title,
+                
+                // this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder
+                // link: link,
+                // status: status,
+                // createdDate: createdDate,
+                // sortBy: 'id',
+                // sortOrder: 'desc',
             })
             .then((res) => res);
     }
-    async viewNotice(ids) {
-        return await axios
-            .post(`/admin/notice/id`, {
-                id: ids,
-            })
-            .then((res) => res.data.data[0]);
+    async viewnNotice(ids) {
+        return await axios.post(`/admin/notice/id`, { id: ids }).then((res) => res);
     }
-    async editNotice(titl, desc, ids,stat) {
-        return await axios
-            .put(`/admin/notice/edit`, {
-                title: titl,
-                description: desc,
-                id: ids,
-                status:stat
-            })
-            .then((res) => res);
+    async updateBanner(formdata) {
+        return await axios.put(`/admin/banner/edit`, formdata).then((res) => res);
     }
 }

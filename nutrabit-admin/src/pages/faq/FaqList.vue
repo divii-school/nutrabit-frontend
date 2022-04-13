@@ -1,112 +1,185 @@
 <template>
-    <div class="p-grid">
+    <div>
         <Toast />
-        <div class="p-col-12">
-            <div class="card p-fluid">
-                <h4>
-                    <strong>{{ $t('search.title') }}</strong>
-                </h4>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="nameuser">{{ $t('question') }}</label>
-                        <InputText id="nameuser" :class="`${error.name ? 'p-invalid' : ''}`" type="text" :placeholder="$t('search.placeholder.search')" v-model="title" />
-                        <div class="text-red">{{ error.name }}</div>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="email2">state</label>
-                        <Dropdown v-model="status" :options="dropdownValues" optionLabel="name" placeholder="Select" />
-                    </div>
-                </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="pass">{{ $t('search.label.startDate') }}</label>
-                        <Calendar :class="`${error.calendarValue ? 'p-invalid' : ''}`" :showIcon="true" :showButtonBar="true" v-model="startdate" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                        <div class="text-red">{{ error.calendarValue }}</div>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="verify-pass">{{ $t('search.label.lastDate') }}</label>
-                        <Calendar :class="`${error.calendarValue1 ? 'p-invalid' : ''}`" :showIcon="true" :showButtonBar="true" v-model="enddate" dateFormat="yy.mm.dd" :placeholder="$t('search.placeholder.date')"></Calendar>
-                        <div class="text-red">{{ error.calendarValue1 }}</div>
-                    </div>
-                </div>
-                <div class="p-d-flex p-jc-between p-ai-center p-mt-6">
-                    <div class="">
-                        <Button :label="$t('button.today')" icon="pi pi-calendar" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="today"></Button>
-                        <Button :label="$t('button.lastWeek')" icon="pi pi-calendar" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="lastweek"></Button>
-                        <Button :label="$t('button.lastMonth')" icon="pi pi-calendar" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="lastmonth"></Button>
-                        <Button :label="$t('button.last6Months')" icon="pi pi-calendar" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="lastsixmonth"></Button>
-                        <Button :label="$t('button.lastYear')" icon="pi pi-calendar" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="lastyear"></Button>
-                    </div>
-                    <div>
-                        <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="resetUser"></Button>
-                        <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchfaq"></Button>
+        <div class="card">
+            <div class="p-grid p-fluid">
+                <div class="p-col-12">
+                    <h5>{{ $t('Banner.s-header') }}</h5>
+                    <div class="p-formgrid p-grid">
+                        <div class="p-field p-col-12 p-md-3">
+                            <label for="type">{{ $t('Banner.search.type') }}</label>
+                            <InputText
+                                id="googlurl"
+                                type="text"
+                                placeholder="검색어 입력"
+                                v-model="searchData"
+                                 @keyup="resetdata"
+                            />
+                        </div>
+
+                       
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-col-12">
-            <div class="card">
-                <div class="p-d-flex p-jc-between p-mb-2">
-                    <div>
-                        <!-- <h5>{{ $t('table.userlist.heading') }}</h5> -->
-                        <h5><strong>FAQ List</strong></h5>
-                    </div>
-                    <div>
-                        <router-link to="/faq/add">
-                            <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-plus p-mr-2"></i> {{ $t('button.new') }}</Button>
-                        </router-link>
-                    </div>
+            <div
+                class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
+            >
+                <div class="p-mb-4 p-mb-lg-0"></div>
+                <div>
+                    <Button
+                        :label="$t('button.search')"
+                        icon="pi pi-search"
+                        iconPos="left"
+                        class="p-button p-button-sm p-mr-2 p-mb-2"
+                        @click="searchFaq"
+                    ></Button>
+                    <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button> -->
                 </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <div class="p-d-flex p-jc-between p-mb-2">
+                        <div style="display:flex;">
+                            <h4>{{ $t('Faq.list.header') }}</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Dropdown v-model="searchData1"  :options="categoryDropdownValues" optionLabel="name_ko" placeholder="카테고리 선택" @change="searchcategory" />
+                        </div>
 
-                <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" v-model:selection="selected">
-                    <!-- v-model:selection="selected" -->
-                    <ConfirmDialog group="dialog" />
+                        <div>
+                            <router-link to="/faq/add">
+                                <Button
+                                    :label="$t('Faq.addnew_faq')"
+                                    icon="pi pi-plus"
+                                    iconPos="left"
+                                    class="p-button p-button-sm p-mr-2 p-mb-2"
+                                ></Button>
+                            </router-link>
+                        </div>
+                    </div>
+                    <DataTable
+                        :value="products"
+                        :paginator="true"
+                        class="p-datatable-gridlines"
+                        :rows="5"
+                        data-key="id"
+                        :rowHover="true"
+                        :loading="loading1"
+                        :filters="filters1"
+                        responsiveLayout="scroll"
+                    >
+                        <ConfirmDialog group="dialog" />
 
-                    <template #empty> No customers found. </template>
-                    <template #loading> Loading customers data. Please wait. </template>
+                        <template #empty>FAQ 찾을 수 없음</template>
+                        <template #loading>Loading faq data. Please wait.</template>
 
-                    <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                    <Column field="name" :header="$t('Number')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Number</span>
-                            {{ data.id }}
-                        </template>
-                    </Column>
-                    <Column :header="$t('Title')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">question</span>
-                            {{ data.title }}
-                        </template>
-                    </Column>
-                    <Column :header="$t('State')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">State</span>
-                            {{ data.status }}
-                        </template>
-                    </Column>
-                    <Column :header="$t('Date Created')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Date Created</span>
-                            {{ formatDate(data.createdDate) }}
-                        </template>
-                    </Column>
-                    <Column :header="$t('Management')">
-                        <template #body="{ data }">
-                            <span class="p-column-title">Management</span>
-                            <p style="display: none">{{ data.status }}</p>
-                            <div style="display: flex">
-                                <router-link :to="'/faq/view/' + data.id"
-                                    ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i> {{ $t('button.view') }}</Button>
-                                </router-link>
-                                <router-link @mouseenter="editfaq(data.id)" :to="'/faq/edit/' + data.id"
-                                    ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
+                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                            <template #body="{ index }">
+                                <span class="p-column-title">순서</span>
+                                {{ index + 1 }}
+                            </template>
+                        </Column>
+                        <Column
+                            field="Title"
+                            :header="$t('Faq.list.title')"
+                            style="min-width: 12rem"
+                        >
+                            <template #body="{ data }">
+                                <span class="p-column-title">Title</span>
+                                {{ data.title_ko }}
+                            </template>
+                        </Column>
+                        <Column
+                            field="category"
+                            :header="$t('Faq.list.category')"
+                            style="min-width: 12rem"
+                        >
+                            <template #body="{ data }">
+                                <span class="p-column-title">Category</span>
+                                {{ data.category_name_ko }}
+                            </template>
+                        </Column>
+                        <Column
+                            field="Status"
+                            :header="$t('Faq.list.status')"
+                            style="min-width: 12rem"
+                        >
+                            <template #body="{ data }">
+                                <span class="p-column-title">Status</span>
+                                <!-- {{ data.id }}
+                                {{ data.status }}-->
+                                {{ data.status }}
+                            </template>
+                        </Column>
+
+                        <Column
+                            field="Order"
+                            :header="$t('Faq.list.Order')"
+                            style="min-width: 12rem"
+                        >
+                            <template #body="{ data }">
+                                <span class="p-column-title">Order</span>
+
+                                <Button
+                                    label="info"
+                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
+                                    style="display: flex; "
+                                    @click="up(data.id)"
                                 >
+                                    <i class="pi pi-caret-up p-mr-2"></i>
+                                </Button>
 
-                                <Button :label="$t('button.delete')" icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
-                            </div>
-                        </template>
-                    </Column>
-                </DataTable>
+                                <Button
+                                    label="info"
+                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
+                                    style="display: flex; "
+                                    @click="down(data.id)"
+                                >
+                                    <i class="pi pi-caret-down p-mr-2"></i>
+                                </Button>
+                            </template>
+                        </Column>
+                       
+
+                        <Column field="Actions" :header="$t('Faq.list.see_more')">
+                            <template #body="{ data }">
+                                <span class="p-column-title">Actions</span>
+                                <p style="display: none">{{ data.status }}</p>
+                                <div style="display: flex">
+                                    <router-link :to="'/faq/view/' + data.id">
+                                        <Button
+                                            label="info"
+                                            class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
+                                        >
+                                            <i class="pi pi-eye p-mr-2"></i>
+                                        </Button>
+                                    </router-link>
+                                    <router-link :to="'/faq/edit/' + data.id">
+                                        <Button
+                                            label="help"
+                                            class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"
+                                        >
+                                            <i class="pi pi-pencil p-mr-2"></i>
+                                        </Button>
+                                    </router-link>
+                                    <a
+                                        :href="'/admin/banner/delete/' + data.id"
+                                        @click.prevent="deleteNote(data.id)"
+                                        data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="메모 삭제"
+                                    >
+                                        <Button
+                                            icon="pi pi-trash"
+                                            class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2"
+                                        />
+                                    </a>
+                                    <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
+                                </div>
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
             </div>
         </div>
     </div>
@@ -116,225 +189,471 @@
 import { useRoute } from 'vue-router';
 import FaqService from '../../service/API/FaqService';
 import axios from 'axios';
+import moment from 'moment';
 export default {
     data() {
         return {
-            dropdownValues: [{ name: 'active' }, { name: 'inactive' }],
-            selected: [],
-            selectedItemss: '',
-            render: true,
-            title: '',
-            display: false,
-            position: 'center',
-            visibleLeft: false,
-            visibleRight: false,
-            visibleTop: false,
-            visibleBottom: false,
-            visibleFull: false,
+            // dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
+            dropdownValues: [{ name: '활동적인' }, { name: '비활성' }],
+            serial: 0,
+            // filtercategory:'',
+            id: '',
+            selectedFilter: '',
+            dropdownValue: '',
+            calendarValue1: '',
+            calendarValue2: '',
+            link: '',
             status: '',
-            startdate: '',
-            enddate: '',
-            customer1: null,
-            loading1: true,
-            idFrozen: false,
+            createdDate: '',
+            isModalVisible: false,
             products: null,
-            expandedRows: [],
-            user: null,
-            dropdownItem: null,
-            error: {},
+            title: '',
+            loading1: true,
+            deletedID: null,
+            searchData: '',
+            searchData1: '',
+            startDate: '',
+            endDate: '',
+            sortBy: '',
+            sortOrder: '',
+            total: '',
+            sl_no: '',
+            title_ko: '',
+            category_name_ko: '',
+            categoryDropdownValues: '',
+            categoryDropdownValue: null,
+            category_id: '',
+            name_ko: '',
+
         };
     },
-    customerService: null,
-    productService: null,
     created() {
         this.faqService = new FaqService();
     },
+    // computed: {
+    //         filtercategory() {
+    //             if (!this.selectedFilter) {
+    //             return this.searchData;
+    //         }
+    //         let categoryname,name, name_ko;
+    //         switch(this.selectedFilter.name_ko) {
+    //            // one hour milliseconds
+    //            case name_ko: 
+    //            categoryname = name_ko; break;
+    //            }
+    //         name =  Date.now() - this.selectedFilter.value * categoryname;
+    //         return this.searchData.filter((item) => Date.parse(item.name) >= name);
+    //         }
+    // },
+
     mounted() {
         const route = useRoute();
         console.log(route.params);
-        this.faqService.getFaqList(this.title, this.status, this.startdate, this.enddate).then((data) => {
-            this.customer1 = data;
-            this.loading1 = false;
-            console.log(data);
-            this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-        });
+        this.faqService
+            .getFaqCategoryDropdown()
+            .then((data) => {
+                this.categoryDropdownValues = data;
+                //this.products = data;
+                this.loading1 = false;
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                console.log(this.products);
+                console.log(data);
+            })
+        this.faqService
+            .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+            .then((res) => {
+                this.products = res.data.data.faq;
+                //  this.total = res.data.data.total;
+                this.loading1 = false;
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+
+                console.log(res.data.data.faq);
+            })
+            .catch((err) => console.log(err));
     },
-    watch: {},
     methods: {
-        editfaq(ids) {
-            this.faqService.viewFaq(ids).then((res) => {
-                localStorage.setItem('desc', res.description);
+        switchValue(ids, switchstatus) {
+            console.log(ids, switchstatus);
+            axios({ method: 'put', url: '/admin/banner/activate-deactivate', data: { id: ids, status: switchstatus === false ? 'inactive' : 'active' } }).then(function (response) {
+                console.log(response);
             });
         },
-        selects() {
-            let xyz = [];
-            let data = this.selected;
-            for (var a = 0; a < data.length; a++) {
-                xyz.push(data[a].id);
+        up(ids) {
+            axios({ method: 'post', url: '/admin/faq/up', data: { id: ids } }).then(function (response) {
+                console.log(response);
+            });
+            setTimeout(() => {
+                this.faqService.getFaqList().then((res) => {
+                    this.products = res.data.data.faq;
+                    console.log(res);
+                    this.loading1 = false;
+                });
+            }, 500);
+        },
+        down(ids) {
+            axios({ method: 'post', url: '/admin/faq/down', data: { id: ids } }).then(function (response) {
+                console.log(response);
+            });
+            setTimeout(() => {
+                this.faqService.getFaqList().then((res) => {
+                    this.products = res.data.data.faq;
+                    console.log(res);
+                    this.loading1 = false;
+                });
+            }, 500);
+        },
+        searchcategory() {
+            console.log(this.searchData1?this.searchData1.id:this.searchData1)
+            this.faqService
+                .getFaqSearch(this.searchData1?this.searchData1.id:this.searchData1, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                .then((res) => {
+                    // this.products = res.data.data.faq;
+                    //  this.total = res.data.data.total;
+                    this.loading1 = false;
+                    // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                    // let items = res.data.data.faq.filter((item) => item.category_name_ko.match(this.searchData1));
+                    this.products = res.data.data.faq;
+                    // alert(this.searchData1)
+                    console.log(res.data.data.faq);
+                })
+            //   if (this.refercode != '') {
+
+            // }
+        },
+
+         resetdata(){
+            if (this.searchData === ''){
+                this.faqService
+                .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.faq;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    
+            } 
+        },
+        searchFaq() {
+            if (this.searchData === '') {
+                // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
+            } else {
+                this.faqService
+                    .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                    .then((res) => {
+                        this.products = res.data.data.faq;
+                        // this.total = res.data.data.total;
+                        this.loading1 = false;
+                        //console.log(data);
+                    })
+                    .catch(() => {
+                        this.products = [];
+                        this.loading1 = false;
+                    });
             }
-            this.selectedItemss = xyz.toString();
-            if (this.calendarValue !== '') {
-                this.calendarValue = this.calendarValue.toISOString().slice(0, 10);
-                console.log(this.calendarValue);
-            }
-            if (this.calendarValue1 !== '') {
-                this.calendarValue1 = this.calendarValue1.toISOString().slice(0, 10) + 1;
-                console.log(this.calendarValue1);
+        },
+        reInitialize() {
+            this.title_ko = null;
+            this.category_name_ko = null;
+            this.status = null;
+
+            this.faqService
+                .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+                .then((res) => {
+                    this.products = res.data.data.faq;
+                    //this.total = res.data.data.total;
+                    this.loading1 = false;
+                    // console.log(data);
+                })
+                .catch((err) => console.log(err));
+        },
+        dateformat(value) {
+            if (value) {
+                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
             }
         },
 
-        resetUser() {
-            this.title = '';
-            this.status = '';
-            this.error = {};
-            this.startdate = '';
-            this.enddate = '';
-            this.faqService.getFaqList(this.title, this.status, this.startdate, this.enddate).then((data) => {
-                this.customer1 = data;
-                this.loading1 = false;
-                this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            });
-        },
-        searchfaq() {
-            this.faqService.getFaqList(this.title, this.status.name == undefined ? this.status : this.status.name, this.startdate, this.enddate).then((data) => {
-                this.customer1 = data;
-                this.loading1 = false;
-                this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            });
-        },
-        today() {
-            const utc = new Date().toJSON().slice(0, 10).replace(/-/g, '.');
-            this.startdate = utc;
-            this.enddate = utc;
-        },
-        lastweek() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 7);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.startdate = startDate;
-            this.enddate = edate;
-        },
-        lastmonth() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 31);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.startdate = startDate;
-            this.enddate = edate;
-        },
-        lastsixmonth() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 182);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.startdate = startDate;
-            this.enddate = edate;
-        },
-        lastyear() {
-            const date = new Date();
-            const edate = new Date();
-            date.setDate(date.getDate() - 365);
-            const startDate = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
-            this.startdate = startDate;
-            this.enddate = edate;
-        },
+        deleteNote: function (id) {
+            console.log(id);
+            var self = this;
+            this.$confirm.require({
+                group: 'dialog',
+                header: '확인',
+                message: '삭제하시겠습니까?',
+                icon: 'pi pi-trash',
+                acceptLabel: "확인",
+                rejectLabel: "취소",
+                accept: () => {
+                    axios({ method: 'delete', url: '/admin/faq/delete', data: { deleteIdArray: id } }).then(function (response) {
+                        console.log(response);
+                        self.faqService
+                            .getFaqList(self.title_ko, self.category_name_ko, self.status)
+                            .then((res) => {
+                                self.products = res.data.data.faq;
+                                // self.total = res.data.data.total;
+                                self.loading1 = false;
+                                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
 
-        open() {
-            this.display = true;
-        },
-        close() {
-            this.display = false;
-        },
-        toggle(event) {
-            this.$refs.op.toggle(event);
-        },
+                                //console.log(data);
+                            })
+                            .catch((err) => console.log(err));
 
-        // onRowExpand(event) {
-        //     this.$toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });
-        // },
-        // onRowCollapse(event) {
-        //     this.$toast.add({ severity: 'success', summary: 'Product Collapsed', detail: event.data.name, life: 3000 });
-        // },
-        // expandAll() {
-        //     this.expandedRows = this.products.filter((p) => p.id);
-        //     this.$toast.add({ severity: 'success', summary: 'All Rows Expanded', life: 3000 });
-        // },
-        // collapseAll() {
-        //     this.expandedRows = null;
-        //     this.$toast.add({ severity: 'success', summary: 'All Rows Collapsed', life: 3000 });
-        // },
-        // formatCurrency(value) {
-        //     return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        // },
+                        // let i = this.products.map(data => data.id).indexOf(id);
+
+                        // this.products.splice(i, 1)
+                    });
+                    this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제되었습니다.', life: 3000 });
+                },
+                reject: () => {
+                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
+                },
+
+
+            });
+            //  setTimeout(() => {
+            //     this.bannerService.getBannerList().then((data) => {
+            //         this.products = data;
+            //         console.log(data);
+            //         this.loading1 = false;
+            //     });
+            // }, 500);
+
+        },
+        onRowExpand(event) {
+            this.$toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });
+        },
+        onRowCollapse(event) {
+            this.$toast.add({ severity: 'success', summary: 'Product Collapsed', detail: event.data.name, life: 3000 });
+        },
+        formatCurrency(value) {
+            return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        },
         formatDate(value) {
-            // return value.toLocaleDateString('en-US', {
-            //     year: 'numeric',
-            //     month: '2-digit',
-            //     day: '2-digit',
-            // });
             const date = new Date(value);
             var dd = date.getDate();
             var mm = date.getMonth() + 1;
             var yyyy = date.getFullYear();
+            var hr = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
             if (dd < 10) {
                 dd = '0' + dd;
             }
             if (mm < 10) {
                 mm = '0' + mm;
             }
-            return (value = yyyy + '.' + mm + '.' + dd);
+            return (value = yyyy + '.' + mm + '.' + dd + ' ' + ' ' + hr + ':' + min + ':' + sec);
         },
-        calculateCustomerTotal(name) {
-            let total = 0;
-            if (this.customer3) {
-                for (let customer of this.customer3) {
-                    if (customer.representative.name === name) {
-                        total++;
-                    }
-                }
-            }
-
-            return total;
+        showModal(id) {
+            console.log(id);
+            this.isModalVisible = true;
+            this.deletedID = id;
         },
-
-        confirm(id) {
-            this.$confirm.require({
-                group: 'dialog',
-                header: 'Confirmation',
-                message: 'Are you sure you want to delete?',
-                icon: 'pi pi-exclamation-triangle',
-                accept: () => {
-                    axios({ method: 'delete', url: '/faq/delete', data: { deleteIdArray: id } }).then(function (response) {
-                        console.log(response);
-                    });
-                    this.$toast.add({ severity: 'info', summary: 'Deleted', detail: 'Deleted successfully', life: 3000 });
-                },
-                reject: () => {
-                    this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-                },
-            });
-            setTimeout(() => {
-                this.faqService.getFaqList().then((data) => {
-                    this.customer1 = data;
-                    this.loading1 = false;
-                    this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                });
-            }, 2000);
+        closeModal() {
+            this.$toast.add({ severity: 'warn', summary: 'Canceled', detail: 'Message Detail', life: 3000 });
+            this.isModalVisible = false;
         },
     },
 };
 </script>
 
-<style lang="scss" scoped>
-.p-datatable-tbody {
-    .p-button {
-        white-space: nowrap;
+<style scoped lang="scss">
+::v-deep(.p-datatable-frozen-tbody) {
+    font-weight: bold;
+}
+::v-deep(.p-datatable-scrollable .p-frozen-column) {
+    font-weight: bold;
+}
+::v-deep(.p-progressbar) {
+    height: 0.5rem;
+    background-color: #d8dadc;
+    .p-progressbar-value {
+        background-color: #607d8b;
     }
 }
-.p-fluid {
-    .p-button {
-        width: auto;
+::v-deep(.p-datatable .p-sortable-column .p-column-title) {
+    display: block;
+}
+.p-datatable .p-column-filter {
+    display: none;
+}
+.table-header {
+    display: flex;
+    justify-content: space-between;
+}
+.customer-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    &.status-qualified {
+        background: #c8e6c9;
+        color: #256029;
     }
+    &.status-unqualified {
+        background: #ffcdd2;
+        color: #c63737;
+    }
+    &.status-negotiation {
+        background: #feedaf;
+        color: #8a5340;
+    }
+    &.status-new {
+        background: #b3e5fc;
+        color: #23547b;
+    }
+    &.status-renewal {
+        background: #eccfff;
+        color: #694382;
+    }
+    &.status-proposal {
+        background: #ffd8b2;
+        color: #805b36;
+    }
+}
+.p-progressbar-value.ui-widget-header {
+    background: #607d8b;
+}
+@media (max-width: 640px) {
+    .p-progressbar {
+        margin-top: 0.5rem;
+    }
+}
+.product-image {
+    width: 100px;
+    height: 50px;
+    // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.orders-subtable {
+    padding: 1rem;
+}
+.product-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    &.status-instock {
+        background: #c8e6c9;
+        color: #256029;
+    }
+    &.status-outofstock {
+        background: #ffcdd2;
+        color: #c63737;
+    }
+    &.status-lowstock {
+        background: #feedaf;
+        color: #8a5340;
+    }
+}
+.order-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    &.order-delivered {
+        background: #c8e6c9;
+        color: #256029;
+    }
+    &.order-cancelled {
+        background: #ffcdd2;
+        color: #c63737;
+    }
+    &.order-pending {
+        background: #feedaf;
+        color: #8a5340;
+    }
+    &.order-returned {
+        background: #eccfff;
+        color: #694382;
+    }
+}
+.p-datatable {
+    .p-sortable-column {
+        &.p-highlight {
+            &:hover {
+                background: rgb(216 217 243);
+                color: #464df2;
+            }
+        }
+    }
+}
+.true-icon {
+    color: #256029;
+}
+.false-icon {
+    color: #c63737;
+}
+.w-100 {
+    width: 100%;
+}
+
+.p-button {
+    background: #000000;
+    border: 1px solid #0a0a0a;
+}
+
+.p-button.p-button-info.p-button-outlined,
+.p-buttonset.p-button-info > .p-button.p-button-outlined,
+.p-splitbutton.p-button-info > .p-button.p-button-outlined {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-info.p-button-outlined:hover,
+.p-buttonset.p-button-info > .p-button.p-button-outlined,
+.p-splitbutton.p-button-info > .p-button.p-button-outlined:hover {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-info.p-button-outlined:enabled:active,
+.p-buttonset.p-button-info > .p-button.p-button-outlined:enabled:active,
+.p-splitbutton.p-button-info > .p-button.p-button-outlined:enabled:active {
+    background: rgba(2, 136, 209, 0.16);
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-help.p-button-outlined,
+.p-buttonset.p-button-help > .p-button.p-button-outlined,
+.p-splitbutton.p-button-help > .p-button.p-button-outlined {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-help.p-button-outlined:hover,
+.p-buttonset.p-button-help > .p-button.p-button-outlined,
+.p-splitbutton.p-button-help > .p-button.p-button-outlined:hover {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-danger.p-button-outlined,
+.p-buttonset.p-button-danger > .p-button.p-button-outlined,
+.p-splitbutton.p-button-danger > .p-button.p-button-outlined {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-button.p-button-danger.p-button-outlined:hover,
+.p-buttonset.p-button-danger > .p-button.p-button-outlined,
+.p-splitbutton.p-button-danger > .p-button.p-button-outlined:hover {
+    background-color: transparent;
+    color: #171718;
+    border: 0px solid;
+}
+
+.p-ink .p-ink-active {
+    border: 0px solid;
 }
 </style>

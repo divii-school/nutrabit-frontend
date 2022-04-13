@@ -23,7 +23,7 @@
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button label="Add Inquiry-Type" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="addinquirytype"></Button>
+                    <Button label="Add Inquiry-Type" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="addinquirytype" ></Button>
                 </div>
             </div>
         </form>

@@ -96,10 +96,15 @@ import 'primeicons/primeicons.css';
 import 'prismjs/themes/prism-coy.css';
 import './App.scss';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://da-lab-backend.dvconsulting.org:4040/dl-dev/api/v1/';
+// axios.defaults.baseURL = 'http://da-lab-backend.dvconsulting.org:4040/dl-dev/api/v1/';
+// axios.defaults.baseURL = 'https://api-nutrabbit-dev2.dvconsulting.org/nutrabbit-dev/api/v1';
+axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1';
+// https://admin-nutrabbit-dev2.dvconsulting.org/
+// axios.defaults.baseURL = 'http://api-nutrabbit-dev.dvconsulting.org:3000/nutrabbit-dev/api/v1';
 axios.defaults.headers = {
-    source:'dalab-apis',
-    apiKey:'baL21di1202DAI01Ed0OnNiMDa2P3p0M',
+    source:'nutrabbit',
+    // apiKey:'baL21di1202DAI01Ed0OnNiMDa2P3p0M',
+    apiKey:'coN21di1202VII01Ed0OnNiMDa2P3p0M',
     token: localStorage.getItem('token'),
     'Accept-Language':'en'
 };
