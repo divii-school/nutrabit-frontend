@@ -104,11 +104,16 @@
           <li v-for="(item, index) of rightMenuItem" :key="index"
             @click="activeSubmenu = activeSubmenu == index ? '' : index">
             <div class="side-menu-heading">
-              <template v-if="token && index == 0">
+              <div v-if="token && index == 0" class="sidemenu-login-name-web">
                 <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
                 </router-link>
                 <i class="icon-leftArw"></i>
-              </template>
+              </div>
+              <!-- <div v-if="token && index == 0" class="sidemenu-login-name-mob">
+                <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
+                </router-link>
+                <i class="icon-leftArw"></i>
+              </div> -->
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{
                   item.mainItem
@@ -246,7 +251,6 @@ export default {
       this.logedInUserDetails = true;
       this.userName = localStorage.getItem('uname');
       this.get;
-      console.log(this.userDetails)
     } else {
       this.logedInUserDetails = false;
     }
