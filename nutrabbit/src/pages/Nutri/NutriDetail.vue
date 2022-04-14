@@ -60,48 +60,17 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>When your body and mind are healthy, work will work out well.
-              We recommend a cool Buff to you who are tired of the stress of the office.
-              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.
-              When your body and mind are healthy, work will work out well.
-              We recommend a cool Buff to you who are tired of the stress of the office.
-              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.</p><!-- <ul>
-              <li>
-                <h2>Sub raw Material</h2>
-                <p>{{ item.sub_raw_materials }}</p>
-              </li>
-              <li>
-                <h2>efficacy</h2>
-                <p>{{ item.efficiency_ko }}</p>
-              </li>
-              <li>
-                <h2>Category Name</h2>
-                <p>{{ item.category_name_ko }}</p>
-              </li>
-              <li>
-                <h2>Material Name</h2>
-                <p>{{ item.material_name_ko }}</p>
-              </li>
-              <li>
-                <h2>Product Information</h2>
-                <p>{{ item.description_ko }}</p>
-              </li>
-            </ul> -->
+            <p>{{item.description_ko}}</p>
             <button
-              @click="
-                this.$router.push({
-                  name: 'ChoiceRecommendedBlendingPackageSelection',
-                  query: { blending_id: this.blending_id },
-                })
-              "
+              @click="openmodal()"
               class="btn-primary blue-btn-solid"
             >
-              next
+              Get a quote
             </button>
           </div>
-          <div class="suggested-product">
+          <!-- <div class="suggested-product">
             <h2>similar products</h2>
-            <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
+            <img src="../assets/images/suggested-product-img.png" alt="" />
             <ul class="smilar-product-img">
               <li
                 v-for="(items, index) of item.similar_image_path"
@@ -110,7 +79,7 @@
                 <img :src="imgBaseUrl + items" alt />
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="nutriDetail">
@@ -118,10 +87,38 @@
       </div>
     </div>
   </div>
+  <div class="main-page">
+    <div class="main-page-body">
+      <div class="devider"><i class="icon-grey-star"></i></div>
+      <div class="container-medium">
+        <div class="nutri-blending">
+          <div class="nutri-choice">
+            <h2 class="nutri-choice-heading text-center">
+              A service just for you<br> Easily seize your own product launch opportunity!
+            </h2>
+            <p
+              class="desc text-center"
+            >Click the button below to become the hero of the product!</p>
+            <button class="btn-small-solid green" @click="openmodal()">Get a quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Modal 
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="Would you like to get a quote for this product?"
+    bodytext2 = "A quote will be sent to you by email when you click OK."
+    btnText1="cancellation"
+    btnText2="Confirm"
+    link = ''
+  />
 </template>
 
 
 <script>
+import Modal from "../../components/Modal.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import { ref } from "vue";
@@ -133,7 +130,6 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
-// import MyChoiceService from "../../services/MyChoiceService";
 import NutriService from "../../services/NutriService";
 
 export default {
@@ -141,6 +137,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    Modal
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -216,40 +213,31 @@ export default {
       lang:"KO",
       id:"",
       nutriDetails:[],
+      isModalVisible:false,
     };
   },
   created() {
-    // this.mychoiceService = new MyChoiceService();
     this.nutriService = new NutriService();
   },
   mounted() {
-    // this.blendingDetail();
     this.getNutridetails();
   },
   methods: {
+
+    closeModal() {
+      this.isModalVisible = false;
+      // window.location.href = "";
+    },
+
+    openmodal() {
+      this.isModalVisible = true;
+      this.confirmbutton();
+    },
+
     splitJoin(theText) {
       // console.log(theText.split(','))
       return theText.split(",");
     },
-    // blendingDetails
-    // blendingDetail() {
-    //   let sub_cat = useRoute();
-    //   this.blending_id = "7";
-    //   // this.blending_id = sub_cat.params.id;
-    //   const setBlendingId = this.blending_id;
-    //   // console.log(setBlendingId);
-
-    //   this.mychoiceService
-    //     .getRecommendedBlendingDetail(setBlendingId)
-    //     .then((res) => {
-    //       // console.log(res.data);
-    //       if (res.data.status == 200) {
-    //         this.blending_data = res.data.data;
-    //       } else {
-    //         this.$swal(res.data.message, "error");
-    //       }
-    //     });
-    // },
 
     getNutridetails() {
       this.id = this.$route.params.id;
@@ -258,9 +246,22 @@ export default {
         .getNutridetails(this.id)
         .then((res) => {
           if (res.status == 200) {
-            // console.log("ress", res);
             this.nutriDetails = res.data.data;
-            console.log("nutriDetails", this.nutriDetails);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    confirmbutton() {
+      this.id = this.$route.params.id;
+      // console.log("id",this.id);
+      this.nutriService
+        .confirmbutton()
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("ress",res);
           }
         })
         .catch((err) => {
