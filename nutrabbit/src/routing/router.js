@@ -317,7 +317,7 @@ const routes = [
     },
     {
         name: 'NutriDetail',
-        path: '/nutri-detail',
+        path: '/nutri-detail/:id',
         component: NutriDetail,
 
     },
