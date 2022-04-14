@@ -79,7 +79,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.EditThumbnailimg') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )</span>
+                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                         </label>
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
@@ -100,14 +100,16 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.Editproductsubimg1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )</span>
+                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                         </label>
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" />
+                            
+                            <input type="file" class="select-file" v-on:change="onFilesChange"   />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
+                        <!-- <FileUpload name="demo[]"  :multiple="true" :customUpload="true" @uploader="onFilesChange" :maxFileSize="1000000" :fileLimit="5" /> -->
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
@@ -123,7 +125,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.Editproductdetailimg1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )</span>
+                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
@@ -304,6 +306,7 @@ export default {
             this.selectedItems=items.toString();
             console.log(this.selectedItems);
         },
+       
        onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
@@ -322,6 +325,7 @@ export default {
         },
 
         onFilesChange(e) {
+             console.log(e.files)
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
