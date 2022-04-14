@@ -105,7 +105,7 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index">
             <div class="side-menu-heading">
               <template v-if="token && index == 0">
-                <router-link to :class="token ? 'login-item' : ''">{{ userDetails.name ? userDetails.name : localuser }}
+                <router-link to :class="token ? 'login-item' : ''">{{ userName ? userName : localuser }}
                 </router-link>
                 <i class="icon-leftArw"></i>
               </template>
@@ -245,6 +245,7 @@ export default {
   updated(){
     if (localStorage.token) {
       this.logedInUserDetails = true;
+      this.token = localStorage.token ? true : false
       this.userName = localStorage.getItem('uname');
       this.get;
       console.log(this.userDetails)
@@ -254,12 +255,12 @@ export default {
   },
 
   mounted() {
-    if (localStorage.token) {
-      this.logedInUserDetails = true;
-      this.get;
-    } else {
-      this.logedInUserDetails = false;
-    }
+    // if (localStorage.token) {
+    //   this.logedInUserDetails = true;
+    //   this.get;
+    // } else {
+    //   this.logedInUserDetails = false;
+    // }
     this.getUserInfo();
     this.getIp();
   },

@@ -107,12 +107,8 @@
         </div>
       </div>
     </div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal()"
-      bodytext1="Are you sure?"
-      btnText1="OK"
-    />
+    <Modal v-show="isModalVisible" @close="closeModal" bodytext1="Are you sure?"
+    btnText1="OK" />
   </div>
 </template>
 
