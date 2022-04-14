@@ -9,10 +9,9 @@ export default class PaymentService {
     // IMP.request_pay(param, callback) call payment window
     IMP.request_pay({
       //pg: "html5_inicis",
-      pg: 'uplus',
+      pg: "uplus",
       pay_method: "card",
       merchant_uid: "ORDER_" + new Date().getTime(),
-      // merchant_uid: "ORD20180131-0000012",
       name: "Norway swivel chair",
       amount: 64000,
       buyer_email: "johndoe@gmail.com",
@@ -20,6 +19,7 @@ export default class PaymentService {
       buyer_tel: "010-4242-4242",
       buyer_addr: "Shinsa-dong, Gangnam-gu, Seoul",
       buyer_postcode: "01181",
+      app_scheme: "NutrabbitIAmPort",
       //m_redirect_url :'{URL to redirect to after payment approval on Mobile}'
     }, function (rsp) {
       if (rsp.success) { // payment successful: payment accepted or virtual account issued

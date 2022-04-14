@@ -448,7 +448,8 @@ export default {
             let similar_prod_image_arr = similar_product_img.toString().split("/");
             let image_name = similar_prod_image_arr[3];
            // console.log(similar_prod_image_arr[3])
-            if(confirm("Do you really want to delete?")){
+            if(confirm("삭제 하시겠습니까?")){
+                 
                  axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
                         console.log(response);
                     }).catch(error => {
@@ -464,7 +465,8 @@ export default {
             let raw_material_img_arr = raw_material_img.toString().split("/");
             let image_name = raw_material_img_arr[3];
            // console.log(similar_prod_image_arr[3])
-            if(confirm("Do you really want to delete?")){
+            if(confirm("삭제 하시겠습니까?")){
+                
                  axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
                         console.log(response);
                     }).catch(error => {

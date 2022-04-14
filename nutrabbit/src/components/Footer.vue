@@ -1,9 +1,4 @@
 <template>
-  <!-- <div class="totop-wrap">
-    <a href="javascript:void(0)" class="totop">
-      <span class="round"><img src="../assets/images/chat-icon.png" /></span>
-    </a>
-  </div> -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
@@ -23,6 +18,7 @@
                   close-on-select
                 >
                 </vue-select>
+                <!-- <LanguageInput /> -->
               </div>
             </div>
           </div>
@@ -51,10 +47,13 @@
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
+import LanguageInput from "./LanguageInput.vue";
+
 export default {
   name: "Footer",
   components: {
     "vue-select": VueNextSelect,
+    LanguageInput,
   },
 };
 </script>

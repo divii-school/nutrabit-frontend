@@ -8,15 +8,15 @@
             :modules="[Thumbs]"
             :thumbs="{ swiper: thumbsSwiper }"
             class="mySwiper"
-            v-for="(items, index) of blending_data"
+            v-for="(items, index) of nutriDetails"
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items.detail_image_path"
+              v-for="(item, index) of items.product_sub_image_path"
               :key="index"
             >
               <img
-                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
+                :src="imgBaseUrl + item"
                 alt
               />
             </swiper-slide>
@@ -29,15 +29,15 @@
             watch-slides-progress
             @swiper="setThumbsSwiper"
             class="mySwiper2"
-            v-for="(items, index) of blending_data"
+            v-for="(items, index) of nutriDetails"
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items.detail_image_path"
+              v-for="(item, index) of items.product_sub_image_path"
               :key="index"
             >
               <img
-                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
+                :src="imgBaseUrl + item"
                 alt
               />
             </swiper-slide>
@@ -45,7 +45,7 @@
         </div>
         <div
           class="blending-right"
-          v-for="(item, index) of blending_data"
+          v-for="(item, index) of nutriDetails"
           :key="index"
         >
           <div class="right-heading">
@@ -153,7 +153,8 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
-import MyChoiceService from "../../services/MyChoiceService";
+// import MyChoiceService from "../../services/MyChoiceService";
+import NutriService from "../../services/NutriService";
 
 export default {
   name: "NutriDetail",
@@ -232,13 +233,18 @@ export default {
         },
       ],
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
+      lang:"KO",
+      id:"",
+      nutriDetails:[],
     };
   },
   created() {
-    this.mychoiceService = new MyChoiceService();
+    // this.mychoiceService = new MyChoiceService();
+    this.nutriService = new NutriService();
   },
   mounted() {
-    this.blendingDetail();
+    // this.blendingDetail();
+    this.getNutridetails();
   },
   methods: {
     splitJoin(theText) {
@@ -246,22 +252,39 @@ export default {
       return theText.split(",");
     },
     // blendingDetails
-    blendingDetail() {
-      let sub_cat = useRoute();
-      this.blending_id = "7";
-      // this.blending_id = sub_cat.params.id;
-      const setBlendingId = this.blending_id;
-      // console.log(setBlendingId);
+    // blendingDetail() {
+    //   let sub_cat = useRoute();
+    //   this.blending_id = "7";
+    //   // this.blending_id = sub_cat.params.id;
+    //   const setBlendingId = this.blending_id;
+    //   // console.log(setBlendingId);
 
-      this.mychoiceService
-        .getRecommendedBlendingDetail(setBlendingId)
+    //   this.mychoiceService
+    //     .getRecommendedBlendingDetail(setBlendingId)
+    //     .then((res) => {
+    //       // console.log(res.data);
+    //       if (res.data.status == 200) {
+    //         this.blending_data = res.data.data;
+    //       } else {
+    //         this.$swal(res.data.message, "error");
+    //       }
+    //     });
+    // },
+
+    getNutridetails() {
+      this.id = this.$route.params.id;
+      // console.log("id",this.id);
+      this.nutriService
+        .getNutridetails(this.id)
         .then((res) => {
-          // console.log(res.data);
-          if (res.data.status == 200) {
-            this.blending_data = res.data.data;
-          } else {
-            this.$swal(res.data.message, "error");
+          if (res.status == 200) {
+            // console.log("ress", res);
+            this.nutriDetails = res.data.data;
+            console.log("nutriDetails", this.nutriDetails);
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },

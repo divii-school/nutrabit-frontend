@@ -1,6 +1,7 @@
 import axios from 'axios';
 export default class UpdateRawService {
     
+    
     async viewRaw(ids) {
         return await axios.post(`/admin/product_raw_material/id`, { id: ids }).then((res) => res);
     }

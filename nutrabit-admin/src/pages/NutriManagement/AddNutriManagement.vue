@@ -9,65 +9,78 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Nutri3-name') }}</label>
-                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Nutri3-name')" id="title2" v-model="name_ko"></InputText>
+                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.Nutri3-name')" id="title2" v-model="name_ko"></InputText>
                             <div class="text-red">{{ error.name_ko }}</div>
                         </div>
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Nutri3-name1') }}</label>
-                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Nutri3-name1')" id="title2" v-model="name_en"></InputText>
+                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.Nutri3-name1')" id="title2" v-model="name_en"></InputText>
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
                     </div>
-                    
+
                     <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Category') }}</label>
-                            
-                            <Dropdown v-model="category_id"  :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" />
+
+                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionValue="id"
+                                optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" />
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.MainRaw') }}</label>
-                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_id" optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
+                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items"
+                                name="raw_material_id" :placeholder="$t('Nutri3.Add.MainRaw')"
+                                optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
                         </div>
                     </div>
 
                     <div class="dropdowns" style="display: flex; width: 100%; margin-left:-13px;">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Piltype') }}</label>
-                           
-                            <Dropdown v-model="pill_id"  :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Piltype')" />
+
+                            <Dropdown v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id"
+                                optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Piltype')" />
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Package') }}</label>
-                           
-                            <Dropdown v-model="package_id"  :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Package')" />
+
+                            <Dropdown v-model="package_id" :options="packageDropdownValues" optionValue="id"
+                                optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Package')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.AddTags(KO)') }}</label>
-                            <InputText :class="`${error.tags_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.AddTags(KO)')" id="title2" v-model="tags_ko"></InputText>
+                            <InputText :class="`${error.tags_ko ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.AddTags(KO)')" id="title2" v-model="tags_ko"></InputText>
                             <div class="text-red">{{ error.tags_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.AddTags(EN)') }}</label>
-                            <InputText :class="`${error.tags_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.AddTags(EN)')" id="title2" v-model="tags_en"></InputText>
+                            <InputText :class="`${error.tags_en ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.AddTags(EN)')" id="title2" v-model="tags_en"></InputText>
                             <div class="text-red">{{ error.tags_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(KO)') }}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Description(KO)')" id="title2" v-model="description_ko"></Textarea>
+                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.Description(KO)')" id="title2"
+                                v-model="description_ko"></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(EN)') }}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Description(EN)')" id="title2" v-model="description_en"></Textarea>
+                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text"
+                                :placeholder="$t('Nutri3.Add.Description(EN)')" id="title2"
+                                v-model="description_en"></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -126,24 +139,29 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
-                            <br/>
-                            <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                            <label for="yes">Yes</label>
-                            <input type="radio" id="no" name="status" value="inactive" v-model="status" />
-                            <label for="no">No</label>
-                            <div class="text-red">{{ error.state }}</div>
+                            <br />
+                            <div :class="`${error.status ? 'p-invalid' : ''}`">
+                                <input type="radio" id="yes" value="active" name="status" v-model="status" />
+                                <label for="yes">Yes</label>
+                                <input type="radio" id="no" name="status" value="inactive" v-model="status" />
+                                <label for="no">No</label>
+                            </div>
+                            <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
                 <div>
-                    <Button :label="$t('Nutri3.Add.publish')" icon="pi pi-check" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="addNutri" style="margin-top:-20%;"></Button>
+                    <Button :label="$t('Nutri3.Add.publish')" icon="pi pi-check" iconPos="left"
+                        class="p-button p-button-sm p-mr-2 p-mb-2" @click="addNutri" style="margin-top:-20%;"></Button>
                 </div>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('Nutri3.Add.Back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)" style="margin-top:-20%;"></Button>
+                    <Button :label="$t('Nutri3.Add.Back')" icon="pi pi-replay" iconPos="left"
+                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"
+                        style="margin-top:-20%;"></Button>
                 </div>
             </div>
         </form>
@@ -162,7 +180,7 @@ export default {
 
     data() {
         return {
-          
+
             value12: '',
             render1: false,
             render2: false,
@@ -179,8 +197,8 @@ export default {
             fileExtension: '',
             filesExtension: '',
             fileExtensions: '',
-            select_items:[],
-            selectedItems:[],
+            select_items: [],
+            selectedItems: [],
             Multiselect: '',
             filesExtensions: '',
 
@@ -188,7 +206,7 @@ export default {
             name_en: '',
             description_ko: '',
             description_en: '',
-            status: 'active',
+            status: '',
             image: '',
             detail_image: '',
             product_sub_image: '',
@@ -238,13 +256,13 @@ export default {
             this.pilltypeDropdownValues = data;
             // this.products = data;
             this.loading1 = false;
-         
+
         });
         this.nutriManagementService.getPackageNutriDropdown().then((data) => {
             this.packageDropdownValues = data;
             // this.products = data;
             this.loading1 = false;
-            
+
         });
     },
     methods: {
@@ -269,13 +287,13 @@ export default {
             for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
             return output;
         },
-        selects(){
-           let items = [];
+        selects() {
+            let items = [];
             let data = this.select_items;
             for (var a = 0; a < data.length; a++) {
                 items.push(data[a].id);
             }
-            this.selectedItems=items.toString();
+            this.selectedItems = items.toString();
             console.log(this.selectedItems);
         },
         onFileChange(e) {
@@ -383,7 +401,7 @@ export default {
                 files: this.similar == '' ? '' : 'something',
                 addthumnail: this.addthumnail == '' ? '' : 'something',
                 newthumnail: this.newthumnail == '' ? '' : 'something',
-             
+
             };
             const { isInvalid, error } = validateAddNutri(vcheckData);
             if (isInvalid) {
@@ -405,7 +423,7 @@ export default {
                 this.formData.append('status', this.status);
                 console.log(this.formData);
                 return axios.post('/admin/nutriBlending/add', this.formData).then(() => {
-                     alert('성공적으로 저장')
+                    alert('성공적으로 저장')
                     this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Succesfully Published.', life: 3000 });
                     this.$router.push({ name: 'NutriManagement' });
                 });
@@ -421,6 +439,7 @@ export default {
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -430,6 +449,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -439,6 +459,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -450,9 +471,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -466,9 +489,11 @@ export default {
     border: 1px solid #0a0a0a;
     color: white;
 }
+
 .card {
     /* height: 1200px; */
 }
+
 .multiselect-option.is-selected.is-pointed {
     background: var(--ms-option-bg-selected-pointed, #f8f6f6);
     color: var(--ms-option-color-selected-pointed, rgb(5, 5, 5));
