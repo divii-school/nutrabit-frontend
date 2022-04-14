@@ -12,7 +12,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{$t('Category.list.title')}}</label>
                            
-                            <AutoComplete
+                            <!-- <AutoComplete
                                 placeholder="Search"
                                 :dropdown="true"
                                 :multiple="false"
@@ -22,6 +22,8 @@
                                 field="category_name_ko"
 
                             />
+ -->
+                            <AutoComplete v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
                             
                         </div>
                         
@@ -168,8 +170,10 @@ export default {
                 else {
                     this.autoFilteredValue = this.autoValue.filter((country) => {
                         return country.category_name_ko.toLowerCase().startsWith(event.query.toLowerCase());
+                        
 
                     });
+                    console.log('country.category_name_ko')
                 }
             }, 250);
         },
@@ -226,9 +230,11 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-                
-             console.log(this.fst_category_name_ko);
-            this.formData.append('fst_category_name_ko', this.fst_category_name_ko);
+             
+             let fst = JSON.stringify(this.fst_category_name_ko)
+            //  console.log(fst);
+             //console.log(JSON.parse(fst).category_name_ko);
+            this.formData.append('fst_category_name_ko', JSON.parse(fst).category_name_ko);
             this.formData.append('fst_category_name_en', this.fst_category_name_en);
             this.formData.append('scnd_category_name_ko', this.scnd_category_name_ko);
             this.formData.append('scnd_category_name_en', this.scnd_category_name_en);
