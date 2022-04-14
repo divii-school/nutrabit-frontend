@@ -118,6 +118,26 @@
       </div>
     </div>
   </div>
+
+  <div class="main-page">
+    <div class="main-page-body">
+      <div class="devider"><i class="icon-grey-star"></i></div>
+      <div class="container-medium">
+        <div class="nutri-blending">
+          <div class="nutri-choice">
+            <h2 class="nutri-choice-heading text-center">
+              A service just for you<br> Easily seize your own product launch opportunity!
+            </h2>
+            <p
+              class="desc text-center"
+            >Click the button below to become the hero of the product!</p>
+            <button class="btn-small-solid green">Get a quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </template>
 
 
