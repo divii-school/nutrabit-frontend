@@ -5,7 +5,7 @@ const validateCreateBlending = (data) => {
     let errors = {};
 
     const { name_ko, name_en,sub_raw_materials,tags_ko,tags_en,efficiency_ko,efficiency_en
-        ,ingredients_ko,ingredients_en,description_ko,description_en,file} = data;
+        ,ingredients_ko,ingredients_en,description_ko,description_en,state,file} = data;
 
     if (validator.isEmpty(name_ko)) {
         errors.name_ko = '블렌딩 이름을 입력해 주세요';
@@ -51,9 +51,9 @@ const validateCreateBlending = (data) => {
         errors.description_en = '설명을 입력해 주세요(en)';
     }
 
-    // if (validator.isEmpty(status)) {
-    //     errors.status = '선택 해주세요';
-    // }
+    if (validator.isEmpty(state)) {
+        errors.state = '선택 해주세요';
+    }
     
     
     if (validator.isEmpty(file)) {

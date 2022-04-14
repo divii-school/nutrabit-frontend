@@ -93,6 +93,7 @@
                             <label for="state2">{{ $t('Notice.add.status') }}</label>
                             <br />
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                            <div :class="`${error.expose ? 'p-invalid' : ''}`">
                             <input
                                 type="radio"
                                 id="yes"
@@ -109,9 +110,10 @@
                                 value="0"
                                 v-model="expose"
                             />
+                            </div>
                             <label for="no">No</label>
 
-                            <div class="text-red">{{ error.state }}</div>
+                            <div class="text-red">{{ error.expose }}</div>
                         </div>
                     </div>
 
@@ -120,13 +122,14 @@
                             <label for="top_10">{{ $t('Notice.add.top') }}</label>
                             <br />
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                           <div :class="`${error.top10 ? 'p-invalid' : ''}`">
                             <input type="radio" id="yes" value="1" name="top_10" v-model="top10" />
                             <label for="yes">Yes</label>
 
                             <input type="radio" id="no" name="top_10" value="0" v-model="top10" />
                             <label for="no">No</label>
-
-                            <div class="text-red">{{ error.top }}</div>
+                            </div>
+                            <div class="text-red">{{ error.top10 }}</div>
                         </div>
                     </div>
                 </div>

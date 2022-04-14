@@ -4,7 +4,7 @@ import validator from 'validator';
 const validateCreateFaq = (data) => {
     let errors = {};
 
-    const { title_ko, title_en, description_ko,description_en} = data;
+    const { title_ko, title_en, description_ko,description_en,state,top_10} = data;
 
     
     
@@ -24,13 +24,13 @@ const validateCreateFaq = (data) => {
         errors.description_en = '설명을 입력하세요 en';
     }
 
-    // if (validator.isEmpty(top)) {
-    //     errors.top = '선택 해주세요';
-    // }
+    if (validator.isEmpty(top_10)) {
+        errors.top_10 = '선택 해주세요';
+    }
 
-    // if (validator.isEmpty(state)) {
-    //     errors.state = '선택 해주세요';
-    // }
+    if (validator.isEmpty(state)) {
+        errors.state = '선택 해주세요';
+    }
     
   
     return {

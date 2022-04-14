@@ -16,6 +16,7 @@
                 <div class="input-inner">
                   <input
                     class="form-control disabled"
+                    disabled
                     type="text"
                     v-model="business_number"
                   />
@@ -68,6 +69,7 @@
                 <div class="input-inner">
                   <input
                     class="form-control disabled"
+                    disabled
                     type="text"
                     v-model="uuid"
                 
@@ -113,6 +115,7 @@
                 <div class="input-inner">
                   <input
                     class="form-control disabled"
+                    disabled
                     type="text"
                     v-model="email"
                 
@@ -216,7 +219,7 @@ export default {
     async personalInfo() {
 
       this.personalBusinessService.getBusinessData(this.userId).then((res) => {
-        console.log(res.data.status); 
+        
         let data = res.data;
         console.log("data",data);
         this.business_number = data.data[0].business_number;
@@ -232,7 +235,7 @@ export default {
     },
 
     async updateBusinessInfo() {
-      console.log("aaaaaa");
+      
       let credential = {
         business_number: this.business_number,
         business_name: this.business_name,
@@ -247,10 +250,10 @@ export default {
       };
       const { isInvalid, error } = personalBusinessValidation(credential);
       if (isInvalid) {
-        console.log("bbbbb");
+        
         this.error = error;
       } else {
-        console.log("ccccc");
+        
         this.personalBusinessService
           .updateBusinessInfo(
             this.userID,
@@ -267,7 +270,7 @@ export default {
           .then((res) => {
             console.log(res);
             if (res.data.status == 200) {
-              console.log("ddddd");
+              
               console.log(res.data.status);
               // this.$router.push("member-registration-completed");
             }
@@ -293,7 +296,7 @@ export default {
 
   mounted() {
     this.personalInfo();
-    console.log("userId", this.userId);
+    // console.log("userId", this.userId);
   },
 
 };

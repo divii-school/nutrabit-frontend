@@ -10,10 +10,10 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
 
-                            <Dropdown :class="`${error.sub_category ? 'p-invalid' : ''}`" v-model="sub_category_id" :options="categoryDropdownValues"
-                                optionLabel="category_name_ko" optionValue="id"
+                            <Dropdown :class="`${error.sub_category ? 'p-invalid' : ''}`" v-model="sub_category_id"
+                                :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"
                                 :placeholder="$t('Banner.placeholder.select')" />
-                                 <div class="text-red">{{ error.sub_category }}</div>
+                            <div class="text-red">{{ error.sub_category }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -233,10 +233,15 @@
                             <label for="state2">{{ $t('RawMaterialadd.list.status') }}</label>
 
                             <br />
-                            <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                            <label for="yes">Yes</label>
-
-                            <input type="radio" id="no" name="status" value="inactive" v-model="status" />
+                            <div :class="`${error.status ? 'p-invalid' : ''}`">
+                                <input type="radio" id="yes" value="active" name="status" v-model="status"
+                                    @change="addRaw" />
+                                <label for="yes">Yes</label>
+                
+                                <input type="radio" id="no" name="status" value="inactive" v-model="status"
+                                    @change="addRaw" />
+                                <label for="no">No</label>
+                            </div>
                             <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>

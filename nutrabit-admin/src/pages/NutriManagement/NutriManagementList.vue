@@ -95,7 +95,7 @@
                                     ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i></Button>
                                 </router-link>
                                 <router-link :to="'/editnutri-management/' + data.id"
-                                    ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i></Button></router-link
+                                    ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i class="pi pi-pencil p-mr-2"></i></Button></router-link
                                 >
                                 <Button  icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
                             </div>
@@ -343,7 +343,8 @@ export default {
                     axios({ method: 'delete', url: '/admin/nutriBlending/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
                         self.nutriManagementService
-                        .getNurtiManagementList(self.status,self.name_ko,self.tags_ko,self.startDate,self.endDate,self.sortBy,self.sortOrder)
+                       
+                        .getNurtiManagementList(self.name,self.tags_ko,self.page,self.limit,self.sortBy,self.sortOrder)
                         //.getNurtiManagementList(self.title,self.link,self.status,self.createdDate)
                         .then((data) => {
                         self.customer1 = data;

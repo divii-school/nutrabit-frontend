@@ -3,7 +3,7 @@ import validator from 'validator';
 const validateAddNutri = (data) => {
   let errors = {}
   
-  const { name_ko,name_en,tags_ko,tags_en,description_ko,description_en,file,addthumnail,newthumnail} = data;
+  const { name_ko,name_en,tags_ko,tags_en,description_ko,description_en,file,addthumnail,newthumnail,status} = data;
 
   if(validator.isEmpty(name_ko)) {
     errors.name_ko =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
@@ -38,6 +38,10 @@ const validateAddNutri = (data) => {
   if (validator.isEmpty(newthumnail)) {
     errors.newthumnail = '파일을 업로드 해주세요';
   }
+
+  if (validator.isEmpty(status)) {
+    errors.status = '선택 해주세요';
+}
  
   return {
     isInvalid: Object.keys(errors).length > 0,

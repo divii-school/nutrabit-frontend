@@ -7,6 +7,7 @@
         }"
         :navigation="true"
         :modules="modules"
+        :speed="2000"
         class="mySwiper"
       >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">

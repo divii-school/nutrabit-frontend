@@ -28,7 +28,7 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
 
-                        <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
+                        <MultiSelect id="multiselect" :placeholder="$t('Nutri3.Edit.EditMainRaw1')" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
 
                         </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
@@ -90,7 +90,7 @@
                         <div style="display: flex; justify-content: flex-end">
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" :alt="thumbnail" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
                                    <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                                 </div>
                         </div>
@@ -112,7 +112,7 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin:5px;">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image" :alt="product_sub_image" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image" alt="이미지를 사용할 수 없음" class="product-image" />
                                     <a href="javascript:;" @click="remove_raw(id,product_sub_image)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" :alt="detail_image" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -380,7 +380,7 @@ export default {
             let similar_prod_image_arr = similar_product_img.toString().split("/");
             let image_name = similar_prod_image_arr[3];
            // console.log(similar_prod_image_arr[3])
-            if(confirm("Do you really want to delete?")){
+            if(confirm("정말 삭제하시겠습니까?")){
                  axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
                         console.log(response);
                     }).catch(error => {
@@ -396,7 +396,7 @@ export default {
             let raw_material_img_arr = raw_material_img.toString().split("/");
             let image_name = raw_material_img_arr[3];
            // console.log(similar_prod_image_arr[3])
-            if(confirm("Do you really want to delete?")){
+            if(confirm("정말 삭제하시겠습니까?")){
                  axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
                         console.log(response);
                     }).catch(error => {

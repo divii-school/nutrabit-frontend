@@ -203,7 +203,7 @@
                     :class="{ grey: isVerification }"
                     :disabled="emailValidated"
                   >
-                    Send verification code
+                    {{ verificationStatus }}
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
@@ -325,7 +325,7 @@ export default {
       depertment: "",
       contactPerson: "",
       error: {},
-      timer: 130,
+      timer: 180,
       isActive: true,
       isVerification: false,
       emailValidated: 0,
@@ -334,6 +334,7 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
+      verificationStatus : 'Send verification code'
     };
   },
   created() {
@@ -432,7 +433,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 130;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -450,6 +451,7 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
+              this.verificationStatus = 'Resend verification code'
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             return this.$swal(res.response.data.message);
