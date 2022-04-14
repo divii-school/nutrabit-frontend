@@ -21,5 +21,9 @@ export default class NutriService {
         lang:"KO",
       }).then((res) => res).catch((err) => err);
   }
+
+  async confirmbutton() {
+    return await axios.post(`/nutriBlending/get_quote`).then((res) => res).catch((err) => err);
+}
   
 }
