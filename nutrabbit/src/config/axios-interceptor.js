@@ -6,7 +6,6 @@ axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-d
 
 axios.interceptors.request.use(function (config) {
     const token = localStorage.getItem('token');
-    console.log(token);
     config.headers.source = 'nutrabbit';
     config.headers.apiKey = 'coN21di1202VII01Ed0OnNiMDa2P3p0M';
     config.headers['Accept-Language'] = 'en';
