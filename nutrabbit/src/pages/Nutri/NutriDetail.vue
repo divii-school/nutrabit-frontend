@@ -12,11 +12,11 @@
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items"
+              v-for="(item, index) of items.product_sub_image_path"
               :key="index"
             >
               <img
-                :src="imgBaseUrl + item.detail_image_path"
+                :src="imgBaseUrl + item"
                 alt
               />
             </swiper-slide>
@@ -33,11 +33,11 @@
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items.detail_image_path"
+              v-for="(item, index) of items.product_sub_image_path"
               :key="index"
             >
               <img
-                :src="imgBaseUrl + item.detail_image_path"
+                :src="imgBaseUrl + item"
                 alt
               />
             </swiper-slide>
@@ -253,12 +253,12 @@ export default {
 
     getNutridetails() {
       this.id = this.$route.params.id;
-      console.log("id",this.id);
+      // console.log("id",this.id);
       this.nutriService
         .getNutridetails(this.id)
         .then((res) => {
           if (res.status == 200) {
-            console.log("ress", res);
+            // console.log("ress", res);
             this.nutriDetails = res.data.data;
             console.log("nutriDetails", this.nutriDetails);
           }
