@@ -254,12 +254,12 @@ export default {
   },
 
   mounted() {
-    // if (localStorage.token) {
-    //   this.logedInUserDetails = true;
-    //   this.get;
-    // } else {
-    //   this.logedInUserDetails = false;
-    // }
+    if (localStorage.token) {
+      this.logedInUserDetails = true;
+      this.get;
+    } else {
+      this.logedInUserDetails = false;
+    }
     this.getUserInfo();
     this.getIp();
   },

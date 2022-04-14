@@ -181,7 +181,8 @@ export default {
         .then((res) => {
           console.log(res.data[0]);
           if (res.status == 200) {
-            this.rwaMaterialData = res.data;
+            this.rwaMaterialData = res.data[0];
+            console.log(this.rwaMaterialData)
             this.additionalRequest = res.data[0].additional_request;
             this.title = res.data[0].title;
             this.serviceNum = res.data[0].service_type;
@@ -193,7 +194,7 @@ export default {
               this.serviceType = ["Sample Application", "Get A Quote"];
             }
             Array.from(res.data[0].options).forEach((ele) => {
-              //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+              console.log(Object.keys(ele)[0], Object.values(ele)[0])
               let op_type = Object.keys(ele)[0].toString();
               let op_val = Object.values(ele)[0].toString();
 
@@ -203,7 +204,7 @@ export default {
                   this.option_items.push(res.data[0]),
                     console.log(this.option_items);
                 } else {
-                  this.$swal(res.message, "error");
+                 // this.$swal(res.message, "error");
                 }
               });
             });
