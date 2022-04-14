@@ -82,6 +82,7 @@
       <!-- payment-test -->
     </div>
   </div>
+  <CacaoChatVue />
 </template>
 
 <script>
@@ -95,6 +96,7 @@ import { inject } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
+import CacaoChatVue from "../../components/CacaoChat.vue";
 export default {
   name: "Main",
   components: {
@@ -102,6 +104,7 @@ export default {
     SwiperSlide,
     MainProductCard,
     Button,
+    CacaoChatVue,
   },
   data() {
     return {

@@ -241,7 +241,6 @@ export default {
     this.personalInfoService = new PersonalInfoService();
     this.commonService = new CommonService();
   },
-
   updated(){
     if (localStorage.token) {
       this.logedInUserDetails = true;
@@ -252,7 +251,6 @@ export default {
       this.logedInUserDetails = false;
     }
   },
-
   mounted() {
     // if (localStorage.token) {
     //   this.logedInUserDetails = true;
