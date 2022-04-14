@@ -188,7 +188,6 @@ export default {
           const faq = [];
           this.newSearchResult = res.data.data.search;
           this.newSearchResult.map((value)=> {
-            console.log({value})
             if (value.type == "nutri_blending") {
                 nutriBlending.push({
                   id: value.id,
