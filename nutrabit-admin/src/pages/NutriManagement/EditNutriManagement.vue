@@ -109,7 +109,9 @@
                             <input type="file" class="select-file" v-on:change="onFilesChange"   />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
-                        <!-- <FileUpload name="demo[]"  :multiple="true" :customUpload="true" @uploader="onFilesChange" :maxFileSize="1000000" :fileLimit="5" /> -->
+                        
+
+                        <!-- <FileUpload v-if="!filesNames" name="demo[]"  :multiple="true" :customUpload="true" @uploader="onFilesChange" :maxFileSize="1000000" :fileLimit="4" /> -->
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>

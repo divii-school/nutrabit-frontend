@@ -20,6 +20,7 @@
                                 :suggestions="autoFilteredValue"
                                 @complete="searchCountry($event)"
                                 field="category_name_ko"
+
                             />
                             
                         </div>
@@ -160,6 +161,7 @@ export default {
     methods: {
         searchCountry(event) {
             setTimeout(() => {
+                console.log(this.autoFilteredValue)
                 if (!event.query.trim().length) {
                     this.autoFilteredValue = [...this.autoValue];
                 }
@@ -224,7 +226,8 @@ export default {
                 this.error = error;
                 console.log(error);
             } else {
-              // console.log(this.file);
+                
+             console.log(this.fst_category_name_ko);
             this.formData.append('fst_category_name_ko', this.fst_category_name_ko);
             this.formData.append('fst_category_name_en', this.fst_category_name_en);
             this.formData.append('scnd_category_name_ko', this.scnd_category_name_ko);
