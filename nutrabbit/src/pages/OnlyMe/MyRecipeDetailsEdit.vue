@@ -146,6 +146,7 @@
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
+import validator from "validator";
 
 export default {
   name: "MyRecipeDetailsEdit",
@@ -181,7 +182,10 @@ export default {
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
-      
+      // emptyTitle : false,
+      // emptyReq : false,
+      // emptyService : false,
+      // errMsg : '',
     };
   },
 
@@ -258,8 +262,14 @@ export default {
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
       if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
-          // this.$swal('Need to fill all the fields')
-          return
+      this.$swal('Need to fill all the fields')
+
+      // this.emptyTitle = (!_title) ? true : false;
+      // this.emptyReq = (!_additional_req) ? true : false;
+      // this.emptyService = (!this.isSample && !this.isQuote) ? true : false;
+      //this.errMsg = 'Needs to fill all the fields'
+
+      return
       }
       
       //let ser_tp = (_services.length > 1) ? '3' : _services[0]
@@ -292,6 +302,8 @@ export default {
     
       })
     },
+    
+
 
     
   },

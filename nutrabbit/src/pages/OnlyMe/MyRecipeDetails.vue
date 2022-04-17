@@ -119,6 +119,7 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
+
 export default {
   name: "MyRecipeDetails",
   components: {
