@@ -16,3 +16,15 @@ axios.interceptors.request.use(function (config) {
 }, function (err) {
     return Promise.reject(err);
 });
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+    if (response.status==403) {
+       alert("You are not");
+    }
+    return response;
+  }, function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+  });

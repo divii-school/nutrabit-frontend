@@ -239,7 +239,7 @@ const routes = [
         path: '/faq',
         name: 'Faq',
         component: FAQ,
-        beforeEnter: guest,
+        // beforeEnter: guest,
     },
     {
         name: 'MyRecipeDetails',

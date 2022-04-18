@@ -173,6 +173,7 @@ export default {
               localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("uname", res.data.data.name);
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
                 this.cookies.set("rememberUserPassword", setPassword);

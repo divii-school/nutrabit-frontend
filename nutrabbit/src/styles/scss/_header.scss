@@ -227,6 +227,15 @@ header {
                   width: 100%;
                   bottom: 0;
                   background: $white-1;
+                  .delete-history{
+                    display: none;
+                    &.showDelete{
+                      display: flex;
+                    }
+                    &.hideDelete{
+                      display: none;
+                    }
+                  }
                 }
               }
             }
@@ -801,7 +810,8 @@ header {
   .delete-close {
     @include flex-justify-between;
     padding: 9px 10px;
-
+    border-top: 1px solid $white-F2;
+    height: 38px;
     a {
       @include flex-align-center;
       font-size: 12px;
