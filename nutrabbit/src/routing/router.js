@@ -93,17 +93,20 @@ const routes = [
     {
         name: 'personal-information',
         path: '/personal-information',
-        component: PersonalInformation
+        component: PersonalInformation,
+        beforeEnter : guard
     },
     {
         name: 'PersonalInformationBusiness',
         path: '/personal-information-business',
-        component: PersonalInformationBusiness
+        component: PersonalInformationBusiness,
+        beforeEnter : guard
     },
     {
         name: 'WithdrawalOfMembership',
         path: '/withdrawal-of-membership',
-        component: WithdrawalOfMembership
+        component: WithdrawalOfMembership,
+        beforeEnter : guard
     },
     {
         name: 'InquiryContactUs',

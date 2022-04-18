@@ -343,6 +343,7 @@ export default {
       }
     }
   },
+
   mounted() {
     // if (localStorage.token) {
     //   this.logedInUserDetails = true;
