@@ -131,21 +131,19 @@
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="sidemenu-login-web">
-                <div class="after-login">
-                  <router-link
+                 <router-link
                     to
                     :class="token ? 'login-item' : ''"
                     @click="activeLogin = !activeLogin"
                     >{{ userName ? userName : localuser }}
                   </router-link>
                   <i class="icon-leftArw"></i>
-                </div>
                 <div
-                  class="side-menu-logout-web"
+                  class="side-menu-logout-mob"
                   :class="{ activeLogin: activeLogin }"
                 >
                   <router-link to>Change personal information</router-link>
-                  <router-link to>Log out</router-link>
+                  <router-link to @click="logOut()">Log out</router-link>
                 </div>
               </div>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
