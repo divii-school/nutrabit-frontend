@@ -9,7 +9,7 @@
           <p class="category">category</p>
           <p class="title">title</p>
         </div>
-        <FaqAccordion v-for="(item, index) of updatedFaqList" :key="index">
+        <FaqAccordion v-for="(item, index) of importantFaqList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
@@ -28,10 +28,35 @@
             </p>
           </template>
         </FaqAccordion>
+
+<!-- unimportant FAQ List -->
+
+<FaqAccordion v-for="(item, index) of unimportantFaqList" :key="index">
+          <template v-slot:title>
+            <div class="item-left">
+              <div class="item-left-inner">
+                <p class="para-category">{{ item.category_name_en }}</p>
+              </div>
+              <div class="item-right-inner">
+                <p>{{ item.title_en }}</p>
+              </div>
+            </div>
+          </template>
+          <template v-slot:content>
+            <h4>Answred</h4>
+            <p>
+              {{ item.description_en }}
+            </p>
+          </template>
+  </FaqAccordion>
+
+<!-- **************************************************************************************** -->
+
         <template v-if="this.updatedFaqList.length > 0">
           <pagination
             v-model="page"
             :records="FaqList.length"
+            :options="chunkPage"
             :per-page="perPage"
             @paginate="myCallback"
           />
@@ -123,14 +148,35 @@ export default {
       updatedFaqList: [],
       page: 1,
       perPage: 10,
+      chunkPage : { chunk : 5 },
     };
   },
+
+  computed :{
+   importantFaqList(){
+    return Array.from(this.updatedFaqList).filter(item=>{
+          return item.top_10 == 'y';
+    })
+   },
+   
+   unimportantFaqList(){
+    return Array.from(this.updatedFaqList).filter(item=>{
+          return item.top_10 != 'y';
+    })
+   },
+
+  },
+
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
   mounted() {
     this.allFaqList();
+    console.log(this.updatedFaqList)
   },
+
+  
+
   methods: {
     myCallback(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;

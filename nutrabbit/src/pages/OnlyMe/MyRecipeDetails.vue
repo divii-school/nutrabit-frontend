@@ -90,7 +90,7 @@
                     <button
                       class="btn-green-outline blue"
                       @click="toEditRecipeDetails(product_id, app_type)"
-                    >
+                    :disabled="isDisabled">
                       Edit
                     </button>
                     <button
@@ -107,12 +107,8 @@
         </div>
       </div>
     </div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal()"
-      bodytext1="Are you sure?"
-      btnText1="OK"
-    />
+    <Modal v-show="isModalVisible" @close="closeModal" bodytext1="Are you sure?"
+    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
   </div>
 </template>
 
@@ -123,6 +119,7 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
+
 export default {
   name: "MyRecipeDetails",
   components: {
@@ -139,6 +136,7 @@ export default {
       option_items: [],
       isModalVisible: false,
       serviceNum: "",
+      isDisabled : false,
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -181,7 +179,15 @@ export default {
         .then((res) => {
           console.log(res.data[0]);
           if (res.status == 200) {
-            this.rwaMaterialData = res.data;
+
+            if(res.data[0].is_temporary_storage == 'N'){
+              this.$router.push('/my-recipe')
+              this.isDisabled = true;
+              return;
+          }
+
+            this.rwaMaterialData = res.data[0];
+            console.log(this.rwaMaterialData)
             this.additionalRequest = res.data[0].additional_request;
             this.title = res.data[0].title;
             this.serviceNum = res.data[0].service_type;
@@ -193,7 +199,7 @@ export default {
               this.serviceType = ["Sample Application", "Get A Quote"];
             }
             Array.from(res.data[0].options).forEach((ele) => {
-              //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+              console.log(Object.keys(ele)[0], Object.values(ele)[0])
               let op_type = Object.keys(ele)[0].toString();
               let op_val = Object.values(ele)[0].toString();
 
@@ -203,7 +209,8 @@ export default {
                   this.option_items.push(res.data[0]),
                     console.log(this.option_items);
                 } else {
-                  this.$swal(res.message, "error");
+                 // this.$swal(res.message, "error");
+                 console.log(res.message)
                 }
               });
             });
@@ -219,7 +226,7 @@ export default {
 
     closeModal() {
       this.isModalVisible = false;
-      this.deleteRecipeDetail(this.product_id);
+      //this.deleteRecipeDetail(this.product_id);
     },
 
     toEditRecipeDetails(_id, _type) {
@@ -245,7 +252,7 @@ export default {
             console.log(`product id for payment is  : ${_id}`);
           }else{
               // if service is quote
-              this.$router.push('/my-application-detail')
+              this.$router.replace('/my-application-detail')
           }
 
 
@@ -256,9 +263,9 @@ export default {
     },
 
     deleteRecipeDetail() {
-      console.log(`delete item product id : ${id}`);
+      //console.log(`delete item product id : ${id}`);
 
-      this.myRecipe.deleteRecipeData(id).then((res) => {
+      this.myRecipe.deleteRecipeData(this.product_id).then((res) => {
         if (res.status == 200) {
           console.log(res.message);
           this.additionalRequest = "";

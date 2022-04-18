@@ -39,14 +39,14 @@ import MyRecipe from '../pages/OnlyMe/MyRecipe.vue';
 import AboutUs from '../pages/AboutUs.vue';
 import ServiceIntro from '../pages/Nutri/ServiceIntro.vue';
 import NutriDetail from '../pages/Nutri/NutriDetail.vue';
+import Toast from '../alert/alert.js'
 
 
 import MyRecipeDetail from '../pages/MyRecipeDetail.vue';
 function guest(to, from, next) {
     if (localStorage.token) {
         next({ name: 'Main' });
-        alert('You already logged in');
-        // this.$swal('You already logged in', "error");
+        Toast.fire({ title: "You already logged in" });
     } else next();
 }
 
@@ -55,28 +55,16 @@ function guard(to, from, next) {
         next();
     } else {
         next({ name: 'Login' });
-        // this.$swal("Please login to access");
-        console.log('hhhh')
-        alert('Please login to access');
-        
+        Toast.fire({ title: "Please login to access" });
     }
 }
 
 const routes = [
-    // {
-    //     name: 'home',
-    //     path: '/',
-    //     component: Home,
-    //     meta: {
-    //         name: 'topnav',
-    //         ShowText: true
-    //     }
-    // },
     {
         name: 'Main',
         path: '/',
         component: Main,
-        // beforeEnter: guard,
+        // beforeEnter: guest,
     },
     {
         name: 'Login',
@@ -254,7 +242,7 @@ const routes = [
         path: '/faq',
         name: 'Faq',
         component: FAQ,
-        beforeEnter: guard,
+        // beforeEnter: guest,
     },
     {
         name: 'MyRecipeDetails',
@@ -274,7 +262,7 @@ const routes = [
         name: 'MyApplicationQuoteRequestChoice',
         path: '/my-application-quote-request-choice/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestChoice.vue'),
-        beforeEnter : guard
+        beforeEnter: guard
 
     },
 
@@ -282,7 +270,7 @@ const routes = [
         name: 'MyApplicationQuoteRequestBlending',
         path: '/my-application-quote-request-blend/:type/:id',
         component: () => import('../pages/OnlyMe/MyApplicationQuoteRequestBlending.vue'),
-        beforeEnter : guard
+        beforeEnter: guard
 
     },
 
@@ -290,7 +278,7 @@ const routes = [
         name: 'MyRecipeDetailsEdit',
         path: '/my-recipe-detail-edit/:type/:id',
         component: MyRecipeDetailsEdit,
-        beforeEnter : guard
+        beforeEnter: guard
 
     },
     {
@@ -303,7 +291,7 @@ const routes = [
         name: 'MyRecipe',
         path: '/my-recipe',
         component: MyRecipe,
-        beforeEnter : guard
+        beforeEnter: guard
 
     },
     {
@@ -316,6 +304,7 @@ const routes = [
         name: 'ServiceIntro',
         path: '/service-intro',
         component: ServiceIntro,
+        beforeEnter: guard
 
     },
     {

@@ -1,19 +1,45 @@
 <template>
   <div class="nutri-product-item">
-    <div v-if="token"  @click="this.$router.push(`/nutri-detail/${item.id}`)">
-    <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
-    <img v-else class="nutri-pimg" src="../assets/images/aloe-img-4.png" alt />
+    <div v-if="token" @click="this.$router.push(`/nutri-detail/${item.id}`)">
+      <img
+        v-if="item.thumbnail_path"
+        class="nutri-pimg"
+        :src="imgBaseUrl + item.thumbnail_path"
+        alt=""
+      />
+      <img
+        v-else
+        class="nutri-pimg"
+        src="../assets/images/aloe-img-4.png"
+        alt
+      />
     </div>
-    <div v-else  @click="accessPage()">
-    <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
-    <img v-else class="nutri-pimg" src="../assets/images/aloe-img-4.png" alt />
+    <div v-else @click="accessPage()">
+      <img
+        v-if="item.thumbnail_path"
+        class="nutri-pimg"
+        :src="imgBaseUrl + item.thumbnail_path"
+        alt=""
+      />
+      <img
+        v-else
+        class="nutri-pimg"
+        src="../assets/images/aloe-img-4.png"
+        alt
+      />
     </div>
     <div class="tag-wrap">
       <span>nutri 3.3</span>
       <span>nutri 3.3</span>
     </div>
-    <p v-if="token"  @click="this.$router.push(`/nutri-detail/${item.id}`)" class="title">{{item.name_ko}}</p>
-     <p v-else @click="accessPage()" class="title">{{item.name_ko}}</p>
+    <p
+      v-if="token"
+      @click="this.$router.push(`/nutri-detail/${item.id}`)"
+      class="title"
+    >
+      {{ item.name_ko }}
+    </p>
+    <p v-else @click="accessPage()" class="title">{{ item.name_ko }}</p>
   </div>
 </template>
 
@@ -24,13 +50,13 @@ export default {
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
-      token: localStorage.getItem('token'),
+      token: localStorage.getItem("token"),
     };
   },
   methods: {
     accessPage() {
       this.$swal("Unauthorized Access.Please Login.");
-    }
-  }
+    },
+  },
 };
 </script>

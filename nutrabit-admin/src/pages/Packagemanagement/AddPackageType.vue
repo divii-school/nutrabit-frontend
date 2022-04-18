@@ -40,7 +40,7 @@
                                 {{ $t('PackageType.Add.addimage') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )</span>
+                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div
                                 :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
