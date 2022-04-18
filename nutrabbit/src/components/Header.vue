@@ -75,7 +75,7 @@
                   >
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="toCloseBtn">to close</router-link>
+                  <router-link to @click="toCloseBtn">Close</router-link>
                 </div>
               </div>
             </div>
