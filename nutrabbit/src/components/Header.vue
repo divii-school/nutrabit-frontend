@@ -36,7 +36,10 @@
                 class="header-search-data"
                 :class="activeSearch ? 'activeSearch' : ''"
               >
-                <div class="search-data-inner" :class="showSearchpannel ? 'showSearchpannel' : '' ">
+                <div
+                  class="search-data-inner"
+                  :class="showSearchpannel ? 'showSearchpannel' : ''"
+                >
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
@@ -63,7 +66,13 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="deleteAllHistory" v-if="searchData.length > 0" class="delete-history" :class="showSearchpannel ? 'showDelete' : 'hideDelete' ">
+                  <router-link
+                    to
+                    @click="deleteAllHistory"
+                    v-if="searchData.length > 0"
+                    class="delete-history"
+                    :class="showSearchpannel ? 'showDelete' : 'hideDelete'"
+                  >
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -87,7 +96,7 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to="/personal-information"
+                  <router-link :to="personalInfoRouterLink"
                     >Change of personal information</router-link
                   >
                   <router-link to @click="logOut()">Log out</router-link>
@@ -154,7 +163,7 @@
                     class="side-menu-logout-mob"
                     :class="{ activeLogin: activeLogin }"
                   >
-                    <router-link to>Change personal information</router-link>
+                    <router-link :to="personalInfoRouterLink" @click="active = false">Change personal information</router-link>
                     <router-link to @click="logOut()">Log out</router-link>
                   </div>
                 </div>
@@ -242,6 +251,7 @@ export default {
       sarchInput: "",
       activeLogin: false,
       showSearchpannel: false,
+      personalInfoRouterLink: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -324,6 +334,14 @@ export default {
     } else {
       this.logedInUserDetails = false;
     }
+    if (localStorage.token) {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalInfoRouterLink = "/personal-information-business";
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
+        this.personalInfoRouterLink = "/personal-information";
+      }
+    }
   },
   mounted() {
     // if (localStorage.token) {
@@ -334,8 +352,19 @@ export default {
     // }
     this.getUserInfo();
     this.getIp();
+    this.changePersonalInfo();
   },
   methods: {
+    changePersonalInfo() {
+      if (localStorage.token) {
+        if (localStorage.getItem("userType") == "business_member") {
+          this.personalInfoRouterLink = "/personal-information-business";
+        }
+        if (localStorage.getItem("userType") == "personal_member") {
+          this.personalInfoRouterLink = "/personal-information";
+        }
+      }
+    },
     showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
