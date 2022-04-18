@@ -23,7 +23,7 @@
 
                             />
  -->
-                            <AutoComplete v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
+                            <AutoComplete :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
                             
                         </div>
                         
