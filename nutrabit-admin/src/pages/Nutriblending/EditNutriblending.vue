@@ -171,7 +171,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Blending.edit.detailimage') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )</span>
+                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                         </label>
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -199,7 +199,7 @@
                                 {{ $t('Blending.edit.similarproductimage') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )</span>
+                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div
                                 :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`"
@@ -242,7 +242,7 @@
                                 {{ $t('Blending.edit.1stThumnail') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )</span>
+                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div
                                 :class="`${error.addthumnailfile ? 'custom-select-invalid' : 'custom-select'}`"
@@ -276,7 +276,7 @@
                                 {{ $t('Blending.edit.2stThumnail') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )</span>
+                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div
                                 :class="`${error.newthumnailfile ? 'custom-select-invalid' : 'custom-select'}`"

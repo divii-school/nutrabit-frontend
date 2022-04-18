@@ -23,7 +23,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('PillType.list.uploadimage') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div class="custom-select" >
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>

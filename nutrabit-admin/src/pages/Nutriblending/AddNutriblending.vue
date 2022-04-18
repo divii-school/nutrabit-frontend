@@ -146,7 +146,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.detail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -164,7 +164,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.similar') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
@@ -184,7 +184,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.addthumnail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
@@ -202,7 +202,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.newthumnail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>

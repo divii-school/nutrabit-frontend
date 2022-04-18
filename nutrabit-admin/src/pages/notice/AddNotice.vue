@@ -41,7 +41,7 @@
                                 {{ $t('Notice.add.image') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )</span>
+                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>

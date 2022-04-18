@@ -297,8 +297,8 @@ export default {
   updated() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
-      (this.token = localStorage.token ? true : false),
-        (this.userName = localStorage.getItem("uname"));
+      this.token = localStorage.token ? true : false
+      this.userName = localStorage.getItem('uname');
       this.get;
     } else {
       this.logedInUserDetails = false;

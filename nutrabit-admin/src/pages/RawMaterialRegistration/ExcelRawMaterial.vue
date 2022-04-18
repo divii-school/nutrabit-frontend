@@ -7,7 +7,7 @@
                 <div class="p-col-12">
                     <h5>{{ $t('upload-doc.upload_doc_header') }}</h5>
                     <div class="sample">
-                          <a href="" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">Sample Download </a>
+                          <a href="http://api-nutrabbit-dev.dvconsulting.org/sample_file/raw_material_new.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">Sample Download </a>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                       

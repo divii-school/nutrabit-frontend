@@ -82,7 +82,7 @@
                       <label class="custom-check">
                         <input
                           type="checkbox"
-                          v-model="services"
+                          v-model="isQuote"
                           value="2"
                         /><span class="checkmark"></span>
                       </label>
@@ -98,7 +98,7 @@
                       <label class="custom-check">
                         <input
                           type="checkbox"
-                          v-model="services"
+                          v-model="isSample"
                           value='1'
                         /><span class="checkmark"></span>
                       </label>
@@ -146,6 +146,7 @@
 // import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
+import validator from "validator";
 
 export default {
   name: "MyRecipeDetailsEdit",
@@ -176,10 +177,15 @@ export default {
       title: "",
       add_req: "",
       services: [],
+      isSample : false,
+      isQuote : false,
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
-      
+      // emptyTitle : false,
+      // emptyReq : false,
+      // emptyService : false,
+      // errMsg : '',
     };
   },
 
@@ -205,11 +211,27 @@ export default {
     .then((res)=>{
      console.log(res.data[0])
         if (res.status == 200) {
-          
+          if(res.data[0].is_temporary_storage == 'N'){
+              this.$router.push('/my-recipe')
+              return;
+          }
           this.rwaMaterialData = res.data
           this.add_req = res.data[0].additional_request;
           this.title = res.data[0].title;
-         
+
+         if(res.data[0].service_type == 1){
+           this.isSample = true;
+         }
+          
+          if(res.data[0].service_type == 2){
+           this.isQuote = true;
+         }
+
+         if(res.data[0].service_type == 3){
+           this.isSample = true;
+           this.isQuote = true;
+         }
+
 
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
@@ -239,12 +261,32 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id || !_title || !_additional_req || _services.length < 0){
-          // this.$swal('Need to fill all the fields')
-          return
+      if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
+      this.$swal('Need to fill all the fields')
+
+      // this.emptyTitle = (!_title) ? true : false;
+      // this.emptyReq = (!_additional_req) ? true : false;
+      // this.emptyService = (!this.isSample && !this.isQuote) ? true : false;
+      //this.errMsg = 'Needs to fill all the fields'
+
+      return
       }
       
-      let ser_tp = (_services.length > 1) ? '3' : _services[0]
+      //let ser_tp = (_services.length > 1) ? '3' : _services[0]
+
+      let ser_tp;
+
+      if(this.isSample){
+        ser_tp = '1';
+      }
+
+      if(this.isQuote){
+        ser_tp = '2';
+      }
+
+      if(this.isSample && this.isQuote){
+        ser_tp = '3';
+      }
 
       console.log(_id, _title, _additional_req, ser_tp)
       this.myRecipe.editRecipeDetail(_id, _title, _additional_req, ser_tp).then(res => {
@@ -260,6 +302,8 @@ export default {
     
       })
     },
+    
+
 
     
   },
