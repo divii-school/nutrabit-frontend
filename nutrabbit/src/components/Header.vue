@@ -63,7 +63,7 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="deleteAllHistory" v-if="searchData.length > 0">
+                  <router-link to @click="deleteAllHistory" v-if="searchData.length > 0" class="delete-history" :class="showSearchpannel ? 'showDelete' : 'hideDelete' ">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -339,6 +339,7 @@ export default {
     showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
+      this.showSearchpannel = false;
     },
     toCloseBtn() {
       this.showMobSearch = false;

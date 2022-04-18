@@ -227,6 +227,16 @@ header {
                   width: 100%;
                   bottom: 0;
                   background: $white-1;
+
+                  .delete-history{
+                    display: none;
+                    &.showDelete{
+                      display: flex;
+                    }
+                    &.hideDelete{
+                      display: none;
+                    }
+                  }
                 }
               }
             }
