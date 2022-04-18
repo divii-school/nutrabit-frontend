@@ -545,12 +545,6 @@ header {
               padding-bottom: 10px;
               border-bottom: 3px solid transparent;
 
-              &.login-item {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
-
               @media screen and (max-width: 1200px) {
                 font-size: 25px;
                 line-height: 28px;
@@ -566,43 +560,41 @@ header {
                 line-height: 19px;
               }
             }
-            .sidemenu-login-name-web{
-              position: relative;
-              .icon-leftArw {
-                margin: 0 0 0 10px;
-                background-position: 0 4px;
-                position: absolute;
-                right: -29px;
-                top: 2px;
-                @media screen and (max-width: 1200px) {
-                  top: 2px;
-                  background-size: auto 20px;
+            .after-login-wrap{
+              .after-login{
+                position: relative;
+                a{
+                  max-width: 215px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: inline-block;
                 }
-                @media screen and (max-width: 992px) {
-                  top: 0;
-                  background-size: auto 20px;
+                .icon-leftArw{
+                  position: absolute;
+                  right: -30px;
+                  top: 4px;
                 }
               }
-            }
-            .side-menu-logout-mob{
-              display: none;
-              @media screen and (max-width: 768px) {
-                display: block;
-                padding: 16px;
-                margin-top: 10px;
-                a{
-                  font-weight: 400;
-                  font-size: 14px;
-                  line-height: 17px;
+              .side-menu-logout-mob{
+                display: none;
+                @media screen and (max-width: 768px) {
                   display: block;
-                  border: 0;
-                  padding: 0;
-                  margin-top: 30px;
-                  &:first-child{
-                    margin-top: 0;
-                  }
-                  &:hover{
+                  padding: 16px;
+                  a{
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 17px;
+                    display: block;
                     border: 0;
+                    padding: 0;
+                    margin-top: 30px;
+                    &:first-child{
+                      margin-top: 0;
+                    }
+                    &:hover{
+                      border: 0;
+                    }
                   }
                 }
               }

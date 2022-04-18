@@ -130,14 +130,16 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <div v-if="token && index == 0" class="sidemenu-login-web">
-                 <router-link
+              <div v-if="token && index == 0" class="after-login-wrap">
+                 <div class="after-login">
+                   <router-link
                     to
                     :class="token ? 'login-item' : ''"
                     @click="activeLogin = !activeLogin"
                     >{{ userName ? userName : localuser }}
                   </router-link>
                   <i class="icon-leftArw"></i>
+                 </div>
                 <div
                   class="side-menu-logout-mob"
                   :class="{ activeLogin: activeLogin }"
