@@ -244,7 +244,8 @@ export default {
                       this.option_items.push( res.data[0] )
                     //  console.log(this.option_items)
                  }else{
-                   this.$swal(res.message, "error");
+                   //this.$swal(res.message, "error");
+                   console.log(res.message)
                  }
                }
               
@@ -262,7 +263,7 @@ export default {
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
       if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
-      this.$swal('Need to fill all the fields')
+      this.$swal('All fields required to be filled')
 
       // this.emptyTitle = (!_title) ? true : false;
       // this.emptyReq = (!_additional_req) ? true : false;
