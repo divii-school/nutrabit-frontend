@@ -575,27 +575,38 @@ header {
                   right: -30px;
                   top: 4px;
                 }
-              }
-              .side-menu-logout-mob{
-                display: none;
-                @media screen and (max-width: 768px) {
-                  display: block;
-                  padding: 16px;
-                  a{
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 17px;
-                    display: block;
-                    border: 0;
-                    padding: 0;
-                    margin-top: 30px;
-                    &:first-child{
-                      margin-top: 0;
-                    }
-                    &:hover{
-                      border: 0;
-                    }
+                &.side-menu-web-login{
+                  @media screen and (max-width: 768px){
+                    display: none;
                   }
+                }
+              }
+              .side-menu-mob-login{
+                display: none;
+                @media screen and (max-width: 768px){
+                  display: block;
+                }
+                .side-menu-logout-mob{
+                  display: none;
+                  padding: 16px;
+                  &.activeLogin{
+                    display: block;
+                  }
+                    a{
+                      font-weight: 400;
+                      font-size: 14px;
+                      line-height: 17px;
+                      display: block;
+                      border: 0;
+                      padding: 0;
+                      margin-top: 30px;
+                      &:first-child{
+                        margin-top: 0;
+                      }
+                      &:hover{
+                        border: 0;
+                      }
+                    }
                 }
               }
             }
