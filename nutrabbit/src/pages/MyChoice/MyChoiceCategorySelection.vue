@@ -52,7 +52,7 @@
                   :image_hover="item.thumbnail_2_path"
                   :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
-                  v-on:mouseover="hoverEffect($event)"
+                  @mouseover="hoverEffect($event)"
                 />
               </li>
             </ul>
@@ -225,7 +225,7 @@ export default {
       this.mychoiceService.getRecommendedData(limit, page).then((res) => {
         //console.log(res);
         if (res.status == 200) {
-           console.log('allBlendingData res', res.data.blendingData);
+           //console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
 
         } else {

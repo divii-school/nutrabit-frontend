@@ -276,6 +276,7 @@
                                 width: 330px;
                                 height: 330px;
                                 border-radius: 200px 200px 0px 0px;
+                                cursor: pointer;
                                 @media screen and (max-width: 768px){
                                     width: 164px;
                                     height: 165px;
@@ -312,6 +313,7 @@
                                 line-height: 31px;
                                 text-align: center;
                                 color: $black-18;
+                                cursor: pointer;
                                 @media screen and (max-width: 992px){
                                     font-size: 18px;
                                     line-height: 23px;

@@ -37,9 +37,9 @@
                     <img class="nutri-pimg" :src="'http://api-nutrabbit-dev.dvconsulting.org' + item.detail_image_path" alt=""/>
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
-                      <!-- <span>nutri 3.3</span> -->
+                      <span>nutri 3.3</span>
                     </div>
-                    <p>{{item.name_ko}}</p>
+                    <p @click="this.$router.push(`/nutri-detail/${item.id}`)">{{item.name_ko}}</p>
                   </div>
                 </li>
                 <!-- <li>

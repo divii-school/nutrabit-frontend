@@ -1,6 +1,7 @@
 <template>
   <div class="search-card-inner">
-    <img class="search-result-img" v-bind:src="image_link + image" alt />
+    <img v-if="image" class="search-result-img" v-bind:src="image_link + image" alt />
+    <img v-else class="search-result-img" src="../assets/images/aloe-img-4.png" alt />
     <!-- <div><img v-bind:src="image_link + image_hover" alt /></div> -->
     <p class="text-center">{{ category }}</p>
     <template v-if="type == 'recomandedBlending'">
