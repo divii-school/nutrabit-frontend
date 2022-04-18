@@ -210,6 +210,7 @@ export default {
                     console.log(this.option_items);
                 } else {
                  // this.$swal(res.message, "error");
+                 console.log(res.message)
                 }
               });
             });
