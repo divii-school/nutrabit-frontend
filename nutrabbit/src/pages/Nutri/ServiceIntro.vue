@@ -34,7 +34,10 @@
               <ul v-for="(item, index) of nutriList" :key="index">
                 <li>
                   <div class="nutri-product-item">
-                    <img class="nutri-pimg" :src="'http://api-nutrabbit-dev.dvconsulting.org' + item.detail_image_path" alt=""/>
+                    <div @click="this.$router.push(`/nutri-detail/${item.id}`)">
+                      <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
+                      <img v-else class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
+                    </div>
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
                       <span>nutri 3.3</span>
@@ -42,24 +45,6 @@
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">{{item.name_ko}}</p>
                   </div>
                 </li>
-                <!-- <li>
-                  <div class="nutri-product-item">
-                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                  </div>
-                    <p class="title">Nutri ODM Product Title</p>
-                  </div>
-                </li> -->
-                <!-- <li>
-                  <div class="nutri-product-item">
-                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                  </div>
-                    <p class="title">Nutri ODM Product Title</p>
-                  </div>
-                </li> -->
               </ul>
             </div>
           </div>
@@ -100,6 +85,7 @@ export default {
           desc: "After checking in nutri 3.3 We will contact you"
         },
       ],
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       lang:"",
       nutriList:[],
     };

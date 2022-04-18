@@ -34,7 +34,7 @@
             bodytext1="Are you sure you want to close this account?"
             btnText1="cancellation"
             btnText2="Confirm"
-            link = ''
+            link2 = '/'
           />
         </div>
 
@@ -47,16 +47,6 @@
         link = '/'
       />
       </div>
-
-      <!-- <div>
-        <Modal
-        v-show="saveModal"
-        @close="closeModal2"
-        bodytext1="Saved"
-        btnText2="Confirm"
-        link = '/'
-      />
-      </div> -->
 
 </template>
 <script>
@@ -122,13 +112,6 @@ export default {
       // this.$router.push("/");
       this.confirmModal = false;
     },
-
-    // closeModal2() {
-    //   // this.$router.push("/");
-    //   this.isModalVisible = false;
-    //   this.confirmModal = false;
-    //   this.saveModal = true;
-    // },
 
   },
  

@@ -153,13 +153,24 @@
       </div>
     </div>
   </div>
+  <Modal 
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="Saved"
+    btnText2="Confirm"
+    link = '/'
+  />
 </template>
 <script>
 import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import personalInfoValidation from "../../Validation/personalInfoValidation";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "PersonalInformationManagement",
+  components: {
+    Modal
+  },
   data() {
     return {
       // userId: 21,
@@ -174,6 +185,7 @@ export default {
       checkName: [],
       error: {},
       uuid:"",
+      isModalVisible:false,
     };
   },
 
@@ -233,10 +245,18 @@ export default {
           .then((res) => {
             if (res.data.status == 200) {
               console.log(res.data.status);
-              // this.$router.push("member-registration-completed");
+              this.openmodal();
             }
           });
       }
+    },
+
+    openmodal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
     },
 
     getAddress() {

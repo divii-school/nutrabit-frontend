@@ -20,7 +20,7 @@
           <button
             type="button"
             class="btn-primary grey-btn-solid"
-            @click="close"
+            @click="close(link2)"
             v-if="btnText1"
           >
             {{ btnText1 }}
@@ -42,9 +42,10 @@
 <script>
 export default {
   name: "Modal",
-  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link"],
+  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link","link2"],
   methods: {
-    close() {
+    close(link2) {
+      this.$router.push(link2);
       this.$emit("close");
     },
     close2(link) {

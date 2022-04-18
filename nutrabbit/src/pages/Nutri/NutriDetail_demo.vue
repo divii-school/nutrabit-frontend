@@ -8,15 +8,15 @@
             :modules="[Thumbs]"
             :thumbs="{ swiper: thumbsSwiper }"
             class="mySwiper"
-            v-for="(items, index) of nutriDetails"
+            v-for="(items, index) of blending_data"
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items.product_sub_image_path"
+              v-for="(item, index) of items.detail_image_path"
               :key="index"
             >
               <img
-                :src="imgBaseUrl + item"
+                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
                 alt
               />
             </swiper-slide>
@@ -29,15 +29,15 @@
             watch-slides-progress
             @swiper="setThumbsSwiper"
             class="mySwiper2"
-            v-for="(items, index) of nutriDetails"
+            v-for="(items, index) of blending_data"
             :key="index"
           >
             <swiper-slide
-              v-for="(item, index) of items.product_sub_image_path"
+              v-for="(item, index) of items.detail_image_path"
               :key="index"
             >
               <img
-                :src="imgBaseUrl + item"
+                :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item"
                 alt
               />
             </swiper-slide>
@@ -45,7 +45,7 @@
         </div>
         <div
           class="blending-right"
-          v-for="(item, index) of nutriDetails"
+          v-for="(item, index) of blending_data"
           :key="index"
         >
           <div class="right-heading">
@@ -60,13 +60,68 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{item.description_ko}}</p>
+            <p>When your body and mind are healthy, work will work out well.
+              We recommend a cool Buff to you who are tired of the stress of the office.
+              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.
+              When your body and mind are healthy, work will work out well.
+              We recommend a cool Buff to you who are tired of the stress of the office.
+              These products, taking the form of familiar office supplies, will not magically blow away your worries at once, but will definitely help ease the burden on your body and mind.</p><!-- <ul>
+              <li>
+                <h2>Sub raw Material</h2>
+                <p>{{ item.sub_raw_materials }}</p>
+              </li>
+              <li>
+                <h2>efficacy</h2>
+                <p>{{ item.efficiency_ko }}</p>
+              </li>
+              <li>
+                <h2>Category Name</h2>
+                <p>{{ item.category_name_ko }}</p>
+              </li>
+              <li>
+                <h2>Material Name</h2>
+                <p>{{ item.material_name_ko }}</p>
+              </li>
+              <li>
+                <h2>Product Information</h2>
+                <p>{{ item.description_ko }}</p>
+              </li>
+            </ul> -->
             <button
-              @click="openmodal()"
+              @click="
+                this.$router.push({
+                  name: 'ChoiceRecommendedBlendingPackageSelection',
+                  query: { blending_id: this.blending_id },
+                })
+              "
               class="btn-primary blue-btn-solid"
             >
-              Get a quote
+              next
             </button>
+          </div>
+        </div>
+        <div class="devider"><i class="icon-grey-star"></i></div>
+        <div class="container-medium">
+          <div class="sampleServices about-recom">
+            <p class="title text-center samllTitle">nutri 3.3</p>
+            <h4 class="title text-center">nutri 3.3 blending product</h4>
+            <div class="nutri-dom-product blendedPro">
+              <ul v-for="(item, index) of nutriList" :key="index">
+                <!-- <ul> -->
+                <li>
+                  <div class="nutri-product-item">
+                    <!-- <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt=""> -->
+                    <!-- <img class="nutri-pimg" :src="`https://backend.da-lab.io/${cardDetails.imageUrl}`" /> -->
+
+                    <img class="nutri-pimg" :src="'http://api-nutrabbit-dev.dvconsulting.org' + item.detail_image_path" alt=""/>
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                    </div>
+                    <p>{{item.name_ko}}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -75,72 +130,31 @@
       </div>
     </div>
   </div>
-  <div class="main-page">
-    <div class="main-page-body">
-      <div class="devider"><i class="icon-grey-star"></i></div>
-      <div class="container-medium">
-        <div class="nutri-blending">
-          <div class="nutri-choice">
-            <h2 class="nutri-choice-heading text-center">
-              A service just for you<br> Easily seize your own product launch opportunity!
-            </h2>
-            <p
-              class="desc text-center"
-            >Click the button below to become the hero of the product!</p>
-            <button class="btn-small-solid green" @click="openmodal()">Get a quote</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <Modal 
-    v-show="isModalVisible"
-    @close="closeModal"
-    bodytext1="Would you like to get a quote for this product?"
-    bodytext2 = "A quote will be sent to you by email when you click OK."
-    btnText1="cancellation"
-    btnText2="Confirm"
-    link = ''
-  />
 </template>
 
 
 <script>
-import Modal from "../../components/Modal.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import { ref } from "vue";
-// import "swiper/css/pagination";
-// import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
-
 export default {
   name: "NutriDetail",
   components: {
-    Swiper,
-    SwiperSlide,
-    Modal
+    // Swiper,
+    // SwiperSlide,
   },
-  setup() {
-    const thumbsSwiper = ref(null);
-    const setThumbsSwiper = (swiper) => {
-      thumbsSwiper.value = swiper;
-    };
+  // setup() {
+  //   const thumbsSwiper = ref(null);
+  //   const setThumbsSwiper = (swiper) => {
+  //     thumbsSwiper.value = swiper;
+  //   };
 
-    return {
-      Thumbs,
-      thumbsSwiper,
-      setThumbsSwiper,
-      FreeMode,
-      Navigation,
-    };
-  },
+  //   return {
+  //     Thumbs,
+  //     thumbsSwiper,
+  //     setThumbsSwiper,
+  //     FreeMode,
+  //     Navigation,
+  //   };
+  // },
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
@@ -197,45 +211,27 @@ export default {
           ],
         },
       ],
-      ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
-      lang:"KO",
-      id:"",
-      nutriDetails:[],
-      isModalVisible:false,
+      lang:"",
+      nutriList:[],
     };
   },
+
   created() {
     this.nutriService = new NutriService();
   },
-  mounted() {
-    this.getNutridetails();
-  },
+
   methods: {
 
-    closeModal() {
-      this.isModalVisible = false;
-      // window.location.href = "";
-    },
-
-    openmodal() {
-      this.isModalVisible = true;
-      this.confirmbutton();
-    },
-
-    splitJoin(theText) {
-      // console.log(theText.split(','))
-      return theText.split(",");
-    },
-
-    getNutridetails() {
-      this.id = this.$route.params.id;
-      // console.log("id",this.id);
+    getNutriService() {
       this.nutriService
-        .getNutridetails(this.id)
+        .getNutriService(
+          this.lang,
+        )
         .then((res) => {
           if (res.status == 200) {
-            this.nutriDetails = res.data.data;
-            console.log("this.nutriDetails",this.nutriDetails);
+            console.log("res", res);
+            this.nutriList = res.data.data.blendingData;
+            console.log("nutriList", this.nutriList);
           }
         })
         .catch((err) => {
@@ -243,21 +239,11 @@ export default {
         });
     },
 
-    confirmbutton() {
-      this.id = this.$route.params.id;
-      // console.log("id",this.id);
-      this.nutriService
-        .confirmbutton()
-        .then((res) => {
-          if (res.status == 200) {
-            console.log("ress",res);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
   },
+
+  mounted() {
+    this.getNutriService();
+  }
 };
 </script>
 
