@@ -203,13 +203,13 @@ header {
               }
 
               .header-search-data {
-                height: 100vh;
                 max-width: 100%;
-
                 .search-data-inner {
+                  height: 100vh;
                   ul {
                     height: 100vh;
                     overflow-y: auto;
+                    padding-bottom: 90px;
 
                     li {
                       margin-top: 23px;
@@ -226,6 +226,7 @@ header {
                   left: 0;
                   width: 100%;
                   bottom: 0;
+                  background: $white-1;
                 }
               }
             }
@@ -753,7 +754,10 @@ header {
     height: 269px;
     background: $white-1;
     overflow-y: auto;
-
+    display: none;
+    &.showSearchpannel{
+      display: block;
+    }
     ul {
       padding: 16px;
 
@@ -803,6 +807,9 @@ header {
       font-size: 12px;
       line-height: 14px;
       color: $grey-A4;
+      &:last-child{
+        margin-left: auto;
+      }
     }
   }
 

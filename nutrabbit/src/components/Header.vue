@@ -36,7 +36,7 @@
                 class="header-search-data"
                 :class="activeSearch ? 'activeSearch' : ''"
               >
-                <div class="search-data-inner">
+                <div class="search-data-inner" :class="showSearchpannel ? 'showSearchpannel' : '' ">
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
@@ -63,7 +63,7 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="deleteAllHistory">
+                  <router-link to @click="deleteAllHistory" v-if="searchData.length > 0">
                     <i class="icon-delete"></i>Delete all
                   </router-link>
                   <router-link to @click="toCloseBtn">to close</router-link>
@@ -241,6 +241,7 @@ export default {
       showMobSearch: false,
       sarchInput: "",
       activeLogin: false,
+      showSearchpannel: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -405,6 +406,7 @@ export default {
     },
     // get search history
     getHistory() {
+      this.showSearchpannel = true;
       this.commonService
         .getSearchHistory(this.common.state.myIP)
         .then((res) => {
