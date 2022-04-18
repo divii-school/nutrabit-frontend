@@ -117,7 +117,7 @@
                   <my-modal-component v-show="showModal2">
                     <ModalWarning @close2="closeModal2"
                       bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
-                      btnText1="cancellation" btnText2="Confirm" @confirm="confirm" />
+                      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
                   </my-modal-component>
                 </div>
               </div>
