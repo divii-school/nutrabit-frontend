@@ -295,7 +295,6 @@ const routes = [
         name: 'AboutUs',
         path: '/about-us',
         component: AboutUs,
-        beforeEnter: guest
 
     },
     {
