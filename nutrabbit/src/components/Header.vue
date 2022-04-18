@@ -130,15 +130,23 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <div v-if="token && index == 0" class="sidemenu-login-name-web">
-                <router-link to :class="token ? 'login-item' : ''"
-                  >{{ userName ? userName : localuser }}
-                </router-link>
-                <div class="side-menu-logout-web">
-                  <router-link to>Personal info</router-link>
-                  <router-link to>logout</router-link>
+              <div v-if="token && index == 0" class="sidemenu-login-web">
+                <div class="after-login">
+                  <router-link
+                    to
+                    :class="token ? 'login-item' : ''"
+                    @click="activeLogin = !activeLogin"
+                    >{{ userName ? userName : localuser }}
+                  </router-link>
+                  <i class="icon-leftArw"></i>
                 </div>
-                <i class="icon-leftArw"></i>
+                <div
+                  class="side-menu-logout-web"
+                  :class="{ activeLogin: activeLogin }"
+                >
+                  <router-link to>Change personal information</router-link>
+                  <router-link to>Log out</router-link>
+                </div>
               </div>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{ item.mainItem }}
@@ -221,6 +229,7 @@ export default {
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
+      activeLogin: false,
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -297,8 +306,8 @@ export default {
   updated() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
-      this.token = localStorage.token ? true : false
-      this.userName = localStorage.getItem('uname');
+      this.token = localStorage.token ? true : false;
+      this.userName = localStorage.getItem("uname");
       this.get;
     } else {
       this.logedInUserDetails = false;

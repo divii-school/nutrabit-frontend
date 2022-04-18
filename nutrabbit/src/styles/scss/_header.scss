@@ -549,6 +549,19 @@ header {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                width: 215px;
+                @media screen and (max-width: 1800px) {
+                  width: 170px;
+                }
+                @media screen and (max-width: 1200px) {
+                  width: 150px;
+                }
+                @media screen and (max-width: 992px) {
+                  width: 90px;
+                }
+                @media screen and (max-width: 768px) {
+                  width: 100%;
+                }
               }
 
               @media screen and (max-width: 1200px) {
@@ -566,31 +579,41 @@ header {
                 line-height: 19px;
               }
             }
-            .sidemenu-login-name-web{
-              position: relative;
-              .icon-leftArw {
-                margin: 0 0 0 10px;
-                background-position: 0 4px;
-                position: absolute;
-                right: -29px;
-                top: 2px;
-                @media screen and (max-width: 1200px) {
-                  top: 2px;
-                  background-size: auto 20px;
-                }
-                @media screen and (max-width: 992px) {
-                  top: 0;
-                  background-size: auto 20px;
+            .sidemenu-login-web{
+              .after-login{
+                display: flex;
+                .icon-leftArw {
+                  background-position: 0 6px;
+                  @media screen and (max-width: 1200px){
+                    background-position: 0 3px;
+                  }
+                  @media screen and (max-width: 992px){
+                    background-size: auto 24px;
+                  }
+                  @media screen and (max-width: 768px){
+                    background: url('@/assets/icons/icon-leftArw-mob.svg') no-repeat center center;
+                    background-position: 0 0;
+                    height: 24px;
+                    width: 24px;
+                    background-size: auto 24px;
+                    margin-left: 10px;
+                  }
                 }
               }
               .side-menu-logout-web{
-                a {
+                display: none;
+                @media screen and (max-width: 768px) {
+                  padding: 0 0 16px 16px;
+                }
+                a{
                   font-size: 20px;
                   line-height: 24px;
                   color: $grey-4C;
                   display: block;
                   margin-top: 20px;
+                  font-weight: 400;
                   padding: 0;
+                  border: 0;
                   @media screen and (max-width: 1400px) {
                     font-size: 18px;
                     line-height: 22px;
@@ -606,14 +629,15 @@ header {
                     line-height: 17px;
                   }
     
-                  &:first-child {
-                    margin-top: 0;
+                  @media screen and (max-width: 768px) {
+                    display: block;
                   }
-    
                   &:hover {
                     color: $green-68;
-                    border: 0;
                   }
+                }
+                &.activeLogin{
+                  display: block;
                 }
               }
             }
