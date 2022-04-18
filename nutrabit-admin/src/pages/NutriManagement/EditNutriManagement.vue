@@ -106,8 +106,8 @@
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
                             
-                            <input type="file" class="select-file" v-on:change="onFilesChange"   />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange"  :disabled= 'isdisable' />
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap"  :disabled= 'isdisable'  />
                         </div>
                         
 
@@ -219,6 +219,7 @@ export default {
             packageDropdownValue: null,
             formData: new FormData(),
             error: {},
+            isdisable:false,
         };
     },
     created() {
@@ -275,7 +276,13 @@ export default {
             this.thumbnail = res.data.data[0].thumbnail_path;
             //this.product_sub = res.data.data[0].product_sub_image_path.toString().split(",");
             this.detail_image = res.data.data[0].detail_image_path;
-
+               
+            if(res.data.data[0].product_sub_image_path.length < 5){
+                this.isdisable = false;
+            } else {
+                this.isdisable = true;
+            }
+            
             this.product_sub_image = res.data.data[0].product_sub_image_path.toString().split(',');
 
             this.tags_ko = res.data.data[0].tags_ko;
