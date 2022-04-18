@@ -325,6 +325,7 @@ export default {
       this.logedInUserDetails = false;
     }
   },
+
   mounted() {
     // if (localStorage.token) {
     //   this.logedInUserDetails = true;
