@@ -49,22 +49,30 @@
               <!-- <li v-for="(desc, index) of item.innderData" :key="index">
                 <h2>{{ desc.title }}</h2>
                 <p>{{ desc.desc }}</p>
-              </li> -->
-              <li>
-                <h2>Material Prequotion</h2>
-                <p>{{ item.material_prequotion_ko }}</p>
-              </li>
+              </li> -->       
               <li>
                 <h2>Standard</h2>
                 <p>{{ item.standard_ko }}</p>
+              </li>              
+              <li>
+                <h2>Raw Material</h2>
+                <p>{{ item.material_description_ko }}</p>
               </li>
               <li>
-                <h2>Daily Intake Amount</h2>
+                <h2>Functional Content</h2>
+                <p>{{ item.material_function_ko }}</p>
+              </li>  
+              <li>
+                <h2>Daily Intake</h2>
                 <p>{{ item.daily_intake_amount_ko }}</p>
               </li>
               <li>
-                <h2>Material Information</h2>
-                <p>{{ item.material_description_ko }}</p>
+                <h2>Precautions</h2>
+                <p>{{ item.material_prequotion_ko }}</p>
+              </li>
+              <li>
+                <h2>Etc</h2>
+                <p>{{ item.material_extra_info_ko }}</p>
               </li>
             </ul>
             <div class="blendBtnList">
@@ -89,23 +97,9 @@
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul
               class="smilar-product-img"
-              v-for="(item, index) of items.productImg"
-              :key="index"
             >
-              <li>
-                <img :src="item.img1" alt="" />
-              </li>
-              <li>
-                <img :src="item.img2" alt="" />
-              </li>
-              <li>
-                <img :src="item.img3" alt="" />
-              </li>
-              <li>
-                <img :src="item.img4" alt="" />
-              </li>
-              <li>
-                <img :src="item.img5" alt="" />
+              <li  v-for="(item, index) of raw_material_image" :key="index">
+                 <img v-if="item.type=='similar_product_img'" :src="imgBaseUrl + item.image_path" alt="" />
               </li>
             </ul>
           </div>
@@ -225,6 +219,7 @@ export default {
     this.rawMaterialDetail();
     this.rawMaterialImage();
     this.allBlendingData();
+    localStorage.removeItem('option');
   },
   methods: {
     splitJoin(theText) {
@@ -259,7 +254,7 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-         //console.log(res.data);
+         console.log(res.data);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
         } else {

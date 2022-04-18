@@ -56,6 +56,11 @@
                 <h2>{{ desc.title }}</h2>
                 <p>{{ desc.desc }}</p>
               </li>-->
+              
+              <li>
+                <h2>Main Raw Material</h2>
+                <p>{{ item.material_name_ko }}</p>
+              </li>
               <li>
                 <h2>Sub raw Material</h2>
                 <p>{{ item.sub_raw_materials }}</p>
@@ -65,12 +70,8 @@
                 <p>{{ item.efficiency_ko }}</p>
               </li>
               <li>
-                <h2>Category Name</h2>
-                <p>{{ item.category_name_ko }}</p>
-              </li>
-              <li>
-                <h2>Material Name</h2>
-                <p>{{ item.material_name_ko }}</p>
+                <h2>Appearance</h2>
+                <p>{{ item.ingredients_en }}</p>
               </li>
               <li>
                 <h2>Product Information</h2>
@@ -226,7 +227,7 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        // console.log(res.data);
+         console.log(res.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
         } else {

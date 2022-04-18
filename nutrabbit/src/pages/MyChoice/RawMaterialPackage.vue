@@ -66,7 +66,7 @@
                 <li v-for="(item, index) of blendingPackageData" :key="index">
                   <!-- <ProductList :item="item" @changeId="UpdatedId($event)" @etcChecked="etcCheckedValue($event)"
                     @etcInput="UpdatedEtcInput($event)" /> -->
-                  <ProductList :item="item" @changeId="UpdatedId($event)"  @etcChecked="etcCheckedValue($event)" />
+                  <ProductList :item="item" @changeId="UpdatedId($event)" @etcChecked="etcCheckedValue($event)" />
                 </li>
               </ul>
               <div class="product-item with-input">
@@ -105,6 +105,11 @@
       </div>
     </div>
   </div>
+  <my-modal-component v-show="showModal2">
+    <ModalWarning @close2="closeModal2"
+      bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
+      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
+  </my-modal-component>
 </template>
 
           
@@ -113,19 +118,32 @@
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
+import ModalWarning from "../../components/ModalWarning.vue";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
+    ModalWarning
   },
   data() {
     return {
       blendingPackageData: '',
       package_id: 18,
       etc: '',
-      etcbtn: ''
+      etcbtn: '',
+      to: '',
+      showModal2: false,
     };
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.to) {
+      next();
+    } else {
+
+      this.to = to;
+      this.showModal2 = true;
+    }
   },
   created() {
     this.mychoiceService = new MyChoiceService();
@@ -134,6 +152,14 @@ export default {
     this.blendingPackage();
   },
   methods: {
+    closeModal2() {
+      this.showModal2 = false;
+      this.to = null;
+    },
+    confirm() {
+      this.showModal2 = false;
+      this.$router.push(this.to);
+    },
     // blending package Details
     blendingPackage() {
       this.mychoiceService.getRecommendedBlendingPackage().then((res) => {
@@ -159,6 +185,7 @@ export default {
       this.etcbtn = "ETC";
     },
     checkPackageId() {
+      this.to = "/raw-material-estimation/";
       if (this.package_id == "") {
         this.$swal("Please Choose a Package");
       }
@@ -188,7 +215,7 @@ export default {
             localStorage.setItem("option", JSON.stringify(option_data));
 
             localStorage.setItem('package_id', this.package_id);
-            this.$router.push('/raw-material-estimation/');
+            this.$router.push(this.to);
           }
         }
         else {
@@ -213,7 +240,7 @@ export default {
           localStorage.setItem("option", JSON.stringify(option_data));
 
           localStorage.setItem('package_id', this.package_id);
-          this.$router.push('/raw-material-estimation/');
+          this.$router.push(this.to);
         }
       }
     },
