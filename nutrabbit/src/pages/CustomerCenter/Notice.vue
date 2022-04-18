@@ -11,12 +11,24 @@
         </div>
         <div class="notice-list bBtm-0">
           <ul>
-            <li v-for="(item, index) of UpdatedNoticeList" :key="index">
+            <li v-for="(item, index) of importantNoticeList" :key="index">
               <div
                 class="item-left"
                 @click="this.$router.push(`/notice-detail-page/${item.id}`)"
               >
                 <span v-if="item.top10 == 1">Important</span>
+                <p>{{ item.title_ko }}</p>
+              </div>
+              <div class="item-right">
+                <p>{{ dateformat(item.createdDate) }}</p>
+              </div>
+            </li>
+            <li v-for="(item, index) of unimportantNoticeList" :key="index">
+              <div
+                class="item-left"
+                @click="this.$router.push(`/notice-detail-page/${item.id}`)"
+              >
+                <!-- <span v-if="item.top10 == 1">Important</span> -->
                 <p>{{ item.title_ko }}</p>
               </div>
               <div class="item-right">
@@ -64,12 +76,29 @@ export default {
     this.allNoticeList();
     this.dateformat();
   },
+
+  computed :{
+   importantNoticeList(){
+    return Array.from(this.UpdatedNoticeList).filter(item=>{
+          return item.top10 == 1;
+    })
+   },
+   
+   unimportantNoticeList(){
+    return Array.from(this.UpdatedNoticeList).filter(item=>{
+          return item.top10 == 0;
+    })
+   },
+
+  },
+
   methods: {
     myCallback(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
       // const endIndex = (this.perPage * ClickPage);
       const endIndex = startIndex + this.perPage;
       this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
+      console.log(this.UpdatedNoticeList)
     },
     allNoticeList() {
       this.CustomerCenterService.getNoticeList()
