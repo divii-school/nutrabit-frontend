@@ -3,13 +3,25 @@ import validator from 'validator';
 const validateAddNutri = (data) => {
   let errors = {}
   
-  const { name_ko,name_en,tags_ko,tags_en,description_ko,description_en,file,addthumnail,newthumnail,status} = data;
+  const { name_ko,name_en,category_id,raw_material_id,package_id,pill_id,tags_ko,tags_en,description_ko,description_en,file,addthumnail,newthumnail,status} = data;
 
   if(validator.isEmpty(name_ko)) {
     errors.name_ko =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
   }
   if(validator.isEmpty(name_en)) {
     errors.name_en =  "재료 이름 EN은 필수 항목입니다.";
+  }
+  if(validator.isEmpty(category_id)) {
+    errors.category_id =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
+  }
+  if(validator.isEmpty(raw_material_id)) {
+    errors.raw_material_id =  "재료 이름 EN은 필수 항목입니다.";
+  }
+  if(validator.isEmpty(package_id)) {
+    errors.package_id =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
+  }
+  if(validator.isEmpty(pill_id)) {
+    errors.pill_id =  "재료 이름 EN은 필수 항목입니다.";
   }
   if(validator.isEmpty(tags_ko)) {
     errors.tags_ko =  "태그를 입력하세요 Ko가 필요합니다";

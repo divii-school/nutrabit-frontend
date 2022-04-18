@@ -23,8 +23,8 @@
 
                             />
  -->
-                            <AutoComplete :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
-                            
+                            <AutoComplete :class="`${error.fst_category_name_ko ? 'p-invalid' : ''}`" :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
+                              <div class="text-red">{{ error.fst_category_name_ko }}</div>
                         </div>
                         
                        

@@ -235,11 +235,11 @@
                             <br />
                             <div :class="`${error.status ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status"
-                                    @change="addRaw" />
+                                     />
                                 <label for="yes">Yes</label>
                 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status"
-                                    @change="addRaw" />
+                                 />
                                 <label for="no">No</label>
                             </div>
                             <div class="text-red">{{ error.status }}</div>
@@ -456,7 +456,7 @@ export default {
             } else {
                 //  console.log(this.sub_category_id);
 
-                this.formData.append('sub_category_id', JSON.stringify.this.sub_category_id);
+                this.formData.append('sub_category_id', this.sub_category_id);
                 this.formData.append('material_name_ko', this.material_name_ko);
                 this.formData.append('material_name_en', this.material_name_en);
                 this.formData.append('standard_ko', this.standard_ko);

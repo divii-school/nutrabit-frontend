@@ -11,7 +11,8 @@
                     <div class="p-field p-col-12 p-md-6">
                         <label for="nameuser">{{ $t('RawMaterialadd.list.categorylist') }}</label>
 
-                        <Dropdown v-model="sub_category_id" :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                        <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id" :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                        <div class="text-red">{{ error.sub_category_id }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -39,7 +40,8 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="address">{{ $t('RawMaterialadd.list.Standard(EN)') }}</label>
-                        <InputText id="address" type="text" placeholder="Standard(EN)" v-model="standard_en" />
+                        <InputText id="address" :class="`${error.standard_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Standard(EN)')" v-model="standard_en" />
+                         <div class="text-red">{{ error.standard_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -52,55 +54,64 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Rawmarterialdescription(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(EN)')" v-model="material_description_en" />
+                        <InputText id="medium" :class="`${error.material_description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(EN)')" v-model="material_description_en" />
+                        <div class="text-red">{{ error.material_description_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Function(KO)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" />
+                        <InputText id="medium" :class="`${error.material_function_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" />
+                        <div class="text-red">{{ error.material_function_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Fucntion(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" />
+                        <InputText id="medium" :class="`${error.material_function_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" />
+                        <div class="text-red">{{ error.material_function_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')" v-model="daily_intake_amount_ko" />
+                        <InputText id="remark" :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')" v-model="daily_intake_amount_ko" />
+                        <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')" v-model="daily_intake_amount_en" />
+                        <InputText id="remark" :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')" v-model="daily_intake_amount_en" />
+                        <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" />
+                        <InputText id="remark" :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" />
+                        <div class="text-red">{{ error.material_prequotion_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" />
+                        <InputText id="remark" :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" />
+                        <div class="text-red">{{ error.material_prequotion_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" />
+                        <InputText id="remark" :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" />
+                        <div class="text-red">{{ error.material_extra_info_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" />
+                        <InputText id="remark" :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" />
+                        <div class="text-red">{{ error.material_extra_info_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid"></div>
@@ -118,6 +129,7 @@
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
+                                <div class="text-red">{{ error.file }}</div>
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
                                     <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
@@ -194,13 +206,15 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.tags(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.tags(KO)')" v-model="tag_ko" />
+                        <InputText id="remark" :class="`${error.tag_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.tags(KO)')" v-model="tag_ko" />
+                        <div class="text-red">{{ error.tag_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.tags(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('RawMaterialadd.list.tags(EN)')" v-model="tag_en" />
+                        <InputText id="remark" :class="`${error.tag_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.tags(EN)')" v-model="tag_en" />
+                        <div class="text-red">{{ error.tag_en }}</div>
                     </div>
                 </div>
                 <div class="p-grid p-formgrid p-mb-3">
@@ -500,7 +514,7 @@ export default {
         editRaw() {
             let vcheckData = {
                 // category_id: this.category_id,
-                sub_category_id: this.sub_category_id,
+               sub_category_id: this.sub_category_id.toString(),
                 material_name_ko: this.material_name_ko,
                 material_name_en: this.material_name_en,
                 standard_ko: this.standard_ko,

@@ -25,14 +25,16 @@
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Category') }}</label>
 
-                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionValue="id"
+                            <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionValue="id"
                                 optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" />
+                                <div class="text-red">{{ error.category_id }}</div>
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.MainRaw') }}</label>
-                            <MultiSelect id="multiselect" :options="mainRawDropdownValues" v-model="select_items"
+                            <MultiSelect id="multiselect" :class="`${error.raw_material_id ? 'p-invalid' : ''}`" :options="mainRawDropdownValues" v-model="select_items"
                                 name="raw_material_id" :placeholder="$t('Nutri3.Add.MainRaw')"
                                 optionLabel="material_name_ko" :filter="false" @change="selects"></MultiSelect>
+                                <div class="text-red">{{ error.raw_material_id }}</div>
                         </div>
                     </div>
 
@@ -40,14 +42,16 @@
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Piltype') }}</label>
 
-                            <Dropdown v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id"
+                            <Dropdown :class="`${error.pill_id ? 'p-invalid' : ''}`" v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id"
                                 optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Piltype')" />
+                                 <div class="text-red">{{ error.pill_id }}</div>
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Package') }}</label>
 
-                            <Dropdown v-model="package_id" :options="packageDropdownValues" optionValue="id"
+                            <Dropdown :class="`${error.package_id ? 'p-invalid' : ''}`" v-model="package_id" :options="packageDropdownValues" optionValue="id"
                                 optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Package')" />
+                                <div class="text-red">{{ error.package_id }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -385,10 +389,10 @@ export default {
         addNutri() {
             //console.log(this.raw_material_id)
             let vcheckData = {
-                category_id: this.category_id,
-                raw_material_id: this.selectedItems,
-                package_id: this.package_id,
-                pill_id: this.pill_id,
+                category_id: this.category_id.toString(),
+                raw_material_id: this.selectedItems.toString(),
+                package_id: this.package_id.toString(),
+                pill_id: this.pill_id.toString(),
                 name_ko: this.name_ko,
                 name_en: this.name_en,
                 tags_ko: this.tags_ko,
