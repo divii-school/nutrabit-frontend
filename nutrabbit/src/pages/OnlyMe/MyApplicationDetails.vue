@@ -63,6 +63,7 @@
                   <pagination
                     v-model="page1"
                     :records="appNutriTotal"
+                    :options="chunkPage"
                     :per-page="perPage"
                     @paginate="myCallback1"
                   />
@@ -110,6 +111,7 @@
                   <pagination
                     v-model="page2"
                     :records="appRecommendedTotal"
+                    :options="chunkPage"
                     :per-page="perPage"
                     @paginate="myCallback2"
                   />
@@ -157,6 +159,7 @@
                   <pagination
                     v-model="page3"
                     :records="appMychoiceTotal"
+                    :options="chunkPage"
                     :per-page="perPage"
                     @paginate="myCallback3"
                   />
@@ -206,6 +209,7 @@
                   <pagination
                     v-model="page4"
                     :records="quoteNutriTotal"
+                    :options="chunkPage"
                     :per-page="perPage"
                     @paginate="myCallback4"
                   />
@@ -256,6 +260,7 @@
                   <pagination
                     v-model="page5"
                     :records="quoteRecommendedTotal"
+                    :options="chunkPage"
                     :per-page="perPage"
                     @paginate="myCallback5"
                   />
@@ -301,6 +306,7 @@
                     v-model="page6"
                     :records="quoteMychoiceTotal"
                     :per-page="perPage"
+                    :options="chunkPage"
                     @paginate="myCallback6"
                   />
                 </div>
@@ -344,6 +350,7 @@ export default {
       QuoteNutri_List: [],
       QuoteRecommendedList: [],
       quotationList3: [],
+      chunkPage : { chunk : 5 },
 
       userId: this.common.state.userId,
       lang: "KO",

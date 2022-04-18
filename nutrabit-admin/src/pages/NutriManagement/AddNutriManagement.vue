@@ -88,7 +88,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Nutri3.Add.Thumbnailimg') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -105,7 +105,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Nutri3.Add.productsubimg') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
@@ -122,7 +122,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Nutri3.Add.productdetailimg') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.newthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!newthumnail">파일 선택</span>

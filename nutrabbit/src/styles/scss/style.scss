@@ -4,6 +4,7 @@
 @import "./mixins";
 @import "./icons";
 @import "./button";
+@import "./alert";
 @import "./form";
 @import "./auth";
 @import "./modal";
@@ -662,6 +663,9 @@ textarea {
       border: 0;
       box-shadow: none;
     }
+  }
+  &.colored-toast{
+    padding: 10px !important;
   }
 }
 
