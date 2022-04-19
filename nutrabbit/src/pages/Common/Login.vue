@@ -11,12 +11,8 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -25,12 +21,8 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="password"
-                    :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password"
-                  />
+                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password" />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -50,8 +42,7 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link
-                    >
+                      {{ $t("common.QuickLinks.FindID") }}</router-link>
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -71,11 +62,7 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <button id="kakao_login" class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
@@ -86,12 +73,7 @@
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
-            <button
-              type="button"
-              class="btn-primary with-icon green-btn"
-              id="naver_id_login"
-              @click="naverLogin"
-            >
+            <button type="button" class="btn-primary with-icon green-btn" id="naver_id_login" @click="naverLogin">
               Naver
               Login
             </button>
@@ -134,15 +116,13 @@ export default {
   },
   mounted() {
     if (this.cookies) {
-      const rememberUserPasswordCookie = this.cookies.get(
-        "rememberUserPassword"
-      );
+      const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
 
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
-        (this.email = rememberUserEmailCookie),
-          (this.password = rememberUserEmailCookie);
+        (this.email = rememberUserEmailCookie);
+          (this.password = rememberUserPasswordCookie);
       }
     }
     // this.naverLogin();
