@@ -9,12 +9,14 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name3') }}</label>
-                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
+                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
                         <div class="text-red">{{ error.name_ko }}</div>
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name4') }}</label>
-                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
+                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
                         <div class="text-red">{{ error.name_en }}</div>
                     </div>
                 </div>
@@ -23,22 +25,15 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditCategory') }}</label>
 
-                        <Dropdown v-model="category_id" :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
+                        <Dropdown v-model="category_id" :options="categoryDropdownValues" optionValue="id"
+                            optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
 
-                        <MultiSelect
-                            id="multiselect"
-                            :placeholder="$t('Nutri3.Edit.EditMainRaw1')"
-                            :options="mainRawDropdownValues"
-                            v-model="select_items"
-                            name="raw_material_name_ko"
-                            optionLabel="material_name_ko"
-                            optionValue="id"
-                            :filter="false"
-                            @change="selects"
-                        >
+                        <MultiSelect id="multiselect" :placeholder="$t('Nutri3.Edit.EditMainRaw1')"
+                            :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko"
+                            optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
                         </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
@@ -47,13 +42,15 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditPiltype1') }}</label>
 
-                        <Dropdown v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPiltype1')" />
+                        <Dropdown v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id"
+                            optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPiltype1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditPackage1') }}</label>
 
-                        <Dropdown v-model="package_id" :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPackage1')" />
+                        <Dropdown v-model="package_id" :options="packageDropdownValues" optionValue="id"
+                            optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPackage1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                 </div>
@@ -61,27 +58,31 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags1(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags1(KO)')" v-model="tags_ko" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags1(KO)')"
+                            v-model="tags_ko" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags2(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags2(EN)')" v-model="tags_en" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags2(EN)')"
+                            v-model="tags_en" />
                     </div>
                 </div>
 
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
-                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
+                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')" v-model="description_en" />
+                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
+                            v-model="description_en" />
                     </div>
                 </div>
                 <div class="p-grid p-formgrid p-mb-3 browse">
@@ -99,7 +100,8 @@
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="raw-image">
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
+                                    alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                             </div>
                         </div>
@@ -124,9 +126,12 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image" alt="이미지를 사용할 수 없음" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
+                                        alt="이미지를 사용할 수 없음" class="product-image" />
                                     <div v-show="crossdisplay">
-                                        <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
+                                        <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img
+                                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                class="cross" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +152,8 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
+                                class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -165,11 +171,13 @@
                 <br />
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button ref="popup" @click="editNutri" icon="pi pi-check" :label="$t('Nutri3.Edit.Editpublish1')" class="p-mr-2"></Button>
+                    <Button ref="popup" @click="editNutri" icon="pi pi-check" :label="$t('Nutri3.Edit.Editpublish1')"
+                        class="p-mr-2"></Button>
                 </div>
                 <div class="p-d-flex p-jc-end">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button icon="pi pi-times" :label="$t('Nutri3.Edit.EditBack1')" class="p-mr-2" @click="$router.go(-1)"></Button>
+                    <Button icon="pi pi-times" :label="$t('Nutri3.Edit.EditBack1')" class="p-mr-2"
+                        @click="$router.go(-1)"></Button>
                 </div>
             </div>
         </div>
@@ -503,16 +511,19 @@ export default {
 .p-fluid .p-button {
     width: auto;
 }
+
 .p-button {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
 }
+
 .img-info {
     font-size: 11px;
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .product-image {
     padding-top: 5px;
     border: 1px solid #ddd;
@@ -522,6 +533,7 @@ export default {
     height: 100px;
     float: right;
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -531,6 +543,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -542,9 +555,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -552,6 +567,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -561,6 +577,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .cross {
     position: absolute;
     right: 15px;
@@ -568,11 +585,13 @@ export default {
     z-index: 2;
     height: 20px;
     width: 20px;
+    background-color: white;
 }
 
 .raw-image {
     position: relative;
 }
+
 @media screen and (max-width: 768px) {
     .dropdowns {
         flex-direction: column;

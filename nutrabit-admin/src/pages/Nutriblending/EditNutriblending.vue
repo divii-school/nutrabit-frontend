@@ -23,20 +23,25 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Category">{{ $t('Blending.edit.Category') }}</label>
 
-                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="category_id" :options="categoryDropdownValues"
+                                optionLabel="category_name_ko" optionValue="id"
+                                :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Mainrawmaterial">{{ $t('Blending.edit.Mainrawmaterial') }}</label>
 
-                            <Dropdown v-model="raw_material_id" :options="RawDropdownValues" optionLabel="material_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="raw_material_id" :options="RawDropdownValues"
+                                optionLabel="material_name_ko" optionValue="id"
+                                :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="SubRawMaterial">{{ $t('Blending.edit.SubRawMaterial') }}</label>
-                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.SubRawMaterial')" v-model="sub_raw_materials" />
+                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.SubRawMaterial')"
+                                v-model="sub_raw_materials" />
                             <div class="text-red">{{ error.sub_raw_materials }}</div>
                         </div>
                     </div>
@@ -44,7 +49,8 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="PillTypeSelect">{{ $t('Blending.edit.PillTypeSelect') }}</label>
 
-                            <Dropdown v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko"
+                                optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -71,35 +77,44 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="blendingEfficacy">{{ $t('Blending.edit.blendingEfficacy') }}</label>
-                            <Textarea id="blendingEfficacy" type="text" placeholder="Efficiency (EN)" v-model="efficiency_en" />
+                            <Textarea id="blendingEfficacy" type="text" placeholder="Efficiency (EN)"
+                                v-model="efficiency_en" />
                             <div class="text-red">{{ error.efficiency_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="ingredientsdetails">{{ $t('Blending.edit.ingredientsdetails') }}</label>
-                            <Textarea id="ingredientsdetails" type="text" placeholder="Ingredients Details (KO)" v-model="ingredients_ko" />
+                            <Textarea id="ingredientsdetails" type="text" placeholder="Ingredients Details (KO)"
+                                v-model="ingredients_ko" />
                             <div class="text-red">{{ error.ingredients_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="blendingingredientsdetails">{{ $t('Blending.edit.blendingingredientsdetails') }}</label>
-                            <Textarea id="blendingingredientsdetails" type="text" placeholder="Ingredients Details (EN)" v-model="ingredients_en" />
+                            <label for="blendingingredientsdetails">{{
+                                $t('Blending.edit.blendingingredientsdetails')
+                            }}</label>
+                            <Textarea id="blendingingredientsdetails" type="text" placeholder="Ingredients Details (EN)"
+                                v-model="ingredients_en" />
                             <div class="text-red">{{ error.ingredients_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-field p-col-12 p-md-3 p-lg-6">
                             <label for="productdescription">{{ $t('Blending.edit.productdescription') }}</label>
-                            <Textarea id="productdescription" type="text" placeholder="Product description (KO)" v-model="description_ko" />
+                            <Textarea id="productdescription" type="text" placeholder="Product description (KO)"
+                                v-model="description_ko" />
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="blendingproductdescription">{{ $t('Blending.edit.blendingproductdescription') }}</label>
-                            <Textarea id="blendingproductdescription" type="text" placeholder="Product description (EN)" v-model="description_en" />
+                            <label for="blendingproductdescription">{{
+                                $t('Blending.edit.blendingproductdescription')
+                            }}</label>
+                            <Textarea id="blendingproductdescription" type="text" placeholder="Product description (EN)"
+                                v-model="description_en" />
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -113,16 +128,21 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable"/>
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
+                                <input type="file" class="select-file" v-on:change="onFileChange"
+                                    :disabled="isdisable" />
+                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap"
+                                    :disabled="isdisable" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(detail_image, img) in detail_image" :key="img">
                                     <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                     <div class="raw-image" style="margin:5px;">
-                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" :alt="detail_image" class="product-image" />
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image"
+                                            :alt="detail_image" class="product-image" />
                                         <div v-show="crossdisplay3">
-                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
+                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)"> <img
+                                                    src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                    class="cross" /></a>
                                         </div>
                                     </div>
                                 </div>
@@ -139,17 +159,21 @@
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" :disabled="isdisable1"/>
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1"/>
+                                <input type="file" class="select-file" v-on:change="onFileChanges"
+                                    :disabled="isdisable1" />
+                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap"
+                                    :disabled="isdisable1" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(similar_image, img) in similar_image" :key="img">
                                     <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                     <div class="raw-image" style="margin:5px;">
-                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image" :alt="similar_image" class="product-image" />
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image"
+                                            :alt="similar_image" class="product-image" />
                                         <div v-show="crossdisplay4">
                                             <a href="javascript:;" @click="remove_similar_image(id, similar_image)">
-                                                <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" />
+                                                <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                    class="cross" />
                                             </a>
                                         </div>
                                     </div>
@@ -172,7 +196,8 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1" :alt="thumbnail1" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1"
+                                    :alt="thumbnail1" class="product-image" />
                             </div>
                         </div>
                     </div>
@@ -191,7 +216,8 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" :alt="thumbnail2" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2"
+                                    :alt="thumbnail2" class="product-image" />
                             </div>
                         </div>
                     </div>
@@ -212,11 +238,13 @@
             </div>
 
             <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
-                <Button :label="$t('button.save')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
+                <Button :label="$t('button.save')" icon="pi pi-save" iconPos="left"
+                    class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
+                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
                 </div>
             </div>
         </form>
@@ -288,9 +316,9 @@ export default {
             PillDropdownValue: null,
             id: '',
             crossdisplay4: true,
-            crossdisplay3:true,
-            isdisable:false,
-            isdisable1:false,
+            crossdisplay3: true,
+            isdisable: false,
+            isdisable1: false,
         };
     },
     created() {
@@ -340,7 +368,7 @@ export default {
             this.ingredients_en = res.data.data[0].ingredients_en;
             this.description_ko = res.data.data[0].description_ko;
             this.description_en = res.data.data[0].description_en;
-            
+
             if (res.data.data[0].detail_image_path.length < 5) {
                 this.isdisable = false;
             } else {
@@ -352,15 +380,15 @@ export default {
             } else {
                 this.crossdisplay3 = false;
             }
-            
+
             this.detail_image = res.data.data[0].detail_image_path.toString().split(',');
-            
+
             if (res.data.data[0].similar_image_path.length < 5) {
                 this.isdisable1 = false;
             } else {
                 this.isdisable1 = true;
             }
-            
+
             if (res.data.data[0].similar_image_path.length > 0) {
                 this.crossdisplay4 = true;
             } else {
@@ -591,6 +619,7 @@ export default {
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .product-image {
     padding-top: 5px;
     border: 1px solid #ddd;
@@ -600,6 +629,7 @@ export default {
     height: 100px;
     float: right;
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -609,6 +639,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -620,9 +651,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -630,6 +663,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -651,6 +685,7 @@ export default {
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .product-image {
     padding-top: 5px;
     border: 1px solid #ddd;
@@ -660,6 +695,7 @@ export default {
     height: 100px;
     float: right;
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -669,6 +705,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -680,9 +717,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -690,6 +729,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -699,6 +739,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .cross {
     position: absolute;
     right: 15px;
@@ -706,6 +747,7 @@ export default {
     z-index: 2;
     height: 20px;
     width: 20px;
+    background-color: white;
 }
 
 .raw-image {

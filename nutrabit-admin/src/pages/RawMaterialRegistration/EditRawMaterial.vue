@@ -11,14 +11,17 @@
                     <div class="p-field p-col-12 p-md-6">
                         <label for="nameuser">{{ $t('RawMaterialadd.list.categorylist') }}</label>
 
-                        <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id" :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                        <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id"
+                            :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"
+                            :placeholder="$t('Banner.placeholder.select')" />
                         <div class="text-red">{{ error.sub_category_id }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="id">{{ $t('RawMaterialadd.list.Rawmaterialname(KO)') }}</label>
-                        <InputText id="id" :class="`${error.material_name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Rawmaterialname(KO)')" v-model="material_name_ko" />
+                        <InputText id="id" :class="`${error.material_name_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Rawmaterialname(KO)')" v-model="material_name_ko" />
                         <div class="text-red">{{ error.material_name_ko }}</div>
                     </div>
                 </div>
@@ -26,91 +29,110 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="emailuser">{{ $t('RawMaterialadd.list.Rawmaterialname(EN)') }}</label>
-                        <InputText id="emailuser" :class="`${error.material_name_en ? 'p-invalid' : ''}`" type="email" :placeholder="$t('RawMaterialadd.list.Rawmaterialname(EN)')" :modelValue="material_name_en" v-model="material_name_en" />
+                        <InputText id="emailuser" :class="`${error.material_name_en ? 'p-invalid' : ''}`" type="email"
+                            :placeholder="$t('RawMaterialadd.list.Rawmaterialname(EN)')" :modelValue="material_name_en"
+                            v-model="material_name_en" />
                         <div class="text-red">{{ error.material_name_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="mobileuser">{{ $t('RawMaterialadd.list.Standard(KO)') }}</label>
-                        <InputText id="mobileuser" :class="`${error.standard_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Standard(KO)')" :modelValue="standard_ko" v-model="standard_ko" />
+                        <InputText id="mobileuser" :class="`${error.standard_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Standard(KO)')" :modelValue="standard_ko"
+                            v-model="standard_ko" />
                         <div class="text-red">{{ error.standard_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="address">{{ $t('RawMaterialadd.list.Standard(EN)') }}</label>
-                        <InputText id="address" :class="`${error.standard_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Standard(EN)')" v-model="standard_en" />
-                         <div class="text-red">{{ error.standard_en }}</div>
+                        <InputText id="address" :class="`${error.standard_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Standard(EN)')" v-model="standard_en" />
+                        <div class="text-red">{{ error.standard_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('RawMaterialadd.list.Rawmarterialdescription(KO)') }}</label>
-                        <InputText id="date" :class="`${error.material_description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(KO)')" v-model="material_description_ko" />
+                        <InputText id="date" :class="`${error.material_description_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(KO)')"
+                            v-model="material_description_ko" />
                         <div class="text-red">{{ error.material_description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Rawmarterialdescription(EN)') }}</label>
-                        <InputText id="medium" :class="`${error.material_description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(EN)')" v-model="material_description_en" />
+                        <InputText id="medium" :class="`${error.material_description_en ? 'p-invalid' : ''}`"
+                            type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(EN)')"
+                            v-model="material_description_en" />
                         <div class="text-red">{{ error.material_description_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Function(KO)') }}</label>
-                        <InputText id="medium" :class="`${error.material_function_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" />
+                        <InputText id="medium" :class="`${error.material_function_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" />
                         <div class="text-red">{{ error.material_function_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Fucntion(EN)') }}</label>
-                        <InputText id="medium" :class="`${error.material_function_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" />
+                        <InputText id="medium" :class="`${error.material_function_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" />
                         <div class="text-red">{{ error.material_function_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}</label>
-                        <InputText id="remark" :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')" v-model="daily_intake_amount_ko" />
+                        <InputText id="remark" :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')"
+                            v-model="daily_intake_amount_ko" />
                         <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
-                        <InputText id="remark" :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')" v-model="daily_intake_amount_en" />
+                        <InputText id="remark" :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')"
+                            v-model="daily_intake_amount_en" />
                         <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
-                        <InputText id="remark" :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" />
+                        <InputText id="remark" :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" />
                         <div class="text-red">{{ error.material_prequotion_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
-                        <InputText id="remark" :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" />
+                        <InputText id="remark" :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" />
                         <div class="text-red">{{ error.material_prequotion_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
-                        <InputText id="remark" :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" />
+                        <InputText id="remark" :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" />
                         <div class="text-red">{{ error.material_extra_info_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
-                        <InputText id="remark" :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" />
+                        <InputText id="remark" :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" />
                         <div class="text-red">{{ error.material_extra_info_en }}</div>
                     </div>
                 </div>
@@ -124,17 +146,20 @@
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
-                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable"/>
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable"/>
+                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" />
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
                                 <div class="text-red">{{ error.file }}</div>
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img"
+                                        :alt="similar_product_img" class="product-image" />
                                     <div v-show="crossdisplay1">
-                                        <a href="javascript:;" @click="remove_similar(id, similar_product_img)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
+                                        <a href="javascript:;" @click="remove_similar(id, similar_product_img)"> <img
+                                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                class="cross" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +180,8 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1"
+                                :alt="thumbnail_1" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -173,7 +199,8 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2"
+                                :alt="thumbnail_2" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -186,16 +213,19 @@
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1"/>
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1"/>
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" />
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img"
+                                        :alt="raw_material_img" class="product-image" />
                                     <div v-show="crossdisplay2">
-                                        <a href="javascript:;" @click="remove_raw(id, raw_material_img)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
+                                        <a href="javascript:;" @click="remove_raw(id, raw_material_img)"><img
+                                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                class="cross" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -206,14 +236,16 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.tags(KO)') }}</label>
-                        <InputText id="remark" :class="`${error.tag_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.tags(KO)')" v-model="tag_ko" />
+                        <InputText id="remark" :class="`${error.tag_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.tags(KO)')" v-model="tag_ko" />
                         <div class="text-red">{{ error.tag_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.tags(EN)') }}</label>
-                        <InputText id="remark" :class="`${error.tag_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('RawMaterialadd.list.tags(EN)')" v-model="tag_en" />
+                        <InputText id="remark" :class="`${error.tag_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.tags(EN)')" v-model="tag_en" />
                         <div class="text-red">{{ error.tag_en }}</div>
                     </div>
                 </div>
@@ -232,7 +264,8 @@
                 <br />
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button ref="popup" @click="editRaw" icon="pi pi-check" :label="$t('DFC.details.confirm')" class="p-mr-2"></Button>
+                    <Button ref="popup" @click="editRaw" icon="pi pi-check" :label="$t('DFC.details.confirm')"
+                        class="p-mr-2"></Button>
                 </div>
                 <div class="p-d-flex p-jc-end">
                     <ConfirmPopup group="popup"></ConfirmPopup>
@@ -368,7 +401,7 @@ export default {
             } else {
                 this.crossdisplay1 = false;
             }
-            
+
 
             this.similar_product_img = res.data.data[0].similar_images_path.toString().split(',');
             this.thumbnail_1 = res.data.data[0].thumbnail_1_path;
@@ -379,13 +412,13 @@ export default {
             } else {
                 this.isdisable1 = true;
             }
-            
+
             if (res.data.data[0].raw_material_images_path.length > 0) {
                 this.crossdisplay2 = true;
             } else {
                 this.crossdisplay2 = false;
             }
-            
+
             this.raw_material_img = res.data.data[0].raw_material_images_path.toString().split(',');
             this.tag_ko = res.data.data[0].tag_ko;
             this.tag_en = res.data.data[0].tag_en;
@@ -528,7 +561,7 @@ export default {
         editRaw() {
             let vcheckData = {
                 // category_id: this.category_id,
-               sub_category_id: this.sub_category_id.toString(),
+                sub_category_id: this.sub_category_id.toString(),
                 material_name_ko: this.material_name_ko,
                 material_name_en: this.material_name_en,
                 standard_ko: this.standard_ko,
@@ -594,16 +627,19 @@ export default {
 .p-fluid .p-button {
     width: auto;
 }
+
 .p-button {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
 }
+
 .img-info {
     font-size: 11px;
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .product-image {
     padding-top: 5px;
     border: 1px solid #ddd;
@@ -613,6 +649,7 @@ export default {
     height: 100px;
     float: right;
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -622,6 +659,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -633,9 +671,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -643,6 +683,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -652,6 +693,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .cross {
     position: absolute;
     right: 15px;
@@ -659,6 +701,7 @@ export default {
     z-index: 2;
     height: 20px;
     width: 20px;
+    background-color: white;
 }
 
 .raw-image {
