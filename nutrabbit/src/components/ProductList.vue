@@ -26,7 +26,8 @@
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
-        <img v-bind:src="imgBaseUrl + item.image_path" alt />
+        <img v-if="item.image_path" :src="imgBaseUrl + item.image_path" alt />
+        <img v-else src="../assets/images/package_place.png" alt />
       </div>
     </div>
     <div class="material-details">
@@ -52,7 +53,7 @@ export default {
   methods: {
     getPackageId(event) {
       this.$emit('changeId', event.target.value);
-       this.$emit('etcChecked', '');
+      this.$emit('etcChecked', '');
       // if (this.item.name_ko == 'ETC') {
       //   this.$emit('etcChecked', 'ETC');
       // }

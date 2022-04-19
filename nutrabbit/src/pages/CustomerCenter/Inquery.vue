@@ -23,7 +23,7 @@
                 <p class="para-category">{{ dateformat(item.createdDate) }}</p>
                 <span
                   class="mr-2"
-                  :class="item.status == 'Not Answered' ? 'grey' : ''"
+                  :class="item.status == 'Unanswered' ? 'grey' : ''"
                   >{{ item.status }}</span
                 >
               </div>
@@ -70,6 +70,7 @@
           <pagination
             v-model="page"
             :records="enqueryList.length"
+            :options="chunkPage"
             :per-page="perPage"
             @paginate="myCallback"
           />
@@ -94,6 +95,7 @@ export default {
       page: 1,
       perPage: 10,
       inqId: localStorage.getItem("uid"),
+      chunkPage : { chunk : 5 },
     };
   },
   created() {

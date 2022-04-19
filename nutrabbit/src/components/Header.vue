@@ -36,7 +36,10 @@
                 class="header-search-data"
                 :class="activeSearch ? 'activeSearch' : ''"
               >
-                <div class="search-data-inner">
+                <div
+                  class="search-data-inner"
+                  :class="showSearchpannel ? 'showSearchpannel' : ''"
+                >
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
@@ -63,10 +66,16 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link to @click="deleteAllHistory">
+                  <router-link
+                    to
+                    @click="deleteAllHistory"
+                    v-if="searchData.length > 0"
+                    class="delete-history"
+                    :class="showSearchpannel ? 'showDelete' : 'hideDelete'"
+                  >
                     <i class="icon-delete"></i>Delete all
                   </router-link>
-                  <router-link to @click="toCloseBtn">to close</router-link>
+                  <router-link to @click="toCloseBtn">Close</router-link>
                 </div>
               </div>
             </div>
@@ -87,7 +96,7 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link to="/personal-information"
+                  <router-link :to="personalInfoRouterLink"
                     >Change of personal information</router-link
                   >
                   <router-link to @click="logOut()">Log out</router-link>
@@ -130,22 +139,37 @@
             @click="activeSubmenu = activeSubmenu == index ? '' : index"
           >
             <div class="side-menu-heading">
-              <div v-if="token && index == 0" class="sidemenu-login-web">
-                <div class="after-login">
+              <div v-if="token && index == 0" class="after-login-wrap">
+                <div class="after-login side-menu-web-login">
                   <router-link
                     to
                     :class="token ? 'login-item' : ''"
                     @click="activeLogin = !activeLogin"
                     >{{ userName ? userName : localuser }}
                   </router-link>
-                  <i class="icon-leftArw"></i>
+                  <i class="icon-leftArw" @click="goChangePersonalInfo"></i>
                 </div>
-                <div
-                  class="side-menu-logout-web"
-                  :class="{ activeLogin: activeLogin }"
-                >
-                  <router-link to>Change personal information</router-link>
-                  <router-link to>Log out</router-link>
+                <div class="side-menu-mob-login">
+                  <div class="after-login">
+                    <router-link
+                      to
+                      :class="token ? 'login-item' : ''"
+                      @click="activeLogin = !activeLogin"
+                      >{{ userName ? userName : localuser }}
+                    </router-link>
+                    <i class="icon-leftArw"></i>
+                  </div>
+                  <div
+                    class="side-menu-logout-mob"
+                    :class="{ activeLogin: activeLogin }"
+                  >
+                    <router-link
+                      :to="personalInfoRouterLink"
+                      @click="active = false"
+                      >Change personal information</router-link
+                    >
+                    <router-link to @click="logOut()">Log out</router-link>
+                  </div>
                 </div>
               </div>
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
@@ -193,6 +217,15 @@
     btnText2="Login"
     link="/login"
   />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    @confirm="logOutConfirm"
+    bodytext1="Are you sure you want to logout?"
+    btnText1="Cancel"
+    btnText2="Confirm"
+    link="/login"
+  />
   <div
     :class="activeSearch ? 'overlay-click-out-side' : ''"
     @click="activeSearch = false"
@@ -230,6 +263,8 @@ export default {
       showMobSearch: false,
       sarchInput: "",
       activeLogin: false,
+      showSearchpannel: false,
+      personalInfoRouterLink: "",
       rightMenuItem: [
         {
           mainItem: "Login",
@@ -312,21 +347,42 @@ export default {
     } else {
       this.logedInUserDetails = false;
     }
+    if (localStorage.token) {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalInfoRouterLink = "/personal-information-business";
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
+        this.personalInfoRouterLink = "/personal-information";
+      }
+    }
   },
+
   mounted() {
-    // if (localStorage.token) {
-    //   this.logedInUserDetails = true;
-    //   this.get;
-    // } else {
-    //   this.logedInUserDetails = false;
-    // }
     this.getUserInfo();
     this.getIp();
+    this.changePersonalInfo();
   },
   methods: {
+    changePersonalInfo() {
+      if (localStorage.token) {
+        if (localStorage.getItem("userType") == "business_member") {
+          this.personalInfoRouterLink = "/personal-information-business";
+        }
+        if (localStorage.getItem("userType") == "personal_member") {
+          this.personalInfoRouterLink = "/personal-information";
+        }
+      }
+    },
+    goChangePersonalInfo() {
+      if (this.personalInfoRouterLink) {
+        this.$router.push(this.personalInfoRouterLink);
+        this.active = false;
+      }
+    },
     showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
+      this.showSearchpannel = false;
     },
     toCloseBtn() {
       this.showMobSearch = false;
@@ -335,11 +391,19 @@ export default {
     changeLanguage() {},
     // logout
     logOut() {
-      if (this.logedInUserDetails) {
-        localStorage.clear();
-        window.location = "/login";
-      }
+      this.isModalVisible = true;
+      // if (this.logedInUserDetails) {
+      //   localStorage.clear();
+      //  window.location = "/login";
+      // }
     },
+
+  logOutConfirm(){
+      if (this.logedInUserDetails) {
+         localStorage.clear();
+         window.location = "/login";
+       }
+  },
     closeModal() {
       this.isModalVisible = false;
     },
@@ -394,6 +458,7 @@ export default {
     },
     // get search history
     getHistory() {
+      this.showSearchpannel = true;
       this.commonService
         .getSearchHistory(this.common.state.myIP)
         .then((res) => {

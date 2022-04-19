@@ -92,8 +92,7 @@
               id="naver_id_login"
               @click="naverLogin"
             >
-              Naver
-              Login
+              Naver Login
             </button>
           </div>
         </div>
@@ -137,12 +136,11 @@ export default {
       const rememberUserPasswordCookie = this.cookies.get(
         "rememberUserPassword"
       );
-
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
         (this.email = rememberUserEmailCookie),
-          (this.password = rememberUserEmailCookie);
+          (this.password = rememberUserPasswordCookie);
       }
     }
     // this.naverLogin();
@@ -173,6 +171,7 @@ export default {
               localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("uname", res.data.data.name);
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
                 this.cookies.set("rememberUserPassword", setPassword);
@@ -184,8 +183,6 @@ export default {
       }
     },
 
-
-
     // naver login
     // naverLogin() {
     //   // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
@@ -196,8 +193,6 @@ export default {
     //   // // naver_id_login.setPopup();
     //   // naver_id_login.init_naver_id_login();
     //   // // this.naverLoginCallback();
-
-
 
     //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
     //   var state = naverLogin.getUniqState();
@@ -211,14 +206,6 @@ export default {
     //     var btnNaverLogin = document.getElementById("naver_Login");
     //     btnNaverLogin.click();
     //   });
-
-
-
-
-
-
-
-
 
     // },
 
@@ -238,10 +225,9 @@ export default {
     //   alert(naver_id_login.getProfileData('age'));
     // },
 
-
     // kakao
     loginWithKakao() {
-      window.Kakao.init('5d14c5e0ea3ead3c0683355cba9eda57');
+      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -252,33 +238,25 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj)
+          console.log(authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
           Kakao.API.request({
-            url: '/v2/user/me',
+            url: "/v2/user/me",
             success: function (res) {
-              console.log('res-', res);
+              console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-            }
+            },
           });
           this.loader.hide();
         },
         fail: function (err) {
-          console.log(err)
+          console.log(err);
         },
-      })
-    }
-
-
-
-
-
-
-
-
+      });
+    },
   },
 };
 </script>

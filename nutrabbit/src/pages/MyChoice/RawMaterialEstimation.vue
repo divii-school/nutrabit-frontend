@@ -75,7 +75,7 @@
               <div class="product-list-wrap">
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-radio" for="qoute">
+                    <label class="custom-check" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
                       <span class="checkmark" for="qoute"></span>
                     </label>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-radio" for="sample">
+                    <label class="custom-check" for="sample">
                       <input type="checkbox" id="sample" value="1" v-model="servicetype" />
                       <span class="checkmark" for="sample"></span>
                     </label>
@@ -117,7 +117,7 @@
                   <my-modal-component v-show="showModal2">
                     <ModalWarning @close2="closeModal2"
                       bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
-                      btnText1="cancellation" btnText2="Confirm" @confirm="confirm" />
+                      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
                   </my-modal-component>
                 </div>
               </div>
