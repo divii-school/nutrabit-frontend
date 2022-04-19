@@ -124,8 +124,8 @@
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
-                            <input type="file" class="select-file" v-on:change="onFileChange" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable"/>
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable"/>
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
@@ -186,8 +186,8 @@
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1"/>
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1"/>
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
@@ -317,6 +317,8 @@ export default {
             categoryDropdownValue: null,
             crossdisplay1: true,
             crossdisplay2: true,
+            isdisable: false,
+            isdisable1: false,
             error: {},
         };
     },
@@ -350,28 +352,40 @@ export default {
             this.daily_intake_amount_ko = res.data.data[0].daily_intake_amount_ko;
             this.daily_intake_amount_en = res.data.data[0].daily_intake_amount_en;
             this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
-            this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
+            this.material_prequotion_en = res.data.data[0].material_prequotion_en;
             this.material_extra_info_ko = res.data.data[0].material_extra_info_ko;
             this.material_extra_info_en = res.data.data[0].material_extra_info_en;
-            this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
+            // this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
+
+            if (res.data.data[0].similar_images_path.length < 5) {
+                this.isdisable = false;
+            } else {
+                this.isdisable = true;
+            }
 
             if (res.data.data[0].similar_images_path.length > 0) {
                 this.crossdisplay1 = true;
             } else {
                 this.crossdisplay1 = false;
             }
+            
 
             this.similar_product_img = res.data.data[0].similar_images_path.toString().split(',');
             this.thumbnail_1 = res.data.data[0].thumbnail_1_path;
             this.thumbnail_2 = res.data.data[0].thumbnail_2_path;
 
+            if (res.data.data[0].raw_material_images_path.length < 5) {
+                this.isdisable1 = false;
+            } else {
+                this.isdisable1 = true;
+            }
             
             if (res.data.data[0].raw_material_images_path.length > 0) {
                 this.crossdisplay2 = true;
             } else {
                 this.crossdisplay2 = false;
             }
-
+            
             this.raw_material_img = res.data.data[0].raw_material_images_path.toString().split(',');
             this.tag_ko = res.data.data[0].tag_ko;
             this.tag_en = res.data.data[0].tag_en;
