@@ -66,7 +66,7 @@
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="title2">Reply</label>
-                        <div style="width: 150%;">
+                        <div class="textbox">
                             <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="text" />
                         </div>
                         <!-- <Textarea class="" type="text" placeholder="회신하다" id="title2" v-model="replyText" style="height:100px;"></Textarea> -->
@@ -188,9 +188,9 @@ export default {
     border: 1px solid #0A0A0A;
     color: white;
 }
-.card {
+/* .card {
     height: 350px;
-}
+} */
 .img-info {
     font-size: 11px;
     font-weight: 400;
@@ -204,5 +204,11 @@ export default {
     width: 150px;
     height: 100px;
 
+}
+@media screen and (max-width: 768px) {
+  
+    .textbox{
+        width: 100%;
+    }
 }
 </style>

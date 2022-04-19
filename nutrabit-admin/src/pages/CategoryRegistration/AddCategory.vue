@@ -23,8 +23,8 @@
 
                             />
  -->
-                            <AutoComplete :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
-                            
+                            <AutoComplete :class="`${error.fst_category_name_ko ? 'p-invalid' : ''}`" :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
+                              <div class="text-red">{{ error.fst_category_name_ko }}</div>
                         </div>
                         
                        
@@ -132,8 +132,11 @@ export default {
             fileName: '',
             fileExtension: '',
             filesExtension: '',
+            fst_category:'',
             fst_category_name_ko:'',
+            fst_category_ko:'',
             fst_category_name_en:'',
+            fst_category_en:'',
             scnd_category_name_ko:'',
             scnd_category_name_en:'',
             category_image:'',
@@ -232,15 +235,33 @@ export default {
             } else {
              
              let fst = JSON.stringify(this.fst_category_name_ko)
-            //  console.log(fst);
-             //console.log(JSON.parse(fst).category_name_ko);
-            this.formData.append('fst_category_name_ko', JSON.parse(fst).category_name_ko);
-            this.formData.append('fst_category_name_en', this.fst_category_name_en);
+            //  if(this.fst_category_name_ko == this.fst_category_name_ko){
+            //      this.fst_category = this.fst_category_name_ko   
+            //  } else  {
+            //      console.log('xyz')
+            //      this.fst_category = JSON.parse(fst).category_name_ko
+            //  }
+             //console.log(this.fst_category);
+             console.log(JSON.parse(fst).category_name_ko);
+             if(JSON.parse(fst).category_name_ko){
+                 this.fst_category_ko = JSON.parse(fst).category_name_ko
+                 this.fst_category_en = JSON.parse(fst).category_name_en
+             } else {
+                //  console.log('xyz')
+                 this.fst_category_ko = this.fst_category_name_ko
+                 this.fst_category_en = this.fst_category_name_en
+             }
+             
+            
+            
+            this.formData.append('fst_category_name_ko', this.fst_category_ko);
+            this.formData.append('fst_category_name_en', this.fst_category_en);
             this.formData.append('scnd_category_name_ko', this.scnd_category_name_ko);
             this.formData.append('scnd_category_name_en', this.scnd_category_name_en);
             // this.formData.append('type', this.dropdownValueType?.name);
             // this.formData.append('status', this.dropdownValue.name===undefined ? this.dropdownValue :this.dropdownValue.name);
-            console.log(this.formData);
+            //console.log(this.formData);
+           // console.log(this.fst_category);
             return axios
             
                 .post('/admin/product_category/add', this.formData)
