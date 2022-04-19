@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { provide, inject, ref } from "vue";
+import { provide } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import common from "./store/common";
@@ -26,17 +26,9 @@ export default {
     Footer,
   },
   setup() {
-    const common = inject("common");
     provide("common", common);
-    return { common };
-  },
-  data() {
-    return {
-      isMobile: false,
-    };
   },
   mounted() {
-    this.isFromApp();
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
@@ -51,27 +43,6 @@ export default {
         return false
       }
     },
-    // check if it's from APP
-    isFromApp() {
-      var queryString = window.location.search;
-      console.log("queryString", queryString);
-      const urlParams = new URLSearchParams(queryString);
-      var mobile = urlParams.get("mobile");
-      if (mobile) {
-        this.isMobile = true;
-        this.common.state.isMobile = true;
-        localStorage.setItem("isMobile", true);
-      }
-
-      setTimeout(() => {
-        console.log(
-          "this.common.state.isMobile",
-          this.common.state.isMobile
-        );
-      }, 4000);
-    },
-    // ENdx check if it's from APP
-
   }
 };
 </script>

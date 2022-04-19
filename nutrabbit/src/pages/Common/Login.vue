@@ -11,12 +11,8 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -25,12 +21,8 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="password"
-                    :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password"
-                  />
+                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password" />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -50,8 +42,7 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link
-                    >
+                      {{ $t("common.QuickLinks.FindID") }}</router-link>
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -71,29 +62,38 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
+            <!-- kakao login for App -->
+            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
+              <i class="icon-chat-black"></i>
+              {{ $t("common.QuickLinks.CacaoLogin") }}
+            </button>
+            <!-- END kakao login for App -->
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button id="naver_Login" class="btn-primary with-icon green-btn">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
-            <button
+            <!-- Naver login for App -->
+            <button id="naver_Login" v-else class="btn-primary with-icon green-btn">
+              <i class="icon-naver"></i>
+              {{ $t("common.QuickLinks.NaverLogin") }}
+            </button>
+            <!-- ENd Naver login for App -->
+
+            <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
               id="naver_id_login"
               @click="naverLogin"
             >
               Naver Login
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -121,6 +121,7 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
+      isPlatMobile: localStorage.getItem('isMobile') === 'true',
     };
   },
   setup() {

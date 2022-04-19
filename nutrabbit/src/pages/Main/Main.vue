@@ -100,6 +100,7 @@ export default {
       MainSlider: [],
       ProductData: [],
       token: localStorage.getItem('token'),
+      isMobile: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
@@ -115,6 +116,7 @@ export default {
     this.paymentService = new PaymentService();
   },
   mounted() {
+    this.isFromApp();
     this.allBanner();
     this.allNutidata();
     localStorage.removeItem('sub_category_id');
@@ -127,6 +129,25 @@ export default {
 
   },
   methods: {
+    // check if it's from APP
+    isFromApp() {
+      var queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var mobile = urlParams.get("mobile");
+      if (mobile) {
+        this.isMobile = true;
+        this.common.state.isMobile = true;
+        localStorage.setItem("isMobile", true);
+      }
+
+      setTimeout(() => {
+        console.log(
+          "this.common.state.isMobile",
+          this.common.state.isMobile
+        );
+      }, 4000);
+    },
+    // ENdx check if it's from APP
     // makePay test function
     makePay() {
       console.log('makePay');
