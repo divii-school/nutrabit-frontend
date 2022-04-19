@@ -113,8 +113,8 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable"/>
+                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(detail_image, img) in detail_image" :key="img">
@@ -139,8 +139,8 @@
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <input type="file" class="select-file" v-on:change="onFileChanges" :disabled="isdisable1"/>
+                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1"/>
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(similar_image, img) in similar_image" :key="img">
@@ -289,6 +289,8 @@ export default {
             id: '',
             crossdisplay4: true,
             crossdisplay3:true,
+            isdisable:false,
+            isdisable1:false,
         };
     },
     created() {
@@ -338,6 +340,12 @@ export default {
             this.ingredients_en = res.data.data[0].ingredients_en;
             this.description_ko = res.data.data[0].description_ko;
             this.description_en = res.data.data[0].description_en;
+            
+            if (res.data.data[0].detail_image_path.length < 5) {
+                this.isdisable = false;
+            } else {
+                this.isdisable = true;
+            }
 
             if (res.data.data[0].detail_image_path.length > 0) {
                 this.crossdisplay3 = true;
@@ -346,7 +354,13 @@ export default {
             }
             
             this.detail_image = res.data.data[0].detail_image_path.toString().split(',');
-
+            
+            if (res.data.data[0].similar_image_path.length < 5) {
+                this.isdisable1 = false;
+            } else {
+                this.isdisable1 = true;
+            }
+            
             if (res.data.data[0].similar_image_path.length > 0) {
                 this.crossdisplay4 = true;
             } else {
@@ -462,7 +476,7 @@ export default {
             let similar_image_arr = similar_image.toString().split('/');
             let image_name = similar_image_arr[3];
             // console.log(similar_prod_image_arr[3])
-            if (confirm('Do you really want to delete?')) {
+            if (confirm('정말 삭제하시겠습니까?')) {
                 axios({ method: 'post', url: '/admin/blending/similarImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
                         console.log(response);
@@ -512,10 +526,10 @@ export default {
             let vcheckData = {
                 name_ko: this.name_ko,
                 name_en: this.name_en,
-                category_id: this.category_id,
-                raw_material_id: this.raw_material_id,
+                category_id: this.category_id.toString(),
+                raw_material_id: this.raw_material_id.toString(),
                 sub_raw_materials: this.sub_raw_materials,
-                pill_id: this.pill_id,
+                pill_id: this.pill_id.toString(),
                 tags_ko: this.tags_ko,
                 tags_en: this.tags_en,
                 efficiency_ko: this.efficiency_ko,
