@@ -573,4 +573,9 @@ export default {
 .raw-image {
     position: relative;
 }
+@media screen and (max-width: 768px) {
+    .dropdowns {
+        flex-direction: column;
+    }
+}
 </style>
