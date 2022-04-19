@@ -217,6 +217,15 @@
     btnText2="Login"
     link="/login"
   />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    @confirm="logOutConfirm"
+    bodytext1="Are you sure you want to logout?"
+    btnText1="Cancel"
+    btnText2="Confirm"
+    link="/login"
+  />
   <div
     :class="activeSearch ? 'overlay-click-out-side' : ''"
     @click="activeSearch = false"
@@ -388,11 +397,19 @@ export default {
     changeLanguage() {},
     // logout
     logOut() {
-      if (this.logedInUserDetails) {
-        localStorage.clear();
-        window.location = "/login";
-      }
+      this.isModalVisible = true;
+      // if (this.logedInUserDetails) {
+      //   localStorage.clear();
+      //  window.location = "/login";
+      // }
     },
+
+  logOutConfirm(){
+      if (this.logedInUserDetails) {
+         localStorage.clear();
+         window.location = "/login";
+       }
+  },
     closeModal() {
       this.isModalVisible = false;
     },
