@@ -6,7 +6,11 @@
       @media screen and (max-width: 640px) {
         padding: 65px 0 123px;
       }
-
+      svg{
+        margin-left: 20px;
+        height: 12px;
+        min-width: 12px;
+      }
       .my-notice-heading {
         @include flex-align-center;
         padding-bottom: 40px;
@@ -77,9 +81,10 @@
                 color: $green-68;
                 border: 1px solid $green-68;
                 border-radius: 15px;
-                padding: 5px 15px;
+                padding: 5px 0;
                 margin-right: 10px;
                 font-weight: 600;
+                width: 98px;
                 @media screen and (max-width: 640px) {
                   font-size: 12px;
                   line-height: 14px;
@@ -99,7 +104,6 @@
                   font-size: 14px;
                 }
               }
-
             }
 
             .item-right {
@@ -112,6 +116,7 @@
                 font-size: 14px;
               }
             }
+            
           }
         }
       }
@@ -149,6 +154,10 @@
         font-size: 18px;
         line-height: 18px;
         color: $grey-A4;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
 
         @media screen and (max-width: 640px) {
           padding: 20px 0;
@@ -195,7 +204,7 @@
           }
 
           @media screen and (max-width: 640px) {
-            // flex-direction: column;
+            flex-direction: column;
             width: 100%;
           }
 
@@ -216,6 +225,9 @@
               padding-right: 15px;
               margin-top: 10px;
             }
+            p{
+              text-align: left;
+            }
           }
 
           span {
@@ -226,9 +238,9 @@
             color: $green-68;
             border: 1px solid $green-68;
             border-radius: 15px;
-            padding: 5px 15px;
+            padding: 5px 0;
             margin-right: 10px;
-
+            width: 94px;
             &.mr-2 {
               margin-right: 35px;
             }
@@ -265,11 +277,11 @@
         }
         &.notice-list-main{
           padding: 0;
-          // .item-left{
-          //   @media screen and (max-width: 640px) {
-          //     flex-direction: row;
-          //   }
-          // }
+          .item-left{
+            @media screen and (max-width: 640px) {
+              flex-direction: row;
+            }
+          }
         }
       }
 
@@ -310,6 +322,9 @@
 
       .pagination-wrap {
         margin-top: 40px;
+      }
+      .btn-small-solid{
+        min-width: 190px;
       }
     }
   }
