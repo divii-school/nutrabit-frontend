@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Toast from '../alert/alert.js';
 
 window.axios = axios;
 axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1/sites/';
@@ -17,14 +17,16 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(err);
 });
 
-// Add a response interceptor
-axios.interceptors.response.use(function (response) {
-    if (response.status==403) {
-       alert("You are not");
+// Token expire redirection
+axios.interceptors.response.use((response) => {
+    return response
+}, async function (error) {
+    if (error.response.status === 403) {
+        Toast.fire({ title: "Session Expired" });
+        window.location.href = '/login';
+        localStorage.clear();
+        return axios(originalRequest);
+
     }
-    return response;
-  }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     return Promise.reject(error);
-  });
+});
