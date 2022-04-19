@@ -104,7 +104,7 @@ export default {
       email: "",
       emailOTP: "",
       error: {},
-      timer: 130,
+      timer: 180,
       isActive: true,
       isVerification: false,
       emailValidated: 0,
@@ -177,7 +177,7 @@ export default {
                 clearInterval(this.storeSetInterval);
               }
               // asign new time again
-              this.timer = 130;
+              this.timer = 180;
 
               this.storeSetInterval = setInterval(() => {
                 let m = Math.floor(this.timer / 60);

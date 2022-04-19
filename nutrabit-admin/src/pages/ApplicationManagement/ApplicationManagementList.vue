@@ -207,7 +207,7 @@ export default {
             dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
             serial: 0,
             dropdownValue: null,
-            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommanded' }],
+            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommanded' },{ name: 'Nutri 3.3', value: 'nutri' }],
 
             servicedropdownValues: [{ name: 'Sample Request', value: '1' }, { name: 'Get a quote', value: '2' }, { name: 'Both', value: '3' }],
 
