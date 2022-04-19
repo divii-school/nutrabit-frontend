@@ -116,9 +116,9 @@
                         align-items: flex-start;
                         // padding: 0 27px;
                         
-                        // @media screen and (max-width: 1200px) {
-                        //     padding: 0 10px;
-                        // }
+                        @media screen and (max-width: 1200px) {
+                            margin: 20px -15px 0;
+                        }
     
                         @media screen and (max-width: 768px) {
                             // margin-bottom: 20px;
@@ -130,6 +130,9 @@
                             max-width: 25%;
                             width: 25%;
                             padding:  0 23px;
+                            @media screen and (max-width: 1200px) {
+                                padding: 0 15px;
+                            }
                             @media screen and (max-width: 768px) {
                                 width: 100%;
                                 max-width: 100%;

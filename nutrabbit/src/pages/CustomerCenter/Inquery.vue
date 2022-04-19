@@ -23,7 +23,7 @@
                 <p class="para-category">{{ dateformat(item.createdDate) }}</p>
                 <span
                   class="mr-2"
-                  :class="item.status == 'Not Answered' ? 'grey' : ''"
+                  :class="item.status == 'Unanswered' ? 'grey' : ''"
                   >{{ item.status }}</span
                 >
               </div>

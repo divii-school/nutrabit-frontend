@@ -147,7 +147,7 @@
                     @click="activeLogin = !activeLogin"
                     >{{ userName ? userName : localuser }}
                   </router-link>
-                  <i class="icon-leftArw"></i>
+                  <i class="icon-leftArw" @click="goChangePersonalInfo"></i>
                 </div>
                 <div class="side-menu-mob-login">
                   <div class="after-login">
@@ -163,7 +163,11 @@
                     class="side-menu-logout-mob"
                     :class="{ activeLogin: activeLogin }"
                   >
-                    <router-link :to="personalInfoRouterLink" @click="active = false">Change personal information</router-link>
+                    <router-link
+                      :to="personalInfoRouterLink"
+                      @click="active = false"
+                      >Change personal information</router-link
+                    >
                     <router-link to @click="logOut()">Log out</router-link>
                   </div>
                 </div>
@@ -211,6 +215,15 @@
     bodytext2="Please use the service after logging in."
     btnText1="Cancel"
     btnText2="Login"
+    link="/login"
+  />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    @confirm="logOutConfirm"
+    bodytext1="Are you sure you want to logout?"
+    btnText1="Cancel"
+    btnText2="Confirm"
     link="/login"
   />
   <div
@@ -345,12 +358,6 @@ export default {
   },
 
   mounted() {
-    // if (localStorage.token) {
-    //   this.logedInUserDetails = true;
-    //   this.get;
-    // } else {
-    //   this.logedInUserDetails = false;
-    // }
     this.getUserInfo();
     this.getIp();
     this.changePersonalInfo();
@@ -366,6 +373,12 @@ export default {
         }
       }
     },
+    goChangePersonalInfo() {
+      if (this.personalInfoRouterLink) {
+        this.$router.push(this.personalInfoRouterLink);
+        this.active = false;
+      }
+    },
     showMobSearchF() {
       this.showMobSearch = true;
       this.activeSearch = true;
@@ -378,11 +391,19 @@ export default {
     changeLanguage() {},
     // logout
     logOut() {
-      if (this.logedInUserDetails) {
-        localStorage.clear();
-        window.location = "/login";
-      }
+      this.isModalVisible = true;
+      // if (this.logedInUserDetails) {
+      //   localStorage.clear();
+      //  window.location = "/login";
+      // }
     },
+
+  logOutConfirm(){
+      if (this.logedInUserDetails) {
+         localStorage.clear();
+         window.location = "/login";
+       }
+  },
     closeModal() {
       this.isModalVisible = false;
     },

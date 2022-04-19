@@ -29,9 +29,9 @@
           </template>
         </FaqAccordion>
 
-<!-- unimportant FAQ List -->
+        <!-- unimportant FAQ List -->
 
-<FaqAccordion v-for="(item, index) of unimportantFaqList" :key="index">
+        <FaqAccordion v-for="(item, index) of unimportantFaqList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
@@ -48,9 +48,9 @@
               {{ item.description_en }}
             </p>
           </template>
-  </FaqAccordion>
+        </FaqAccordion>
 
-<!-- **************************************************************************************** -->
+        <!-- **************************************************************************************** -->
 
         <template v-if="this.updatedFaqList.length > 0">
           <pagination
@@ -148,23 +148,22 @@ export default {
       updatedFaqList: [],
       page: 1,
       perPage: 10,
-      chunkPage : { chunk : 5 },
+      chunkPage: { chunk: 5 },
     };
   },
 
-  computed :{
-   importantFaqList(){
-    return Array.from(this.updatedFaqList).filter(item=>{
-          return item.top_10 == 'y';
-    })
-   },
-   
-   unimportantFaqList(){
-    return Array.from(this.updatedFaqList).filter(item=>{
-          return item.top_10 != 'y';
-    })
-   },
+  computed: {
+    importantFaqList() {
+      return Array.from(this.updatedFaqList).filter((item) => {
+        return item.top_10 == "y";
+      });
+    },
 
+    unimportantFaqList() {
+      return Array.from(this.updatedFaqList).filter((item) => {
+        return item.top_10 != "y";
+      });
+    },
   },
 
   created() {
@@ -172,10 +171,8 @@ export default {
   },
   mounted() {
     this.allFaqList();
-    console.log(this.updatedFaqList)
+    console.log(this.updatedFaqList);
   },
-
-  
 
   methods: {
     myCallback(ClickPage) {

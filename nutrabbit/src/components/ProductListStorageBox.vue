@@ -7,7 +7,8 @@
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
-        <img v-bind:src="imgBaseUrl + item.image_path" alt="" />
+        <img v-if="item.image_path" v-bind:src="imgBaseUrl + item.image_path" alt="" />
+         <img v-else src="../assets/images/package_place.png" alt />
       </div>
     </div>
     <div class="material-details" @click="gotoNextPage(item.id)">

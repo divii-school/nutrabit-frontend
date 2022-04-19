@@ -81,7 +81,7 @@
     @close="closeModal"
     bodytext1="1:1 inquiry registration has been completed."
     btnText2="Confirm"
-    link="/"
+    link="/inquiry"
   />
 </template>
 <script>
