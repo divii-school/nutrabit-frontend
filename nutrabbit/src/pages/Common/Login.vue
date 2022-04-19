@@ -67,7 +67,7 @@
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
-            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
+            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
@@ -80,7 +80,7 @@
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- Naver login for App -->
-            <button id="naver_Login" v-else class="btn-primary with-icon green-btn">
+            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
@@ -148,6 +148,15 @@ export default {
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
+
+    // web view get message
+    window["sendKakaoLoginData"] = (res) => {
+      this.sendKakoAccessToken(res);
+    };
+    window["sendNaverLoginData"] = (res) => {
+      this.sendNaverAccessToken(res);
+    };
+    // end web view get message
   },
   methods: {
     onSubmit() {
@@ -182,6 +191,30 @@ export default {
           }
         });
       }
+    },
+    sendAccessToken(res) {
+      if (res) {
+        // this.testres = res;
+        this.checkMbfblogin(res);
+      } else {
+        return false
+      }
+    },
+    sendKakoAccessToken(token) {
+      let ftoken = token;
+      console.log('ftoken:--', ftoken);
+      alert(ftoken);
+    },
+    sendNaverAccessToken(token) {
+      let ftoken = token;
+      console.log('ftoken:--', ftoken);
+      alert(ftoken);
+    },
+    mbKakaoLogin() {
+      window.parent.postMessage('kakaoLoginClicked', '*');
+    },
+    mbNaverLogin() {
+      window.parent.postMessage('naverLoginClicked', '*');
     },
 
     // naver login
