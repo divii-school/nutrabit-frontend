@@ -964,7 +964,7 @@ textarea {
         font-weight: 600;
         @media screen and (max-width: 640px) {
           font-size: 14px;
-          }
+        }
       }
     }
   }
@@ -978,6 +978,9 @@ textarea {
   right: 79px;
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 768px) {
+    bottom: 173px;
+  }
   .round {
       display: block;
       width: 60px;

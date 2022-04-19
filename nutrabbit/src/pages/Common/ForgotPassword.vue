@@ -104,7 +104,7 @@ export default {
       email: "",
       emailOTP: "",
       error: {},
-      timer: 130,
+      timer: 180,
       isActive: true,
       isVerification: false,
       emailValidated: 0,
@@ -147,6 +147,9 @@ export default {
         ) {
           this.$router.push("/change-password");
         }
+        else {
+           this.$swal("Please verify OTP");
+        }
       }
     },
     async forgetPassword() {
@@ -166,6 +169,7 @@ export default {
               this.otpValidate = 0;
               this.startTimer = false;
               this.showTick = true;
+              this.emailOTP="";
               this.$swal("OTP has been sent to your email");
               this.error.email = "";
 
@@ -173,7 +177,7 @@ export default {
                 clearInterval(this.storeSetInterval);
               }
               // asign new time again
-              this.timer = 130;
+              this.timer = 180;
 
               this.storeSetInterval = setInterval(() => {
                 let m = Math.floor(this.timer / 60);
