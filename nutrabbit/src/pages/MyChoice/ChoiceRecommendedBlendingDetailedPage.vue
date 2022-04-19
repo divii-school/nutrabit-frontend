@@ -3,44 +3,25 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <!-- <swiper
-            :pagination="pagination"
-            :modules="modules"
-            class="mySwiper"
-            v-for="(items, index) of blending_data"
-            :key="index"
-          >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + item" alt />
-            </swiper-slide>
-          </swiper>-->
-          <swiper
-            :spaceBetween="10"
-            :modules="[Thumbs]"
-            :thumbs="{ swiper: thumbsSwiper }"
-            class="mySwiper"
-            v-for="(items, index) of blending_data"
-            :key="index"
-          >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="imgBaseUrl + item" alt />
-            </swiper-slide>
-          </swiper>
-          <swiper
-            :spaceBetween="10"
-            :slidesPerView="4"
-            :freeMode="true"
-            :modules="[Thumbs]"
-            watch-slides-progress
-            @swiper="setThumbsSwiper"
-            class="mySwiper2"
-            v-for="(items, index) of blending_data"
-            :key="index"
-          >
-            <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-              <img :src="imgBaseUrl + item" alt />
-            </swiper-slide>
-          </swiper>
+          <div v-if="blending_image.length > 0">
+            <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper"
+              v-for="(items, index) of blending_data" :key="index">
+              <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
+                <img :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
+            <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
+              @swiper="setThumbsSwiper" class="mySwiper2" v-for="(items, index) of blending_data" :key="index">
+              <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
+                <img :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
+          </div>
+          <div v-else>
+            <img src="../../assets/images/thumbnail_place.png" alt />
+          </div>
+
+
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
@@ -56,7 +37,7 @@
                 <h2>{{ desc.title }}</h2>
                 <p>{{ desc.desc }}</p>
               </li>-->
-              
+
               <li>
                 <h2>Main Raw Material</h2>
                 <p>{{ item.material_name_ko }}</p>
@@ -80,15 +61,20 @@
             </ul>
             <button
               @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
-              class="btn-primary blue-btn-solid"
-            >next</button>
+              class="btn-primary blue-btn-solid">next</button>
           </div>
           <div class="suggested-product">
             <h2>similar products</h2>
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
-            <ul class="smilar-product-img">
+            <ul class="smilar-product-img" v-if="item.similar_image_path">
               <li v-for="(items, index) of item.similar_image_path" :key="index">
-                <img :src="imgBaseUrl + items" alt />
+                <img v-if="item" :src="imgBaseUrl + items" alt />
+                <img v-else src="../../assets/images/similar_place.png" alt />
+              </li>
+            </ul>
+            <ul class="smilar-product-img" v-else>
+              <li>
+                <img src="../../assets/images/similar_place.png" alt />
               </li>
             </ul>
           </div>
@@ -138,6 +124,7 @@ export default {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blending_id: null,
       blending_data: '',
+      blending_image: '',
       // pagination: {
       //   clickable: true,
       //   renderBullet: (index, className) => {
@@ -227,9 +214,10 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-         console.log(res.data);
+        //console.log(res.data.data[0].detail_image_path);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
+          this.blending_image = res.data.data[0].detail_image_path;
         } else {
           this.$swal(res.data.message, "error");
         }

@@ -27,8 +27,8 @@
               <ul class="my-choice-list-inner">
                 <li class="my-choice-list-inner-item" v-for="(item, i) of item.sub_category_arr" :key="i + 1">
                   <div class="choice-card" @click="gotoNextPage(item.sub_category_id)">
-                    <img v-if="item.sub_category_image_path"  :src="imgBaseUrl + item.sub_category_image_path" alt />
-                    <img v-else src="../../assets/images/aloe-img-4.png" alt />
+                    <img v-if="item.sub_category_image_path" :src="imgBaseUrl + item.sub_category_image_path" alt />
+                    <img v-else src="../../assets/images/my_choice_place.png" alt />
                   </div>
                   <p class="desc">{{ item.sub_category_name }}</p>
                 </li>
@@ -85,7 +85,7 @@ export default {
         } else {
 
           this.$swal(res.message, "error");
-        this.$router.push("/login");
+          this.$router.push("/login");
         }
       });
     },

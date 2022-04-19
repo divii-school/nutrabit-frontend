@@ -1,20 +1,12 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="true"
-        :modules="modules"
-        :speed="2000"
-        class="mySwiper"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="true" :modules="modules" :speed="2000" class="mySwiper">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <img
-            :src="imgBaseUrl + slider.desktop_banner_path"
-            alt=""
-          />
+          <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
       </swiper>
@@ -28,9 +20,7 @@
             Direct health functional food recipes
             <br />Opportunity to create!
           </h2>
-          <p
-            class="desc text-center"
-          >Create your own recipe with just one combination of your choice!</p>
+          <p class="desc text-center">Create your own recipe with just one combination of your choice!</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
@@ -53,10 +43,9 @@
               <br />Easily seize the opportunity to launch
               your own product!
             </h2>
-            <p
-              class="desc text-center"
-            >We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
+            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
+              Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">

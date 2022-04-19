@@ -42,7 +42,6 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="onChange">
-                    <option value>Sort By</option>
                     <option value="popularity">in order of popularity</option>
                     <option value="alphabetical">in alphabetical order</option>
                   </select>
@@ -51,15 +50,9 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard
-                  type="recomandedBlending"
-                  :category="item.category_name_ko"
-                  :name="item.name_ko"
-                  :desc="item.description_ko"
-                  :image="item.thumbnail_1_path"
-                  :image_link="imgBaseUrl"
-                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
-                />
+                <SearchCard type="recomandedBlending" :category="item.category_name_ko" :name="item.name_ko"
+                  :desc="item.description_ko" :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path"
+                  :image_link="imgBaseUrl" :route_link="'/choice-recommended-blending-detailed-page/' + item.id" />
               </li>
             </ul>
           </div>
