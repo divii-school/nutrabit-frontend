@@ -4,11 +4,11 @@ import validator from 'validator';
 const validateCreateCategory = (data) => {
     let errors = {};
 
-    const { fst_category_name_en,scnd_category_name_ko,scnd_category_name_en,file} = data;
+    const {fst_category_name_ko, fst_category_name_en,scnd_category_name_ko,scnd_category_name_en,file} = data;
 
-    // if (validator.isEmpty(fst_category_name_ko)) {
-    //     errors.fst_category_name_ko = '제목을 입력해주세요';
-    // }
+    if (validator.isEmpty(fst_category_name_ko)) {
+        errors.fst_category_name_ko = '제목을 입력해주세요';
+    }
     if (validator.isEmpty(fst_category_name_en)) {
         errors.fst_category_name_en = '선택 해주세요';
     }

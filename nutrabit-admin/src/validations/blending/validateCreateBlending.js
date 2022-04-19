@@ -4,7 +4,7 @@ import validator from 'validator';
 const validateCreateBlending = (data) => {
     let errors = {};
 
-    const { name_ko, name_en,sub_raw_materials,tags_ko,tags_en,efficiency_ko,efficiency_en
+    const { name_ko, name_en,category_id,raw_material_id,sub_raw_materials,pill_id,tags_ko,tags_en,efficiency_ko,efficiency_en
         ,ingredients_ko,ingredients_en,description_ko,description_en,state,file} = data;
 
     if (validator.isEmpty(name_ko)) {
@@ -14,18 +14,18 @@ const validateCreateBlending = (data) => {
         errors.name_en = '블렌딩 이름을 입력해 주세요';
     }
 
-    // if (validator.isEmpty(category_id)) {
-    //     errors.category_id = '카테고리를 입력하십시오';
-    // }
-    // if (validator.isEmpty(raw_material_id)) {
-    //     errors.raw_material_id = '원료를 입력하십시오';
-    // }
+    if (validator.isEmpty(category_id)) {
+        errors.category_id = '카테고리를 입력하십시오';
+    }
+    if (validator.isEmpty(raw_material_id)) {
+        errors.raw_material_id = '원료를 입력하십시오';
+    }
     if (validator.isEmpty(sub_raw_materials)) {
         errors.sub_raw_materials = '서브 원시를 입력하십시오';
     }
-    // if (validator.isEmpty(pill_id)) {
-    //     errors.pill_id = '알약을 입력하십시오';
-    // }
+    if (validator.isEmpty(pill_id)) {
+        errors.pill_id = '알약을 입력하십시오';
+    }
     if (validator.isEmpty(tags_ko)) {
         errors.tags_ko = '태그를 입력하십시오(ko)';
     }

@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="p-d-flex p-jc-end p-ai-center"  style="float:left;">
+            <div class="p-d-flex p-jc-end p-ai-center"  style="float:left; margin-top: -20px;">
                 <Button :label="$t('button.update')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editNotice"></Button>
             </div>
             
@@ -265,7 +265,7 @@ export default {
         color: white;
 }
 
-.card {
+/* .card {
     height: 775px;
-}
+} */
 </style>

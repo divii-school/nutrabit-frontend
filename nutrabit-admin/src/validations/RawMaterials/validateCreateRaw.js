@@ -3,12 +3,12 @@ import validator from 'validator';
 const validateCreateRaw = (data) => {
   let errors = {}
   
-  const {  material_name_ko, material_name_en,tag_ko,tag_en,standard_ko,standard_en,material_description_ko,material_description_en,
+  const {  sub_category_id,material_name_ko, material_name_en,tag_ko,tag_en,standard_ko,standard_en,material_description_ko,material_description_en,
     material_function_ko,material_function_en,material_prequotion_ko,material_prequotion_en,material_extra_info_ko,material_extra_info_en,
     daily_intake_amount_ko,daily_intake_amount_en,file,files ,status} = data;
-  // if(validator.isEmpty(category_id)) {
-  //   errors.category_id =  "카테고리를 선택하세요";
-  // }
+  if(validator.isEmpty(sub_category_id)) {
+    errors.sub_category_id =  "카테고리를 선택하세요";
+  }
   
   if(validator.isEmpty(material_name_ko)) {
     errors.material_name_ko =  "재료 이름 Ko는 필수 항목입니다";
