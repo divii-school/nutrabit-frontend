@@ -20,7 +20,6 @@
                     type="text"
                     placeholder="Enter ID"
                     v-model="userId"
-                    
                   />
                 </div>
               </div>
@@ -35,7 +34,6 @@
                     type="email"
                     placeholder="Enter your email"
                     v-model="email"
-                    
                   />
                 </div>
                 <button
@@ -61,7 +59,6 @@
                     placeholder="Enter your email verification code"
                     v-model="emailOTP"
                     maxlength="6"
-                    
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -146,9 +143,8 @@ export default {
           this.localUserData.verifiy_status == 1
         ) {
           this.$router.push("/change-password");
-        }
-        else {
-           this.$swal("Please verify OTP");
+        } else {
+          this.$swal("Please verify OTP");
         }
       }
     },
@@ -169,7 +165,7 @@ export default {
               this.otpValidate = 0;
               this.startTimer = false;
               this.showTick = true;
-              this.emailOTP="";
+              this.emailOTP = "";
               this.$swal("OTP has been sent to your email");
               this.error.email = "";
 
@@ -235,6 +231,11 @@ export default {
         }
       }
     },
+  },
+  updated() {
+    if (this.localUserData) {
+      this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
+    }
   },
   mounted() {
     this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
