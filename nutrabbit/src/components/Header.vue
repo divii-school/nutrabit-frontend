@@ -164,7 +164,8 @@
                     :class="{ activeLogin: activeLogin }"
                   >
                     <router-link :to="personalInfoRouterLink" @click="active = false">Change personal information</router-link>
-                    <router-link to @click="logOut()">Log out</router-link>
+                    <router-link to @click="logOut">Log out</router-link>
+                    
                   </div>
                 </div>
               </div>
@@ -211,6 +212,15 @@
     bodytext2="Please use the service after logging in."
     btnText1="Cancel"
     btnText2="Login"
+    link="/login"
+  />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    @confirm="logOutConfirm"
+    bodytext1="Are you sure you want to logout?"
+    btnText1="Cancel"
+    btnText2="Confirm"
     link="/login"
   />
   <div
@@ -378,11 +388,19 @@ export default {
     changeLanguage() {},
     // logout
     logOut() {
-      if (this.logedInUserDetails) {
-        localStorage.clear();
-        window.location = "/login";
-      }
+      this.isModalVisible = true;
+      // if (this.logedInUserDetails) {
+      //   localStorage.clear();
+      //  window.location = "/login";
+      // }
     },
+
+  logOutConfirm(){
+      if (this.logedInUserDetails) {
+         localStorage.clear();
+         window.location = "/login";
+       }
+  },
     closeModal() {
       this.isModalVisible = false;
     },
