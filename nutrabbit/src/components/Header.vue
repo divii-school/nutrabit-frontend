@@ -147,7 +147,7 @@
                     @click="activeLogin = !activeLogin"
                     >{{ userName ? userName : localuser }}
                   </router-link>
-                  <i class="icon-leftArw"></i>
+                  <i class="icon-leftArw" @click="goChangePersonalInfo"></i>
                 </div>
                 <div class="side-menu-mob-login">
                   <div class="after-login">
@@ -163,7 +163,11 @@
                     class="side-menu-logout-mob"
                     :class="{ activeLogin: activeLogin }"
                   >
-                    <router-link :to="personalInfoRouterLink" @click="active = false">Change personal information</router-link>
+                    <router-link
+                      :to="personalInfoRouterLink"
+                      @click="active = false"
+                      >Change personal information</router-link
+                    >
                     <router-link to @click="logOut()">Log out</router-link>
                   </div>
                 </div>
@@ -364,6 +368,12 @@ export default {
         if (localStorage.getItem("userType") == "personal_member") {
           this.personalInfoRouterLink = "/personal-information";
         }
+      }
+    },
+    goChangePersonalInfo() {
+      if (this.personalInfoRouterLink) {
+        this.$router.push(this.personalInfoRouterLink);
+        this.active = false;
       }
     },
     showMobSearchF() {

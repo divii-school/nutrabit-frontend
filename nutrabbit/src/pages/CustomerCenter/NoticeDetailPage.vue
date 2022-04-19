@@ -6,7 +6,7 @@
           <h2>Notice</h2>
         </div>
         <div v-for="(item, index) of noticeDetailsData" :key="index">
-          <div class="notice-list noBorder">
+          <div class="notice-list noBorder notice-list-main">
             <ul>
               <li>
                 <div class="item-left">
@@ -39,7 +39,7 @@
               class="btn-small-solid grey"
               @click="this.$router.push('/notice')"
             >
-              as a list
+              List
             </button>
           </div>
         </div>

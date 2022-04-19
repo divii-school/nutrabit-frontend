@@ -589,6 +589,8 @@ header {
                   right: -30px;
                   top: 50%;
                   margin-top: -23px;
+                  cursor: pointer;
+                  pointer-events: all;
                   @media screen and (max-width: 768px){
                     background: url('@/assets/icons/icon-leftArw-mob.svg') no-repeat center center;
                     background-size: auto 24px;
