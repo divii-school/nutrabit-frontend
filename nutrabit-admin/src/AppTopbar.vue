@@ -6,7 +6,7 @@
                     <i class="pi pi-bars"></i>
                 </a>
                 <router-link id="logo-link" class="layout-topbar-logo" to="/">
-                <img src="assets/layout/images/Nutrilogo.svg" style="height:30px;margin: -10px 0px 0px -10px;" alt="Nutri 3.3" />
+                <img src="assets/layout/images/logonutrabit.png" style="height:30px;margin: -10px 0px 0px -10px;" alt="Nutri 3.3" />
                 
                     <!-- <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout" /> -->
                 </router-link>
