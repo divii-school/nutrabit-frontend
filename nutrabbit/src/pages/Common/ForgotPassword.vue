@@ -147,6 +147,9 @@ export default {
         ) {
           this.$router.push("/change-password");
         }
+        else {
+           this.$swal("Please verify OTP");
+        }
       }
     },
     async forgetPassword() {
@@ -166,6 +169,7 @@ export default {
               this.otpValidate = 0;
               this.startTimer = false;
               this.showTick = true;
+              this.emailOTP="";
               this.$swal("OTP has been sent to your email");
               this.error.email = "";
 
