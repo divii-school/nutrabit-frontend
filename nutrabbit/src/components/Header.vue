@@ -442,7 +442,6 @@ export default {
         .then((res) => res.json())
         .then(({ ip }) => {
           this.common.state.myIP = ip;
-          console.log(ip)
         });
     },
     // search api (main)
