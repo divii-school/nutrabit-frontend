@@ -44,8 +44,12 @@
         </div>
         <div class="green-belt">
           <div class="container-medium">
-            <h2> Nutri3.3 provides A-Z full service in the manufacturing process.<br>
-              It is a One Step Nutrition Platform.</h2>
+           <div class="green-belt-inner">
+              <div class="green-belt-content">
+                <h2> Nutri3.3 provides A-Z full service in the manufacturing process.</h2>
+              <p><span>It is a</span> One Step Nutrition Platform.</p>
+              </div>
+           </div>
           </div>
         </div>
         <div class="container-medium">
