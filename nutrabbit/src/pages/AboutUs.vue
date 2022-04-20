@@ -27,7 +27,7 @@
                 <div class="num">2</div>
                 <figure><img src="~@/assets/images/about2.png"></figure>
                 <div class="text-box">
-                  <p>I need professional support because there are too many prohibitions
+                  <p><span class="black-text">I need</span> <span class="green-text">professional support</span> because there are too many prohibitions
                     like pharmaceuticals, complicated approval process from public organization!</p>
                 </div>
               </div>
@@ -44,8 +44,12 @@
         </div>
         <div class="green-belt">
           <div class="container-medium">
-            <h2> Nutri3.3 provides A-Z full service in the manufacturing process.<br>
-              It is a One Step Nutrition Platform.</h2>
+           <div class="green-belt-inner">
+              <div class="green-belt-content">
+                <h2> Nutri3.3 provides A-Z full service in the manufacturing process.</h2>
+              <p><span>It is a</span> One Step Nutrition Platform.</p>
+              </div>
+           </div>
           </div>
         </div>
         <div class="container-medium">

@@ -334,7 +334,9 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus : 'Send verification code'
+      verificationStatus : 'Send verification code',
+      isIDVerified : false,
+      isOtpVerified : false,
     };
   },
   created() {
@@ -370,9 +372,22 @@ export default {
       }
     },
     async BusinessRegistration() {
-      if (!this.checkError()) {
+      if(this.isIDVerified == false){
+          this.$swal('Have to check user ID availability')
+          return;
+        }
+
+        else if(this.isOtpVerified == false){
+          this.$swal('Have to verify the otp for email')
+          return;
+        }
+
+      else if (!this.checkError()) {
         return;
       } else {
+
+        console.log('Registration Complete')
+
         this.commonService
           .BusinessRegistration(
             this.name,
@@ -403,7 +418,8 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            this.error.username = "";
+            //this.error.username = "";
+            this.isIDVerified = true;
             this.$swal("User id available");
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
@@ -473,7 +489,8 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            this.error.emailOTP = "";
+            //this.error.emailOTP = "";
+            this.isOtpVerified = true;
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             this.error.emailOTP = "wrong otp";

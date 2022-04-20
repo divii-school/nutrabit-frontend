@@ -6,7 +6,8 @@
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
-        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org//public' + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
+        <img v-if="item.thumbnail_image_path[0]" v-bind:src="imgBaseUrl + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
+        <img v-else src="../assets/images/package_place.png" alt />
       </div>
     </div>
     <div class="material-details">
@@ -43,6 +44,11 @@
 export default {
   name: "ProductList",
   props:["item"],
+  data() {
+    return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+    }
+  },
    methods: {
          getPackageId(event) {
            this.$emit('changeId',event.target.value);

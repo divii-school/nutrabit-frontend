@@ -20,11 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.TermsCheckBox") }}
-                    <input
-                      type="checkbox"
-                      v-model="termsCheck"
-                      
-                    />
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -37,11 +33,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.PersonalInfoCheckBox") }}
-                    <input
-                      type="checkbox"
-                      v-model="personalCheck"
-                      
-                    />
+                    <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -61,7 +53,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Name')"
                       v-model="name"
-                      
                     />
                   </div>
                 </div>
@@ -101,7 +92,6 @@
                         $t('common.placeholder.PasswordFormatSignup')
                       "
                       v-model="password"
-                      
                     />
                   </div>
                 </div>
@@ -122,7 +112,6 @@
                       type="password"
                       :placeholder="$t('common.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
-                      
                     />
                   </div>
                 </div>
@@ -140,7 +129,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Email')"
                       v-model="email"
-                      
                     />
                   </div>
                   <button
@@ -169,7 +157,6 @@
                       "
                       v-model="emailOTP"
                       maxlength="6"
-                      
                     />
                     <span
                       class="time"
@@ -186,7 +173,6 @@
                     :class="{ grey: isActive }"
                     @click="verifyOTP"
                     :disabled="otpValidate"
-                    
                   >
                     certification
                   </button>
@@ -205,7 +191,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.PhoneNumber')"
                       v-model="phoneNumber"
-                      
                     />
                   </div>
                 </div>
@@ -227,7 +212,6 @@
                       :placeholder="$t('common.placeholder.EnterAddress')"
                       v-model="address"
                       disabled
-                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
@@ -239,9 +223,10 @@
                     <input
                       class="form-control"
                       type="text"
-                      :placeholder="$t('common.placeholder.EnterDetailedAddress')"
+                      :placeholder="
+                        $t('common.placeholder.EnterDetailedAddress')
+                      "
                       v-model="detsilAddress"
-                      
                     />
                   </div>
                 </div>
@@ -344,8 +329,9 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus : 'Send verification code',
-      isVerified : false,
+      verificationStatus: "Send verification code",
+      isIDVerified: false,
+      isOtpVerified: false,
     };
   },
   created() {
@@ -376,30 +362,35 @@ export default {
       }
     },
     async individalRegistration() {
-      if(this.isVerified == false){
-          this.$swal('Have to check user ID availability')
-        }
       if (!this.checkError()) {
         return;
       } else {
-        
-        
-        // this.commonService
-        //   .individalRegistration(
-        //     this.name,
-        //     this.username,
-        //     this.password,
-        //     this.email,
-        //     this.phoneNumber,
-        //     this.address,
-        //     this.detsilAddress,
-        //     this.checkName.join(",")
-        //   )
-        //   .then((res) => {
-        //     if (res.data.status == 200) {
-        //       this.$router.push("member-registration-completed");
-        //     }
-        //   });
+
+        if (this.isIDVerified == false) {
+          this.$swal("Have to check user ID availability");
+        } else if (this.isOtpVerified == false) {
+          this.$swal("Have to verify the otp for email");
+        }
+        else{
+        console.log("Registration Complete");
+
+        this.commonService
+          .individalRegistration(
+            this.name,
+            this.username,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.detsilAddress,
+            this.checkName.join(",")
+          )
+          .then((res) => {
+            if (res.data.status == 200) {
+              this.$router.push("member-registration-completed");
+            }
+          });
+        }
       }
     },
     async checkUser() {
@@ -411,8 +402,9 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            this.error.username = "";
-            this.isVerified = true;
+            console.log(this.error);
+            this.isIDVerified = true;
+            // this.error.username = "";
             this.$swal("User id available");
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
@@ -461,7 +453,7 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
-              this.verificationStatus = 'Resend verification code'
+              this.verificationStatus = "Resend verification code";
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             return this.$swal(res.response.data.message);
@@ -483,6 +475,7 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
+            this.isOtpVerified = true;
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
