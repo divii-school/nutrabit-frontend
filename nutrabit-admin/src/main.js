@@ -108,6 +108,24 @@ axios.defaults.headers = {
     token: localStorage.getItem('token'),
     'Accept-Language':'en'
 };
+// Token expire redirection
+axios.interceptors.response.use((response) => {
+    return response
+}, async function (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 403) {
+        // Toast.fire({ title: "Session Expired" });
+        alert('Session Expired')
+        window.location.href = '/login';
+        localStorage.clear();
+        return axios(originalRequest);
+
+    }
+    return Promise.reject(error);
+});
+
+
+
 localStorage.removeItem("client")
 const app = createApp({
     render() {
