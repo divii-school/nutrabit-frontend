@@ -68,7 +68,7 @@
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul class="smilar-product-img" v-if="item.similar_image_path">
               <li v-for="(items, index) of item.similar_image_path" :key="index">
-                <img v-if="item" :src="imgBaseUrl + items" alt />
+                <img v-if="items" :src="imgBaseUrl + items" alt />
                 <img v-else src="../../assets/images/similar_place.png" alt />
               </li>
             </ul>

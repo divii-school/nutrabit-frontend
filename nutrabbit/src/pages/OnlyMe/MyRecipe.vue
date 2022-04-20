@@ -133,7 +133,7 @@ export default {
       //console.log(res)
         if (res.status == 200) {
           this.myChoiceData = res.data.recipeData;
-          console.table(res.data.recipeData)
+          //console.table(res.data.recipeData)
         } else {
 
           this.$swal(res.message, "error");
@@ -151,10 +151,12 @@ export default {
     .then((res)=>{
         if (res.status == 200) {
           this.$swal(`Delete ${res.message}`)
-          setTimeout(()=>{
-            window.location.reload()
-          }, 2500)
-          console.log(res)
+          // setTimeout(()=>{
+          //   window.location.reload()
+          // }, 2500)
+          // console.log(res)
+          this.allRecommendedData();
+          this.allChoiceData();
         } else {
 
           this.$swal(res.message, "error");
