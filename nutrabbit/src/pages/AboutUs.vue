@@ -20,7 +20,7 @@
                 <div class="row-type type-1">
                   <div class="num">1</div>
                   <figure><img src="~@/assets/images/about1.png"></figure>
-                  <div class="text-box"><p>I don't know how to start!</p></div>
+                  <div class="text-box"><p>I don't know <span class="green-text">how to start!</span></p></div>
                 </div>
                 <div class="row-type">
                   <div class="num">2</div>
