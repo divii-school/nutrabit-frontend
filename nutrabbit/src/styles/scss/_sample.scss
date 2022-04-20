@@ -177,6 +177,16 @@
             &:first-child{
                 margin-top: 0;
             }
+            p{
+                span{
+                    &.green-text{
+                        color: $green-68;
+                    }
+                    &.black-text{
+                        font-weight: 700;
+                    }
+                }
+            }
             &.type-1{
                 .text-box{
                     p{
@@ -184,11 +194,6 @@
                         font-size: 26px;
                         line-height: 130%;
                         color: $grey-4C;
-                        span{
-                            &.green-text{
-                                color: $green-68;
-                            }
-                        }
                         @media screen and (max-width: 900px) {
                             font-size: 24px;
                             line-height: 150%;
@@ -286,6 +291,16 @@
             }
         }
     }
+    // &.with-bold-text{
+    //     p{
+    //         display: block;
+    //         &.big-text{
+    //             line-height: 65px;
+    //             font-weight: 700;
+    //             font-size: 50px;
+    //         }
+    //     }
+    // }
 }
 
 .about-servcie{

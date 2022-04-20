@@ -27,7 +27,7 @@
                 <div class="num">2</div>
                 <figure><img src="~@/assets/images/about2.png"></figure>
                 <div class="text-box">
-                  <p>I need professional support because there are too many prohibitions
+                  <p><span class="black-text">I need</span> <span class="green-text">professional support</span> because there are too many prohibitions
                     like pharmaceuticals, complicated approval process from public organization!</p>
                 </div>
               </div>
