@@ -112,6 +112,8 @@ export default {
       newTime: "",
       verify_status: "",
       localUserData: "",
+      userId:'',
+      isVerify:0
     };
   },
   created() {
@@ -138,10 +140,7 @@ export default {
       if (!this.checkError()) {
         return;
       } else {
-        if (
-          this.localUserData != null &&
-          this.localUserData.verifiy_status == 1
-        ) {
+        if (this.isVerify==1) {
           this.$router.push("/change-password");
         } else {
           this.$swal("Please verify OTP");
@@ -218,6 +217,7 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
+            this.isVerify=1;
             this.error.emailOTP = "";
             localStorage.setItem(
               "forgetUserData",
