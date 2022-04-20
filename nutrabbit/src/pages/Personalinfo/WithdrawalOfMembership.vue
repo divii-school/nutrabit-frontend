@@ -20,7 +20,7 @@
               <span class="error-msg">{{ error.reason }}</span>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2" @click="businessWithdraw">Confirm</button>
+            <button class="btn-primary grenn-btn2" @click="modalWithdraw">Confirm</button>
           </form>
           <!-- <modal/> -->
         </div>
@@ -31,10 +31,11 @@
           <Modal 
             v-show="isModalVisible"
             @close="closeModal"
+            @confirm = "confirm"
             bodytext1="Are you sure you want to close this account?"
             btnText1="cancellation"
             btnText2="Confirm"
-            link2 = '/'
+            link = ''
           />
         </div>
 
@@ -82,10 +83,15 @@ export default {
       }
     },
 
-    async businessWithdraw() {
+    modalWithdraw(){
       if (this.reason == "") {
         this.error.reason = "Please enter the reason";
       } else {
+        this.isModalVisible =  true;
+      }
+    },
+
+    async businessWithdraw() {
         this.personalBusinessService
           .businessWithdraw(
             this.reason
@@ -93,25 +99,24 @@ export default {
           .then((res) => {
             console.log(res);
             if (res.data.status == 200) {
-              console.log(res.data.status);
-              this.isModalVisible =  true;
+              console.log("res.data.status",res.data.status);
             }
           });
-      }
     },
 
 
     closeModal() {
       this.isModalVisible = false;
-      // this.$router.push(" ");
-      this.confirmModal = true;
-      // window.location.href = "";
     },
 
     closeModal1() {
-      // this.$router.push("/");
       this.confirmModal = false;
     },
+
+    confirm(){
+      this.confirmModal = true;
+      this.businessWithdraw();
+    }
 
   },
  

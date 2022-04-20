@@ -252,7 +252,6 @@ export default {
         password: this.password,
         confirmPassword: this.confirmPassword,
         email: this.email,
-        // emailOTP: this.emailOTP,
         phoneNumber: this.phoneNumber,
         address: this.address,
       };
@@ -276,7 +275,6 @@ export default {
             this.address
           )
           .then((res) => {
-            console.log(res);
             if (res.data.status == 200) {
               console.log(res.data.status);
               this.openmodal();

@@ -14,15 +14,16 @@ export default class PersonalInfoService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async updatePersonalInfo(userID, name, password, confirmPassword, phoneNumber, address, checkName) {
+  async updatePersonalInfo(userID, name, password, confirmPassword, email, phoneNumber, address, checkboxName) {
     return await axios.post(`/profile/personal_information/update`, {
       userID: userID,
       name: name,
       password:password,
       confirm_password:confirmPassword,
+      email:email,
       mobile: phoneNumber,
       address: address,
-      distribution_medium: checkName,   
+      distribution_medium: checkboxName,   
     }).then((res) => res);
   }
 

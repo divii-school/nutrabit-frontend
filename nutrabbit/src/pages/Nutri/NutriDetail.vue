@@ -11,15 +11,13 @@
             v-for="(items, index) of nutriDetails"
             :key="index"
           >
-            <swiper-slide
-              v-for="(item, index) of items.product_sub_image_path"
-              :key="index"
-            >
-              <img
-                :src="imgBaseUrl + item"
-                alt
-              />
-            </swiper-slide>
+              <swiper-slide
+                v-for="(item, index) of items.product_sub_image_path"
+                :key="index"
+              >
+                <img v-if="item" :src="imgBaseUrl + item" alt />
+                <img v-else src="../../assets/images/aloe-img-4.png" alt="zzzzz" />
+              </swiper-slide>
           </swiper>
           <swiper
             :spaceBetween="10"
@@ -36,11 +34,10 @@
               v-for="(item, index) of items.product_sub_image_path"
               :key="index"
             >
-              <img
-                :src="imgBaseUrl + item"
-                alt
-              />
+              <img v-if="item" :src="imgBaseUrl + item" alt />
+              <img v-else src="../../assets/images/aloe-img-4.png" alt="zzzzz" />
             </swiper-slide>
+
           </swiper>
         </div>
         <div

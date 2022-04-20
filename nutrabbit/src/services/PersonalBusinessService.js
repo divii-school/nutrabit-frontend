@@ -14,7 +14,7 @@ export default class PersonalBusinessService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async updateBusinessInfo(userID, business_number, business_name, department, contactPerson, password, confirmPassword, phoneNumber, address) {
+  async updateBusinessInfo(userID, business_number, business_name, department, contactPerson, password, confirmPassword, email, phoneNumber, address) {
     return await axios.post(`/profile/personal_information/update`, {
       userID: userID,
       business_number: business_number,
@@ -23,6 +23,7 @@ export default class PersonalBusinessService {
       name: contactPerson,
       password: password,
       confirm_password:confirmPassword,
+      email:email,
       mobile: phoneNumber,
       address: address,  
     }).then((res) => res);

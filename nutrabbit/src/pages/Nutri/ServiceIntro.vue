@@ -31,8 +31,8 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">nutri 3.3 blending product</h4>
             <div class="nutri-dom-product blendedPro">
-              <ul v-for="(item, index) of nutriList" :key="index">
-                <li>
+              <ul >
+                <li v-for="(item, index) of nutriList" :key="index">
                   <div class="nutri-product-item">
                     <div @click="this.$router.push(`/nutri-detail/${item.id}`)">
                       <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
@@ -46,6 +46,47 @@
                   </div>
                 </li>
               </ul>
+              <!-- <ul >
+                <li>
+                  <div class="nutri-product-item">
+                    <div >
+                     
+                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
+                    </div>
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                      <span>nutri 3.3</span>
+                    </div>
+                    <p >HI</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="nutri-product-item">
+                    <div >
+                      
+                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
+                    </div>
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                      <span>nutri 3.3</span>
+                    </div>
+                    <p >HI</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="nutri-product-item">
+                    <div >
+                      
+                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
+                    </div>
+                    <div class="tag-wrap">
+                      <span>nutri 3.3</span>
+                      <span>nutri 3.3</span>
+                    </div>
+                    <p >HI</p>
+                  </div>
+                </li>
+              </ul> -->
             </div>
           </div>
         </div>

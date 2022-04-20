@@ -42,7 +42,7 @@
 <script>
 export default {
   name: "Modal",
-  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link","link2"],
+  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link"],
   methods: {
     close() {
       this.$emit("close");

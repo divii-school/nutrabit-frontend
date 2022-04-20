@@ -5,7 +5,7 @@ const personalBusinessValidation = (data) => {
 
   const { business_number, business_name, department, contactPerson, password, 
 
-    confirmPassword, phoneNumber, address, reason, withdraw_type } = data;
+    confirmPassword, phoneNumber, address } = data;
 
   // if (account_type == 'business') {
     if (validator.isEmpty(business_number)) {
@@ -40,11 +40,11 @@ const personalBusinessValidation = (data) => {
         errors.address = "Please enter your address";
     }
 
-    if (withdraw_type == "bussiness") {
-        if (validator.isEmpty(reason)) {
-            errors.reason = "Please enter your reason";
-        }
-    }
+    // if (withdraw_type == "bussiness") {
+    //     if (validator.isEmpty(reason)) {
+    //         errors.reason = "Please enter your reason";
+    //     }
+    // }
 
   return {
     isInvalid: Object.keys(errors).length > 0,
