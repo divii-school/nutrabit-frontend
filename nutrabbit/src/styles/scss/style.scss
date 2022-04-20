@@ -136,7 +136,7 @@ textarea {
   line-height: 17px !important;
   color: $grey-82 !important;
   font-weight: normal !important;
-  margin: -16px 0 0 0 !important;
+  margin: 0 0 0 0 !important;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -193,6 +193,10 @@ textarea {
         display: block;
       }
     }
+  }
+
+  &.custom-check2{
+    margin-top: -16px !important;
   }
 }
 
