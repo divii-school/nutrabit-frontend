@@ -79,7 +79,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EnterId')"
                       v-model="username"
-                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
@@ -345,7 +344,8 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus : 'Send verification code'
+      verificationStatus : 'Send verification code',
+      isVerified : false,
     };
   },
   created() {
@@ -379,22 +379,27 @@ export default {
       if (!this.checkError()) {
         return;
       } else {
-        this.commonService
-          .individalRegistration(
-            this.name,
-            this.username,
-            this.password,
-            this.email,
-            this.phoneNumber,
-            this.address,
-            this.detsilAddress,
-            this.checkName.join(",")
-          )
-          .then((res) => {
-            if (res.data.status == 200) {
-              this.$router.push("member-registration-completed");
-            }
-          });
+        if(!this.isVerified){
+          this.$swal('Have to check username availability')
+        }
+
+        this.$swal('Registration Done')
+        // this.commonService
+        //   .individalRegistration(
+        //     this.name,
+        //     this.username,
+        //     this.password,
+        //     this.email,
+        //     this.phoneNumber,
+        //     this.address,
+        //     this.detsilAddress,
+        //     this.checkName.join(",")
+        //   )
+        //   .then((res) => {
+        //     if (res.data.status == 200) {
+        //       this.$router.push("member-registration-completed");
+        //     }
+        //   });
       }
     },
     async checkUser() {
@@ -407,6 +412,7 @@ export default {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.error.username = "";
+            this.isVerified = true;
             this.$swal("User id available");
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
@@ -414,6 +420,7 @@ export default {
         });
       }
     },
+
     async sendOtp() {
       if (!validator.isEmail(this.email)) {
         this.error.email = "Enter a valid email address";
