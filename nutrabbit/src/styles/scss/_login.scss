@@ -181,8 +181,8 @@
                         &:first-child {
                             margin-top: 0;
                         }
-                        &.active, &:focus {
-                            border: 3px solid $green-68;
+                        &:hover {
+                            border: 1px solid $green-68;
                         }
                         .list-heading {
                             font-size: 26px;

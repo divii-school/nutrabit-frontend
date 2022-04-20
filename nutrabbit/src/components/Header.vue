@@ -136,7 +136,7 @@
           <li
             v-for="(item, index) of rightMenuItem"
             :key="index"
-            @click="activeSubmenu = activeSubmenu == index ? '' : index"
+            @click="testy(index)"
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">
@@ -165,7 +165,7 @@
                   >
                     <router-link
                       :to="personalInfoRouterLink"
-                      @click="active = false"
+                      @click="goPersonalInfoMob"
                       >Change personal information</router-link
                     >
                     <router-link to @click="logOut()">Log out</router-link>
@@ -363,6 +363,12 @@ export default {
     this.changePersonalInfo();
   },
   methods: {
+    testy(index) {
+      this.activeSubmenu = this.activeSubmenu == index ? "" : index;
+      if(index != 0){
+        this.activeLogin = false;
+      }
+    },
     changePersonalInfo() {
       if (localStorage.token) {
         if (localStorage.getItem("userType") == "business_member") {
@@ -388,24 +394,23 @@ export default {
       this.showMobSearch = false;
       this.activeSearch = false;
     },
-    changeLanguage() {},
     // logout
     logOut() {
       this.isModalVisible = true;
-      // if (this.logedInUserDetails) {
-      //   localStorage.clear();
-      //  window.location = "/login";
-      // }
     },
-
     logOutConfirm() {
       if (this.logedInUserDetails) {
         localStorage.clear();
-        window.location = "/login";
+        this.$router.push("/login");
+        this.active = false;
       }
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    goPersonalInfoMob() {
+      this.active = false;
+      this.activeLogin = false;
     },
     // side menu restriction before login
     onClickLink(link) {
@@ -435,7 +440,6 @@ export default {
         });
       }
     },
-
     // search API
     getIp() {
       fetch("https://api.ipify.org?format=json")
