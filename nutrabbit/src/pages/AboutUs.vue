@@ -18,18 +18,16 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">Recommend to these people!</h4>
             <div class="recom-section">
-              <div class="row-type type-1">
-                <div class="num">1</div>
-                <figure><img src="~@/assets/images/about1.png"></figure>
-                <div class="text-box">
-                  <p>I don’t know how to start!</p>
+             <div class="row-type type-1">
+                  <div class="num">1</div>
+                  <figure><img src="~@/assets/images/about1.png"></figure>
+                  <div class="text-box"><p>I don't know <span class="green-text">how to start!</span></p></div>
                 </div>
-              </div>
               <div class="row-type">
                 <div class="num">2</div>
                 <figure><img src="~@/assets/images/about2.png"></figure>
                 <div class="text-box">
-                  <p>I need professional support because there are too many prohibitions
+                  <p><span class="black-text">I need</span> <span class="green-text">professional support</span> because there are too many prohibitions
                     like pharmaceuticals, complicated approval process from public organization!</p>
                 </div>
               </div>
