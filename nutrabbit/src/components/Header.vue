@@ -398,12 +398,12 @@ export default {
       // }
     },
 
-  logOutConfirm(){
+    logOutConfirm() {
       if (this.logedInUserDetails) {
-         localStorage.clear();
-         window.location = "/login";
-       }
-  },
+        localStorage.clear();
+        window.location = "/login";
+      }
+    },
     closeModal() {
       this.isModalVisible = false;
     },
@@ -442,6 +442,7 @@ export default {
         .then((res) => res.json())
         .then(({ ip }) => {
           this.common.state.myIP = ip;
+          console.log(ip)
         });
     },
     // search api (main)
