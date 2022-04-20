@@ -11,12 +11,8 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -25,12 +21,8 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="password"
-                    :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password"
-                  />
+                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password" />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -50,8 +42,7 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link
-                    >
+                      {{ $t("common.QuickLinks.FindID") }}</router-link>
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -71,30 +62,38 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
+            <!-- kakao login for App -->
+            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
+              <i class="icon-chat-black"></i>
+              {{ $t("common.QuickLinks.CacaoLogin") }}
+            </button>
+            <!-- END kakao login for App -->
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button id="naver_Login" class="btn-primary with-icon green-btn">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
-            <button
+            <!-- Naver login for App -->
+            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
+              <i class="icon-naver"></i>
+              {{ $t("common.QuickLinks.NaverLogin") }}
+            </button>
+            <!-- ENd Naver login for App -->
+
+            <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
               id="naver_id_login"
               @click="naverLogin"
             >
-              Naver
-              Login
-            </button>
+              Naver Login
+            </button> -->
           </div>
         </div>
       </div>
@@ -122,6 +121,7 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
+      isPlatMobile: localStorage.getItem('isMobile') === 'true',
     };
   },
   setup() {
@@ -137,18 +137,26 @@ export default {
       const rememberUserPasswordCookie = this.cookies.get(
         "rememberUserPassword"
       );
-
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
         (this.email = rememberUserEmailCookie),
-          (this.password = rememberUserEmailCookie);
+          (this.password = rememberUserPasswordCookie);
       }
     }
     // this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
+
+    // web view get message
+    window["sendKakaoLoginData"] = (res) => {
+      this.sendKakoAccessToken(res);
+    };
+    window["sendNaverLoginData"] = (res) => {
+      this.sendNaverAccessToken(res);
+    };
+    // end web view get message
   },
   methods: {
     onSubmit() {
@@ -184,8 +192,30 @@ export default {
         });
       }
     },
-
-
+    sendAccessToken(res) {
+      if (res) {
+        // this.testres = res;
+        this.checkMbfblogin(res);
+      } else {
+        return false
+      }
+    },
+    sendKakoAccessToken(token) {
+      let ftoken = token;
+      console.log('ftoken:--', ftoken);
+      alert(ftoken);
+    },
+    sendNaverAccessToken(token) {
+      let ftoken = token;
+      console.log('ftoken:--', ftoken);
+      alert(ftoken);
+    },
+    mbKakaoLogin() {
+      window.parent.postMessage('kakaoLoginClicked', '*');
+    },
+    mbNaverLogin() {
+      window.parent.postMessage('naverLoginClicked', '*');
+    },
 
     // naver login
     // naverLogin() {
@@ -197,8 +227,6 @@ export default {
     //   // // naver_id_login.setPopup();
     //   // naver_id_login.init_naver_id_login();
     //   // // this.naverLoginCallback();
-
-
 
     //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
     //   var state = naverLogin.getUniqState();
@@ -212,14 +240,6 @@ export default {
     //     var btnNaverLogin = document.getElementById("naver_Login");
     //     btnNaverLogin.click();
     //   });
-
-
-
-
-
-
-
-
 
     // },
 
@@ -239,10 +259,9 @@ export default {
     //   alert(naver_id_login.getProfileData('age'));
     // },
 
-
     // kakao
     loginWithKakao() {
-      window.Kakao.init('5d14c5e0ea3ead3c0683355cba9eda57');
+      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -253,33 +272,25 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj)
+          console.log(authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
           Kakao.API.request({
-            url: '/v2/user/me',
+            url: "/v2/user/me",
             success: function (res) {
-              console.log('res-', res);
+              console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-            }
+            },
           });
           this.loader.hide();
         },
         fail: function (err) {
-          console.log(err)
+          console.log(err);
         },
-      })
-    }
-
-
-
-
-
-
-
-
+      });
+    },
   },
 };
 </script>

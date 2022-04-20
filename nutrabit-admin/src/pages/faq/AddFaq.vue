@@ -10,8 +10,9 @@
                             <label for="title2">{{ $t('Faq.list.category') }}</label>
 
 
-                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionLabel="name_ko"
+                            <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionLabel="name_ko"
                                 optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                                <div class="text-red">{{ error.category_id }}</div>
 
                         </div>
                     </div>
@@ -187,7 +188,7 @@ export default {
 
         addFaq() {
             let vcheckData = {
-                category_id: this.category_id,
+                category_id: this.category_id.toString(),
                 title_ko: this.title_ko,
                 title_en: this.title_en,
                 description_ko: this.description_ko,

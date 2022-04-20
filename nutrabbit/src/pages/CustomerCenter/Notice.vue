@@ -9,7 +9,7 @@
           <p class="title">title</p>
           <p class="date">Published date</p>
         </div>
-        <div class="notice-list bBtm-0">
+        <div class="notice-list bBtm-0 notice-list-main">
           <ul>
             <li v-for="(item, index) of importantNoticeList" :key="index">
               <div

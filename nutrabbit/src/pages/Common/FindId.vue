@@ -97,6 +97,7 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
+      isConfirmOTP:0
     };
   },
   created() {
@@ -122,7 +123,14 @@ export default {
         return;
       }
       else {
-        this.$router.push("/login");
+        //console.log(this.otpValidate)
+        if(this.isConfirmOTP==1) {
+          this.$router.push("/login");
+        }
+        else {
+          this.$swal("Please verify OTP");
+        }
+        
       }
     },
     async userFindId() {
@@ -140,6 +148,7 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP="";
             this.$swal("OTP has been sent to your email");
             this.error.email = "";
 
@@ -147,7 +156,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 130;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -191,6 +200,7 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
+            this.isConfirmOTP=1;
             this.error.emailOTP = "";
             return true;
           }
