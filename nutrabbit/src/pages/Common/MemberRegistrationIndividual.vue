@@ -363,15 +363,15 @@ export default {
     },
     async individalRegistration() {
       if (!this.checkError()) {
-        if (this.isIDVerified == false) {
-          this.$swal("Have to check user ID availability");
-          return;
-        } else if (this.isOtpVerified == false) {
-          this.$swal("Have to verify the otp for email");
-          return;
-        }
         return;
       } else {
+
+        if (this.isIDVerified == false) {
+          this.$swal("Have to check user ID availability");
+        } else if (this.isOtpVerified == false) {
+          this.$swal("Have to verify the otp for email");
+        }
+        else{
         console.log("Registration Complete");
 
         this.commonService
@@ -390,6 +390,7 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
+        }
       }
     },
     async checkUser() {
@@ -402,8 +403,8 @@ export default {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             console.log(this.error);
-            this.error.username = "";
             this.isIDVerified = true;
+            // this.error.username = "";
             this.$swal("User id available");
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
