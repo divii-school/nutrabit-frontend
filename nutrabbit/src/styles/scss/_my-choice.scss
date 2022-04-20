@@ -453,6 +453,9 @@
                             }
                             .radio-wrap{
                                 @include flex-align-center;
+                                @media screen and (max-width: 640px){
+                                    width: 100%;
+                                }
                                 .custom-radio{
                                     @media screen and (max-width: 640px){
                                        padding-left: 37px;
@@ -473,13 +476,14 @@
                             }
                             .material-details{
                                 @media screen and (max-width: 640px){
-                                    margin: 20px 0 0 37px;
+                                    margin: 20px 0 0 0px;
                                 }
                                 h2{
                                     font-weight: 600;
                                     font-size: 22px;
                                     line-height: 26px;
-                                    color: $black-18;
+                                    color: $black-18; 
+                                    cursor: pointer;
                                     @media screen and (max-width: 640px){
                                         font-size: 20px;
                                         line-height: 30px;
@@ -487,6 +491,15 @@
                                 }
                                 .description{
                                     margin-top: 15px;
+                                    table{
+                                        th{
+                                            width: 150px;
+                                        }
+                                        td,th{
+                                            padding: 10px 0px;
+                                            vertical-align: top;
+                                        }
+                                    }
                                     p{
                                         font-size: 18px;
                                         line-height: 23px;
