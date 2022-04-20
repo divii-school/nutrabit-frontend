@@ -189,7 +189,7 @@ export default {
             this.rwaMaterialData = res.data[0];
             console.log(this.rwaMaterialData)
             this.additionalRequest = res.data[0].additional_request;
-            this.title = res.data[0].title;
+            this.title = res.data[0].name_ko;
             this.serviceNum = res.data[0].service_type;
             if (this.serviceNum == 1) {
               this.serviceType = ["Sample Application"];

@@ -15,7 +15,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id)">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItem(product_id, 'recommended')">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -39,7 +39,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id)">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItem(product_id, 'choice')">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -119,7 +119,7 @@ export default {
       
         if (res.status == 200) {
           this.recommendedBlendingData = res.data.recipeData;
-          //console.table(res.data.recipeData)
+          console.table(res.data.recipeData)
         } else {
 
           this.$swal(res.data.message, "error");
@@ -133,7 +133,7 @@ export default {
       //console.log(res)
         if (res.status == 200) {
           this.myChoiceData = res.data.recipeData;
-          //console.table(res.data.recipeData)
+          console.table(res.data.recipeData)
         } else {
 
           this.$swal(res.message, "error");
@@ -142,8 +142,9 @@ export default {
     },
    
 
-   deleteRecipeItem(id){
+   deleteRecipeItem(id, type){
      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return
      }
      //console.log(`delete item product id : ${id}`)
@@ -155,8 +156,15 @@ export default {
           //   window.location.reload()
           // }, 2500)
           // console.log(res)
-          this.allRecommendedData();
-          this.allChoiceData();
+          if(type == 'recommended'){
+             this.allRecommendedData();
+          }
+
+          if(type == 'choice'){
+             this.allChoiceData();
+          }
+          
+          
         } else {
 
           this.$swal(res.message, "error");
@@ -166,6 +174,7 @@ export default {
 
    toNextRecommended(){
      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return;
      }
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'recommended-blending'}})
