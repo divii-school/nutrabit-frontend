@@ -919,11 +919,9 @@ textarea {
 
 .blendedPro{
   ul{
-    @media screen and (max-width: 1024px) {
-      flex-wrap: wrap;
-     }
+    flex-wrap: wrap !important;
     li{
-      width: 33.33%;
+      width: 31.33%;
       padding: 0 1%;
       @media screen and (max-width: 1024px) {
        width: 47%;
