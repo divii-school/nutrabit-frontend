@@ -376,30 +376,30 @@ export default {
       }
     },
     async individalRegistration() {
+      if(this.isVerified == false){
+          this.$swal('Have to check user ID availability')
+        }
       if (!this.checkError()) {
         return;
       } else {
-        if(!this.isVerified){
-          this.$swal('Have to check username availability')
-        }
-
-        this.$swal('Registration Done')
-        this.commonService
-          .individalRegistration(
-            this.name,
-            this.username,
-            this.password,
-            this.email,
-            this.phoneNumber,
-            this.address,
-            this.detsilAddress,
-            this.checkName.join(",")
-          )
-          .then((res) => {
-            if (res.data.status == 200) {
-              this.$router.push("member-registration-completed");
-            }
-          });
+        
+        
+        // this.commonService
+        //   .individalRegistration(
+        //     this.name,
+        //     this.username,
+        //     this.password,
+        //     this.email,
+        //     this.phoneNumber,
+        //     this.address,
+        //     this.detsilAddress,
+        //     this.checkName.join(",")
+        //   )
+        //   .then((res) => {
+        //     if (res.data.status == 200) {
+        //       this.$router.push("member-registration-completed");
+        //     }
+        //   });
       }
     },
     async checkUser() {

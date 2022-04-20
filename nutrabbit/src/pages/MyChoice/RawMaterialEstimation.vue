@@ -75,7 +75,7 @@
               <div class="product-list-wrap">
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-check" for="qoute">
+                    <label class="custom-check custom-check2" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
                       <span class="checkmark" for="qoute"></span>
                     </label>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-check" for="sample">
+                    <label class="custom-check custom-check2" for="sample">
                       <input type="checkbox" id="sample" value="1" v-model="servicetype" />
                       <span class="checkmark" for="sample"></span>
                     </label>
