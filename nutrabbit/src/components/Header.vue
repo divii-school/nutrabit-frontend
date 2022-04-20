@@ -145,7 +145,7 @@
                     to
                     :class="token ? 'login-item' : ''"
                     @click="activeLogin = !activeLogin"
-                    >{{ userName ? userName : localuser }}
+                    >{{ userName }}
                   </router-link>
                   <i class="icon-leftArw" @click="goChangePersonalInfo"></i>
                 </div>
@@ -155,7 +155,7 @@
                       to
                       :class="token ? 'login-item' : ''"
                       @click="activeLogin = !activeLogin"
-                      >{{ userName ? userName : localuser }}
+                      >{{ userName }}
                     </router-link>
                     <i class="icon-leftArw"></i>
                   </div>
@@ -403,6 +403,8 @@ export default {
         localStorage.clear();
         this.$router.push("/login");
         this.active = false;
+        this.activeLogin =! this.activeLogin;
+        this.token = false
       }
     },
     closeModal() {
