@@ -57,6 +57,9 @@
                     transform: none;
                     display: flex;
                     flex-direction: column;
+                    @media screen and (max-width: 768px) {
+                        flex-direction: row;
+                    }
                     .swiper-slide {
                         height: 80px;
                         width: 81px !important;
