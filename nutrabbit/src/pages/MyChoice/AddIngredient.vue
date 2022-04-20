@@ -128,9 +128,7 @@ export default {
             //console.log(res.data);
             if (res.status = 200) {
               this.$swal("Successfully Deleted");
-              setTimeout(function () {
-                window.location.reload();
-              }, 2000);
+              this.storage_box_list();
 
             } else {
               this.$swal(res.data.message, "error");
