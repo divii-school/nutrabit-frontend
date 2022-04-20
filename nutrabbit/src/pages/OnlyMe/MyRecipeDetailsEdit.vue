@@ -51,6 +51,7 @@
                 <input
                   type="text"
                   name=""
+                  disabled
                   placeholder="My own recipe made with guar gum hydrolyzate"
                   v-model="title"
                 />
@@ -217,7 +218,7 @@ export default {
           }
           this.rwaMaterialData = res.data
           this.add_req = res.data[0].additional_request;
-          this.title = res.data[0].title;
+          this.title = res.data[0].name_ko;
 
          if(res.data[0].service_type == 1){
            this.isSample = true;

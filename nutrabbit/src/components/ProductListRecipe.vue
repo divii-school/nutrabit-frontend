@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: "ProductList",
+  name: "ProductListRecipe",
   props:["item"],
   data() {
     return {
