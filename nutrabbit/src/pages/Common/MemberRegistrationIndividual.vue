@@ -345,7 +345,8 @@ export default {
       storeSetInterval: null,
       newTime: "",
       verificationStatus : 'Send verification code',
-      isVerified : false,
+      isIDVerified : false,
+      isOtpVerified : false,
     };
   },
   created() {
@@ -376,30 +377,38 @@ export default {
       }
     },
     async individalRegistration() {
-      if(this.isVerified == false){
+      if(this.isIDVerified == false){
           this.$swal('Have to check user ID availability')
+          return;
         }
-      if (!this.checkError()) {
+
+        else if(this.isOtpVerified == false){
+          this.$swal('Have to verify the otp for email')
+          return;
+        }
+
+      else if (!this.checkError()) {
         return;
       } else {
         
+        console.log('Registration Complete')
         
-        // this.commonService
-        //   .individalRegistration(
-        //     this.name,
-        //     this.username,
-        //     this.password,
-        //     this.email,
-        //     this.phoneNumber,
-        //     this.address,
-        //     this.detsilAddress,
-        //     this.checkName.join(",")
-        //   )
-        //   .then((res) => {
-        //     if (res.data.status == 200) {
-        //       this.$router.push("member-registration-completed");
-        //     }
-        //   });
+        this.commonService
+          .individalRegistration(
+            this.name,
+            this.username,
+            this.password,
+            this.email,
+            this.phoneNumber,
+            this.address,
+            this.detsilAddress,
+            this.checkName.join(",")
+          )
+          .then((res) => {
+            if (res.data.status == 200) {
+              this.$router.push("member-registration-completed");
+            }
+          });
       }
     },
     async checkUser() {
@@ -411,8 +420,9 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            this.error.username = "";
-            this.isVerified = true;
+            console.log(this.error)
+            //this.error.username = "";
+            this.isIDVerified = true;
             this.$swal("User id available");
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
@@ -483,7 +493,8 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            this.error.emailOTP = "";
+            //this.error.emailOTP = "";
+            this.isOtpVerified = true;
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             this.error.emailOTP = "wrong otp";
