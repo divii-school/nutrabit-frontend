@@ -5,8 +5,7 @@
         <div class="container-medium">
           <div class="nutri-choice theme-green">
             <span class="my-choice-title-top">Nutri 3.3</span>
-            <p class="title text-center">If you want to have your own health functional food brand easily and
-              conveniently</p>
+            <p class="title text-center">If you want to have your own health functional food brand easily and conveniently</p>
             <h2 class="nutri-choice-heading text-center">
               nutri 3.3
             </h2>
@@ -23,94 +22,94 @@
                   <figure><img src="~@/assets/images/about1.png"></figure>
                   <div class="text-box"><p>I don't know <span class="green-text">how to start!</span></p></div>
                 </div>
-              </div>
-              <div class="row-type">
-                <div class="num">2</div>
-                <figure><img src="~@/assets/images/about2.png"></figure>
-                <div class="text-box">
-                  <p>I need professional support because there are too many prohibitions
-                    like pharmaceuticals, complicated approval process from public organization!</p>
+                <div class="row-type">
+                  <div class="num">2</div>
+                  <figure><img src="~@/assets/images/about2.png"></figure>
+                  <div class="text-box">
+                    <p>Complex FDA approval process, as there are many prohibitions like drugs, 
+                      professional manpower is a must!</p>
+                  </div>
                 </div>
-              </div>
-              <div class="row-type">
-                <div class="num">3</div>
-                <figure><img src="~@/assets/images/about3.png"></figure>
-                <div class="text-box">
-                  <p>I’m concerned about
-                    quantity and cost.</p>
+                <div class="row-type">
+                  <div class="num">3</div>
+                  <figure><img src="~@/assets/images/about3.png"></figure>
+                  <div class="text-box"><p>Minimum quantity and high cost I'm worried.</p></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="green-belt">
+          <div class="green-belt">
+            <div class="container-medium">
+              <h2>Nutri3.3 provides A-Z full service in the manufacturing process. <br>
+It is a One Step Nutrition Platform.</h2>
+            </div>
+          </div>
           <div class="container-medium">
-            <h2> Nutri3.3 provides A-Z full service in the manufacturing process.<br>
-              It is a One Step Nutrition Platform.</h2>
+            <div class="nutri-choice theme-green">
+              <span class="my-choice-title-top">Nutri 3.3</span>
+              <p class="title text-center">Dry manufacturing navigation in the palm of your hand</p>
+              <h2 class="nutri-choice-heading text-center">
+                nutri 3.3 service
+              </h2>
+            </div>
+            <div class="about-servcie">
+              <div class="row-type">
+                <div class="num">
+                  1
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  2
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  3
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  4
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+              <div class="row-type">
+                <div class="num">
+                  5
+                </div>
+                <div class="desc">
+                  <h3>nutri3.3 blending</h3>
+                  <p>nutri3.3 blending provides ready-to-market products.
+From product concept to packaging and branding.
+Seize the opportunity to enjoy all the services from A to Z at your fingertips.</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="container-medium">
-          <div class="nutri-choice theme-green">
-            <span class="my-choice-title-top">Nutri 3.3</span>
-            <p class="title text-center">Easy & handy dry manufacturing navigation</p>
-            <h2 class="nutri-choice-heading text-center">
-              nutri 3.3 service
-            </h2>
-          </div>
-          <div class="about-servcie">
-            <div class="row-type">
-              <div class="num">
-                1
-              </div>
-              <div class="desc">
-                <h3>nutri3.3 blending</h3>
-                <p>nutri3.3 blending provides ready-to-market products.
-                  Seize the opportunity to easily enjoy all services from A to Z from product concept, package, and
-                  branding.</p>
-              </div>
-            </div>
-            <div class="row-type">
-              <div class="num">
-                2
-              </div>
-              <div class="desc">
-                <h3>Recommended blending</h3>
-                <p>Recommended blending is a semi-finished product that already has effective raw materials and
-                  formulations, and is a recommended recipe for those who have difficulty choosing raw materials.</p>
-              </div>
-            </div>
-            <div class="row-type">
-              <div class="num">
-                3
-              </div>
-              <div class="desc">
-                <h3>my choice</h3>
-                <p>my choice is a service to make one and only one-of-a-kind products with the raw materials I
-                  personally selected.</p>
-              </div>
-            </div>
-            <div class="row-type">
-              <div class="num">
-                4
-              </div>
-              <div class="desc">
-                <h3>Free Quote Service</h3>
-                <p>Free quote service helps you to create your own health functional food that is combined as you like.
-                </p>
-              </div>
-            </div>
-            <div class="row-type">
-              <div class="num">
-                5
-              </div>
-              <div class="desc">
-                <h3>Sample making service</h3>
-                <p>Free quote service helps you to create your own health functional food that is combined as you like.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -119,7 +118,7 @@
 <script>
 import Accordion from "../components/Accordion.vue";
 export default {
-
+  
   name: "Samplemaking",
   components: {
     Accordion,
@@ -151,7 +150,7 @@ export default {
           title: "sample production",
           desc: "After product development Produce samples."
         },
-        {
+           {
           img: "../../../src/assets/images/step5.png",
           step: "Step 5",
           title: "customer delivery",
