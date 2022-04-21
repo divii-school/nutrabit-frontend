@@ -15,7 +15,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id, 'recommended')">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -39,7 +39,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id, 'choice')">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemChoice">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -55,6 +55,10 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" bodytext1="Are you sure?"
+    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
+    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
+    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
   </div>
 </template>
 
@@ -65,6 +69,8 @@ import Popper from "vue3-popper";
 import Button from '../../components/Button.vue';
 import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
+import Modal from "../../components/Modal.vue";
+
 export default {
   inject : ['common'],
   name: "ChoiceRecommendedBlendingPackageSelection",
@@ -72,6 +78,7 @@ export default {
     Popper,
     ProductListRecipe,
     Button,
+    Modal,
   },
   
   data() {
@@ -97,6 +104,8 @@ export default {
       product_id : '',
       recommendedBlendingData : [],
       myChoiceData : [],
+      isRecommendedModalVisible : false,
+      isChoiceModalVisible : false,
       
     };
   },
@@ -140,7 +149,32 @@ export default {
         }
     })
     },
-   
+    
+    deleteRecipeItemRecommended(){
+      this.isRecommendedModalVisible = true;
+      
+    },
+
+    deleteRecipeItemChoice(){
+      this.isChoiceModalVisible = true;
+      
+    },
+
+    deleteRecipeRecommendedItem(id){
+      this.deleteRecipeItem(id, 'recommended')
+    },
+
+    deleteRecipeChoiceItem(id){
+      this.deleteRecipeItem(id, 'choice')
+    },
+
+    closeModalRecommended(){
+       this.isRecommendedModalVisible = false;
+    },
+
+    closeModalChoice(){
+       this.isChoiceModalVisible = false;
+    },
 
    deleteRecipeItem(id, type){
      if(!this.product_id){

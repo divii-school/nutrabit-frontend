@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My choice</h2>
+          <h2>{{ page_header }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -183,6 +183,7 @@ export default {
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
