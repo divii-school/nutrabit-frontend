@@ -20,13 +20,13 @@
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>Choose a package</p>
+                <p>Package selection</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>final quote</p>
+                <p>Final estimate</p>
               </div>
             </li>
           </ul>
@@ -67,7 +67,7 @@
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
                   class="btn-small-solid grey">Previous</button>
                   
-                <button @click="checkPillId" class="btn-small-solid blue">next</button>
+                <button @click="checkPillId" class="btn-small-solid blue">Next</button>
               </div>
             </div>
           </div>

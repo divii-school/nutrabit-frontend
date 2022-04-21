@@ -20,13 +20,13 @@
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Choose a package</p>
+                <p>Package selection</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>final quote</p>
+                <p>Final estimate</p>
               </div>
             </li>
           </ul>
@@ -96,7 +96,7 @@
                 </div>
                 <ul>
                   <li>* Packages are excluded when requesting samples.</li>
-                  <li>* The quotation will be sent to the registered email address within 2 business days.</li>
+                  <li>* The quotation will be sent to the registered email address within 3 business days.</li>
                   <li>* Unit price may vary depending on quantity & package design.</li>
                   <li>* It may differ from the detailed estimate at the time of completion.</li>
                 </ul>
@@ -105,11 +105,11 @@
                     @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
                     class="btn-small-solid grey">Previous</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="package_temporary_add">temporary storage</button>
-                    <button class="btn-small-solid blue ml-4" @click="package_add">next</button>
+                    <button class="btn-green-outline blue" @click="package_temporary_add">Save as Draft</button>
+                    <button class="btn-small-solid blue ml-4" @click="package_add">Next</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" bodytext1="Temporary storage is complete" btnText2="confirm" link="/" />
+                    <Modal @close="closeModal" bodytext1="Save as a Draft" btnText2="confirm" link="/" />
                   </my-modal-component>
                 </div>
               </div>

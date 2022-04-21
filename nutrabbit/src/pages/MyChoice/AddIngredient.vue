@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="btn-wrap flexEnd">
-                <button @click="gotoNextPage()" class="btn-small-solid blue">next</button>
+                <button @click="gotoNextPage()" class="btn-small-solid blue">Next</button>
               </div>
             </div>
           </div>
