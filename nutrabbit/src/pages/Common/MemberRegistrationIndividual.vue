@@ -406,7 +406,7 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            console.log(this.error);
+            // console.log(this.error);
             this.isIDVerified = true;
             this.error.username = "";
             //this.$swal("User id available");
@@ -494,7 +494,7 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
+          // console.log(data);
           return (this.address = data.address);
         },
       }).open();

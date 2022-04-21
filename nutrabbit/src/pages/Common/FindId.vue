@@ -64,7 +64,8 @@
                   certification
                 </button>
               </div>
-              <span class="error-msg">{{ error.emailOTP }}</span>
+               <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
+              <span class="error-msg" v-else>{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
               Confirm
@@ -97,7 +98,8 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      isConfirmOTP:0
+      isConfirmOTP:0,
+      isOtpSuccess : '',
     };
   },
   created() {
@@ -108,6 +110,7 @@ export default {
       let credential = {
         email: this.email,
         emailOTP: this.emailOTP,
+        isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
       if (isInvalid) {
@@ -124,12 +127,8 @@ export default {
       }
       else {
         //console.log(this.otpValidate)
-        if(this.isConfirmOTP==1) {
+       
           this.$router.push("/login");
-        }
-        else {
-          this.$swal("Please verify OTP");
-        }
         
       }
     },
@@ -193,7 +192,8 @@ export default {
             btn_type: "certification",
           });
           if (verifyOtpData.data.status == 200) {
-            this.$swal("OTP verified");
+            this.isOtpSuccess = 'OTP verified';
+            // this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -205,7 +205,7 @@ export default {
             return true;
           }
         } catch (error) {
-          this.error.emailOTP = "wrong otp";
+          this.error.emailOTP = "The verification code does not match.";
           return false;
         }
       }
