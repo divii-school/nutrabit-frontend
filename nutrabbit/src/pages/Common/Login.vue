@@ -86,6 +86,13 @@
             </button>
             <!-- ENd Naver login for App -->
 
+            <!-- social login for appale -->
+
+            <button class="btn-primary with-icon black-btn">
+              <i class="icon-appale"></i>
+             Getting Started with Apple
+            </button>
+
             <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
