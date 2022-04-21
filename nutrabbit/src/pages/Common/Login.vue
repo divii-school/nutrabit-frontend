@@ -199,10 +199,9 @@ export default {
 
     // get query for appale login
     const route = useRoute();
-    if (route.query.isiPhone == true) {
+    if (route.query.isiPhone) {
       this.isAppaleId = true;
     }
-    console.log(route.query);
   },
   methods: {
     onSubmit() {
