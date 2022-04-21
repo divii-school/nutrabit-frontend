@@ -76,7 +76,7 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="" v-if="isIDVerified">{{ isUserSuccess }}</span>
+                <span class="success-msg" v-if="isIDVerified">{{ isUserSuccess }}</span>
                 <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
@@ -368,9 +368,7 @@ export default {
     async individalRegistration() {
       if (!this.checkError()) {
         return;
-      } else {
-
-      
+      } else {    
         if (this.isOtpVerified == false) {
           this.$swal("Have to verify the otp for email");
         }

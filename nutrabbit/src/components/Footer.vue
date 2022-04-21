@@ -6,8 +6,8 @@
           <div class="footer-links-inner">
             <div class="link-left">
               <ul>
-                <li><a href="">Terms of Use</a></li>
-                <li class="active"><a href="">privacy policy</a></li>
+                <li><router-link to="/terms">Terms of Use</router-link></li>
+                <li class="active"><router-link to="/privacy">privacy policy</router-link></li>
               </ul>
             </div>
             <div class="link-right">

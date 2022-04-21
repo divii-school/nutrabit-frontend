@@ -40,6 +40,7 @@ import AboutUs from "../pages/AboutUs.vue";
 import ServiceIntro from "../pages/Nutri/ServiceIntro.vue";
 import NutriDetail from "../pages/Nutri/NutriDetail.vue";
 import Terms from "../pages/terms.vue";
+import Privacy from "../pages/privacy.vue";
 import Toast from "../alert/alert.js";
 
 import MyRecipeDetail from "../pages/MyRecipeDetail.vue";
@@ -297,6 +298,11 @@ const routes = [
     name: "Terms",
     path: "/terms",
     component: Terms,
+  },
+  {
+    name: "Privacy",
+    path: "/privacy",
+    component: Privacy,
   },
   {
     name: "ServiceIntro",
