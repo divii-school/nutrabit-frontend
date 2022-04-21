@@ -6,7 +6,7 @@
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               Sign Up
-              <span>business member</span>
+              <span>Business Member</span>
             </h1>
             <span>* Required</span>
           </div>
@@ -81,7 +81,7 @@
                 <span class="error-msg">{{ error.businessName }}</span>
               </div>
               <div class="form-group" :class="error.depertment ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>depertment</label>
+                <label for=""><i class="icon-required"></i>Department</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -118,7 +118,7 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>name</label>
+                <label for=""><i class="icon-required"></i>Name</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -148,11 +148,11 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="" v-if="isIDVerified">{{ isUserSuccess }}</span>
+                <span class="success-msg" v-if="isIDVerified">{{ isUserSuccess }}</span>
                 <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>password</label>
+                <label for=""><i class="icon-required"></i>Password</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -171,7 +171,7 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>verify password</label
+                  ><i class="icon-required"></i>Verify Password</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
@@ -187,7 +187,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>e-mail</label>
+                <label for=""><i class="icon-required"></i>Email</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -242,7 +242,7 @@
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>phone number</label>
+                <label for=""><i class="icon-required"></i>Phone Number</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -260,7 +260,7 @@
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>address</label>
+                <label for=""><i class="icon-required"></i>Address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input
