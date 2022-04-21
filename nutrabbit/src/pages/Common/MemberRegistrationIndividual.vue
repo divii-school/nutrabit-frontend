@@ -368,9 +368,7 @@ export default {
     async individalRegistration() {
       if (!this.checkError()) {
         return;
-      } else {
-
-      
+      } else {    
         if (this.isOtpVerified == false) {
           this.$swal("Have to verify the otp for email");
         }
