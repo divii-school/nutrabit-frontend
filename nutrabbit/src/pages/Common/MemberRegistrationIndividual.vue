@@ -357,7 +357,7 @@ export default {
         this.error = error;
         return false;
       } else {
-        this.error = "";
+        this.error = {};
         return true;
       }
     },
@@ -428,8 +428,9 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP='';
             this.$swal("OTP has been sent to your email");
-            this.error.email = "";
+            // this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);

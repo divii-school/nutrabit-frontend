@@ -367,24 +367,24 @@ export default {
         this.error = error;
         return false;
       } else {
-        this.error = "";
+        this.error = {};
         return true;
       }
     },
-    async BusinessRegistration() {
-      if(this.isIDVerified == false){
+    async BusinessRegistration() 
+    {
+      if (!this.checkError()) {
+        return;
+      } else {
+
+         if(this.isIDVerified == false){
           this.$swal('Have to check user ID availability')
-          return;
         }
 
         else if(this.isOtpVerified == false){
           this.$swal('Have to verify the otp for email')
-          return;
         }
-
-      else if (!this.checkError()) {
-        return;
-      } else {
+        else {
 
         console.log('Registration Complete')
 
@@ -407,6 +407,7 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
+        }
       }
     },
     async checkUser() {
@@ -435,6 +436,7 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          //console.log(res);
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -442,8 +444,9 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP='';
             this.$swal("OTP has been sent to your email");
-            this.error.email = "";
+            // this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -481,6 +484,7 @@ export default {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          //console.log(res);
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             this.$swal("OTP verified");
             this.startTimer = true;
@@ -489,11 +493,13 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            //this.error.emailOTP = "";
+            this.error.emailOTP = "";
             this.isOtpVerified = true;
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "wrong otp";
+            //console.log("wrong otp");
+            //this.error.emailOTP = "wrong otp";
+             return (this.error.emailOTP = "Wrong otp");
           }
         });
       }
