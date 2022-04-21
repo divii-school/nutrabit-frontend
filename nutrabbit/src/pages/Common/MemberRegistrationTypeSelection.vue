@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">Personal information management</h1>
+            <h1 class="login-heading">Membership Type</h1>
             <p class="membership-desc">Please select a member type</p>
           </div>
 
@@ -17,16 +17,16 @@
                  @click="this.$router.push('/method-selection')"
               >
                 <i class="icon-user"></i>
-                <h2 class="list-heading">individual membership</h2>
-                <p class="list-desc">When an individual joins</p>
+                <h2 class="list-heading">Personal Membership</h2>
+                <p class="list-desc">Sign up as a personal member</p>
               </li>
               <li
                 class="membership-item"
                 @click="this.$router.push('/membership-registration-business')"
               >
                 <i class="icon-building-symbol"></i>
-                <h2 class="list-heading">Business membership registration</h2>
-                <p When class="list-desc">When a company joins</p>
+                <h2 class="list-heading">Business Membership</h2>
+                <p When class="list-desc">Sign up as a business member</p>
               </li>
             </ul>
           </div>
