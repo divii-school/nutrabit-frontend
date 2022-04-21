@@ -7,6 +7,7 @@ const state = reactive({
   searchKeyword: '',
   myIP: '',
   isMobile: false,
+  isiPhone: false,
 });
 
 const methods = {
