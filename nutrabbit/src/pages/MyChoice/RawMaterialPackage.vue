@@ -203,7 +203,7 @@ export default {
             for (let i = 0; i < option_data.length; i++) {
               var option_array = option_data[i];
               var res_option_type = Object.keys(option_array).toString();
-              console.log(res_option_type);
+              // console.log(res_option_type);
               if (res_option_type == "package") { option_data.pop(option_data[i]); };
             }
 

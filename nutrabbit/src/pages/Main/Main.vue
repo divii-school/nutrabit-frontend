@@ -134,7 +134,7 @@ export default {
     isFromApp() {
       var queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      console.log('urlParams--', urlParams);
+      // console.log('urlParams--', urlParams);
       var mobile = urlParams.get("mobile");
       var iphone = urlParams.get("isiPhone");
       if (mobile) {
@@ -149,20 +149,20 @@ export default {
       }
 
       setTimeout(() => {
-        console.log(
-          "this.common.state.isMobile",
-          this.common.state.isMobile
-        );
-        console.log(
-          "this.common.state.isiPhone",
-          this.common.state.isiPhone
-        );
+        // console.log(
+        //   "this.common.state.isMobile",
+        //   this.common.state.isMobile
+        // );
+        // console.log(
+        //   "this.common.state.isiPhone",
+        //   this.common.state.isiPhone
+        // );
       }, 4000);
     },
     // ENdx check if it's from APP
     // makePay test function
     makePay() {
-      console.log('makePay');
+      // console.log('makePay');
       alert('makePay');
       this.paymentService.requestPay();
     },
