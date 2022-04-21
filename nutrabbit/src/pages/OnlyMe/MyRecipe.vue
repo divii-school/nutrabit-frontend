@@ -161,10 +161,18 @@ export default {
     },
 
     deleteRecipeRecommendedItem(id){
+      if(!id){
+       this.$swal('Any one of the products needs to be selected')
+       return
+     }
       this.deleteRecipeItem(id, 'recommended')
     },
 
     deleteRecipeChoiceItem(id){
+      if(!id){
+       this.$swal('Any one of the products needs to be selected')
+       return
+     }
       this.deleteRecipeItem(id, 'choice')
     },
 
@@ -177,19 +185,13 @@ export default {
     },
 
    deleteRecipeItem(id, type){
-     if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
-       return
-     }
+     
      //console.log(`delete item product id : ${id}`)
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
           this.$swal(`Delete ${res.message}`)
-          // setTimeout(()=>{
-          //   window.location.reload()
-          // }, 2500)
-          // console.log(res)
+
           if(type == 'recommended'){
              this.allRecommendedData();
           }
@@ -216,6 +218,7 @@ export default {
 
    toNextChoice(){
      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return;
      }
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'my-choice'}})

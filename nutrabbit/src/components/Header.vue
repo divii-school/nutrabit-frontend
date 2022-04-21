@@ -109,12 +109,17 @@
           </template>
 
           <div class="header-dropdown">
-            <LanguageInput />
-            <!-- <vue-select
-              :options="['EN', 'KO']"
-              placeholder="EN"
-              close-on-select
-            ></vue-select> -->
+            <div class="lang-dropdown">
+              <select v-model="$i18n.locale" class="select-dropdown">
+                <option
+                  v-for="lang in langs"
+                  :key="lang.code"
+                  :value="lang.code"
+                >
+                  {{ lang.name }}
+                </option>
+              </select>
+            </div>
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
             <img src="../assets/images/menu-toggle.png" alt />
@@ -238,13 +243,11 @@ import { inject } from "vue";
 import PersonalInfoService from "../services/PersonalInfoService";
 import CommonService from "../services/CommonService";
 import Modal from "./Modal.vue";
-import LanguageInput from "./LanguageInput.vue";
 export default {
   name: "Header",
   components: {
     "vue-select": VueNextSelect,
     Modal,
-    LanguageInput,
   },
   data() {
     return {
@@ -327,6 +330,16 @@ export default {
       ],
       searchData: [],
       AllSearchId: [],
+      langs: [
+        {
+          code: "en",
+          name: "EN",
+        },
+        {
+          code: "kr",
+          name: "KO",
+        },
+      ],
       // SearchHistoryTitle: [],
     };
   },
@@ -365,7 +378,7 @@ export default {
   methods: {
     testy(index) {
       this.activeSubmenu = this.activeSubmenu == index ? "" : index;
-      if(index != 0){
+      if (index != 0) {
         this.activeLogin = false;
       }
     },
@@ -403,8 +416,8 @@ export default {
         localStorage.clear();
         this.$router.push("/login");
         this.active = false;
-        this.activeLogin =! this.activeLogin;
-        this.token = false
+        this.activeLogin = !this.activeLogin;
+        this.token = false;
       }
     },
     closeModal() {

@@ -35,8 +35,8 @@
                 <div class="num">3</div>
                 <figure><img src="~@/assets/images/about3.png"></figure>
                 <div class="text-box">
-                  <p>I’m concerned about
-                    quantity and cost.</p>
+                  <p>I’m concerned about minimum
+                    quantity and high cost.</p>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="container-medium">
           <div class="nutri-choice theme-green">
             <span class="my-choice-title-top">Nutri 3.3</span>
-            <p class="title text-center">Easy & handy dry manufacturing navigation</p>
+            <p class="title text-center">Easy & handy health functional food manufacturing navigation</p>
             <h2 class="nutri-choice-heading text-center">
               nutri 3.3 service
             </h2>
@@ -97,8 +97,8 @@
                 4
               </div>
               <div class="desc">
-                <h3>Free Quote Service</h3>
-                <p>Free quote service helps you to create your own health functional food that is combined as you like.
+                <h3>Free Estimate Service</h3>
+                <p>Free estimate service helps you to create your own health functional food that is combined as you like.
                 </p>
               </div>
             </div>
@@ -108,7 +108,7 @@
               </div>
               <div class="desc">
                 <h3>Sample making service</h3>
-                <p>Free quote service helps you to create your own health functional food that is combined as you like.
+                <p>The sample making service provides an opportunity to make a health functional food sample of your choice at a sampling cost of 300,000 won.
                 </p>
               </div>
             </div>

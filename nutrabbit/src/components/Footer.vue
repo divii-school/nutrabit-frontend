@@ -12,13 +12,17 @@
             </div>
             <div class="link-right">
               <div class="footer-dropdown">
-                <vue-select
-                  :options="['English', 'Korean']"
-                  placeholder="English"
-                  close-on-select
-                >
-                </vue-select>
-                <!-- <LanguageInput /> -->
+                <div class="lang-dropdown">
+                  <select v-model="$i18n.locale" class="select-dropdown">
+                    <option
+                      v-for="lang in langs"
+                      :key="lang.code"
+                      :value="lang.code"
+                    >
+                      {{ lang.name }}
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -47,13 +51,22 @@
 </template>
 <script>
 import VueNextSelect from "vue-next-select";
-import LanguageInput from "./LanguageInput.vue";
 
 export default {
   name: "Footer",
-  components: {
-    "vue-select": VueNextSelect,
-    LanguageInput,
+  data() {
+    return {
+      langs: [
+        {
+          code: "en",
+          name: "English",
+        },
+        {
+          code: "kr",
+          name: "Korean",
+        },
+      ],
+    };
   },
 };
 </script>

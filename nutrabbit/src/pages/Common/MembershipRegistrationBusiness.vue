@@ -148,7 +148,8 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="error-msg">{{ error.username }}</span>
+                <span class="" v-if="isIDVerified">{{ isUserSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>password</label>
@@ -337,6 +338,7 @@ export default {
       verificationStatus : 'Send verification code',
       isIDVerified : false,
       isOtpVerified : false,
+      isUserSuccess : '',
     };
   },
   created() {
@@ -361,30 +363,31 @@ export default {
         depertment: this.depertment,
         contactPerson: this.contactPerson,
         account_type: "business",
+        isIDVerified : this.isIDVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
         this.error = error;
         return false;
       } else {
-        this.error = "";
+        this.error = {};
         return true;
       }
     },
-    async BusinessRegistration() {
-      if(this.isIDVerified == false){
-          this.$swal('Have to check user ID availability')
-          return;
-        }
-
-        else if(this.isOtpVerified == false){
-          this.$swal('Have to verify the otp for email')
-          return;
-        }
-
-      else if (!this.checkError()) {
+    async BusinessRegistration() 
+    {
+      if (!this.checkError()) {
         return;
       } else {
+
+        //  if(this.isIDVerified == false){
+        //   this.$swal('Have to check user ID availability')
+        // }
+
+      if(this.isOtpVerified == false){
+          this.$swal('Have to verify the otp for email')
+        }
+        else {
 
         console.log('Registration Complete')
 
@@ -407,6 +410,7 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
+        }
       }
     },
     async checkUser() {
@@ -418,9 +422,10 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            //this.error.username = "";
             this.isIDVerified = true;
-            this.$swal("User id available");
+            this.error.username = "";
+            //this.$swal("User id available");
+            this.isUserSuccess = 'User ID available';
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
@@ -435,6 +440,7 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          //console.log(res);
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -442,8 +448,9 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP='';
             this.$swal("OTP has been sent to your email");
-            this.error.email = "";
+            // this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -481,6 +488,7 @@ export default {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          //console.log(res);
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             this.$swal("OTP verified");
             this.startTimer = true;
@@ -489,11 +497,13 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            //this.error.emailOTP = "";
+            this.error.emailOTP = "";
             this.isOtpVerified = true;
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "wrong otp";
+            //console.log("wrong otp");
+            //this.error.emailOTP = "wrong otp";
+             return (this.error.emailOTP = "The verification code does not match.");
           }
         });
       }

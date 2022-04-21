@@ -86,8 +86,8 @@
             <h2>Similar Products</h2>
             <div v-if="raw_material_image.length > 0">
               <ul class="smilar-product-img">
-                <li v-for="(item, index) of raw_material_image" :key="index">
-                  <img v-if="item.type == 'similar_product_img'" :src="imgBaseUrl + item.image_path" alt="" />
+                <li v-for="(item, index) of similar_product_img" :key="index">
+                  <img :src="imgBaseUrl + item.image_path" alt="" />
                 </li>
               </ul>
             </div>
@@ -145,9 +145,10 @@ export default {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       raw_material_data: '',
       raw_material_id: '',
-      raw_material_image: '',
+      raw_material_image: [],
       blendingData: '',
       item_exist: '',
+      similar_product_img: [],
       productDetails: [
         {
           title: "aloe gel",
@@ -262,7 +263,14 @@ export default {
       this.mychoiceService.getRawMaterialImage(localStorage.getItem('raw_material_id')).then((res) => {
         //console.log(res.data);
         if (res.data.status == 200) {
-          this.raw_material_image = res.data.data;
+          for (let i = 0; i < res.data.data.length; i++) {
+            if (res.data.data[i].type == 'similar_product_img') {
+              this.similar_product_img.push(res.data.data[i]);
+            }
+            else {
+              this.raw_material_image.push(res.data.data[i]);
+            }
+          }
         } else {
           this.$swal(res.data.message, "error");
         }
