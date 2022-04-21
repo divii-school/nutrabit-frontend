@@ -209,7 +209,7 @@ export default {
     async personalInfo() {
 
       this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-        console.log(res.data); 
+        // console.log(res.data); 
         let data = res.data;
         this.name = data.data[0].name;
         this.uuid = data.data[0].uuid;
