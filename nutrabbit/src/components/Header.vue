@@ -120,11 +120,6 @@
                 </option>
               </select>
             </div>
-            <!-- <vue-select
-              :options="['EN', 'KO']"
-              placeholder="EN"
-              close-on-select
-            ></vue-select> -->
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
             <img src="../assets/images/menu-toggle.png" alt />
