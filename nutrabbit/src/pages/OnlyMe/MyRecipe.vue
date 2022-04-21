@@ -56,9 +56,9 @@
       </div>
     </div>
     <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
     <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
   </div>
 </template>
 

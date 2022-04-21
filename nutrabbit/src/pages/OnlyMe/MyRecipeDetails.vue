@@ -108,7 +108,7 @@
       </div>
     </div>
     <Modal v-show="isModalVisible" @close="closeModal" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
   </div>
 </template>
 
