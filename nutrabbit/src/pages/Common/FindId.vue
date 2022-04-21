@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">find ID</h1>
+            <h1 class="login-heading">Find ID</h1>
           </div>
           <form
             action=""
@@ -12,7 +12,7 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>e-mail</label>
+              <label for=""><i class="icon-required"></i>Email</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
