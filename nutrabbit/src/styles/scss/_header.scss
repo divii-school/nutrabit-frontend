@@ -326,7 +326,25 @@ header {
 
         .header-dropdown {
           margin-left: 32px;
-
+          .lang-dropdown {
+            display: flex;
+            justify-content: center;
+            select {
+              height: 40px;
+              width: 68px;
+              padding-left: 10px;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 17px;
+              color: $black-33;
+              appearance: none;
+              background: $white-1 url("@/assets/icons/header-dropdown-arrow.png") no-repeat 70% center;
+              background-size: auto 18px;
+              &:focus {
+                outline: none;
+              }
+            }
+          }
           @media screen and (max-width: 1200px) {
             margin-left: 15px;
           }
