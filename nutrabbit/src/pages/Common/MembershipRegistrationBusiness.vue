@@ -493,7 +493,8 @@ export default {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           //console.log(res);
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-            this.$swal("OTP verified");
+            //this.$swal("OTP verified");
+            this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
