@@ -219,7 +219,7 @@ export default {
           }
           this.rwaMaterialData = res.data
           this.add_req = res.data[0].additional_request;
-          this.title = res.data[0].name_ko;
+          this.title = (_type == 'my_choice') ? res.data[0].title : res.data[0].name_ko;
 
          if(res.data[0].service_type == 1){
            this.isSample = true;
