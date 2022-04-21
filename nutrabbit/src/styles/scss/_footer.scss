@@ -76,86 +76,99 @@ footer{
                 .link-right{
                     .footer-dropdown{
                         margin-left: 32px; 
-                        .vue-select{
+                        select{
                             height: 49px;
                             border-radius: 0;
                             border: 0;
                             border-left: 1px solid $grey-E0;
                             border-right: 1px solid $grey-E0;
-                            align-items: center;
-                            justify-content: center;
                             width: 120px;
+                            background: $white-1 url(@/assets/icons/icon-arrowUp.svg) no-repeat right 20px center;
+                            background-size: auto 6px;
+                            padding: 0 20px;
+                            appearance: none;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: $grey-4C;
+                            &:focus {
+                                outline: none;
+                            }
                             @media screen and (max-width: 768px){
                                height: 32px;
-                               width: 87px;
+                               width: 88px;
+                               font-size: 10px;
+                               line-height: 12px;
+                               padding: 0 10px;
+                               background: $white-1 url(@/assets/icons/icon-arrowUp.svg) no-repeat right 10px center;
                             }
-                            .vue-select-header{
-                                justify-content: center;
-                                cursor: pointer;
-                                .vue-input{
-                                    width: 45px;
-                                    padding: 0;
-                                    @media screen and (max-width: 768px){
-                                        width: 34px;
-                                    }
-                                    input{
-                                        font-weight: 500;
-                                        font-size: 14px;
-                                        line-height: 17px;
-                                        color: $grey-4C;
-                                        @media screen and (max-width: 768px){
-                                            font-size: 10px;
-                                            line-height: 12px;
-                                        }
-                                        &::placeholder{
-                                            font-weight: 500;
-                                            color: $grey-4C;
-                                        }
-                                    }
-                                }
-                                .arrow-downward{
-                                   margin: 0 0 0 29px;
-                                   background: url(@/assets/icons/icon-arrowUp.svg) no-repeat right center;
-                                   height: 6px;
-                                   width: 8px;
-                                   background-size: auto 6px;
-                                   border: 0;
-                                }
-                            }
-                            .vue-dropdown{
-                                width: auto;
-                                border: 1px solid $grey-E0;
-                                border-radius: 0;
-                                li{
-                                    @include flex-align-center;
-                                    width: 119px;
-                                    height: 49px;
-                                    padding: 16px;
-                                    border-radius: 0;
-                                    @media screen and (max-width: 768px){
-                                        width: 87px;
-                                        height: 30px;
-                                        padding: 5px 10px;
-                                    }
-                                    span{
-                                        font-size: 14px;
-                                        line-height: 17px;
-                                        @media screen and (max-width: 768px){
-                                            font-size: 10px;
-                                            line-height: 12px;
-                                        }
-                                    }
-                                    &:hover{
-                                        background: transparent;
-                                        span{
-                                            color: $green-68;
-                                        }
-                                    }
-                                    &.highlighted{
-                                        background: transparent;
-                                    }
-                                }
-                            }
+                            // .vue-select-header{
+                            //     justify-content: center;
+                            //     cursor: pointer;
+                            //     .vue-input{
+                            //         width: 45px;
+                            //         padding: 0;
+                            //         @media screen and (max-width: 768px){
+                            //             width: 34px;
+                            //         }
+                            //         input{
+                            //             font-weight: 500;
+                            //             font-size: 14px;
+                            //             line-height: 17px;
+                            //             color: $grey-4C;
+                            //             @media screen and (max-width: 768px){
+                            //                 font-size: 10px;
+                            //                 line-height: 12px;
+                            //             }
+                            //             &::placeholder{
+                            //                 font-weight: 500;
+                            //                 color: $grey-4C;
+                            //             }
+                            //         }
+                            //     }
+                            //     .arrow-downward{
+                            //        margin: 0 0 0 29px;
+                            //        background: url(@/assets/icons/icon-arrowUp.svg) no-repeat right center;
+                            //        height: 6px;
+                            //        width: 8px;
+                            //        background-size: auto 6px;
+                            //        border: 0;
+                            //     }
+                            // }
+                            // .vue-dropdown{
+                            //     width: auto;
+                            //     border: 1px solid $grey-E0;
+                            //     border-radius: 0;
+                            //     li{
+                            //         @include flex-align-center;
+                            //         width: 119px;
+                            //         height: 49px;
+                            //         padding: 16px;
+                            //         border-radius: 0;
+                            //         @media screen and (max-width: 768px){
+                            //             width: 87px;
+                            //             height: 30px;
+                            //             padding: 5px 10px;
+                            //         }
+                            //         span{
+                            //             font-size: 14px;
+                            //             line-height: 17px;
+                            //             @media screen and (max-width: 768px){
+                            //                 font-size: 10px;
+                            //                 line-height: 12px;
+                            //             }
+                            //         }
+                            //         &:hover{
+                            //             background: transparent;
+                            //             span{
+                            //                 color: $green-68;
+                            //             }
+                            //         }
+                            //         &.highlighted{
+                            //             background: transparent;
+                            //         }
+                            //     }
+                            // }
                         }
                     }
                 }

@@ -101,6 +101,7 @@ export default {
       ProductData: [],
       token: localStorage.getItem('token'),
       isMobile: false,
+      isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
@@ -133,17 +134,28 @@ export default {
     isFromApp() {
       var queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
+      console.log('urlParams--', urlParams);
       var mobile = urlParams.get("mobile");
+      var iphone = urlParams.get("isiPhone");
       if (mobile) {
         this.isMobile = true;
         this.common.state.isMobile = true;
         localStorage.setItem("isMobile", true);
+        if(iphone) {
+          this.isiPhone = true;
+          this.common.state.isiPhone = true;
+          localStorage.setItem("isiPhone", true);
+        }
       }
 
       setTimeout(() => {
         console.log(
           "this.common.state.isMobile",
           this.common.state.isMobile
+        );
+        console.log(
+          "this.common.state.isiPhone",
+          this.common.state.isiPhone
         );
       }, 4000);
     },

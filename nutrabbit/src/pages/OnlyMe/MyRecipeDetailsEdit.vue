@@ -90,7 +90,7 @@
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2>Get a quote</h2>
+                    <h2>Get an estimate</h2>
                   </div>
                 </div>
                 <div class="product-item recipeCheck">
@@ -107,7 +107,7 @@
                   </div>
                   <div class="material-details">
                     <h2>
-                      sample application
+                      Sample application
                       <span>(Sample cost 300,000 won/paid)</span>
                     </h2>
                   </div>

@@ -7,6 +7,8 @@
             <h1 class="login-heading">Change Password</h1>
             <p class="membership-desc">Please change your password</p>
           </div>
+
+          
           <form
             action=""
             class="signUp-form"

@@ -76,7 +76,8 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="error-msg">{{ error.username }}</span>
+                <span class="" v-if="isIDVerified">{{ isUserSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""
@@ -233,7 +234,7 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for="">distribution medium</label>
+                <label for="">How did you find us?</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check"
@@ -332,6 +333,7 @@ export default {
       verificationStatus: "Send verification code",
       isIDVerified: false,
       isOtpVerified: false,
+      isUserSuccess : '',
     };
   },
   created() {
@@ -351,24 +353,23 @@ export default {
         phoneNumber: this.phoneNumber,
         address: this.address,
         detsilAddress: this.detsilAddress,
+        isIDVerified : this.isIDVerified,
+
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
         this.error = error;
         return false;
       } else {
-        this.error = "";
+        this.error = {};
         return true;
       }
     },
     async individalRegistration() {
       if (!this.checkError()) {
         return;
-      } else {
-
-        if (this.isIDVerified == false) {
-          this.$swal("Have to check user ID availability");
-        } else if (this.isOtpVerified == false) {
+      } else {    
+        if (this.isOtpVerified == false) {
           this.$swal("Have to verify the otp for email");
         }
         else{
@@ -404,8 +405,9 @@ export default {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             console.log(this.error);
             this.isIDVerified = true;
-            // this.error.username = "";
-            this.$swal("User id available");
+            this.error.username = "";
+            //this.$swal("User id available");
+            this.isUserSuccess = 'User ID available';
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
@@ -428,8 +430,9 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP='';
             this.$swal("OTP has been sent to your email");
-            this.error.email = "";
+            // this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -479,7 +482,7 @@ export default {
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "wrong otp";
+            this.error.emailOTP = "The verification code does not match.";
           }
         });
       }

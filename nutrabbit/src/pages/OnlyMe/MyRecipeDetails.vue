@@ -195,9 +195,9 @@ export default {
             if (this.serviceNum == 1) {
               this.serviceType = ["Sample Application"];
             } else if (this.serviceNum == 2) {
-              this.serviceType = ["Get A Quote"];
+              this.serviceType = ["Get an estimate"];
             } else {
-              this.serviceType = ["Sample Application", "Get A Quote"];
+              this.serviceType = ["Sample Application", "Get an estimate"];
             }
             Array.from(res.data[0].options).forEach((ele) => {
               console.log(Object.keys(ele)[0], Object.values(ele)[0])
