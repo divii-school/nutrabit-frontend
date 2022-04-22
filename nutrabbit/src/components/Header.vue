@@ -141,7 +141,7 @@
           <li
             v-for="(item, index) of rightMenuItem"
             :key="index"
-            @click="testy(index)"
+            @click="rightMenuData(index)"
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">
@@ -376,7 +376,7 @@ export default {
     this.changePersonalInfo();
   },
   methods: {
-    testy(index) {
+    rightMenuData(index) {
       this.activeSubmenu = this.activeSubmenu == index ? "" : index;
       if (index != 0) {
         this.activeLogin = false;
