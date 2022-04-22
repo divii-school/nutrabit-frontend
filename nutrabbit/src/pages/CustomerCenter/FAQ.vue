@@ -171,7 +171,6 @@ export default {
   },
   mounted() {
     this.allFaqList();
-    console.log(this.updatedFaqList);
   },
 
   methods: {
@@ -187,11 +186,10 @@ export default {
           if (res.status == 200) {
             this.FaqList = res.data.data.faq;
             this.myCallback(1);
-            console.log(res.data.data.faq);
           }
         })
         .catch((err) => {
-          console.log(err);
+         return;
         });
     },
   },

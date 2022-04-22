@@ -3,7 +3,7 @@ import validator from "validator";
 const validateRegistration = (data) => {
   let errors = {};
 
-  const { termsCheck, personalCheck, name, username, isIDVerified, password, confirmPassword, email, emailOTP, phoneNumber, address, detsilAddress, account_type, businessNumber, businessName, depertment, contactPerson } = data;
+  const { termsCheck, personalCheck, name, username, isIDVerified, password, confirmPassword, email, emailOTP, isOtpVerified, phoneNumber, address, detsilAddress, account_type, businessNumber, businessName, depertment, contactPerson } = data;
 
 
   if (termsCheck == false) {
@@ -35,7 +35,7 @@ const validateRegistration = (data) => {
   else if (!(validator.isAlphanumeric(username))) {
     errors.username = "Please use only letter and number";
   }
-  else if(isIDVerified == false){
+  else if (isIDVerified == false) {
     errors.username = 'Have to check user ID availability';
   }
 
@@ -59,7 +59,10 @@ const validateRegistration = (data) => {
   }
   if (validator.isEmpty(emailOTP)) {
     errors.emailOTP = "Please enter your email verification code";
+  } else if (isOtpVerified == false) {
+    errors.emailOTP = 'Have to verify the otp for email';
   }
+
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = "Please enter your mobile phone number";
   }

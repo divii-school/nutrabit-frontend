@@ -229,7 +229,7 @@ export default {
       this.personalBusinessService.getBusinessData(this.userId).then((res) => {
         
         let data = res.data;
-        console.log("data",data);
+        // console.log("data",data);
         this.business_number = data.data[0].business_number;
         this.business_name = data.data[0].business_name;        
         this.department = data.data[0].department;

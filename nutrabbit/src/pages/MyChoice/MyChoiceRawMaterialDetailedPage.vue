@@ -49,6 +49,10 @@
                 <p>{{ item.material_description_ko }}</p>
               </li>
               <li>
+                <h2>Appearance</h2>
+                <p>{{ item.material_function_ko }}</p>
+              </li>
+              <li>
                 <h2>Functional Content</h2>
                 <p>{{ item.material_function_ko }}</p>
               </li>
@@ -66,8 +70,8 @@
               </li>
             </ul>
             <div class="blendBtnList">
-              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">add</button>
-              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">next</button>
+              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">Add</button>
+              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">Next</button>
             </div>
           </div>
           <div class="suggested-product">
@@ -83,7 +87,7 @@
             </ul>
           </div>
           <div class="suggested-product">
-            <h2>Similar Products</h2>
+            <h2>Third-party similar products</h2>
             <div v-if="raw_material_image.length > 0">
               <ul class="smilar-product-img">
                 <li v-for="(item, index) of similar_product_img" :key="index">

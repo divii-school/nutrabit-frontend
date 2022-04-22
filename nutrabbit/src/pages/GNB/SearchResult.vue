@@ -227,7 +227,7 @@ export default {
           this.myCallback4(1);
         })
         .catch((err) => {
-          console.log({ err });
+          // console.log({ err });
         });
     },
 

@@ -178,7 +178,8 @@
                     certification
                   </button>
                 </div>
-                <span class="error-msg">{{ error.emailOTP }}</span>
+                <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for=""
@@ -334,6 +335,7 @@ export default {
       isIDVerified: false,
       isOtpVerified: false,
       isUserSuccess : '',
+      isOtpSuccess : '',
     };
   },
   created() {
@@ -354,6 +356,7 @@ export default {
         address: this.address,
         detsilAddress: this.detsilAddress,
         isIDVerified : this.isIDVerified,
+        isOtpVerified : this.isOtpVerified,
 
       };
       const { isInvalid, error } = validateRegistration(credential);
@@ -369,11 +372,11 @@ export default {
       if (!this.checkError()) {
         return;
       } else {    
-        if (this.isOtpVerified == false) {
-          this.$swal("Have to verify the otp for email");
-        }
-        else{
-        console.log("Registration Complete");
+        // if (this.isOtpVerified == false) {
+        //   this.$swal("Have to verify the otp for email");
+        // }
+        // else{
+        //console.log("Registration Complete");
 
         this.commonService
           .individalRegistration(
@@ -391,7 +394,7 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
-        }
+        
       }
     },
     async checkUser() {
@@ -403,7 +406,7 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            console.log(this.error);
+            // console.log(this.error);
             this.isIDVerified = true;
             this.error.username = "";
             //this.$swal("User id available");
@@ -471,7 +474,8 @@ export default {
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-            this.$swal("OTP verified");
+           // this.$swal("OTP verified");
+           this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -490,7 +494,7 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
+          // console.log(data);
           return (this.address = data.address);
         },
       }).open();
