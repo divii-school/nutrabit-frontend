@@ -151,28 +151,29 @@ export default {
     },
     
     deleteRecipeItemRecommended(){
+      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
+       return
+     }
       this.isRecommendedModalVisible = true;
       
     },
 
     deleteRecipeItemChoice(){
+       if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
+       return
+     }
       this.isChoiceModalVisible = true;
       
     },
 
     deleteRecipeRecommendedItem(id){
-      if(!id){
-       this.$swal('Any one of the products needs to be selected')
-       return
-     }
+      
       this.deleteRecipeItem(id, 'recommended')
     },
 
     deleteRecipeChoiceItem(id){
-      if(!id){
-       this.$swal('Any one of the products needs to be selected')
-       return
-     }
       this.deleteRecipeItem(id, 'choice')
     },
 
