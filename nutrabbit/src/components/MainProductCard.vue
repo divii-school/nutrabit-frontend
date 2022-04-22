@@ -32,7 +32,8 @@ export default {
   methods: {
     accessPage() {
       // this.$swal("Unauthorized Access.Please Login.");
-      this.$router.push('/login')
+      this.$emit('login')
+      //this.$router.push('/login')
     },
   },
 };

@@ -50,8 +50,8 @@
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) of ProductData" :key="index">
-                <MainProductCard :item="item" />
+              <li v-for="(item, index) of ProductData" :key="index" >
+                <MainProductCard :item="item" @login="accessPage"/>
               </li>
             </ul>
           </div>
@@ -210,7 +210,7 @@ export default {
       });
     },
     accessPage() {
-      this.$router.push('/login')
+      //this.$router.push('/login')
       //this.$swal("Unauthorized Access.Please Login.");
       this.isModalVisible = true;
 
