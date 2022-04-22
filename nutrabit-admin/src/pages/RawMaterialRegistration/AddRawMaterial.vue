@@ -10,10 +10,10 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
 
-                            <Dropdown :class="`${error.sub_category ? 'p-invalid' : ''}`" v-model="sub_category_id"
+                            <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id"
                                 :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"
                                 :placeholder="$t('Banner.placeholder.select')" />
-                            <div class="text-red">{{ error.sub_category }}</div>
+                            <div class="text-red">{{ error.sub_category_id }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -147,7 +147,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.banner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -198,7 +198,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.rawdetails') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">파일 선택</span>
@@ -235,11 +235,11 @@
                             <br />
                             <div :class="`${error.status ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status"
-                                    @change="addRaw" />
+                                     />
                                 <label for="yes">Yes</label>
                 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status"
-                                    @change="addRaw" />
+                                 />
                                 <label for="no">No</label>
                             </div>
                             <div class="text-red">{{ error.status }}</div>
@@ -422,7 +422,7 @@ export default {
         addRaw() {
             let vcheckData = {
 
-                sub_category_id: this.sub_category_id,
+                sub_category_id: this.sub_category_id.toString(),
                 material_name_ko: this.material_name_ko,
                 material_name_en: this.material_name_en,
                 standard_ko: this.standard_ko,

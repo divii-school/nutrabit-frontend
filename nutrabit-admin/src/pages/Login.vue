@@ -23,7 +23,7 @@
                         <div class="text-redx">{{ pass_err }}</div>
                     </div>
                 <Button :label="$t('button.login')"  type="button" @click="Login" class="formsubmit"></Button>
-                <a href="#" @click="open" class="forget-pass">{{$t('password.foget_dfc_pass')}}</a>
+                <!-- <a href="#" @click="open" class="forget-pass">{{$t('password.foget_dfc_pass')}}</a> -->
                 </form>
                 <!-- <a href="#">forget dfc password?</a> -->
                 <!-- <p>Don’t you have an account, <a href="#">sign up</a></p> -->

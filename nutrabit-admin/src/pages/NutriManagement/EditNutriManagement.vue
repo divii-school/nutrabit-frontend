@@ -9,42 +9,48 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name3') }}</label>
-                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
+                        <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
                         <div class="text-red">{{ error.name_ko }}</div>
                     </div>
-                     <div class="p-field p-col-12 p-md-3">
+                    <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name4') }}</label>
-                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
+                        <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
                         <div class="text-red">{{ error.name_en }}</div>
                     </div>
                 </div>
-               
-                <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
+
+                <div class="dropdowns" style="display: flex; width: 100%; margin-left: -13px">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditCategory') }}</label>
-                       
-                            <Dropdown v-model="category_id"  :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
+
+                        <Dropdown v-model="category_id" :options="categoryDropdownValues" optionValue="id"
+                            optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
 
-                        <MultiSelect id="multiselect" :placeholder="$t('Nutri3.Edit.EditMainRaw1')" :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko" optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
-
+                        <MultiSelect id="multiselect" :placeholder="$t('Nutri3.Edit.EditMainRaw1')"
+                            :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko"
+                            optionLabel="material_name_ko" optionValue="id" :filter="false" @change="selects">
                         </MultiSelect>
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                 </div>
-                <div class="dropdowns" style="display: flex; width: 100%;margin-left:-13px;">
+                <div class="dropdowns" style="display: flex; width: 100%; margin-left: -13px">
                     <div class="p-field p-col-12 p-md-3">
-                         <label for="type">{{ $t('Nutri3.Edit.EditPiltype1') }}</label>
-                        
-                        <Dropdown v-model="pill_id"  :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPiltype1')" />
+                        <label for="type">{{ $t('Nutri3.Edit.EditPiltype1') }}</label>
+
+                        <Dropdown v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id"
+                            optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPiltype1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="type">{{ $t('Nutri3.Edit.EditPackage1') }}</label>
-                      
-                         <Dropdown v-model="package_id"  :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPackage1')" />
+
+                        <Dropdown v-model="package_id" :options="packageDropdownValues" optionValue="id"
+                            optionLabel="name_ko" :placeholder="$t('Nutri3.Edit.EditPackage1')" />
                         <!-- <Dropdown v-model="id"  :options="dropdownValues"  optionLabel="category_name_ko" :placeholder="$t('Banner.placeholder.select')" /> -->
                     </div>
                 </div>
@@ -52,30 +58,34 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags1(KO)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags1(KO)')" v-model="tags_ko" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags1(KO)')"
+                            v-model="tags_ko" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('Nutri3.Edit.EditTags2(EN)') }}</label>
-                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags2(EN)') " v-model="tags_en" />
+                        <InputText id="remark" type="text" :placeholder="$t('Nutri3.Edit.EditTags2(EN)')"
+                            v-model="tags_en" />
                     </div>
                 </div>
 
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
-                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
+                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')" v-model="description_en" />
+                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
+                            v-model="description_en" />
                     </div>
                 </div>
-               <div class="p-grid p-formgrid p-mb-3 browse">
+                <div class="p-grid p-formgrid p-mb-3 browse">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.EditThumbnailimg') }}
@@ -88,36 +98,41 @@
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                         </div>
                         <div style="display: flex; justify-content: flex-end">
-                                <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                                <div class="raw-image">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
-                                   <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
-                                </div>
+                            <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
+                            <div class="raw-image">
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
+                                    alt="이미지를 사용할 수 없음" class="product-image" />
+                                <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
+                            </div>
                         </div>
                     </div>
                 </div>
-               <div class="p-grid p-formgrid p-mb-3 browse">
+                <div class="p-grid p-formgrid p-mb-3 browse">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.Editproductsubimg1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
                         </label>
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            
-                            <input type="file" class="select-file" v-on:change="onFilesChange"   />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" />
+                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
-                        
 
                         <!-- <FileUpload v-if="!filesNames" name="demo[]"  :multiple="true" :customUpload="true" @uploader="onFilesChange" :maxFileSize="1000000" :fileLimit="4" /> -->
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                                <div class="raw-image" style="margin:5px;">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image" alt="이미지를 사용할 수 없음" class="product-image" />
-                                    <a href="javascript:;" @click="remove_raw(id,product_sub_image)"><img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross" /></a>
+                                <div class="raw-image" style="margin: 5px">
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
+                                        alt="이미지를 사용할 수 없음" class="product-image" />
+                                    <div v-show="crossdisplay">
+                                        <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img
+                                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
+                                                class="cross" /></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -137,29 +152,32 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
+                                class="product-image" />
                         </div>
                     </div>
                 </div>
-                  <div class="p-grid p-formgrid p-mb-3">
-                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
-                            <br/>
-                            <input type="radio" id="yes" value="active" name="status" v-model="status">
-                                <label for="yes">Yes</label>
-                                <input type="radio" id="no" name="status" value="inactive" v-model="status">
-                                <label for="no">No</label>
-                            <div class="text-red">{{ error.state }}</div>
-                        </div>
+                <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                        <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
+                        <br />
+                        <input type="radio" id="yes" value="active" name="status" v-model="status" />
+                        <label for="yes">Yes</label>
+                        <input type="radio" id="no" name="status" value="inactive" v-model="status" />
+                        <label for="no">No</label>
+                        <div class="text-red">{{ error.state }}</div>
                     </div>
+                </div>
                 <br />
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button ref="popup" @click="editNutri" icon="pi pi-check" :label="$t('Nutri3.Edit.Editpublish1')" class="p-mr-2"></Button>
+                    <Button ref="popup" @click="editNutri" icon="pi pi-check" :label="$t('Nutri3.Edit.Editpublish1')"
+                        class="p-mr-2"></Button>
                 </div>
                 <div class="p-d-flex p-jc-end">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button icon="pi pi-times" :label="$t('Nutri3.Edit.EditBack1')" class="p-mr-2" @click="$router.go(-1)"></Button>
+                    <Button icon="pi pi-times" :label="$t('Nutri3.Edit.EditBack1')" class="p-mr-2"
+                        @click="$router.go(-1)"></Button>
                 </div>
             </div>
         </div>
@@ -190,9 +208,9 @@ export default {
             filesExtension: '',
             fileExtensions: '',
             filesExtensions: '',
-            filesimilar:'',
-            select_items:[],
-            selectedItems:[],
+            filesimilar: '',
+            select_items: [],
+            selectedItems: [],
             name_ko: '',
             name_en: '',
             description_ko: '',
@@ -204,10 +222,10 @@ export default {
             thumbnail: '',
             tags_ko: '',
             tags_en: '',
-            package_id:'',
-            raw_material_id:'',
-            pill_id:'',
-            category_id:'',
+            package_id: '',
+            raw_material_id: '',
+            pill_id: '',
+            category_id: '',
             dropdownValue: null,
             categoryDropdownValues: '',
             categoryDropdownValue: null,
@@ -219,6 +237,8 @@ export default {
             packageDropdownValue: null,
             formData: new FormData(),
             error: {},
+            isdisable: false,
+            crossdisplay: true,
         };
     },
     created() {
@@ -251,8 +271,8 @@ export default {
             // this.products = data;
             this.loading1 = false;
             // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            console.log("Pill",this.pilltypeDropdownValues);
-            console.log("Pilldata",data);
+            console.log('Pill', this.pilltypeDropdownValues);
+            console.log('Pilldata', data);
         });
         this.nutriManagementService.getPackageNutriDropdown().then((data) => {
             this.packageDropdownValues = data;
@@ -269,22 +289,33 @@ export default {
             this.package_id = res.data.data[0].package_id;
 
             this.name_ko = res.data.data[0].name_ko;
-             this.name_en = res.data.data[0].name_en;
+            this.name_en = res.data.data[0].name_en;
             this.description_ko = res.data.data[0].description_ko;
             this.description_en = res.data.data[0].description_en;
             this.thumbnail = res.data.data[0].thumbnail_path;
             //this.product_sub = res.data.data[0].product_sub_image_path.toString().split(",");
             this.detail_image = res.data.data[0].detail_image_path;
 
+            if (res.data.data[0].product_sub_image_path.length < 5) {
+                this.isdisable = false;
+            } else {
+                this.isdisable = true;
+            }
+
+            if (res.data.data[0].product_sub_image_path.length > 0) {
+                this.crossdisplay = true;
+            } else {
+                this.crossdisplay = false;
+            }
             this.product_sub_image = res.data.data[0].product_sub_image_path.toString().split(',');
 
             this.tags_ko = res.data.data[0].tags_ko;
             this.tags_en = res.data.data[0].tags_en;
             this.status = res.data.data[0].status;
-            
+
             let a = res.data.data[0].raw_material_id.split(',');
-            let result = a.map(function (x) { 
-            return parseInt(x, 10); 
+            let result = a.map(function (x) {
+                return parseInt(x, 10);
             });
             this.select_items = result;
             this.selectedItems = res.data.data[0].raw_material_id;
@@ -292,24 +323,35 @@ export default {
     },
     methods: {
         reinitialize() {
-            (this.name_ko = null), (this.name_en = null),(this.description_ko = null),(this.description_en = null),(this.tags_ko = null),(this.tags_en = null),(this.thumbnail = null),(this.product_sub_image = null),(this.detail_image = null),(this.status = null), (this.dropdownValue = null),(this.file = {});
+            (this.name_ko = null),
+                (this.name_en = null),
+                (this.description_ko = null),
+                (this.description_en = null),
+                (this.tags_ko = null),
+                (this.tags_en = null),
+                (this.thumbnail = null),
+                (this.product_sub_image = null),
+                (this.detail_image = null),
+                (this.status = null),
+                (this.dropdownValue = null),
+                (this.file = {});
         },
         getFields(input, field) {
             var output = [];
             for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
             return output;
         },
-         selects(){
-           let items = [];
+        selects() {
+            let items = [];
             let data = this.select_items;
             for (var a = 0; a < data.length; a++) {
                 items.push(data[a]);
             }
-            this.selectedItems=items.toString();
+            this.selectedItems = items.toString();
             console.log(this.selectedItems);
         },
-       
-       onFileChange(e) {
+
+        onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -327,7 +369,7 @@ export default {
         },
 
         onFilesChange(e) {
-             console.log(e.files)
+            console.log(e.files);
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -379,49 +421,47 @@ export default {
             console.log(this.fileNames);
         },
 
-
-        remove_similar(id,similar_product_img){
+        remove_similar(id, similar_product_img) {
             //console.log(id)
-           // console.log(similar_product_img)
-            let similar_prod_image_arr = similar_product_img.toString().split("/");
+            // console.log(similar_product_img)
+            let similar_prod_image_arr = similar_product_img.toString().split('/');
             let image_name = similar_prod_image_arr[3];
-           // console.log(similar_prod_image_arr[3])
-            if(confirm("정말 삭제하시겠습니까?")){
-                 axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
+            // console.log(similar_prod_image_arr[3])
+            if (confirm('정말 삭제하시겠습니까?')) {
+                axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id, image_name: image_name } })
+                    .then(function (response) {
                         console.log(response);
-                    }).catch(error => {
-                    console.log(error);
-                })
-
-             }
-            
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
-        remove_raw(id,raw_material_img){
+        remove_raw(id, raw_material_img) {
             //console.log(id)
-           // console.log(similar_product_img)
-            let raw_material_img_arr = raw_material_img.toString().split("/");
+            // console.log(similar_product_img)
+            let raw_material_img_arr = raw_material_img.toString().split('/');
             let image_name = raw_material_img_arr[3];
-           // console.log(similar_prod_image_arr[3])
-            if(confirm("정말 삭제하시겠습니까?")){
-                 axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id,image_name: image_name } }).then(function (response) {
+            // console.log(similar_prod_image_arr[3])
+            if (confirm('정말 삭제하시겠습니까?')) {
+                axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id, image_name: image_name } })
+                    .then(function (response) {
                         console.log(response);
-                    }).catch(error => {
-                    console.log(error);
-                })
-
-             }
-            
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
-
 
         editNutri() {
             // console.log(this.select_items)
             // console.log(this.selectedItems)
             let vcheckData = {
-                category_id:this.category_id,
-                raw_material_id:this.selectedItems,
-                pill_id:this.pill_id,
-                package_id:this.package_id,
+                category_id: this.category_id,
+                raw_material_id: this.selectedItems,
+                pill_id: this.pill_id,
+                package_id: this.package_id,
                 name_ko: this.name_ko,
                 name_en: this.name_en,
                 description_ko: this.description_ko,
@@ -442,9 +482,9 @@ export default {
             } else {
                 this.formData.append('id', this.$route.params.id);
                 this.formData.append('category_id', this.category_id);
-                 this.formData.append('raw_material_id',this.selectedItems);
-                  this.formData.append('pill_id', this.pill_id);
-                   this.formData.append('package_id', this.package_id);
+                this.formData.append('raw_material_id', this.selectedItems);
+                this.formData.append('pill_id', this.pill_id);
+                this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);
                 this.formData.append('name_en', this.name_en);
                 this.formData.append('description_ko', this.description_ko);
@@ -456,7 +496,7 @@ export default {
 
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
-                 alert('업데이트 완료')
+                alert('업데이트 완료');
                 return axios.put('/admin/nutriBlending/edit', this.formData).then((res) => {
                     this.$router.push({ name: 'NutriManagement' });
                     console.log(res);
@@ -471,16 +511,19 @@ export default {
 .p-fluid .p-button {
     width: auto;
 }
+
 .p-button {
     background: #000000;
     border: 1px solid #0a0a0a;
     color: white;
 }
+
 .img-info {
     font-size: 11px;
     font-weight: 400;
     color: rgb(48, 48, 48);
 }
+
 .product-image {
     padding-top: 5px;
     border: 1px solid #ddd;
@@ -490,6 +533,7 @@ export default {
     height: 100px;
     float: right;
 }
+
 .custom-select {
     position: relative;
     border: 1px solid #cecece;
@@ -499,6 +543,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .select-file {
     position: absolute;
     width: 100%;
@@ -510,9 +555,11 @@ export default {
     z-index: 5;
     opacity: 0;
 }
+
 .SelectBtn {
     max-width: 100px;
 }
+
 .custom-select span {
     max-width: 140px;
     display: inline-block;
@@ -520,6 +567,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .custom-select-invalid {
     position: relative;
     border: 1px solid red;
@@ -529,6 +577,7 @@ export default {
     align-items: center;
     padding-left: 15px;
 }
+
 .cross {
     position: absolute;
     right: 15px;
@@ -536,9 +585,16 @@ export default {
     z-index: 2;
     height: 20px;
     width: 20px;
+    background-color: white;
 }
 
 .raw-image {
     position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .dropdowns {
+        flex-direction: column;
+    }
 }
 </style>

@@ -107,7 +107,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Application.details.applicationlist') }}:</label>
                     <div class="p-col-12 p-md-10">
-                         <table id="firstTable">
+                         <table id="firstTable" class="firstTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -356,5 +356,11 @@ table td:last-child {
 }
 table tbody tr:nth-child(2n) td {
     background: #ffffff;
+}
+@media screen and (max-width: 768px) {
+    .firstTable {
+        width: 330px;
+        display: inline;
+    }
 }
 </style>

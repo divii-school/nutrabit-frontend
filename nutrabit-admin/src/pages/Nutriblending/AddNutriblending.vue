@@ -28,9 +28,10 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="type">{{ $t('Blending.list.addcategory') }}</label>
 
-                            <Dropdown v-model="category_id" :options="categoryDropdownValues"
+                            <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues"
                                 optionLabel="category_name_ko" optionValue="id"
                                 :placeholder="$t('Banner.placeholder.select')" />
+                                <div class="text-red">{{ error.category_id }}</div>
                         </div>
                     </div>
 
@@ -38,9 +39,10 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.mainraw') }}</label>
 
-                            <Dropdown v-model="raw_material_id" :options="RawDropdownValues"
+                            <Dropdown :class="`${error.raw_material_id ? 'p-invalid' : ''}`" v-model="raw_material_id" :options="RawDropdownValues"
                                 optionLabel="material_name_ko" optionValue="id"
                                 :placeholder="$t('Banner.placeholder.select')" />
+                                <div class="text-red">{{ error.raw_material_id }}</div>
                         </div>
 
 
@@ -59,8 +61,9 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.piltype') }}</label>
 
-                            <Dropdown v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko"
+                            <Dropdown :class="`${error.pill_id ? 'p-invalid' : ''}`" v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko"
                                 optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                                 <div class="text-red">{{ error.pill_id }}</div>
                         </div>
                     </div>
 
@@ -146,7 +149,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.detail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -164,7 +167,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.similar') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
@@ -429,10 +432,10 @@ export default {
             let vcheckData = {
                 name_ko: this.name_ko,
                 name_en: this.name_en,
-                category_id: this.category_id,
-                raw_material_id: this.raw_material_id,
+                category_id: this.category_id.toString(),
+                raw_material_id: this.raw_material_id.toString(),
                 sub_raw_materials: this.sub_raw_materials,
-                pill_id: this.pill_id,
+                pill_id: this.pill_id.toString(),
                 tags_ko: this.tags_ko,
                 tags_en: this.tags_en,
                 efficiency_ko: this.efficiency_ko,

@@ -4,9 +4,11 @@ import validator from 'validator';
 const validateCreateFaq = (data) => {
     let errors = {};
 
-    const { title_ko, title_en, description_ko,description_en,state,top_10} = data;
+    const { category_id,title_ko, title_en, description_ko,description_en,state,top_10} = data;
 
-    
+    if (validator.isEmpty(category_id)) {
+        errors.category_id = '카테고리를 입력하십시오';
+    }
     
     if (validator.isEmpty(title_ko)) {
         errors.title_ko = '제목을 입력하세요 ko';

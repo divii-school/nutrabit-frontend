@@ -110,8 +110,9 @@
                                 value="0"
                                 v-model="expose"
                             />
-                            </div>
                             <label for="no">No</label>
+                            </div>
+                            
 
                             <div class="text-red">{{ error.expose }}</div>
                         </div>

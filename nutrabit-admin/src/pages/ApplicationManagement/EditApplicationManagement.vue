@@ -92,7 +92,7 @@
                             $t('Application.details.applicationlist')
                         }}:</label>
                         <div class="p-col-12 p-md-10">
-                            <table id="firstTable">
+                            <table id="firstTable" class="firstTable">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -127,13 +127,13 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('Application.details.status') }}</label>
-                            <select class="p-dropdown-label p-inputtext" name="status" id="status"
-                                v-model="status_by_admin">
-                                <option value>Select</option>
-                                <option v-for="(item, index) in dropdownValues" v-bind:key="index" :value="item.name">{{
-                                    item.name
-                                }}</option>
-                            </select>
+                            <Dropdown
+                            :class="`${error.status ? 'p-invalid' : ''}`"
+                                v-model="dropdownValue"
+                                :options="dropdownValues"
+                                optionLabel="code"
+                                :placeholder="$t('Application.details.status')"
+                            />
                             <div class="text-red">{{ error.status }}</div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="answer_by_admin">{{ $t('Application.details.answer') }}</label>
-                            <div style="width: 150%;">
+                            <div class="textbox">
                                 <Quill-Editor style="height: 100px;" :placeholder="$t('Application.details.answer')"  id="answer_by_admin"
                                     v-model:content="answer_by_admin" ref="myQuillEditor" :options="editorOption"
                                     contentType="text" />
@@ -382,5 +382,14 @@ table td:last-child {
 
 table tbody tr:nth-child(2n) td {
     background: #ffffff;
+}
+@media screen and (max-width: 768px) {
+    .firstTable {
+        width: 330px;
+        display: inline;
+    }
+    .textbox{
+        width: 100%;
+    }
 }
 </style>
