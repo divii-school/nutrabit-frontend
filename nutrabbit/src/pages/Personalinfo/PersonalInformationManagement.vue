@@ -4,12 +4,12 @@
       <div class="login-signup-wrap membership-wrap personal-info">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">Personal information management</h1>
+            <h1 class="login-heading">개인정보 관리</h1>
           </div>
           <form action class="signUp-form" @submit="(e) => e.preventDefault()">
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for>name</label>
+                <label for>이름</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="name" />
@@ -18,7 +18,7 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group">
-                <label for>ID</label>
+                <label for>아이디</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control disabled" disabled type="text" v-model="uuid" />
@@ -27,13 +27,13 @@
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for="">password</label>
+                <label for="">비밀번호</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
+                      placeholder="신규 비밀번호 입력(10~20자 영문 대소문자, 숫자, 특수기호 포함)"
                       maxlength="20"
                       v-model="password"
                       autocomplete="off"
@@ -43,13 +43,13 @@
                 <span class="error-msg">{{ error.password }}</span>
               </div>
               <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
-                <label for>verify password</label>
+                <label for>비밀번호 확인</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="Sankyu password confirmation"
+                      placeholder="산규 비밀번호 확인"
                       v-model="confirmPassword"
                       autocomplete="off"
                     />
@@ -58,7 +58,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group">
-                <label for>e-mail</label>
+                <label for>이메일</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control disabled" disabled type="text" v-model="email" />
@@ -67,7 +67,7 @@
               </div>
 
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for>phone number</label>
+                <label for>휴대폰번호</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="phoneNumber" />
@@ -76,22 +76,22 @@
                 <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
               <div class="form-group" :class="error.address ? 'error' : ''">
-                <label for>address</label>
+                <label for>주소</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="address" />
+                    <input class="form-control" type="text" v-model="address" disabled/>
                   </div>
-                  <button class="btn-green-outline" @click="getAddress">Address Search</button>
+                  <button class="btn-green-outline" @click="getAddress">주소 검색</button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="address" />
+                    <input class="form-control" type="text" v-model="Detailaddress" />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for>distribution medium</label>
+                <label for>How did you find us?</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check">
@@ -136,16 +136,16 @@
               </div>
             </div>
             <!-- <p>{{common.state.userId}}</p> -->
-            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">Save
+            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">저장
               <!-- <router-link to="/withdrawal-of-membership"></router-link> -->
             </button>
           </form>
           <div class="logout-withdraw">
             <ul>
               <li>
-                <router-link to @click="logOut()">Log out</router-link>
+                <router-link to @click="logOut()">로그아웃</router-link>
               </li>
-              <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
+              <li><router-link to="/withdrawal-of-membership">회원탈퇴</router-link>
               </li>
             </ul>
           </div>
@@ -156,8 +156,8 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="Saved"
-    btnText2="Confirm"
+    bodytext1="저장되었습니다."
+    btnText2="확인"
     link = '/'
   />
 </template>
@@ -186,6 +186,7 @@ export default {
       error: {},
       uuid:"",
       isModalVisible:false,
+      Detailaddress:"",
 
       offline:false,
       online:false,
@@ -209,7 +210,7 @@ export default {
     async personalInfo() {
 
       this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-        // console.log(res.data); 
+        console.log(res.data); 
         let data = res.data;
         this.name = data.data[0].name;
         this.uuid = data.data[0].uuid;
@@ -217,6 +218,7 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
+        this.Detailaddress = data.data[0].address;
 
         // this.checkName = data.data[0].distribution_medium;
         // console.log("this.checkName",this.checkName);

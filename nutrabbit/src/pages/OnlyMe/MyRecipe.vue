@@ -25,6 +25,7 @@
               </ul>
               <div class="btn-wrap flexEnd">
                 <button class="btn-small-solid blue" @click="toNextRecommended">다음</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(!product_id) ? 'btn-disabled' : ''"  :disabled="!product_id">다음</button>
               </div>
             </div>
           </div>
@@ -49,6 +50,7 @@
               </ul>
               <div class="btn-wrap flexEnd">
                 <button class="btn-small-solid blue" @click="toNextChoice">다음</button>
+                <button class="btn-small-solid blue" :class="(!product_id) ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="!product_id">다음</button>
               </div>
             </div>
           </div>
@@ -59,6 +61,8 @@
     btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
     <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
     btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
+    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
+    btnText1="Confirm"/>
   </div>
 </template>
 
@@ -102,10 +106,13 @@ export default {
       ],
       user_id : this.common.state.userId,
       product_id : '',
+      product_type : '',
+      //isNextDisable : true,
       recommendedBlendingData : [],
       myChoiceData : [],
       isRecommendedModalVisible : false,
       isChoiceModalVisible : false,
+      isItemSelectedVisible : false,
       
     };
   },
@@ -116,10 +123,21 @@ export default {
     this.allChoiceData();
   },
 
+  updated(){
+    if(this.product_id != false){
+      this.isNextDisable = false
+    }
+  },
+
   methods : {
     getProductId(id){
       this.product_id = id;
       //console.log(`product id is : ${this.product_id}`)
+    },
+
+    getType(id){
+      //this.product_type = id;
+      console.log(`product type is : ${this.product_type}`)
     },
 
     allRecommendedData(){
@@ -149,10 +167,15 @@ export default {
         }
     })
     },
+
+    closeModalDelete(){
+       this.isItemSelectedVisible = false;
+    },
     
     deleteRecipeItemRecommended(){
       if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
+       //this.$swal('Any one of the products needs to be selected')
+        this.isItemSelectedVisible = true;
        return
      }
       this.isRecommendedModalVisible = true;
@@ -161,7 +184,8 @@ export default {
 
     deleteRecipeItemChoice(){
        if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
+       //this.$swal('Any one of the products needs to be selected')
+       this.isItemSelectedVisible = true;
        return
      }
       this.isChoiceModalVisible = true;
@@ -210,10 +234,7 @@ export default {
    },
 
    toNextRecommended(){
-     if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
-       return;
-     }
+     
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'recommended-blending'}})
    },
 

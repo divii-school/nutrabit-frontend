@@ -100,7 +100,7 @@
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
               <template v-if="faq.length > 0">
-                <template v-for="(item, index) in NewFaq" :key="index">
+                <template v-for="(item, index) of NewFaq" :key="index">
                   <SearchAccordion
                     :title="item.name_en"
                     :description="item.description_en"

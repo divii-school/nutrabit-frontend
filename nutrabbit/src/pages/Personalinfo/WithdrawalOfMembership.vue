@@ -5,22 +5,22 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">
-              Withdrawal
+              회원탈퇴
             </h1>
           </div>
           <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
            <div class="individuals-form">
               <div class="form-group" :class="error.reason ? 'error' : ''">
-              <label for="">Reason for withdrawal</label>
+              <label for="">탈퇴사유</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <textarea class="form-control textarea" @keyup="reasonkeyup" placeholder="Please enter the reason for withdrawal" v-model="reason"></textarea>
+                  <textarea class="form-control textarea" @keyup="reasonkeyup" placeholder="탈퇴사유를 입력해주세요" v-model="reason"></textarea>
                 </div>
               </div>
               <span class="error-msg">{{ error.reason }}</span>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2" @click="modalWithdraw">Confirm</button>
+            <button class="btn-primary grenn-btn2" @click="modalWithdraw">확인</button>
           </form>
           <!-- <modal/> -->
         </div>
@@ -32,9 +32,9 @@
             v-show="isModalVisible"
             @close="closeModal"
             @confirm = "confirm"
-            bodytext1="Are you sure you want to close this account?"
-            btnText1="cancellation"
-            btnText2="Confirm"
+            bodytext1="해당 계정을 탈퇴하시겠습니까?"
+            btnText1="취소"
+            btnText2="확인"
             link = ''
           />
         </div>
@@ -43,8 +43,8 @@
         <Modal
         v-show="confirmModal"
         @close="closeModal1"
-        bodytext1="Your Withdrawal is complete."
-        btnText2="Confirm"
+        bodytext1="탈퇴가 완료되었습니다."
+        btnText2="확인"
         link = '/'
       />
       </div>
