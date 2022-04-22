@@ -434,7 +434,7 @@ export default {
             this.startTimer = false;
             this.showTick = true;
             this.emailOTP='';
-            this.$swal("OTP has been sent to your email");
+            // this.$swal("OTP has been sent to your email");
             // this.error.email = "";
 
             if (this.storeSetInterval) {
@@ -462,7 +462,7 @@ export default {
               this.verificationStatus = "Resend verification code";
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return this.$swal(res.response.data.message);
+            return ;
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -475,7 +475,7 @@ export default {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
            // this.$swal("OTP verified");
-           this.isOtpSuccess = 'OTP verified';
+          //  this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;

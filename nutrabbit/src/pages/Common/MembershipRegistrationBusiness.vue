@@ -430,9 +430,9 @@ export default {
             //this.$swal("User id available");
             this.isUserSuccess = 'User ID available';
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            return (this.error.username = res.data.data.msg);
+            return this.error.username = res.data.data.msg;
           }
-        });
+        })
       }
     },
     async sendOtp() {
@@ -452,8 +452,8 @@ export default {
             this.startTimer = false;
             this.showTick = true;
             this.emailOTP='';
-            this.$swal("OTP has been sent to your email");
-            // this.error.email = "";
+            // this.$swal("OTP has been sent to your email");
+            this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -480,7 +480,7 @@ export default {
               this.verificationStatus = 'Resend verification code'
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return this.$swal(res.response.data.message);
+            return ;
             //return (this.error.email = res.response.data.message);
           }
         });
