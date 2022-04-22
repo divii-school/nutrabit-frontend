@@ -120,7 +120,6 @@ export default {
     this.paymentService = new PaymentService();
   },
   mounted() {
-    // this.isFromApp();
     this.allBanner();
     this.allNutidata();
     localStorage.removeItem('sub_category_id');
@@ -133,36 +132,6 @@ export default {
 
   },
   methods: {
-    // check if it's from APP
-    // isFromApp() {
-    //   var queryString = window.location.search;
-    //   const urlParams = new URLSearchParams(queryString);
-    //   console.log('urlParams--', urlParams);
-    //   var mobile = urlParams.get("mobile");
-    //   var iphone = urlParams.get("isiPhone");
-    //   if (mobile) {
-    //     this.isMobile = true;
-    //     this.common.state.isMobile = true;
-    //     localStorage.setItem("isMobile", true);
-    //     if(iphone) {
-    //       this.isiPhone = true;
-    //       this.common.state.isiPhone = true;
-    //       localStorage.setItem("isiPhone", true);
-    //     }
-    //   }
-
-    //   setTimeout(() => {
-    //     console.log(
-    //       "this.common.state.isMobile",
-    //       this.common.state.isMobile
-    //     );
-    //     console.log(
-    //       "this.common.state.isiPhone",
-    //       this.common.state.isiPhone
-    //     );
-    //   }, 4000);
-    // },
-    // ENdx check if it's from APP
     // makePay test function
     makePay() {
       // console.log('makePay');
