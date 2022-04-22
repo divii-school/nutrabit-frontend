@@ -34,7 +34,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="fGroup" v-if="titletrue" @click="titleshow">
+              <div class="fGroup">
                 <label>Title</label>
                 <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
               </div>
