@@ -71,6 +71,15 @@
       <!-- payment-test -->
     </div>
   </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
   <CacaoChatVue />
 </template>
 
@@ -86,6 +95,7 @@ import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
 import CacaoChatVue from "../../components/CacaoChat.vue";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
   components: {
@@ -94,6 +104,7 @@ export default {
     MainProductCard,
     Button,
     CacaoChatVue,
+    Modal,
   },
   data() {
     return {
@@ -103,6 +114,7 @@ export default {
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      isModalVisible : false,
     };
   },
   setup() {
@@ -199,6 +211,13 @@ export default {
     },
     accessPage() {
       this.$router.push('/login')
+      //this.$swal("Unauthorized Access.Please Login.");
+      this.isModalVisible = true;
+
+    },
+
+    closeModal(){
+      this.isModalVisible = false;
     }
   },
 };
