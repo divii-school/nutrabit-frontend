@@ -21,6 +21,27 @@ export default class FaqService {
             .then((res) => res);
     }
 
+    async getFaqSearch(searchData1,status,startDate,endDate,sortBy,sortOrder) {
+        return await axios
+            .post(`/admin/faq`, {
+                // title: title,
+               
+                searchData: searchData1,
+                status: status,
+                startDate: startDate,
+                endDate: endDate,
+                sortBy: sortBy,
+                sortOrder: sortOrder,
+                // this.status,this.searchData,this.startDate,this.endDate,this.sortBy,this.sortOrder
+                // link: link,
+                // status: status,
+                // createdDate: createdDate,
+                // sortBy: 'id',
+                // sortOrder: 'desc',
+            })
+            .then((res) => res);
+    }
+
     async getFaqCategoryDropdown() {
         return await axios.post(`/admin/faq_category`, {}).then((res) => res.data.data.faqCategory);
     }

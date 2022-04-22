@@ -90,12 +90,10 @@
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-
             <button class="btn-primary with-icon black-btn" :class="isAppaleId ? '' : 'show-appale-login'" @click="mbAppleLogin">
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
-
             <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
@@ -303,7 +301,7 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          // console.log(authObj);
+          console.log('authObj kakao--', authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
@@ -313,9 +311,10 @@ export default {
               // console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
+              // this.$router.push({name: "home"});
+              this.loader.hide();
             },
           });
-          this.loader.hide();
         },
         fail: function (err) {
           // console.log(err);

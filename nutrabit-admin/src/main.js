@@ -96,6 +96,13 @@ import 'primeicons/primeicons.css';
 import 'prismjs/themes/prism-coy.css';
 import './App.scss';
 import axios from 'axios';
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import Toast2 from '../src/alert/alert.js'
+
+
+
 // axios.defaults.baseURL = 'http://da-lab-backend.dvconsulting.org:4040/dl-dev/api/v1/';
 // axios.defaults.baseURL = 'https://api-nutrabbit-dev2.dvconsulting.org/nutrabbit-dev/api/v1';
 axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1';
@@ -108,6 +115,26 @@ axios.defaults.headers = {
     token: localStorage.getItem('token'),
     'Accept-Language':'en'
 };
+// Token expire redirection
+
+axios.interceptors.response.use((response) => {
+    return response
+}, async function (error) {
+    
+    if (error.response.status === 403) {
+        const originalRequest = error.config;
+          Toast2.fire({ title: "Session Expired" });
+        // alert('Session Expired')
+        window.location.href = '/login';
+        localStorage.clear();
+        return axios(originalRequest);
+
+    }
+    return Promise.reject(error);
+});
+
+
+
 localStorage.removeItem("client")
 const app = createApp({
     render() {
@@ -129,6 +156,8 @@ app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);
 app.directive('code', CodeHighlight);
 app.directive('badge', BadgeDirective);
+
+app.use(VueSweetalert2);
 
 app.component('QuillEditor', QuillEditor);
 app.component('Accordion', Accordion);
