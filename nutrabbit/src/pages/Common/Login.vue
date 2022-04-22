@@ -90,7 +90,7 @@
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-            <button class="btn-primary with-icon black-btn" :class="isAppaleId ? '' : 'show-appale-login'" @click="mbAppleLogin">
+            <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
@@ -130,7 +130,7 @@ export default {
       checkBox: "",
       loader: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
-      isAppaleId: false,
+      isAppaleId: localStorage.getItem("isiPhone") === "true",
     };
   },
   setup() {
@@ -174,10 +174,10 @@ export default {
     // end web view get message
 
     // get query for appale login
-    const route = useRoute();
-    if (route.query.isiPhone) {
-      this.isAppaleId = true;
-    }
+    // const route = useRoute();
+    // if (route.query.isiPhone) {
+    //   this.isAppaleId = true;
+    // }
   },
   methods: {
     onSubmit() {
