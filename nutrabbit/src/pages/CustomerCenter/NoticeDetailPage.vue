@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>Notice</h2>
+          <h2>공지사항</h2>
         </div>
         <div v-for="(item, index) of noticeDetailsData" :key="index">
           <div class="notice-list noBorder notice-list-main">
@@ -39,7 +39,7 @@
               class="btn-small-solid grey"
               @click="this.$router.push('/notice')"
             >
-              List
+              목록으로
             </button>
           </div>
         </div>
