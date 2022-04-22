@@ -34,6 +34,10 @@
                   </tbody>
                 </table>
               </div>
+              <div class="fGroup" v-if="titletrue" @click="titleshow">
+                <label>Title</label>
+                <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
+              </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
                 <div class="ansBlock">
@@ -67,6 +71,7 @@ export default {
   data() {
     return {
       options: [],
+      title : "",
       add_req: "",
       answer: "",
       product_id: this.$route.params.id,
