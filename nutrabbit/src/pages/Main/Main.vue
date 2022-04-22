@@ -3,7 +3,7 @@
     <div class="main-slider">
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="true" :modules="modules" :speed="2000" class="mySwiper">
+      }" :navigation="true" :modules="modules" :speed="1000" class="mySwiper">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
