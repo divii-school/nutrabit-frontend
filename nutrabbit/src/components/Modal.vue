@@ -20,7 +20,7 @@
           <button
             type="button"
             class="btn-primary grey-btn-solid"
-            @click="close"
+            @click="close()"
             v-if="btnText1"
           >
             {{ btnText1 }}

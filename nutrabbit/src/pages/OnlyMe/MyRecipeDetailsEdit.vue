@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My choice</h2>
+          <h2>{{ page_header }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -51,6 +51,7 @@
                 <input
                   type="text"
                   name=""
+                  disabled
                   placeholder="My own recipe made with guar gum hydrolyzate"
                   v-model="title"
                 />
@@ -89,7 +90,7 @@
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2>Get a quote</h2>
+                    <h2>Get an estimate</h2>
                   </div>
                 </div>
                 <div class="product-item recipeCheck">
@@ -106,7 +107,7 @@
                   </div>
                   <div class="material-details">
                     <h2>
-                      sample application
+                      Sample application
                       <span>(Sample cost 300,000 won/paid)</span>
                     </h2>
                   </div>
@@ -182,6 +183,7 @@ export default {
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -217,7 +219,7 @@ export default {
           }
           this.rwaMaterialData = res.data
           this.add_req = res.data[0].additional_request;
-          this.title = res.data[0].title;
+          this.title = (_type == 'my_choice') ? res.data[0].title : res.data[0].name_ko;
 
          if(res.data[0].service_type == 1){
            this.isSample = true;
@@ -244,7 +246,8 @@ export default {
                       this.option_items.push( res.data[0] )
                     //  console.log(this.option_items)
                  }else{
-                   this.$swal(res.message, "error");
+                   //this.$swal(res.message, "error");
+                   console.log(res.message)
                  }
                }
               
@@ -262,7 +265,7 @@ export default {
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
       if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
-      this.$swal('Need to fill all the fields')
+      this.$swal('All fields required to be filled')
 
       // this.emptyTitle = (!_title) ? true : false;
       // this.emptyReq = (!_additional_req) ? true : false;

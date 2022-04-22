@@ -24,6 +24,10 @@
               </li>
             </ul>
           </div>
+           <ul>
+            <li>* nutri3.3 blending can only be purchased within the options provided.</li>
+            <li>*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.</li>
+          </ul>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
@@ -31,10 +35,13 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">nutri 3.3 blending product</h4>
             <div class="nutri-dom-product blendedPro">
-              <ul v-for="(item, index) of nutriList" :key="index">
-                <li>
+              <ul >
+                <li v-for="(item, index) of nutriList" :key="index">
                   <div class="nutri-product-item">
-                    <img class="nutri-pimg" :src="'http://api-nutrabbit-dev.dvconsulting.org' + item.detail_image_path" alt=""/>
+                    <div @click="this.$router.push(`/nutri-detail/${item.id}`)">
+                      <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
+                      <img v-else class="nutri-pimg" src="../../assets/images/content_place.png" alt="" />
+                    </div>
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
                       <span>nutri 3.3</span>
@@ -42,25 +49,8 @@
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">{{item.name_ko}}</p>
                   </div>
                 </li>
-                <!-- <li>
-                  <div class="nutri-product-item">
-                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                  </div>
-                    <p class="title">Nutri ODM Product Title</p>
-                  </div>
-                </li> -->
-                <!-- <li>
-                  <div class="nutri-product-item">
-                    <img class="nutri-pimg" src="http://api-nutrabbit-dev.dvconsulting.org//public/uploads/nutriBlending/e630093a-bdf7-4423-ab09-9ce463852dfc.jpg" alt="">
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                  </div>
-                    <p class="title">Nutri ODM Product Title</p>
-                  </div>
-                </li> -->
               </ul>
+             
             </div>
           </div>
         </div>
@@ -87,19 +77,20 @@ export default {
         {
           img: "../../../src/assets/images/blending2.png",
           step: "Step.2",
-          desc: "The product you want to launch Choose"
+          desc: "Choose the product you want to launch"
         },
         {
           img: "../../../src/assets/images/blending3.png",
           step: "Step.3",
-          desc: "at the bottom of the selected product detail page Click the Get Quote button"
+          desc: "Click the Get an estimate button at the bottom of the detail page on selected product"
         },
         {
           img: "../../../src/assets/images/blending4.png",
           step: "Step.4",
-          desc: "After checking in nutri 3.3 We will contact you"
+          desc: "We will contact you after checking"
         },
       ],
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       lang:"",
       nutriList:[],
     };

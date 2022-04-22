@@ -6,7 +6,7 @@
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               Sign Up
-              <span>business member</span>
+              <span>Business Member</span>
             </h1>
             <span>* Required</span>
           </div>
@@ -81,7 +81,7 @@
                 <span class="error-msg">{{ error.businessName }}</span>
               </div>
               <div class="form-group" :class="error.depertment ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>depertment</label>
+                <label for=""><i class="icon-required"></i>Department</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -118,7 +118,7 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>name</label>
+                <label for=""><i class="icon-required"></i>Name</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -148,10 +148,11 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="error-msg">{{ error.username }}</span>
+                <span class="success-msg" v-if="isIDVerified">{{ isUserSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>password</label>
+                <label for=""><i class="icon-required"></i>Password</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -170,7 +171,7 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>verify password</label
+                  ><i class="icon-required"></i>Verify Password</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
@@ -186,7 +187,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>e-mail</label>
+                <label for=""><i class="icon-required"></i>Email</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -238,10 +239,11 @@
                     certification
                   </button>
                 </div>
-                <span class="error-msg">{{ error.emailOTP }}</span>
+               <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>phone number</label>
+                <label for=""><i class="icon-required"></i>Phone Number</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -259,7 +261,7 @@
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>address</label>
+                <label for=""><i class="icon-required"></i>Address</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input
@@ -334,7 +336,11 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus : 'Send verification code'
+      verificationStatus : 'Send verification code',
+      isIDVerified : false,
+      isOtpVerified : false,
+      isUserSuccess : '',
+      isOtpSuccess : '',
     };
   },
   created() {
@@ -359,20 +365,35 @@ export default {
         depertment: this.depertment,
         contactPerson: this.contactPerson,
         account_type: "business",
+        isIDVerified : this.isIDVerified,
+        isOtpVerified : this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
         this.error = error;
         return false;
       } else {
-        this.error = "";
+        this.error = {};
         return true;
       }
     },
-    async BusinessRegistration() {
+    async BusinessRegistration() 
+    {
       if (!this.checkError()) {
         return;
       } else {
+
+        //  if(this.isIDVerified == false){
+        //   this.$swal('Have to check user ID availability')
+        // }
+
+      // if(this.isOtpVerified == false){
+      //     this.$swal('Have to verify the otp for email')
+      //   }
+      //   else {
+
+      //   console.log('Registration Complete')
+
         this.commonService
           .BusinessRegistration(
             this.name,
@@ -392,7 +413,8 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
-      }
+        }
+      
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
@@ -403,8 +425,10 @@ export default {
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
+            this.isIDVerified = true;
             this.error.username = "";
-            this.$swal("User id available");
+            //this.$swal("User id available");
+            this.isUserSuccess = 'User ID available';
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
@@ -419,6 +443,7 @@ export default {
         this.error.email = "Please enter your email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          //console.log(res);
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -426,8 +451,9 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
+            this.emailOTP='';
             this.$swal("OTP has been sent to your email");
-            this.error.email = "";
+            // this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -465,8 +491,10 @@ export default {
         return (this.error.emailOTP = "Enter an valid OTP");
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
+          //console.log(res);
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-            this.$swal("OTP verified");
+            //this.$swal("OTP verified");
+            this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -474,9 +502,12 @@ export default {
             this.emailValidated = 0;
             this.otpValidate = 1;
             this.error.emailOTP = "";
+            this.isOtpVerified = true;
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "wrong otp";
+            //console.log("wrong otp");
+            //this.error.emailOTP = "wrong otp";
+             return (this.error.emailOTP = "The verification code does not match.");
           }
         });
       }

@@ -15,7 +15,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id)">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -39,7 +39,7 @@
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItem(product_id)">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemChoice">delete selection <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -55,6 +55,10 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" bodytext1="Are you sure?"
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
+    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
   </div>
 </template>
 
@@ -65,6 +69,8 @@ import Popper from "vue3-popper";
 import Button from '../../components/Button.vue';
 import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
+import Modal from "../../components/Modal.vue";
+
 export default {
   inject : ['common'],
   name: "ChoiceRecommendedBlendingPackageSelection",
@@ -72,6 +78,7 @@ export default {
     Popper,
     ProductListRecipe,
     Button,
+    Modal,
   },
   
   data() {
@@ -97,6 +104,8 @@ export default {
       product_id : '',
       recommendedBlendingData : [],
       myChoiceData : [],
+      isRecommendedModalVisible : false,
+      isChoiceModalVisible : false,
       
     };
   },
@@ -119,7 +128,7 @@ export default {
       
         if (res.status == 200) {
           this.recommendedBlendingData = res.data.recipeData;
-          //console.table(res.data.recipeData)
+          console.table(res.data.recipeData)
         } else {
 
           this.$swal(res.data.message, "error");
@@ -140,21 +149,59 @@ export default {
         }
     })
     },
-   
-
-   deleteRecipeItem(id){
-     if(!this.product_id){
+    
+    deleteRecipeItemRecommended(){
+      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return
      }
+      this.isRecommendedModalVisible = true;
+      
+    },
+
+    deleteRecipeItemChoice(){
+       if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
+       return
+     }
+      this.isChoiceModalVisible = true;
+      
+    },
+
+    deleteRecipeRecommendedItem(id){
+      
+      this.deleteRecipeItem(id, 'recommended')
+    },
+
+    deleteRecipeChoiceItem(id){
+      this.deleteRecipeItem(id, 'choice')
+    },
+
+    closeModalRecommended(){
+       this.isRecommendedModalVisible = false;
+    },
+
+    closeModalChoice(){
+       this.isChoiceModalVisible = false;
+    },
+
+   deleteRecipeItem(id, type){
+     
      //console.log(`delete item product id : ${id}`)
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
           this.$swal(`Delete ${res.message}`)
-          setTimeout(()=>{
-            window.location.reload()
-          }, 2500)
-          console.log(res)
+
+          if(type == 'recommended'){
+             this.allRecommendedData();
+          }
+
+          if(type == 'choice'){
+             this.allChoiceData();
+          }
+          
+          
         } else {
 
           this.$swal(res.message, "error");
@@ -164,6 +211,7 @@ export default {
 
    toNextRecommended(){
      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return;
      }
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'recommended-blending'}})
@@ -171,6 +219,7 @@ export default {
 
    toNextChoice(){
      if(!this.product_id){
+       this.$swal('Any one of the products needs to be selected')
        return;
      }
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'my-choice'}})

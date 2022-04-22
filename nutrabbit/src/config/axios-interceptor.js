@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Toast from '../alert/alert.js';
 
 window.axios = axios;
 axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1/sites/';
@@ -15,4 +15,18 @@ axios.interceptors.request.use(function (config) {
     return config;
 }, function (err) {
     return Promise.reject(err);
+});
+
+// Token expire redirection
+axios.interceptors.response.use((response) => {
+    return response
+}, async function (error) {
+    if (error.response.status === 403) {
+        Toast.fire({ title: "Session Expired" });
+        window.location.href = '/login';
+        localStorage.clear();
+        return axios(originalRequest);
+
+    }
+    return Promise.reject(error);
 });

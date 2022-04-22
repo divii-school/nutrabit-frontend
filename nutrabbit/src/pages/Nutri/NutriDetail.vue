@@ -3,45 +3,50 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <swiper
-            :spaceBetween="10"
-            :modules="[Thumbs]"
-            :thumbs="{ swiper: thumbsSwiper }"
-            class="mySwiper"
-            v-for="(items, index) of nutriDetails"
-            :key="index"
-          >
-            <swiper-slide
-              v-for="(item, index) of items.product_sub_image_path"
+          <div v-if="product_sub_image_path.length>0">
+            <swiper
+              :spaceBetween="10"
+              :modules="[Thumbs]"
+              :thumbs="{ swiper: thumbsSwiper }"
+              class="mySwiper"
+              v-for="(items, index) of nutriDetails"
               :key="index"
             >
-              <img
-                :src="imgBaseUrl + item"
-                alt
-              />
-            </swiper-slide>
-          </swiper>
-          <swiper
-            :spaceBetween="10"
-            :slidesPerView="4"
-            :freeMode="true"
-            :modules="[Thumbs]"
-            watch-slides-progress
-            @swiper="setThumbsSwiper"
-            class="mySwiper2"
-            v-for="(items, index) of nutriDetails"
-            :key="index"
-          >
-            <swiper-slide
-              v-for="(item, index) of items.product_sub_image_path"
+                <swiper-slide
+                  v-for="(item, index) of items.product_sub_image_path"
+                  :key="index"
+                >
+                  <img v-if="item" :src="imgBaseUrl + item" alt />
+                </swiper-slide>
+            </swiper>
+            </div>
+          <div v-else>
+            <img src="../../assets/images/content_place.png" alt="" />
+          </div>
+          <div v-if="product_sub_image_path.length>0">
+            <swiper
+              :spaceBetween="10"
+              :slidesPerView="4"
+              :freeMode="true"
+              :modules="[Thumbs]"
+              watch-slides-progress
+              @swiper="setThumbsSwiper"
+              class="mySwiper2"
+              v-for="(items, index) of nutriDetails"
               :key="index"
             >
-              <img
-                :src="imgBaseUrl + item"
-                alt
-              />
-            </swiper-slide>
-          </swiper>
+              <swiper-slide
+                v-for="(item, index) of items.product_sub_image_path"
+                :key="index"
+              >
+                <img v-if="item" :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+
+            </swiper>
+            </div>
+          <div v-else>
+            <img src="../../assets/images/content_place.png" alt="" />
+          </div>
         </div>
         <div
           class="blending-right"
@@ -65,21 +70,9 @@
               @click="openmodal()"
               class="btn-primary blue-btn-solid"
             >
-              Get a quote
+              Get an estimate
             </button>
           </div>
-          <!-- <div class="suggested-product">
-            <h2>similar products</h2>
-            <img src="../assets/images/suggested-product-img.png" alt="" />
-            <ul class="smilar-product-img">
-              <li
-                v-for="(items, index) of item.similar_image_path"
-                :key="index"
-              >
-                <img :src="imgBaseUrl + items" alt />
-              </li>
-            </ul>
-          </div> -->
         </div>
       </div>
       <div class="nutriDetail">
@@ -99,7 +92,7 @@
             <p
               class="desc text-center"
             >Click the button below to become the hero of the product!</p>
-            <button class="btn-small-solid green" @click="openmodal()">Get a quote</button>
+            <button class="btn-small-solid green" @click="openmodal()">Get an estimate</button>
           </div>
         </div>
       </div>
@@ -108,8 +101,8 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="Would you like to get a quote for this product?"
-    bodytext2 = "A quote will be sent to you by email when you click OK."
+    bodytext1="Would you like to get an estimate for this product?"
+    bodytext2 = "An estimate will be sent to you by email when you click OK."
     btnText1="cancellation"
     btnText2="Confirm"
     link = ''
@@ -214,6 +207,7 @@ export default {
       id:"",
       nutriDetails:[],
       isModalVisible:false,
+      product_sub_image_path:[],
     };
   },
   created() {
@@ -247,6 +241,8 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
+            // console.log("this.nutriDetails",this.nutriDetails);
+            this.product_sub_image_path = res.data.data[0].product_sub_image_path;
           }
         })
         .catch((err) => {

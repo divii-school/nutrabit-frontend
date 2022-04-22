@@ -90,7 +90,7 @@
         .btn-wrap{
             button{
                 @media screen and (max-width: 640px) {
-                    min-width: inherit !important;
+                    min-width: 100px !important;
                     padding: 10px 14px;
                 }
             }
@@ -155,5 +155,10 @@
     }
     .flexEnd{
         justify-content: flex-end !important;
+        .blue{
+            @media screen and (max-width: 640px){
+                width: 100%;
+            }
+        }
     }
 }

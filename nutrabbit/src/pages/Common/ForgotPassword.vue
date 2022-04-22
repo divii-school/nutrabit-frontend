@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">find password</h1>
+            <h1 class="login-heading">Find password</h1>
           </div>
           <form
             action=""
@@ -20,14 +20,13 @@
                     type="text"
                     placeholder="Enter ID"
                     v-model="userId"
-                    
                   />
                 </div>
               </div>
               <span class="error-msg">{{ error.userId }}</span>
             </div>
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>e-mail</label>
+              <label for=""><i class="icon-required"></i>Email</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -35,7 +34,6 @@
                     type="email"
                     placeholder="Enter your email"
                     v-model="email"
-                    
                   />
                 </div>
                 <button
@@ -61,7 +59,6 @@
                     placeholder="Enter your email verification code"
                     v-model="emailOTP"
                     maxlength="6"
-                    
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -79,7 +76,8 @@
                   certification
                 </button>
               </div>
-              <span class="error-msg">{{ error.emailOTP }}</span>
+              <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
+              <span class="error-msg" v-else>{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
               Confirm
@@ -104,7 +102,7 @@ export default {
       email: "",
       emailOTP: "",
       error: {},
-      timer: 130,
+      timer: 180,
       isActive: true,
       isVerification: false,
       emailValidated: 0,
@@ -115,6 +113,9 @@ export default {
       newTime: "",
       verify_status: "",
       localUserData: "",
+      userId:'',
+      isVerify:0,
+      isOtpSuccess : '',
     };
   },
   created() {
@@ -127,6 +128,7 @@ export default {
         email: this.email,
         emailOTP: this.emailOTP,
         validation_type: "forgotPassword",
+        isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
       if (isInvalid) {
@@ -141,12 +143,7 @@ export default {
       if (!this.checkError()) {
         return;
       } else {
-        if (
-          this.localUserData != null &&
-          this.localUserData.verifiy_status == 1
-        ) {
-          this.$router.push("/change-password");
-        }
+         this.$router.push("/change-password");
       }
     },
     async forgetPassword() {
@@ -166,6 +163,7 @@ export default {
               this.otpValidate = 0;
               this.startTimer = false;
               this.showTick = true;
+              this.emailOTP = "";
               this.$swal("OTP has been sent to your email");
               this.error.email = "";
 
@@ -173,7 +171,7 @@ export default {
                 clearInterval(this.storeSetInterval);
               }
               // asign new time again
-              this.timer = 130;
+              this.timer = 180;
 
               this.storeSetInterval = setInterval(() => {
                 let m = Math.floor(this.timer / 60);
@@ -211,13 +209,14 @@ export default {
             btn_type: "certification",
           });
           if (verifyOtpData.data.status == 200) {
-            this.$swal("OTP verified");
+            this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
+            this.isVerify=1;
             this.error.emailOTP = "";
             localStorage.setItem(
               "forgetUserData",
@@ -226,11 +225,16 @@ export default {
             return true;
           }
         } catch (err) {
-          this.error.emailOTP = "wrong otp";
+          this.error.emailOTP = "The verification code does not match.";
           return false;
         }
       }
     },
+  },
+  updated() {
+    if (this.localUserData) {
+      this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));
+    }
   },
   mounted() {
     this.localUserData = JSON.parse(localStorage.getItem("forgetUserData"));

@@ -6,13 +6,14 @@
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
-        <img v-bind:src="'http://api-nutrabbit-dev.dvconsulting.org//public' + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
+        <img v-if="item.thumbnail_image_path[0]" v-bind:src="imgBaseUrl + item.thumbnail_image_path[0]" v-bind:alt="item.title" />
+        <img v-else src="../assets/images/package_place.png" alt />
       </div>
     </div>
     <div class="material-details">
       <h2>{{item.title}}</h2>
       <div class="description">
-        <table>
+        <!-- <table>
           <tr>
             <th><p>Raw material</p></th>
             <td><p>{{ item.raw_material_name }}</p></td>
@@ -33,7 +34,31 @@
             <th><p>Service</p></th>
             <td><p>{{ item.service }}</p></td>
           </tr>
-          </table>
+        </table> -->
+        <div class="product-details-wrap">
+          <ul>
+            <li>
+              <h3>Raw material</h3>
+              <p>{{ item.raw_material_name }}</p>
+            </li>
+            <li>
+              <h3>Formulation</h3>
+              <p>{{ item.formulation }}</p>
+            </li>
+            <li>
+              <h3>Package</h3>
+              <p>{{ item.package }}</p>
+            </li>
+            <li>
+              <h3>Additional Request</h3>
+              <p>{{ item.additional_request }}</p>
+            </li>
+            <li>
+              <h3>Service</h3>
+              <p>{{ item.service }}</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -41,8 +66,13 @@
 
 <script>
 export default {
-  name: "ProductList",
+  name: "ProductListRecipe",
   props:["item"],
+  data() {
+    return {
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+    }
+  },
    methods: {
          getPackageId(event) {
            this.$emit('changeId',event.target.value);

@@ -128,8 +128,9 @@
                     padding-bottom: 25px;
                     border-bottom: 1px solid $grey-CF;
                     @media screen and (max-width: 640px){
-                        flex-direction: column;
+                        // flex-direction: column;
                         align-items: flex-start;
+                        align-items: center;
                     }
                     .heading{
                         @include flex-align-center;
@@ -140,7 +141,7 @@
                             letter-spacing: 0.01em;
                             color: $grey-66;
                             @media screen and (max-width: 640px){
-                                font-size: 20px;
+                                font-size: 17px;
                                 line-height: 20px;
                             }
                         }
@@ -162,7 +163,7 @@
                     }
                     .heading-left{
                         @media screen and (max-width: 640px){
-                            margin-top: 10px;
+                            // margin-top: 10px;
                         }
                         .see-more{
                             @include flex-align-center;
@@ -452,6 +453,9 @@
                             }
                             .radio-wrap{
                                 @include flex-align-center;
+                                @media screen and (max-width: 640px){
+                                    width: 100%;
+                                }
                                 .custom-radio{
                                     @media screen and (max-width: 640px){
                                        padding-left: 37px;
@@ -472,13 +476,14 @@
                             }
                             .material-details{
                                 @media screen and (max-width: 640px){
-                                    margin: 20px 0 0 37px;
+                                    margin: 20px 0 0 0px;
                                 }
                                 h2{
                                     font-weight: 600;
                                     font-size: 22px;
                                     line-height: 26px;
-                                    color: $black-18;
+                                    color: $black-18; 
+                                    cursor: pointer;
                                     @media screen and (max-width: 640px){
                                         font-size: 20px;
                                         line-height: 30px;
@@ -486,10 +491,54 @@
                                 }
                                 .description{
                                     margin-top: 15px;
+                                    table{
+                                        th{
+                                            width: 150px;
+                                        }
+                                        td,th{
+                                            padding: 10px 0px;
+                                            vertical-align: top;
+                                        }
+                                    }
                                     p{
                                         font-size: 18px;
                                         line-height: 23px;
                                         color: $grey-82;
+                                    }
+                                }
+                                .description{
+                                    ul{
+                                        li{
+                                            display: flex;
+                                            margin-bottom: 10px;
+                                            @media screen and (max-width: 767px){
+                                                flex-wrap: wrap;
+                                                margin-bottom: 20px;
+                                            }
+                                            h3{
+                                                width: 120px;
+                                                font-weight: 500;
+                                                font-size: 18px;
+                                                line-height: 22px;
+                                                color: #4C4C4C;
+                                                width: 150px;
+                                                margin-right: 15px;
+                                                @media screen and (max-width: 767px){
+                                                    margin-bottom: 5px;
+                                                    width: 100%;
+                                                }
+                                            }
+                                            p{
+                                                font-weight: 400;
+                                                font-size: 16px;
+                                                line-height: 19px;
+                                                color: #828282;
+                                                width: calc(100% - 150px);
+                                                @media screen and (max-width: 767px){
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

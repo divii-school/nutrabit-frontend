@@ -20,13 +20,13 @@
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>Choose a package</p>
+                <p>Package selection</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>final quote</p>
+                <p>Final estimate</p>
               </div>
             </li>
           </ul>
@@ -67,7 +67,7 @@
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
                   class="btn-small-solid grey">Previous</button>
                   
-                <button @click="checkPillId" class="btn-small-solid blue">next</button>
+                <button @click="checkPillId" class="btn-small-solid blue">Next</button>
               </div>
             </div>
           </div>
@@ -75,6 +75,11 @@
       </div>
     </div>
   </div>
+  <my-modal-component v-show="showModal2">
+    <ModalWarning @close2="closeModal2"
+      bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
+      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
+  </my-modal-component>
 </template>
 
           
@@ -83,17 +88,22 @@
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
+import ModalWarning from "../../components/ModalWarning.vue";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
+    ModalWarning
+
   },
   data() {
     return {
       blendingFormulationData: [],
       pill_id: '',
       storage_box: localStorage.getItem('storage_box'),
+      to: '',
+      showModal2: false,
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -116,10 +126,27 @@ export default {
   created() {
     this.mychoiceService = new MyChoiceService();
   },
+  beforeRouteLeave(to, from, next) {
+    if (this.to) {
+      next();
+    } else {
+
+      this.to = to;
+      this.showModal2 = true;
+    }
+  },
   mounted() {
     this.blendingFormulation();
   },
   methods: {
+    closeModal2() {
+      this.showModal2 = false;
+      this.to = null;
+    },
+    confirm() {
+      this.showModal2 = false;
+      this.$router.push(this.to);
+    },
     blendingFormulation() {
       this.mychoiceService.getBlendingFormulation().then((res) => {
         //  console.log(res);
@@ -137,6 +164,7 @@ export default {
 
     },
     checkPillId() {
+      this.to = "/raw-material-package/";
       // console.log(this.blending_id);
       if (this.pill_id == "") {
         this.$swal("Please Choose a Formulation");
@@ -158,7 +186,7 @@ export default {
         localStorage.setItem("option", JSON.stringify(option_data));
 
         localStorage.setItem('pill_id', this.pill_id);
-        this.$router.push('/raw-material-package/');
+        this.$router.push(this.to);
         //console.log("success");
       }
     },

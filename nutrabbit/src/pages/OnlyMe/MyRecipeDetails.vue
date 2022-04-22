@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My Choice</h2>
+          <h2>{{ page_header }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -108,7 +108,7 @@
       </div>
     </div>
     <Modal v-show="isModalVisible" @close="closeModal" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "OK"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
+    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
   </div>
 </template>
 
@@ -160,6 +160,7 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
     };
   },
 
@@ -189,14 +190,14 @@ export default {
             this.rwaMaterialData = res.data[0];
             console.log(this.rwaMaterialData)
             this.additionalRequest = res.data[0].additional_request;
-            this.title = res.data[0].title;
+            this.title = (_type == 'my_choice') ? res.data[0].title : res.data[0].name_ko;
             this.serviceNum = res.data[0].service_type;
             if (this.serviceNum == 1) {
               this.serviceType = ["Sample Application"];
             } else if (this.serviceNum == 2) {
-              this.serviceType = ["Get A Quote"];
+              this.serviceType = ["Get an estimate"];
             } else {
-              this.serviceType = ["Sample Application", "Get A Quote"];
+              this.serviceType = ["Sample Application", "Get an estimate"];
             }
             Array.from(res.data[0].options).forEach((ele) => {
               console.log(Object.keys(ele)[0], Object.values(ele)[0])
@@ -210,6 +211,7 @@ export default {
                     console.log(this.option_items);
                 } else {
                  // this.$swal(res.message, "error");
+                 console.log(res.message)
                 }
               });
             });

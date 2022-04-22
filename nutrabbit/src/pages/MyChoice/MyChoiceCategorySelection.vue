@@ -44,16 +44,9 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard
-                  :category="item.category_name_ko"
-                  :name="item.name_ko"
-                  :desc="item.description_ko"
-                  :image="item.thumbnail_1_path"
-                  :image_hover="item.thumbnail_2_path"
-                  :image_link="imgBaseUrl"
-                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
-                  @mouseover="hoverEffect($event)"
-                />
+                <SearchCard :category="item.category_name_ko" :name="item.name_ko" :desc="item.description_ko"
+                  :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path" :image_link="imgBaseUrl"
+                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id" type2="recommended_data" />
               </li>
             </ul>
           </div>
@@ -91,7 +84,6 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="sortingMethod($event)">
-                    <option value>Sort By</option>
                     <option value="popularity">in order of popularity</option>
                     <option value="alphabetical">alphabetical order</option>
                   </select>
@@ -102,25 +94,20 @@
               <li v-for="data in rawMaterialData" :key="data">
                 <div class="list-left">
                   <div class="img-wrap">
-                    <img
-                      :src="imgBaseUrl + data.thumbnail_fst_path"
-                      alt
-                    />
+                    <img v-if="data.thumbnail_fst_path" :src="imgBaseUrl + data.thumbnail_fst_path" alt />
+                    <img v-else src="../../assets/images/raw_material_place.png" alt />
 
-                    <div class="img-wrap-hover">
-                      <img
-                        :src="imgBaseUrl + data.thumbnail_scnd_path"
-                        alt
-                      />
+                    <div v-if="data.thumbnail_scnd_path" class="img-wrap-hover">
+                      <img :src="imgBaseUrl + data.thumbnail_scnd_path" alt />
                     </div>
+                    <div v-else class="img-wrap-hover">
+                      <img src="../../assets/images/raw_material_place.png" alt />
+                    </div>
+
                   </div>
                   <div class="material-details">
-                    <h2 @click="gotoNextPage(data.id)"
-                    >{{ data.material_name_ko }}</h2>
-                    <div
-                      @click="gotoNextPage(data.id)"
-                      class="description"
-                    >
+                    <h2 @click="gotoNextPage(data.id)">{{ data.material_name_ko }}</h2>
+                    <div @click="gotoNextPage(data.id)" class="description">
                       <p>{{ data.material_description_ko }}</p>
                     </div>
                   </div>
@@ -129,14 +116,9 @@
                   <button @click="showDetails(data.id)" class="btn-small-solid">add</button>
                 </div>
                 <my-modal-component v-show="showModal">
-                  <ModalStorageBox
-                    @close="closeModal"
-                    bodytext1="Added to Raw Material inventory"
-                    btnText1="go to locker"
-                    btnText2="confirm"
-                    :raw_material_id="raw_material_id"
-                    :sub_category_id="this.sub_category_id"
-                  />
+                  <ModalStorageBox @close="closeModal" bodytext1="Added to Raw material cart"
+                    btnText1="Go to cart" btnText2="confirm" :raw_material_id="raw_material_id"
+                    :sub_category_id="this.sub_category_id" />
                 </my-modal-component>
               </li>
             </ul>
@@ -173,7 +155,6 @@ export default {
       showModal: false,
       raw_material_id: null,
       key: null,
-      close:false
     };
   },
   created() {
@@ -192,12 +173,9 @@ export default {
     closeModal() {
       this.showModal = false;
     },
-    hoverEffect(e){
-      this.close=true;
-    },
-     gotoNextPage(raw_material_id) {
+    gotoNextPage(raw_material_id) {
 
-      localStorage.setItem('raw_material_id',raw_material_id);
+      localStorage.setItem('raw_material_id', raw_material_id);
       this.$router.push('/mychoice-rawMaterial-detailed-page/');
 
     },
@@ -225,7 +203,7 @@ export default {
       this.mychoiceService.getRecommendedData(limit, page).then((res) => {
         //console.log(res);
         if (res.status == 200) {
-           //console.log('allBlendingData res', res.data.blendingData);
+          //console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
 
         } else {

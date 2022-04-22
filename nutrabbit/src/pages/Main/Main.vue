@@ -1,20 +1,12 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="true"
-        :modules="modules"
-        :speed="2000"
-        class="mySwiper"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="true" :modules="modules" :speed="2000" class="mySwiper">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <img
-            :src="imgBaseUrl + slider.desktop_banner_path"
-            alt=""
-          />
+          <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
       </swiper>
@@ -25,12 +17,11 @@
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
           <h2 class="nutri-choice-heading text-center">
-            Direct health functional food recipes
-            <br />Opportunity to create!
+            Opportunity to create <br>
+            Health Functional Food Recipes <br>
+            on your own!
           </h2>
-          <p
-            class="desc text-center"
-          >Create your own recipe with just one combination of your choice!</p>
+          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
@@ -49,14 +40,12 @@
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">nutri 3.3 blending</p>
             <h2 class="nutri-choice-heading text-center">
-              service only for you
-              <br />Easily seize the opportunity to launch
-              your own product!
+              A service only for you <br>
+              Don't miss the chance to launch your own product!
             </h2>
-            <p
-              class="desc text-center"
-            >We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3 Blending?</button>
+            <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
+            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
+              Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
@@ -111,11 +100,16 @@ export default {
       MainSlider: [],
       ProductData: [],
       token: localStorage.getItem('token'),
+      isMobile: false,
+      isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
   setup() {
     const common = inject("common");
+    onMounted(() => {
+      common.methods.isFromApp();
+    });
     return {
       modules: [Pagination, Navigation],
       common
@@ -126,6 +120,7 @@ export default {
     this.paymentService = new PaymentService();
   },
   mounted() {
+    // this.isFromApp();
     this.allBanner();
     this.allNutidata();
     localStorage.removeItem('sub_category_id');
@@ -138,9 +133,39 @@ export default {
 
   },
   methods: {
+    // check if it's from APP
+    // isFromApp() {
+    //   var queryString = window.location.search;
+    //   const urlParams = new URLSearchParams(queryString);
+    //   console.log('urlParams--', urlParams);
+    //   var mobile = urlParams.get("mobile");
+    //   var iphone = urlParams.get("isiPhone");
+    //   if (mobile) {
+    //     this.isMobile = true;
+    //     this.common.state.isMobile = true;
+    //     localStorage.setItem("isMobile", true);
+    //     if(iphone) {
+    //       this.isiPhone = true;
+    //       this.common.state.isiPhone = true;
+    //       localStorage.setItem("isiPhone", true);
+    //     }
+    //   }
+
+    //   setTimeout(() => {
+    //     console.log(
+    //       "this.common.state.isMobile",
+    //       this.common.state.isMobile
+    //     );
+    //     console.log(
+    //       "this.common.state.isiPhone",
+    //       this.common.state.isiPhone
+    //     );
+    //   }, 4000);
+    // },
+    // ENdx check if it's from APP
     // makePay test function
     makePay() {
-      console.log('makePay');
+      // console.log('makePay');
       alert('makePay');
       this.paymentService.requestPay();
     },

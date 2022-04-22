@@ -12,8 +12,8 @@
           <div class="membership-list-wrap method-selection">
             <ul>
               <li class="method-item">
-                <h2 class="method-heading">General membership registration</h2>
-                <p class="list-desc">Sign up as a member via email.</p>
+                <h2 class="method-heading">General Sign up</h2>
+                <p class="list-desc">Sign up via email.</p>
                 <button class="btn-primary" @click="
                 $router.push({
                   name: 'MemberRegistrationIndividual',
@@ -21,15 +21,15 @@
               ">Sign Up</button>
               </li>
               <li class="method-item">
-                <h2 class="method-heading">GSNS membership registration</h2>
+                <h2 class="method-heading">SNS Sign Up</h2>
                 <p class="list-desc">
-                  Sign up as a member through your SNS ID.
+                  Sign up via your SNS ID.
                 </p>
                 <button class="btn-primary with-icon yellow-btn">
-                  <i class="icon-chat-black"></i> Start with cacao
+                  <i class="icon-chat-black"></i> Sign up with Kakao
                 </button>
                 <button class="btn-primary with-icon green-btn">
-                  <i class="icon-naver"></i> Getting Started with Naver
+                  <i class="icon-naver"></i> Sign up with Naver
                 </button>
               </li>
             </ul>

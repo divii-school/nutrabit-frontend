@@ -81,7 +81,7 @@
     @close="closeModal"
     bodytext1="1:1 inquiry registration has been completed."
     btnText2="Confirm"
-    link="/"
+    link="/inquiry"
   />
 </template>
 <script>
@@ -116,12 +116,11 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data.data.inqueryType);
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })
         .catch((err) => {
-          console.log(err);
+          return err;
         });
     },
     onFileChange(e) {
@@ -151,9 +150,8 @@ export default {
         const res = await axios.post("/inquery/add", formData);
         this.isModalVisible = true;
       } catch (error) {
-        console.log(error);
+        return;
       }
-      console.log(formData);
     },
     removeFile() {
       this.fileName = "";

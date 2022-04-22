@@ -106,9 +106,11 @@ export default {
                       this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
 
                         if(res.status == 200){
+                            console.log(res.data[0])
                              this.options.push( res.data[0] )
                         }else{
-                           $swal(res.message)
+                          console.log(res.message)
+                           //this.$swal(res.message)
                         }
                         
                       })

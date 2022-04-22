@@ -4,6 +4,7 @@
 @import "./mixins";
 @import "./icons";
 @import "./button";
+@import "./alert";
 @import "./form";
 @import "./auth";
 @import "./modal";
@@ -135,7 +136,7 @@ textarea {
   line-height: 17px !important;
   color: $grey-82 !important;
   font-weight: normal !important;
-  margin: 0 !important;
+  margin: 0 0 0 0 !important;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -192,6 +193,10 @@ textarea {
         display: block;
       }
     }
+  }
+
+  &.custom-check2{
+    margin-top: -16px !important;
   }
 }
 
@@ -364,6 +369,7 @@ textarea {
   border-radius: 50%;
   background: $black-18;
 }
+
 
 .pagination-wrap {
   @include flex-justify-center;
@@ -633,15 +639,22 @@ textarea {
 .swal2-popup {
   max-width: 520px !important;
   width: 100% !important;
-  padding: 50px 30px !important;
-
+  padding: 80px 30px 50px !important;
+  @media screen and (max-width: 768px){
+    padding: 60px 30px 30px !important;
+  }
   .swal2-title {
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
     color: $black-33;
-    margin-top: 30px;
+    // margin-top: 30px;
     padding: 0;
+    color: $black-33;
+				@media screen and (max-width: 768px){
+					font-size: 18px;
+					line-height: 22px;
+				}
   }
 
   .swal2-actions {
@@ -662,6 +675,9 @@ textarea {
       border: 0;
       box-shadow: none;
     }
+  }
+  &.colored-toast{
+    padding: 10px !important;
   }
 }
 
@@ -903,12 +919,12 @@ textarea {
 
 .blendedPro{
   ul{
-    @media screen and (max-width: 1024px) {
-      flex-wrap: wrap;
-     }
+    flex-wrap: wrap !important;
+    justify-content: flex-start;
     li{
-      width: 33.33%;
+      width: 31.33%;
       padding: 0 1%;
+      margin-bottom: 80px;
       @media screen and (max-width: 1024px) {
        width: 47%;
        flex-wrap: wrap;
@@ -917,6 +933,7 @@ textarea {
       @media screen and (max-width: 677px) {
         padding: 0;
         width: 44%;
+        margin-bottom: 30px;
        }
       img{
         width: 330px;
@@ -952,20 +969,24 @@ textarea {
         font-weight: 600;
         @media screen and (max-width: 640px) {
           font-size: 14px;
-          }
+        }
       }
     }
   }
 }
 
 // cacao chat
-.totop-wrap{
+.kakao-talk-chat{
   position: fixed;
   z-index: 10;
   bottom: 243px;
   right: 79px;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    bottom: 173px;
+  }
   .round {
       display: block;
       width: 60px;
@@ -976,4 +997,8 @@ textarea {
           height: 60px;
       }
     }
+}
+// appale login btn 
+.show-appale-login{
+  display: none;
 }

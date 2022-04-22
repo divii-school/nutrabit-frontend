@@ -9,14 +9,26 @@
           <p class="title">title</p>
           <p class="date">Published date</p>
         </div>
-        <div class="notice-list bBtm-0">
+        <div class="notice-list bBtm-0 notice-list-main">
           <ul>
-            <li v-for="(item, index) of UpdatedNoticeList" :key="index">
+            <li v-for="(item, index) of importantNoticeList" :key="index">
               <div
                 class="item-left"
                 @click="this.$router.push(`/notice-detail-page/${item.id}`)"
               >
                 <span v-if="item.top10 == 1">Important</span>
+                <p>{{ item.title_ko }}</p>
+              </div>
+              <div class="item-right">
+                <p>{{ dateformat(item.createdDate) }}</p>
+              </div>
+            </li>
+            <li v-for="(item, index) of unimportantNoticeList" :key="index">
+              <div
+                class="item-left"
+                @click="this.$router.push(`/notice-detail-page/${item.id}`)"
+              >
+                <!-- <span v-if="item.top10 == 1">Important</span> -->
                 <p>{{ item.title_ko }}</p>
               </div>
               <div class="item-right">
@@ -29,6 +41,7 @@
           <pagination
             v-model="page"
             :records="totalItems"
+            :options="chunkPage"
             :per-page="perPage"
             @paginate="myCallback"
           />
@@ -53,6 +66,7 @@ export default {
       page: 1,
       perPage: 10,
       totalItems: 0,
+      chunkPage : { chunk : 5 },
     };
   },
   created() {
@@ -62,6 +76,22 @@ export default {
     this.allNoticeList();
     this.dateformat();
   },
+
+  computed :{
+   importantNoticeList(){
+    return Array.from(this.UpdatedNoticeList).filter(item=>{
+          return item.top10 == 1;
+    })
+   },
+   
+   unimportantNoticeList(){
+    return Array.from(this.UpdatedNoticeList).filter(item=>{
+          return item.top10 == 0;
+    })
+   },
+
+  },
+
   methods: {
     myCallback(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
@@ -79,7 +109,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          return;
         });
     },
     dateformat(value) {

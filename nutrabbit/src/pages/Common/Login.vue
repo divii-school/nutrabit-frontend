@@ -11,12 +11,8 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -25,12 +21,8 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="password"
-                    :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password"
-                  />
+                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password" />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -50,8 +42,7 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link
-                    >
+                      {{ $t("common.QuickLinks.FindID") }}</router-link>
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -71,30 +62,48 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
+            <!-- kakao login for App -->
+            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
+              <i class="icon-chat-black"></i>
+              <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
+              kakao mobile login
+            </button>
+            <!-- END kakao login for App -->
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button id="naver_Login" class="btn-primary with-icon green-btn">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
-            <button
+            <!-- Naver login for App -->
+            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
+              <i class="icon-naver"></i>
+              naver mobile login
+              <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
+            </button>
+            <!-- ENd Naver login for App -->
+
+            <!-- social login for appale -->
+
+            <button class="btn-primary with-icon black-btn" :class="isAppaleId ? '' : 'show-appale-login'" @click="mbAppleLogin">
+              <i class="icon-appale"></i>
+              애플로 시작하기
+            </button>
+
+            <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
               id="naver_id_login"
               @click="naverLogin"
             >
-              Naver
-              Login
-            </button>
+              Naver Login
+            </button> -->
           </div>
         </div>
       </div>
@@ -104,11 +113,11 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 // import axios from "axios";
-
+import { useRoute } from "vue-router";
 export default {
   name: "Login",
   components: {
@@ -122,11 +131,16 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
+      isPlatMobile: localStorage.getItem("isMobile") === "true",
+      isAppaleId: false,
     };
   },
   setup() {
     const { cookies } = useCookies();
     const common = inject("common");
+    onMounted(() => {
+      common.methods.isFromApp();
+    });
     return { cookies, common };
   },
   created() {
@@ -137,18 +151,35 @@ export default {
       const rememberUserPasswordCookie = this.cookies.get(
         "rememberUserPassword"
       );
-
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
         (this.email = rememberUserEmailCookie),
-          (this.password = rememberUserEmailCookie);
+          (this.password = rememberUserPasswordCookie);
       }
     }
     // this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
+
+    // web view get message
+    window["sendKakaoLoginData"] = (res) => {
+      this.sendKakoAccessToken(res);
+    };
+    window["sendNaverLoginData"] = (res) => {
+      this.sendNaverAccessToken(res);
+    };
+    window["sendAppleLoginData"] = (res) => {
+      this.sendAppleAccessToken(res);
+    };
+    // end web view get message
+
+    // get query for appale login
+    const route = useRoute();
+    if (route.query.isiPhone) {
+      this.isAppaleId = true;
+    }
   },
   methods: {
     onSubmit() {
@@ -166,13 +197,14 @@ export default {
             }
           } else {
             if (res.data.status == 200) {
-              console.log("login res", res.data.data);
+              // console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
               localStorage.setItem("token", res.data.data.token);
               localStorage.setItem("uid", res.data.data.userId);
               localStorage.setItem("uname", res.data.data.name);
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
                 this.cookies.set("rememberUserEmail", setEmail);
                 this.cookies.set("rememberUserPassword", setPassword);
@@ -183,8 +215,38 @@ export default {
         });
       }
     },
-
-
+    sendAccessToken(res) {
+      if (res) {
+        // this.testres = res;
+        this.checkMbfblogin(res);
+      } else {
+        return false;
+      }
+    },
+    sendKakoAccessToken(token) {
+      let ftoken = token;
+      // console.log("ftoken:--", ftoken);
+      alert(ftoken);
+    },
+    sendNaverAccessToken(token) {
+      let ftoken = token;
+      // console.log("ftoken:--", ftoken);
+      alert(ftoken);
+    },
+    sendAppleAccessToken(token) {
+      let ftoken = token;
+      console.log("ftoken:--", ftoken);
+      alert(ftoken);
+    },
+    mbKakaoLogin() {
+      window.parent.postMessage("kakaoLoginClicked", "*");
+    },
+    mbNaverLogin() {
+      window.parent.postMessage("naverLoginClicked", "*");
+    },
+    mbAppleLogin() {
+      window.parent.postMessage("appleLoginClicked", "*");
+    },
 
     // naver login
     // naverLogin() {
@@ -196,8 +258,6 @@ export default {
     //   // // naver_id_login.setPopup();
     //   // naver_id_login.init_naver_id_login();
     //   // // this.naverLoginCallback();
-
-
 
     //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
     //   var state = naverLogin.getUniqState();
@@ -211,14 +271,6 @@ export default {
     //     var btnNaverLogin = document.getElementById("naver_Login");
     //     btnNaverLogin.click();
     //   });
-
-
-
-
-
-
-
-
 
     // },
 
@@ -238,10 +290,9 @@ export default {
     //   alert(naver_id_login.getProfileData('age'));
     // },
 
-
     // kakao
     loginWithKakao() {
-      window.Kakao.init('5d14c5e0ea3ead3c0683355cba9eda57');
+      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -252,33 +303,25 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj)
+          // console.log(authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
           Kakao.API.request({
-            url: '/v2/user/me',
+            url: "/v2/user/me",
             success: function (res) {
-              console.log('res-', res);
+              // console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-            }
+            },
           });
           this.loader.hide();
         },
         fail: function (err) {
-          console.log(err)
+          // console.log(err);
         },
-      })
-    }
-
-
-
-
-
-
-
-
+      });
+    },
   },
 };
 </script>

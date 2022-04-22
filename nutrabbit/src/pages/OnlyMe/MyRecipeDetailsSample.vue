@@ -32,7 +32,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="fGroup">
+              <div class="fGroup" v-if="titletrue" @click="titleshow">
                 <label>Title</label>
                 <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
               </div>
@@ -83,6 +83,8 @@ export default {
       additional_request:"",
       options: [],
       application_type:"",
+      titletrue: false,
+      sampleDetailType:"",
 
       // rwaMaterialData: [
       //   {
@@ -112,7 +114,8 @@ export default {
 
     sampledetail() {
       this.sampleDetailID = this.$route.params.id;
-      console.log("this.sampleDetailID",this.sampleDetailID);
+      this.sampleDetailType = this.$route.params.type;
+      console.log("this.sampleDetailType",this.sampleDetailType);
 
       this.myApplicationDetails.sampledetail(this.sampleDetailID)
       .then((res) => {
@@ -146,6 +149,7 @@ export default {
     sampleBlendingDetails() {
       this.sampleBlendingDetailID = this.$route.params.id;
       console.log("this.sampleDetailID",this.sampleDetailID);
+      this.sampleDetailType = this.$route.params.type;
 
       this.application_type = this.$route.params.type;
         console.log("application_type",this.application_type);
@@ -177,11 +181,18 @@ export default {
       })
     },
 
+    titleshow(){
+      if (this.sampleDetailType == "choice") {
+        this.titletrue = true;
+      }
+    },
+
   },
 
   mounted() {
     this.sampledetail();
     this.sampleBlendingDetails();
+    this.titleshow();
   }
 
 };

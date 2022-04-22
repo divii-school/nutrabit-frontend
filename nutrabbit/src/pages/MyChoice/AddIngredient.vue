@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="btn-wrap flexEnd">
-                <button @click="gotoNextPage()" class="btn-small-solid blue">next</button>
+                <button @click="gotoNextPage()" class="btn-small-solid blue">Next</button>
               </div>
             </div>
           </div>
@@ -128,9 +128,7 @@ export default {
             //console.log(res.data);
             if (res.status = 200) {
               this.$swal("Successfully Deleted");
-              setTimeout(function () {
-                window.location.reload();
-              }, 2000);
+              this.storage_box_list();
 
             } else {
               this.$swal(res.data.message, "error");
@@ -152,7 +150,7 @@ export default {
             for (let i = 0; i < option_data.length; i++) {
               var option_array = option_data[i];
               var res_option_type = Object.keys(option_array).toString();
-              console.log(res_option_type);
+              // console.log(res_option_type);
               if (res_option_type == "raw_material") { option_data.pop(option_data[i]); };
             }
 
@@ -206,7 +204,7 @@ export default {
         this.box_id_data.push(e);
       }
       else {
-        console.log(this.box_id_data.includes(e));
+        // console.log(this.box_id_data.includes(e));
         let data = this.box_id_data.includes(e);
         if (data == false) {
           this.box_id_data.push(e);

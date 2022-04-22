@@ -175,18 +175,25 @@
       </div>
     </div>
   </div>
+  <Modal 
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="Saved"
+    btnText2="Confirm"
+    link = '/'
+  />
 </template>
 <script>
 import { inject } from "vue";
-// import Modal from "./Modal.vue";
+import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
 import personalBusinessValidation from "../../Validation/personalBusinessValidation";
 export default {
   name: "PersonalInformationBusiness",
-  // components: {
-  //   "vue-select": VueNextSelect,
-  //   Modal,
-  // },
+  components: {
+    // "vue-select": VueNextSelect,
+    Modal
+  },
   data(){
     return{
       userId: this.common.state.userId,
@@ -202,6 +209,7 @@ export default {
       phoneNumber:"",
       address:"",
       error: {},
+      isModalVisible:false,
     }
   },
 
@@ -221,7 +229,7 @@ export default {
       this.personalBusinessService.getBusinessData(this.userId).then((res) => {
         
         let data = res.data;
-        console.log("data",data);
+        // console.log("data",data);
         this.business_number = data.data[0].business_number;
         this.business_name = data.data[0].business_name;        
         this.department = data.data[0].department;
@@ -244,7 +252,6 @@ export default {
         password: this.password,
         confirmPassword: this.confirmPassword,
         email: this.email,
-        // emailOTP: this.emailOTP,
         phoneNumber: this.phoneNumber,
         address: this.address,
       };
@@ -268,14 +275,20 @@ export default {
             this.address
           )
           .then((res) => {
-            console.log(res);
             if (res.data.status == 200) {
-              
               console.log(res.data.status);
-              // this.$router.push("member-registration-completed");
+              this.openmodal();
             }
           });
       }
+    },
+
+    openmodal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
     },
 
     getAddress() {
@@ -296,7 +309,6 @@ export default {
 
   mounted() {
     this.personalInfo();
-    // console.log("userId", this.userId);
   },
 
 };

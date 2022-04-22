@@ -35,6 +35,10 @@
                 </table>
               </div>
               <div class="fGroup">
+                <label>Title</label>
+                <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
+              </div>
+              <div class="fGroup">
                 <label>Additional Requests</label>
                 <div class="ansBlock">
                   <p>{{ add_req }}</p>
@@ -67,6 +71,7 @@ export default {
   data() {
     return {
       options: [],
+      title : "",
       add_req: "",
       answer: "",
       product_id: this.$route.params.id,
@@ -102,9 +107,11 @@ export default {
                       this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
 
                         if(res.status == 200){
+                          console.log(res.data[0])
                              this.options.push( res.data[0] )
                         }else{
-                           $swal(res.message)
+                          console.log(res.message)
+                           //this.$swal(res.message)
                         }
                         
                       })

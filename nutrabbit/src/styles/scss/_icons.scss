@@ -27,6 +27,13 @@
   width: 24px;
   display: inline-block;
 }
+.icon-appale {
+  background: url('@/assets/icons/icon-appale.svg') no-repeat center center;
+  background-size: auto 24px;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
 .icon-user{
   background: url('@/assets/icons/user.svg') no-repeat center center;
   background-size: auto 50px;
@@ -164,6 +171,6 @@
   background: url('@/assets/icons/rightArw.svg') no-repeat center center;
   background-size: auto 30px;
   height:   30px;
-  min-width: 30px;
+  width: 30px;
   display: inline-block;
 }

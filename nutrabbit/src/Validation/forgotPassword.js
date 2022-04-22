@@ -3,7 +3,7 @@ import validator from "validator";
 const forgotPassword = (data) => {
     let errors = {};
 
-    const { userId, email, emailOTP, validation_type} = data;
+    const { userId, email, emailOTP, validation_type, isConfirmOTP} = data;
 
     if(validation_type == 'forgotPassword'){
         if (validator.isEmpty(userId)) {
@@ -18,6 +18,9 @@ const forgotPassword = (data) => {
     }
     if (validator.isEmpty(emailOTP)) {
         errors.emailOTP = "Please enter your email verification code";
+    }
+    else if (isConfirmOTP==0) {
+        errors.emailOTP = "Please Verify OTP";
     }
 
     return {

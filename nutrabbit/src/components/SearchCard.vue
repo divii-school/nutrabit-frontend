@@ -1,8 +1,14 @@
 <template>
   <div class="search-card-inner">
-    <img v-if="image" class="search-result-img" v-bind:src="image_link + image" alt />
-    <img v-else class="search-result-img" src="../assets/images/aloe-img-4.png" alt />
-    <!-- <div><img v-bind:src="image_link + image_hover" alt /></div> -->
+    <img v-if="image" @mouseover="mouseOver" class="search-result-img" :src="image_link + image" alt />
+    <img v-else @mouseover="mouseOver2" class="search-result-img" src="../assets/images/recommended_place.png" alt />
+
+
+    <img class="search-result-img hover-image" v-if="active" @mouseleave="mouseLeave" :src="image_link + image_hover"
+      alt />
+    <img class="search-result-img hover-image" v-if="active2" @mouseleave="mouseLeave2"
+      src="../assets/images/recommneded_hover_place.png" alt />
+
     <p class="text-center">{{ category }}</p>
     <template v-if="type == 'recomandedBlending'">
       <router-link :to="route_link">
@@ -17,5 +23,39 @@
 export default {
   name: "SearchCard",
   props: ["image", "type", "category", "name", "desc", "image_link", "route_link", "image_hover"],
+  data() {
+    return {
+      active: false,
+      active2: false
+    }
+
+  },
+  methods: {
+    mouseOver() {
+      this.active = true;
+    },
+    mouseLeave() {
+      this.active = false;
+    },
+    mouseOver2() {
+      this.active2 = true;
+    },
+    mouseLeave2() {
+      this.active2 = false;
+    }
+  }
 };
 </script>
+
+<style scoped>
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.search-card-inner {
+  position: relative;
+}
+</style>

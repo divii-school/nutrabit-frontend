@@ -96,14 +96,14 @@
                   <div class="check-box-wrap">
                     <label class="custom-check">
                       offline
-                      <input type="checkbox" value="offline" v-model="checkName" />
+                      <input type="checkbox" value="offline" v-model="offline" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
                       online
-                      <input type="checkbox" value="online" v-model="checkName" />
+                      <input type="checkbox" value="online" v-model="online" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -113,7 +113,7 @@
                       <input
                         type="checkbox"
                         value="network"
-                        v-model="checkName"
+                        v-model="network"
                       />
                       <span class="checkmark"></span>
                     </label>
@@ -121,14 +121,14 @@
                   <div class="check-box-wrap">
                     <label class="custom-check">
                       SNS
-                      <input type="checkbox" value="sns" v-model="checkName" />
+                      <input type="checkbox" value="sns" v-model="sns" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
                       Etc
-                      <input type="checkbox" value="etc" v-model="checkName" />
+                      <input type="checkbox" value="etc" v-model="etc" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -153,13 +153,24 @@
       </div>
     </div>
   </div>
+  <Modal 
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="Saved"
+    btnText2="Confirm"
+    link = '/'
+  />
 </template>
 <script>
 import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import personalInfoValidation from "../../Validation/personalInfoValidation";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "PersonalInformationManagement",
+  components: {
+    Modal
+  },
   data() {
     return {
       // userId: 21,
@@ -174,6 +185,13 @@ export default {
       checkName: [],
       error: {},
       uuid:"",
+      isModalVisible:false,
+
+      offline:false,
+      online:false,
+      network:false,
+      sns:false,
+      etc:false,
     };
   },
 
@@ -191,7 +209,7 @@ export default {
     async personalInfo() {
 
       this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-        console.log(res.data); 
+        // console.log(res.data); 
         let data = res.data;
         this.name = data.data[0].name;
         this.uuid = data.data[0].uuid;
@@ -199,6 +217,137 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
+
+        // this.checkName = data.data[0].distribution_medium;
+        // console.log("this.checkName",this.checkName);
+
+        if(data.data[0].distribution_medium == "offline"){
+           this.offline = true;
+        }        
+        if(data.data[0].distribution_medium == "online"){
+           this.online = true;
+        }
+        if(data.data[0].distribution_medium == "network"){
+           this.network = true;
+        }
+        if(data.data[0].distribution_medium == "sns"){
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "etc"){
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "offline_online"){
+           this.offline = true;
+           this.online = true;
+        }
+        if(data.data[0].distribution_medium == "offline_network"){
+           this.offline = true;
+           this.network = true;
+        }
+        if(data.data[0].distribution_medium == "offline_sns"){
+           this.offline = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "offline_etc"){
+           this.offline = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "online_network"){
+           this.online = true;
+           this.network = true;
+        }
+        if(data.data[0].distribution_medium == "online_sns"){
+           this.online = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "online_etc"){
+           this.online = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "network_sns"){
+           this.network = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "network_etc"){
+           this.network = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "sns_etc"){
+           this.sns = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "offline_online_network"){
+           this.offline = true;
+           this.online = true;
+           this.network = true;
+        }
+        if(data.data[0].distribution_medium == "offline_online_sns"){
+           this.offline = true;
+           this.online = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "offline_online_etc"){
+           this.offline = true;
+           this.online = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "online_network_sns"){
+           this.online = true;
+           this.network = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "online_network_etc"){
+           this.online = true;
+           this.network = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "network_sns_etc"){
+           this.network = true;
+           this.sns = true;
+           this.etc = true;
+        } 
+
+        if(data.data[0].distribution_medium == "offline_online_network_sns"){
+           this.offline = true;
+           this.online = true;
+           this.network = true;
+           this.sns = true;
+        }
+        if(data.data[0].distribution_medium == "offline_online_network_etc"){
+           this.offline = true;
+           this.online = true;
+           this.network = true;
+           this.etc = true;
+        } 
+
+        if(data.data[0].distribution_medium == "online_network_sns_etc"){
+           this.online = true;
+           this.network = true;
+           this.sns = true;
+           this.etc = true;
+        }
+
+        if(data.data[0].distribution_medium == "network_sns_etc_offline"){
+           this.network = true;
+           this.sns = true;
+           this.etc = true;
+           this.offline = true;
+        }
+
+        if(data.data[0].distribution_medium == "offline_online_network_sns_etc"){
+           this.offline = true;
+           this.online = true;
+           this.network = true;
+           this.sns = true;
+           this.etc = true;
+        }
       });
 
     },
@@ -218,6 +367,98 @@ export default {
         
         this.error = error;
       } else {
+
+        let checkboxName;
+
+        if(this.offline){
+          checkboxName = 'offline';
+        }
+        if(this.online){
+          checkboxName = 'online';
+        }
+        if(this.network){
+          checkboxName = 'network';
+        }
+        if(this.sns){
+          checkboxName = 'sns';
+        }
+        if(this.etc){
+          checkboxName = 'etc';
+        }
+
+        if(this.offline && this.online){
+          checkboxName = 'offline_online';
+        }
+        if(this.offline && this.network){
+          checkboxName = 'offline_network';
+        }
+        if(this.offline && this.sns){
+          checkboxName = 'offline_sns';
+        }
+        if(this.offline && this.etc){
+          checkboxName = 'offline_etc';
+        }
+
+        if(this.online && this.network){
+          checkboxName = 'online_network';
+        }
+        if(this.online && this.sns){
+          checkboxName = 'online_sns';
+        }
+        if(this.online && this.etc){
+          checkboxName = 'online_etc';
+        }
+
+        if(this.network && this.sns){
+          checkboxName = 'network_sns';
+        }
+        if(this.network && this.etc){
+          checkboxName = 'network_etc';
+        }
+
+        if(this.sns && this.etc){
+          checkboxName = 'sns_etc';
+        }
+
+        if(this.offline && this.online && this.network){
+          checkboxName = 'offline_online_network';
+        }
+        if(this.offline && this.online && this.sns){
+          checkboxName = 'offline_online_sns';
+        }
+        if(this.offline && this.online && this.etc){
+          checkboxName = 'offline_online_etc';
+        }
+
+        if(this.online && this.network && this.sns){
+          checkboxName = 'online_network_sns';
+        }
+        if(this.online && this.network && this.etc){
+          checkboxName = 'online_network_etc';
+        }
+
+        if(this.network && this.sns && this.etc){
+          checkboxName = 'network_sns_etc';
+        }
+
+        if(this.offline && this.online && this.network && this.sns){
+          checkboxName = 'offline_online_network_sns';
+        }
+        if(this.offline && this.online && this.network && this.etc){
+          checkboxName = 'offline_online_network_etc';
+        }
+
+        if(this.online && this.network && this.sns && this.etc){
+          checkboxName = 'online_network_sns_etc';
+        }
+
+        if(this.network && this.sns && this.etc && this.offline){
+          checkboxName = 'network_sns_etc_offline';
+        }
+
+        if(this.offline && this.online && this.network && this.sns && this.etc){
+          checkboxName = 'offline_online_network_sns_etc';
+        }
         
         this.personalInfoservice
           .updatePersonalInfo(
@@ -228,15 +469,23 @@ export default {
             this.email,
             this.phoneNumber,
             this.address,
-            this.checkName.join(",")
+            checkboxName
           )
           .then((res) => {
             if (res.data.status == 200) {
               console.log(res.data.status);
-              // this.$router.push("member-registration-completed");
+              this.openmodal();
             }
           });
       }
+    },
+
+    openmodal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
     },
 
     getAddress() {
