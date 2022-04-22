@@ -25,7 +25,7 @@
                         <Dropdown v-model="sub_category_id"  :options="dropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
                             id="sub_category_id" />
                     </div>
-                    <div class="p-field p-col-12 p-md-3">
+                    <!-- <div class="p-field p-col-12 p-md-3">
                         <label for="pass">{{ $t('RawMaterialadd.list.startDate') }}</label>
                         <Calendar
                             :showIcon="true"
@@ -34,7 +34,7 @@
                             dateFormat="yy.mm.dd"
                             :placeholder="$t('RawMaterialadd.list.startDate')"
                         ></Calendar>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
                     
@@ -364,18 +364,18 @@ export default {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.searchData === '' && this.sub_category_id === '' && this.from_date === '') {
+            if (this.searchData === '' && this.sub_category_id === '' ) {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
-                if(this.from_date!=''){
-                    this.searchdate = this.addDay(this.from_date)
-                } else {
-                    this.searchdate = ""
-                }
+                // if(this.from_date!=''){
+                //     this.searchdate = this.addDay(this.from_date)
+                // } else {
+                //     this.searchdate = ""
+                // }
                 console.log(  this.sub_category_id)
                 this.rawService
                 
-                    .getRawList(this.status,this.page,this.limit, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,this.sortBy, this.sortOrder,  this.searchdate, this.to_date)
+                    .getRawList(this.status,this.page,this.limit, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,this.sortBy, this.sortOrder, this.to_date)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
