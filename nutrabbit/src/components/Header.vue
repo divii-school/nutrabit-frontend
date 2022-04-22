@@ -27,6 +27,7 @@
                   placeholder="Enter search term"
                   @click="getHistory"
                   v-model="sarchInput"
+                  v-on:keyup.enter="getSearch"
                 />
                 <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
@@ -262,7 +263,7 @@ export default {
       active: false,
       activeSearch: false,
       isModalVisible: false,
-      isLogOutModalVisible : false,
+      isLogOutModalVisible: false,
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
@@ -470,11 +471,13 @@ export default {
         });
     },
     // search api (main)
-    getSearch() {
+    getSearch(e) {
       if (this.sarchInput == "") {
         this.$swal("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
+        this.searchData = e.target.value;
+        e.target.value = "";
         this.showMobSearch = false;
         this.activeSearch = false;
         this.sarchInput = "";
