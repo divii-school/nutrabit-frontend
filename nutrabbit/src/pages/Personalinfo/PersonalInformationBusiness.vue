@@ -5,13 +5,13 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">
-              Personal information management
+              개인정보 관리
             </h1>
           </div>
           <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
            <div class="individuals-form">
               <div class="form-group" :class="error.business_number ? 'error' : ''">
-              <label for="">Business Number</label>
+              <label for="">사업자번호</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -25,7 +25,7 @@
               <span class="error-msg">{{ error.business_number }}</span>
             </div>
             <div class="form-group" :class="error.business_name ? 'error' : ''">
-              <label for="">Business name</label>
+              <label for="">사업자명</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -38,7 +38,7 @@
               <span class="error-msg">{{ error.business_name }}</span>
             </div>
             <div class="form-group" :class="error.depertment ? 'error' : ''">
-              <label for="">Department</label>
+              <label for="">부서명</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -51,7 +51,7 @@
               <span class="error-msg">{{ error.department }}</span>
             </div>
             <div class="form-group" :class="error.contactPerson ? 'error' : ''">
-              <label for="">Contact person</label>
+              <label for="">담당자명</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -64,7 +64,7 @@
                <span class="error-msg">{{ error.contactPerson }}</span>
             </div>
              <div class="form-group">
-              <label for="">ID</label>
+              <label for="">아이디</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -79,13 +79,13 @@
             </div>
            
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for="">Password</label>
+              <label for="">비밀번호</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                   placeholder="Enter a new password (10-20 characters including uppercase and lowercase letters, numbers, and special symbols)"
+                   placeholder="신규 비밀번호 입력(10~20자 영문 대소문자, 숫자, 특수기호 포함)"
                    maxlength="20"
                    v-model="password"
                    autocomplete="off"
@@ -95,13 +95,13 @@
               <span class="error-msg">{{ error.password }}</span>
             </div>
             <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
-              <label for="">verify password</label>
+              <label for="">비밀번호 확인</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="Sankyu password confirmation"
+                    placeholder="산규 비밀번호 확인"
                     v-model="confirmPassword"
                     autocomplete="off"
                   />
@@ -110,7 +110,7 @@
               <span class="error-msg">{{ error.confirmPassword }}</span>
             </div>
              <div class="form-group">
-              <label for="">e-mail</label>
+              <label for="">이메일</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -125,7 +125,7 @@
             </div>
            
             <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-              <label for="">phone number</label>
+              <label for="">휴대폰번호</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -138,7 +138,7 @@
               <span class="error-msg">{{ error.phoneNumber }}</span>
             </div>
             <div class="form-group" :class="error.address ? 'error' : ''">
-              <label for="">address</label>
+              <label for="">주소</label>
               <div class="input-group with-btn dual-input">
                 <div class="input-inner">
                   <input
@@ -147,7 +147,7 @@
                    v-model="address"
                   />
                 </div>
-                <button class="btn-green-outline" @click="getAddress">Address Search</button>
+                <button class="btn-green-outline" @click="getAddress">주소 검색</button>
               </div>
               <div class="input-group">
                 <div class="input-inner">
@@ -161,13 +161,13 @@
               <span class="error-msg">{{ error.address }}</span>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2" @click="updateBusinessInfo">Save</button>
+            <button class="btn-primary grenn-btn2" @click="updateBusinessInfo">저장</button>
           </form>
            <div class="logout-withdraw">
             <ul>
-              <li><router-link to @click="logOut()">Log out</router-link>
+              <li><router-link to @click="logOut()">로그아웃</router-link>
               </li>
-              <li><router-link to="/withdrawal-of-membership">Withdrawal</router-link>
+              <li><router-link to="/withdrawal-of-membership">회원탈퇴</router-link>
               </li>
             </ul>
           </div>
@@ -178,8 +178,8 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="Saved"
-    btnText2="Confirm"
+    bodytext1="저장되었습니다."
+    btnText2="확인"
     link = '/'
   />
 </template>
