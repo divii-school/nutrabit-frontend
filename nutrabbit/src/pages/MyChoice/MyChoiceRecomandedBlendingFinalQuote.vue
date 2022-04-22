@@ -59,7 +59,7 @@
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
-                <span>If you provide more details, it will help you get an accurate quote.</span>
+                <span>If you provide more details, it will help you get an accurate estimate.</span>
                 <textarea v-model="additional_request" placeholder="Please write freely"></textarea>
               </div>
               <div class="fGroup mb0">
@@ -77,7 +77,7 @@
                     </label>
                   </div>
                   <div class="material-details">
-                    <h2>Get a quote</h2>
+                    <h2>Get an estimate</h2>
                   </div>
                 </div>
                 <div class="product-item with-input">
