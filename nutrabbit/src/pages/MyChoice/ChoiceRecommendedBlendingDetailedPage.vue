@@ -43,11 +43,11 @@
                 <p>{{ item.material_name_ko }}</p>
               </li>
               <li>
-                <h2>Sub raw Material</h2>
+                <h2>Auxiliary material</h2>
                 <p>{{ item.sub_raw_materials }}</p>
               </li>
               <li>
-                <h2>efficacy</h2>
+                <h2>Efficacy</h2>
                 <p>{{ item.efficiency_ko }}</p>
               </li>
               <li>
@@ -61,7 +61,7 @@
             </ul>
             <button
               @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
-              class="btn-primary blue-btn-solid">next</button>
+              class="btn-primary blue-btn-solid">Next</button>
           </div>
           <div class="suggested-product">
             <h2>similar products</h2>

@@ -98,7 +98,6 @@ export default {
       // const endIndex = (this.perPage * ClickPage);
       const endIndex = startIndex + this.perPage;
       this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
-      console.log(this.UpdatedNoticeList)
     },
     allNoticeList() {
       this.CustomerCenterService.getNoticeList()
@@ -110,7 +109,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          return;
         });
     },
     dateformat(value) {

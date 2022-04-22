@@ -197,7 +197,7 @@ export default {
             }
           } else {
             if (res.data.status == 200) {
-              console.log("login res", res.data.data);
+              // console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
               localStorage.setItem("token", res.data.data.token);
@@ -225,12 +225,12 @@ export default {
     },
     sendKakoAccessToken(token) {
       let ftoken = token;
-      console.log("ftoken:--", ftoken);
+      // console.log("ftoken:--", ftoken);
       alert(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
-      console.log("ftoken:--", ftoken);
+      // console.log("ftoken:--", ftoken);
       alert(ftoken);
     },
     sendAppleAccessToken(token) {
@@ -303,14 +303,14 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj);
+          // console.log(authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              console.log("res-", res);
+              // console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
             },
@@ -318,7 +318,7 @@ export default {
           this.loader.hide();
         },
         fail: function (err) {
-          console.log(err);
+          // console.log(err);
         },
       });
     },

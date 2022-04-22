@@ -10,17 +10,18 @@
             </h2>
             <p class="title text-center sampleBLueAfter">nuitri 3.3 sample service</p>
             <p class="desc text-center">
-              Make the health functional core food sample you want in nutri 3.3! It can be produced at a sampling cost of 300,000 won (VAT included) per one time.
+              Make the health functional core food sample you want in nutri 3.3! <br>
+              It can be produced at a sampling cost of 300,000 won (VAT included) per one time.
             </p>
             <button class="btn-small-solid">
-              <router-link to="/my-choice">go to sample</router-link>
+              <router-link to="/my-choice">Go to sample</router-link>
             </button>
-            <p class="sampleNote">*Sample service is a paid service, and it usually takes 2 weeks for delivery after payment is completed.</p>
+            <p class="sampleNote">*Sample service is a paid service, and it usually takes 3 weeks for delivery after payment is completed.</p>
           </div>
           <div class="devider"><i class="icon-grey-star"></i></div>
           <div class="sampleServices">
             <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">nutri 3.3 blending</h4>
+            <h4 class="title text-center">Sample service process</h4>
             <ul>
               <li v-for="(item, index) of processData" :key="index">
                 <div class="imgCont">
@@ -43,7 +44,7 @@
                 </template>
                 <template v-slot:content>
                   <p class="accBody">
-                    It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
+                    It usually takes about 3 weeks after payment is completed, but there may be changes depending on the product.
                   </p>
                 </template>
               </accordion>
@@ -80,32 +81,32 @@ export default {
         {
           img: "../../../src/assets/images/step1.png",
           step: "Step 1",
-          title: "sample application",
-          desc: "my choice in nutri 3.3 After using the desired sample Request a sample production! (Sample production costs 300,000 won / Additional modifications are charged separately)"
+          title: "Request for Sample",
+          desc: "Request for sample production on your desired sample from my choice in nutri 3.3. (Sample production costs 300,000 won / Additional modifications are charged separately)"
         },
         {
           img: "../../../src/assets/images/step2.png",
           step: "Step 2",
-          title: "development meeting",
-          desc: "Based on the sample service requested We check your requirements."
+          title: "Development Meeting",
+          desc: "We check your requirements based on the sample service requested."
         },
         {
           img: "../../../src/assets/images/step3.png",
           step: "Step 3",
-          title: "product development",
-          desc: "based on the requested information Develop samples."
+          title: "Develop Product",
+          desc: "We develop samples based on the requested information."
         },
         {
           img: "../../../src/assets/images/step4.png",
           step: "Step 4",
-          title: "sample production",
-          desc: "After product development Produce samples."
+          title: "Produce Sample",
+          desc: "We produce samples after product development"
         },
            {
           img: "../../../src/assets/images/step5.png",
           step: "Step 5",
-          title: "customer delivery",
-          desc: "The finished sample is your It will be shipped to your address."
+          title: "Deliver to Customer",
+          desc: "The finished sample will be shipped to your address."
         },
       ],
     };

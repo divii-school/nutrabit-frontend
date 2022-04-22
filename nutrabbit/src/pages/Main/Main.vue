@@ -17,10 +17,11 @@
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
           <h2 class="nutri-choice-heading text-center">
-            Direct health functional food recipes
-            <br />Opportunity to create!
+            Opportunity to create <br>
+            Health Functional Food Recipes <br>
+            on your own!
           </h2>
-          <p class="desc text-center">Create your own recipe with just one combination of your choice!</p>
+          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
@@ -39,9 +40,8 @@
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">nutri 3.3 blending</p>
             <h2 class="nutri-choice-heading text-center">
-              service only for you
-              <br />Easily seize the opportunity to launch
-              your own product!
+              A service only for you <br>
+              Don't miss the chance to launch your own product!
             </h2>
             <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
             <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
@@ -165,7 +165,7 @@ export default {
     // ENdx check if it's from APP
     // makePay test function
     makePay() {
-      console.log('makePay');
+      // console.log('makePay');
       alert('makePay');
       this.paymentService.requestPay();
     },

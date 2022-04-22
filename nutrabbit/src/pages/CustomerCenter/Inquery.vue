@@ -116,13 +116,12 @@ export default {
       this.CustomerCenterService.getEnqueryList(this.inqId)
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data.data);
             this.enqueryList = res.data.data.inquery;
             this.myCallback(1);
           }
         })
         .catch((err) => {
-          console.log(err);
+          return;
         });
     },
     dateformat(value) {

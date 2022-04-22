@@ -239,7 +239,8 @@
                     certification
                   </button>
                 </div>
-                <span class="error-msg">{{ error.emailOTP }}</span>
+               <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
+                <span class="error-msg" v-else>{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>Phone Number</label>
@@ -339,6 +340,7 @@ export default {
       isIDVerified : false,
       isOtpVerified : false,
       isUserSuccess : '',
+      isOtpSuccess : '',
     };
   },
   created() {
@@ -364,6 +366,7 @@ export default {
         contactPerson: this.contactPerson,
         account_type: "business",
         isIDVerified : this.isIDVerified,
+        isOtpVerified : this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
@@ -384,12 +387,12 @@ export default {
         //   this.$swal('Have to check user ID availability')
         // }
 
-      if(this.isOtpVerified == false){
-          this.$swal('Have to verify the otp for email')
-        }
-        else {
+      // if(this.isOtpVerified == false){
+      //     this.$swal('Have to verify the otp for email')
+      //   }
+      //   else {
 
-        console.log('Registration Complete')
+      //   console.log('Registration Complete')
 
         this.commonService
           .BusinessRegistration(
@@ -411,7 +414,7 @@ export default {
             }
           });
         }
-      }
+      
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
@@ -490,7 +493,8 @@ export default {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           //console.log(res);
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-            this.$swal("OTP verified");
+            //this.$swal("OTP verified");
+            this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
