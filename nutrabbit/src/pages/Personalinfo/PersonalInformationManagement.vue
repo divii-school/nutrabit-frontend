@@ -79,13 +79,13 @@
                 <label for>주소</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="address" />
+                    <input class="form-control" type="text" v-model="address" disabled/>
                   </div>
                   <button class="btn-green-outline" @click="getAddress">주소 검색</button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="address" />
+                    <input class="form-control" type="text" v-model="Detailaddress" />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>
@@ -186,6 +186,7 @@ export default {
       error: {},
       uuid:"",
       isModalVisible:false,
+      Detailaddress:"",
 
       offline:false,
       online:false,
@@ -209,7 +210,7 @@ export default {
     async personalInfo() {
 
       this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-        // console.log(res.data); 
+        console.log(res.data); 
         let data = res.data;
         this.name = data.data[0].name;
         this.uuid = data.data[0].uuid;
@@ -217,6 +218,7 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
+        this.Detailaddress = data.data[0].address;
 
         // this.checkName = data.data[0].distribution_medium;
         // console.log("this.checkName",this.checkName);

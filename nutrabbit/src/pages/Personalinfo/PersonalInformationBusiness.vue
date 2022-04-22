@@ -145,6 +145,7 @@
                     class="form-control"
                     type="text"
                    v-model="address"
+                   disabled
                   />
                 </div>
                 <button class="btn-green-outline" @click="getAddress">주소 검색</button>
@@ -154,7 +155,7 @@
                   <input
                     class="form-control"
                     type="text"
-                    v-model="address"
+                    v-model="Detailaddress"
                   />
                 </div>
               </div>
@@ -210,6 +211,7 @@ export default {
       address:"",
       error: {},
       isModalVisible:false,
+      Detailaddress:"",
     }
   },
 
@@ -239,6 +241,7 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
+        this.Detailaddress = data.data[0].address;
       });
     },
 
