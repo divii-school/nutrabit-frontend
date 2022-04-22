@@ -2,7 +2,7 @@
   <div class="product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
-        <input type="radio" name="radio" id="radio" :value="item.id" @click="getPackageId" />
+        <input type="radio" name="radio" :id="'radio-'+ item.id" :value="item.id" @click="getPackageId" :data-type="'radio'+ type" />
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
@@ -62,12 +62,13 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
 export default {
   name: "ProductListRecipe",
-  props:["item"],
+  props:["item", "type"],
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
@@ -76,7 +77,8 @@ export default {
    methods: {
          getPackageId(event) {
            this.$emit('changeId',event.target.value);
-           console.log(event.target.value)
+           this.$emit('type', event.target.getAttribute('data-type'));
+          console.log(event.target.getAttribute('data-type'))
          }
    }
 };
