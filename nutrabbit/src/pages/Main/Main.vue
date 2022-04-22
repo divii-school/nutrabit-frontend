@@ -81,7 +81,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
