@@ -112,7 +112,7 @@
                     <button class="btn-small-solid blue ml-4" @click="package_add">Next</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" bodytext1="Temporary storage is complete" btnText2="confirm" link="/" />
+                    <Modal @close="closeModal" bodytext1="Saved as a draft" btnText2="confirm" link="/" />
                   </my-modal-component>
                   <my-modal-component v-show="showModal2">
                     <ModalWarning @close2="closeModal2"
