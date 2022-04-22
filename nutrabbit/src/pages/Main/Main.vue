@@ -21,7 +21,7 @@
             Health Functional Food Recipes <br>
             on your own!
           </h2>
-          <p class="desc text-center">Create your own recipe with just one combination of your choice!</p>
+          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>

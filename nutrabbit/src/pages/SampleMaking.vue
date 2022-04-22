@@ -21,7 +21,7 @@
           <div class="devider"><i class="icon-grey-star"></i></div>
           <div class="sampleServices">
             <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">nutri 3.3 blending</h4>
+            <h4 class="title text-center">Sample service process</h4>
             <ul>
               <li v-for="(item, index) of processData" :key="index">
                 <div class="imgCont">
@@ -44,7 +44,7 @@
                 </template>
                 <template v-slot:content>
                   <p class="accBody">
-                    It usually takes about 2 weeks after payment is completed, but there may be changes depending on the product.
+                    It usually takes about 3 weeks after payment is completed, but there may be changes depending on the product.
                   </p>
                 </template>
               </accordion>
