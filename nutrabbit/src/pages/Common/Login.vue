@@ -11,12 +11,8 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="text"
-                    :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email"
-                  />
+                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email" />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -25,12 +21,8 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input
-                    class="form-control"
-                    type="password"
-                    :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password"
-                  />
+                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password" />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -50,8 +42,7 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link
-                    >
+                      {{ $t("common.QuickLinks.FindID") }}</router-link>
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -71,59 +62,38 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              v-if="!isPlatMobile"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
-            <button
-              id="kakao_login"
-              v-else
-              class="btn-primary with-icon yellow-btn"
-              @click="mbKakaoLogin"
-            >
+            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
               <i class="icon-chat-black"></i>
-              {{ $t("common.QuickLinks.CacaoLogin") }}
+              <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
+              kakao mobile login
             </button>
             <!-- END kakao login for App -->
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button
-              id="naver_Login"
-              v-if="!isPlatMobile"
-              class="btn-primary with-icon green-btn"
-            >
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- Naver login for App -->
-            <button
-              id="naver_Login"
-              v-else
-              class="btn-primary with-icon green-btn"
-              @click="mbNaverLogin"
-            >
+            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
               <i class="icon-naver"></i>
-              {{ $t("common.QuickLinks.NaverLogin") }}
+              naver mobile login
+              <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
             </button>
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-
-            <button
-              class="btn-primary with-icon black-btn"
-              :class="isAppaleId ? '' : 'show-appale-login'"
-            >
+            <button class="btn-primary with-icon black-btn" :class="isAppaleId ? '' : 'show-appale-login'" @click="mbAppleLogin">
               <i class="icon-appale"></i>
-              Getting Started with Apple
+              애플로 시작하기
             </button>
-
             <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
@@ -141,7 +111,7 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 // import axios from "axios";
@@ -166,6 +136,9 @@ export default {
   setup() {
     const { cookies } = useCookies();
     const common = inject("common");
+    onMounted(() => {
+      common.methods.isFromApp();
+    });
     return { cookies, common };
   },
   created() {
@@ -194,6 +167,9 @@ export default {
     };
     window["sendNaverLoginData"] = (res) => {
       this.sendNaverAccessToken(res);
+    };
+    window["sendAppleLoginData"] = (res) => {
+      this.sendAppleAccessToken(res);
     };
     // end web view get message
 
@@ -255,11 +231,19 @@ export default {
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
     },
+    sendAppleAccessToken(token) {
+      let ftoken = token;
+      console.log("ftoken:--", ftoken);
+      alert(ftoken);
+    },
     mbKakaoLogin() {
       window.parent.postMessage("kakaoLoginClicked", "*");
     },
     mbNaverLogin() {
       window.parent.postMessage("naverLoginClicked", "*");
+    },
+    mbAppleLogin() {
+      window.parent.postMessage("appleLoginClicked", "*");
     },
 
     // naver login
@@ -317,7 +301,7 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          // console.log(authObj);
+          console.log('authObj kakao--', authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
@@ -327,9 +311,10 @@ export default {
               // console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
+              // this.$router.push({name: "home"});
+              this.loader.hide();
             },
           });
-          this.loader.hide();
         },
         fail: function (err) {
           // console.log(err);

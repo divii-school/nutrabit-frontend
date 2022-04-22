@@ -31,7 +31,8 @@ export default {
   },
   methods: {
     accessPage() {
-      this.$swal("Unauthorized Access.Please Login.");
+      // this.$swal("Unauthorized Access.Please Login.");
+      console.log("Unauthorized Access.Please Login.")
     },
   },
 };

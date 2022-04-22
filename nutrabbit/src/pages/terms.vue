@@ -993,7 +993,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      terms: "terms",
+    };
+  },
+  mounted() {
+    this.getTermsAndPrivecy();
+  },
+  methods: {
+    async getTermsAndPrivecy() {
+      try {
+        const TermsAndPrivecy = await axios.post("/cms", {
+          key: this.terms,
+        });
+        console.log(TermsAndPrivecy.data.data);
+      } catch (error) {
+        return;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

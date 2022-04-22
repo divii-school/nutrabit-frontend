@@ -72,9 +72,9 @@
                         <template #loading>Loading Notice data. Please wait.</template>
 
                         <Column field="Sl. No." header="번호" style="min-width: 3rem">
-                            <template #body="{ index }">
+                            <template #body="{ data }">
                                 <span class="p-column-title">번호</span>
-                                {{ index + 1 }}
+                                {{ data.sl_no }}
                             </template>
                         </Column>
                         <Column

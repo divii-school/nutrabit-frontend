@@ -141,7 +141,7 @@
           <li
             v-for="(item, index) of rightMenuItem"
             :key="index"
-            @click="testy(index)"
+            @click="rightMenuData(index)"
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">
@@ -223,8 +223,8 @@
     link="/login"
   />
   <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
+    v-show="isLogOutModalVisible"
+    @close="closeLogOutModal"
     @confirm="logOutConfirm"
     bodytext1="Are you sure you want to logout?"
     btnText1="Cancel"
@@ -262,6 +262,7 @@ export default {
       active: false,
       activeSearch: false,
       isModalVisible: false,
+      isLogOutModalVisible : false,
       activeSubmenu: false,
       showMobSearch: false,
       sarchInput: "",
@@ -376,7 +377,7 @@ export default {
     this.changePersonalInfo();
   },
   methods: {
-    testy(index) {
+    rightMenuData(index) {
       this.activeSubmenu = this.activeSubmenu == index ? "" : index;
       if (index != 0) {
         this.activeLogin = false;
@@ -409,9 +410,10 @@ export default {
     },
     // logout
     logOut() {
-      this.isModalVisible = true;
+      this.isLogOutModalVisible = true;
     },
     logOutConfirm() {
+      this.isLogOutModalVisible = false;
       if (this.logedInUserDetails) {
         localStorage.clear();
         this.$router.push("/login");
@@ -422,6 +424,10 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+
+    closeLogOutModal() {
+      this.isLogOutModalVisible = false;
     },
     goPersonalInfoMob() {
       this.active = false;
