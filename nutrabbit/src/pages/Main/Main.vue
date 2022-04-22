@@ -198,7 +198,7 @@ export default {
       });
     },
     accessPage() {
-      this.$swal("Unauthorized Access.Please Login.");
+      this.$router.push('/login')
     }
   },
 };
