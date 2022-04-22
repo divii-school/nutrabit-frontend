@@ -41,13 +41,13 @@ import ServiceIntro from "../pages/Nutri/ServiceIntro.vue";
 import NutriDetail from "../pages/Nutri/NutriDetail.vue";
 import Terms from "../pages/terms.vue";
 import Privacy from "../pages/privacy.vue";
-import Toast from "../alert/alert.js";
+// import Toast from "../alert/alert.js";
 
 import MyRecipeDetail from "../pages/MyRecipeDetail.vue";
 function guest(to, from, next) {
   if (localStorage.token) {
     next({ name: "Main" });
-    Toast.fire({ title: "You already logged in" });
+    // Toast.fire({ title: "You already logged in" });
   } else next();
 }
 
@@ -56,7 +56,7 @@ function guard(to, from, next) {
     next();
   } else {
     next({ name: "Login" });
-    Toast.fire({ title: "Please login to access" });
+    // Toast.fire({ title: "Please login to access" });
   }
 }
 
