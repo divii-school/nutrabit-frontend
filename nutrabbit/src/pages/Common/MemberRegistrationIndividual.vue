@@ -76,8 +76,10 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="success-msg" v-if="isIDVerified">{{ isUserSuccess }}</span>
-                <span class="error-msg" v-else>{{ error.username }}</span>
+                <span class="success-msg" v-if="isIDVerified">{{
+                  isUserSuccess
+                }}</span>
+                <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""
@@ -178,8 +180,10 @@
                     certification
                   </button>
                 </div>
-                <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
-                <span class="error-msg" v-else>{{ error.emailOTP }}</span>
+                <span class="success-msg" v-if="isOtpVerified">{{
+                  isOtpSuccess
+                }}</span>
+                <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for=""
@@ -334,15 +338,12 @@ export default {
       verificationStatus: "Send verification code",
       isIDVerified: false,
       isOtpVerified: false,
-      isUserSuccess : '',
-      isOtpSuccess : '',
+      isUserSuccess: "",
+      isOtpSuccess: "",
     };
   },
   created() {
     this.commonService = new CommonService();
-  },
-  updated(){
-thsi.checkUser()
   },
   methods: {
     checkError() {
@@ -358,9 +359,8 @@ thsi.checkUser()
         phoneNumber: this.phoneNumber,
         address: this.address,
         detsilAddress: this.detsilAddress,
-        isIDVerified : this.isIDVerified,
-        isOtpVerified : this.isOtpVerified,
-
+        isIDVerified: this.isIDVerified,
+        isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
@@ -374,7 +374,7 @@ thsi.checkUser()
     async individalRegistration() {
       if (!this.checkError()) {
         return;
-      } else {    
+      } else {
         // if (this.isOtpVerified == false) {
         //   this.$swal("Have to verify the otp for email");
         // }
@@ -397,27 +397,24 @@ thsi.checkUser()
               this.$router.push("member-registration-completed");
             }
           });
-        
       }
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
         this.error.username = "Please enter your ID";
-      }
-      else if (!validator.isAlphanumeric(this.username)) {
+      } else if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
-        this.isUserSuccess = ''
+        this.isUserSuccess = "";
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
             this.error.username = "";
-            this.isUserSuccess = 'User ID available';
-          } 
-          else if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            this.isUserSuccess = "User ID available";
+          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
-        })
+        });
       }
     },
 
@@ -436,8 +433,8 @@ thsi.checkUser()
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
-            this.emailOTP='';
-            // this.error.email = "";
+            this.emailOTP = "";
+            this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -464,7 +461,7 @@ thsi.checkUser()
               this.verificationStatus = "Resend verification code";
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return ;
+            return;
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -476,8 +473,8 @@ thsi.checkUser()
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-           // this.$swal("OTP verified");
-          //  this.isOtpSuccess = 'OTP verified';
+            // this.$swal("OTP verified");
+            //  this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -488,7 +485,8 @@ thsi.checkUser()
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "The verification code does not match.";
+            return (this.error.emailOTP =
+              "The verification code does not match.");
           }
         });
       }

@@ -65,7 +65,7 @@
                 </button>
               </div>
                <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
-              <span class="error-msg" v-else>{{ error.emailOTP }}</span>
+              <span class="error-msg" >{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
               Confirm
@@ -148,7 +148,6 @@ export default {
             this.startTimer = false;
             this.showTick = true;
             this.emailOTP="";
-            this.$swal("OTP has been sent to your email");
             this.error.email = "";
 
             if (this.storeSetInterval) {
@@ -175,7 +174,7 @@ export default {
               this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return this.$swal(res.response.data.message);
+            return (this.error.email = res.response.data.message);
             //return (this.error.email = res.response.data.message);
           }
         });
