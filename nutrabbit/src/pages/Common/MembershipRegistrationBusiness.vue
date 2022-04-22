@@ -427,9 +427,9 @@ export default {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
             this.error.username = "";
-            //this.$swal("User id available");
             this.isUserSuccess = 'User ID available';
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            console.log(res.data.data.msg)
             return this.error.username = res.data.data.msg;
           }
         })

@@ -341,6 +341,9 @@ export default {
   created() {
     this.commonService = new CommonService();
   },
+  updated(){
+thsi.checkUser()
+  },
   methods: {
     checkError() {
       let credential = {
@@ -401,20 +404,20 @@ export default {
       if (validator.isEmpty(this.username)) {
         this.error.username = "Please enter your ID";
       }
-      if (!validator.isAlphanumeric(this.username)) {
+      else if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
+        this.isUserSuccess = ''
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            // console.log(this.error);
             this.isIDVerified = true;
             this.error.username = "";
-            //this.$swal("User id available");
             this.isUserSuccess = 'User ID available';
-          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
+          } 
+          else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
-        });
+        })
       }
     },
 
@@ -434,7 +437,6 @@ export default {
             this.startTimer = false;
             this.showTick = true;
             this.emailOTP='';
-            // this.$swal("OTP has been sent to your email");
             // this.error.email = "";
 
             if (this.storeSetInterval) {
