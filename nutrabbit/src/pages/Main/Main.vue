@@ -44,7 +44,7 @@
               Don't miss the chance to launch your own product!
             </h2>
             <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
+            <button @click="toNutri()" class="btn-small-solid green">What is nutri 3.3
               Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
@@ -214,6 +214,14 @@ export default {
       //this.$swal("Unauthorized Access.Please Login.");
       this.isModalVisible = true;
 
+    },
+
+    toNutri(){
+      if(this.token){
+        this.$router.push(`/service-intro`)
+      }else{
+        this.isModalVisible = true;
+      }
     },
 
     closeModal(){
