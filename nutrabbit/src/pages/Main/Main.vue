@@ -22,12 +22,12 @@
             on your own!
           </h2>
           <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
-          <router-link to="/my-choice">
+          <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
-          <!-- <router-link to="/" v-else @click="accessPage()">
+          <router-link to="/" v-else @click="accessPage()">
             <button class="btn-small-solid">Go to my choice</button>
-          </router-link> -->
+          </router-link>
         </div>
         <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
       </div>
@@ -198,8 +198,7 @@ export default {
       });
     },
     accessPage() {
-      // this.$swal("Unauthorized Access.Please Login.");
-      console.log("Unauthorized Access.Please Login.")
+      this.$swal("Unauthorized Access.Please Login.");
     }
   },
 };
