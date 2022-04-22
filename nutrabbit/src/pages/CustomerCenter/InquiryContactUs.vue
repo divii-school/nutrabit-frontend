@@ -79,7 +79,7 @@
   <Modal
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="1:1 inquiry registration has been completed."
+    bodytext1="1:1 문의 등록이 완료되었습니다."
     btnText2="Confirm"
     link="/inquiry"
   />

@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>Quotion Request Details</h2>
+          <h2>견적 신청내역</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Options</h2>
+                <h2>선택 사항</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>category</th>
-                      <th>Explanation</th>
+                      <th>카테고리</th>
+                      <th>설명</th>
                     </tr>
                   </thead>
                   <tbody
@@ -35,20 +35,20 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>Additional Requests</label>
+                <label>추가 요청 사항</label>
                 <div class="ansBlock">
                   <p>{{ add_req }}</p>
                 </div>
               </div>
               <div class="fGroup">
-                <label>Answer</label>
+                <label>답변</label>
                 <div class="ansBlock">
                   <p>{{ answer }}</p>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-application-detail')">Previous</button>
+                  <button class="btn-small-solid grey" @click="$router.push('/my-application-detail')">이전</button>
                 </div>
               </div>
             </div>

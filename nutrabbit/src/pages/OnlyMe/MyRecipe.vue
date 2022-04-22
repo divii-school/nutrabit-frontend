@@ -3,19 +3,19 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my recipe</h2>
+          <h2>나의 레시피</h2>
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Recommended blending</h2>
+                <h2>추천 블랜딩</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">선택 삭제 <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -24,7 +24,7 @@
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextRecommended">Next</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended">다음</button>
               </div>
             </div>
           </div>
@@ -33,13 +33,13 @@
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>My Choice</h2>
+                <h2>my choice</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemChoice">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemChoice">선택 삭제 <i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -48,7 +48,7 @@
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextChoice">Next</button>
+                <button class="btn-small-solid blue" @click="toNextChoice">다음</button>
               </div>
             </div>
           </div>
