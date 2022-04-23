@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>Sample application details</h2>
+          <h2>샘플 신청내역</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Options</h2>
+                <h2>선택 사항</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>category</th>
-                      <th>Explanation</th>
+                      <th>카테고리</th>
+                      <th>설명</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -33,24 +33,24 @@
                 </table>
               </div>
               <div class="fGroup" v-if="titletrue" @click="titleshow">
-                <label>Title</label>
+                <label>제목</label>
                 <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
               </div>
               <div class="fGroup">
-                <label>Additional Requests</label>
+                <label>추가 요청 사항</label>
                 <div class="ansBlock">
                     <p>{{additional_request}}</p>
                 </div>
               </div>
               <div class="fGroup">
-                <label>Answer</label>
+                <label>답변</label>
                 <div class="ansBlock">
                     <p>{{answer_by_admin}}</p>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey" @click="$router.go(-1)">Previous</button>
+                  <button class="btn-small-solid grey" @click="$router.go(-1)">이전</button>
                 </div>
             </div>
             </div>

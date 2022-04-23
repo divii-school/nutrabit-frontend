@@ -9,7 +9,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Options</h2>
+                <h2>선택 사항</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>category</th>
-                      <th>Explanation</th>
+                      <th>카테고리</th>
+                      <th>설명</th>
                     </tr>
                   </thead>
                   <tbody
@@ -45,23 +45,23 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>Title</label>
+                <label>제목</label>
                 <input
                   type="text"
                   name=""
-                  placeholder="My own recipe made with guar gum hydrolyzate"
+                  placeholder="구아검가수분해물로 만든 나만의 레시피"
                   v-model="title"
                 />
               </div>
               <div class="fGroup">
-                <label>Additional Requests</label>
+                <label>추가 요청 사항</label>
                 <textarea
                   placeholder="Please write freely"
                   v-model="additionalRequest"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0">Service</label>
+                <label class="mb0">서비스</label>
               </div>
               <div class="product-list-wrap">
                 <div v-if="serviceType.length < 2">
@@ -84,20 +84,20 @@
                 </div>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey" @click="openModal">
-                    Delete
+                    삭제
                   </button>
                   <div class="btnWrapRight">
                     <button
                       class="btn-green-outline blue"
                       @click="toEditRecipeDetails(product_id, app_type)"
                     :disabled="isDisabled">
-                      Edit
+                      수정
                     </button>
                     <button
                       class="btn-small-solid blue ml-4"
                       @click="toPaymentGateway(product_id)"
                     >
-                      Next
+                      다음
                     </button>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
-      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "추천 블랜딩",
     };
   },
 

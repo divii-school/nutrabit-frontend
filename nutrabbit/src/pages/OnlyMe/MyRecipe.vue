@@ -20,11 +20,11 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of recommendedBlendingData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" type="recommended" @type="getType"/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(!product_id) ? 'btn-disabled' : ''"  :disabled="!product_id">Next</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(type == 'radiochoice' || type == '') ? 'btn-disabled' : ''"  :disabled="recommendedDisabled">Next</button>
               </div>
             </div>
           </div>
@@ -44,11 +44,11 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" @type="getType" type="choice"/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" :class="(!product_id) ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="!product_id">Next</button>
+                <button class="btn-small-solid blue" :class="(type == 'radiorecommended' || type == '') ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="choiceDisabled">Next</button>
               </div>
             </div>
           </div>
@@ -82,6 +82,8 @@ export default {
     Button,
     Modal,
   },
+
+  
   
   data() {
     return {
@@ -111,7 +113,9 @@ export default {
       isRecommendedModalVisible : false,
       isChoiceModalVisible : false,
       isItemSelectedVisible : false,
-      
+      type :'',
+      recommendedDisabled : true,
+      choiceDisabled : true,
     };
   },
 
@@ -119,24 +123,38 @@ export default {
     this.myRecipe = new MyRecipeService()
     this.allRecommendedData();
     this.allChoiceData();
+    
   },
 
-  updated(){
-    if(this.product_id != false){
-      this.isNextDisable = false
-    }
-  },
+  // updated(){
+  //   if(this.product_id != false){
+  //     this.isNextDisable = false
+  //   }
+  // },
 
   methods : {
-    getProductId(id){
-      this.product_id = id;
-      //console.log(`product id is : ${this.product_id}`)
+    getType(name){
+      this.type = name;
+     if(name == 'radiochoice'){
+         this.choiceDisabled = false;
+      }else{
+         this.choiceDisabled = true;
+      }
+      
+      if(name == 'radiorecommended'){
+         this.recommendedDisabled = false;
+      }else{
+         this.recommendedDisabled = true;
+      }
+      console.log(name)
     },
 
-    getType(id){
-      //this.product_type = id;
-      console.log(`product type is : ${this.product_type}`)
+    getProductId(id){
+      this.product_id = id;
+      console.log(this.product_id)
     },
+
+    
 
     allRecommendedData(){
       this.myRecipe.getMyRecomendedBlendingData(this.user_id)
@@ -171,7 +189,7 @@ export default {
     },
     
     deleteRecipeItemRecommended(){
-      if(!this.product_id){
+      if(this.type !== 'radiorecommended'){
        //this.$swal('Any one of the products needs to be selected')
         this.isItemSelectedVisible = true;
        return
@@ -181,7 +199,7 @@ export default {
     },
 
     deleteRecipeItemChoice(){
-       if(!this.product_id){
+       if(this.type !== 'radiochoice'){
        //this.$swal('Any one of the products needs to be selected')
        this.isItemSelectedVisible = true;
        return
@@ -192,11 +210,11 @@ export default {
 
     deleteRecipeRecommendedItem(id){
       
-      this.deleteRecipeItem(id, 'recommended')
+      this.deleteRecipeItem(id, this.type)
     },
 
     deleteRecipeChoiceItem(id){
-      this.deleteRecipeItem(id, 'choice')
+      this.deleteRecipeItem(id, this.type)
     },
 
     closeModalRecommended(){
@@ -213,20 +231,21 @@ export default {
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
-          this.$swal(`Delete ${res.message}`)
+          //this.$swal(`Delete ${res.message}`)
 
-          if(type == 'recommended'){
+          if(type == 'radiorecommended'){
              this.allRecommendedData();
           }
 
-          if(type == 'choice'){
+          if(type == 'radiochoice'){
              this.allChoiceData();
           }
           
           
         } else {
 
-          this.$swal(res.message, "error");
+          //this.$swal(res.message, "error");
+          console.log(res.message)
         }
     })
    },
@@ -237,7 +256,7 @@ export default {
    },
 
    toNextChoice(){
-     if(!this.product_id){
+     if(!this.product_id && this.type !== 'radiochoice' ){
        this.$swal('Any one of the products needs to be selected')
        return;
      }
