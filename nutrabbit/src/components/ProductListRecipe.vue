@@ -2,7 +2,7 @@
   <div class="product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
-        <input type="radio" name="radio" :id="'radio-'+ item.id" :value="item.id" @click="getPackageId" :data-type="'radio'+ type" />
+        <input type="radio" name="radio" ref="radio" :id="'radio-'+ item.id" :value="item.id" @click="getPackageId" :data-type="'radio'+ type" />
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
@@ -68,11 +68,18 @@
 <script>
 export default {
   name: "ProductListRecipe",
-  props:["item", "type"],
+  props:["item", "type", "unchecked"],
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     }
+  },
+
+  updated(){
+   if(this.unchecked == true){
+       this.$refs.radio.checked = false;
+       //console.log(this.$refs.radio)
+   }
   },
    methods: {
          getPackageId(event) {
