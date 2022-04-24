@@ -106,7 +106,6 @@ export default {
       ],
       user_id : this.common.state.userId,
       product_id : '',
-      product_type : '',
       //isNextDisable : true,
       recommendedBlendingData : [],
       myChoiceData : [],
@@ -241,6 +240,10 @@ export default {
              this.allChoiceData();
           }
           
+          this.product_id = '';
+          this.type = '';
+          this.recommendedDisabled = true;
+          this.choiceDisabled = true;
           
         } else {
 
