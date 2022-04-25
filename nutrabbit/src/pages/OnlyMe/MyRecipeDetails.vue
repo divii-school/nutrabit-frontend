@@ -45,7 +45,7 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>제목</label>
+                <label>{{$t("onlyme.tableCaptions.Description")}}</label>
                 <input
                   type="text"
                   name=""
