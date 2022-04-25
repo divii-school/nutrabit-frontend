@@ -271,6 +271,10 @@
             "Notice" : "Notice",
             "Title" : "Title",
             "PublishedDate" : "Published date"
+        },
+
+        "content" : {
+            "Tag" : "Important"
         }
     }
 }
