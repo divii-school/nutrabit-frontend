@@ -58,13 +58,27 @@
         "title" : {
             "myRecipe" : "나의 레시피",
             "RecommendedBlending" : "추천 블랜딩",
-            "MyChoice" : "my choice"
+            "MyChoice" : "my choice",
+            "Options" : "선택 사항",
+            "Title" : "제목",
+            "AdditionalRequest" : "추가 요청 사항",
+            "Service" : "서비스"
+        },
+        "tableCaption" : {
+           "Category" : "카테고리",
+           "Description" : "설명"
+        },
+        "placeholder" : {
+            "title" : "구아검가수분해물로 만든 나만의 레시피",
+            "additionalRequest" : ""
         },
         "button":{
             "DeleteSelection" : "선택 삭제",
             "Next" : "다음" ,
             "Confirm" : "확인",
-            "Cancel"  : "취소"  
+            "Cancel"  : "취소",
+            "Delete" : "삭제",
+            "Edit" : "수정"  
          },
          "modal":{
             "SelectedBodyText" : "선택된 항목이 없습니다.",
