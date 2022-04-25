@@ -20,7 +20,7 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of recommendedBlendingData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId" type="recommended" @type="getType"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" type="recommended" @type="getType" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
@@ -44,7 +44,7 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId" @type="getType" type="choice"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" @type="getType" type="choice" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
@@ -106,7 +106,6 @@ export default {
       ],
       user_id : this.common.state.userId,
       product_id : '',
-      product_type : '',
       //isNextDisable : true,
       recommendedBlendingData : [],
       myChoiceData : [],
@@ -116,6 +115,7 @@ export default {
       type :'',
       recommendedDisabled : true,
       choiceDisabled : true,
+      unchecked : true,
     };
   },
 
@@ -241,6 +241,11 @@ export default {
              this.allChoiceData();
           }
           
+          this.product_id = '';
+          this.type = '';
+          this.recommendedDisabled = true;
+          this.choiceDisabled = true;
+          this.unchecked = true;
           
         } else {
 
