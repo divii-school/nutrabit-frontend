@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "CacaoChat",
+  name: "KakaoChat",
   methods: {
     chatWithKakao() {
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");

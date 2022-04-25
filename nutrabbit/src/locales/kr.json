@@ -5,10 +5,24 @@
     },
     "common": {
         "title": {
-            "login": "로그인"
+            "login": "로그인",
+            "Membershiptype": "회원가입 타입",
+            "PersonalMembership": "개인 회원가입",
+            "BusinessMembership": "사업자 회원가입",
+
+            "HowToSignUp": "회원가입 방법",
+            "GeneralSignUp": "일반 회원가입",
+            "SnsSignUp": "SNS 회원가입"
         },
-        "SubTitle": {
-            "PersonalMember": "개인회원"
+        "SubTitle":{
+            "PersonalMember": "개인회원",
+            "MemberType": "회원 타입을 선택해주세요",
+            "PersonalMembership": "개인이 가입하는 경우",
+            "BusinessMembership": "기업이 가입하는 경우",
+
+            "RegistrationProcess": "회원가입 시 진행할 방법을 선택해주세요",
+            "EmailSignUp": "이메일을 통해 회원으로 가입합니다.",
+            "SnsSignUp": "SNS 아이디를 통해 회원으로 가입합니다."
         },
         "label": {
             "ID": "아이디",
@@ -47,172 +61,204 @@
             "CacaoLogin": "카카오로 시작하기",
             "NaverLogin": "네이버로 시작하기"
         },
-        "Error": {
-            "Resquired": "* 필수항목"
+        "Error":{
+            "Resquired": "* 필수항목",
+            "EnterId": "아이디를 입력해주세요",
+            "chcekId": "아이디를 가진 사용자가 존재하지 않습니다",
+            "EnterPassword": "비밀번호를 입력 해주세요",
+            "checkPassword": "비밀번호가 일치하지 않습니다",
+            "EnterName": "이름을 입력해주세요",
+            "PasswordFormat": "비밀번호를 입력해주세요 (*10~20자 영문 대소문자, 숫자, 특수기호 포함)",
+            "ConfirmPassword": "비밀번호를 확인해주세요",
+            "EnterEmail": "이메일을 입력해주세요",
+            "EnterOtp": "이메일 인증번호를 입력해주세요",
+            "EnterPhone": "휴대폰번호를 입력해주세요",
+            "EnterAddress": "주소를 입력해주세요"
         }
+
+        
     },
-    "button": {
-        "add" : "담기",
-        "next" : "다음",
-        "Previous" : "이전",
-        "Save_as_draft" : "임시저장",
-        "Confirm" : "확인"
-    },
-    "main": {
-        "my_choice": {
-            "title": "직접 건강기능식품 레시피를 <br> 만들 수 있는 기회!",
-            "desc": "내가 고르는 조합으로 단 하나, 나만의 레시피를 만들어보세요!",
-            "button": "my choice 바로가기"
+
+    "onlyme" : {
+        "title" : {
+            "myRecipe" : "나의 레시피",
+            "RecommendedBlending" : "추천 블랜딩",
+            "MyChoice" : "my choice",
+            "Options" : "선택 사항",
+            "Title" : "제목",
+            "AdditionalRequest" : "추가 요청 사항",
+            "Service" : "서비스"
         },
-        "nutri": {
-            "heading": "nutri 3.3 블랜딩",
-            "title": "오직, 당신만을 위한 서비스 <br> 간편하게 나만의 제품 출시의 기회를 잡아보세요!",
-            "desc": "건강기능식품의 A to Z 모든 서비스를 제공합니다.",
-            "button": "nutri 3.3 블랜딩 이란?"
-        }
-    },
-    "footer": {
-        "address": "<ul><li>(주) 뉴트래빗</li> <li> 대표자 : 민경란 </li> <li> 사업자등록번호 : 603-88-01301 </li></ul><p> 본사 : 서울시 서초구 효령로33길15, 1층 </p> <a href=''>  Copyright 2022 NUTRABBIT. All right reseved. </a>",
-        "term": "이용약관",
-        "privacy": "개인정보처리방침"
-    },
-    "header": {
-        "login": "로그인",
-        "myChoice": "my choice",
-        "nutri": "nutri 3.3 블랜딩",
-        "search": "원하는 검색어를 입력하세요.",
-        "ChangePersonalInfo" : "개인정보 변경",
-        "logout" : "로그아웃",
-        "searchHistory" : "최근 검색 기록이 없습니다.",
-        "close" : "닫기",
-        "delete" : "전체삭제"
-    },
-    "myChoice": {
-        "popup": "<ul><li>내가 직접 건강기능식품 레시피를 만들어 보는 메뉴입니다.</li><li>원하시는 기능을 선택하세요.</li></ul>",
-        "RecommendedBlending" : {
-            "title" : "추천 블랜딩",
-            "popup" : "<ul><li>원료 선택이 어려우신 분들을 위한 추천레시피 입니다.</li><li>추천 블랜딩은 효과적인 원료와 제형이 이미 구성되어 있는 반제품입니다.</li><li>원하시는 추천 레피시를 선택하세요.</li></ul>",
-            "more" : "더보기",
-            "detail": {
-                "main_raw_material": "주원료",
-                "Auxiliary_material": "부원료",
-                "Efficacy": "효능",
-                "Appearance": "성상",
-                "Product_Information": "제품 설명",
-                "Similar_Products" : "유사 제품"
-            }
+        "tableCaption" : {
+           "Category" : "카테고리",
+           "Description" : "설명",
+           "RawMaterial" : "원료",
+            "Formulation" : "제형",
+            "Package" : "패키지",
+            "AdditionalRequest" : "추가 요청사항",
+            "Service" : "서비스"
         },
-        "RawMaterial" : {
-            "title" : "원료",
-            "popup" : "<ul><li>내가 직접 건강기능식품 레시피를 만들어 보는 메뉴입니다.</li><li>원하시는 원료를 선택하세요. (다중선택 가능)</li></ul>",
-            "popularity" : "인기순",
-            "modal" : {
-                "heading" : "원료 보관함에 추가되었습니다.",
-                "btn1" : "보관함 가기",
-                "btn2" : "확인"
-            },
-            "detail" : {
-                "Similar_Products": "타사 유사제품",
-                "Standard" : "기준",
-                "Rawmaterials": "원재료",
-                "Appearance" : "성상",
-                "Functionalcontent" : "기능성내용",
-                "DailyIntake" : "1일 섭취량",
-                "Precautions" : "주의사항",
-                "Etc" : "기타사항"
-            }
+        "add_req_caption" : {
+            "Caption" : "자세히 작성할 수록 견적이 정확해집니다."
+        },
+        "service_caption" : {
+            "Caption" : "* 중복 선택 가능 (샘플 신청 시 패키지는 제외됩니다.)"
+        },
+        "service_info" :{
+            "ContentOne" : "* 견적은 영업일 수 2일 이내에 등록하신 이메일로 발송됩니다.",
+            "ContentTwo" : "* 수량&패키지 디자인에 따라 단가 차이가 발생할 수 있습니다.",
+            "ContentThree" : "* 완료시점에 상세견적과 차이가 날 수 있습니다."
+        },
+        "placeholder" : {
+            "title" : "구아검가수분해물로 만든 나만의 레시피",
+            "additionalRequest" : ""
+        },
+        "button":{
+            "DeleteSelection" : "선택 삭제",
+            "Next" : "다음" ,
+            "Confirm" : "확인",
+            "Cancel"  : "취소",
+            "Delete" : "삭제",
+            "Edit" : "수정",
+            "Save" : "저장"  
+         },
+         "modal":{
+            "SelectedBodyText" : "선택된 항목이 없습니다.",
+            "DeleteBodyText" : "해당 사항을 삭제하시겠습니까?"
         }
+   },
+   "button": {
+    "add" : "담기",
+    "next" : "다음",
+    "Previous" : "이전",
+    "Save_as_draft" : "임시저장",
+    "Confirm" : "확인"
+},
+"main": {
+    "my_choice": {
+        "title": "직접 건강기능식품 레시피를 <br> 만들 수 있는 기회!",
+        "desc": "내가 고르는 조합으로 단 하나, 나만의 레시피를 만들어보세요!",
+        "button": "my choice 바로가기"
     },
-    "progress_bar" : {
-        "selection1" : "원료 선택",
-        "selection2" : "제형 선택",
-        "selection3" : "패키지 선택",
-        "selection4" : "최종 견적"
-    },
-    "package" : {
-        "title" : "패키지 선택",
-        "popup" : "<ul><li>원하시는 패키지를 선택해주세요.</li><li>샘플신청시, 패키지 선택은 ‘선택 안 함’으로 체크해주세요.</li><li>하위 패키지는 가장 기본적으로 사용되는 패키지 입니다.  원하시는 패키지가 별도로 있으신 경우, 다음 페이지에서 기재해 주시기 바랍니다.</li></ul>",
-        "etc" : "기타",
-        "unchecked" : "선택 안 함",
-        "etc_input" : "직접입력"
-    },
-    "final" : {
-        "note" : "<li>* 샘플 신청 시 패키지는 제외됩니다.</li><li>* 견적은 영업일 수 3일 이내에 등록하신 이메일로 발송됩니다.</li><li>* 수량&패키지 디자인에 따라 단가 차이가 발생할 수 있습니다.</li><li>* 완료시점에 상세견적과 차이가 날 수 있습니다.</li>",
-        "Select_Service" : "서비스 선택",
-        "Select_Service_desc" : "* 중복 선택 가능",
-        "check1":"견적 받기",
-        "check2" : "샘플 신청",
-        "check2_info" : "(샘플비용 300,000원/유료)",
-        "AdditionalRequests" : "추가 요청 사항",
-        "add_info" : "자세히 기재하시면 정확한 견적에 도움이 됩니다.",
-        "textarea_place" : "자유롭게 기재해 주세요. 예시) 수량, 타겟제품, 포장단위, 타겟연령 원료개발, 원하는 패키지 생각하는 원가 or 판매가 등등",
-        "option": "선택 사항",
-        "No": "No",
-        "Category": "카테고리",
-        "Description": "설명",
-        "modal_msg" : "임시저장이 완료되었습니다.",
-        "title" : "제목",
-        "title_place" : "제목을 입력해 주세요."
-    },
-    "storageBox" : {
-        "heading" : "원료 보관함",
-        "title" : "원료",
-        "selectAll" : "전체선택",
-        "delete" : "선택 삭제",
-        "add" : "추가 원료 담기", 
-        "popup" : "원하시는 원료를 추가로 더 담아보세요.",
-        "deleteModal": {
-            "text": "선택하신 원료를 삭제하시겠습니까?",
-            "btn1": "취소",
-            "btn2": "확인"
-        }
-    },
-    "formulation" : {
-        "title" : "제형 선택",
-        "popup" : "<ul><li>원하시는 제형을 선택해주세요.</li><li>선택하신 원료로 만들 수 없는 제형은 견적시 다른  제형으로 변경될 수 있습니다.</li></ul>"
-    },
-    "warningModal" : {
-        "text" :  "진행 중이던 데이터가 있습니다. 데이터는 따로 저장되지 않습니다. 취소하시겠습니까?",
-        "btn1" : "취소",
-        "btn2" : "확인"
-    },
-    "logoutModal" : {
-        "text" : "로그아웃하시겠습니까?"
-    },
-    "requireModal" : {
-        "text1" : "로그인이 필요한 서비스입니다.",
-        "text2" : "로그인 후 서비스를 이용해 보세요.",
-        "btn1" : "취소",
-        "btn2" : "로그인 하기"
-    },
-    "memberType" : {
-        "title" : "회원가입 타입",
-        "info" : "회원가입 타입",
-        "type1" : "개인 회원가입",
-        "type1Info" : "개인이 가입하는 경우",
-        "type2" : "사업자 회원가입",
-        "type2Info" : "기업이 가입하는 경우"
-    },
-    "signup" : {
-        "heading" : "회원가입 방법",
-         "info" : "회원가입 시 진행할 방법을 선택해주세요",
-         "general" : "일반 회원가입",
-         "gen_info" : "이메일을 통해 회원으로 가입합니다.",
-         "sign_btn" : "회원가입",
-         "sns" : "SNS 회원가입",
-         "sns_info" : "SNS 아이디를 통해 회원으로 가입합니다.",
-         "kakao_sign" : "카카오로 시작하기",
-         "naver_sign" : "네이버로 시작하기",
-         "address_search" : "주소 검색",
-         "send_verification" : "인증번호 전송",
-         "verify" : "인증",
-         "how" : "유통매체",
-         "BusinessMember" : "사업자회원",
-         "business_no" : "사업자번호",
-         "business_label" : "Enter business name",
-         "department" : "Department",
-         "department_label" : "Enter department name",
-         "contact_person" : "Contact person",
-         "contact_label" : "Enter the person in charge"
+    "nutri": {
+        "heading": "nutri 3.3 블랜딩",
+        "title": "오직, 당신만을 위한 서비스 <br> 간편하게 나만의 제품 출시의 기회를 잡아보세요!",
+        "desc": "건강기능식품의 A to Z 모든 서비스를 제공합니다.",
+        "button": "nutri 3.3 블랜딩 이란?"
     }
+},
+"footer": {
+    "address": "<ul><li>(주) 뉴트래빗</li> <li> 대표자 : 민경란 </li> <li> 사업자등록번호 : 603-88-01301 </li></ul><p> 본사 : 서울시 서초구 효령로33길15, 1층 </p> <a href=''>  Copyright 2022 NUTRABBIT. All right reseved. </a>",
+    "term": "이용약관",
+    "privacy": "개인정보처리방침"
+},
+"header": {
+    "login": "로그인",
+    "myChoice": "my choice",
+    "nutri": "nutri 3.3 블랜딩",
+    "search": "원하는 검색어를 입력하세요.",
+    "ChangePersonalInfo" : "개인정보 변경",
+    "logout" : "로그아웃",
+    "searchHistory" : "최근 검색 기록이 없습니다.",
+    "close" : "닫기",
+    "delete" : "전체삭제"
+},
+"myChoice": {
+    "popup": "<ul><li>내가 직접 건강기능식품 레시피를 만들어 보는 메뉴입니다.</li><li>원하시는 기능을 선택하세요.</li></ul>",
+    "RecommendedBlending" : {
+        "title" : "추천 블랜딩",
+        "popup" : "<ul><li>원료 선택이 어려우신 분들을 위한 추천레시피 입니다.</li><li>추천 블랜딩은 효과적인 원료와 제형이 이미 구성되어 있는 반제품입니다.</li><li>원하시는 추천 레피시를 선택하세요.</li></ul>",
+        "more" : "더보기",
+        "detail": {
+            "main_raw_material": "주원료",
+            "Auxiliary_material": "부원료",
+            "Efficacy": "효능",
+            "Appearance": "성상",
+            "Product_Information": "제품 설명",
+            "Similar_Products" : "유사 제품"
+        }
+    },
+    "RawMaterial" : {
+        "title" : "원료",
+        "popup" : "<ul><li>내가 직접 건강기능식품 레시피를 만들어 보는 메뉴입니다.</li><li>원하시는 원료를 선택하세요. (다중선택 가능)</li></ul>",
+        "popularity" : "인기순",
+        "modal" : {
+            "heading" : "원료 보관함에 추가되었습니다.",
+            "btn1" : "보관함 가기",
+            "btn2" : "확인"
+        },
+        "detail" : {
+            "Similar_Products": "타사 유사제품",
+            "Standard" : "기준",
+            "Rawmaterials": "원재료",
+            "Appearance" : "성상",
+            "Functionalcontent" : "기능성내용",
+            "DailyIntake" : "1일 섭취량",
+            "Precautions" : "주의사항",
+            "Etc" : "기타사항"
+        }
+    }
+},
+"progress_bar" : {
+    "selection1" : "원료 선택",
+    "selection2" : "제형 선택",
+    "selection3" : "패키지 선택",
+    "selection4" : "최종 견적"
+},
+"package" : {
+    "title" : "패키지 선택",
+    "popup" : "<ul><li>원하시는 패키지를 선택해주세요.</li><li>샘플신청시, 패키지 선택은 ‘선택 안 함’으로 체크해주세요.</li><li>하위 패키지는 가장 기본적으로 사용되는 패키지 입니다.  원하시는 패키지가 별도로 있으신 경우, 다음 페이지에서 기재해 주시기 바랍니다.</li></ul>",
+    "etc" : "기타",
+    "unchecked" : "선택 안 함",
+    "etc_input" : "직접입력"
+},
+"final" : {
+    "note" : "<li>* 샘플 신청 시 패키지는 제외됩니다.</li><li>* 견적은 영업일 수 3일 이내에 등록하신 이메일로 발송됩니다.</li><li>* 수량&패키지 디자인에 따라 단가 차이가 발생할 수 있습니다.</li><li>* 완료시점에 상세견적과 차이가 날 수 있습니다.</li>",
+    "Select_Service" : "서비스 선택",
+    "Select_Service_desc" : "* 중복 선택 가능",
+    "check1":"견적 받기",
+    "check2" : "샘플 신청",
+    "check2_info" : "(샘플비용 300,000원/유료)",
+    "AdditionalRequests" : "추가 요청 사항",
+    "add_info" : "자세히 기재하시면 정확한 견적에 도움이 됩니다.",
+    "textarea_place" : "자유롭게 기재해 주세요. 예시) 수량, 타겟제품, 포장단위, 타겟연령 원료개발, 원하는 패키지 생각하는 원가 or 판매가 등등",
+    "option": "선택 사항",
+    "No": "No",
+    "Category": "카테고리",
+    "Description": "설명",
+    "modal_msg" : "임시저장이 완료되었습니다.",
+    "title" : "제목",
+    "title_place" : "제목을 입력해 주세요."
+},
+"storageBox" : {
+    "heading" : "원료 보관함",
+    "title" : "원료",
+    "selectAll" : "전체선택",
+    "delete" : "선택 삭제",
+    "add" : "추가 원료 담기", 
+    "popup" : "원하시는 원료를 추가로 더 담아보세요.",
+    "deleteModal": {
+        "text": "선택하신 원료를 삭제하시겠습니까?",
+        "btn1": "취소",
+        "btn2": "확인"
+    }
+},
+"formulation" : {
+    "title" : "제형 선택",
+    "popup" : "<ul><li>원하시는 제형을 선택해주세요.</li><li>선택하신 원료로 만들 수 없는 제형은 견적시 다른  제형으로 변경될 수 있습니다.</li></ul>"
+},
+"warningModal" : {
+    "text" :  "진행 중이던 데이터가 있습니다. 데이터는 따로 저장되지 않습니다. 취소하시겠습니까?",
+    "btn1" : "취소",
+    "btn2" : "확인"
+},
+"logoutModal" : {
+    "text" : "로그아웃하시겠습니까?"
+},
+"requireModal" : {
+    "text1" : "로그인이 필요한 서비스입니다.",
+    "text2" : "로그인 후 서비스를 이용해 보세요.",
+    "btn1" : "취소",
+    "btn2" : "로그인 하기"
+}
 }

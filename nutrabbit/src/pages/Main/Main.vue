@@ -66,7 +66,7 @@
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
     :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
     link="/login" />
-  <CacaoChatVue />
+  <KakaoChat />
 </template>
 
 <script>
@@ -80,7 +80,7 @@ import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
-import CacaoChatVue from "../../components/CacaoChat.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
@@ -89,7 +89,7 @@ export default {
     SwiperSlide,
     MainProductCard,
     Button,
-    CacaoChatVue,
+    KakaoChat,
     Modal,
   },
   data() {

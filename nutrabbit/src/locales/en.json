@@ -3,12 +3,25 @@
     "address": {
         "city": "Kolkata"
     },
-    "common": {
-        "title": {
-            "login": "Login"
+    "common":{
+        "title":{
+            "login":"Login",
+            "Membershiptype": "Membership Type",
+            "PersonalMembership": "Personal Membership",
+            "BusinessMembership": "Business Membership",
+            "HowToSignUp": "How to Sign Up",
+            "GeneralSignUp": "General Sign Up",
+            "SnsSignUp": "SNS Sign Up"
         },
-        "SubTitle": {
-            "PersonalMember": "Personal Member"
+        "SubTitle":{
+            "PersonalMember": "Personal Member",
+            "MemberType": "Please select a member type",
+            "PersonalMembership": "Sign up as personal member",
+            "BusinessMembership": "Sign up as business member",
+            "RegistrationProcess": "Please select a method to proceed when registering as a member",
+            "EmailSignUp": "Sign up via Email.",
+            "SnsSignUp": "Sign up via your SNS ID"
+
         },
         "label": {
             "ID": "ID",
@@ -47,8 +60,19 @@
             "CacaoLogin": "Login with Kakao",
             "NaverLogin": "Login with Naver"
         },
-        "Error": {
-            "Resquired": "* Required"
+        "Error":{
+            "Resquired": "* Required",
+            "EnterId": "Please enter your ID",
+            "chcekId": "User with the id does not exist",
+            "EnterPassword": "Please enter password",
+            "checkPassword": "Password does not match",
+            "EnterName": "Input your name, please",
+            "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
+            "ConfirmPassword": "Please confirm your password",
+            "EnterEmail": "Please enter your email address",
+            "EnterOtp": "Please enter your email verification code",
+            "EnterPhone": "Please enter your mobile phone number",
+            "EnterAddress": "Please enter your address"
         }
     },
     "button": {
@@ -57,6 +81,56 @@
         "Previous": "Previous",
         "Save_as_draft": "Save as Draft",
         "Confirm": "Confirm"
+    },
+    "onlyme": {
+    
+        "title": {
+            "myRecipe": "my recipe",
+            "RecommendedBlending": "Recommended blending",
+            "Application" : "My Application",
+            "MyChoice": "my choice",
+            "Options": "Options",
+            "Title": "Title",
+            "AdditionalRequest": "Additional Requests",
+            "Service": "Service"
+        },
+        "tableCaption": {
+            "Category": "Category",
+            "Description": "Description",
+            "RawMaterial" : "Raw material",
+            "Formulation" : "Formulation",
+            "Package" : "Package",
+            "AdditionalRequest" : "Additional Request",
+            "Service" : "Service"
+        },
+        "add_req_caption" : {
+            "Caption" : "The more detailed you are, the more accurate your estimate will be."
+        },
+        "service_caption" : {
+            "Caption" : "* Duplicate selection possible (package is excluded when requesting a sample.)"
+        },
+        "service_info" :{
+            "ContentOne" : "* The quotation will be sent to the registered email address within 2 business days.",
+            "ContentTwo" : "* Unit price may vary depending on quantity & package design.",
+            "ContentThree" : "* It may differ from the detailed estimate at the time of completion."
+        },
+        "placeholder" : {
+            "title" : "My own recipe made with guar gum hydrolyzate",
+            "additionalRequest" : ""
+        },
+        "button": {
+            "DeleteSelection": "delete selection",
+            "Next": "Next",
+            "Confirm": "Confirm",
+            "Cancel": "Cancel",
+            "Delete" : "Delete",
+            "Edit" : "Edit",
+            "Save" : "Save"
+        },
+        "modal": {
+            "SelectedBodyText": "There are no items selected.",
+            "DeleteBodyText": "Are you sure you want to delete it?"
+        }
     },
     "main": {
         "my_choice": {
@@ -184,35 +258,5 @@
         "text2" : "Please use the service after logging in.",
         "btn1" : "Cancel",
         "btn2" : "Login"
-    },
-    "memberType" : {
-        "title" : "Membership Type",
-        "info" : "Please select a member type",
-        "type1" : "Personal Membership",
-        "type1Info" : "Sign up as personal member",
-        "type2" : "Business Membership",
-        "type2Info" : "Sign up as business member"
-    },
-    "signup" : {
-        "heading" : "How to Sign Up",
-         "info" : "Please select a method to proceed when registering as a member",
-         "general" : "General Sign Up",
-         "gen_info" : "Sign up via Email",
-         "sign_btn" : "Sign Up",
-         "sns" : "SNS Sign Up",
-         "sns_info" : "Sign up via your SNS ID",
-         "kakao_sign" : "Sign up with Kakao",
-         "naver_sign" : "Sign up with Naver",
-         "address_search" : " Search Address",
-         "send_verification" : "Send verification code",
-         "verify" : "Verify",
-         "how" : "How did you find us?",
-         "BusinessMember" : "Business Member",
-         "business_no" : "Business Number",
-         "business_label" : "Enter business name",
-         "department" : "Department",
-         "department_label" : "Enter department name",
-         "contact_person" : "Contact person",
-         "contact_label" : "Enter the person in charge"
     }
 }

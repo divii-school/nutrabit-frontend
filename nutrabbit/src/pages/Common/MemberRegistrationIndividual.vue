@@ -20,11 +20,10 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.TermsCheckBox") }}
-                    <input type="checkbox" v-model="termsCheck" />
+                        <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
               <div
                 class="form-group"
@@ -37,7 +36,6 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="individuals-form">
@@ -348,7 +346,6 @@ export default {
   methods: {
     checkError() {
       let credential = {
-        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,
