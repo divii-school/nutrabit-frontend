@@ -52,6 +52,7 @@
 		"vue-material": "^1.0.0-beta-15",
 		"vue-multiselect": "^2.1.6",
 		"vue-router": "^4.0.11",
-		"vue-suggestion": "^2.0.0"
+		"vue-suggestion": "^2.0.0",
+		"vue-sweetalert2": "^5.0.2"
 	}
 }

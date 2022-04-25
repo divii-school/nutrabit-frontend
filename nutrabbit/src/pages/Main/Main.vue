@@ -3,7 +3,7 @@
     <div class="main-slider">
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="true" :modules="modules" :speed="2000" class="mySwiper">
+      }" :navigation="true" :modules="modules" :speed="1000" class="mySwiper">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
@@ -17,10 +17,11 @@
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
           <h2 class="nutri-choice-heading text-center">
-            Direct health functional food recipes
-            <br />Opportunity to create!
+            Opportunity to create <br>
+            Health Functional Food Recipes <br>
+            on your own!
           </h2>
-          <p class="desc text-center">Create your own recipe with just one combination of your choice!</p>
+          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">Go to my choice</button>
           </router-link>
@@ -39,19 +40,18 @@
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">nutri 3.3 blending</p>
             <h2 class="nutri-choice-heading text-center">
-              service only for you
-              <br />Easily seize the opportunity to launch
-              your own product!
+              A service only for you <br>
+              Don't miss the chance to launch your own product!
             </h2>
             <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
+            <button @click="toNutri()" class="btn-small-solid green">What is nutri 3.3
               Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) of ProductData" :key="index">
-                <MainProductCard :item="item" />
+              <li v-for="(item, index) of ProductData" :key="index" >
+                <MainProductCard :item="item" @login="accessPage"/>
               </li>
             </ul>
           </div>
@@ -71,6 +71,15 @@
       <!-- payment-test -->
     </div>
   </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
   <CacaoChatVue />
 </template>
 
@@ -81,11 +90,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
 import CacaoChatVue from "../../components/CacaoChat.vue";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
   components: {
@@ -94,6 +104,7 @@ export default {
     MainProductCard,
     Button,
     CacaoChatVue,
+    Modal,
   },
   data() {
     return {
@@ -103,10 +114,14 @@ export default {
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      isModalVisible : false,
     };
   },
   setup() {
     const common = inject("common");
+    onMounted(() => {
+      common.methods.isFromApp();
+    });
     return {
       modules: [Pagination, Navigation],
       common
@@ -117,7 +132,6 @@ export default {
     this.paymentService = new PaymentService();
   },
   mounted() {
-    this.isFromApp();
     this.allBanner();
     this.allNutidata();
     localStorage.removeItem('sub_category_id');
@@ -130,39 +144,9 @@ export default {
 
   },
   methods: {
-    // check if it's from APP
-    isFromApp() {
-      var queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      console.log('urlParams--', urlParams);
-      var mobile = urlParams.get("mobile");
-      var iphone = urlParams.get("isiPhone");
-      if (mobile) {
-        this.isMobile = true;
-        this.common.state.isMobile = true;
-        localStorage.setItem("isMobile", true);
-        if(iphone) {
-          this.isiPhone = true;
-          this.common.state.isiPhone = true;
-          localStorage.setItem("isiPhone", true);
-        }
-      }
-
-      setTimeout(() => {
-        console.log(
-          "this.common.state.isMobile",
-          this.common.state.isMobile
-        );
-        console.log(
-          "this.common.state.isiPhone",
-          this.common.state.isiPhone
-        );
-      }, 4000);
-    },
-    // ENdx check if it's from APP
     // makePay test function
     makePay() {
-      console.log('makePay');
+      // console.log('makePay');
       alert('makePay');
       this.paymentService.requestPay();
     },
@@ -226,7 +210,22 @@ export default {
       });
     },
     accessPage() {
-      this.$swal("Unauthorized Access.Please Login.");
+      //this.$router.push('/login')
+      //this.$swal("Unauthorized Access.Please Login.");
+      this.isModalVisible = true;
+
+    },
+
+    toNutri(){
+      if(this.token){
+        this.$router.push(`/service-intro`)
+      }else{
+        this.isModalVisible = true;
+      }
+    },
+
+    closeModal(){
+      this.isModalVisible = false;
     }
   },
 };

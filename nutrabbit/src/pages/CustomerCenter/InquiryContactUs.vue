@@ -2,7 +2,7 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">1.1 Inquiry</h1>
+        <h1 class="inquiry-heading">1:1 문의</h1>
         <div class="login-signup-inner">
           <form
             action=""
@@ -11,12 +11,12 @@
           >
             <div class="individuals-form">
               <div class="form-group">
-                <label for="">Inquiry subject</label>
+                <label for="">문의 제목</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
                     <select v-model="selected">
                       <option value="" disabled hidden>
-                        Choose the subject of your inquiry
+                        문의 제목 선택
                       </option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
@@ -35,14 +35,14 @@
                   <div class="input-inner">
                     <textarea
                       class="form-control inquiry-textarea"
-                      placeholder="Please enter the reason for withdrawal"
+                      placeholder="문의 내용을 입력해주세요."
                       v-model="InqDesc"
                     ></textarea>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="">file upload</label>
+                <label for="">파일 업로드</label>
                 <div class="input-group">
                   <div class="file-input">
                     <input
@@ -51,7 +51,7 @@
                       v-on:change="onFileChange"
                     />
                     <label for="file">
-                      Select file
+                      파일 업로드
                       <img src="../../assets/icons/upload.png" />
                     </label>
                   </div>
@@ -65,10 +65,10 @@
             </div>
             <div class="btn-wrap flex dual-btn">
               <button class="btn-primary grey-btn-solid" @click="resetForm">
-                cancellation
+                취소
               </button>
               <button class="btn-primary grenn-btn2" @click="submitData">
-                Enrollment
+                등록
               </button>
             </div>
           </form>
@@ -79,7 +79,7 @@
   <Modal
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="1:1 inquiry registration has been completed."
+    bodytext1="1:1 문의 등록이 완료되었습니다."
     btnText2="Confirm"
     link="/inquiry"
   />
@@ -116,12 +116,11 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data.data.inqueryType);
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })
         .catch((err) => {
-          console.log(err);
+          return err;
         });
     },
     onFileChange(e) {
@@ -151,9 +150,8 @@ export default {
         const res = await axios.post("/inquery/add", formData);
         this.isModalVisible = true;
       } catch (error) {
-        console.log(error);
+        return;
       }
-      console.log(formData);
     },
     removeFile() {
       this.fileName = "";

@@ -24,6 +24,10 @@
               </li>
             </ul>
           </div>
+           <ul>
+            <li>* nutri3.3 blending can only be purchased within the options provided.</li>
+            <li>*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.</li>
+          </ul>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
@@ -36,7 +40,7 @@
                   <div class="nutri-product-item">
                     <div @click="this.$router.push(`/nutri-detail/${item.id}`)">
                       <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
-                      <img v-else class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
+                      <img v-else class="nutri-pimg" src="../../assets/images/content_place.png" alt="" />
                     </div>
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
@@ -46,47 +50,7 @@
                   </div>
                 </li>
               </ul>
-              <!-- <ul >
-                <li>
-                  <div class="nutri-product-item">
-                    <div >
-                     
-                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
-                    </div>
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                      <span>nutri 3.3</span>
-                    </div>
-                    <p >HI</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="nutri-product-item">
-                    <div >
-                      
-                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
-                    </div>
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                      <span>nutri 3.3</span>
-                    </div>
-                    <p >HI</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="nutri-product-item">
-                    <div >
-                      
-                      <img class="nutri-pimg" src="../../assets/images/aloe-img-4.png" alt="" />
-                    </div>
-                    <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                      <span>nutri 3.3</span>
-                    </div>
-                    <p >HI</p>
-                  </div>
-                </li>
-              </ul> -->
+             
             </div>
           </div>
         </div>
@@ -113,17 +77,17 @@ export default {
         {
           img: "../../../src/assets/images/blending2.png",
           step: "Step.2",
-          desc: "The product you want to launch Choose"
+          desc: "Choose the product you want to launch"
         },
         {
           img: "../../../src/assets/images/blending3.png",
           step: "Step.3",
-          desc: "at the bottom of the selected product detail page Click the Get Quote button"
+          desc: "Click the Get an estimate button at the bottom of the detail page on selected product"
         },
         {
           img: "../../../src/assets/images/blending4.png",
           step: "Step.4",
-          desc: "After checking in nutri 3.3 We will contact you"
+          desc: "We will contact you after checking"
         },
       ],
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,

@@ -6,8 +6,8 @@
           <h2>FAQ</h2>
         </div>
         <div class="faq-heading">
-          <p class="category">category</p>
-          <p class="title">title</p>
+          <p class="category">카테고리</p>
+          <p class="title">제목</p>
         </div>
         <FaqAccordion v-for="(item, index) of importantFaqList" :key="index">
           <template v-slot:title>
@@ -43,7 +43,7 @@
             </div>
           </template>
           <template v-slot:content>
-            <h4>Answred</h4>
+            <h4>답변내용</h4>
             <p>
               {{ item.description_en }}
             </p>
@@ -171,7 +171,6 @@ export default {
   },
   mounted() {
     this.allFaqList();
-    console.log(this.updatedFaqList);
   },
 
   methods: {
@@ -187,11 +186,10 @@ export default {
           if (res.status == 200) {
             this.FaqList = res.data.data.faq;
             this.myCallback(1);
-            console.log(res.data.data.faq);
           }
         })
         .catch((err) => {
-          console.log(err);
+         return;
         });
     },
   },

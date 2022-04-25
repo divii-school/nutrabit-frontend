@@ -561,6 +561,9 @@
                                     min-width: 162px;
                                     line-height: 14px;
                                 }
+                                &.btn-disabled{
+                                    background: $grey-CF;
+                                }
                             }
                             &.flex-justify-end{
                                 justify-content: flex-end;

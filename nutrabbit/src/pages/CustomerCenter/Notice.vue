@@ -3,11 +3,11 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>Notice</h2>
+          <h2>공지사항</h2>
         </div>
         <div class="notice-heading">
-          <p class="title">title</p>
-          <p class="date">Published date</p>
+          <p class="title">제목</p>
+          <p class="date">게시날짜</p>
         </div>
         <div class="notice-list bBtm-0 notice-list-main">
           <ul>
@@ -98,7 +98,6 @@ export default {
       // const endIndex = (this.perPage * ClickPage);
       const endIndex = startIndex + this.perPage;
       this.UpdatedNoticeList = this.NoticeList.slice(startIndex, endIndex);
-      console.log(this.UpdatedNoticeList)
     },
     allNoticeList() {
       this.CustomerCenterService.getNoticeList()
@@ -110,7 +109,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+          return;
         });
     },
     dateformat(value) {

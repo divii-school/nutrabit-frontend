@@ -20,13 +20,13 @@
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Choose a package</p>
+                <p>Package selection</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>final quote</p>
+                <p>Final estimate</p>
               </div>
             </li>
           </ul>
@@ -63,7 +63,7 @@
               </div>
               <div class="fGroup">
                 <label>Additional Requests</label>
-                <span>If you provide more details, it will help you get an accurate quote.</span>
+                <span>If you provide more details, it will help you get an accurate estimate.</span>
                 <textarea v-model="additional_request" placeholder="Please write freely"></textarea>
               </div>
               <div class="fGroup mb0">
@@ -81,7 +81,7 @@
                     </label>
                   </div>
                   <div class="material-details">
-                    <h2>Get a quote</h2>
+                    <h2>Get an estimate</h2>
                   </div>
                 </div>
                 <div class="product-item with-input">
@@ -100,7 +100,7 @@
                 </div>
                 <ul>
                   <li>* Packages are excluded when requesting samples.</li>
-                  <li>* The quotation will be sent to the registered email address within 2 business days.</li>
+                  <li>* The quotation will be sent to the registered email address within 3 business days.</li>
                   <li>* Unit price may vary depending on quantity & package design.</li>
                   <li>* It may differ from the detailed estimate at the time of completion.</li>
                 </ul>
@@ -108,11 +108,11 @@
                   <button @click="this.$router.push('/raw-material-package/')"
                     class="btn-small-solid grey">Previous</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="package_temporary_add">temporary storage</button>
-                    <button class="btn-small-solid blue ml-4" @click="package_add">next</button>
+                    <button class="btn-green-outline blue" @click="package_temporary_add">Save as Draft</button>
+                    <button class="btn-small-solid blue ml-4" @click="package_add">Next</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" bodytext1="Temporary storage is complete" btnText2="confirm" link="/" />
+                    <Modal @close="closeModal" bodytext1="Saved as a draft" btnText2="confirm" link="/" />
                   </my-modal-component>
                   <my-modal-component v-show="showModal2">
                     <ModalWarning @close2="closeModal2"

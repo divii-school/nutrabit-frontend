@@ -40,7 +40,7 @@
                             <template #loading>Loading data. Please wait.</template>
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                            <Column header="번호" style="min-width: 12rem">
+                            <Column header="번호" style="min-width: 3rem">
                                 <template #body="{ data }">
                                     <span class="p-column-title">번호</span>
                                     

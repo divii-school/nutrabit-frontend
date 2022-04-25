@@ -20,13 +20,13 @@
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>Choose a package</p>
+                <p>Package selection</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>final quote</p>
+                <p>Final estimate</p>
               </div>
             </li>
           </ul>
@@ -35,7 +35,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Choose a package</h2>
+                <h2>Package selection</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -100,7 +100,7 @@
                   @click="this.$router.push(`/choice-recommended-blending-detailed-page/${this.blending_id}`)"
                   class="btn-small-solid grey"
                 >Previous</button>
-                <button @click="checkPackageId" class="btn-small-solid blue">next</button>
+                <button @click="checkPackageId" class="btn-small-solid blue">Next</button>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default {
       }
     },
     filterChanged(event) {
-      console.log(event.target.value);
+      //console.log(event.target.value);
     }
   }
 };

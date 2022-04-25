@@ -100,7 +100,7 @@
             <li class="search-resul-list">
               <h1 class="list-heading">FAQ</h1>
               <template v-if="faq.length > 0">
-                <template v-for="(item, index) in NewFaq" :key="index">
+                <template v-for="(item, index) of NewFaq" :key="index">
                   <SearchAccordion
                     :title="item.name_en"
                     :description="item.description_en"
@@ -227,7 +227,7 @@ export default {
           this.myCallback4(1);
         })
         .catch((err) => {
-          console.log({ err });
+          // console.log({ err });
         });
     },
 
@@ -252,8 +252,8 @@ export default {
       this.NewRawMaterial = this.rawMaterial.slice(startIndex, endIndex);
     },
     myCallback4(ClickPage) {
-      const startIndex = (ClickPage - 1) * this.perPage;
-      const endIndex = startIndex + this.perPage;
+      const startIndex = (ClickPage - 1) * this.FaqPerPage;
+      const endIndex = startIndex + this.FaqPerPage;
       this.NewFaq = this.faq.slice(startIndex, endIndex);
     },
   },

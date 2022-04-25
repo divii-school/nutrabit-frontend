@@ -62,14 +62,16 @@
             </button>
           </form>
           <div class="getting-started">
-            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn" @click="loginWithKakao">
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
             <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
               <i class="icon-chat-black"></i>
-              {{ $t("common.QuickLinks.CacaoLogin") }}
+              <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
+              kakao mobile login
             </button>
             <!-- END kakao login for App -->
 
@@ -82,17 +84,16 @@
             <!-- Naver login for App -->
             <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
               <i class="icon-naver"></i>
-              {{ $t("common.QuickLinks.NaverLogin") }}
+              naver mobile login
+              <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
             </button>
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-
-            <button class="btn-primary with-icon black-btn">
+            <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
               <i class="icon-appale"></i>
-             Getting Started with Apple
+              애플로 시작하기
             </button>
-
             <!-- <button
               type="button"
               class="btn-primary with-icon green-btn"
@@ -101,6 +102,8 @@
             >
               Naver Login
             </button> -->
+
+            <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
           </div>
         </div>
       </div>
@@ -110,11 +113,11 @@
 
 <script>
 import Button from "../../components/Button.vue";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 // import axios from "axios";
-
+import { useRoute } from "vue-router";
 export default {
   name: "Login",
   components: {
@@ -128,12 +131,18 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
-      isPlatMobile: localStorage.getItem('isMobile') === 'true',
+      isPlatMobile: localStorage.getItem("isMobile") === "true",
+      isAppaleId: localStorage.getItem("isiPhone") === "true",
+
+      // testData: { "accesstoken": "eyjrawqioijmadzcczhdiiwiywxnijoiulmyntyifq.eyjpc3mioijodhrwczovl2fwcgxlawquyxbwbguuy29tiiwiyxvkijoiy29tlm51dhjhymjpdc5udxryatmziiwizxhwijoxnjuwnze5nzi3lcjpyxqioje2nta2mzmzmjcsinn1yii6ijawmtcyns42mjrimdy2mjnlyme0mmyzywu5odhkn2u3zgu5yjc5oc4wodi5iiwibm9uy2uioijkmziwnwnlnmrmm2iynwjjzwriyzzkngrlyzcxzmm4ode5mwzknwewyzu0mziyogjintu3mgy0ogfkmzlizmq4iiwiy19oyxnoijoirtgzuf9onhjnv3bxm3e3tjkxbhrtdyisimvtywlsijoic2f5yw50yubkaxzpas5jb20ilcjlbwfpbf92zxjpzmllzci6inrydwuilcjhdxrox3rpbwuioje2nta2mzmzmjcsim5vbmnlx3n1chbvcnrlzci6dhj1zx0.jg6_m56wsyl3tpyaa6sel3mwhextesasgvhr_oilvmac6byir66fu0oaktc-uad3lna8brdz02onm290cfeoxs8fv1o0zjywvdlml8lhzqyb5cvwivbeynyreiea16x7qqpcm8fajuthunkwjfxqu9wdmvt7avdekusgdh9vrax7bw0hbqwm7rfs19uoqyezmeckgewydnf4-cdgvg5e3tdta-bpty_tfdwrhzy7zysimpch-um51y4yh9ly4qjnmr7hqsvonejgfi1uwr8zswav5scrmi52db__f-oudv-np7bv7fzxvsq7pexxu51squftxmalidosi358gtmd5a", "emailid": "sayanta@divii.com", "socialId": "001725.624b06623eba42f3ae988d7e7de9b798.0829", "userName": " ", "loginVia": "apple" },
     };
   },
   setup() {
     const { cookies } = useCookies();
     const common = inject("common");
+    onMounted(() => {
+      common.methods.isFromApp();
+    });
     return { cookies, common };
   },
   created() {
@@ -163,7 +172,16 @@ export default {
     window["sendNaverLoginData"] = (res) => {
       this.sendNaverAccessToken(res);
     };
+    window["sendAppleLoginData"] = (res) => {
+      this.sendAppleAccessToken(res);
+    };
     // end web view get message
+
+    // get query for appale login
+    // const route = useRoute();
+    // if (route.query.isiPhone) {
+    //   this.isAppaleId = true;
+    // }
   },
   methods: {
     onSubmit() {
@@ -181,7 +199,7 @@ export default {
             }
           } else {
             if (res.data.status == 200) {
-              console.log("login res", res.data.data);
+              // console.log("login res", res.data.data);
               this.common.state.userId = res.data.data.userId;
               this.common.state.name = res.data.data.name;
               localStorage.setItem("token", res.data.data.token);
@@ -204,24 +222,50 @@ export default {
         // this.testres = res;
         this.checkMbfblogin(res);
       } else {
-        return false
+        return false;
       }
     },
     sendKakoAccessToken(token) {
       let ftoken = token;
-      console.log('ftoken:--', ftoken);
+      // console.log("ftoken:--", ftoken);
       alert(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
-      console.log('ftoken:--', ftoken);
+      // console.log("ftoken:--", ftoken);
       alert(ftoken);
     },
+    sendAppleAccessToken(token) {
+      let ftoken = token;
+      console.log("ftoken:--", ftoken);
+      alert(ftoken);
+      this.appleLoginHandler(ftoken);
+    },
     mbKakaoLogin() {
-      window.parent.postMessage('kakaoLoginClicked', '*');
+      window.parent.postMessage("kakaoLoginClicked", "*");
     },
     mbNaverLogin() {
-      window.parent.postMessage('naverLoginClicked', '*');
+      window.parent.postMessage("naverLoginClicked", "*");
+    },
+    mbAppleLogin() {
+      window.parent.postMessage("appleLoginClicked", "*");
+    },
+
+    appleLoginHandler(res) {
+      console.log("appleLoginHandler", res);
+      if (res) {
+        let resData = JSON.parse(JSON.stringify(res));
+        console.log("--appleLoginHandler--", resData);
+        let emailName = resData.emailid.match(/^([^@]*)@/)[1];
+        localStorage.setItem("token", resData.accesstoken);
+        localStorage.setItem("uid", resData.socialId);
+        localStorage.setItem("uname", (!resData.userName || resData.userName=='') ? resData.userName : emailName);
+        // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
+        localStorage.setItem("userType", resData.loginVia);
+        this.$router.push("/");
+      } else {
+        return false;
+      }
     },
 
     // naver login
@@ -279,22 +323,23 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj);
+          console.log('authObj kakao--', authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              console.log("res-", res);
+              // console.log("res-", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
+              // this.$router.push({name: "home"});
+              this.loader.hide();
             },
           });
-          this.loader.hide();
         },
         fail: function (err) {
-          console.log(err);
+          // console.log(err);
         },
       });
     },

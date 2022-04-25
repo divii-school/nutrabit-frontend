@@ -39,7 +39,7 @@ export default {
       //  console.log(this.raw_material_id);
       let uid = localStorage.getItem('uid');
       this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           for (let i = 0; i < res.data.data.length; i++) {
 
@@ -74,7 +74,7 @@ export default {
        //  console.log(this.raw_material_id);
       let uid = localStorage.getItem('uid');
       this.mychoiceService.getRawMaterialStorageBox(uid).then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           for (let i = 0; i < res.data.data.length; i++) {
 

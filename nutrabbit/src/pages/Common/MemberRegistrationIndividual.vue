@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    {{ $t("common.label.TermsCheckBox") }}
+                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,7 +32,7 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    {{ $t("common.label.PersonalInfoCheckBox") }}
+                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -76,8 +76,10 @@
                     Check Availability
                   </button>
                 </div>
-                <span class="" v-if="isIDVerified">{{ isUserSuccess }}</span>
-                <span class="error-msg" v-else>{{ error.username }}</span>
+                <span class="success-msg" v-if="isIDVerified">{{
+                  isUserSuccess
+                }}</span>
+                <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""
@@ -178,6 +180,9 @@
                     certification
                   </button>
                 </div>
+                <span class="success-msg" v-if="isOtpVerified">{{
+                  isOtpSuccess
+                }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
@@ -333,7 +338,8 @@ export default {
       verificationStatus: "Send verification code",
       isIDVerified: false,
       isOtpVerified: false,
-      isUserSuccess : '',
+      isUserSuccess: "",
+      isOtpSuccess: "",
     };
   },
   created() {
@@ -353,8 +359,8 @@ export default {
         phoneNumber: this.phoneNumber,
         address: this.address,
         detsilAddress: this.detsilAddress,
-        isIDVerified : this.isIDVerified,
-
+        isIDVerified: this.isIDVerified,
+        isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       if (isInvalid) {
@@ -368,12 +374,12 @@ export default {
     async individalRegistration() {
       if (!this.checkError()) {
         return;
-      } else {    
-        if (this.isOtpVerified == false) {
-          this.$swal("Have to verify the otp for email");
-        }
-        else{
-        console.log("Registration Complete");
+      } else {
+        // if (this.isOtpVerified == false) {
+        //   this.$swal("Have to verify the otp for email");
+        // }
+        // else{
+        //console.log("Registration Complete");
 
         this.commonService
           .individalRegistration(
@@ -391,23 +397,20 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
-        }
       }
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
         this.error.username = "Please enter your ID";
-      }
-      if (!validator.isAlphanumeric(this.username)) {
+      } else if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
+        this.isUserSuccess = "";
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
-            console.log(this.error);
             this.isIDVerified = true;
             this.error.username = "";
-            //this.$swal("User id available");
-            this.isUserSuccess = 'User ID available';
+            this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             return (this.error.username = res.data.data.msg);
           }
@@ -430,9 +433,8 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
-            this.emailOTP='';
-            this.$swal("OTP has been sent to your email");
-            // this.error.email = "";
+            this.emailOTP = "";
+            this.error.email = "";
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -459,7 +461,7 @@ export default {
               this.verificationStatus = "Resend verification code";
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return this.$swal(res.response.data.message);
+            return;
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -471,7 +473,8 @@ export default {
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
-            this.$swal("OTP verified");
+            // this.$swal("OTP verified");
+            //  this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -482,7 +485,8 @@ export default {
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            this.error.emailOTP = "The verification code does not match.";
+            return (this.error.emailOTP =
+              "The verification code does not match.");
           }
         });
       }
@@ -490,7 +494,7 @@ export default {
     getAddress() {
       new daum.Postcode({
         oncomplete: (data) => {
-          console.log(data);
+          // console.log(data);
           return (this.address = data.address);
         },
       }).open();

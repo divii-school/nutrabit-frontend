@@ -145,6 +145,13 @@
             margin-top: 5px;
         }
     }
+    .success-msg{
+        font-size: 14px;
+        line-height: 17px;
+        color: $green-68;
+        display: block;
+        margin-top: 5px;
+    }
 }
 
 .signUp-form {
@@ -154,7 +161,13 @@
 
         .form-group {
             margin-top: 24px;
-
+            .custom-check{
+                a{
+                    color: $green-68;
+                    text-decoration: underline;
+                    margin-left: 3px;
+                }
+            }
             &:first-child {
                 margin-top: 0;
             }

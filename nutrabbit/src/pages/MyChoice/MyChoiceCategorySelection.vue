@@ -116,8 +116,8 @@
                   <button @click="showDetails(data.id)" class="btn-small-solid">add</button>
                 </div>
                 <my-modal-component v-show="showModal">
-                  <ModalStorageBox @close="closeModal" bodytext1="Added to Raw Material inventory"
-                    btnText1="go to locker" btnText2="confirm" :raw_material_id="raw_material_id"
+                  <ModalStorageBox @close="closeModal" bodytext1="Added to Raw material cart"
+                    btnText1="Go to cart" btnText2="confirm" :raw_material_id="raw_material_id"
                     :sub_category_id="this.sub_category_id" />
                 </my-modal-component>
               </li>
