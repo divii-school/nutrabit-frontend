@@ -254,9 +254,12 @@ export default {
     appleLoginHandler(res) {
       console.log("appleLoginHandler", res);
       if (res) {
-        let resData = JSON.parse(JSON.stringify(res));
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
         console.log("--appleLoginHandler--", resData);
-        let emailName = resData.emailid.match(/^([^@]*)@/)[1];
+        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
+        // let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         localStorage.setItem("token", resData.accesstoken);
         localStorage.setItem("uid", resData.socialId);
         localStorage.setItem("uname", (!resData.userName || resData.userName=='') ? resData.userName : emailName);
@@ -313,6 +316,7 @@ export default {
     // kakao
     loginWithKakao() {
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+      console.log(Kakao.isInitialized());
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -330,10 +334,10 @@ export default {
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              // console.log("res-", res);
+              console.log("res----", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              // this.$router.push({name: "home"});
+              this.$router.push({name: "home"});
               this.loader.hide();
             },
           });
