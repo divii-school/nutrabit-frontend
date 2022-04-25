@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
+                    <p v-html="$t('common.label.TermsCheckBox')" class="custom-check-title"></p>
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
