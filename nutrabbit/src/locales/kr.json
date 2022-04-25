@@ -82,12 +82,17 @@
     "onlyme" : {
         "title" : {
             "myRecipe" : "나의 레시피",
+            "Nutri" : "nutri 3.3",
             "RecommendedBlending" : "추천 블랜딩",
             "MyChoice" : "my choice",
             "Options" : "선택 사항",
             "Title" : "제목",
             "AdditionalRequest" : "추가 요청 사항",
-            "Service" : "서비스"
+            "Service" : "서비스",
+            "Application" : "내 신청내역",
+            "SampleTab" : "샘플 신청내역",
+            "QuoteTab" : "견적 신청내역",
+            "Answer" : "답변"
         },
         "tableCaption" : {
            "Category" : "카테고리",
@@ -96,7 +101,8 @@
             "Formulation" : "제형",
             "Package" : "패키지",
             "AdditionalRequest" : "추가 요청사항",
-            "Service" : "서비스"
+            "Service" : "서비스",
+            "ApplicationDate" : "신청 날짜"
         },
         "add_req_caption" : {
             "Caption" : "자세히 작성할 수록 견적이 정확해집니다."
@@ -120,7 +126,8 @@
             "Cancel"  : "취소",
             "Delete" : "삭제",
             "Edit" : "수정",
-            "Save" : "저장"  
+            "Save" : "저장" ,
+            "Previous" : "이전" 
          },
          "modal":{
             "SelectedBodyText" : "선택된 항목이 없습니다.",
