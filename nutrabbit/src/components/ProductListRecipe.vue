@@ -38,23 +38,23 @@
         <div class="product-details-wrap">
           <ul>
             <li>
-              <h3>Raw material</h3>
+              <h3>{{ $t("onlyme.tableCaption.RawMaterial" )}}</h3>
               <p>{{ item.raw_material_name }}</p>
             </li>
             <li>
-              <h3>Formulation</h3>
+              <h3>{{ $t("onlyme.tableCaption.Formulation" )}}</h3>
               <p>{{ item.formulation }}</p>
             </li>
             <li>
-              <h3>Package</h3>
+              <h3>{{ $t("onlyme.tableCaption.Package" )}}</h3>
               <p>{{ item.package }}</p>
             </li>
             <li>
-              <h3>Additional Request</h3>
+              <h3>{{ $t("onlyme.tableCaption.AdditionalRequest" )}}</h3>
               <p>{{ item.additional_request }}</p>
             </li>
             <li>
-              <h3>Service</h3>
+              <h3>{{ $t("onlyme.tableCaption.Service" )}}</h3>
               <p>{{ item.service }}</p>
             </li>
           </ul>

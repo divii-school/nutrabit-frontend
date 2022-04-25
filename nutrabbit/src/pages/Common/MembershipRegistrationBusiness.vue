@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
+                    (Required) I agree to the Terms of Use.
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,8 +32,9 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
-                    <input type="checkbox" v-model="personalCheck" />
+                    (Required) I agree to the collection and use of personal
+                    information.
+                    <input type="checkbox" v-model="personalCheck"  />
                     <span class="checkmark"></span>
                   </label>
                 </div>
