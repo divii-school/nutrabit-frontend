@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              Sign Up
-              <span>Business Member</span>
+              회원가입
+              <span>사업자회원</span>
             </h1>
-            <span>* Required</span>
+            <span>* 필수항목</span>
           </div>
           <form
             action=""
@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the Terms of Use.
+                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,9 +32,8 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the collection and use of personal
-                    information.
-                    <input type="checkbox" v-model="personalCheck"  />
+                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
+                    <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
