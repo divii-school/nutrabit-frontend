@@ -3,29 +3,28 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>나의 레시피</h2>
+          <h2>{{ $t("onlyme.title.myRecipe") }}</h2>
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>추천 블랜딩</h2>
+                <h2>{{ $t("onlyme.title.RecommendedBlending") }}</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">선택 삭제 <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">{{$t("onlyme.button.DeleteSelection")}}<i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of recommendedBlendingData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" type="recommended" @type="getType" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextRecommended">다음</button>
-                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(!product_id) ? 'btn-disabled' : ''"  :disabled="!product_id">다음</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(type == 'radiochoice' || type == '') ? 'btn-disabled' : ''"  :disabled="recommendedDisabled">{{$t("onlyme.button.Next")}}</button>
               </div>
             </div>
           </div>
@@ -34,35 +33,34 @@
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>my choice</h2>
+                <h2>{{ $t("onlyme.title.MyChoice")}}</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemChoice">선택 삭제 <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemChoice">{{$t("onlyme.button.DeleteSelection")}}<i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" @type="getType" type="choice" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextChoice">다음</button>
-                <button class="btn-small-solid blue" :class="(!product_id) ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="!product_id">다음</button>
+                <button class="btn-small-solid blue" :class="(type == 'radiorecommended' || type == '') ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="choiceDisabled">{{$t("onlyme.button.Next")}}</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
+    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
+    :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
     <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
-    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
-    btnText1="Confirm"/>
+    :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
+    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
+    :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
 
@@ -84,6 +82,8 @@ export default {
     Button,
     Modal,
   },
+
+  
   
   data() {
     return {
@@ -106,14 +106,16 @@ export default {
       ],
       user_id : this.common.state.userId,
       product_id : '',
-      product_type : '',
       //isNextDisable : true,
       recommendedBlendingData : [],
       myChoiceData : [],
       isRecommendedModalVisible : false,
       isChoiceModalVisible : false,
       isItemSelectedVisible : false,
-      
+      type :'',
+      recommendedDisabled : true,
+      choiceDisabled : true,
+      unchecked : true,
     };
   },
 
@@ -121,24 +123,38 @@ export default {
     this.myRecipe = new MyRecipeService()
     this.allRecommendedData();
     this.allChoiceData();
+    
   },
 
-  updated(){
-    if(this.product_id != false){
-      this.isNextDisable = false
-    }
-  },
+  // updated(){
+  //   if(this.product_id != false){
+  //     this.isNextDisable = false
+  //   }
+  // },
 
   methods : {
-    getProductId(id){
-      this.product_id = id;
-      //console.log(`product id is : ${this.product_id}`)
+    getType(name){
+      this.type = name;
+     if(name == 'radiochoice'){
+         this.choiceDisabled = false;
+      }else{
+         this.choiceDisabled = true;
+      }
+      
+      if(name == 'radiorecommended'){
+         this.recommendedDisabled = false;
+      }else{
+         this.recommendedDisabled = true;
+      }
+      console.log(name)
     },
 
-    getType(id){
-      //this.product_type = id;
-      console.log(`product type is : ${this.product_type}`)
+    getProductId(id){
+      this.product_id = id;
+      console.log(this.product_id)
     },
+
+    
 
     allRecommendedData(){
       this.myRecipe.getMyRecomendedBlendingData(this.user_id)
@@ -173,7 +189,7 @@ export default {
     },
     
     deleteRecipeItemRecommended(){
-      if(!this.product_id){
+      if(this.type !== 'radiorecommended'){
        //this.$swal('Any one of the products needs to be selected')
         this.isItemSelectedVisible = true;
        return
@@ -183,7 +199,7 @@ export default {
     },
 
     deleteRecipeItemChoice(){
-       if(!this.product_id){
+       if(this.type !== 'radiochoice'){
        //this.$swal('Any one of the products needs to be selected')
        this.isItemSelectedVisible = true;
        return
@@ -194,11 +210,11 @@ export default {
 
     deleteRecipeRecommendedItem(id){
       
-      this.deleteRecipeItem(id, 'recommended')
+      this.deleteRecipeItem(id, this.type)
     },
 
     deleteRecipeChoiceItem(id){
-      this.deleteRecipeItem(id, 'choice')
+      this.deleteRecipeItem(id, this.type)
     },
 
     closeModalRecommended(){
@@ -215,20 +231,26 @@ export default {
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
-          this.$swal(`Delete ${res.message}`)
+          //this.$swal(`Delete ${res.message}`)
 
-          if(type == 'recommended'){
+          if(type == 'radiorecommended'){
              this.allRecommendedData();
           }
 
-          if(type == 'choice'){
+          if(type == 'radiochoice'){
              this.allChoiceData();
           }
           
+          this.product_id = '';
+          this.type = '';
+          this.recommendedDisabled = true;
+          this.choiceDisabled = true;
+          this.unchecked = true;
           
         } else {
 
-          this.$swal(res.message, "error");
+          //this.$swal(res.message, "error");
+          console.log(res.message)
         }
     })
    },
@@ -239,7 +261,7 @@ export default {
    },
 
    toNextChoice(){
-     if(!this.product_id){
+     if(!this.product_id && this.type !== 'radiochoice' ){
        this.$swal('Any one of the products needs to be selected')
        return;
      }

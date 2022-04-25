@@ -80,7 +80,7 @@
     btnText2="Login"
     link="/login"
   />
-  <CacaoChatVue />
+  <KakaoChat />
 </template>
 
 <script>
@@ -94,7 +94,7 @@ import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
-import CacaoChatVue from "../../components/CacaoChat.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
@@ -103,7 +103,7 @@ export default {
     SwiperSlide,
     MainProductCard,
     Button,
-    CacaoChatVue,
+    KakaoChat,
     Modal,
   },
   data() {

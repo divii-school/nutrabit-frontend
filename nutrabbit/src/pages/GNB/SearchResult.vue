@@ -252,8 +252,8 @@ export default {
       this.NewRawMaterial = this.rawMaterial.slice(startIndex, endIndex);
     },
     myCallback4(ClickPage) {
-      const startIndex = (ClickPage - 1) * this.perPage;
-      const endIndex = startIndex + this.perPage;
+      const startIndex = (ClickPage - 1) * this.FaqPerPage;
+      const endIndex = startIndex + this.FaqPerPage;
       this.NewFaq = this.faq.slice(startIndex, endIndex);
     },
   },

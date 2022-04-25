@@ -161,7 +161,16 @@
 
         .form-group {
             margin-top: 24px;
-
+            .custom-check{
+                .custom-check-title{
+                    display: block;
+                    router-link{
+                        color: $green-68;
+                        text-decoration: underline;
+                        margin-left: 3px;
+                    }
+                }
+            }
             &:first-child {
                 margin-top: 0;
             }

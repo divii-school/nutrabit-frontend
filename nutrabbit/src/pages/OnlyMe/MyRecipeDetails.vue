@@ -9,7 +9,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>카테고리</th>
-                      <th>설명</th>
+                      <th>{{$t("onlyme.tableCaptions.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaptions.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody
@@ -45,7 +45,7 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>제목</label>
+                <label>{{$t("onlyme.tableCaptions.Description")}}</label>
                 <input
                   type="text"
                   name=""
