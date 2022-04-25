@@ -13,7 +13,7 @@
         "label":{
             "ID": "아이디",
             "Password": "비밀번호",
-            "TermsCheckBox": "(필수) <router-link to='/terms'>이용약관</router-link>에 동의합니다.",
+            "TermsCheckBox": "(필수) 이용약관에 동의합니다.",
             "PersonalInfoCheckBox": "(필수) 개인정보 수집·이용에 동의합니다.",
             "Name": "이름",
             "VerifyPassword": "비밀번호 확인",

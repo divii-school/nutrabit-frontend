@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    <p v-html="$t('common.label.TermsCheckBox')" class="custom-check-title"></p>
+                    {{ $t("common.label.TermsCheckBox") }}
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,7 +32,7 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
