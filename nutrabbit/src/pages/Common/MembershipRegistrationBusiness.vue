@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              Sign Up
-              <span>Business Member</span>
+              {{ $t("common.QuickLinks.SignUp") }}
+              <span>{{ $t("signup.BusinessMember") }}</span>
             </h1>
-            <span>* Required</span>
+            <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
           <form
             action=""
@@ -19,7 +19,7 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the Terms of Use.
+                    {{ $t("common.label.TermsCheckBox") }}
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
@@ -32,8 +32,7 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the collection and use of personal
-                    information.
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck"  />
                     <span class="checkmark"></span>
                   </label>

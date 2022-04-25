@@ -16,17 +16,13 @@
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2 class="nutri-choice-heading text-center">
-            Opportunity to create <br>
-            Health Functional Food Recipes <br>
-            on your own!
-          </h2>
-          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
+          <h2 class="nutri-choice-heading text-center" v-html="$t('main.my_choice.title')"></h2>
+          <p class="desc text-center"> {{ $t("main.my_choice.desc") }}</p>
           <router-link to="/my-choice" v-if="token">
-            <button class="btn-small-solid">Go to my choice</button>
+            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
           </router-link>
           <router-link to="/" v-else @click="accessPage()">
-            <button class="btn-small-solid">Go to my choice</button>
+            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
           </router-link>
         </div>
         <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
@@ -38,20 +34,16 @@
         <div class="nutri-blending">
           <div class="nutri-choice">
             <span class="my-choice-title-top">nutri 3.3</span>
-            <p class="title text-center">nutri 3.3 blending</p>
-            <h2 class="nutri-choice-heading text-center">
-              A service only for you <br>
-              Don't miss the chance to launch your own product!
-            </h2>
-            <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
-            <button @click="toNutri()" class="btn-small-solid green">What is nutri 3.3
-              Blending?</button>
+            <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
+            <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
+            <p class="desc text-center">{{ $t("main.nutri.desc") }}</p>
+            <button @click="toNutri()" class="btn-small-solid green">{{ $t("main.nutri.button") }}</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) of ProductData" :key="index" >
-                <MainProductCard :item="item" @login="accessPage"/>
+              <li v-for="(item, index) of ProductData" :key="index">
+                <MainProductCard :item="item" @login="accessPage" />
               </li>
             </ul>
           </div>
@@ -71,15 +63,9 @@
       <!-- payment-test -->
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    bodytext1="This service requires login."
-    bodytext2="Please use the service after logging in."
-    btnText1="Cancel"
-    btnText2="Login"
-    link="/login"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
+    link="/login" />
   <KakaoChat />
 </template>
 
@@ -114,7 +100,7 @@ export default {
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
-      isModalVisible : false,
+      isModalVisible: false,
     };
   },
   setup() {
@@ -216,15 +202,15 @@ export default {
 
     },
 
-    toNutri(){
-      if(this.token){
+    toNutri() {
+      if (this.token) {
         this.$router.push(`/service-intro`)
-      }else{
+      } else {
         this.isModalVisible = true;
       }
     },
 
-    closeModal(){
+    closeModal() {
       this.isModalVisible = false;
     }
   },

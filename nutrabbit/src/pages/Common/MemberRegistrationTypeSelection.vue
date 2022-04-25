@@ -18,10 +18,7 @@
                 <h2 class="list-heading">{{$t('common.title.PersonalMembership')}}</h2>
                 <p class="list-desc">{{$t('common.SubTitle.PersonalMembership')}}</p>
               </li>
-              <li
-                class="membership-item"
-                @click="this.$router.push('/membership-registration-business')"
-              >
+              <li class="membership-item" @click="this.$router.push('/membership-registration-business')">
                 <i class="icon-building-symbol"></i>
                 <h2 class="list-heading">{{$t('common.title.BusinessMembership')}}</h2>
                 <p When class="list-desc">{{$t('common.SubTitle.BusinessMembership')}}</p>
