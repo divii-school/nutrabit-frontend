@@ -29,9 +29,7 @@ export default {
       try {
         const actualData = await axios.post("/cms", {key: this.terms});
         this.Terms = actualData.data.data;
-        console.log(this.Terms);
-      } catch (error) {
-        console.log(error)
+       } catch (error) {
         return;
       }
     },
