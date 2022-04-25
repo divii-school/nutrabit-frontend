@@ -44,14 +44,14 @@
               Don't miss the chance to launch your own product!
             </h2>
             <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
-            <button @click="this.$router.push(`/service-intro`)" class="btn-small-solid green">What is nutri 3.3
+            <button @click="toNutri()" class="btn-small-solid green">What is nutri 3.3
               Blending?</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) of ProductData" :key="index">
-                <MainProductCard :item="item" />
+              <li v-for="(item, index) of ProductData" :key="index" >
+                <MainProductCard :item="item" @login="accessPage"/>
               </li>
             </ul>
           </div>
@@ -71,6 +71,15 @@
       <!-- payment-test -->
     </div>
   </div>
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    bodytext1="This service requires login."
+    bodytext2="Please use the service after logging in."
+    btnText1="Cancel"
+    btnText2="Login"
+    link="/login"
+  />
   <CacaoChatVue />
 </template>
 
@@ -86,6 +95,7 @@ import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
 import CacaoChatVue from "../../components/CacaoChat.vue";
+import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
   components: {
@@ -94,6 +104,7 @@ export default {
     MainProductCard,
     Button,
     CacaoChatVue,
+    Modal,
   },
   data() {
     return {
@@ -103,6 +114,7 @@ export default {
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      isModalVisible : false,
     };
   },
   setup() {
@@ -198,7 +210,22 @@ export default {
       });
     },
     accessPage() {
-      this.$swal("Unauthorized Access.Please Login.");
+      //this.$router.push('/login')
+      //this.$swal("Unauthorized Access.Please Login.");
+      this.isModalVisible = true;
+
+    },
+
+    toNutri(){
+      if(this.token){
+        this.$router.push(`/service-intro`)
+      }else{
+        this.isModalVisible = true;
+      }
+    },
+
+    closeModal(){
+      this.isModalVisible = false;
     }
   },
 };

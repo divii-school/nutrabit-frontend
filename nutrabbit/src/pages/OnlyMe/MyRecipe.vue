@@ -20,11 +20,11 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of recommendedBlendingData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" type="recommended" @type="getType" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextRecommended">Next</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(type == 'radiochoice' || type == '') ? 'btn-disabled' : ''"  :disabled="recommendedDisabled">Next</button>
               </div>
             </div>
           </div>
@@ -44,11 +44,11 @@
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
-                  <ProductListRecipe :item="item" @changeId="getProductId"/>
+                  <ProductListRecipe :item="item" @changeId="getProductId" @type="getType" type="choice" :unchecked='unchecked'/>
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextChoice">Next</button>
+                <button class="btn-small-solid blue" :class="(type == 'radiorecommended' || type == '') ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="choiceDisabled">Next</button>
               </div>
             </div>
           </div>
@@ -59,6 +59,8 @@
     btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
     <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
     btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
+    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
+    btnText1="Confirm"/>
   </div>
 </template>
 
@@ -80,6 +82,8 @@ export default {
     Button,
     Modal,
   },
+
+  
   
   data() {
     return {
@@ -102,11 +106,16 @@ export default {
       ],
       user_id : this.common.state.userId,
       product_id : '',
+      //isNextDisable : true,
       recommendedBlendingData : [],
       myChoiceData : [],
       isRecommendedModalVisible : false,
       isChoiceModalVisible : false,
-      
+      isItemSelectedVisible : false,
+      type :'',
+      recommendedDisabled : true,
+      choiceDisabled : true,
+      unchecked : true,
     };
   },
 
@@ -114,13 +123,38 @@ export default {
     this.myRecipe = new MyRecipeService()
     this.allRecommendedData();
     this.allChoiceData();
+    
   },
 
+  // updated(){
+  //   if(this.product_id != false){
+  //     this.isNextDisable = false
+  //   }
+  // },
+
   methods : {
+    getType(name){
+      this.type = name;
+     if(name == 'radiochoice'){
+         this.choiceDisabled = false;
+      }else{
+         this.choiceDisabled = true;
+      }
+      
+      if(name == 'radiorecommended'){
+         this.recommendedDisabled = false;
+      }else{
+         this.recommendedDisabled = true;
+      }
+      console.log(name)
+    },
+
     getProductId(id){
       this.product_id = id;
-      //console.log(`product id is : ${this.product_id}`)
+      console.log(this.product_id)
     },
+
+    
 
     allRecommendedData(){
       this.myRecipe.getMyRecomendedBlendingData(this.user_id)
@@ -149,10 +183,15 @@ export default {
         }
     })
     },
+
+    closeModalDelete(){
+       this.isItemSelectedVisible = false;
+    },
     
     deleteRecipeItemRecommended(){
-      if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
+      if(this.type !== 'radiorecommended'){
+       //this.$swal('Any one of the products needs to be selected')
+        this.isItemSelectedVisible = true;
        return
      }
       this.isRecommendedModalVisible = true;
@@ -160,8 +199,9 @@ export default {
     },
 
     deleteRecipeItemChoice(){
-       if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
+       if(this.type !== 'radiochoice'){
+       //this.$swal('Any one of the products needs to be selected')
+       this.isItemSelectedVisible = true;
        return
      }
       this.isChoiceModalVisible = true;
@@ -170,11 +210,11 @@ export default {
 
     deleteRecipeRecommendedItem(id){
       
-      this.deleteRecipeItem(id, 'recommended')
+      this.deleteRecipeItem(id, this.type)
     },
 
     deleteRecipeChoiceItem(id){
-      this.deleteRecipeItem(id, 'choice')
+      this.deleteRecipeItem(id, this.type)
     },
 
     closeModalRecommended(){
@@ -191,34 +231,37 @@ export default {
       this.myRecipe.deleteRecipeData(id)
     .then((res)=>{
         if (res.status == 200) {
-          this.$swal(`Delete ${res.message}`)
+          //this.$swal(`Delete ${res.message}`)
 
-          if(type == 'recommended'){
+          if(type == 'radiorecommended'){
              this.allRecommendedData();
           }
 
-          if(type == 'choice'){
+          if(type == 'radiochoice'){
              this.allChoiceData();
           }
           
+          this.product_id = '';
+          this.type = '';
+          this.recommendedDisabled = true;
+          this.choiceDisabled = true;
+          this.unchecked = true;
           
         } else {
 
-          this.$swal(res.message, "error");
+          //this.$swal(res.message, "error");
+          console.log(res.message)
         }
     })
    },
 
    toNextRecommended(){
-     if(!this.product_id){
-       this.$swal('Any one of the products needs to be selected')
-       return;
-     }
+     
      this.$router.push({ name : 'MyRecipeDetails', params : { id : this.product_id, type : 'recommended-blending'}})
    },
 
    toNextChoice(){
-     if(!this.product_id){
+     if(!this.product_id && this.type !== 'radiochoice' ){
        this.$swal('Any one of the products needs to be selected')
        return;
      }

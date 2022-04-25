@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My Application</h2>
+          <h2>내 신청내역</h2>
         </div>
 
         <div id="app">
@@ -33,8 +33,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -72,7 +72,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>Recommended blending</h2>
+                        <h2>추천 블랜딩</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -81,8 +81,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -129,8 +129,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -179,8 +179,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -218,7 +218,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>Recommended blending</h2>
+                        <h2>추천 블랜딩</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -227,8 +227,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -278,8 +278,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Explanation</th>
-                              <th>Application Date</th>
+                              <th>설명</th>
+                              <th>신청 날짜</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -338,7 +338,7 @@ export default {
   data() {
     return {
       currentTab: 0,
-      tabs: ["Sample Application Details", "Quotation Request Details"],
+      tabs: ["샘플 신청내역", "견적 신청내역"],
       appNutriList: [],
       appRecommendedList: [],
       appMychoiceList: [],

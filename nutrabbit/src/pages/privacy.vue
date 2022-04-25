@@ -1,5 +1,5 @@
 <template>
-  <div class="main-body">
+  <div class="main-body privecy-comp">
     <div class="container-medium">
       <div class="my-recipe-section">
         <div class="heading">
@@ -444,83 +444,107 @@
 <script>
 export default {
   name: "Privacy",
+  data() {
+    return {
+      privacy: "policy",
+      Privecy: [],
+    };
+  },
+  mounted() {
+    this.getPrivecy();
+  },
+  methods: {
+    async getPrivecy() {
+      try {
+        const actualData = await axios.post("/cms", { key: this.privacy });
+        this.Privecy = actualData.data.data;
+        console.log(this.Privecy);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss">
-.row-type {
-  margin-bottom: 30px;
-  h3 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 150%;
-    color: #666666;
-    margin-bottom: 5px;
-  }
-  p {
-    padding-bottom: 5px;
-  }
-  p,
-  ul li,
-  ol li {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 150%;
-    color: #666666;
-  }
-  &.type-1 {
-    table {
-      width: 100%;
-      border: 1px solid #ccc;
-      background: #fafafa;
-      tr {
-        border-bottom: 1px solid #ccc;
-        font-weight: 500;
-        color: #828282;
-        text-align: left;
-        th,
-        td {
-          padding: 10px;
-          font-size: 12px;
-          line-height: 14px;
-          border-right: 1px solid #ccc;
-          &:last-child {
-            border-right: 0px;
+<style lang="scss">
+.privecy-comp {
+  .row-type {
+    margin-bottom: 30px;
+    h3 {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 150%;
+      color: #666666;
+      margin-bottom: 5px;
+    }
+    p {
+      padding-bottom: 5px;
+    }
+    p,
+    ul li,
+    ol li {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 150%;
+      color: #666666;
+    }
+    &.type-1 {
+      table {
+        width: 100%;
+        border: 1px solid #ccc;
+        background: #fafafa;
+        tr {
+          border-bottom: 1px solid #ccc;
+          font-weight: 500;
+          color: #828282;
+          text-align: left;
+          th,
+          td {
+            padding: 10px;
+            font-size: 12px;
+            line-height: 14px;
+            border-right: 1px solid #ccc;
+            &:last-child {
+              border-right: 0px;
+            }
           }
-        }
-        th {
-          color: #666666;
-          font-weight: 400;
+          th {
+            color: #666666;
+            font-weight: 400;
+          }
         }
       }
     }
+    &.type-2 {
+      ul {
+        padding-left: 35px;
+      }
+    }
   }
-  &.type-2 {
+  .pad-bottom-15 {
+    padding-bottom: 15px;
+  }
+  .my-recipe-body {
+    padding-bottom: 50px;
+    ol {
+      list-style-type: auto;
+      padding-left: 20px;
+    }
     ul {
-      padding-left: 35px;
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 150%;
+      color: #333333;
+      margin-bottom: 30px;
     }
   }
 }
-.pad-bottom-15 {
-  padding-bottom: 15px;
-}
-.my-recipe-body {
-  padding-bottom: 50px;
-  ol {
-    list-style-type: auto;
-    padding-left: 20px;
-  }
-  ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  h2 {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 150%;
-    color: #333333;
-    margin-bottom: 30px;
-  }
-}
 </style>
+  
