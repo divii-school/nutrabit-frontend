@@ -9,7 +9,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>카테고리</th>
-                      <th>설명</th>
+                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody
@@ -45,23 +45,23 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>제목</label>
+                <label>{{$t("onlyme.title.Title")}}</label>
                 <input
                   type="text"
                   name=""
-                  placeholder="구아검가수분해물로 만든 나만의 레시피"
+                  :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
                 />
               </div>
               <div class="fGroup">
-                <label>추가 요청 사항</label>
+                <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
                 <textarea
                   placeholder="Please write freely"
                   v-model="additionalRequest"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0">서비스</label>
+                <label class="mb0">{{$t('onlyme.title.Service')}}</label>
               </div>
               <div class="product-list-wrap">
                 <div v-if="serviceType.length < 2">
@@ -84,20 +84,20 @@
                 </div>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey" @click="openModal">
-                    삭제
+                    {{$t('onlyme.button.Delete')}}
                   </button>
                   <div class="btnWrapRight">
                     <button
                       class="btn-green-outline blue"
                       @click="toEditRecipeDetails(product_id, app_type)"
                     :disabled="isDisabled">
-                      수정
+                      {{$t('onlyme.button.Edit')}}
                     </button>
                     <button
                       class="btn-small-solid blue ml-4"
                       @click="toPaymentGateway(product_id)"
                     >
-                      다음
+                      {{$t('onlyme.button.Next')}}
                     </button>
                   </div>
                 </div>

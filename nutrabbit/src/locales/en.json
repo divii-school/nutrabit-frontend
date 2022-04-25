@@ -23,7 +23,7 @@
             "SnsSignUp": "Sign up via your SNS ID"
 
         },
-        "label":{
+        "label": {
             "ID": "ID",
             "Password": "Password",
             "TermsCheckBox": "(Required) I agree to the Terms of Use.",
@@ -40,7 +40,7 @@
             "SNSCheck": "SNS",
             "EtcCheck": "Etc"
         },
-        "placeholder":{
+        "placeholder": {
             "EnterId": "Enter ID",
             "EnterPassword": "Enter Password",
             "Name": "Enter your name",
@@ -52,7 +52,7 @@
             "EnterAddress": "Enter address",
             "EnterDetailedAddress": "Enter detailed address"
         },
-        "QuickLinks":{
+        "QuickLinks": {
             "RememberId": "Remember ID",
             "FindID": "Find ID",
             "FindPassword": "Find Password",
@@ -75,7 +75,55 @@
             "EnterAddress": "Please enter your address"
         }
     },
-    "button":{
-
+    "button": {},
+    "onlyme": {
+    
+        "title": {
+            "myRecipe": "my recipe",
+            "RecommendedBlending": "Recommended blending",
+            "Application" : "My Application",
+            "MyChoice": "my choice",
+            "Options": "Options",
+            "Title": "Title",
+            "AdditionalRequest": "Additional Requests",
+            "Service": "Service"
+        },
+        "tableCaption": {
+            "Category": "Category",
+            "Description": "Description",
+            "RawMaterial" : "Raw material",
+            "Formulation" : "Formulation",
+            "Package" : "Package",
+            "AdditionalRequest" : "Additional Request",
+            "Service" : "Service"
+        },
+        "add_req_caption" : {
+            "Caption" : "The more detailed you are, the more accurate your estimate will be."
+        },
+        "service_caption" : {
+            "Caption" : "* Duplicate selection possible (package is excluded when requesting a sample.)"
+        },
+        "service_info" :{
+            "ContentOne" : "* The quotation will be sent to the registered email address within 2 business days.",
+            "ContentTwo" : "* Unit price may vary depending on quantity & package design.",
+            "ContentThree" : "* It may differ from the detailed estimate at the time of completion."
+        },
+        "placeholder" : {
+            "title" : "My own recipe made with guar gum hydrolyzate",
+            "additionalRequest" : ""
+        },
+        "button": {
+            "DeleteSelection": "delete selection",
+            "Next": "Next",
+            "Confirm": "Confirm",
+            "Cancel": "Cancel",
+            "Delete" : "Delete",
+            "Edit" : "Edit",
+            "Save" : "Save"
+        },
+        "modal": {
+            "SelectedBodyText": "There are no items selected.",
+            "DeleteBodyText": "Are you sure you want to delete it?"
+        }
     }
 }
