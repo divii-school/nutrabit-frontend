@@ -131,7 +131,8 @@
             "Delete" : "Delete",
             "Edit" : "Edit",
             "Save" : "Save",
-            "Previous" : "Previous"
+            "Previous" : "Previous",
+            "List" : "List"
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
@@ -269,7 +270,7 @@
     "customer" :{
         "title" : {
             "Notice" : "Notice",
-            "Title" : "Title",
+            "Faq" : "FAQ",
             "PublishedDate" : "Published date"
         },
 

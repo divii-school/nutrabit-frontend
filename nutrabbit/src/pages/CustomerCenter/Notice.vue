@@ -6,7 +6,7 @@
           <h2>{{$t("customer.title.Notice")}}</h2>
         </div>
         <div class="notice-heading">
-          <p class="title">{{$t("customer.title.Title")}}</p>
+          <p class="title">{{$t("onlyme.title.Title")}}</p>
           <p class="date">{{$t("customer.title.PublishedDate")}}</p>
         </div>
         <div class="notice-list bBtm-0 notice-list-main">
