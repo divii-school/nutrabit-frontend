@@ -67,7 +67,12 @@
         },
         "tableCaption" : {
            "Category" : "카테고리",
-           "Description" : "설명"
+           "Description" : "설명",
+           "RawMaterial" : "원료",
+            "Formulation" : "제형",
+            "Package" : "패키지",
+            "AdditionalRequest" : "추가 요청사항",
+            "Service" : "서비스"
         },
         "add_req_caption" : {
             "Caption" : "자세히 작성할 수록 견적이 정확해집니다."

@@ -65,7 +65,12 @@
         },
         "tableCaption": {
             "Category": "Category",
-            "Description": "Description"
+            "Description": "Description",
+            "RawMaterial" : "Raw material",
+            "Formulation" : "Formulation",
+            "Package" : "Package",
+            "AdditionalRequest" : "Additional Request",
+            "Service" : "Service"
         },
         "add_req_caption" : {
             "Caption" : "The more detailed you are, the more accurate your estimate will be."
