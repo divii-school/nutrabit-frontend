@@ -8,25 +8,25 @@
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Raw material selection</p>
+                <p>{{ $t('progress_bar.selection1') }}</p>
               </div>
             </li>
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Formulation selection</p>
+                <p>{{ $t('progress_bar.selection2') }}</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>Package selection</p>
+                <p>{{ $t('progress_bar.selection3') }}</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>Final estimate</p>
+                <p>{{ $t('progress_bar.selection4') }}</p>
               </div>
             </li>
           </ul>
@@ -35,26 +35,14 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Package selection</h2>
+                <h2>{{$t('package.title')}}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content">
-                        <ul>
-                          <li>Please select the desired package.</li>
-                          <li>
-                            When requesting a sample, please check 'Not
-                            Selected' for package selection.
-                          </li>
-                          <li>
-                            Subpackages are the most used packages. If there is
-                            a separate package you want, please indicate it on
-                            the next page.
-                          </li>
-                        </ul>
+                      <div class="heading-tooltip-content" v-html="$t('package.popup')">
                       </div>
                     </template>
                   </Popper>
@@ -77,9 +65,9 @@
                   </label>
                 </div>
                 <div class="material-details">
-                  <h2>Etc</h2>
+                  <h2>{{$t('package.etc')}}</h2>
                   <div class="input-group">
-                    <input type="text" placeholder="Direct input" v-model="etc" />
+                    <input type="text" :placeholder="$t('package.etc_input')" v-model="etc" />
                   </div>
                 </div>
               </div>
@@ -91,13 +79,13 @@
                   </label>
                 </div>
                 <div class="material-details">
-                  <h2>unchecked</h2>
+                  <h2>{{$t('package.unchecked')}}</h2>
                 </div>
               </div>
               <div class="btn-wrap">
                 <button @click="this.$router.push(`/ingredient-formulation/`)"
-                  class="btn-small-solid grey">Previous</button>
-                <button @click="checkPackageId" class="btn-small-solid blue">Next</button>
+                  class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
+                <button @click="checkPackageId" class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
           </div>
@@ -107,8 +95,8 @@
   </div>
   <my-modal-component v-show="showModal2">
     <ModalWarning @close2="closeModal2"
-      bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
-      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
+      :bodytext1="$t('warningModal.text')"
+      :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
   </my-modal-component>
 </template>
 

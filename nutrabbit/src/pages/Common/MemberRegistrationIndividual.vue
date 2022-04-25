@@ -177,7 +177,7 @@
                     @click="verifyOTP"
                     :disabled="otpValidate"
                   >
-                    certification
+                    {{ $t("signup.verify") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isOtpVerified">{{
@@ -221,7 +221,7 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                    Address Search
+                   {{ $t("signup.address_search") }}
                   </button>
                 </div>
                 <div class="input-group">
@@ -239,7 +239,7 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for="">How did you find us?</label>
+                <label for=""> {{ $t("signup.how") }}</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check"

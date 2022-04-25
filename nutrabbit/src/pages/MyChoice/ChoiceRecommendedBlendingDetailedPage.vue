@@ -39,32 +39,32 @@
               </li>-->
 
               <li>
-                <h2>Main Raw Material</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.detail.main_raw_material") }}</h2>
                 <p>{{ item.material_name_ko }}</p>
               </li>
               <li>
-                <h2>Auxiliary material</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.detail.Auxiliary_material") }}</h2>
                 <p>{{ item.sub_raw_materials }}</p>
               </li>
               <li>
-                <h2>Efficacy</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.detail.Efficacy") }}</h2>
                 <p>{{ item.efficiency_ko }}</p>
               </li>
               <li>
-                <h2>Appearance</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.detail.Appearance") }}</h2>
                 <p>{{ item.ingredients_en }}</p>
               </li>
               <li>
-                <h2>Product Information</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.detail.Product_Information") }}</h2>
                 <p>{{ item.description_ko }}</p>
               </li>
             </ul>
             <button
               @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
-              class="btn-primary blue-btn-solid">Next</button>
+              class="btn-primary blue-btn-solid">{{ $t("button.next") }}</button>
           </div>
           <div class="suggested-product">
-            <h2>similar products</h2>
+            <h2>{{ $t("myChoice.RecommendedBlending.detail.Similar_Products") }}</h2>
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
             <ul class="smilar-product-img" v-if="item.similar_image_path">
               <li v-for="(items, index) of item.similar_image_path" :key="index">

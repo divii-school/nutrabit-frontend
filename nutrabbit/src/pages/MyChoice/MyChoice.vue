@@ -10,12 +10,7 @@
                 <i class="icon-info"></i>
               </button>
               <template #content>
-                <div class="heading-tooltip-content">
-                  <ul>
-                    <li>This is a menu where I make my own health functional food recipes.</li>
-                    <li>Please select the desired function.</li>
-                  </ul>
-                </div>
+                <div class="heading-tooltip-content" v-html="$t('myChoice.popup')"></div>
               </template>
             </Popper>
           </div>

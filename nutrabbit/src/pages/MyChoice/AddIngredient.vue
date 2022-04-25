@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>raw material storage box</h2>
+          <h2>{{ $t("storageBox.heading") }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Raw material</h2>
+                <h2>{{ $t("storageBox.title") }}</h2>
               </div>
             </div>
             <div class="product-list-wrap">
@@ -19,19 +19,19 @@
                     <label class="custom-radio">
                       <input type="checkbox" @click="selectAll" v-model="allSelected" />
                       <span class="checkmark"></span>
-                      Select All
+                     {{ $t("storageBox.selectAll") }}
                     </label>
                   </div>
                   <button @click="deleteStorageBox" class="deleteBtn">
-                    delete selection
+                   {{ $t("storageBox.delete") }}
                     <i class="icon-menu-delete"></i>
                   </button>
                   <my-modal-component v-show="showModal">
                     <Modal
                       @close="closeModal"
-                      bodytext1="Are you sure you want to delete the selected raw material?"
-                      btnText1="cancellation"
-                      btnText2="Confirm"
+                      :bodytext1="$t('storageBox.deleteModal.text')"
+                      :btnText1="$t('storageBox.deleteModal.btn1')"
+                      :btnText2="$t('storageBox.deleteModal.btn2')"
                       @confirm="confirmbtn($event)"
                       link="/add-ingredient"
                     />
@@ -49,7 +49,7 @@
               </ul>
               <div class="addIng">
                 <button @click="this.$router.push(`/my-choice-category-selection/`)">
-                  <i class="icon-menu-add"></i> Add additional ingredients
+                  <i class="icon-menu-add"></i>{{ $t("storageBox.add") }}
                 </button>
                 <div class="tolltip-outer">
                   <Popper>
@@ -59,7 +59,7 @@
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
-                          <li>Add more ingredients of your choice.</li>
+                          <li>{{ $t("storageBox.popup") }}</li>
                         </ul>
                       </div>
                     </template>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="btn-wrap flexEnd">
-                <button @click="gotoNextPage()" class="btn-small-solid blue">Next</button>
+                <button @click="gotoNextPage()" class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
           </div>
@@ -75,6 +75,8 @@
       </div>
     </div>
   </div>
+  <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
+    btnText1="Confirm"/>
 </template>
 
           
@@ -100,7 +102,8 @@ export default {
       allSelected: false,
       sub_category_id: localStorage.getItem('sub_category_id'),
       showModal: false,
-      btn: ''
+      btn: '',
+      isItemSelectedVisible : false,
     };
   },
   created() {
@@ -118,6 +121,9 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    closeModalDelete(){
+       this.isItemSelectedVisible = false;
+    },
     confirmbtn(e) {
       this.btn = e;
       if (this.btn == 'confirm') {
@@ -127,7 +133,7 @@ export default {
           this.mychoiceService.deleteIngredientsStorageBox(uid, box_id).then((res) => {
             //console.log(res.data);
             if (res.status = 200) {
-              this.$swal("Successfully Deleted");
+              // this.$swal("Successfully Deleted");
               this.storage_box_list();
 
             } else {
@@ -217,7 +223,7 @@ export default {
     deleteStorageBox() {
       //console.log(this.box_id_data.length);
       if (this.box_id_data.length == 0) {
-        this.$swal("Please Select at Least one");
+        this.isItemSelectedVisible = true;
       }
       else {
         this.showModal = true;
