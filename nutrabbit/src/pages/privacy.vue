@@ -30,9 +30,7 @@ export default {
       try {
         const actualData = await axios.post("/cms", { key: this.privacy });
         this.Privecy = actualData.data.data;
-        console.log(this.Privecy);
       } catch (error) {
-        console.log(error);
         return;
       }
     },
