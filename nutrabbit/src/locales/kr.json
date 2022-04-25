@@ -50,5 +50,25 @@
         "Error":{
             "Resquired": "* 필수항목"
         }
-    }
+
+        
+    },
+
+    "onlyme" : {
+        "title" : {
+            "myRecipe" : "나의 레시피",
+            "RecommendedBlending" : "추천 블랜딩",
+            "MyChoice" : "my choice"
+        },
+        "button":{
+            "DeleteSelection" : "선택 삭제",
+            "Next" : "다음" ,
+            "Confirm" : "확인",
+            "Cancel"  : "취소"  
+         },
+         "modal":{
+            "SelectedBodyText" : "선택된 항목이 없습니다.",
+            "DeleteBodyText" : "Are you sure you want to delete?"
+        }
+   }
 }

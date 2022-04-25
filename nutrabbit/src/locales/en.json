@@ -53,5 +53,25 @@
     },
     "button":{
 
+    },
+
+
+    "onlyme" : {
+         "title" : {
+             "myRecipe" : "my recipe",
+             "RecommendedBlending" : "Recommended blending",
+             "MyChoice" : "my choice"
+         },
+         "button":{
+            "DeleteSelection" : "delete selection",
+            "Next" : "Next",
+            "Confirm" : "Confirm",
+            "Cancel"  : "Cancel" 
+         },
+        "modal":{
+            "SelectedBodyText" : "There are no items selected.",
+            "DeleteBodyText" : "Are you sure you want to delete?"
+        }
     }
+
 }
