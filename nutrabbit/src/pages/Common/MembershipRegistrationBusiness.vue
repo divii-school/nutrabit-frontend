@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              회원가입
-              <span>사업자회원</span>
+              Sign Up
+              <span>Business Member</span>
             </h1>
-            <span>* 필수항목</span>
+            <span>* Required</span>
           </div>
           <form
             action=""

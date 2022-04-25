@@ -5,10 +5,23 @@
     },
     "common":{
         "title":{
-            "login":"Login"
+            "login":"Login",
+            "Membershiptype": "Membership Type",
+            "PersonalMembership": "Personal Membership",
+            "BusinessMembership": "Business Membership",
+            "HowToSignUp": "How to Sign Up",
+            "GeneralSignUp": "General Sign Up",
+            "SnsSignUp": "SNS Sign Up"
         },
         "SubTitle":{
-            "PersonalMember": "Personal Member"
+            "PersonalMember": "Personal Member",
+            "MemberType": "Please select a member type",
+            "PersonalMembership": "Sign up as personal member",
+            "BusinessMembership": "Sign up as business member",
+            "RegistrationProcess": "Please select a method to proceed when registering as a member",
+            "EmailSignUp": "Sign up via Email.",
+            "SnsSignUp": "Sign up via your SNS ID"
+
         },
         "label":{
             "ID": "ID",
@@ -48,7 +61,18 @@
             "NaverLogin": "Login with Naver"
         },
         "Error":{
-            "Resquired": "* Required"
+            "Resquired": "* Required",
+            "EnterId": "Please enter your ID",
+            "chcekId": "User with the id does not exist",
+            "EnterPassword": "Please enter password",
+            "checkPassword": "Password does not match",
+            "EnterName": "Input your name, please",
+            "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
+            "ConfirmPassword": "Please confirm your password",
+            "EnterEmail": "Please enter your email address",
+            "EnterOtp": "Please enter your email verification code",
+            "EnterPhone": "Please enter your mobile phone number",
+            "EnterAddress": "Please enter your address"
         }
     },
     "button":{

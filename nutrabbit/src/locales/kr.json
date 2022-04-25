@@ -5,10 +5,24 @@
     },
     "common": {
         "title": {
-            "login": "로그인"
+            "login": "로그인",
+            "Membershiptype": "회원가입 타입",
+            "PersonalMembership": "개인 회원가입",
+            "BusinessMembership": "사업자 회원가입",
+
+            "HowToSignUp": "회원가입 방법",
+            "GeneralSignUp": "일반 회원가입",
+            "SnsSignUp": "SNS 회원가입"
         },
         "SubTitle":{
-            "PersonalMember": "개인회원"
+            "PersonalMember": "개인회원",
+            "MemberType": "회원 타입을 선택해주세요",
+            "PersonalMembership": "개인이 가입하는 경우",
+            "BusinessMembership": "기업이 가입하는 경우",
+
+            "RegistrationProcess": "회원가입 시 진행할 방법을 선택해주세요",
+            "EmailSignUp": "이메일을 통해 회원으로 가입합니다.",
+            "SnsSignUp": "SNS 아이디를 통해 회원으로 가입합니다."
         },
         "label":{
             "ID": "아이디",
@@ -48,7 +62,18 @@
             "NaverLogin": "네이버로 시작하기"
         },
         "Error":{
-            "Resquired": "* 필수항목"
+            "Resquired": "* 필수항목",
+            "EnterId": "아이디를 입력해주세요",
+            "chcekId": "아이디를 가진 사용자가 존재하지 않습니다",
+            "EnterPassword": "비밀번호를 입력 해주세요",
+            "checkPassword": "비밀번호가 일치하지 않습니다",
+            "EnterName": "이름을 입력해주세요",
+            "PasswordFormat": "비밀번호를 입력해주세요 (*10~20자 영문 대소문자, 숫자, 특수기호 포함)",
+            "ConfirmPassword": "비밀번호를 확인해주세요",
+            "EnterEmail": "이메일을 입력해주세요",
+            "EnterOtp": "이메일 인증번호를 입력해주세요",
+            "EnterPhone": "휴대폰번호를 입력해주세요",
+            "EnterAddress": "주소를 입력해주세요"
         }
     }
 }
