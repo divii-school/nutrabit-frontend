@@ -18,11 +18,15 @@
             <div class="terms-sec">
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
-                  <label class="custom-check">
-                    {{ $t("common.label.TermsCheckBox") }}
-                    <input type="checkbox" v-model="termsCheck" />
+                  <!-- <label class="custom-check"> -->
+                    <i18n :path="$t('common.label.TermsCheckBox')" tag="label" for="common.label.TermsLinkText" class="custom-check">
+                         <router-link to="/terms">{{ $t('common.label.TermsLinkText') }}</router-link>
+                         <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
-                  </label>
+                   </i18n>
+                    <!-- {{ $t("common.label.TermsCheckBox") }} -->
+                    
+                  <!-- </label> -->
                 </div>
                 <span class="error-msg">{{ error.termsCheck }}</span>
               </div>

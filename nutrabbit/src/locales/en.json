@@ -13,7 +13,8 @@
         "label": {
             "ID": "ID",
             "Password": "Password",
-            "TermsCheckBox": "(Required) I agree to the Terms of Use.",
+            "TermsLinkText" : "Terms of Use.",
+            "TermsCheckBox": "(Required) I agree to the {0}",
             "PersonalInfoCheckBox": "(Required) I agree to the collection and use of personal information.",
             "Name": "Name",
             "VerifyPassword": "Verify Password",
@@ -66,6 +67,17 @@
             "Category": "Category",
             "Description": "Description"
         },
+        "add_req_caption" : {
+            "Caption" : "The more detailed you are, the more accurate your estimate will be."
+        },
+        "service_caption" : {
+            "Caption" : "* Duplicate selection possible (package is excluded when requesting a sample.)"
+        },
+        "service_info" :{
+            "ContentOne" : "* The quotation will be sent to the registered email address within 2 business days.",
+            "ContentTwo" : "* Unit price may vary depending on quantity & package design.",
+            "ContentThree" : "* It may differ from the detailed estimate at the time of completion."
+        },
         "placeholder" : {
             "title" : "My own recipe made with guar gum hydrolyzate",
             "additionalRequest" : ""
@@ -76,11 +88,12 @@
             "Confirm": "Confirm",
             "Cancel": "Cancel",
             "Delete" : "Delete",
-            "Edit" : "Edit"
+            "Edit" : "Edit",
+            "Save" : "Save"
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
-            "DeleteBodyText": "Are you sure you want to delete?"
+            "DeleteBodyText": "Are you sure you want to delete it?"
         }
     }
 }
