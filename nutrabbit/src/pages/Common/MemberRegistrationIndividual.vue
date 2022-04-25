@@ -19,12 +19,11 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
-                    <input type="checkbox" v-model="termsCheck" />
+                    {{ $t("common.label.TermsCheckBox") }}
+                        <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
               <div
                 class="form-group"
@@ -32,12 +31,11 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="individuals-form">
@@ -177,7 +175,7 @@
                     @click="verifyOTP"
                     :disabled="otpValidate"
                   >
-                    certification
+                    {{ $t("signup.verify") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isOtpVerified">{{
@@ -221,7 +219,7 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                    Address Search
+                   {{ $t("signup.address_search") }}
                   </button>
                 </div>
                 <div class="input-group">
@@ -239,7 +237,7 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for="">How did you find us?</label>
+                <label for=""> {{ $t("signup.how") }}</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check"
@@ -348,7 +346,6 @@ export default {
   methods: {
     checkError() {
       let credential = {
-        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,

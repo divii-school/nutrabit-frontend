@@ -9,26 +9,14 @@
           <div class="choice-selection-item recomanded-blending">
             <div class="heading-wrap">
               <div class="heading heading-blue">
-                <h2>Recommended blending</h2>
+                <h2>{{$t('myChoice.RecommendedBlending.title')}}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content">
-                        <ul>
-                          <li>
-                            This is a recommended recipe for those who have
-                            difficulty choosing raw materials.
-                          </li>
-                          <li>
-                            Recommended blending is a semi-finished product that
-                            has already been formulated with effective
-                            ingredients and formulations.
-                          </li>
-                          <li>Choose the recommended recipe you want.</li>
-                        </ul>
+                      <div class="heading-tooltip-content" v-html="$t('myChoice.RecommendedBlending.popup')">
                       </div>
                     </template>
                   </Popper>
@@ -37,7 +25,7 @@
               <div class="heading-left">
                 <router-link to="/my-choice-recomanded-blending">
                   <a href class="see-more">
-                    <i class="icon-plus"></i>see more
+                    <i class="icon-plus"></i>{{$t('myChoice.RecommendedBlending.more')}}
                   </a>
                 </router-link>
               </div>
@@ -53,24 +41,14 @@
           <div class="choice-selection-item raw-material">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Raw Material</h2>
+                <h2>{{$t('myChoice.RawMaterial.title')}}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content">
-                        <ul>
-                          <li>
-                            This is a menu where I make my own health functional
-                            food recipes.
-                          </li>
-                          <li>
-                            Choose the raw material you want. (Multiple
-                            selection possible)
-                          </li>
-                        </ul>
+                      <div class="heading-tooltip-content" v-html="$t('myChoice.RawMaterial.popup')">
                       </div>
                     </template>
                   </Popper>
@@ -84,7 +62,7 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="sortingMethod($event)">
-                    <option value="popularity">in order of popularity</option>
+                    <option value="popularity">{{$t('myChoice.RawMaterial.popularity')}}</option>
                     <option value="alphabetical">alphabetical order</option>
                   </select>
                 </div>
@@ -113,11 +91,11 @@
                   </div>
                 </div>
                 <div class="list-right">
-                  <button @click="showDetails(data.id)" class="btn-small-solid">add</button>
+                  <button @click="showDetails(data.id)" class="btn-small-solid">{{$t('button.add')}}</button>
                 </div>
                 <my-modal-component v-show="showModal">
-                  <ModalStorageBox @close="closeModal" bodytext1="Added to Raw material cart"
-                    btnText1="Go to cart" btnText2="confirm" :raw_material_id="raw_material_id"
+                  <ModalStorageBox @close="closeModal" :bodytext1="$t('myChoice.RawMaterial.modal.heading')"
+                    :btnText1="$t('myChoice.RawMaterial.modal.btn1')" :btnText2="$t('myChoice.RawMaterial.modal.btn2')" :raw_material_id="raw_material_id"
                     :sub_category_id="this.sub_category_id" />
                 </my-modal-component>
               </li>

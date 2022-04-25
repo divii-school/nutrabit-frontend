@@ -11,8 +11,12 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorEmail }}</span>
@@ -21,8 +25,12 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password" />
+                  <input
+                    class="form-control"
+                    type="password"
+                    :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ errorPassword }}</span>
@@ -42,7 +50,8 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link>
+                      {{ $t("common.QuickLinks.FindID") }}</router-link
+                    >
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
@@ -62,13 +71,22 @@
             </button>
           </form>
           <div class="getting-started">
-            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao">
+            <button
+              id="kakao_login"
+              v-if="!isPlatMobile"
+              class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao"
+            >
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
-            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
+            <button
+              id="kakao_login"
+              v-else
+              class="btn-primary with-icon yellow-btn"
+              @click="mbKakaoLogin"
+            >
               <i class="icon-chat-black"></i>
               <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
               kakao mobile login
@@ -77,12 +95,21 @@
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
+            <button
+              id="naver_Login"
+              v-if="!isPlatMobile"
+              class="btn-primary with-icon green-btn"
+            >
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- Naver login for App -->
-            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
+            <button
+              id="naver_Login"
+              v-else
+              class="btn-primary with-icon green-btn"
+              @click="mbNaverLogin"
+            >
               <i class="icon-naver"></i>
               naver mobile login
               <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
@@ -90,7 +117,11 @@
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-            <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
+            <button
+              class="btn-primary with-icon black-btn"
+              v-show="isAppaleId"
+              @click="mbAppleLogin"
+            >
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
@@ -188,14 +219,24 @@ export default {
       const setEmail = this.email;
       const setPassword = this.password;
       if (setEmail == "") {
-        this.errorEmail = "Please enter an email id";
+        // this.errorEmail = "Please enter an email id";
+        return this.errorEmail = this.$t("common.Error.EnterId");
       } else if (setPassword == "") {
-        this.errorPassword = "Please enter password";
+        return this.errorPassword = this.$t("common.Error.EnterPassword");
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
-              this.$swal(res.response.data.message);
+              if (res.response.data.message == "Password Does Not Match") {
+                return this.errorPassword = this.$t("common.Error.checkPassword");
+              }
+              if (
+                res.response.data.message ==
+                "User With The Email Does Not Exists"
+              ) {
+                return this.errorEmail = this.$t("common.Error.chcekId");
+              }
+              // this.$swal(res.response.data.message);
             }
           } else {
             if (res.data.status == 200) {
@@ -262,7 +303,12 @@ export default {
         // let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         localStorage.setItem("token", resData.accesstoken);
         localStorage.setItem("uid", resData.socialId);
-        localStorage.setItem("uname", (!resData.userName || resData.userName=='') ? resData.userName : emailName);
+        localStorage.setItem(
+          "uname",
+          !resData.userName || resData.userName == ""
+            ? resData.userName
+            : emailName
+        );
         // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
         localStorage.setItem("userType", resData.loginVia);
         this.$router.push("/");
@@ -327,7 +373,7 @@ export default {
       });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log('authObj kakao--', authObj);
+          console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
           localStorage.setItem("tokenexpiresAt", authObj.expires_in);

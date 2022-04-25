@@ -5,12 +5,25 @@
     },
     "common":{
         "title":{
-            "login":"Login"
+            "login":"Login",
+            "Membershiptype": "Membership Type",
+            "PersonalMembership": "Personal Membership",
+            "BusinessMembership": "Business Membership",
+            "HowToSignUp": "How to Sign Up",
+            "GeneralSignUp": "General Sign Up",
+            "SnsSignUp": "SNS Sign Up"
         },
         "SubTitle":{
-            "PersonalMember": "Personal Member"
+            "PersonalMember": "Personal Member",
+            "MemberType": "Please select a member type",
+            "PersonalMembership": "Sign up as personal member",
+            "BusinessMembership": "Sign up as business member",
+            "RegistrationProcess": "Please select a method to proceed when registering as a member",
+            "EmailSignUp": "Sign up via Email.",
+            "SnsSignUp": "Sign up via your SNS ID"
+
         },
-        "label":{
+        "label": {
             "ID": "ID",
             "Password": "Password",
             "TermsCheckBox": "(Required) I agree to the Terms of Use.",
@@ -27,7 +40,7 @@
             "SNSCheck": "SNS",
             "EtcCheck": "Etc"
         },
-        "placeholder":{
+        "placeholder": {
             "EnterId": "Enter ID",
             "EnterPassword": "Enter Password",
             "Name": "Enter your name",
@@ -39,7 +52,7 @@
             "EnterAddress": "Enter address",
             "EnterDetailedAddress": "Enter detailed address"
         },
-        "QuickLinks":{
+        "QuickLinks": {
             "RememberId": "Remember ID",
             "FindID": "Find ID",
             "FindPassword": "Find Password",
@@ -48,10 +61,202 @@
             "NaverLogin": "Login with Naver"
         },
         "Error":{
-            "Resquired": "* Required"
+            "Resquired": "* Required",
+            "EnterId": "Please enter your ID",
+            "chcekId": "User with the id does not exist",
+            "EnterPassword": "Please enter password",
+            "checkPassword": "Password does not match",
+            "EnterName": "Input your name, please",
+            "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
+            "ConfirmPassword": "Please confirm your password",
+            "EnterEmail": "Please enter your email address",
+            "EnterOtp": "Please enter your email verification code",
+            "EnterPhone": "Please enter your mobile phone number",
+            "EnterAddress": "Please enter your address"
         }
     },
-    "button":{
-
+    "button": {
+        "add": "Add",
+        "next": "Next",
+        "Previous": "Previous",
+        "Save_as_draft": "Save as Draft",
+        "Confirm": "Confirm"
+    },
+    "onlyme": {
+    
+        "title": {
+            "myRecipe": "my recipe",
+            "RecommendedBlending": "Recommended blending",
+            "Application" : "My Application",
+            "MyChoice": "my choice",
+            "Options": "Options",
+            "Title": "Title",
+            "AdditionalRequest": "Additional Requests",
+            "Service": "Service"
+        },
+        "tableCaption": {
+            "Category": "Category",
+            "Description": "Description",
+            "RawMaterial" : "Raw material",
+            "Formulation" : "Formulation",
+            "Package" : "Package",
+            "AdditionalRequest" : "Additional Request",
+            "Service" : "Service"
+        },
+        "add_req_caption" : {
+            "Caption" : "The more detailed you are, the more accurate your estimate will be."
+        },
+        "service_caption" : {
+            "Caption" : "* Duplicate selection possible (package is excluded when requesting a sample.)"
+        },
+        "service_info" :{
+            "ContentOne" : "* The quotation will be sent to the registered email address within 2 business days.",
+            "ContentTwo" : "* Unit price may vary depending on quantity & package design.",
+            "ContentThree" : "* It may differ from the detailed estimate at the time of completion."
+        },
+        "placeholder" : {
+            "title" : "My own recipe made with guar gum hydrolyzate",
+            "additionalRequest" : ""
+        },
+        "button": {
+            "DeleteSelection": "delete selection",
+            "Next": "Next",
+            "Confirm": "Confirm",
+            "Cancel": "Cancel",
+            "Delete" : "Delete",
+            "Edit" : "Edit",
+            "Save" : "Save"
+        },
+        "modal": {
+            "SelectedBodyText": "There are no items selected.",
+            "DeleteBodyText": "Are you sure you want to delete it?"
+        }
+    },
+    "main": {
+        "my_choice": {
+            "title": "Opportunity to create <br> Health Functional Food Recipes <br> on your own!",
+            "desc": "Combine whatever you want and make your own health functional food recipe!",
+            "button": "Go to my choice"
+        },
+        "nutri": {
+            "heading": "nutri 3.3 blending",
+            "title": "A service only for you <br> Don't miss the chance to launch your own product!",
+            "desc": "We provide all services from A to Z health functional food",
+            "button": "What is nutri 3.3 blending?"
+        }
+    },
+    "footer": {
+        "address": "<ul><li>NUTRABBIT I Co., Ltd. </li> <li> CEO : Min Kyoung-ran </li> <li class='active'> Business Registration Number: 603-88-01301 </li></ul><p> Location: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul, Republic of Korea </p> <a href=''> Copyright 2022 NUTRABBIT. All right reserved. </a>",
+        "term": "Terms of Use",
+        "privacy": "Privacy Policy"
+    },
+    "header": {
+        "login": "login",
+        "myChoice": "my choice",
+        "nutri": "nutri 3.3 blending",
+        "search": "Enter search term.",
+        "ChangePersonalInfo" : "Change personal information",
+        "logout" : "Log out",
+        "searchHistory" : "No search history.",
+        "close" : "close",
+        "delete" : "Delete all"
+    },
+    "myChoice": {
+        "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Please select the desired function.</li></ul>",
+        "RecommendedBlending": {
+            "title": "Recommended Blending",
+            "popup": "<ul><li>This is a recommended recipe for those who have difficulty choosing raw materials.</li><li>Recommended blending is a semi-finished product that has already been formulated with effective ingredients and formulations.</li><li>Choose the recommended recipe you want.</li></ul>",
+            "more": "View More",
+            "detail": {
+                "main_raw_material": "Main raw material",
+                "Auxiliary_material": "Auxiliary material",
+                "Efficacy": "Efficacy",
+                "Appearance": "Appearance",
+                "Product_Information": "Product Information",
+                "Similar_Products": "Similar Products"
+            }
+        },
+        "RawMaterial": {
+            "title": "Raw Material",
+            "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Choose the raw material you want. (Multiple selection possible)</li></ul>",
+            "popularity": "in order of popularity",
+            "modal": {
+                "heading": "Added to raw material cart",
+                "btn1": "Go to Cart",
+                "btn2": "Confirm"
+            },
+            "detail": {
+                "Similar_Products": "Third-party similar products",
+                "Standard": "Standard",
+                "Rawmaterials": "Raw materials",
+                "Appearance": "Appearance",
+                "Functionalcontent": "Functional content",
+                "DailyIntake": "Daily Intake",
+                "Precautions": "Precautions",
+                "Etc": "Etc"
+            }
+        }
+    },
+    "progress_bar": {
+        "selection1": "Raw material selection",
+        "selection2": "Formulation selection",
+        "selection3": "Package selection",
+        "selection4": "Final estimate"
+    },
+    "package": {
+        "title": "Package selection",
+        "popup": "<ul><li>Please select the desired package.</li><li>When requesting a sample, please check 'Not Selected' for package selection.</li><li>Subpackages are the most used packages. If there is a separate package you want, please indicate it on the next page.</li></ul>",
+        "etc": "Etc",
+        "unchecked": "unchecked",
+        "etc_input": "Direct input"
+    },
+    "final": {
+        "note": "<li>* Packages are excluded when requesting samples.</li><li>* The quotation will be sent to the registered email address within 3 business days.</li><li>* Unit price may vary depending on quantity & package design.</li><li>* It may differ from the detailed estimate at the time of completion.</li>",
+        "Select_Service": "Select Service",
+        "Select_Service_desc": "* Multiple selection possible",
+        "check1": "Get an estimate",
+        "check2": "Sample Application",
+        "check2_info": "(Sample cost 300,000 won/paid)",
+        "AdditionalRequests": "Additional Requests",
+        "add_info": "If you provide more details, it will help you get an accurate estimate.",
+        "textarea_place": "Please write freely. example) Quantity, target product, packaging unit, target age Raw material development, desired package Thinking cost or selling price, etc.",
+        "option": "Options",
+        "No": "No",
+        "Category": "Category",
+        "Description": "Description",
+        "modal_msg": "Saved as a draft.",
+        "title" : "Title",
+        "title_place" : "Please enter the subject."
+    },
+    "storageBox": {
+        "heading": "Raw material storage box",
+        "title": "Raw material",
+        "selectAll": "Select All",
+        "delete": "delete selection",
+        "add": "Add additional ingredients",
+        "popup": "Add more ingredients of your choice.",
+        "deleteModal": {
+            "text": "Are you sure you want to delete the selected raw material?",
+            "btn1": "Cancel",
+            "btn2": "Confirm"
+        }
+    },
+    "formulation" : {
+        "title" : "Formulation selection",
+        "popup" : "<ul><li>Please select the desired format.</li><li>Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.</li></ul>"
+    },
+    "warningModal" : {
+        "text" :  "There is data in progress. Data is not stored separately. Are you sure you want to cancel?",
+        "btn1" : "Cancel",
+        "btn2" : "Confirm"
+    },
+    "logoutModal" : {
+        "text" : "Are you sure you want to log out?"
+    },
+    "requireModal" : {
+        "text1" : "This service requires login.",
+        "text2" : "Please use the service after logging in.",
+        "btn1" : "Cancel",
+        "btn2" : "Login"
     }
 }

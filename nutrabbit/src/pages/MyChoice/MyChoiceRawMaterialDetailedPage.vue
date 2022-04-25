@@ -41,41 +41,41 @@
                 <p>{{ desc.desc }}</p>
               </li> -->
               <li>
-                <h2>Standard</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Standard") }}</h2>
                 <p>{{ item.standard_ko }}</p>
               </li>
               <li>
-                <h2>Raw Material</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
                 <p>{{ item.material_description_ko }}</p>
               </li>
               <li>
-                <h2>Appearance</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
                 <p>{{ item.material_function_ko }}</p>
               </li>
               <li>
-                <h2>Functional Content</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Functionalcontent") }}</h2>
                 <p>{{ item.material_function_ko }}</p>
               </li>
               <li>
-                <h2>Daily Intake</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
                 <p>{{ item.daily_intake_amount_ko }}</p>
               </li>
               <li>
-                <h2>Precautions</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
                 <p>{{ item.material_prequotion_ko }}</p>
               </li>
               <li>
-                <h2>Etc</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
                 <p>{{ item.material_extra_info_ko }}</p>
               </li>
             </ul>
             <div class="blendBtnList">
-              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">Add</button>
-              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">Next</button>
+              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">{{$t('button.add')}}</button>
+              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">{{$t('button.next')}}</button>
             </div>
           </div>
           <div class="suggested-product">
-            <h2>Recommended Blending</h2>
+            <h2>{{ $t('myChoice.RecommendedBlending.title') }}</h2>
             <ul class="smilar-product-img">
               <li v-for="(items, index) of blendingData" :key="index">
                 <img v-if="items.thumbnail_1_path"
@@ -87,7 +87,7 @@
             </ul>
           </div>
           <div class="suggested-product">
-            <h2>Third-party similar products</h2>
+            <h2>{{$t('myChoice.RawMaterial.detail.Similar_Products')}}</h2>
             <div v-if="raw_material_image.length > 0">
               <ul class="smilar-product-img">
                 <li v-for="(item, index) of similar_product_img" :key="index">
@@ -308,7 +308,7 @@ export default {
 
           }
           if (this.item_exist == "yes") {
-            this.$swal("You have already added this item");
+            // this.$swal("You have already added this item");
             this.$router.push('/add-ingredient')
 
           }
