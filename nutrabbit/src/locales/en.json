@@ -264,5 +264,13 @@
         "text2" : "Please use the service after logging in.",
         "btn1" : "Cancel",
         "btn2" : "Login"
+    },
+
+    "customer" :{
+        "title" : {
+            "Notice" : "Notice",
+            "Title" : "Title",
+            "PublishedDate" : "Published date"
+        }
     }
 }
