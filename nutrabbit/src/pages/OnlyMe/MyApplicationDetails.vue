@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>내 신청내역</h2>
+          <h2>{{$t("onlyme.title.Application")}}</h2>
         </div>
 
         <div id="app">
@@ -24,7 +24,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>nutri 3.3</h2>
+                        <h2>{{$t("onlyme.title.Nutri")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -33,8 +33,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -72,7 +72,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>추천 블랜딩</h2>
+                        <h2>{{$t("onlyme.title.RecommendedBlending")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -81,8 +81,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -120,7 +120,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>My Choice</h2>
+                        <h2>{{$t("onlyme.title.MyChoice")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -129,8 +129,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -170,7 +170,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>nutri 3.3</h2>
+                        <h2>{{$t("onlyme.title.Nutri")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -179,8 +179,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -218,7 +218,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>추천 블랜딩</h2>
+                        <h2>{{$t("onlyme.title.RecommendedBlending")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -227,8 +227,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -269,7 +269,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>My Choice</h2>
+                        <h2>{{$t("onlyme.title.MyChoice")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -278,8 +278,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
