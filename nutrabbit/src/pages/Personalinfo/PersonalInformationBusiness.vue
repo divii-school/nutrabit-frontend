@@ -5,13 +5,13 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">
-              개인정보 관리
+              {{ $t("personalInfo.personalBussiness.title") }}
             </h1>
           </div>
           <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
            <div class="individuals-form">
               <div class="form-group" :class="error.business_number ? 'error' : ''">
-              <label for="">사업자번호</label>
+              <label for="">{{ $t("personalInfo.personalBussiness.businessnumber") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -25,7 +25,7 @@
               <span class="error-msg">{{ error.business_number }}</span>
             </div>
             <div class="form-group" :class="error.business_name ? 'error' : ''">
-              <label for="">사업자명</label>
+              <label for="">{{ $t("personalInfo.personalBussiness.businessname") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -38,7 +38,7 @@
               <span class="error-msg">{{ error.business_name }}</span>
             </div>
             <div class="form-group" :class="error.depertment ? 'error' : ''">
-              <label for="">부서명</label>
+              <label for="">{{ $t("personalInfo.personalBussiness.dept") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -51,7 +51,7 @@
               <span class="error-msg">{{ error.department }}</span>
             </div>
             <div class="form-group" :class="error.contactPerson ? 'error' : ''">
-              <label for="">담당자명</label>
+              <label for="">{{ $t("personalInfo.personalBussiness.contactperson") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -64,7 +64,7 @@
                <span class="error-msg">{{ error.contactPerson }}</span>
             </div>
              <div class="form-group">
-              <label for="">아이디</label>
+              <label for="">{{ $t("personalInfo.labels.id") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -79,13 +79,13 @@
             </div>
            
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for="">비밀번호</label>
+              <label for="">{{ $t("personalInfo.labels.password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                   placeholder="신규 비밀번호 입력(10~20자 영문 대소문자, 숫자, 특수기호 포함)"
+                   :placeholder= "$t('personalInfo.placeholder.PasswordFormat')"
                    maxlength="20"
                    v-model="password"
                    autocomplete="off"
@@ -95,13 +95,13 @@
               <span class="error-msg">{{ error.password }}</span>
             </div>
             <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
-              <label for="">비밀번호 확인</label>
+              <label for="">{{ $t("personalInfo.labels.confirm_password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="산규 비밀번호 확인"
+                    :placeholder="$t('personalInfo.placeholder.VerifyPassword')"
                     v-model="confirmPassword"
                     autocomplete="off"
                   />
@@ -110,7 +110,7 @@
               <span class="error-msg">{{ error.confirmPassword }}</span>
             </div>
              <div class="form-group">
-              <label for="">이메일</label>
+              <label for="">{{ $t("personalInfo.labels.email") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -125,7 +125,7 @@
             </div>
            
             <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-              <label for="">휴대폰번호</label>
+              <label for="">{{ $t("personalInfo.labels.phonenumber") }}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -138,7 +138,7 @@
               <span class="error-msg">{{ error.phoneNumber }}</span>
             </div>
             <div class="form-group" :class="error.address ? 'error' : ''">
-              <label for="">주소</label>
+              <label for="">{{ $t("personalInfo.labels.address") }}</label>
               <div class="input-group with-btn dual-input">
                 <div class="input-inner">
                   <input
@@ -162,13 +162,13 @@
               <span class="error-msg">{{ error.address }}</span>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2" @click="updateBusinessInfo">저장</button>
+            <button class="btn-primary grenn-btn2" @click="updateBusinessInfo">{{ $t("personalInfo.labels.save") }}</button>
           </form>
            <div class="logout-withdraw">
             <ul>
-              <li><router-link to @click="logOut()">로그아웃</router-link>
+              <li><router-link to @click="logOut()">{{ $t("personalInfo.labels.log_out") }}</router-link>
               </li>
-              <li><router-link to="/withdrawal-of-membership">회원탈퇴</router-link>
+              <li><router-link to="/withdrawal-of-membership">{{ $t("personalInfo.labels.withdrawal") }}</router-link>
               </li>
             </ul>
           </div>
@@ -179,8 +179,8 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="저장되었습니다."
-    btnText2="확인"
+    :bodytext1="$t('personalInfo.info_modal.bodytext')"
+    :btnText2="$t('personalInfo.info_modal.btntext')"
     link = '/'
   />
 </template>

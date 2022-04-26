@@ -53,5 +53,148 @@
     },
     "button":{
 
+    },
+    "nutri":{
+        "title": {
+            "heading": "What is nutri 3.3 blending?",
+            "sub_heading": "Introduction to nutri 3.3 blending?",
+            "paragraph1": "nutri3.3 blending provides ready-to-market products. Seize the opportunity to enjoy all services from A to Z from product concept, package, and branding.",
+            "paragraph2": "Seize the opportunity to enjoy all services from A to Z from product concept, package, and branding.",
+            "heading2": "How to use nutri 3.3 blending",
+            "blending": "nutri 3.3 blending product",
+            "nutri_list":"* nutri3.3 blending can only be purchased within the options provided.",
+            "nutri_list1": "*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.",
+            "desc1": "Take a look at our branded products",
+            "desc2": "Choose the product you want to launch",
+            "desc3": "Click the Get an estimate button at the bottom of the detail page on selected product",
+            "desc4": "We will contact you after checking"
+        },
+        "nutriDetails": {
+            "title": "A service just for you",
+            "title2": "Easily seize your own product launch opportunity!",
+            "subtitle": "Click the button below to become the hero of the product!",
+            "button": "Get an estimate"
+        },
+        "nutrimodal": {
+            "bodytext": "Would you like to get an estimate for this product?",
+            "bodytext2": "An estimate will be sent to you by email when you click OK.",
+            "btntext": "cancellation",
+            "btntext2": "Confirm"
+        }
+    },
+    "sampleMaking": {
+        "title": {
+            "title": "Sample making guide",
+            "subtitle": "nutri 3.3 sample service",
+            "titledesc": "Make the health functional core food sample you want in nutri 3.3!",
+            "titledesc1": "It can be produced at a sampling cost of 300,000 won (VAT included) per one time.",
+            "button": "Go to sample",
+            "text": "*Sample service is a paid service, and it usually takes 3 weeks for delivery after payment is completed."
+        },
+        "sampleprocress": {
+            "title": "Sample service process",
+            "title1": "Request for Sample",
+            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3. (Sample production costs 300,000 won / Additional modifications are charged separately)",
+            "title2": "Development Meeting",
+            "desc2": "We check your requirements based on the sample service requested.",
+            "title3": "Develop Product",
+            "desc3": "We develop samples based on the requested information.",
+            "title4": "Produce Sample",
+            "desc4": "We produce samples after product development",
+            "title5": "Deliver to Customer",
+            "desc5": "The finished sample will be shipped to your address."
+        },
+        "sampleFaq": {
+          "title":"Frequently Asked Questions",
+          "ques1": "How long does sample production take?",
+          "ans1": "Usually takes about 3 weeks after payment is completed, but it may varies by product.",
+          "ques2": "What is the volume and quantity of samples provided?",
+          "ans2": "Sample quantity offered is as follows: * Tablets: 30T / Capsules: 30C / Packets: 10 Packs"
+        }
+    },
+    "aboutus": {
+        "title":{
+            "title": "If you want to have your own health functional food brand easily and conveniently"
+        },
+        "recommended": {
+            "title": "Recommend to these people!",         
+            "rule1": "I don’t know",
+            "rule1_1": "how to start!",
+            "rule2": "I need",
+            "rule2_1":"professional support",
+            "rule2_2": "because there are too many prohibitions like pharmaceuticals, complicated approval process from public organization!",
+            "rule3": "I’m concerned about minimum quantity and high cost.",
+            "subtitle": "Nutri3.3 provides A-Z full service in the manufacturing process.",
+            "content1": "It is a",
+            "content2": "One Step Nutrition Platform."
+        },
+        "service": {
+            "title": "Easy & handy health functional food manufacturing navigation",
+            "subtitle": "nutri 3.3 service",
+            "rule1": "nutri3.3 blending",
+            "rule1_content": "nutri3.3 blending provides ready-to-market products. Seize the opportunity to easily enjoy all services from A to Z from product concept, package, and branding.",
+            "rule2": "Recommended blending",
+            "rule2_content": "Recommended blending is a semi-finished product that already has effective raw materials and formulations, and is a recommended recipe for those who have difficulty choosing raw materials.",
+            "rule3": "my choice",
+            "rule3_content": "my choice is a service to make one and only one-of-a-kind products with the raw materials I personally selected.",
+            "rule4": "Free Estimate Service",
+            "rule4_content": "Free estimate service helps you to create your own health functional food that is combined as you like.",
+            "rule5": "Sample making service",
+            "rule5_content": "The sample making service provides an opportunity to make a health functional food sample of your choice at a sampling cost of 300,000 won."
+        }
+    },
+    "personalInfo": {
+        "title": {
+            "title": "Personal Information Management"
+        },
+        "labels": {
+            "name": "Name",
+            "id": "ID",
+            "password": "Password",
+            "confirm_password": "Verify Password",
+            "email": "Email",
+            "phonenumber": "Phone Number",
+            "address": "Address",
+            "find us": "How did you find us?",
+            "offline": "Offline",
+            "online": "Online",
+            "network": "Network (door-to-door sales)",
+            "sns": "SNS",
+            "etc": "Etc",
+            "save": "Save",
+            "log_out": "Log out",
+            "withdrawal": "Withdrawal"
+        },
+        "placeholder":{
+            "PasswordFormat": "10-20 characters including uppercase and lowercase letters, numbers, and special symbols",
+            "VerifyPassword": "Verify Password",
+            "PhoneNumber": "Enter your mobile phone number",
+            "EnterAddress": "Enter address",
+            "EnterDetailedAddress": "Enter detailed address"
+        },
+        "info_modal": {
+            "bodytext": "Changes are applied",
+            "btntext": "Confirm"
+        },
+        "personalBussiness": {
+            "title": "Personal Information Management",
+            "businessnumber": "Business Number",
+            "businessname": "Business Name",
+            "dept": "Department",
+            "contactperson": "Contact Person"
+        },
+        "withdrawal": {
+            "title": "Withdrawal",
+            "header": "Reason for withdrawal",
+            "placeholder": "Please enter the reason for withdrawal",
+            "button": "Confirm",
+            "bodytext": "Are you sure you want to withdraw this account?",
+            "btntext": "Cancel",
+            "btntext1": "Confirm"
+        },
+        "withdrawmodal": {
+            "bodytext": "Your withdrawal is complete.",
+            "btntext": "Confirm"
+        }
     }
 }
