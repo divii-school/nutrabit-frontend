@@ -16,7 +16,7 @@
                 class="item-left"
                 @click="this.$router.push(`/notice-detail-page/${item.id}`)"
               >
-                <span v-if="item.top10 == 1">{{$t("customer.content.Tag")}}</span>
+                <span v-if="item.top10 == 1">{{$t("customer.tag.Important")}}</span>
                 <p>{{ item.title_ko }}</p>
               </div>
               <div class="item-right">

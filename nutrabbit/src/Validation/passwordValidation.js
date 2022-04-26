@@ -1,4 +1,8 @@
 import validator from "validator";
+import i18n from '../config/i18n';
+
+const { t } = i18n.global;
+i18n.global.locale = 'kr';
 
 const passwordValidation = (data) => {
     let errors = {};
@@ -6,16 +10,16 @@ const passwordValidation = (data) => {
     const { password, confirmPassword, } = data;
 
     if (validator.isEmpty(password)) {
-        errors.password = "Please enter a Password";
+        errors.password = t('common.Error.EnterPassword');
     }
     else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-        errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+        errors.password = t('common.Error.PasswordFormat');
     }
     if (validator.isEmpty(confirmPassword)) {
-        errors.confirmPassword = "Please confirm your password";
+        errors.confirmPassword =  t('common.Error.ConfirmPassword');
     }
     if (!validator.equals(password, confirmPassword)) {
-        errors.confirmPassword = "Password should match!";
+        errors.confirmPassword =t('common.Error.checkPassword');
     }
 
     return {

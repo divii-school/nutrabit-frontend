@@ -94,7 +94,11 @@
                     </h2>
                   </div>
                 </div>
-                <ul v-html="$t('final.note')">
+                <ul>
+                  <li>{{$t('final.note.list1')}}</li>
+                  <li>{{$t('final.note.list2')}}</li>
+                  <li>{{$t('final.note.list3')}}</li>
+                  <li>{{$t('final.note.list4')}}</li>
                 </ul>
                 <div class="btn-wrap">
                   <button
@@ -110,6 +114,8 @@
                     <Modal @close="closeModal" :bodytext1="$t('final.modal_msg')" :btnText2="$t('button.Confirm')"
                       link="/" />
                   </my-modal-component>
+                  <Modal v-show="isServiceSelectedVisible" @close="closeModalService"
+                    :bodytext1="$t('final.required_service_msg')" :btnText1="$t('button.Confirm')" />
                 </div>
               </div>
             </div>
@@ -143,6 +149,7 @@ export default {
       showModal: false,
       items: [],
       etc: localStorage.getItem('etc'),
+      isServiceSelectedVisible:false,
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -162,9 +169,6 @@ export default {
       // ],
     };
   },
-  closeModal() {
-    this.showModal = false;
-  },
   created() {
     this.mychoiceService = new MyChoiceService();
   },
@@ -172,12 +176,19 @@ export default {
     this.option_list();
   },
   methods: {
+     closeModalService() {
+      this.isServiceSelectedVisible = false;
+    },
+     closeModal() {
+    this.showModal = false;
+  },
     package_add() {
       let is_temporary_storage = 'N';
       let length = this.servicetype.length;
       let service = '';
       if (length == 0) {
-        this.$swal("Please select a service");
+        // this.$swal("Please select a service");
+         this.isServiceSelectedVisible = true;
       }
       else {
         if (length == 2) {
@@ -202,7 +213,8 @@ export default {
       let length = this.servicetype.length;
       let service = '';
       if (length == 0) {
-        this.$swal("Please select a service");
+        // this.$swal("Please select a service");
+         this.isServiceSelectedVisible = true;
       }
       else {
         if (length == 2) {

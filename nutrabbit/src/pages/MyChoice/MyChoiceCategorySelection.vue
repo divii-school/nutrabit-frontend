@@ -9,14 +9,19 @@
           <div class="choice-selection-item recomanded-blending">
             <div class="heading-wrap">
               <div class="heading heading-blue">
-                <h2>{{$t('myChoice.RecommendedBlending.title')}}</h2>
+                <h2>{{ $t('myChoice.RecommendedBlending.title') }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('myChoice.RecommendedBlending.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list1") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list2") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list3") }}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -25,7 +30,7 @@
               <div class="heading-left">
                 <router-link to="/my-choice-recomanded-blending">
                   <a href class="see-more">
-                    <i class="icon-plus"></i>{{$t('myChoice.RecommendedBlending.more')}}
+                    <i class="icon-plus"></i>{{ $t('myChoice.RecommendedBlending.more') }}
                   </a>
                 </router-link>
               </div>
@@ -41,14 +46,18 @@
           <div class="choice-selection-item raw-material">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{$t('myChoice.RawMaterial.title')}}</h2>
+                <h2>{{ $t('myChoice.RawMaterial.title') }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('myChoice.RawMaterial.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{ $t('myChoice.RawMaterial.popup.list1') }}</li>
+                          <li>{{ $t('myChoice.RawMaterial.popup.list2') }}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -62,8 +71,8 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="sortingMethod($event)">
-                    <option value="popularity">{{$t('myChoice.RawMaterial.popularity')}}</option>
-                    <option value="alphabetical">alphabetical order</option>
+                    <option value="popularity">{{ $t('myChoice.RawMaterial.popularity') }}</option>
+                    <option value="alphabetical">{{ $t('myChoice.RawMaterial.alphabetical') }}</option>
                   </select>
                 </div>
               </div>
@@ -91,12 +100,12 @@
                   </div>
                 </div>
                 <div class="list-right">
-                  <button @click="showDetails(data.id)" class="btn-small-solid">{{$t('button.add')}}</button>
+                  <button @click="showDetails(data.id)" class="btn-small-solid">{{ $t('button.add') }}</button>
                 </div>
                 <my-modal-component v-show="showModal">
                   <ModalStorageBox @close="closeModal" :bodytext1="$t('myChoice.RawMaterial.modal.heading')"
-                    :btnText1="$t('myChoice.RawMaterial.modal.btn1')" :btnText2="$t('myChoice.RawMaterial.modal.btn2')" :raw_material_id="raw_material_id"
-                    :sub_category_id="this.sub_category_id" />
+                    :btnText1="$t('myChoice.RawMaterial.modal.btn1')" :btnText2="$t('myChoice.RawMaterial.modal.btn2')"
+                    :raw_material_id="raw_material_id" :sub_category_id="this.sub_category_id" />
                 </my-modal-component>
               </li>
             </ul>
