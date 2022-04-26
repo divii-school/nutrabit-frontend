@@ -171,16 +171,16 @@
         "close": "닫기",
         "delete": "전체삭제",
         "SideNav": {
-            "AboutUs": "About Us",
+            "AboutUs": "회사소개",
             "myChoice": "my choice",
-            "nutriBlending": "nutri 3.3 blending",
-            "SampleMakingGuide": "Sample Making Guide",
-            "RawMaterialStorage": "Raw material storage box",
-            "MyRecipe": "My Recipe",
-            "MyApplication": "My Application",
-            "Notice": "Notice",
+            "nutriBlending": "nutri 3.3 블랜딩",
+            "SampleMakingGuide": "샘플 제작 가이드",
+            "RawMaterialStorage": "원료 보관함",
+            "MyRecipe": "나의 레시피",
+            "MyApplication": "내 신청내역",
+            "Notice": "공지사항",
             "FAQ": "FAQ",
-            "Inquiry": "1:1 inquiry"
+            "Inquiry": "1:1 문의"
         }
     },
     "myChoice": {
