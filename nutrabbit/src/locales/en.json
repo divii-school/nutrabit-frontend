@@ -297,7 +297,8 @@
             "Answred" : "Answred",
             "Unanswered" : "Unanswered",
             "Attachment" : "Attachment",
-            "Inquiries" : "Inquiries"
+            "Inquiries" : "Inquiries",
+            "AnswerContent" : "Answer content"
         },
 
         "inquiryLabel" : {

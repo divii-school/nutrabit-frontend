@@ -58,7 +58,7 @@
                 class="contCol"
                 :class="item.status == 'Answer Complete' ? 'show' : 'hide'"
               >
-                <h4>답변내용</h4>
+                <h4>{{$t("customer.tag.AnswerContent")}}</h4>
                 <p>
                   {{ item.replyText }}
                 </p>

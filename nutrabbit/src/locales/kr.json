@@ -295,7 +295,8 @@
             "Answred" : "답변내용",
             "Unanswered" : "미답변",
             "Attachment" : "첨부파일",
-            "Inquiries" : "문의내용"
+            "Inquiries" : "문의내용",
+            "AnswerContent" : "답변내용"
         },
 
         "inquiryLabel" : {

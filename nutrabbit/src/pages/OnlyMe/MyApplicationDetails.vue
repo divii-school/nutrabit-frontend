@@ -396,7 +396,9 @@ export default {
   created() {
     this.myApplicationDetails = new MyApplicationDetails();
   },
-
+  updated(){
+    console.log(this.tabsTrns)
+  },
   methods: {
     myCallback1(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
