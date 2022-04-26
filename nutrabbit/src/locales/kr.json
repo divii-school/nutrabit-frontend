@@ -281,11 +281,17 @@
     "customer": {
         "title": {
             "Notice": "공지사항",
-            "Title": "제목",
-            "PublishedDate": "게시날짜"
+            "Faq" : "FAQ",
+            "PublishedDate": "게시날짜",
+            "Inquiry" : "1:1 문의",
+            "Status" : "답변여부"
         },
-        "content": {
-            "Tag": "중요"
+        "tag": {
+            "Important": "중요",
+            "Answred" : "답변내용",
+            "Unanswered" : "미답변",
+            "Attachment" : "첨부파일",
+            "Inquiries" : "문의내용"
         }
     }
 }

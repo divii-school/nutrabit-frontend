@@ -3,18 +3,18 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>FAQ</h2>
+          <h2>{{$t("customer.title.Faq")}}</h2>
         </div>
         <div class="faq-heading">
-          <p class="category">카테고리</p>
-          <p class="title">제목</p>
+          <p class="category">{{$t("onlyme.tableCaption.Category")}}</p>
+          <p class="title">{{$t("onlyme.title.Title")}}</p>
         </div>
         <FaqAccordion v-for="(item, index) of importantFaqList" :key="index">
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
                 <p class="para-category">{{ item.category_name_en }}</p>
-                <span v-if="item.top10 == y">Important</span>
+                <span v-if="item.top10 == y">{{$t("customer.tag.Important")}}</span>
               </div>
               <div class="item-right-inner">
                 <p>{{ item.title_en }}</p>
@@ -22,7 +22,7 @@
             </div>
           </template>
           <template v-slot:content>
-            <h4>Answred</h4>
+            <h4>{{$t("customer.tag.Answred")}}</h4>
             <p>
               {{ item.description_en }}
             </p>
@@ -43,7 +43,7 @@
             </div>
           </template>
           <template v-slot:content>
-            <h4>답변내용</h4>
+            <h4>{{$t("customer.tag.Answred")}}</h4>
             <p>
               {{ item.description_en }}
             </p>

@@ -284,11 +284,19 @@
         "title" : {
             "Notice" : "Notice",
             "Faq" : "FAQ",
-            "PublishedDate" : "Published date"
+            "PublishedDate" : "Published date",
+            "Inquiry" : "1:1 Inquiry",
+            "Status" : "Status"
         },
 
-        "content" : {
-            "Tag" : "Important"
+        "tag" : {
+            "Important" : "Important",
+            "Answred" : "Answred",
+            "Unanswered" : "Unanswered",
+            "Attachment" : "Attachment",
+            "Inquiries" : "Inquiries"
+
+
         }
     }
 }

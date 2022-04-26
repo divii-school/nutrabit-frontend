@@ -3,18 +3,18 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading noFlex">
-          <h2>1:1 문의</h2>
+          <h2>{{$t("customer.title.Inquiry")}}</h2>
           <button
             class="btn-primary grenn-btn2"
             @click="this.$router.push('/inquiry-contactUs')"
           >
-            1:1 문의하기 
+            {{$t("customer.title.Inquiry")}} 
           </button>
         </div>
         <div class="faq-heading inquiry">
-          <p class="category">게시날짜</p>
-          <p class="status">답변여부</p>
-          <p class="title">제목</p>
+          <p class="category">{{$t("customer.title.PublishedDate")}}</p>
+          <p class="status">{{$t("onlyme.title.Title")}}</p>
+          <p class="title">{{$t("customer.title.Status")}}</p>
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
@@ -35,7 +35,7 @@
           <template v-slot:content>
             <div class="contWrap">
               <div class="contCol">
-                <h4>첨부파일</h4>
+                <h4>{{$t("customer.tag.Attachment")}}</h4>
                 <p>
                   <a
                     :href="
@@ -49,7 +49,7 @@
                 </p>
               </div>
               <div class="contCol">
-                <h4>문의내용</h4>
+                <h4>{{$t("customer.tag.Inquiries")}}</h4>
                 <p>
                   {{ item.description }}
                 </p>
