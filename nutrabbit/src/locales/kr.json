@@ -306,6 +306,9 @@
         },
         "button" : {
             "Submit" : "등록"
+        },
+        "modal":{
+            "inquiryText" : "1:1 문의 등록이 완료되었습니다."
         }
     }
 }

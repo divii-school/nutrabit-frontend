@@ -308,6 +308,9 @@
         },
         "button" : {
             "Submit" : "Submit"
+        },
+        "modal":{
+            "inquiryText" : "1:1 inquiry registration has been completed."
         }
 
 

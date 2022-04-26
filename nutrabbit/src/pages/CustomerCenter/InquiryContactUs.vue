@@ -79,8 +79,8 @@
   <Modal
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="1:1 문의 등록이 완료되었습니다."
-    btnText2="Confirm"
+    :bodytext1="$t('customer.modal.inquiryText')"
+    :btnText2="$t('onlyme.button.Confirm')"
     link="/inquiry"
   />
 </template>
