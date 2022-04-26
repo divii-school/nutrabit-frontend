@@ -4,12 +4,12 @@
       <div class="login-signup-wrap membership-wrap personal-info">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">개인정보 관리</h1>
+            <h1 class="login-heading">{{ $t("personalInfo.title.title") }}</h1>
           </div>
           <form action class="signUp-form" @submit="(e) => e.preventDefault()">
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for>이름</label>
+                <label for>{{ $t("personalInfo.labels.name") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="name" />
@@ -18,7 +18,7 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group">
-                <label for>아이디</label>
+                <label for>{{ $t("personalInfo.labels.id") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control disabled" disabled type="text" v-model="uuid" />
@@ -27,13 +27,13 @@
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for="">비밀번호</label>
+                <label for="">{{ $t("personalInfo.labels.password") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="신규 비밀번호 입력(10~20자 영문 대소문자, 숫자, 특수기호 포함)"
+                      :placeholder= "$t('personalInfo.placeholder.PasswordFormat')"
                       maxlength="20"
                       v-model="password"
                       autocomplete="off"
@@ -43,13 +43,13 @@
                 <span class="error-msg">{{ error.password }}</span>
               </div>
               <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
-                <label for>비밀번호 확인</label>
+                <label for>{{ $t("personalInfo.labels.confirm_password") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="산규 비밀번호 확인"
+                      :placeholder="$t('personalInfo.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
                       autocomplete="off"
                     />
@@ -58,7 +58,7 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group">
-                <label for>이메일</label>
+                <label for>{{ $t("personalInfo.labels.email") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control disabled" disabled type="text" v-model="email" />
@@ -67,7 +67,7 @@
               </div>
 
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for>휴대폰번호</label>
+                <label for>{{ $t("personalInfo.labels.phonenumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="phoneNumber" />
@@ -76,7 +76,7 @@
                 <span class="error-msg">{{ error.phoneNumber }}</span>
               </div>
               <div class="form-group" :class="error.address ? 'error' : ''">
-                <label for>주소</label>
+                <label for>{{ $t("personalInfo.labels.address") }}</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="address" disabled/>
@@ -91,25 +91,25 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for>How did you find us?</label>
+                <label for>{{ $t("personalInfo.labels.find us") }}</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check">
-                      offline
+                      {{ $t("personalInfo.labels.offline") }}
                       <input type="checkbox" value="offline" v-model="offline" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
-                      online
+                      {{ $t("personalInfo.labels.online") }}
                       <input type="checkbox" value="online" v-model="online" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
-                      Network (door-to-door sales)
+                      {{ $t("personalInfo.labels.network") }}
                       <input
                         type="checkbox"
                         value="network"
@@ -120,14 +120,14 @@
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
-                      SNS
+                      {{ $t("personalInfo.labels.sns") }}
                       <input type="checkbox" value="sns" v-model="sns" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
                     <label class="custom-check">
-                      Etc
+                      {{ $t("personalInfo.labels.etc") }}
                       <input type="checkbox" value="etc" v-model="etc" />
                       <span class="checkmark"></span>
                     </label>
@@ -136,16 +136,16 @@
               </div>
             </div>
             <!-- <p>{{common.state.userId}}</p> -->
-            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">저장
+            <button class="btn-primary grenn-btn2" @click="updatePersonalInfo">{{ $t("personalInfo.labels.save") }}
               <!-- <router-link to="/withdrawal-of-membership"></router-link> -->
             </button>
           </form>
           <div class="logout-withdraw">
             <ul>
               <li>
-                <router-link to @click="logOut()">로그아웃</router-link>
+                <router-link to @click="logOut()">{{ $t("personalInfo.labels.log_out") }}</router-link>
               </li>
-              <li><router-link to="/withdrawal-of-membership">회원탈퇴</router-link>
+              <li><router-link to="/withdrawal-of-membership">{{ $t("personalInfo.labels.withdrawal") }}</router-link>
               </li>
             </ul>
           </div>
@@ -156,8 +156,8 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="저장되었습니다."
-    btnText2="확인"
+    :bodytext1="$t('personalInfo.info_modal.bodytext')"
+    :btnText2="$t('personalInfo.info_modal.btntext')"
     link = '/'
   />
 </template>

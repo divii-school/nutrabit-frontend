@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2>Get an estimate</h2>
+                    <h2>{{$t("onlyme.title.Estimate")}}</h2>
                   </div>
                 </div>
                 <div class="product-item recipeCheck">
@@ -105,8 +105,8 @@
                   </div>
                   <div class="material-details">
                     <h2>
-                      샘플 신청
-                      <span>(샘플비용 300,000원/유료)</span>
+                      {{$t("onlyme.title.SampleAppliction")}}
+                      <span>{{$t("onlyme.title.SampleApplicationCost")}}</span>
                     </h2>
                   </div>
                 </div>
@@ -259,14 +259,8 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
-      this.$swal('All fields required to be filled')
-
-      // this.emptyTitle = (!_title) ? true : false;
-      // this.emptyReq = (!_additional_req) ? true : false;
-      // this.emptyService = (!this.isSample && !this.isQuote) ? true : false;
-      //this.errMsg = 'Needs to fill all the fields'
-
+      if(!_id  || (!this.isSample && !this.isQuote)){
+      //this.$swal('All fields required to be filled')
       return
       }
       
