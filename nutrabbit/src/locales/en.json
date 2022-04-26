@@ -38,7 +38,8 @@
             "OnlineCheck": "Online",
             "NetworkCheck": "Network (door-to-door sales)",
             "SNSCheck": "SNS",
-            "EtcCheck": "Etc"
+            "EtcCheck": "Etc",
+            "FindUs": "How did you find us?"
         },
         "placeholder": {
             "EnterId": "Enter ID",

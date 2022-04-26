@@ -39,7 +39,8 @@
             "OnlineCheck": "온라인",
             "NetworkCheck": "네트워크 (방문판매)",
             "SNSCheck": "SNS",
-            "EtcCheck": "기타"
+            "EtcCheck": "기타",
+            "FindUs": "유통매체"
         },
         "placeholder": {
             "EnterId": "아이디 입력",
