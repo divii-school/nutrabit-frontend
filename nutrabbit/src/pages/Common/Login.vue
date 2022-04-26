@@ -346,19 +346,20 @@ export default {
         success: function (authObj) {
           console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
-          localStorage.setItem("token", authObj.access_token);
+          // localStorage.setItem("token", authObj.access_token);
           // localStorage.setItem("tokenexpiresAt", authObj.expires_in);
-          localStorage.setItem("tokenexpiresAt", 3600);
+          // localStorage.setItem("tokenexpiresAt", 3600);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
               console.log("res----", res);
-              localStorage.setItem("uid", res.id);
-              localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              localStorage.setItem("userType", 'SNS');
+              // localStorage.setItem("uid", res.id);
+              // localStorage.setItem("uname", res.kakao_account.profile.nickname);
+              // localStorage.setItem("userType", 'SNS');
+              self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname,'12345678',res.kakao_account.email,'','','','',authObj.access_token, 'kakao');
+              self.socialLogin(res.kakao_account.email);
               self.loader.hide();
               // self.$router.push("/");
-              // self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, authObj.access_token, 'kakao');
 
             },
           });
@@ -372,11 +373,38 @@ export default {
       // });
     },
 
-    socialRegistration(name, username, email, phone, login_token, login_type) {
-      this.commonService.individalRegistration(name, username, email, phone, login_token, login_type).then((res) => {
+    socialRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName, login_token, login_type) {
+      this.commonService.individalRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName, login_token, login_type).then((res) => {
+        console.log('socialRegistration:--',res);
         if (res.data.status == 200) {
-          console.log(res);
+          console.log('socialRegistration success:--',res);
           this.$router.push("member-registration-completed");
+        }
+      });
+    },
+
+    socialLogin(email) {
+      this.commonService.getSocialLogin(email).then((res) => {
+        if (res.response) {
+          if (res.response.data.status == 400) {
+            console.log('res.response:', res.response);
+          } else {
+            if (res.data.status == 200) {
+              console.log("login res", res.data.data);
+              // this.common.state.userId = res.data.data.userId;
+              // this.common.state.name = res.data.data.name;
+              // localStorage.setItem("token", res.data.data.token);
+              // localStorage.setItem("uid", res.data.data.userId);
+              // localStorage.setItem("uname", res.data.data.name);
+              // localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+              // localStorage.setItem("userType", res.data.data.account_type);
+              // if (this.checkBox) {
+              //   this.cookies.set("rememberUserEmail", setEmail);
+              //   this.cookies.set("rememberUserPassword", setPassword);
+              // }
+              // this.$router.push("/");
+            }
+          }
         }
       });
     },
