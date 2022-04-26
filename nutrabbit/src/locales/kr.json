@@ -90,6 +90,7 @@
             "QuoteTab": "견적 신청내역",
             "Answer": "답변",
             "SampleAppliction" : "샘플 신청",
+            "SampleApplicationCost" : "(샘플비용 300,000원/유료)",
             "Estimate" : "견적 받기"
         },
         "tableCaption": {

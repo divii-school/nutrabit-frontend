@@ -99,6 +99,7 @@
             "QuoteTab" : "Quotation Request Details",
             "Answer" : "Answer",
             "SampleAppliction" : "Sample application",
+            "SampleApplicationCost" : "(Sample cost 300,000 won/paid)",
             "Estimate" : "Get an estimate"
         },
         "tableCaption": {
