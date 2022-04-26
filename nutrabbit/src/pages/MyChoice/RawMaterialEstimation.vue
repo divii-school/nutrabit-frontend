@@ -98,15 +98,19 @@
                     </h2>
                   </div>
                 </div>
-                <ul v-html="$t('final.note')">
+                <ul>
+                  <li>{{$t('final.note.list1')}}</li>
+                  <li>{{$t('final.note.list2')}}</li>
+                  <li>{{$t('final.note.list3')}}</li>
+                  <li>{{$t('final.note.list4')}}</li>
                 </ul>
                 <div class="btn-wrap">
                   <button @click="this.$router.push('/raw-material-package/')" class="btn-small-solid grey">{{
-                    $t("button.Previous")
+                      $t("button.Previous")
                   }}</button>
                   <div class="btnWrapRight">
                     <button class="btn-green-outline blue" @click="package_temporary_add">{{
-                      $t("button.Save_as_draft")
+                        $t("button.Save_as_draft")
                     }}</button>
                     <button class="btn-small-solid blue ml-4" @click="package_add">{{ $t("button.next") }}</button>
                   </div>
@@ -118,6 +122,10 @@
                     <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')"
                       :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
                   </my-modal-component>
+                  <Modal v-show="isItemSelectedVisible" @close="closeModalTitle"
+                    :bodytext1="$t('final.required_title_msg')" :btnText1="$t('button.Confirm')" />
+                  <Modal v-show="isServiceSelectedVisible" @close="closeModalService"
+                    :bodytext1="$t('final.required_service_msg')" :btnText1="$t('button.Confirm')" />
                 </div>
               </div>
             </div>
@@ -154,6 +162,8 @@ export default {
       additional_request: '',
       showModal: false,
       showModal2: false,
+      isItemSelectedVisible: false,
+      isServiceSelectedVisible: false,
       to: '',
       items: [],
     };
@@ -184,6 +194,12 @@ export default {
       this.showModal2 = false;
       this.to = null;
     },
+    closeModalTitle() {
+      this.isItemSelectedVisible = false;
+    },
+    closeModalService() {
+      this.isServiceSelectedVisible = false;
+    },
     confirm() {
       this.showModal2 = false;
       this.$router.push(this.to);
@@ -192,13 +208,15 @@ export default {
       this.to = "/";
       let is_temporary_storage = 'N';
       if (this.title == "") {
-        this.$swal("Title is required");
+        //this.$swal("Title is required");
+        this.isItemSelectedVisible = true;
       }
       else {
         let length = this.servicetype.length;
         let service = '';
         if (length == 0) {
-          this.$swal("Please select a service");
+          // this.$swal("Please select a service");
+          this.isServiceSelectedVisible = true;
         }
         else {
           if (length == 2) {
@@ -231,12 +249,14 @@ export default {
       this.to = "/";
       let is_temporary_storage = 'Y';
       if (this.title == "") {
-        this.$swal("Title is required");
+        // this.$swal("Title is required");
+        this.isItemSelectedVisible = true;
       }
       else {
         let length = this.servicetype.length;
         if (length == 0) {
-          this.$swal("Please select a service");
+          // this.$swal("Please select a service");
+          this.isServiceSelectedVisible = true;
         }
         else {
           let service = '';

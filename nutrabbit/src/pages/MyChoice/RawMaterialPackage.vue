@@ -35,14 +35,19 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{$t('package.title')}}</h2>
+                <h2>{{ $t('package.title') }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('package.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{$t('package.popup.list1')}}</li>
+                          <li>{{$t('package.popup.list2')}}</li>
+                          <li>{{$t('package.popup.list3')}}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -65,9 +70,20 @@
                   </label>
                 </div>
                 <div class="material-details">
-                  <h2>{{$t('package.etc')}}</h2>
-                  <div class="input-group">
-                    <input type="text" :placeholder="$t('package.etc_input')" v-model="etc" />
+                  <h2>{{ $t('package.etc') }}</h2>
+                  <!-- <div class="form-group error">
+                    <div class="input-group">
+                      <input type="text" :placeholder="$t('package.etc_input')" v-model="etc" />
+                      <span class="error-msg">{{ etcEmptyError }}</span>
+                    </div>
+                  </div> -->
+                  <div class="form-group form-full-width" :class="etcEmptyError ? 'error' : ''">
+                    <div class="input-group">
+                      <div class="input-inner">
+                        <input type="text" class="form-control" :placeholder="$t('package.etc_input')" v-model="etc" />
+                      </div>
+                    </div>
+                    <span class="error-msg">{{ etcEmptyError }}</span>
                   </div>
                 </div>
               </div>
@@ -79,12 +95,13 @@
                   </label>
                 </div>
                 <div class="material-details">
-                  <h2>{{$t('package.unchecked')}}</h2>
+                  <h2>{{ $t('package.unchecked') }}</h2>
                 </div>
               </div>
               <div class="btn-wrap">
-                <button @click="this.$router.push(`/ingredient-formulation/`)"
-                  class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
+                <button @click="this.$router.push(`/ingredient-formulation/`)" class="btn-small-solid grey">{{
+                    $t("button.Previous")
+                }}</button>
                 <button @click="checkPackageId" class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
@@ -94,9 +111,8 @@
     </div>
   </div>
   <my-modal-component v-show="showModal2">
-    <ModalWarning @close2="closeModal2"
-      :bodytext1="$t('warningModal.text')"
-      :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
+    <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')" :btnText1="$t('warningModal.btn1')"
+      :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
   </my-modal-component>
 </template>
 
@@ -122,6 +138,7 @@ export default {
       etcbtn: '',
       to: '',
       showModal2: false,
+      etcEmptyError: ''
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -182,7 +199,8 @@ export default {
         if (this.etcbtn == "ETC") {
 
           if (this.etc == "") {
-            this.$swal("Please add custom package input");
+            this.etcEmptyError = "Please add custom package input.";
+            return;
           }
           else {
             localStorage.setItem('etc', this.etc);
@@ -204,6 +222,7 @@ export default {
 
             localStorage.setItem('package_id', this.package_id);
             this.$router.push(this.to);
+            this.etcEmptyError = '';
           }
         }
         else {

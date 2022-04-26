@@ -42,7 +42,11 @@
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('formulation.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{$t('formulation.popup.list1')}}</li>
+                          <li>{{$t('formulation.popup.list2')}}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -62,7 +66,8 @@
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
                   class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
 
-                <button @click="checkPillId" class="btn-small-solid blue">{{ $t("button.next") }}</button>
+                <button :class="!isSelected ? 'btn-disabled' : ''" :disabled="!isSelected" @click="checkPillId"
+                  class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
           </div>
@@ -71,9 +76,8 @@
     </div>
   </div>
   <my-modal-component v-show="showModal2">
-    <ModalWarning @close2="closeModal2"
-      :bodytext1="$t('warningModal.text')"
-      :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
+    <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')" :btnText1="$t('warningModal.btn1')"
+      :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
   </my-modal-component>
 </template>
 
@@ -96,6 +100,7 @@ export default {
     return {
       blendingFormulationData: [],
       pill_id: '',
+      isSelected: false,
       storage_box: localStorage.getItem('storage_box'),
       to: '',
       showModal2: false,
@@ -155,6 +160,7 @@ export default {
     },
     UpdatedId(e) {
       this.pill_id = e;
+      this.isSelected = true;
       //console.log(this.pill_id);
 
     },

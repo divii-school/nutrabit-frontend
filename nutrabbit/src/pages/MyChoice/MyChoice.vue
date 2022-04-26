@@ -10,7 +10,12 @@
                 <i class="icon-info"></i>
               </button>
               <template #content>
-                <div class="heading-tooltip-content" v-html="$t('myChoice.popup')"></div>
+                <div class="heading-tooltip-content">
+                  <ul>
+                    <li>{{$t('myChoice.popup.list1')}}</li>
+                    <li>{{$t('myChoice.popup.list2')}}</li>
+                  </ul>
+                </div>
               </template>
             </Popper>
           </div>

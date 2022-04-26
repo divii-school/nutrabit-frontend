@@ -3,25 +3,30 @@
     "address": {
         "city": "Kolkata"
     },
-    "common":{
-        "title":{
-            "login":"Login",
+    "common": {
+        "title": {
+            "login": "Login",
             "Membershiptype": "Membership Type",
             "PersonalMembership": "Personal Membership",
             "BusinessMembership": "Business Membership",
             "HowToSignUp": "How to Sign Up",
             "GeneralSignUp": "General Sign Up",
-            "SnsSignUp": "SNS Sign Up"
+            "SnsSignUp": "SNS Sign Up",
+            "completeRegistration": "Membership registration completed",
+            "ChangePassword" : "Change Password"
         },
-        "SubTitle":{
+        "SubTitle": {
             "PersonalMember": "Personal Member",
             "MemberType": "Please select a member type",
             "PersonalMembership": "Sign up as personal member",
             "BusinessMembership": "Sign up as business member",
             "RegistrationProcess": "Please select a method to proceed when registering as a member",
             "EmailSignUp": "Sign up via Email.",
-            "SnsSignUp": "Sign up via your SNS ID"
-
+            "SnsSignUp": "Sign up via your SNS ID",
+            "completeRegistrationMsg1": "Sign up is complete.",
+            "completeRegistrationMsg2": "Experience the various features of nutri 3.3 from now on!",
+            "changePassword" : "Please change your password",
+            "BusinessMember" : "Business Member"
         },
         "label": {
             "ID": "ID",
@@ -38,7 +43,14 @@
             "OnlineCheck": "Online",
             "NetworkCheck": "Network (door-to-door sales)",
             "SNSCheck": "SNS",
-            "EtcCheck": "Etc"
+            "EtcCheck": "Etc",
+            "FindUs": "How did you find us?",
+            "NewPassword" : "New password",
+            "Newpasswordconfirmation" : "New password confirmation",
+            "BusinessNo" : "Business Number",
+            "BusinessName" : "Business name",
+            "department" : "Department",
+            "contactPerson" : "Contact person"
         },
         "placeholder": {
             "EnterId": "Enter ID",
@@ -50,7 +62,13 @@
             "EnterVerificationCode": "Enter your email verification code",
             "PhoneNumber": "Enter your mobile phone number",
             "EnterAddress": "Enter address",
-            "EnterDetailedAddress": "Enter detailed address"
+            "EnterDetailedAddress": "Enter detailed address",
+            "EnterNewPassword" : "Enter new password",
+            "Newpasswordconfirmation" : "New password confirmation",
+            "EnterBusinessNo" : "Enter business Number",
+            "EnterBusinessName" : "Enter business name",
+            "Enterdepartment" : "Enter department name",
+            "EntercontactPerson" : "Enter the person in charge"
         },
         "QuickLinks": {
             "RememberId": "Remember ID",
@@ -58,21 +76,27 @@
             "FindPassword": "Find Password",
             "SignUp": "Sign Up",
             "CacaoLogin": "Login with Kakao",
-            "NaverLogin": "Login with Naver"
+            "NaverLogin": "Login with Naver",
+            "home": "Home"
         },
-        "Error":{
+        "Error": {
             "Resquired": "* Required",
             "EnterId": "Please enter your ID",
             "chcekId": "User with the id does not exist",
             "EnterPassword": "Please enter password",
-            "checkPassword": "Password does not match",
+            "checkPassword": "Password should match!",
             "EnterName": "Input your name, please",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
             "EnterEmail": "Please enter your email address",
             "EnterOtp": "Please enter your email verification code",
             "EnterPhone": "Please enter your mobile phone number",
-            "EnterAddress": "Please enter your address"
+            "EnterAddress": "Please enter your address",
+            "OTPCheck": "The verification code does not match.",
+            "BusinessNo" : "Please enter your business number",
+            "BusinessName" : "Please enter your business name",
+            "department" : "Please enter the department name",
+            "contactPerson" : "Please enter the name of the person in charge"
         }
     },
     "button": {
@@ -80,59 +104,63 @@
         "next": "Next",
         "Previous": "Previous",
         "Save_as_draft": "Save as Draft",
-        "Confirm": "Confirm"
+        "Confirm": "Confirm",
+        "sendVerification": "Send verification code",
+        "resendVerification": "Resend verification code",
+        "verify": "Verify",
+        "SearchAddress": "Search Address",
+        "change": "Change"
     },
     "onlyme": {
-    
         "title": {
             "myRecipe": "my recipe",
-            "Nutri" : "nutri 3.3",
+            "Nutri": "nutri 3.3",
             "RecommendedBlending": "Recommended blending",
             "MyChoice": "my choice",
             "Options": "Options",
             "Title": "Title",
             "AdditionalRequest": "Additional Requests",
             "Service": "Service",
-            "Application" : "My Application",
-            "SampleTab" : "Sample Application Details",
-            "QuoteTab" : "Quotation Request Details",
-            "Answer" : "Answer"
+            "Application": "My Application",
+            "SampleTab": "Sample Application Details",
+            "QuoteTab": "Quotation Request Details",
+            "Answer": "Answer"
         },
         "tableCaption": {
             "Category": "Category",
             "Description": "Description",
-            "RawMaterial" : "Raw material",
-            "Formulation" : "Formulation",
-            "Package" : "Package",
-            "AdditionalRequest" : "Additional Request",
-            "Service" : "Service",
-            "ApplicationDate" : "Application Date"
+            "RawMaterial": "Raw material",
+            "Formulation": "Formulation",
+            "Package": "Package",
+            "AdditionalRequest": "Additional Request",
+            "Service": "Service",
+            "ApplicationDate": "Application Date"
         },
-        "add_req_caption" : {
-            "Caption" : "The more detailed you are, the more accurate your estimate will be."
+        "add_req_caption": {
+            "Caption": "The more detailed you are, the more accurate your estimate will be."
         },
-        "service_caption" : {
-            "Caption" : "* Duplicate selection possible (package is excluded when requesting a sample.)"
+        "service_caption": {
+            "Caption": "* Duplicate selection possible (package is excluded when requesting a sample.)"
         },
-        "service_info" :{
-            "ContentOne" : "* The quotation will be sent to the registered email address within 2 business days.",
-            "ContentTwo" : "* Unit price may vary depending on quantity & package design.",
-            "ContentThree" : "* It may differ from the detailed estimate at the time of completion."
+        "service_info": {
+            "ContentOne": "* The quotation will be sent to the registered email address within 2 business days.",
+            "ContentTwo": "* Unit price may vary depending on quantity & package design.",
+            "ContentThree": "* It may differ from the detailed estimate at the time of completion."
         },
-        "placeholder" : {
-            "title" : "My own recipe made with guar gum hydrolyzate",
-            "additionalRequest" : ""
+        "placeholder": {
+            "title": "My own recipe made with guar gum hydrolyzate",
+            "additionalRequest": ""
         },
         "button": {
             "DeleteSelection": "delete selection",
             "Next": "Next",
             "Confirm": "Confirm",
             "Cancel": "Cancel",
-            "Delete" : "Delete",
-            "Edit" : "Edit",
-            "Save" : "Save",
-            "Previous" : "Previous",
-            "List" : "List"
+            "Delete": "Delete",
+            "Edit": "Edit",
+            "Save": "Save",
+            "Previous": "Previous",
+            "List": "List"
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
@@ -153,7 +181,13 @@
         }
     },
     "footer": {
-        "address": "<ul><li>NUTRABBIT I Co., Ltd. </li> <li> CEO : Min Kyoung-ran </li> <li class='active'> Business Registration Number: 603-88-01301 </li></ul><p> Location: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul, Republic of Korea </p> <a href=''> Copyright 2022 NUTRABBIT. All right reserved. </a>",
+        "address": {
+            "co_name" : "NUTRABBIT I Co., Ltd.",
+            "ceo" : "CEO : Min Kyoung-ran",
+            "reg_no" : "Business Registration Number: 603-88-01301",
+            "location" : "Location: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul, Republic of Korea",
+            "copyright" : "Copyright 2022 NUTRABBIT. All right reserved."
+        },
         "term": "Terms of Use",
         "privacy": "Privacy Policy"
     },
@@ -162,17 +196,24 @@
         "myChoice": "my choice",
         "nutri": "nutri 3.3 blending",
         "search": "Enter search term.",
-        "ChangePersonalInfo" : "Change personal information",
-        "logout" : "Log out",
-        "searchHistory" : "No search history.",
-        "close" : "close",
-        "delete" : "Delete all"
+        "ChangePersonalInfo": "Change personal information",
+        "logout": "Log out",
+        "searchHistory": "No search history.",
+        "close": "close",
+        "delete": "Delete all"
     },
     "myChoice": {
-        "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Please select the desired function.</li></ul>",
+        "popup": {
+            "list1" : "This is a menu where I make my own health functional food recipes.",
+            "list2" : "Please select the desired function."
+        },
         "RecommendedBlending": {
             "title": "Recommended Blending",
-            "popup": "<ul><li>This is a recommended recipe for those who have difficulty choosing raw materials.</li><li>Recommended blending is a semi-finished product that has already been formulated with effective ingredients and formulations.</li><li>Choose the recommended recipe you want.</li></ul>",
+            "popup": {
+                "list1" : "This is a recommended recipe for those who have difficulty choosing raw materials.",
+                "list2" : "Recommended blending is a semi-finished product that has already been formulated with effective ingredients and formulations.",
+                "list3" : "Choose the recommended recipe you want."
+            },
             "more": "View More",
             "detail": {
                 "main_raw_material": "Main raw material",
@@ -185,8 +226,12 @@
         },
         "RawMaterial": {
             "title": "Raw Material",
-            "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Choose the raw material you want. (Multiple selection possible)</li></ul>",
+            "popup": {
+                "list1" : "This is a menu where I make my own health functional food recipes.",
+                "list2" : "Choose the raw material you want. (Multiple selection possible)"
+            },
             "popularity": "in order of popularity",
+            "alphabetical" : "in alphabetical order",
             "modal": {
                 "heading": "Added to raw material cart",
                 "btn1": "Go to Cart",
@@ -212,13 +257,22 @@
     },
     "package": {
         "title": "Package selection",
-        "popup": "<ul><li>Please select the desired package.</li><li>When requesting a sample, please check 'Not Selected' for package selection.</li><li>Subpackages are the most used packages. If there is a separate package you want, please indicate it on the next page.</li></ul>",
+        "popup": {
+            "list1":"Please select the desired package.",
+            "list2":"When requesting a sample, please check 'Not Selected' for package selection.",
+            "list3":"Subpackages are the most used packages. If there is a separate package you want, please indicate it on the next page."
+        },
         "etc": "Etc",
         "unchecked": "unchecked",
         "etc_input": "Direct input"
     },
     "final": {
-        "note": "<li>* Packages are excluded when requesting samples.</li><li>* The quotation will be sent to the registered email address within 3 business days.</li><li>* Unit price may vary depending on quantity & package design.</li><li>* It may differ from the detailed estimate at the time of completion.</li>",
+        "note": {
+            "list1" : "* Packages are excluded when requesting samples.",
+            "list2" : "* The quotation will be sent to the registered email address within 3 business days.",
+            "list3" : "* Unit price may vary depending on quantity & package design.",
+            "list4" : "* It may differ from the detailed estimate at the time of completion."
+        },
         "Select_Service": "Select Service",
         "Select_Service_desc": "* Multiple selection possible",
         "check1": "Get an estimate",
@@ -232,8 +286,10 @@
         "Category": "Category",
         "Description": "Description",
         "modal_msg": "Saved as a draft.",
-        "title" : "Title",
-        "title_place" : "Please enter the subject."
+        "title": "Title",
+        "title_place": "Please enter the subject.",
+        "required_title_msg" : "Title is required",
+        "required_service_msg": "Please select a service"
     },
     "storageBox": {
         "heading": "Raw material storage box",
@@ -248,34 +304,35 @@
             "btn2": "Confirm"
         }
     },
-    "formulation" : {
-        "title" : "Formulation selection",
-        "popup" : "<ul><li>Please select the desired format.</li><li>Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation.</li></ul>"
+    "formulation": {
+        "title": "Formulation selection",
+        "popup": {
+            "list1" : "Please select the desired format.",
+            "list2" : "Formulations that cannot be made with the selected raw materials may be changed to other formulations at the time of quotation."
+        }
     },
-    "warningModal" : {
-        "text" :  "There is data in progress. Data is not stored separately. Are you sure you want to cancel?",
-        "btn1" : "Cancel",
-        "btn2" : "Confirm"
+    "warningModal": {
+        "text": "There is data in progress. Data is not stored separately. Are you sure you want to cancel?",
+        "btn1": "Cancel",
+        "btn2": "Confirm"
     },
-    "logoutModal" : {
-        "text" : "Are you sure you want to log out?"
+    "logoutModal": {
+        "text": "Are you sure you want to log out?"
     },
-    "requireModal" : {
-        "text1" : "This service requires login.",
-        "text2" : "Please use the service after logging in.",
-        "btn1" : "Cancel",
-        "btn2" : "Login"
+    "requireModal": {
+        "text1": "This service requires login.",
+        "text2": "Please use the service after logging in.",
+        "btn1": "Cancel",
+        "btn2": "Login"
     },
-
-    "customer" :{
-        "title" : {
-            "Notice" : "Notice",
-            "Faq" : "FAQ",
-            "PublishedDate" : "Published date"
+    "customer": {
+        "title": {
+            "Notice": "Notice",
+            "Faq": "FAQ",
+            "PublishedDate": "Published date"
         },
-
-        "content" : {
-            "Tag" : "Important"
+        "content": {
+            "Tag": "Important"
         }
     }
 }

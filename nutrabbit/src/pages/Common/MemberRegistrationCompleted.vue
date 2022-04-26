@@ -6,25 +6,19 @@
           <div class="circle-tick">
             <img src="../../assets/icons/green-tick-circle.svg" alt="" />
           </div>
-          <h2 class="text-center">Membership registration completed</h2>
+          <h2 class="text-center">{{ $t("common.title.completeRegistration") }}</h2>
           <div class="reg-desc">
-            <p class="text-center">Sign up is complete.</p>
+            <p class="text-center">{{ $t("common.SubTitle.completeRegistrationMsg1") }}</p>
             <p class="text-center">
-              Experience the various features of nutri 3.3 from now on!
+              {{ $t("common.SubTitle.completeRegistrationMsg2") }}
             </p>
           </div>
           <div class="btn-wrap flex dual-btn">
-            <button
-              class="btn-primary grey-btn-outline"
-              @click="this.$router.push('/')"
-            >
-              home
+            <button class="btn-primary grey-btn-outline" @click="this.$router.push('/')">
+              {{ $t("common.QuickLinks.home") }}
             </button>
-            <button
-              class="btn-primary grenn-btn2"
-              @click="this.$router.push('/login')"
-            >
-              login
+            <button class="btn-primary grenn-btn2" @click="this.$router.push('/login')">
+              {{ $t("common.title.login") }}
             </button>
           </div>
         </div>

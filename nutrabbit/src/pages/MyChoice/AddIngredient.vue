@@ -19,32 +19,24 @@
                     <label class="custom-radio">
                       <input type="checkbox" @click="selectAll" v-model="allSelected" />
                       <span class="checkmark"></span>
-                     {{ $t("storageBox.selectAll") }}
+                      {{ $t("storageBox.selectAll") }}
                     </label>
                   </div>
                   <button @click="deleteStorageBox" class="deleteBtn">
-                   {{ $t("storageBox.delete") }}
+                    {{ $t("storageBox.delete") }}
                     <i class="icon-menu-delete"></i>
                   </button>
                   <my-modal-component v-show="showModal">
-                    <Modal
-                      @close="closeModal"
-                      :bodytext1="$t('storageBox.deleteModal.text')"
-                      :btnText1="$t('storageBox.deleteModal.btn1')"
-                      :btnText2="$t('storageBox.deleteModal.btn2')"
-                      @confirm="confirmbtn($event)"
-                      link="/add-ingredient"
-                    />
+                    <Modal @close="closeModal" :bodytext1="$t('storageBox.deleteModal.text')"
+                      :btnText1="$t('storageBox.deleteModal.btn1')" :btnText2="$t('storageBox.deleteModal.btn2')"
+                      @confirm="confirmbtn($event)" link="/add-ingredient" />
                   </my-modal-component>
                 </li>
               </ul>
               <ul class="raw-material-list">
                 <li v-for="(item, index) of storage_box_list_data" :key="index">
-                  <ProductListStorageBox
-                    :item="item"
-                    :allSelected="allSelected"
-                    @storageBoxId="UpdatedId($event)"
-                  />
+                  <ProductListStorageBox :item="item" :allSelected="allSelected" :unchecked="unchecked"
+                    @storageBoxId="UpdatedId($event)" />
                 </li>
               </ul>
               <div class="addIng">
@@ -75,8 +67,8 @@
       </div>
     </div>
   </div>
-  <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
-    btnText1="Confirm"/>
+  <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
+    :btnText1="$t('button.Confirm')" />
 </template>
 
           
@@ -103,7 +95,8 @@ export default {
       sub_category_id: localStorage.getItem('sub_category_id'),
       showModal: false,
       btn: '',
-      isItemSelectedVisible : false,
+      isItemSelectedVisible: false,
+      unchecked: true
     };
   },
   created() {
@@ -121,8 +114,8 @@ export default {
     closeModal() {
       this.showModal = false;
     },
-    closeModalDelete(){
-       this.isItemSelectedVisible = false;
+    closeModalDelete() {
+      this.isItemSelectedVisible = false;
     },
     confirmbtn(e) {
       this.btn = e;
@@ -133,6 +126,7 @@ export default {
           this.mychoiceService.deleteIngredientsStorageBox(uid, box_id).then((res) => {
             //console.log(res.data);
             if (res.status = 200) {
+              this.unchecked = true;
               // this.$swal("Successfully Deleted");
               this.storage_box_list();
 
@@ -147,34 +141,35 @@ export default {
     },
     gotoNextPage() {
 
-       if (this.box_id_data.length == 0) {
-        this.$swal("Please Select at Least one");
+      if (this.box_id_data.length == 0) {
+        // this.$swal("Please Select at Least one");
+        this.isItemSelectedVisible = true;
       }
-      else {        
-    var option_data = JSON.parse(localStorage.getItem("option") || "[]");
+      else {
+        var option_data = JSON.parse(localStorage.getItem("option") || "[]");
 
-            for (let i = 0; i < option_data.length; i++) {
-              var option_array = option_data[i];
-              var res_option_type = Object.keys(option_array).toString();
-              // console.log(res_option_type);
-              if (res_option_type == "raw_material") { option_data.pop(option_data[i]); };
-            }
+        for (let i = 0; i < option_data.length; i++) {
+          var option_array = option_data[i];
+          var res_option_type = Object.keys(option_array).toString();
+          // console.log(res_option_type);
+          if (res_option_type == "raw_material") { option_data.pop(option_data[i]); };
+        }
 
-    for (let i = 0; i < this.box_id_data.length; i++) {
+        for (let i = 0; i < this.box_id_data.length; i++) {
           let box_id = this.box_id_data[i];
-           // Modifying
-    var put_raw = {
-        raw_material:box_id
-    };
-    option_data.push(put_raw);
-    }
+          // Modifying
+          var put_raw = {
+            raw_material: box_id
+          };
+          option_data.push(put_raw);
+        }
 
-    // Saving
-    localStorage.setItem("option", JSON.stringify(option_data));
+        // Saving
+        localStorage.setItem("option", JSON.stringify(option_data));
 
-      localStorage.setItem('raw_material_id', this.box_id_data);
-      localStorage.setItem('storage_box', 'storage_box');
-      this.$router.push('/ingredient-formulation/');
+        localStorage.setItem('raw_material_id', this.box_id_data);
+        localStorage.setItem('storage_box', 'storage_box');
+        this.$router.push('/ingredient-formulation/');
       }
 
     },
