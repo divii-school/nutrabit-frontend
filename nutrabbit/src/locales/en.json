@@ -171,11 +171,11 @@
         "SideNav": {
             "AboutUs": "About Us",
             "myChoice": "my choice",
-            "nutriBlending": "nutri 3.3 blending",
+            "nutriBlending": "nutri 3.3",
             "SampleMakingGuide": "Sample Making Guide",
             "RawMaterialStorage": "Raw material storage box",
-            "MyRecipe": "My Recipe",
-            "MyApplication": "My Application",
+            "MyRecipe": "Your own recipe",
+            "MyApplication": "My application",
             "Notice": "Notice",
             "FAQ": "FAQ",
             "Inquiry": "1:1 inquiry"
@@ -279,7 +279,6 @@
         "btn1" : "Cancel",
         "btn2" : "Login"
     },
-
     "customer" :{
         "title" : {
             "Notice" : "Notice",

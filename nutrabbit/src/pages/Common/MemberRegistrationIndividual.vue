@@ -20,7 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.TermsCheckBox") }}
-                        <input type="checkbox" v-model="termsCheck" />
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -219,7 +219,7 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                   Search Address
+                    Search Address
                   </button>
                 </div>
                 <div class="input-group">
