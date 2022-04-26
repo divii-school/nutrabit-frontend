@@ -6,8 +6,8 @@
           <div class="footer-links-inner">
             <div class="link-left">
               <ul>
-                <li><router-link to="/terms">Terms of Use</router-link></li>
-                <li class="active"><router-link to="/privacy">privacy policy</router-link></li>
+                <li><router-link to="/terms">{{ $t("footer.term") }}</router-link></li>
+                <li class="active"><router-link to="/privacy">{{ $t("footer.privacy") }}</router-link></li>
               </ul>
             </div>
             <div class="link-right">
@@ -33,17 +33,7 @@
           <a class="footer-logo" href="">
             <img src="../assets/images/footer-logo.svg" alt="" />
           </a>
-          <div class="address">
-            <ul>
-              <li>Newtrabit Co., Ltd.</li>
-              <li>CEO: Min Kyung-ran</li>
-              <li class="active">Business registration number: 603-88-01301</li>
-            </ul>
-            <p>
-              Headquarters: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul
-            </p>
-            <a href="">Copyright 2020 Nutrabbit. All right saved.</a>
-          </div>
+          <div class="address" v-html="$t('footer.address')"></div>
         </div>
       </div>
     </div>

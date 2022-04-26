@@ -3,19 +3,19 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my recipe</h2>
+          <h2>{{ $t("onlyme.title.myRecipe") }}</h2>
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Recommended blending</h2>
+                <h2>{{ $t("onlyme.title.RecommendedBlending") }}</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemRecommended">{{$t("onlyme.button.DeleteSelection")}}<i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -24,7 +24,7 @@
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(type == 'radiochoice' || type == '') ? 'btn-disabled' : ''"  :disabled="recommendedDisabled">Next</button>
+                <button class="btn-small-solid blue" @click="toNextRecommended" :class="(type == 'radiochoice' || type == '') ? 'btn-disabled' : ''"  :disabled="recommendedDisabled">{{$t("onlyme.button.Next")}}</button>
               </div>
             </div>
           </div>
@@ -33,13 +33,13 @@
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>My Choice</h2>
+                <h2>{{ $t("onlyme.title.MyChoice")}}</h2>
               </div>
             </div>
             <div class="product-list-wrap">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
-                  <button class="deleteBtn" @click="deleteRecipeItemChoice">delete selection <i class="icon-menu-delete"></i></button>
+                  <button class="deleteBtn" @click="deleteRecipeItemChoice">{{$t("onlyme.button.DeleteSelection")}}<i class="icon-menu-delete"></i></button>
                 </li>
               </ul>
               <ul class="raw-material-list">
@@ -48,19 +48,19 @@
                 </li>
               </ul>
               <div class="btn-wrap flexEnd">
-                <button class="btn-small-solid blue" :class="(type == 'radiorecommended' || type == '') ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="choiceDisabled">Next</button>
+                <button class="btn-small-solid blue" :class="(type == 'radiorecommended' || type == '') ? 'btn-disabled' : ''" @click="toNextChoice" :disabled="choiceDisabled">{{$t("onlyme.button.Next")}}</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
-    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
-    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" bodytext1="There are no items selected"
-    btnText1="Confirm"/>
+    <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
+    :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
+    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
+    :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
+    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
+    :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
 

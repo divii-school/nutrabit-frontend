@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              회원가입
-              <span>사업자회원</span>
+              {{ $t("common.QuickLinks.SignUp") }}
+              <span>{{ $t("signup.BusinessMember") }}</span>
             </h1>
-            <span>* 필수항목</span>
+            <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
           <form
             action=""
@@ -19,12 +19,11 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/terms">이용약관</router-link>에 동의합니다.
+                    {{ $t("common.label.TermsCheckBox") }}
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
               <div
                 class="form-group"
@@ -32,12 +31,11 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (필수) <router-link to="/privacy">개인정보 수집·이용</router-link>에 동의합니다.
-                    <input type="checkbox" v-model="personalCheck" />
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
+                    <input type="checkbox" v-model="personalCheck"  />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="business-form">
@@ -348,7 +346,6 @@ export default {
   methods: {
     checkError() {
       let credential = {
-        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,

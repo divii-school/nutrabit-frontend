@@ -46,7 +46,7 @@
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
-                      $t("common.QuickLinks.FindPassword")
+                        $t("common.QuickLinks.FindPassword")
                     }}</router-link>
                   </li>
                 </ul>
@@ -103,7 +103,7 @@
               Naver Login
             </button> -->
 
-            <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button>
+            <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@ export default {
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
 
-      testData: { "accesstoken": "eyjrawqioijmadzcczhdiiwiywxnijoiulmyntyifq.eyjpc3mioijodhrwczovl2fwcgxlawquyxbwbguuy29tiiwiyxvkijoiy29tlm51dhjhymjpdc5udxryatmziiwizxhwijoxnjuwnze5nzi3lcjpyxqioje2nta2mzmzmjcsinn1yii6ijawmtcyns42mjrimdy2mjnlyme0mmyzywu5odhkn2u3zgu5yjc5oc4wodi5iiwibm9uy2uioijkmziwnwnlnmrmm2iynwjjzwriyzzkngrlyzcxzmm4ode5mwzknwewyzu0mziyogjintu3mgy0ogfkmzlizmq4iiwiy19oyxnoijoirtgzuf9onhjnv3bxm3e3tjkxbhrtdyisimvtywlsijoic2f5yw50yubkaxzpas5jb20ilcjlbwfpbf92zxjpzmllzci6inrydwuilcjhdxrox3rpbwuioje2nta2mzmzmjcsim5vbmnlx3n1chbvcnrlzci6dhj1zx0.jg6_m56wsyl3tpyaa6sel3mwhextesasgvhr_oilvmac6byir66fu0oaktc-uad3lna8brdz02onm290cfeoxs8fv1o0zjywvdlml8lhzqyb5cvwivbeynyreiea16x7qqpcm8fajuthunkwjfxqu9wdmvt7avdekusgdh9vrax7bw0hbqwm7rfs19uoqyezmeckgewydnf4-cdgvg5e3tdta-bpty_tfdwrhzy7zysimpch-um51y4yh9ly4qjnmr7hqsvonejgfi1uwr8zswav5scrmi52db__f-oudv-np7bv7fzxvsq7pexxu51squftxmalidosi358gtmd5a", "emailid": "sayanta@divii.com", "socialId": "001725.624b06623eba42f3ae988d7e7de9b798.0829", "userName": " ", "loginVia": "apple" },
+      // testData: { "accesstoken": "eyjrawqioijmadzcczhdiiwiywxnijoiulmyntyifq.eyjpc3mioijodhrwczovl2fwcgxlawquyxbwbguuy29tiiwiyxvkijoiy29tlm51dhjhymjpdc5udxryatmziiwizxhwijoxnjuwnze5nzi3lcjpyxqioje2nta2mzmzmjcsinn1yii6ijawmtcyns42mjrimdy2mjnlyme0mmyzywu5odhkn2u3zgu5yjc5oc4wodi5iiwibm9uy2uioijkmziwnwnlnmrmm2iynwjjzwriyzzkngrlyzcxzmm4ode5mwzknwewyzu0mziyogjintu3mgy0ogfkmzlizmq4iiwiy19oyxnoijoirtgzuf9onhjnv3bxm3e3tjkxbhrtdyisimvtywlsijoic2f5yw50yubkaxzpas5jb20ilcjlbwfpbf92zxjpzmllzci6inrydwuilcjhdxrox3rpbwuioje2nta2mzmzmjcsim5vbmnlx3n1chbvcnrlzci6dhj1zx0.jg6_m56wsyl3tpyaa6sel3mwhextesasgvhr_oilvmac6byir66fu0oaktc-uad3lna8brdz02onm290cfeoxs8fv1o0zjywvdlml8lhzqyb5cvwivbeynyreiea16x7qqpcm8fajuthunkwjfxqu9wdmvt7avdekusgdh9vrax7bw0hbqwm7rfs19uoqyezmeckgewydnf4-cdgvg5e3tdta-bpty_tfdwrhzy7zysimpch-um51y4yh9ly4qjnmr7hqsvonejgfi1uwr8zswav5scrmi52db__f-oudv-np7bv7fzxvsq7pexxu51squftxmalidosi358gtmd5a", "emailid": "sayanta@divii.com", "socialId": "001725.624b06623eba42f3ae988d7e7de9b798.0829", "userName": " ", "loginVia": "apple" },
     };
   },
   setup() {
@@ -188,14 +188,24 @@ export default {
       const setEmail = this.email;
       const setPassword = this.password;
       if (setEmail == "") {
-        this.errorEmail = "Please enter an email id";
+        // this.errorEmail = "Please enter an email id";
+        return this.errorEmail = this.$t("common.Error.EnterId");
       } else if (setPassword == "") {
-        this.errorPassword = "Please enter password";
+        return this.errorPassword = this.$t("common.Error.EnterPassword");
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
-              this.$swal(res.response.data.message);
+              if (res.response.data.message == "Password Does Not Match") {
+                return this.errorPassword = this.$t("common.Error.checkPassword");
+              }
+              if (
+                res.response.data.message ==
+                "User With The Email Does Not Exists"
+              ) {
+                return this.errorEmail = this.$t("common.Error.chcekId");
+              }
+              // this.$swal(res.response.data.message);
             }
           } else {
             if (res.data.status == 200) {
@@ -239,7 +249,7 @@ export default {
       let ftoken = token;
       console.log("ftoken:--", ftoken);
       alert(ftoken);
-      // this.appleLoginHandler(ftoken);
+      this.appleLoginHandler(ftoken);
     },
     mbKakaoLogin() {
       window.parent.postMessage("kakaoLoginClicked", "*");
@@ -254,11 +264,19 @@ export default {
     appleLoginHandler(res) {
       console.log("appleLoginHandler", res);
       if (res) {
-        let resData = JSON.parse(JSON.stringify(res));
-        console.log("appleLoginHandler", resData);
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
+        console.log("--appleLoginHandler--", resData);
+        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         localStorage.setItem("token", resData.accesstoken);
         localStorage.setItem("uid", resData.socialId);
-        localStorage.setItem("uname", resData.userName ? resData.userName : resData.emailid);
+        localStorage.setItem(
+          "uname",
+          !resData.userName || resData.userName == ""
+            ? resData.userName
+            : emailName
+        );
         // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
         localStorage.setItem("userType", resData.loginVia);
         this.$router.push("/");
@@ -311,7 +329,10 @@ export default {
 
     // kakao
     loginWithKakao() {
+      // const route = useRoute();
+      const self = this;
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+      console.log(Kakao.isInitialized());
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -320,28 +341,36 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
+     
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log('authObj kakao--', authObj);
+          console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
-          localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          // localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          localStorage.setItem("tokenexpiresAt", 3600);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              // console.log("res-", res);
+              console.log("res----", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              // this.$router.push({name: "home"});
-              this.loader.hide();
+              localStorage.setItem("userType", 'SNS');
+              self.loader.hide();
+              self.$router.push("/");
             },
           });
         },
         fail: function (err) {
-          // console.log(err);
+          console.log(err);
         },
       });
+      //  window.Kakao.Auth.authorize({
+      //   redirectUri: 'http://localhost:8082'
+      // });
     },
+
+
   },
 };
 </script>

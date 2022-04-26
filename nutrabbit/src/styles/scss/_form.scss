@@ -162,10 +162,13 @@
         .form-group {
             margin-top: 24px;
             .custom-check{
-                a{
-                    color: $green-68;
-                    text-decoration: underline;
-                    margin-left: 3px;
+                .custom-check-title{
+                    display: block;
+                    router-link{
+                        color: $green-68;
+                        text-decoration: underline;
+                        margin-left: 3px;
+                    }
                 }
             }
             &:first-child {

@@ -3,30 +3,30 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>Recommended blending</h2>
+          <h2>{{ $t('myChoice.RecommendedBlending.title') }}</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Raw material selection</p>
+                <p>{{ $t('progress_bar.selection1') }}</p>
               </div>
             </li>
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Formulation selection</p>
+                <p>{{ $t('progress_bar.selection2') }}</p>
               </div>
             </li>
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Package selection</p>
+                <p>{{ $t('progress_bar.selection3') }}</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>Final estimate</p>
+                <p>{{ $t('progress_bar.selection4') }}</p>
               </div>
             </li>
           </ul>
@@ -35,7 +35,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>options</h2>
+                <h2>{{ $t('final.option') }}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -43,9 +43,9 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>category</th>
-                      <th>Explanation</th>
+                      <th>{{ $t('final.No') }}</th>
+                      <th>{{ $t('final.Category') }}</th>
+                      <th>{{ $t('final.Description') }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,58 +58,57 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>Additional Requests</label>
-                <span>If you provide more details, it will help you get an accurate estimate.</span>
-                <textarea v-model="additional_request" placeholder="Please write freely"></textarea>
+                <label>{{ $t('final.AdditionalRequests') }}</label>
+                <span>{{ $t('final.add_info') }}</span>
+                <textarea v-model="additional_request" :placeholder="$t('final.textarea_place')"></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">
-                  Select service
-                  <span>* Multiple selection possible</span>
+                  {{ $t('final.Select_Service') }}
+                  <span> {{ $t('final.Select_Service_desc') }}</span>
                 </label>
               </div>
               <div class="product-list-wrap">
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-check" for="qoute">
+                    <label class="custom-check custom-check2" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
                       <span class="checkmark" for="qoute"></span>
                     </label>
                   </div>
                   <div class="material-details">
-                    <h2>Get an estimate</h2>
+                    <h2>{{ $t('final.check1') }}</h2>
                   </div>
                 </div>
                 <div class="product-item with-input">
                   <div class="radio-wrap">
-                    <label class="custom-check" for="sample">
+                    <label class="custom-check custom-check2" for="sample">
                       <input type="checkbox" id="sample" value="1" v-model="servicetype" />
                       <span class="checkmark" for="sample"></span>
                     </label>
                   </div>
                   <div class="material-details">
                     <h2>
-                      sample application
-                      <span>(Sample cost 300,000 won/paid)</span>
+                      {{ $t('final.check2') }}
+                      <span>{{ $t('final.check2_info') }}</span>
                     </h2>
                   </div>
                 </div>
-                <ul>
-                  <li>* Packages are excluded when requesting samples.</li>
-                  <li>* The quotation will be sent to the registered email address within 3 business days.</li>
-                  <li>* Unit price may vary depending on quantity & package design.</li>
-                  <li>* It may differ from the detailed estimate at the time of completion.</li>
+                <ul v-html="$t('final.note')">
                 </ul>
                 <div class="btn-wrap">
                   <button
                     @click="this.$router.push({ name: 'ChoiceRecommendedBlendingPackageSelection', query: { blending_id: this.blending_id } })"
-                    class="btn-small-solid grey">Previous</button>
+                    class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="package_temporary_add">Save as Draft</button>
-                    <button class="btn-small-solid blue ml-4" @click="package_add">Next</button>
+                    <button class="btn-green-outline blue" @click="package_temporary_add">{{
+                      $t("button.Save_as_draft")
+                    }}</button>
+                    <button class="btn-small-solid blue ml-4" @click="package_add">{{ $t("button.next") }}</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" bodytext1="Save as a Draft" btnText2="confirm" link="/" />
+                    <Modal @close="closeModal" :bodytext1="$t('final.modal_msg')" :btnText2="$t('button.Confirm')"
+                      link="/" />
                   </my-modal-component>
                 </div>
               </div>
@@ -176,52 +175,52 @@ export default {
     package_add() {
       let is_temporary_storage = 'N';
       let length = this.servicetype.length;
-        let service = '';
-        if(length==0) {
-          this.$swal("Please select a service");
-        }
-        else{
+      let service = '';
+      if (length == 0) {
+        this.$swal("Please select a service");
+      }
+      else {
         if (length == 2) {
           service = 3;
         }
         else {
           service = this.servicetype.toString();
         }
-      this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-        // console.log(res);
-        if (res.status = 200) {
-          this.$swal("Application Data is successfuly submitted");
-          this.$router.push("/");
-        } else {
-          this.$swal(res.message, "error");
-        }
-      });
-        }
+        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+          // console.log(res);
+          if (res.status = 200) {
+            this.$swal("Application Data is successfuly submitted");
+            this.$router.push("/");
+          } else {
+            this.$swal(res.message, "error");
+          }
+        });
+      }
     },
     package_temporary_add() {
       let is_temporary_storage = 'Y';
       let length = this.servicetype.length;
-        let service = '';
-        if(length==0) {
-          this.$swal("Please select a service");
-        }
-        else{
+      let service = '';
+      if (length == 0) {
+        this.$swal("Please select a service");
+      }
+      else {
         if (length == 2) {
           service = 3;
         }
         else {
           service = this.servicetype.toString();
         }
-      this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-        // console.log(res);
-        if (res.status = 200) {
-          // this.$router.push("/");
-          this.showModal = true;
-        } else {
-          this.$swal(res.message, "error");
-        }
-      });
-        }
+        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+          // console.log(res);
+          if (res.status = 200) {
+            // this.$router.push("/");
+            this.showModal = true;
+          } else {
+            this.$swal(res.message, "error");
+          }
+        });
+      }
     },
     option_list() {
       this.mychoiceService.getRecommendedBlendingDetail(this.blending_id).then((res) => {

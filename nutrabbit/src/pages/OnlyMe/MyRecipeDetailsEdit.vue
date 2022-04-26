@@ -9,7 +9,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>설명</th>
-                      <th>신청 날짜</th>
+                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody v-for="(option_item, index) in option_items" :key="index">
@@ -47,19 +47,19 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>Title</label>
+                <label>{{$t("onlyme.title.Title")}}</label>
                 <input
                   type="text"
                   name=""
                   disabled
-                  placeholder="My own recipe made with guar gum hydrolyzate"
+                  :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
                 />
               </div>
               <div class="fGroup">
-                <label>추가 요청 사항</label>
+                <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
                 <span
-                  >자세히 작성할 수록 견적이 정확해집니다.</span
+                  >{{$t('onlyme.add_req_caption.Caption')}}</span
                 >
                 <textarea
                   placeholder="Please write freely"
@@ -68,9 +68,9 @@
               </div>
               <div class="fGroup mb0">
                 <label class="mb0"
-                  >서비스 선택
+                  >{{$t('onlyme.title.Service')}}
                   <span
-                    >* 중복 선택 가능 (샘플 신청 시 패키지는 제외됩니다.)</span
+                    >{{$t('onlyme.service_caption.Caption')}}</span
                   >
                 </label>
               </div>
@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <div class="material-details">
-                    <h2>Get an estimate</h2>
+                    <h2>{{$t("onlyme.title.Estimate")}}</h2>
                   </div>
                 </div>
                 <div class="product-item recipeCheck">
@@ -105,26 +105,26 @@
                   </div>
                   <div class="material-details">
                     <h2>
-                      샘플 신청
-                      <span>(샘플비용 300,000원/유료)</span>
+                      {{$t("onlyme.title.SampleAppliction")}}
+                      <span>{{$t("onlyme.title.SampleApplicationCost")}}</span>
                     </h2>
                   </div>
                 </div>
                 <ul>
                   <li>
-                    * 견적은 영업일 수 2일 이내에 등록하신 이메일로 발송됩니다.
+                    {{$t("onlyme.service_info.ContentOne")}}
                   </li>
                   <li>
-                    * 수량&패키지 디자인에 따라 단가 차이가 발생할 수 있습니다.
+                    {{$t("onlyme.service_info.ContentTwo")}}
                   </li>
                   <li>
-                    * 완료시점에 상세견적과 차이가 날 수 있습니다.
+                    {{$t("onlyme.service_info.ContentThree")}}
                   </li>
                 </ul>
                 <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-recipe')">취소</button>
+                  <button class="btn-small-solid grey" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
                   <div class="btnWrapRight">
-                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">저장</button>
+                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">{{$t('onlyme.button.Save')}}</button>
                   </div>
                 </div>
               </div>
@@ -259,14 +259,8 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id || !_title || !_additional_req || (!this.isSample && !this.isQuote)){
-      this.$swal('All fields required to be filled')
-
-      // this.emptyTitle = (!_title) ? true : false;
-      // this.emptyReq = (!_additional_req) ? true : false;
-      // this.emptyService = (!this.isSample && !this.isQuote) ? true : false;
-      //this.errMsg = 'Needs to fill all the fields'
-
+      if(!_id  || (!this.isSample && !this.isQuote)){
+      //this.$swal('All fields required to be filled')
       return
       }
       

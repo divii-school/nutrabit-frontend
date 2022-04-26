@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>{{ page_header }}</h2>
+          <h2>My Choice</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>카테고리</th>
-                      <th>설명</th>
+                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody
@@ -45,35 +45,35 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>제목</label>
+                <label>{{$t("onlyme.title.Title")}}</label>
                 <input
                   type="text"
                   name=""
-                  placeholder="구아검가수분해물로 만든 나만의 레시피"
+                  :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
                 />
               </div>
               <div class="fGroup">
-                <label>추가 요청 사항</label>
+                <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
                 <textarea
                   placeholder="Please write freely"
                   v-model="additionalRequest"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0">서비스</label>
+                <label class="mb0">{{$t('onlyme.title.Service')}}</label>
               </div>
               <div class="product-list-wrap">
-                <div v-if="serviceType.length < 2">
+                <div v-if="(serviceSample || serviceEstimate)">
                   <div class="product-item with-input without-input">
                     <div class="material-details">
-                      <h2>{{ serviceType[0] }}</h2>
+                      <h2>{{singleService }}</h2>
                     </div>
                   </div>
                 </div>
-                <div v-else>
+                <div v-if="serviceBoth">
                   <div
-                    v-for="(service, index) in serviceType"
+                    v-for="(service, index) in services"
                     :key="index"
                     class="product-item with-input without-input"
                   >
@@ -84,20 +84,20 @@
                 </div>
                 <div class="btn-wrap">
                   <button class="btn-small-solid grey" @click="openModal">
-                    삭제
+                    {{$t('onlyme.button.Delete')}}
                   </button>
                   <div class="btnWrapRight">
                     <button
                       class="btn-green-outline blue"
                       @click="toEditRecipeDetails(product_id, app_type)"
                     :disabled="isDisabled">
-                      수정
+                      {{$t('onlyme.button.Edit')}}
                     </button>
                     <button
                       class="btn-small-solid blue ml-4"
                       @click="toPaymentGateway(product_id)"
                     >
-                      다음
+                      {{$t('onlyme.button.Next')}}
                     </button>
                   </div>
                 </div>
@@ -107,8 +107,8 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isModalVisible" @close="closeModal" bodytext1="Are you sure?"
-    btnText1="Cancel"  btnText2 = "Confirm"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
+    <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
+    :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeDetail"/>
   </div>
 </template>
 
@@ -137,6 +137,10 @@ export default {
       isModalVisible: false,
       serviceNum: "",
       isDisabled : false,
+      serviceSample : false,
+      serviceEstimate : false,
+      serviceBoth : false,
+
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -160,7 +164,7 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
-      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "추천 블랜딩",
+      //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "추천 블랜딩",
     };
   },
 
@@ -172,6 +176,24 @@ export default {
   },
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
+  },
+
+  computed : {
+    services(){
+      return [this.$t("onlyme.title.SampleAppliction"), this.$t("onlyme.title.Estimate")];
+    },
+    singleService(){
+      let service;
+      if(this.serviceSample){
+        service = this.$t("onlyme.title.SampleAppliction");
+      }
+      if(this.serviceEstimate){
+        service = this.$t("onlyme.title.Estimate");
+      }
+
+      return service;
+
+    }
   },
   methods: {
     recipeSingleProductDetails(_productID, _type) {
@@ -193,11 +215,11 @@ export default {
             this.title = (_type == 'my_choice') ? res.data[0].title : res.data[0].name_ko;
             this.serviceNum = res.data[0].service_type;
             if (this.serviceNum == 1) {
-              this.serviceType = ["Sample Application"];
+              this.serviceSample = true;
             } else if (this.serviceNum == 2) {
-              this.serviceType = ["Get an estimate"];
+              this.serviceEstimate = true;
             } else {
-              this.serviceType = ["Sample Application", "Get an estimate"];
+              this.serviceBoth = true;
             }
             Array.from(res.data[0].options).forEach((ele) => {
               console.log(Object.keys(ele)[0], Object.values(ele)[0])
