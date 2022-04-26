@@ -270,7 +270,7 @@ export default {
       personalInfoRouterLink: "",
       rightMenuItem: [
         {
-          mainItem: "Login",
+          mainItem: this.$t('common.title.login'),
         },
         {
           mainItem: "nutri 3.3",
@@ -352,6 +352,7 @@ export default {
     this.commonService = new CommonService();
   },
   updated() {
+    this.rightMenuItem;
     if (localStorage.token) {
       this.logedInUserDetails = true;
       this.token = localStorage.token ? true : false;

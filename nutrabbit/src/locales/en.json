@@ -167,7 +167,19 @@
         "logout" : "Log out",
         "searchHistory" : "No search history.",
         "close" : "close",
-        "delete" : "Delete all"
+        "delete" : "Delete all",
+        "SideNav": {
+            "AboutUs": "About Us",
+            "myChoice": "my choice",
+            "nutriBlending": "nutri 3.3 blending",
+            "SampleMakingGuide": "Sample Making Guide",
+            "RawMaterialStorage": "Raw material storage box",
+            "MyRecipe": "My Recipe",
+            "MyApplication": "My Application",
+            "Notice": "Notice",
+            "FAQ": "FAQ",
+            "Inquiry": "1:1 inquiry"
+        }
     },
     "myChoice": {
         "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Please select the desired function.</li></ul>",

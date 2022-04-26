@@ -165,7 +165,19 @@
         "logout": "로그아웃",
         "searchHistory": "최근 검색 기록이 없습니다.",
         "close": "닫기",
-        "delete": "전체삭제"
+        "delete": "전체삭제",
+        "SideNav": {
+            "AboutUs": "About Us",
+            "myChoice": "my choice",
+            "nutriBlending": "nutri 3.3 blending",
+            "SampleMakingGuide": "Sample Making Guide",
+            "RawMaterialStorage": "Raw material storage box",
+            "MyRecipe": "My Recipe",
+            "MyApplication": "My Application",
+            "Notice": "Notice",
+            "FAQ": "FAQ",
+            "Inquiry": "1:1 inquiry"
+        }
     },
     "myChoice": {
         "popup": "<ul><li>내가 직접 건강기능식품 레시피를 만들어 보는 메뉴입니다.</li><li>원하시는 기능을 선택하세요.</li></ul>",
