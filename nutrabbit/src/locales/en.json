@@ -38,7 +38,8 @@
             "OnlineCheck": "Online",
             "NetworkCheck": "Network (door-to-door sales)",
             "SNSCheck": "SNS",
-            "EtcCheck": "Etc"
+            "EtcCheck": "Etc",
+            "FindUs": "How did you find us?"
         },
         "placeholder": {
             "EnterId": "Enter ID",
@@ -86,13 +87,17 @@
     
         "title": {
             "myRecipe": "my recipe",
+            "Nutri" : "nutri 3.3",
             "RecommendedBlending": "Recommended blending",
-            "Application" : "My Application",
             "MyChoice": "my choice",
             "Options": "Options",
             "Title": "Title",
             "AdditionalRequest": "Additional Requests",
-            "Service": "Service"
+            "Service": "Service",
+            "Application" : "My Application",
+            "SampleTab" : "Sample Application Details",
+            "QuoteTab" : "Quotation Request Details",
+            "Answer" : "Answer"
         },
         "tableCaption": {
             "Category": "Category",
@@ -101,7 +106,8 @@
             "Formulation" : "Formulation",
             "Package" : "Package",
             "AdditionalRequest" : "Additional Request",
-            "Service" : "Service"
+            "Service" : "Service",
+            "ApplicationDate" : "Application Date"
         },
         "add_req_caption" : {
             "Caption" : "The more detailed you are, the more accurate your estimate will be."
@@ -125,7 +131,9 @@
             "Cancel": "Cancel",
             "Delete" : "Delete",
             "Edit" : "Edit",
-            "Save" : "Save"
+            "Save" : "Save",
+            "Previous" : "Previous",
+            "List" : "List"
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
@@ -159,7 +167,19 @@
         "logout" : "Log out",
         "searchHistory" : "No search history.",
         "close" : "close",
-        "delete" : "Delete all"
+        "delete" : "Delete all",
+        "SideNav": {
+            "AboutUs": "About Us",
+            "myChoice": "my choice",
+            "nutriBlending": "nutri 3.3 blending",
+            "SampleMakingGuide": "Sample Making Guide",
+            "RawMaterialStorage": "Raw material storage box",
+            "MyRecipe": "My Recipe",
+            "MyApplication": "My Application",
+            "Notice": "Notice",
+            "FAQ": "FAQ",
+            "Inquiry": "1:1 inquiry"
+        }
     },
     "myChoice": {
         "popup": "<ul><li>This is a menu where I make my own health functional food recipes.</li><li>Please select the desired function.</li></ul>",
@@ -258,5 +278,17 @@
         "text2" : "Please use the service after logging in.",
         "btn1" : "Cancel",
         "btn2" : "Login"
+    },
+
+    "customer" :{
+        "title" : {
+            "Notice" : "Notice",
+            "Faq" : "FAQ",
+            "PublishedDate" : "Published date"
+        },
+
+        "content" : {
+            "Tag" : "Important"
+        }
     }
 }
