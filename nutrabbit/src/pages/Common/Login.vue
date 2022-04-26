@@ -355,7 +355,7 @@ export default {
               console.log("res----", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              localStorage.setItem("userType", 'business_member');
+              localStorage.setItem("userType", 'SNS');
               self.loader.hide();
               self.$router.push("/");
             },
