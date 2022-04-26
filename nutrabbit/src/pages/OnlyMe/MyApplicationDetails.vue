@@ -338,7 +338,8 @@ export default {
   data() {
     return {
       currentTab: 0,
-      tabs: ["샘플 신청내역", "견적 신청내역"],
+      //tabs: ["샘플 신청내역", "견적 신청내역"],
+      tabs: [this.$t('onlyme.title.SampleTab'), this.$t('onlyme.title.QuoteTab')],
       appNutriList: [],
       appRecommendedList: [],
       appMychoiceList: [],
