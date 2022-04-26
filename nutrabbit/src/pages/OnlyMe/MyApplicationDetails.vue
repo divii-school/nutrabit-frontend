@@ -9,7 +9,7 @@
         <div id="app">
           <ul class="overlay-panel-actions-primary">
             <li
-              v-for="(tab, index) in tabs"
+              v-for="(tab, index) in tabsTrns"
               @click="currentTab = index"
               :class="{ active: currentTab === index }"
               :key="index"
@@ -338,8 +338,7 @@ export default {
   data() {
     return {
       currentTab: 0,
-      //tabs: ["샘플 신청내역", "견적 신청내역"],
-      tabs: [this.$t('onlyme.title.SampleTab'), this.$t('onlyme.title.QuoteTab')],
+      tabs: ["샘플 신청내역", "견적 신청내역"],
       appNutriList: [],
       appRecommendedList: [],
       appMychoiceList: [],
@@ -386,6 +385,12 @@ export default {
   setup() {
     const common = inject("common");
     return { common };
+  },
+
+  computed : {
+    tabsTrns(){
+      return [this.$t('onlyme.title.SampleTab'), this.$t('onlyme.title.QuoteTab')];
+    }
   },
 
   created() {

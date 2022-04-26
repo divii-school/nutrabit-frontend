@@ -97,7 +97,9 @@
             "Application" : "My Application",
             "SampleTab" : "Sample Application Details",
             "QuoteTab" : "Quotation Request Details",
-            "Answer" : "Answer"
+            "Answer" : "Answer",
+            "SampleAppliction" : "Sample application",
+            "Estimate" : "Get an estimate"
         },
         "tableCaption": {
             "Category": "Category",
