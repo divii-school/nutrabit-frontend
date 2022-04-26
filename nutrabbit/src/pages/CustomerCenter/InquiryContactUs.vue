@@ -16,7 +16,7 @@
                   <div class="header-dropdown dropdown">
                     <select v-model="selected">
                       <option value="" disabled hidden>
-                        {{$t("customer.inquiryLabel.Subject")}}
+                        {{$t("customer.placeholder.InquirySubject")}}
                       </option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
@@ -35,7 +35,7 @@
                   <div class="input-inner">
                     <textarea
                       class="form-control inquiry-textarea"
-                      placeholder="문의 내용을 입력해주세요."
+                      :placeholder="$t('customer.placeholder.InquiryDetails')"
                       v-model="InqDesc"
                     ></textarea>
                   </div>
