@@ -57,7 +57,7 @@
     </div>
     <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
-    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
+    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
     <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText1="$t('onlyme.button.Confirm')"/>
