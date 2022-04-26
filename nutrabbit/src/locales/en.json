@@ -295,8 +295,21 @@
             "Unanswered" : "Unanswered",
             "Attachment" : "Attachment",
             "Inquiries" : "Inquiries"
+        },
 
-
+        "inquiryLabel" : {
+            "Subject" : "Inquiry Subject",
+            "Details" : "Inquiry",
+            "Upload" : "File Upload"
+        },
+        "placeholder" : {
+            "InquirySubject" : "Please inquire about service.",
+            "InquiryDetails" : "Please enter your inquiry details."
+        },
+        "button" : {
+            "Submit" : "Submit"
         }
+
+
     }
 }

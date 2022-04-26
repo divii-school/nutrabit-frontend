@@ -2,7 +2,7 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">1:1 문의</h1>
+        <h1 class="inquiry-heading">{{$t("customer.title.Inquiry")}}</h1>
         <div class="login-signup-inner">
           <form
             action=""
@@ -11,12 +11,12 @@
           >
             <div class="individuals-form">
               <div class="form-group">
-                <label for="">문의 제목</label>
+                <label for="">{{$t("customer.inquiryLabel.Subject")}}</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
                     <select v-model="selected">
                       <option value="" disabled hidden>
-                        문의 제목 선택
+                        {{$t("customer.inquiryLabel.Subject")}}
                       </option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">Inquiry</label>
+                <label for="">{{$t("customer.inquiryLabel.Details")}}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <textarea
@@ -42,7 +42,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">파일 업로드</label>
+                <label for="">{{$t("customer.inquiryLabel.Upload")}}</label>
                 <div class="input-group">
                   <div class="file-input">
                     <input
@@ -51,7 +51,7 @@
                       v-on:change="onFileChange"
                     />
                     <label for="file">
-                      파일 업로드
+                      {{$t("customer.inquiryLabel.Upload")}}
                       <img src="../../assets/icons/upload.png" />
                     </label>
                   </div>
@@ -65,10 +65,10 @@
             </div>
             <div class="btn-wrap flex dual-btn">
               <button class="btn-primary grey-btn-solid" @click="resetForm">
-                취소
+                {{$t("onlyme.button.Cancel")}}
               </button>
               <button class="btn-primary grenn-btn2" @click="submitData">
-                등록
+                {{$t("customer.button.Submit")}}
               </button>
             </div>
           </form>

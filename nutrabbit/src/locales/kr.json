@@ -114,6 +114,7 @@
         "placeholder": {
             "title": "구아검가수분해물로 만든 나만의 레시피",
             "additionalRequest": ""
+            
         },
         "button": {
             "DeleteSelection": "선택 삭제",
@@ -292,6 +293,19 @@
             "Unanswered" : "미답변",
             "Attachment" : "첨부파일",
             "Inquiries" : "문의내용"
+        },
+
+        "inquiryLabel" : {
+            "Subject" : "문의 제목",
+            "Details" : "문의 내용",
+            "Upload" : "파일 업로드"
+        },
+        "placeholder" : {
+            "InquirySubject" : "서비스 관련 문의드립니다.",
+            "InquiryDetails" : "문의 내용을 입력해주세요."
+        },
+        "button" : {
+            "Submit" : "등록"
         }
     }
 }
