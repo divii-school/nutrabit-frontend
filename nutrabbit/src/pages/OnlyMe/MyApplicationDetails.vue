@@ -9,7 +9,7 @@
         <div id="app">
           <ul class="overlay-panel-actions-primary">
             <li
-              v-for="(tab, index) in tabs"
+              v-for="(tab, index) in tabsTrns"
               @click="currentTab = index"
               :class="{ active: currentTab === index }"
               :key="index"
@@ -387,10 +387,18 @@ export default {
     return { common };
   },
 
+  computed : {
+    tabsTrns(){
+      return [this.$t('onlyme.title.SampleTab'), this.$t('onlyme.title.QuoteTab')];
+    }
+  },
+
   created() {
     this.myApplicationDetails = new MyApplicationDetails();
   },
-
+  updated(){
+    console.log(this.tabsTrns)
+  },
   methods: {
     myCallback1(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;

@@ -20,7 +20,7 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.TermsCheckBox") }}
-                        <input type="checkbox" v-model="termsCheck" />
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
