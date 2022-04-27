@@ -3,35 +3,12 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <div v-if="product_sub_image_path.length>0">
+          <div v-if="product_sub_image_path.length > 0">
             <swiper
               :spaceBetween="10"
               :modules="[Thumbs]"
               :thumbs="{ swiper: thumbsSwiper }"
               class="mySwiper"
-              v-for="(items, index) of nutriDetails"
-              :key="index"
-            >
-                <swiper-slide
-                  v-for="(item, index) of items.product_sub_image_path"
-                  :key="index"
-                >
-                  <img v-if="item" :src="imgBaseUrl + item" alt />
-                </swiper-slide>
-            </swiper>
-            </div>
-          <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
-          </div>
-          <div v-if="product_sub_image_path.length>0">
-            <swiper
-              :spaceBetween="10"
-              :slidesPerView="4"
-              :freeMode="true"
-              :modules="[Thumbs]"
-              watch-slides-progress
-              @swiper="setThumbsSwiper"
-              class="mySwiper2"
               v-for="(items, index) of nutriDetails"
               :key="index"
             >
@@ -41,9 +18,31 @@
               >
                 <img v-if="item" :src="imgBaseUrl + item" alt />
               </swiper-slide>
-
             </swiper>
-            </div>
+          </div>
+          <div v-else>
+            <img src="../../assets/images/content_place.png" alt="" />
+          </div>
+          <div v-if="product_sub_image_path.length > 0">
+            <swiper
+              :spaceBetween="10"
+              :slidesPerView="4"
+              :freeMode="true"
+              :modules="[Thumbs]"
+              watch-slides-progress
+              @swiper="setThumbsSwiper"
+              class="mySwiper2 thumbsSwiperCustom"
+              v-for="(items, index) of nutriDetails"
+              :key="index"
+            >
+              <swiper-slide
+                v-for="(item, index) of items.product_sub_image_path"
+                :key="index"
+              >
+                <img v-if="item" :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
+          </div>
           <div v-else>
             <img src="../../assets/images/content_place.png" alt="" />
           </div>
@@ -65,18 +64,15 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{item.description_ko}}</p>
-            <button
-              @click="openmodal()"
-              class="btn-primary blue-btn-solid"
-            >
+            <p>{{ item.description_ko }}</p>
+            <button @click="openmodal()" class="btn-primary blue-btn-solid">
               {{ $t("nutri.nutriDetails.button") }}
             </button>
           </div>
         </div>
       </div>
       <div class="nutriDetail">
-        <img src="../../assets/images/nutri-info.jpg">
+        <img src="../../assets/images/nutri-info.jpg" />
       </div>
     </div>
   </div>
@@ -87,25 +83,28 @@
         <div class="nutri-blending">
           <div class="nutri-choice">
             <h2 class="nutri-choice-heading text-center">
-              {{ $t("nutri.nutriDetails.title") }}<br> {{ $t("nutri.nutriDetails.title2") }}
+              {{ $t("nutri.nutriDetails.title") }}<br />
+              {{ $t("nutri.nutriDetails.title2") }}
             </h2>
-            <p
-              class="desc text-center"
-            >{{ $t("nutri.nutriDetails.subtitle") }}</p>
-            <button class="btn-small-solid green" @click="openmodal()">{{ $t("nutri.nutriDetails.button") }}</button>
+            <p class="desc text-center">
+              {{ $t("nutri.nutriDetails.subtitle") }}
+            </p>
+            <button class="btn-small-solid green" @click="openmodal()">
+              {{ $t("nutri.nutriDetails.button") }}
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <Modal 
+  <Modal
     v-show="isModalVisible"
     @close="closeModal"
     :bodytext1="$t('nutri.nutrimodal.bodytext')"
-    :bodytext2 ="$t('nutri.nutrimodal.bodytext2')"
+    :bodytext2="$t('nutri.nutrimodal.bodytext2')"
     :btnText1="$t('nutri.nutrimodal.btntext')"
     :btnText2="$t('nutri.nutrimodal.btntext2')"
-    link = ''
+    link=""
   />
 </template>
 
@@ -130,7 +129,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    Modal
+    Modal,
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -203,11 +202,11 @@ export default {
         },
       ],
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
-      lang:"KO",
-      id:"",
-      nutriDetails:[],
-      isModalVisible:false,
-      product_sub_image_path:[],
+      lang: "KO",
+      id: "",
+      nutriDetails: [],
+      isModalVisible: false,
+      product_sub_image_path: [],
     };
   },
   created() {
@@ -217,7 +216,6 @@ export default {
     this.getNutridetails();
   },
   methods: {
-
     closeModal() {
       this.isModalVisible = false;
       // window.location.href = "";
@@ -242,7 +240,8 @@ export default {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
             // console.log("this.nutriDetails",this.nutriDetails);
-            this.product_sub_image_path = res.data.data[0].product_sub_image_path;
+            this.product_sub_image_path =
+              res.data.data[0].product_sub_image_path;
           }
         })
         .catch((err) => {
@@ -257,7 +256,7 @@ export default {
         .confirmbutton()
         .then((res) => {
           if (res.status == 200) {
-            console.log("ress",res);
+            console.log("ress", res);
           }
         })
         .catch((err) => {
@@ -279,6 +278,10 @@ export default {
   width: 25%;
   height: 100%;
   opacity: 0.4;
+}
+
+.thumbsSwiperCustom .swiper-slide {
+  margin-bottom: 9px !important;
 }
 
 .mySwiper2 .swiper-slide-thumb-active {
