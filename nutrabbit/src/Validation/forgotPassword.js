@@ -6,7 +6,6 @@ i18n.global.locale = 'kr';
 
 const forgotPassword = (data) => {
     let errors = {};
-
     const { userId, email, emailOTP, validation_type, isConfirmOTP} = data;
 
     if(validation_type == 'forgotPassword'){
