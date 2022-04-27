@@ -11,7 +11,7 @@
               <router-link v-if="token" to="/my-choice">{{
                 $t("header.myChoice")
               }}</router-link>
-              <router-link v-else @click="accessPage()" to="/my-choice">{{
+              <router-link v-else @click="accessPage()" to="">{{
                 $t("header.myChoice")
               }}</router-link>
             </li>
@@ -228,7 +228,7 @@
   </div>
   <Modal
     v-show="isModalVisible"
-    @close="closeModal"
+    @close="closeModal2"
     :bodytext1="$t('requireModal.text1')"
     :bodytext2="$t('requireModal.text2')"
     :btnText1="$t('requireModal.btn1')"
@@ -444,7 +444,7 @@ export default {
         this.token = false;
       }
     },
-    closeModal() {
+    closeModal2() {
       this.isModalVisible = false;
     },
 
