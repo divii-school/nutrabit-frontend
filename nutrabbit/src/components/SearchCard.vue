@@ -6,7 +6,7 @@
 
     <img class="search-result-img hover-image" v-if="active" @mouseleave="mouseLeave" :src="image_link + image_hover"
       alt />
-    <img class="search-result-img hover-image" v-if="active2" @mouseleave="mouseLeave2"
+    <img class="search-result-img hover-image" v-if="active2 && type2 != 'search'" @mouseleave="mouseLeave2"
       src="../assets/images/recommneded_hover_place.png" alt />
 
     <p class="text-center">{{ category }}</p>
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: "SearchCard",
-  props: ["image", "type", "category", "name", "desc", "image_link", "route_link", "image_hover"],
+  props: ["image", "type", "category", "name", "desc", "image_link", "route_link", "image_hover","type2"],
   data() {
     return {
       active: false,

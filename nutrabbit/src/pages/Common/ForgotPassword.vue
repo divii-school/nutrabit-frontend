@@ -167,7 +167,6 @@ export default {
               this.showTick = true;
               this.emailOTP = "";
               this.error.email = "";
-              this.$swal("OTP has been sent to your email");
 
               if (this.storeSetInterval) {
                 clearInterval(this.storeSetInterval);
@@ -210,7 +209,7 @@ export default {
             btn_type: "certification",
           });
           if (verifyOtpData.data.status == 200) {
-            this.isOtpSuccess = 'OTP verified';
+            // this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
