@@ -7,7 +7,7 @@ export default class NutriManagementService {
     // }
     async getNurtiManagementList(name,tag_ko,page,limit,sortBy,sortOrde) {
         return await axios.post(`/admin/nutriBlending/`, {name:name,tag:tag_ko,page:page,limit:limit,sortBy:sortBy,sortOrde:sortOrde}).then((res) => res.data.data.blendingData);
-    }
+    } 
     async ViewNurtiManagementList(ids) {
         return await axios.post(`/admin/nutriBlending/id`, { id: ids }).then((res) => res);
     }

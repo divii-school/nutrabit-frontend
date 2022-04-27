@@ -458,10 +458,10 @@ export default {
             // console.log(this.select_items)
             // console.log(this.selectedItems)
             let vcheckData = {
-                category_id: this.category_id,
-                raw_material_id: this.selectedItems,
-                pill_id: this.pill_id,
-                package_id: this.package_id,
+                category_id: this.category_id.toString(),
+                raw_material_id: this.selectedItems.toString(),
+                pill_id: this.pill_id.toString(),
+                package_id: this.package_id.toString(),
                 name_ko: this.name_ko,
                 name_en: this.name_en,
                 description_ko: this.description_ko,
