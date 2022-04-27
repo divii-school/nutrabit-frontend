@@ -482,7 +482,7 @@ export default {
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return;
+            return (this.error.email = res.response.data.message);
             //return (this.error.email = res.response.data.message);
           }
         });

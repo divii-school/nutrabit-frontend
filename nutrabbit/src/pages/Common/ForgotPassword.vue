@@ -167,6 +167,7 @@ export default {
               this.showTick = true;
               this.emailOTP = "";
               this.error.email = "";
+              this.$swal("OTP has been sent to your email");
 
               if (this.storeSetInterval) {
                 clearInterval(this.storeSetInterval);
