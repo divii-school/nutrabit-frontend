@@ -94,14 +94,14 @@
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
-            <!-- <button
-              type="button"
-              class="btn-primary with-icon green-btn"
-              id="naver_id_login"
-              @click="naverLogin"
-            >
+            <!-- <button type="button" class="btn-primary with-icon green-btn" id="naver_id_login" @click="naverLogin">
               Naver Login
             </button> -->
+
+            <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLogin">Test naver
+              login</button>
+
+              <div id="naver_id_login"></div>
 
             <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
           </div>
@@ -116,7 +116,7 @@ import Button from "../../components/Button.vue";
 import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
-// import axios from "axios";
+import axios from "axios";
 import { useRoute } from "vue-router";
 export default {
   name: "Login",
@@ -150,9 +150,7 @@ export default {
   },
   mounted() {
     if (this.cookies) {
-      const rememberUserPasswordCookie = this.cookies.get(
-        "rememberUserPassword"
-      );
+      const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
@@ -160,7 +158,7 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
-    // this.naverLogin();
+    this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
@@ -189,21 +187,18 @@ export default {
       const setPassword = this.password;
       if (setEmail == "") {
         // this.errorEmail = "Please enter an email id";
-        return this.errorEmail = this.$t("common.Error.EnterId");
+        return (this.errorEmail = this.$t("common.Error.EnterId"));
       } else if (setPassword == "") {
-        return this.errorPassword = this.$t("common.Error.EnterPassword");
+        return (this.errorPassword = this.$t("common.Error.EnterPassword"));
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                return this.errorPassword = this.$t("common.Error.checkPassword");
+                return (this.errorPassword = this.$t("common.Error.checkPassword"));
               }
-              if (
-                res.response.data.message ==
-                "User With The Email Does Not Exists"
-              ) {
-                return this.errorEmail = this.$t("common.Error.chcekId");
+              if (res.response.data.message == "User With The Email Does Not Exists") {
+                return (this.errorEmail = this.$t("common.Error.chcekId"));
               }
               // this.$swal(res.response.data.message);
             }
@@ -263,76 +258,62 @@ export default {
 
     appleLoginHandler(res) {
       console.log("appleLoginHandler", res);
+      const self = this;
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
         alert(resData);
         console.log("--appleLoginHandler--", resData);
         let emailName = resData.emailId.match(/^([^@]*)@/)[1];
-        localStorage.setItem("token", resData.accesstoken);
-        localStorage.setItem("uid", resData.socialId);
-        localStorage.setItem(
-          "uname",
-          !resData.userName || resData.userName == ""
-            ? resData.userName
-            : emailName
+        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
+        self.socialRegistration(
+          userName,
+          userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accesstoken,
+          "apple"
         );
-        // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
-        localStorage.setItem("userType", resData.loginVia);
-        this.$router.push("/");
+        self.socialLogin(resData.emailId);
       } else {
         return false;
       }
     },
 
     // naver login
-    // naverLogin() {
-    //   // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // var state = naver_id_login.getUniqState();
-    //   // naver_id_login.setButton("green", 5, 50);
-    //   // naver_id_login.setDomain("http://localhost:8082/login");
-    //   // naver_id_login.setState(state);
-    //   // // naver_id_login.setPopup();
-    //   // naver_id_login.init_naver_id_login();
-    //   // // this.naverLoginCallback();
+    naverLogin() {
+      var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/");
+      var state = naver_id_login.getUniqState();
+      naver_id_login.setButton("green", 5, 50);
+      naver_id_login.setDomain(".service.com");
+      naver_id_login.setState(state);
+      // naver_id_login.setPopup();
+      naver_id_login.init_naver_id_login();
+      // this.naverLoginCallback();
+    },
 
-    //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   var state = naverLogin.getUniqState();
+    testNaverLogin() {
+      console.log('testNaverLogin');
+      let CLIENT_ID = 'RzAKRIVkiYS3ETx4MlTd';
+      // let code = 'code';
+      let STATE_STRING = 'state'+new Date().getTime();
+      let CALLBACK_URL = 'https://frontned-nutrabbit-dev.dvconsulting.org/';
+      
+      axios.post(`https://nid.naver.com/oauth2.0/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURI(CALLBACK_URL)}&state=${STATE_STRING}`).then((res) => {
+        console.log("testNaverLogin", res);
+      });
+    },
 
-    //   naverLogin.setButton(); //initialize Naver Login Button
-    //   naverLogin.setDomain("http://localhost:8082/login");
-    //   naverLogin.setState(state);
-    //   naverLogin.init_naver_id_login();
+   
 
-    //   $(document).on("click", "#naver_Login", function () {
-    //     var btnNaverLogin = document.getElementById("naver_Login");
-    //     btnNaverLogin.click();
-    //   });
-
-    // },
-
-    // naverLoginCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // 접근 토큰 값 출력
-    //   alert(naver_id_login.oauthParams.access_token);
-    //   // 네이버 사용자 프로필 조회
-    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    //   this.naverSignInCallback();
-    // },
-
-    // naverSignInCallback() {
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-    // kakao
+    // kakao Login
     loginWithKakao() {
-      // const route = useRoute();
       const self = this;
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
-      console.log(Kakao.isInitialized());
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -341,27 +322,26 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
-
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
-          // let token = authObj.access_token;
-          // localStorage.setItem("token", authObj.access_token);
-          // localStorage.setItem("tokenexpiresAt", authObj.expires_in);
-          // localStorage.setItem("tokenexpiresAt", 3600);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              console.log("res----", res);
-              // localStorage.setItem("uid", res.id);
-              // localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              // localStorage.setItem("userType", 'SNS');
-              self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, '12345678', res.kakao_account.email, '9999999999', 'address', 'detail address', 'sns', authObj.access_token, 'kakao');
+              self.socialRegistration(
+                res.kakao_account.profile.nickname,
+                res.kakao_account.profile.nickname,
+                "12345678",
+                res.kakao_account.email,
+                "9999999999",
+                "address",
+                "detail address",
+                "sns",
+                authObj.access_token,
+                "kakao"
+              );
               self.socialLogin(res.kakao_account.email);
               self.loader.hide();
-              // self.$router.push("/");
-
             },
           });
         },
@@ -369,29 +349,52 @@ export default {
           console.log(err);
         },
       });
-      //  window.Kakao.Auth.authorize({
-      //   redirectUri: 'http://localhost:8082'
-      // });
     },
 
-    socialRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName, login_token, login_type) {
-      this.commonService.individalRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName, login_token, login_type).then((res) => {
-        console.log('socialRegistration:--', res);
-        if (res.data.status == 200) {
-          console.log('socialRegistration success:--', res);
-          this.$router.push("member-registration-completed");
-        }
-      });
+    //socialRegistration
+    socialRegistration(
+      name,
+      username,
+      password,
+      email,
+      phoneNumber,
+      address,
+      detsilAddress,
+      checkName,
+      login_token,
+      login_type
+    ) {
+      this.commonService
+        .individalRegistration(
+          name,
+          username,
+          password,
+          email,
+          phoneNumber,
+          address,
+          detsilAddress,
+          checkName,
+          login_token,
+          login_type
+        )
+        .then((res) => {
+          console.log("socialRegistration:--", res);
+          if (res.data.status == 200) {
+            console.log("socialRegistration success:--", res);
+            // this.$router.push("member-registration-completed");
+          }
+        });
     },
 
+    //socialLogin
     socialLogin(email) {
       this.commonService.getSocialLogin(email).then((res) => {
-        console.log('socialLogin:--', res);
-        console.log('socialLogin res.response:--', res.response);
-        console.log('socialLogin res.data.status:--', res.data.status);
+        console.log("socialLogin:--", res);
+        console.log("socialLogin res.response:--", res.response);
+        console.log("socialLogin res.data.status:--", res.data.status);
         if (res.response) {
           if (res.response.data.status == 400) {
-            console.log('res.response:', res.response);
+            console.log("res.response:", res.response);
           }
         } else {
           if (res.data.status == 200) {
@@ -407,13 +410,11 @@ export default {
               this.cookies.set("rememberUserEmail", setEmail);
               this.cookies.set("rememberUserPassword", setPassword);
             }
-            this.$router.push("/");
+            this.$router.push({ name: "Main" });
           }
         }
       });
     },
-
-
   },
 };
 </script>
