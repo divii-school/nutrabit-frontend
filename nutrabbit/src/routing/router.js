@@ -47,7 +47,7 @@ import MyRecipeDetail from "../pages/MyRecipeDetail.vue";
 function guest(to, from, next) {
   if (localStorage.token) {
     next({ name: "Main" });
-    // Toast.fire({ title: "You already logged in" });
+    Toast.fire({ title: "You already logged in" });
   } else next();
 }
 
@@ -56,7 +56,7 @@ function guard(to, from, next) {
     next();
   } else {
     next({ name: "Login" });
-    // Toast.fire({ title: "Please login to access" });
+    Toast.fire({ title: "Please login to access" });
   }
 }
 
@@ -331,6 +331,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
 });
 
 export default router;

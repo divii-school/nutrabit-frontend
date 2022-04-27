@@ -8,25 +8,25 @@
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Raw material selection</p>
+                <p>{{ $t('progress_bar.selection1') }}</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>Formulation selection</p>
+                <p>{{ $t('progress_bar.selection2') }}</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>Package selection</p>
+                <p>{{ $t('progress_bar.selection3') }}</p>
               </div>
             </li>
             <li class="recomanded-status">
               <div class="d-item">
                 <span></span>
-                <p>Final estimate</p>
+                <p>{{ $t('progress_bar.selection4') }}</p>
               </div>
             </li>
           </ul>
@@ -35,7 +35,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>Formulation selection</h2>
+                <h2>{{ $t('formulation.title') }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -44,9 +44,8 @@
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
-                          <li>Please select the desired format.</li>
-                          <li>Formulations that cannot be made with the selected raw materials may be changed to other
-                            formulations at the time of quotation.</li>
+                          <li>{{$t('formulation.popup.list1')}}</li>
+                          <li>{{$t('formulation.popup.list2')}}</li>
                         </ul>
                       </div>
                     </template>
@@ -63,11 +62,12 @@
 
               <div class="btn-wrap">
                 <button v-if="storage_box" @click="this.$router.push(`/add-ingredient/`)"
-                  class="btn-small-solid grey">Previous</button>
+                  class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
-                  class="btn-small-solid grey">Previous</button>
-                  
-                <button @click="checkPillId" class="btn-small-solid blue">Next</button>
+                  class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
+
+                <button :class="!isSelected ? 'btn-disabled' : ''" :disabled="!isSelected" @click="checkPillId"
+                  class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
           </div>
@@ -76,9 +76,8 @@
     </div>
   </div>
   <my-modal-component v-show="showModal2">
-    <ModalWarning @close2="closeModal2"
-      bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
-      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
+    <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')" :btnText1="$t('warningModal.btn1')"
+      :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
   </my-modal-component>
 </template>
 
@@ -101,6 +100,7 @@ export default {
     return {
       blendingFormulationData: [],
       pill_id: '',
+      isSelected: false,
       storage_box: localStorage.getItem('storage_box'),
       to: '',
       showModal2: false,
@@ -160,6 +160,7 @@ export default {
     },
     UpdatedId(e) {
       this.pill_id = e;
+      this.isSelected = true;
       //console.log(this.pill_id);
 
     },

@@ -46,7 +46,7 @@
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
-                      $t("common.QuickLinks.FindPassword")
+                        $t("common.QuickLinks.FindPassword")
                     }}</router-link>
                   </li>
                 </ul>
@@ -188,14 +188,24 @@ export default {
       const setEmail = this.email;
       const setPassword = this.password;
       if (setEmail == "") {
-        this.errorEmail = "Please enter an email id";
+        // this.errorEmail = "Please enter an email id";
+        return this.errorEmail = this.$t("common.Error.EnterId");
       } else if (setPassword == "") {
-        this.errorPassword = "Please enter password";
+        return this.errorPassword = this.$t("common.Error.EnterPassword");
       } else {
         this.commonService.getLogin(setEmail, setPassword).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
-              this.$swal(res.response.data.message);
+              if (res.response.data.message == "Password Does Not Match") {
+                return this.errorPassword = this.$t("common.Error.checkPassword");
+              }
+              if (
+                res.response.data.message ==
+                "User With The Email Does Not Exists"
+              ) {
+                return this.errorEmail = this.$t("common.Error.chcekId");
+              }
+              // this.$swal(res.response.data.message);
             }
           } else {
             if (res.data.status == 200) {
@@ -254,12 +264,19 @@ export default {
     appleLoginHandler(res) {
       console.log("appleLoginHandler", res);
       if (res) {
-        let resData = JSON.parse(JSON.stringify(res));
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
         console.log("--appleLoginHandler--", resData);
-        let emailName = resData.emailid.match(/^([^@]*)@/)[1];
+        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         localStorage.setItem("token", resData.accesstoken);
         localStorage.setItem("uid", resData.socialId);
-        localStorage.setItem("uname", (!resData.userName || resData.userName=='') ? resData.userName : emailName);
+        localStorage.setItem(
+          "uname",
+          !resData.userName || resData.userName == ""
+            ? resData.userName
+            : emailName
+        );
         // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
         localStorage.setItem("userType", resData.loginVia);
         this.$router.push("/");
@@ -312,7 +329,10 @@ export default {
 
     // kakao
     loginWithKakao() {
+      // const route = useRoute();
+      const self = this;
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+      console.log(Kakao.isInitialized());
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -321,28 +341,47 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
+
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log('authObj kakao--', authObj);
+          console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
           localStorage.setItem("token", authObj.access_token);
-          localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          // localStorage.setItem("tokenexpiresAt", authObj.expires_in);
+          localStorage.setItem("tokenexpiresAt", 3600);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              // console.log("res-", res);
+              console.log("res----", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              // this.$router.push({name: "home"});
-              this.loader.hide();
+              localStorage.setItem("userType", 'SNS');
+              self.loader.hide();
+              // self.$router.push("/");
+              // self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, authObj.access_token, 'kakao');
+
             },
           });
         },
         fail: function (err) {
-          // console.log(err);
+          console.log(err);
         },
       });
+      //  window.Kakao.Auth.authorize({
+      //   redirectUri: 'http://localhost:8082'
+      // });
     },
+
+    socialRegistration(name, username, email, phone, login_token, login_type) {
+      this.commonService.individalRegistration(name, username, email, phone, login_token, login_type).then((res) => {
+        if (res.data.status == 200) {
+          console.log(res);
+          this.$router.push("member-registration-completed");
+        }
+      });
+    },
+
+
   },
 };
 </script>

@@ -70,7 +70,7 @@
               @click="openmodal()"
               class="btn-primary blue-btn-solid"
             >
-              Get an estimate
+              {{ $t("nutri.nutriDetails.button") }}
             </button>
           </div>
         </div>
@@ -87,12 +87,12 @@
         <div class="nutri-blending">
           <div class="nutri-choice">
             <h2 class="nutri-choice-heading text-center">
-              A service just for you<br> Easily seize your own product launch opportunity!
+              {{ $t("nutri.nutriDetails.title") }}<br> {{ $t("nutri.nutriDetails.title2") }}
             </h2>
             <p
               class="desc text-center"
-            >Click the button below to become the hero of the product!</p>
-            <button class="btn-small-solid green" @click="openmodal()">Get an estimate</button>
+            >{{ $t("nutri.nutriDetails.subtitle") }}</p>
+            <button class="btn-small-solid green" @click="openmodal()">{{ $t("nutri.nutriDetails.button") }}</button>
           </div>
         </div>
       </div>
@@ -101,10 +101,10 @@
   <Modal 
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="Would you like to get an estimate for this product?"
-    bodytext2 = "An estimate will be sent to you by email when you click OK."
-    btnText1="cancellation"
-    btnText2="Confirm"
+    :bodytext1="$t('nutri.nutrimodal.bodytext')"
+    :bodytext2 ="$t('nutri.nutrimodal.bodytext2')"
+    :btnText1="$t('nutri.nutrimodal.btntext')"
+    :btnText2="$t('nutri.nutrimodal.btntext2')"
     link = ''
   />
 </template>

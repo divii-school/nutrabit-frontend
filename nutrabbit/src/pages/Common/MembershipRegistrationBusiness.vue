@@ -5,10 +5,10 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
-              회원가입
-              <span>사업자회원</span>
+              {{ $t("common.QuickLinks.SignUp") }}
+              <span>{{$t("common.SubTitle.BusinessMember")}}</span>
             </h1>
-            <span>* 필수항목</span>
+            <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
           <form
             action=""
@@ -19,12 +19,11 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the Terms of Use.
+                    {{ $t("common.label.TermsCheckBox") }}
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
               <div
                 class="form-group"
@@ -32,13 +31,11 @@
               >
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    (Required) I agree to the collection and use of personal
-                    information.
+                    {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck"  />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="business-form">
@@ -47,14 +44,14 @@
                 :class="error.businessNumber ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>Business Number</label
+                  ><i class="icon-required"></i> {{ $t("common.label.BusinessNo") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter business number"
+                      :placeholder="$t('common.placeholder.EnterBusinessNo')"
                       v-model="businessNumber"
                       
                     />
@@ -66,13 +63,13 @@
                 class="form-group"
                 :class="error.businessName ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>Business name</label>
+                <label for=""><i class="icon-required"></i> {{ $t("common.label.BusinessName") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter business name"
+                     :placeholder="$t('common.placeholder.EnterBusinessName')"
                       v-model="businessName"
                       
                     />
@@ -81,13 +78,13 @@
                 <span class="error-msg">{{ error.businessName }}</span>
               </div>
               <div class="form-group" :class="error.depertment ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>Department</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.department") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter depertment name"
+                     :placeholder="$t('common.placeholder.Enterdepartment')"
                       v-model="depertment"
                       
                     />
@@ -100,14 +97,14 @@
                 :class="error.contactPerson ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>Contact person</label
+                  ><i class="icon-required"></i>{{ $t("common.label.contactPerson") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter the person in charge"
+                      :placeholder="$t('common.placeholder.EntercontactPerson')"
                       v-model="contactPerson"
                       
                     />
@@ -118,13 +115,13 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>Name</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Name") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your name"
+                      :placeholder="$t('common.placeholder.Name')"
                       v-model="name"
                       
                     />
@@ -133,13 +130,13 @@
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>ID</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.ID") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter ID"
+                      :placeholder="$t('common.placeholder.EnterId')"
                       v-model="username"
                       
                     />
@@ -152,13 +149,15 @@
                 <span class="error-msg" >{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>Password</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Password") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="10-20 characters including uppercase and lowercase letters, numbers, and special symbols"
+                      :placeholder="
+                        $t('common.placeholder.PasswordFormatSignup')
+                      "
                       v-model="password"
                       
                     />
@@ -171,14 +170,14 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>Verify Password</label
+                  ><i class="icon-required"></i>{{ $t("common.label.VerifyPassword") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                      placeholder="verify password"
+                     :placeholder="$t('common.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
                       
                     />
@@ -187,13 +186,13 @@
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>Email</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Email") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your email"
+                      :placeholder="$t('common.placeholder.Email')"
                       v-model="email"
                       
                     />
@@ -211,14 +210,16 @@
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
-                  ><i class="icon-required"></i>Email Verification Number</label
+                  ><i class="icon-required"></i>{{ $t("common.label.EmailVerification") }}</label
                 >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your email verification code"
+                     :placeholder="
+                        $t('common.placeholder.EnterVerificationCode')
+                      "
                       v-model="emailOTP"
                       maxlength="6"
                       
@@ -236,20 +237,20 @@
                     @click="verifyOTP"
                     :disabled="otpValidate"
                   >
-                    certification
+                     {{ $t("button.verify") }}
                   </button>
                 </div>
                <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>Phone Number</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter your mobile phone number"
+                      :placeholder="$t('common.placeholder.PhoneNumber')"
                       v-model="phoneNumber"
                       
                     />
@@ -261,20 +262,20 @@
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i>Address</label>
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter address"
+                      :placeholder="$t('common.placeholder.EnterAddress')"
                       v-model="address"
                       disabled
                       
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                    Address Search
+                   {{ $t("button.SearchAddress") }}
                   </button>
                 </div>
                 <div class="input-group">
@@ -282,7 +283,9 @@
                     <input
                       class="form-control"
                       type="text"
-                      placeholder="Enter detailed address"
+                     :placeholder="
+                        $t('common.placeholder.EnterDetailedAddress')
+                      "
                       v-model="detsilAddress"
                       
                     />
@@ -295,7 +298,7 @@
               class="btn-primary grenn-btn2"
               @click="BusinessRegistration"
             >
-              Sign Up
+              {{ $t("common.QuickLinks.SignUp") }}
             </button>
           </form>
         </div>
@@ -336,20 +339,32 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus : 'Send verification code',
+      // verificationStatus : this.$t('button.sendVerification'),
       isIDVerified : false,
       isOtpVerified : false,
       isUserSuccess : '',
       isOtpSuccess : '',
+      verificationTimer:false
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+  computed : {
+    verificationStatus() {
+
+      if(this.verificationTimer) {
+        return this.$t('button.resendVerification');
+      }
+      else {
+        return this.$t('button.sendVerification');
+      }
+      
+    }
+  },
   methods: {
     checkError() {
       let credential = {
-        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,
@@ -406,7 +421,7 @@ export default {
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
-        this.error.username = "Please enter your ID";
+        this.error.username =  this.$t("common.Error.EnterId");
       } else if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
         this.isUserSuccess = "";
@@ -417,19 +432,21 @@ export default {
             this.error.username = "";
             this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            return (this.error.username = res.data.data.msg);
+            this.error.username = res.data.data.msg;
+            this.isUserSuccess = '';
           }
         });
       }
     },
     async sendOtp() {
-      if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
-      }
       if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
+        this.error.email = this.$t("common.Error.EnterEmail");
+      }
+      else if (!validator.isEmail(this.email)) {
+        this.error.email = "Enter a valid email address";
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          console.log(res);
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -462,10 +479,11 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
-              this.verificationStatus = "Resend verification code";
+              this.verificationTimer=true;
+              // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return;
+            return (this.error.email = res.response.data.message);
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -490,7 +508,7 @@ export default {
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             return (this.error.emailOTP =
-              "The verification code does not match.");
+              this.$t("common.Error.OTPCheck"));
           }
         });
       }

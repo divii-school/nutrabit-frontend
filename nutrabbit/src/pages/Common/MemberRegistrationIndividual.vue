@@ -20,11 +20,10 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     {{ $t("common.label.TermsCheckBox") }}
-                        <input type="checkbox" v-model="termsCheck" />
+                    <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.termsCheck }}</span>
               </div>
               <div
                 class="form-group"
@@ -37,7 +36,6 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <span class="error-msg">{{ error.personalCheck }}</span>
               </div>
             </div>
             <div class="individuals-form">
@@ -177,7 +175,7 @@
                     @click="verifyOTP"
                     :disabled="otpValidate"
                   >
-                    certification
+                    {{ $t("button.verify") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isOtpVerified">{{
@@ -221,7 +219,7 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                    Address Search
+                   {{ $t("button.SearchAddress") }}
                   </button>
                 </div>
                 <div class="input-group">
@@ -239,7 +237,7 @@
                 <span class="error-msg">{{ error.address }}</span>
               </div>
               <div class="form-group">
-                <label for="">How did you find us?</label>
+                <label for=""> {{ $t("common.label.FindUs") }}</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
                     <label class="custom-check"
@@ -335,20 +333,32 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      verificationStatus: "Send verification code",
+      // verificationStatus: this.$t('button.sendVerification'),
       isIDVerified: false,
       isOtpVerified: false,
       isUserSuccess: "",
       isOtpSuccess: "",
+      verificationTimer:false
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+  computed : {
+    verificationStatus() {
+
+      if(this.verificationTimer) {
+        return this.$t('button.resendVerification');
+      }
+      else {
+        return this.$t('button.sendVerification');
+      }
+      
+    }
+  },
   methods: {
     checkError() {
       let credential = {
-        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,
@@ -401,7 +411,7 @@ export default {
     },
     async checkUser() {
       if (validator.isEmpty(this.username)) {
-        this.error.username = "Please enter your ID";
+        this.error.username = this.$t("common.Error.EnterId");
       } else if (!validator.isAlphanumeric(this.username)) {
         this.error.username = "Please use only letter and number";
         this.isUserSuccess = "";
@@ -412,19 +422,21 @@ export default {
             this.error.username = "";
             this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            return (this.error.username = res.data.data.msg);
+            this.error.username = res.data.data.msg;
+            this.isUserSuccess = '';
           }
         });
       }
     },
 
     async sendOtp() {
-      if (!validator.isEmail(this.email)) {
+       if (validator.isEmpty(this.email)) {
+        this.error.email = this.$t("common.Error.EnterEmail");
+      }
+      else if (!validator.isEmail(this.email)) {
         this.error.email = "Enter a valid email address";
       }
-      if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
-      } else {
+       else {
         this.commonService.sendOTP(this.email).then((res) => {
           if (res.status == 200) {
             this.isActive = false;
@@ -458,10 +470,12 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
-              this.verificationStatus = "Resend verification code";
+              this.verificationTimer=true;
+              //this.verificationStatus = "Resend verification code";
+              // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return;
+            return (this.error.email = res.response.data.message);
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -486,7 +500,7 @@ export default {
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
             return (this.error.emailOTP =
-              "The verification code does not match.");
+              this.$t("common.Error.OTPCheck"));
           }
         });
       }

@@ -5,22 +5,22 @@
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">
-              회원탈퇴
+              {{ $t("personalInfo.withdrawal.title") }}
             </h1>
           </div>
           <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
            <div class="individuals-form">
               <div class="form-group" :class="error.reason ? 'error' : ''">
-              <label for="">탈퇴사유</label>
+              <label for="">{{ $t("personalInfo.withdrawal.header") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <textarea class="form-control textarea" @keyup="reasonkeyup" placeholder="탈퇴사유를 입력해주세요" v-model="reason"></textarea>
+                  <textarea class="form-control textarea" @keyup="reasonkeyup" :placeholder= "$t('personalInfo.withdrawal.placeholder')" v-model="reason"></textarea>
                 </div>
               </div>
               <span class="error-msg">{{ error.reason }}</span>
             </div>
            </div>
-            <button class="btn-primary grenn-btn2" @click="modalWithdraw">확인</button>
+            <button class="btn-primary grenn-btn2" @click="modalWithdraw">{{ $t("personalInfo.withdrawal.button") }}</button>
           </form>
           <!-- <modal/> -->
         </div>
@@ -32,9 +32,9 @@
             v-show="isModalVisible"
             @close="closeModal"
             @confirm = "confirm"
-            bodytext1="해당 계정을 탈퇴하시겠습니까?"
-            btnText1="취소"
-            btnText2="확인"
+            :bodytext1="$t('personalInfo.withdrawal.bodytext')"
+            :btnText1="$t('personalInfo.withdrawal.btntext')"
+            :btnText2="$t('personalInfo.withdrawal.btntext1')"
             link = ''
           />
         </div>
@@ -43,8 +43,8 @@
         <Modal
         v-show="confirmModal"
         @close="closeModal1"
-        bodytext1="탈퇴가 완료되었습니다."
-        btnText2="확인"
+        :bodytext1="$t('personalInfo.withdrawmodal.bodytext')"
+        :btnText2="$t('personalInfo.withdrawmodal.btntext')"
         link = '/'
       />
       </div>

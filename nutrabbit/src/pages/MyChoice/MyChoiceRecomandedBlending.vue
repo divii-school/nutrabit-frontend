@@ -9,7 +9,7 @@
           <div class="choice-selection-item recomanded-blending">
             <div class="heading-wrap">
               <div class="heading heading-blue">
-                <h2>Recommended blending</h2>
+                <h2>{{$t('myChoice.RecommendedBlending.title')}}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -18,16 +18,9 @@
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
-                          <li>
-                            This is a recommended recipe for those who have
-                            difficulty choosing raw materials.
-                          </li>
-                          <li>
-                            Recommended blending is a semi-finished product that
-                            has already been formulated with effective
-                            ingredients and formulations.
-                          </li>
-                          <li>Choose the recommended recipe you want.</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list1") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list2") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list3") }}</li>
                         </ul>
                       </div>
                     </template>
@@ -42,8 +35,8 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="onChange">
-                    <option value="popularity">in order of popularity</option>
-                    <option value="alphabetical">in alphabetical order</option>
+                    <option value="popularity">{{$t('myChoice.RawMaterial.popularity')}}</option>
+                    <option value="alphabetical">{{$t('myChoice.RawMaterial.alphabetical')}}</option>
                   </select>
                 </div>
               </div>

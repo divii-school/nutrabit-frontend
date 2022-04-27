@@ -12,8 +12,8 @@
               <template #content>
                 <div class="heading-tooltip-content">
                   <ul>
-                    <li>This is a menu where I make my own health functional food recipes.</li>
-                    <li>Please select the desired function.</li>
+                    <li>{{$t('myChoice.popup.list1')}}</li>
+                    <li>{{$t('myChoice.popup.list2')}}</li>
                   </ul>
                 </div>
               </template>

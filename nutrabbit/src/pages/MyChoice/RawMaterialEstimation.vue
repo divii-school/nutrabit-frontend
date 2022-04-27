@@ -8,25 +8,25 @@
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Raw material selection</p>
+                <p>{{ $t('progress_bar.selection1') }}</p>
               </div>
             </li>
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Formulation selection</p>
+                <p>{{ $t('progress_bar.selection2') }}</p>
               </div>
             </li>
             <li class="recomanded-status visited">
               <div class="d-item">
                 <span></span>
-                <p>Package selection</p>
+                <p>{{ $t('progress_bar.selection3') }}</p>
               </div>
             </li>
             <li class="recomanded-status active">
               <div class="d-item">
                 <span></span>
-                <p>Final estimate</p>
+                <p>{{ $t('progress_bar.selection4') }}</p>
               </div>
             </li>
           </ul>
@@ -35,7 +35,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>options</h2>
+                <h2>{{ $t('final.option') }}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -43,9 +43,9 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>category</th>
-                      <th>Explanation</th>
+                      <th>{{ $t('final.No') }}</th>
+                      <th>{{ $t('final.Category') }}</th>
+                      <th>{{ $t('final.Description') }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,18 +58,18 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>title</label>
-                <input type="text" v-model="title" name placeholder="Please enter the subject." />
+                <label>{{ $t('final.title') }}</label>
+                <input type="text" v-model="title" name :placeholder="$t('final.title_place')" />
               </div>
               <div class="fGroup">
-                <label>Additional Requests</label>
-                <span>If you provide more details, it will help you get an accurate estimate.</span>
-                <textarea v-model="additional_request" placeholder="Please write freely"></textarea>
+                <label>{{ $t('final.AdditionalRequests') }}</label>
+                <span>{{ $t('final.add_info') }}</span>
+                <textarea v-model="additional_request" :placeholder="$t('final.textarea_place')"></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">
-                  Select service
-                  <span>* Multiple selection possible</span>
+                  {{ $t('final.Select_Service') }}
+                  <span> {{ $t('final.Select_Service_desc') }}</span>
                 </label>
               </div>
               <div class="product-list-wrap">
@@ -81,7 +81,7 @@
                     </label>
                   </div>
                   <div class="material-details">
-                    <h2>Get an estimate</h2>
+                    <h2>{{ $t('final.check1') }}</h2>
                   </div>
                 </div>
                 <div class="product-item with-input">
@@ -93,32 +93,39 @@
                   </div>
                   <div class="material-details">
                     <h2>
-                      sample application
-                      <span>(Sample cost 300,000 won/paid)</span>
+                      {{ $t('final.check2') }}
+                      <span>{{ $t('final.check2_info') }}</span>
                     </h2>
                   </div>
                 </div>
                 <ul>
-                  <li>* Packages are excluded when requesting samples.</li>
-                  <li>* The quotation will be sent to the registered email address within 3 business days.</li>
-                  <li>* Unit price may vary depending on quantity & package design.</li>
-                  <li>* It may differ from the detailed estimate at the time of completion.</li>
+                  <li>{{$t('final.note.list1')}}</li>
+                  <li>{{$t('final.note.list2')}}</li>
+                  <li>{{$t('final.note.list3')}}</li>
+                  <li>{{$t('final.note.list4')}}</li>
                 </ul>
                 <div class="btn-wrap">
-                  <button @click="this.$router.push('/raw-material-package/')"
-                    class="btn-small-solid grey">Previous</button>
+                  <button @click="this.$router.push('/raw-material-package/')" class="btn-small-solid grey">{{
+                      $t("button.Previous")
+                  }}</button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="package_temporary_add">Save as Draft</button>
-                    <button class="btn-small-solid blue ml-4" @click="package_add">Next</button>
+                    <button class="btn-green-outline blue" @click="package_temporary_add">{{
+                        $t("button.Save_as_draft")
+                    }}</button>
+                    <button class="btn-small-solid blue ml-4" @click="package_add">{{ $t("button.next") }}</button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" bodytext1="Saved as a draft" btnText2="confirm" link="/" />
+                    <Modal @close="closeModal" :bodytext1="$t('final.modal_msg')" :btnText2="$t('button.Confirm')"
+                      link="/" />
                   </my-modal-component>
                   <my-modal-component v-show="showModal2">
-                    <ModalWarning @close2="closeModal2"
-                      bodytext1="There is data in progress. Data is not stored separately. Are you sure you want to cancel?"
-                      btnText1="Cancel" btnText2="Confirm" @confirm="confirm" />
+                    <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')"
+                      :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
                   </my-modal-component>
+                  <Modal v-show="isItemSelectedVisible" @close="closeModalTitle"
+                    :bodytext1="$t('final.required_title_msg')" :btnText1="$t('button.Confirm')" />
+                  <Modal v-show="isServiceSelectedVisible" @close="closeModalService"
+                    :bodytext1="$t('final.required_service_msg')" :btnText1="$t('button.Confirm')" />
                 </div>
               </div>
             </div>
@@ -155,6 +162,8 @@ export default {
       additional_request: '',
       showModal: false,
       showModal2: false,
+      isItemSelectedVisible: false,
+      isServiceSelectedVisible: false,
       to: '',
       items: [],
     };
@@ -185,6 +194,12 @@ export default {
       this.showModal2 = false;
       this.to = null;
     },
+    closeModalTitle() {
+      this.isItemSelectedVisible = false;
+    },
+    closeModalService() {
+      this.isServiceSelectedVisible = false;
+    },
     confirm() {
       this.showModal2 = false;
       this.$router.push(this.to);
@@ -193,38 +208,40 @@ export default {
       this.to = "/";
       let is_temporary_storage = 'N';
       if (this.title == "") {
-        this.$swal("Title is required");
+        //this.$swal("Title is required");
+        this.isItemSelectedVisible = true;
       }
       else {
         let length = this.servicetype.length;
         let service = '';
-        if(length==0) {
-          this.$swal("Please select a service");
-        }
-        else{
-        if (length == 2) {
-          service = 3;
+        if (length == 0) {
+          // this.$swal("Please select a service");
+          this.isServiceSelectedVisible = true;
         }
         else {
-          service = this.servicetype.toString();
-        }
-        this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
-          // console.log(res);
-          if (res.status = 200) {
-            this.$swal("Application Data is successfuly submitted");
-            localStorage.removeItem('sub_category_id');
-            localStorage.removeItem('raw_material_id');
-            localStorage.removeItem('package_id');
-            localStorage.removeItem('pill_id');
-            localStorage.removeItem('option');
-            localStorage.removeItem('etc');
-            localStorage.removeItem('storage_box');
-            // console.log("add");
-            this.$router.push(this.to);
-          } else {
-            this.$swal(res.message, "error");
+          if (length == 2) {
+            service = 3;
           }
-        });
+          else {
+            service = this.servicetype.toString();
+          }
+          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
+            // console.log(res);
+            if (res.status = 200) {
+              this.$swal("Application Data is successfuly submitted");
+              localStorage.removeItem('sub_category_id');
+              localStorage.removeItem('raw_material_id');
+              localStorage.removeItem('package_id');
+              localStorage.removeItem('pill_id');
+              localStorage.removeItem('option');
+              localStorage.removeItem('etc');
+              localStorage.removeItem('storage_box');
+              // console.log("add");
+              this.$router.push(this.to);
+            } else {
+              this.$swal(res.message, "error");
+            }
+          });
         }
       }
     },
@@ -232,38 +249,40 @@ export default {
       this.to = "/";
       let is_temporary_storage = 'Y';
       if (this.title == "") {
-        this.$swal("Title is required");
+        // this.$swal("Title is required");
+        this.isItemSelectedVisible = true;
       }
       else {
         let length = this.servicetype.length;
-        if(length==0) {
-          this.$swal("Please select a service");
-        }
-        else{
-        let service = '';
-        if (length == 2) {
-          service = 3;
+        if (length == 0) {
+          // this.$swal("Please select a service");
+          this.isServiceSelectedVisible = true;
         }
         else {
-          service = this.servicetype.toString();
-        }
-        this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
-          // console.log(res);
-          if (res.status = 200) {
-            localStorage.removeItem('sub_category_id');
-            localStorage.removeItem('raw_material_id');
-            localStorage.removeItem('package_id');
-            localStorage.removeItem('pill_id');
-            localStorage.removeItem('option');
-            localStorage.removeItem('etc');
-            localStorage.removeItem('storage_box');
-            this.showModal = true;
-            //  this.$swal("Temporary storage is complete");
-            //  this.$router.push(this.to);
-          } else {
-            this.$swal(res.message, "error");
+          let service = '';
+          if (length == 2) {
+            service = 3;
           }
-        });
+          else {
+            service = this.servicetype.toString();
+          }
+          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
+            // console.log(res);
+            if (res.status = 200) {
+              localStorage.removeItem('sub_category_id');
+              localStorage.removeItem('raw_material_id');
+              localStorage.removeItem('package_id');
+              localStorage.removeItem('pill_id');
+              localStorage.removeItem('option');
+              localStorage.removeItem('etc');
+              localStorage.removeItem('storage_box');
+              this.showModal = true;
+              //  this.$swal("Temporary storage is complete");
+              //  this.$router.push(this.to);
+            } else {
+              this.$swal(res.message, "error");
+            }
+          });
         }
       }
     },
