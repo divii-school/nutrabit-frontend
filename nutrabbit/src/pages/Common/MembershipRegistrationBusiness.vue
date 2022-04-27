@@ -432,7 +432,8 @@ export default {
             this.error.username = "";
             this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            return (this.error.username = res.data.data.msg);
+            this.error.username = res.data.data.msg;
+            this.isUserSuccess = '';
           }
         });
       }
