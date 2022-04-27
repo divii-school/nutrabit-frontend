@@ -477,6 +477,7 @@
             "email": "Email",
             "phonenumber": "Phone Number",
             "address": "Address",
+            "searchaddress": "Address Search",
             "find us": "How did you find us?",
             "offline": "Offline",
             "online": "Online",
@@ -488,11 +489,16 @@
             "withdrawal": "Withdrawal"
         },
         "placeholder":{
+            "Name": "Enter your name",
+            "EnterId": "Enter ID",
             "PasswordFormat": "10-20 characters including uppercase and lowercase letters, numbers, and special symbols",
             "VerifyPassword": "Verify Password",
             "PhoneNumber": "Enter your mobile phone number",
             "EnterAddress": "Enter address",
-            "EnterDetailedAddress": "Enter detailed address"
+            "EnterDetailedAddress": "Enter detailed address",
+            "EntercontactPerson" : "Enter the person in charge",
+            "department" : "Enter department name",
+            "BusinessName" : "Enter business name"
         },
         "info_modal": {
             "bodytext": "Changes are applied",
