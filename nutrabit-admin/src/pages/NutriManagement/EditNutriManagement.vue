@@ -464,6 +464,8 @@ export default {
                 package_id: this.package_id.toString(),
                 name_ko: this.name_ko,
                 name_en: this.name_en,
+                tags_ko: this.tags_ko,
+                tags_en: this.tags_en,
                 description_ko: this.description_ko,
                 description_en: this.description_en,
                 // type: this.dropdownValueType ? 'something' : 'something',
@@ -487,10 +489,11 @@ export default {
                 this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);
                 this.formData.append('name_en', this.name_en);
-                this.formData.append('description_ko', this.description_ko);
-                this.formData.append('description_en', this.description_en);
                 this.formData.append('tags_ko', this.tags_ko);
                 this.formData.append('tags_en', this.tags_en);
+                this.formData.append('description_ko', this.description_ko);
+                this.formData.append('description_en', this.description_en);
+                
 
                 this.formData.append('status', this.status);
 
