@@ -79,9 +79,11 @@
             <ul class="smilar-product-img">
               <li v-for="(items, index) of blendingData" :key="index">
                 <img v-if="items.thumbnail_1_path"
+                class="link-img"
                   @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)"
                   :src="imgBaseUrl + items.thumbnail_1_path" alt />
                 <img v-else @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)"
+                  class="link-img"
                   src="../../assets/images/similar_place.png" alt />
               </li>
             </ul>
@@ -348,5 +350,8 @@ export default {
 
 .mySwiper2 .swiper-slide-thumb-active {
   opacity: 1;
+}
+.link-img{
+  cursor: pointer;
 }
 </style>
