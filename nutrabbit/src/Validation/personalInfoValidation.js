@@ -1,4 +1,8 @@
 import validator from "validator";
+import i18n from '../config/i18n';
+
+const { t } = i18n.global;
+i18n.global.locale = 'kr';
 
 const personalInfoValidation = (data) => {
   let errors = {};
@@ -6,26 +10,26 @@ const personalInfoValidation = (data) => {
   const { name, password, confirmPassword, phoneNumber, address } = data;
 
   if (validator.isEmpty(name)) {
-    errors.name = "Enter your name please";
+    errors.name = t('common.Error.EnterName');
   }
 
   if (validator.isEmpty(password)) {
-    errors.password = "Please enter a Password";
+    errors.password = t('common.Error.PasswordFormat');
 }
 else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-    errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+    errors.password = t('common.Error.PasswordFormat');
 }
 if (validator.isEmpty(confirmPassword)) {
-    errors.confirmPassword = "Please confirm your password";
+    errors.confirmPassword = t('common.Error.ConfirmPassword');
 }
 if (!validator.equals(password, confirmPassword)) {
-    errors.confirmPassword = "Password should match!";
+    errors.confirmPassword = t('common.Error.checkPassword');
 }
   if (validator.isEmpty(phoneNumber)) {
-    errors.phoneNumber = "Please enter your mobile phone number";
+    errors.phoneNumber = t('common.Error.EnterPhone');
   }
   if (validator.isEmpty(address)) {
-    errors.address = "Please enter your address";
+    errors.address = t('common.Error.EnterAddress');
   }
 
   // if (validator.isEmpty(reason)) {

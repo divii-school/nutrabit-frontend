@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">Find password</h1>
+            <h1 class="login-heading"> {{$t("common.QuickLinks.FindPassword")}}</h1>
           </div>
           <form
             action=""
@@ -12,13 +12,13 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.userId ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>ID</label>
+              <label for=""><i class="icon-required"></i>{{$t("common.label.ID")}}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter ID"
+                    :placeholder="$t('common.placeholder.EnterId')"
                     v-model="userId"
                   />
                 </div>
@@ -26,13 +26,13 @@
               <span class="error-msg">{{ error.userId }}</span>
             </div>
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>Email</label>
+              <label for=""><i class="icon-required"></i>{{$t("common.label.Email")}}</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="email"
-                    placeholder="Enter your email"
+                    :placeholder="$t('common.placeholder.Email')"
                     v-model="email"
                   />
                 </div>
@@ -42,21 +42,23 @@
                   :class="{ grey: isVerification }"
                   :disabled="emailValidated"
                 >
-                  Send verification code
+                   {{$t("button.sendVerification")}}
                 </button>
               </div>
               <span class="error-msg">{{ error.email }}</span>
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i>Email Verification Number</label
+                ><i class="icon-required"></i>{{$t("common.label.EmailVerification")}}</label
               >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter your email verification code"
+                   :placeholder="
+                        $t('common.placeholder.EnterVerificationCode')
+                      "
                     v-model="emailOTP"
                     maxlength="6"
                   />
@@ -73,14 +75,14 @@
                   @click="verifyOTP"
                   :disabled="otpValidate"
                 >
-                  certification
+                  {{ $t("button.verify") }}
                 </button>
               </div>
               <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
               <span class="error-msg">{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
-              Confirm
+               {{ $t("button.Confirm") }}
             </button>
           </form>
         </div>
@@ -114,7 +116,7 @@ export default {
       verify_status: "",
       localUserData: "",
       userId:'',
-      isVerify:0,
+      isConfirmOTP:0,
       isOtpSuccess : '',
     };
   },
@@ -207,14 +209,14 @@ export default {
             btn_type: "certification",
           });
           if (verifyOtpData.data.status == 200) {
-            this.isOtpSuccess = 'OTP verified';
+            // this.isOtpSuccess = 'OTP verified';
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            this.isVerify=1;
+            this.isConfirmOTP=1;
             this.error.emailOTP = "";
             localStorage.setItem(
               "forgetUserData",
@@ -223,7 +225,7 @@ export default {
             return true;
           }
         } catch (err) {
-          this.error.emailOTP = "The verification code does not match.";
+          this.error.emailOTP = this.$t("common.Error.OTPCheck");
           return false;
         }
       }

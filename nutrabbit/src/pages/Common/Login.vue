@@ -341,7 +341,7 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
-     
+
       window.Kakao.Auth.login({
         success: function (authObj) {
           console.log("authObj kakao--", authObj);
@@ -357,7 +357,9 @@ export default {
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
               localStorage.setItem("userType", 'SNS');
               self.loader.hide();
-              self.$router.push("/");
+              // self.$router.push("/");
+              // self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, authObj.access_token, 'kakao');
+
             },
           });
         },
@@ -368,6 +370,15 @@ export default {
       //  window.Kakao.Auth.authorize({
       //   redirectUri: 'http://localhost:8082'
       // });
+    },
+
+    socialRegistration(name, username, email, phone, login_token, login_type) {
+      this.commonService.individalRegistration(name, username, email, phone, login_token, login_type).then((res) => {
+        if (res.data.status == 200) {
+          console.log(res);
+          this.$router.push("member-registration-completed");
+        }
+      });
     },
 
 

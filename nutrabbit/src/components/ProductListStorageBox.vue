@@ -3,7 +3,7 @@
     <div class="radio-wrap">
       <label class="custom-radio">
         <input type="checkbox" :id="item.name_ko" :value="item.id" v-if="allSelected==true" checked @click="getStorageBoxId" />
-        <input type="checkbox" :id="item.name_ko" :value="item.id" v-else @click="getStorageBoxId" />
+        <input type="checkbox" :id="item.name_ko" ref="checkbox" :value="item.id" v-else @click="getStorageBoxId" />
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
@@ -24,11 +24,17 @@
 <script>
 export default {
   name: "ProductListStorageBox",
-  props:["item", "allSelected"],
+  props:["item", "allSelected","unchecked"],
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     }
+  },
+  updated(){
+   if(this.unchecked == true && this.allSelected==false){
+        this.$refs.checkbox.checked = false;
+      //  console.log(this.$refs.checkbox);
+   }
   },
    methods: {
      getStorageBoxId(event) {

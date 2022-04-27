@@ -1,4 +1,8 @@
 import validator from "validator";
+import i18n from '../config/i18n';
+
+const { t } = i18n.global;
+i18n.global.locale = 'kr';
 
 const personalBusinessValidation = (data) => {
   let errors = {};
@@ -9,35 +13,35 @@ const personalBusinessValidation = (data) => {
 
   // if (account_type == 'business') {
     if (validator.isEmpty(business_number)) {
-      errors.businessNumber = "Please enter your business number";
+      errors.businessNumber = t('common.Error.BusinessNo');
     }
     if (validator.isEmpty(business_name)) {
-      errors.businessName = "Please enter your business name";
+      errors.businessName = t('common.Error.BusinessName');
     }
     if (validator.isEmpty(department)) {
-      errors.department = "Please enter the department name";
+      errors.department = t('common.Error.department');
     }
     if (validator.isEmpty(contactPerson)) {
-      errors.contactPerson = "Please enter the name of the person in charge";
+      errors.contactPerson = t('common.Error.contactPerson');
     }
 
     if (validator.isEmpty(password)) {
-        errors.password = "Please enter a Password";
+        errors.password = t('common.Error.PasswordFormat');
     }
     else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-        errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+        errors.password = t('common.Error.PasswordFormat');
     }
     if (validator.isEmpty(confirmPassword)) {
-        errors.confirmPassword = "Please confirm your password";
+        errors.confirmPassword = t('common.Error.ConfirmPassword');
     }
     if (!validator.equals(password, confirmPassword)) {
-        errors.confirmPassword = "Password should match!";
+        errors.confirmPassword = t('common.Error.checkPassword');
     }
     if (validator.isEmpty(phoneNumber)) {
-        errors.phoneNumber = "Please enter your mobile phone number";
+        errors.phoneNumber = t('common.Error.EnterPhone');
     }
     if (validator.isEmpty(address)) {
-        errors.address = "Please enter your address";
+        errors.address = t('common.Error.EnterAddress');
     }
 
     // if (withdraw_type == "bussiness") {

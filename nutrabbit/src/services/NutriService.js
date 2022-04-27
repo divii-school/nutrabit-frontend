@@ -22,8 +22,8 @@ export default class NutriService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async confirmbutton() {
-    return await axios.post(`/nutriBlending/get_quote`).then((res) => res).catch((err) => err);
+  async confirmbutton(id) {
+    return await axios.post(`/nutriBlending/get_quote`,{id:id,lang:"KO"}).then((res) => res).catch((err) => err);
 }
   
 }

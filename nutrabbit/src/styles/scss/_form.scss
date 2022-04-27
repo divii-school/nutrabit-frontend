@@ -132,7 +132,7 @@
         .input-group {
             .input-inner {
                 .form-control {
-                    border: 1px solid $red-3;
+                    border: 1px solid $red-3 !important;
                 }
             }
         }
@@ -152,6 +152,10 @@
         color: $green-68;
         display: block;
         margin-top: 5px;
+    }
+    &.form-full-width{
+        margin: 0;
+        width: 100%;
     }
 }
 
