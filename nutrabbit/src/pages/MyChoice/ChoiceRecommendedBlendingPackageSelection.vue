@@ -42,7 +42,12 @@
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('package.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{$t('package.popup.list1')}}</li>
+                          <li>{{$t('package.popup.list2')}}</li>
+                          <li>{{$t('package.popup.list3')}}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -66,8 +71,16 @@
                 </div>
                 <div class="material-details">
                   <h2>{{$t('package.etc')}}</h2>
-                  <div class="input-group">
+                  <!-- <div class="input-group">
                     <input type="text" :placeholder="$t('package.etc_input')" v-model="etc" />
+                  </div> -->
+                  <div class="form-group form-full-width" :class="etcEmptyError ? 'error' : ''">
+                    <div class="input-group">
+                      <div class="input-inner">
+                        <input type="text" class="form-control" :placeholder="$t('package.etc_input')" v-model="etc" />
+                      </div>
+                    </div>
+                    <span class="error-msg">{{ etcEmptyError }}</span>
                   </div>
                 </div>
               </div>
@@ -116,7 +129,8 @@ export default {
       blendingPackageData: '',
       package_id: 18,
       etc: '',
-      etcbtn: ''
+      etcbtn: '',
+      etcEmptyError: ''
     };
   },
   created() {
@@ -159,7 +173,9 @@ export default {
         if (this.etcbtn == "ETC") {
 
           if (this.etc == "") {
-            this.$swal("Please add custom package input");
+            // this.$swal("Please add custom package input");
+            this.etcEmptyError = "Please add custom package input.";
+            return;
           }
           else {
             localStorage.setItem('etc', this.etc);

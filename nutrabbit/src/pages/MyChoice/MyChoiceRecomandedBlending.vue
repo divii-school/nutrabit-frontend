@@ -16,7 +16,12 @@
                       <i class="icon-info"></i>
                     </button>
                     <template #content>
-                      <div class="heading-tooltip-content" v-html="$t('myChoice.RecommendedBlending.popup')">
+                      <div class="heading-tooltip-content">
+                        <ul>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list1") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list2") }}</li>
+                          <li>{{ $t("myChoice.RecommendedBlending.popup.list3") }}</li>
+                        </ul>
                       </div>
                     </template>
                   </Popper>
@@ -31,7 +36,7 @@
                   ></vue-select>-->
                   <select @change="onChange">
                     <option value="popularity">{{$t('myChoice.RawMaterial.popularity')}}</option>
-                    <option value="alphabetical">in alphabetical order</option>
+                    <option value="alphabetical">{{$t('myChoice.RawMaterial.alphabetical')}}</option>
                   </select>
                 </div>
               </div>

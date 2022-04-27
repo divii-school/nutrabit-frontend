@@ -1,4 +1,8 @@
 import validator from "validator";
+import i18n from '../config/i18n';
+
+const { t } = i18n.global;
+i18n.global.locale = 'kr';
 
 const validateRegistration = (data) => {
   let errors = {};
@@ -14,23 +18,23 @@ const validateRegistration = (data) => {
   }
   if (account_type == 'business') {
     if (validator.isEmpty(businessNumber)) {
-      errors.businessNumber = "Please enter your business number";
+      errors.businessNumber =  t('common.Error.BusinessNo');
     }
     if (validator.isEmpty(businessName)) {
-      errors.businessName = "Please enter your business name";
+      errors.businessName = t('common.Error.BusinessName');
     }
     if (validator.isEmpty(depertment)) {
-      errors.depertment = "Please enter the department name";
+      errors.depertment = t('common.Error.department');
     }
     if (validator.isEmpty(contactPerson)) {
-      errors.contactPerson = "Please enter the name of the person in charge";
+      errors.contactPerson = t('common.Error.contactPerson');
     }
   }
   if (validator.isEmpty(name)) {
-    errors.name = "Input your name, please";
+    errors.name = t('common.Error.EnterName');
   }
   if (validator.isEmpty(username)) {
-    errors.username = "Please enter your ID";
+    errors.username =  t('common.Error.EnterId');
   }
   else if (!(validator.isAlphanumeric(username))) {
     errors.username = "Please use only letter and number";
@@ -40,34 +44,34 @@ const validateRegistration = (data) => {
   }
 
   if (validator.isEmpty(password)) {
-    errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+    errors.password =  t('common.Error.PasswordFormat');
   }
   else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-    errors.password = "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)";
+    errors.password =  t('common.Error.PasswordFormat');
   }
   if (validator.isEmpty(confirmPassword)) {
-    errors.confirmPassword = "Please confirm your password";
+    errors.confirmPassword =  t('common.Error.ConfirmPassword');
   }
   if (!validator.equals(password, confirmPassword)) {
-    errors.confirmPassword = "Password should match!";
+    errors.confirmPassword =  t('common.Error.checkPassword');
   }
   if (!validator.isEmail(email)) {
     errors.email = "Enter a valid email address";
   }
   if (validator.isEmpty(email)) {
-    errors.email = "Please enter your email address";
+    errors.email = t('common.Error.EnterEmail');
   }
   if (validator.isEmpty(emailOTP)) {
-    errors.emailOTP = "Please enter your email verification code";
+    errors.emailOTP = t('common.Error.EnterOtp');
   } else if (isOtpVerified == false) {
     errors.emailOTP = 'Have to verify the otp for email';
   }
 
   if (validator.isEmpty(phoneNumber)) {
-    errors.phoneNumber = "Please enter your mobile phone number";
+    errors.phoneNumber =  t('common.Error.EnterPhone');
   }
   if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
-    errors.address = "Please enter your address";
+    errors.address = t('common.Error.EnterAddress');
   }
 
 
