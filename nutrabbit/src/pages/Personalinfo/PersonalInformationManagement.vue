@@ -12,7 +12,8 @@
                 <label for>{{ $t("personalInfo.labels.name") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="name" />
+                    <input class="form-control" type="text" v-model="name" 
+                    :placeholder="$t('personalInfo.placeholder.Name')"/>
                   </div>
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
@@ -21,7 +22,8 @@
                 <label for>{{ $t("personalInfo.labels.id") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control disabled" disabled type="text" v-model="uuid" />
+                    <input class="form-control disabled" disabled type="text" v-model="uuid" 
+                    :placeholder="$t('personalInfo.placeholder.EnterId')"/>
                   </div>
                 </div>
                 <!-- <span class="error-msg">{{ error.userID }}</span> -->
@@ -70,7 +72,9 @@
                 <label for>{{ $t("personalInfo.labels.phonenumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="phoneNumber" />
+                    <input class="form-control" type="text" v-model="phoneNumber" 
+                    :placeholder="$t('personalInfo.placeholder.PhoneNumber')"
+                    />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
@@ -81,11 +85,11 @@
                   <div class="input-inner">
                     <input class="form-control" type="text" v-model="address" disabled/>
                   </div>
-                  <button class="btn-green-outline" @click="getAddress">주소 검색</button>
+                  <button class="btn-green-outline" @click="getAddress">{{ $t("personalInfo.labels.searchaddress") }}</button>
                 </div>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input class="form-control" type="text" v-model="Detailaddress" />
+                    <input class="form-control" type="text" v-model="Detailaddress" :placeholder="$t('personalInfo.placeholder.EnterDetailedAddress')"/>
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>

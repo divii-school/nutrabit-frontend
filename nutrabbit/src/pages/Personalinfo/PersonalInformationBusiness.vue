@@ -32,6 +32,7 @@
                     class="form-control"
                     type="text" 
                     v-model="business_name"
+                    :placeholder="$t('personalInfo.placeholder.BusinessName')"
                   />
                 </div>
               </div>
@@ -45,6 +46,7 @@
                     class="form-control"
                     type="text"
                     v-model="department"
+                    :placeholder="$t('personalInfo.placeholder.department')"
                   />
                 </div>
               </div>
@@ -58,6 +60,7 @@
                     class="form-control"
                     type="text"
                     v-model="contactPerson"
+                    :placeholder="$t('personalInfo.placeholder.EntercontactPerson')"
                   />
                 </div>
               </div>
@@ -132,6 +135,7 @@
                     class="form-control"
                     type="text"
                     v-model="phoneNumber"
+                    :placeholder="$t('personalInfo.placeholder.PhoneNumber')"
                   />
                 </div>
               </div>
@@ -148,7 +152,7 @@
                    disabled
                   />
                 </div>
-                <button class="btn-green-outline" @click="getAddress">주소 검색</button>
+                <button class="btn-green-outline" @click="getAddress">{{ $t("personalInfo.labels.searchaddress") }}</button>
               </div>
               <div class="input-group">
                 <div class="input-inner">
@@ -156,6 +160,7 @@
                     class="form-control"
                     type="text"
                     v-model="Detailaddress"
+                    :placeholder="$t('personalInfo.placeholder.EnterDetailedAddress')"
                   />
                 </div>
               </div>
