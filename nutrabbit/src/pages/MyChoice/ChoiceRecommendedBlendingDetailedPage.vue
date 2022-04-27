@@ -238,6 +238,7 @@ export default {
   width: 25%;
   height: 100%;
   opacity: 0.4;
+  margin-bottom: 10px;
 }
 
 .mySwiper2 .swiper-slide-thumb-active {
