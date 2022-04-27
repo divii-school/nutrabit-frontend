@@ -105,6 +105,7 @@
     :bodytext2 ="$t('nutri.nutrimodal.bodytext2')"
     :btnText1="$t('nutri.nutrimodal.btntext')"
     :btnText2="$t('nutri.nutrimodal.btntext2')"
+    @confirm="confirm"
     link = ''
   />
 </template>
@@ -223,9 +224,13 @@ export default {
       // window.location.href = "";
     },
 
+    confirm(){
+      this.confirmbutton();
+    },
+
     openmodal() {
       this.isModalVisible = true;
-      this.confirmbutton();
+      // this.confirmbutton();
     },
 
     splitJoin(theText) {
@@ -252,9 +257,9 @@ export default {
 
     confirmbutton() {
       this.id = this.$route.params.id;
-      // console.log("id",this.id);
+      console.log("id",this.id);
       this.nutriService
-        .confirmbutton()
+        .confirmbutton(this.id)
         .then((res) => {
           if (res.status == 200) {
             console.log("ress",res);
