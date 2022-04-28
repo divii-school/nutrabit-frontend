@@ -99,6 +99,7 @@ export default {
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       isModalVisible: false,
+      globalLocale: "",
     };
   },
   setup() {
@@ -127,9 +128,17 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  // updated(){
-  //   this.allNutidata();
-  // },
+  updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allNutidata();
+    },
+  },
+
   methods: {
     // makePay test function
     // makePay() {
@@ -198,6 +207,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
+          console.log(res)
 
         } else {
           // console.log('getNutridata res', res.data.blendingData);
