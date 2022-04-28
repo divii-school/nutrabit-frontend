@@ -13,7 +13,7 @@ const validateLogin = (data) => {
         errors.password = t('common.Error.EnterPassword');
     }
     if (validator.isEmpty(email)) {
-        errors.email = t('common.Error.EnterEmail');
+        errors.email = t('common.Error.EnterId');
     }
     // else if (!validator.isEmail(email)) {
     //     errors.email = "Enter a valid email address";
