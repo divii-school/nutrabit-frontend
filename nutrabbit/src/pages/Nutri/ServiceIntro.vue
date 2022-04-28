@@ -20,7 +20,7 @@
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
               <li v-for="(item, index) of processData" :key="index">
-                <img :src="item.img">
+                <img :src="'~@/assets/images/+item.img">
                 <span>{{ item.step }}</span>
                 <p>{{ item.desc }}</p>
               </li>
@@ -42,7 +42,7 @@
                   <div class="nutri-product-item">
                     <div @click="this.$router.push(`/nutri-detail/${item.id}`)">
                       <img v-if="item.thumbnail_path" class="nutri-pimg" :src="imgBaseUrl +  item.thumbnail_path" alt="" />
-                      <img v-else class="nutri-pimg" src="../../assets/images/content_place.png" alt="" />
+                      <img v-else class="nutri-pimg" src="~@/assets/images/content_place.png" alt="" />
                     </div>
                     <div class="tag-wrap">
                       <span>nutri 3.3</span>
@@ -80,22 +80,22 @@ export default {
 computed: {
   processData() { return [
         {
-          img: "../../../src/assets/images/blending1.png",
+          img: '~@/assets/images/blending1.png',
           step: "Step.1",
           desc: this.$t("nutri.title.desc1")
         },
         {
-          img: "../../../src/assets/images/blending2.png",
+          img: "~@/assets/images/blending2.png",
           step: "Step.2",
           desc: this.$t("nutri.title.desc2")
         },
         {
-          img: "../../../src/assets/images/blending3.png",
+          img: "~@/assets/images/blending3.png",
           step: "Step.3",
           desc: this.$t("nutri.title.desc3")
         },
         {
-          img: "../../../src/assets/images/blending4.png",
+          img: "~@/assets/images/blending4.png",
           step: "Step.4",
           desc: this.$t("nutri.title.desc4")
         },

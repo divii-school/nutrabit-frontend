@@ -135,25 +135,25 @@ export default {
           desc: "my choice in nutri 3.3 After using the desired sample Request a sample production! (Sample production costs 300,000 won / Additional modifications are charged separately)"
         },
         {
-          img: "../../../src/assets/images/step2.png",
+          img: "~@/assets/images/step2.png",
           step: "Step 2",
           title: "development meeting",
           desc: "Based on the sample service requested We check your requirements."
         },
         {
-          img: "../../../src/assets/images/step3.png",
+          img: "~@/assets/images/step3.png",
           step: "Step 3",
           title: "product development",
           desc: "based on the requested information Develop samples."
         },
         {
-          img: "../../../src/assets/images/step4.png",
+          img: "~@/assets/images/step4.png",
           step: "Step 4",
           title: "sample production",
           desc: "After product development Produce samples."
         },
         {
-          img: "../../../src/assets/images/step5.png",
+          img: "~@/assets/images/step5.png",
           step: "Step 5",
           title: "customer delivery",
           desc: "The finished sample is your It will be shipped to your address."
