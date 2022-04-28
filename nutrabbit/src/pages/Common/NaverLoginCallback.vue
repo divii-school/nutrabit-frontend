@@ -17,8 +17,5 @@ export default {
     console.log(naver.getAccessToken());
   },
 
-
-
-
 }
 </script>

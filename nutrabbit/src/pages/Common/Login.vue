@@ -62,6 +62,7 @@
             </button>
           </form>
           <div class="getting-started">
+            <!-- kakao login for Web -->
             <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
               @click="loginWithKakao">
               <i class="icon-chat-black"></i>
@@ -75,9 +76,8 @@
             </button>
             <!-- END kakao login for App -->
 
-            <!-- <button id="kakao-login-btn">kakao login test</button> -->
-
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
+            <!-- Naver login for App -->
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn" @click="loginWithNaver">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
@@ -94,19 +94,9 @@
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
-            <!-- <button type="button" class="btn-primary with-icon green-btn" id="naver_id_login" @click="naverLogin">
-              Naver Login
-            </button> -->
-            <!-- 
-            <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLogin">Test naver
-              login</button> -->
-
-            <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLg">Test naver
-              login</button>
 
             <div id="naver_id_login"></div>
 
-            <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
           </div>
         </div>
       </div>
@@ -164,7 +154,6 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
-    this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
@@ -298,7 +287,7 @@ export default {
     // END Webview support
 
     // naver login
-    async testNaverLg() {
+    async loginWithNaver() {
       alert('testNaverLg');
       this.loader = this.$loading.show({
         // Optional parameters
