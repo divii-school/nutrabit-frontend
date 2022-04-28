@@ -7,7 +7,7 @@
             <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
           </div>
           <form action @submit="(e) => e.preventDefault()">
-            <div class="form-group" :class="errorEmail ? 'error' : ''">
+            <div class="form-group" :class="error.email ? 'error' : ''">
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -15,9 +15,9 @@
                     v-model="email" />
                 </div>
               </div>
-              <span class="error-msg">{{ errorEmail }}</span>
+              <span class="error-msg">{{ error.email }}</span>
             </div>
-            <div class="form-group" :class="errorPassword ? 'error' : ''">
+            <div class="form-group" :class="error.password ? 'error' : ''">
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -25,7 +25,7 @@
                     v-model="password" />
                 </div>
               </div>
-              <span class="error-msg">{{ errorPassword }}</span>
+              <span class="error-msg">{{ error.password }}</span>
             </div>
             <div class="form-group">
               <div class="check-box-wrap">
@@ -116,6 +116,7 @@ import Button from "../../components/Button.vue";
 import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
+import validateLogin from "../../Validation/validateLogin";
 // import axios from "axios";
 import { useRoute } from "vue-router";
 export default {
@@ -127,12 +128,15 @@ export default {
     return {
       email: "",
       password: "",
+      error: {},
       errorEmail: "",
       errorPassword: "",
       checkBox: "",
       loader: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
+      validateOnce: false,
+      globalLocale: "",
 
       // testData: { "accesstoken": "eyjrawqioijmadzcczhdiiwiywxnijoiulmyntyifq.eyjpc3mioijodhrwczovl2fwcgxlawquyxbwbguuy29tiiwiyxvkijoiy29tlm51dhjhymjpdc5udxryatmziiwizxhwijoxnjuwnze5nzi3lcjpyxqioje2nta2mzmzmjcsinn1yii6ijawmtcyns42mjrimdy2mjnlyme0mmyzywu5odhkn2u3zgu5yjc5oc4wodi5iiwibm9uy2uioijkmziwnwnlnmrmm2iynwjjzwriyzzkngrlyzcxzmm4ode5mwzknwewyzu0mziyogjintu3mgy0ogfkmzlizmq4iiwiy19oyxnoijoirtgzuf9onhjnv3bxm3e3tjkxbhrtdyisimvtywlsijoic2f5yw50yubkaxzpas5jb20ilcjlbwfpbf92zxjpzmllzci6inrydwuilcjhdxrox3rpbwuioje2nta2mzmzmjcsim5vbmnlx3n1chbvcnrlzci6dhj1zx0.jg6_m56wsyl3tpyaa6sel3mwhextesasgvhr_oilvmac6byir66fu0oaktc-uad3lna8brdz02onm290cfeoxs8fv1o0zjywvdlml8lhzqyb5cvwivbeynyreiea16x7qqpcm8fajuthunkwjfxqu9wdmvt7avdekusgdh9vrax7bw0hbqwm7rfs19uoqyezmeckgewydnf4-cdgvg5e3tdta-bpty_tfdwrhzy7zysimpch-um51y4yh9ly4qjnmr7hqsvonejgfi1uwr8zswav5scrmi52db__f-oudv-np7bv7fzxvsq7pexxu51squftxmalidosi358gtmd5a", "emailid": "sayanta@divii.com", "socialId": "001725.624b06623eba42f3ae988d7e7de9b798.0829", "userName": " ", "loginVia": "apple" },
     };
@@ -160,6 +164,7 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
+
     // this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
@@ -183,27 +188,54 @@ export default {
     //   this.isAppaleId = true;
     // }
   },
+
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
+
+  // watch: {
+  //   globalLocale(newVal) {
+  //     if (newVal == "en" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+
+  //     if (newVal == "kr" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+  //   },
+  // },
+
   methods: {
-    onSubmit() {
-      const setEmail = this.email;
-      const setPassword = this.password;
-      if (setEmail == "") {
-        // this.errorEmail = "Please enter an email id";
-        return this.errorEmail = this.$t("common.Error.EnterId");
-      } else if (setPassword == "") {
-        return this.errorPassword = this.$t("common.Error.EnterPassword");
+    checkError() {
+      let credential = {
+        email: this.email,
+        password: this.password,
+      };
+      const { isInvalid, error } = validateLogin(credential);
+      this.validateOnce = true;
+      if (isInvalid) {
+        this.error = error;
+        return false;
       } else {
-        this.commonService.getLogin(setEmail, setPassword).then((res) => {
+        this.error = {};
+        return true;
+      }
+    },
+    onSubmit() {
+      if (!this.checkError()) {
+        return;
+      } else {
+        this.commonService.getLogin(this.email, this.password).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                return this.errorPassword = this.$t("common.Error.checkPassword");
+                 this.error.password = this.$t("common.Error.checkPassword");
               }
-              if (
+              else if (
                 res.response.data.message ==
                 "User With The Email Does Not Exists"
               ) {
-                return this.errorEmail = this.$t("common.Error.chcekId");
+                 this.error.email = this.$t("common.Error.chcekId");
               }
               // this.$swal(res.response.data.message);
             }

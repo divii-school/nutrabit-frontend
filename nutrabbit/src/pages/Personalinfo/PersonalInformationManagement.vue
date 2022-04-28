@@ -197,6 +197,8 @@ export default {
       network:false,
       sns:false,
       etc:false,
+      validateOnce: false,
+      globalLocale: "",
     };
   },
 
@@ -207,6 +209,22 @@ export default {
 
    created() {
     this.personalInfoservice = new PersonalInfoService();
+  },
+
+  updated(){
+     this.globalLocale = this.$i18n.locale;
+  },
+  
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
   },
 
   methods: {
@@ -358,8 +376,7 @@ export default {
 
     },
 
-    async updatePersonalInfo() {
-      
+    checkError() {
       let credential = {
         name: this.name,
         password: this.password,
@@ -370,8 +387,30 @@ export default {
       };
       const { isInvalid, error } = personalInfoValidation(credential);
       if (isInvalid) {
-        
         this.error = error;
+        return false;
+      } else {
+        this.error = {};
+        return true;
+      }
+    },
+
+    async updatePersonalInfo() {
+      
+      // let credential = {
+      //   name: this.name,
+      //   password: this.password,
+      //   confirmPassword: this.confirmPassword,
+      //   email: this.email,
+      //   phoneNumber: this.phoneNumber,
+      //   address: this.address,
+      // };
+      // const { isInvalid, error } = personalInfoValidation(credential);
+      this.validateOnce = true;
+
+      if (!this.checkError()) {
+        
+       return;
       } else {
 
         let checkboxName;
