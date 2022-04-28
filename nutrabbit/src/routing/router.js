@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import Login from "../pages/Common/login.vue";
+import NaverLoginCallback from "../pages/Common/NaverLoginCallback.vue";
 import MemberRegistrationTypeSelection from "../pages/Common/MemberRegistrationTypeSelection.vue";
 import MemberRegistrationMethod from "../pages/Common/MemberRegistrationMethod.vue";
 import MemberRegistrationIndividuals from "../pages/Common/MemberRegistrationIndividual.vue";
@@ -71,6 +72,12 @@ const routes = [
     name: "Login",
     path: "/login",
     component: Login,
+    beforeEnter: guest,
+  },
+  {
+    name: "NaverLogin",
+    path: "/callback/naverlogin",
+    component: NaverLoginCallback,
     beforeEnter: guest,
   },
   {

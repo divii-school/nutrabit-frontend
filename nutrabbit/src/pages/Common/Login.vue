@@ -97,11 +97,14 @@
             <!-- <button type="button" class="btn-primary with-icon green-btn" id="naver_id_login" @click="naverLogin">
               Naver Login
             </button> -->
-
+<!-- 
             <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLogin">Test naver
+              login</button> -->
+
+               <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLg">Test naver
               login</button>
 
-              <div id="naver_id_login"></div>
+            <div id="naver_id_login"></div>
 
             <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
           </div>
@@ -117,6 +120,7 @@ import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 import axios from "axios";
+import naver from 'naver-id-login';
 import { useRoute } from "vue-router";
 export default {
   name: "Login",
@@ -131,6 +135,8 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
+      naverAuth: undefined,
+      naverProfiledata: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
 
@@ -292,6 +298,7 @@ export default {
       naver_id_login.setDomain(".service.com");
       naver_id_login.setState(state);
       // naver_id_login.setPopup();
+      naver_id_login.response_type = "code";
       naver_id_login.init_naver_id_login();
       // this.naverLoginCallback();
     },
@@ -300,15 +307,34 @@ export default {
       console.log('testNaverLogin');
       let CLIENT_ID = 'RzAKRIVkiYS3ETx4MlTd';
       // let code = 'code';
-      let STATE_STRING = 'state'+new Date().getTime();
+      let STATE_STRING = 'state' + new Date().getTime();
       let CALLBACK_URL = 'https://frontned-nutrabbit-dev.dvconsulting.org/';
-      
+
       axios.post(`https://nid.naver.com/oauth2.0/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURI(CALLBACK_URL)}&state=${STATE_STRING}`).then((res) => {
         console.log("testNaverLogin", res);
       });
     },
 
-   
+    async testNaverLg() {
+      alert('testNaverLg');
+      const self = this;
+      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
+      const callbackUrl = 'http://localhost:8082/callback/naverlogin';
+      await naver.login(clientId, callbackUrl).then((res) => {
+        console.log('testNaverLg---', res);
+        self.naverAuth = res;
+        self.naverProfile();
+      });
+    },
+
+    naverProfile() {
+      const self = this;
+      naver.getProfile(this.naverAuth.access_token).then((res) => {
+        console.log('naverProfile---', res);
+        self.naverProfiledata = res;
+      });
+    },
+
 
     // kakao Login
     loginWithKakao() {

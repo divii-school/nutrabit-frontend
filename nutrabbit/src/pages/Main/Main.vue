@@ -145,18 +145,26 @@ export default {
       // 접근 토큰 값 출력
       alert(naver_id_login.oauthParams.access_token);
       // 네이버 사용자 프로필 조회
-      naver_id_login.get_naver_userprofile(self.naverSignInCallback());
+      // naver_id_login.get_naver_userprofile(self.naverSignInCallback());
+      naver_id_login.response_type = "code";
+      // opener.setRegisterValue(naver_id_login.oauthParams.access_token, naver_id_login.getProfileData('email'), window); 
+      naver_id_login.get_naver_userprofile(naver_id_login.oauthParams.access_token);
+      let email = naver_id_login.getProfileData('email');
+      let name = naver_id_login.getProfileData('name');
+      console.table(email, name);
+
 
       // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-      function naverSignInCallback() {
-        alert('naverSignInCallback');
-        alert(naver_id_login.getProfileData('email'));
-        alert(naver_id_login.getProfileData('nickname'));
-        alert(naver_id_login.getProfileData('age'));
-      }
+      // self.naverSignInCallback();
     },
 
-
+    // naverSignInCallback() {
+    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/");
+    //   alert('naverSignInCallback');
+    //   alert(naver_id_login.getProfileData('email'));
+    //   alert(naver_id_login.getProfileData('nickname'));
+    //   alert(naver_id_login.getProfileData('age'));
+    // },
 
     // naverLogin() {
     //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
