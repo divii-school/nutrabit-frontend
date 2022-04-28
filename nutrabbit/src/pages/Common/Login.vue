@@ -97,11 +97,11 @@
             <!-- <button type="button" class="btn-primary with-icon green-btn" id="naver_id_login" @click="naverLogin">
               Naver Login
             </button> -->
-<!-- 
+            <!-- 
             <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLogin">Test naver
               login</button> -->
 
-               <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLg">Test naver
+            <button type="button" class="btn-primary with-icon green-btn" @click="testNaverLg">Test naver
               login</button>
 
             <div id="naver_id_login"></div>
@@ -188,6 +188,7 @@ export default {
     // }
   },
   methods: {
+    // Normal Login
     onSubmit() {
       const setEmail = this.email;
       const setPassword = this.password;
@@ -228,6 +229,8 @@ export default {
         });
       }
     },
+
+    // Webview support
     sendAccessToken(res) {
       if (res) {
         // this.testres = res;
@@ -252,6 +255,7 @@ export default {
       alert(ftoken);
       this.appleLoginHandler(ftoken);
     },
+    //post login
     mbKakaoLogin() {
       window.parent.postMessage("kakaoLoginClicked", "*");
     },
@@ -284,54 +288,57 @@ export default {
           resData.accesstoken,
           "apple"
         );
-        self.socialLogin(resData.emailId);
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
       } else {
         return false;
       }
     },
+    // END Webview support
 
     // naver login
-    naverLogin() {
-      var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/");
-      var state = naver_id_login.getUniqState();
-      naver_id_login.setButton("green", 5, 50);
-      naver_id_login.setDomain(".service.com");
-      naver_id_login.setState(state);
-      // naver_id_login.setPopup();
-      naver_id_login.response_type = "code";
-      naver_id_login.init_naver_id_login();
-      // this.naverLoginCallback();
-    },
-
-    testNaverLogin() {
-      console.log('testNaverLogin');
-      let CLIENT_ID = 'RzAKRIVkiYS3ETx4MlTd';
-      // let code = 'code';
-      let STATE_STRING = 'state' + new Date().getTime();
-      let CALLBACK_URL = 'https://frontned-nutrabbit-dev.dvconsulting.org/';
-
-      axios.post(`https://nid.naver.com/oauth2.0/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURI(CALLBACK_URL)}&state=${STATE_STRING}`).then((res) => {
-        console.log("testNaverLogin", res);
-      });
-    },
-
     async testNaverLg() {
       alert('testNaverLg');
+      this.loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: false,
+        width: 30,
+        height: 30,
+        onCancel: this.onCancel,
+      });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
       const callbackUrl = 'http://localhost:8082/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         console.log('testNaverLg---', res);
         self.naverAuth = res;
-        self.naverProfile();
+        self.naverProfile(res.access_token);
       });
     },
 
-    naverProfile() {
+    naverProfile(token) {
       const self = this;
       naver.getProfile(this.naverAuth.access_token).then((res) => {
         console.log('naverProfile---', res);
         self.naverProfiledata = res;
+        self.socialRegistration(
+          res.response.name,
+          res.response.nickname,
+          "12345678",
+          res.response.email,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          token,
+          "naver"
+        );
+        setTimeout(() => {
+          self.socialLogin(res.response.email);
+          self.loader.hide();
+        }, 1500);
       });
     },
 
@@ -366,8 +373,10 @@ export default {
                 authObj.access_token,
                 "kakao"
               );
-              self.socialLogin(res.kakao_account.email);
-              self.loader.hide();
+              setTimeout(() => {
+                self.socialLogin(res.kakao_account.email);
+                self.loader.hide();
+              }, 1500);
             },
           });
         },
