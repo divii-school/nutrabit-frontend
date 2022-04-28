@@ -338,11 +338,17 @@ export default {
       isOtpVerified: false,
       isUserSuccess: "",
       isOtpSuccess: "",
-      verificationTimer:false
+      verificationTimer:false,
+      validateOnce: false,
+      globalLocale: "",
     };
   },
   created() {
     this.commonService = new CommonService();
+  },
+
+  updated(){
+    this.globalLocale = this.$i18n.locale;
   },
   computed : {
     verificationStatus() {
@@ -356,6 +362,19 @@ export default {
       
     }
   },
+
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
+  },
+
   methods: {
     checkError() {
       let credential = {
@@ -373,6 +392,7 @@ export default {
         isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
+      this.validateOnce = true;
       if (isInvalid) {
         this.error = error;
         return false;

@@ -133,6 +133,8 @@ export default {
       loader: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
+      validateOnce: false,
+      globalLocale: "",
 
       // testData: { "accesstoken": "eyjrawqioijmadzcczhdiiwiywxnijoiulmyntyifq.eyjpc3mioijodhrwczovl2fwcgxlawquyxbwbguuy29tiiwiyxvkijoiy29tlm51dhjhymjpdc5udxryatmziiwizxhwijoxnjuwnze5nzi3lcjpyxqioje2nta2mzmzmjcsinn1yii6ijawmtcyns42mjrimdy2mjnlyme0mmyzywu5odhkn2u3zgu5yjc5oc4wodi5iiwibm9uy2uioijkmziwnwnlnmrmm2iynwjjzwriyzzkngrlyzcxzmm4ode5mwzknwewyzu0mziyogjintu3mgy0ogfkmzlizmq4iiwiy19oyxnoijoirtgzuf9onhjnv3bxm3e3tjkxbhrtdyisimvtywlsijoic2f5yw50yubkaxzpas5jb20ilcjlbwfpbf92zxjpzmllzci6inrydwuilcjhdxrox3rpbwuioje2nta2mzmzmjcsim5vbmnlx3n1chbvcnrlzci6dhj1zx0.jg6_m56wsyl3tpyaa6sel3mwhextesasgvhr_oilvmac6byir66fu0oaktc-uad3lna8brdz02onm290cfeoxs8fv1o0zjywvdlml8lhzqyb5cvwivbeynyreiea16x7qqpcm8fajuthunkwjfxqu9wdmvt7avdekusgdh9vrax7bw0hbqwm7rfs19uoqyezmeckgewydnf4-cdgvg5e3tdta-bpty_tfdwrhzy7zysimpch-um51y4yh9ly4qjnmr7hqsvonejgfi1uwr8zswav5scrmi52db__f-oudv-np7bv7fzxvsq7pexxu51squftxmalidosi358gtmd5a", "emailid": "sayanta@divii.com", "socialId": "001725.624b06623eba42f3ae988d7e7de9b798.0829", "userName": " ", "loginVia": "apple" },
     };
@@ -160,6 +162,7 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
+
     // this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
@@ -183,10 +186,28 @@ export default {
     //   this.isAppaleId = true;
     // }
   },
+
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
+
+  // watch: {
+  //   globalLocale(newVal) {
+  //     if (newVal == "en" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+
+  //     if (newVal == "kr" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+  //   },
+  // },
+
   methods: {
     onSubmit() {
       const setEmail = this.email;
       const setPassword = this.password;
+      //this.validateOnce = true;
       if (setEmail == "") {
         // this.errorEmail = "Please enter an email id";
         return this.errorEmail = this.$t("common.Error.EnterId");

@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading"> {{$t("common.QuickLinks.FindID")}}</h1>
+            <h1 class="login-heading">{{ $t("common.QuickLinks.FindID") }}</h1>
           </div>
           <form
             action=""
@@ -12,7 +12,10 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>{{$t("common.label.Email")}}</label>
+              <label for=""
+                ><i class="icon-required"></i
+                >{{ $t("common.label.Email") }}</label
+              >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -20,7 +23,6 @@
                     type="email"
                     :placeholder="$t('common.placeholder.Email')"
                     v-model="email"
-                    
                   />
                 </div>
                 <button
@@ -29,26 +31,26 @@
                   :class="{ grey: isVerification }"
                   :disabled="emailValidated"
                 >
-                 {{$t("button.sendVerification")}}
+                  {{ $t("button.sendVerification") }}
                 </button>
               </div>
               <span class="error-msg">{{ error.email }}</span>
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i>{{$t("common.label.EmailVerification")}}</label
+                ><i class="icon-required"></i
+                >{{ $t("common.label.EmailVerification") }}</label
               >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                   :placeholder="
-                        $t('common.placeholder.EnterVerificationCode')
-                      "
+                    :placeholder="
+                      $t('common.placeholder.EnterVerificationCode')
+                    "
                     v-model="emailOTP"
                     maxlength="6"
-                    
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -63,14 +65,16 @@
                   @click="verifyOTP"
                   :disabled="otpValidate"
                 >
-                   {{ $t("button.verify") }}
+                  {{ $t("button.verify") }}
                 </button>
               </div>
-               <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
-              <span class="error-msg" >{{ error.emailOTP }}</span>
+              <span class="success-msg" v-if="isConfirmOTP == 1">{{
+                isOtpSuccess
+              }}</span>
+              <span class="error-msg">{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
-               {{ $t("button.Confirm") }}
+              {{ $t("button.Confirm") }}
             </button>
           </form>
         </div>
@@ -100,21 +104,42 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      isConfirmOTP:0,
-      isOtpSuccess : '',
+      isConfirmOTP: 0,
+      isOtpSuccess: "",
+      validateOnce: false,
+      globalLocale: "",
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+
+  updated() {
+    //console.log(this.$i18n.locale);
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
+  },
+
   methods: {
-     checkError() {
+    checkError() {
       let credential = {
         email: this.email,
         emailOTP: this.emailOTP,
         isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
+      this.validateOnce = true;
       if (isInvalid) {
         this.error = error;
         return false;
@@ -126,12 +151,10 @@ export default {
     async confirmFindId() {
       if (!this.checkError()) {
         return;
-      }
-      else {
+      } else {
         //console.log(this.otpValidate)
-       
-          this.$router.push("/login");
-        
+
+        this.$router.push("/login");
       }
     },
     async userFindId() {
@@ -149,7 +172,7 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
-            this.emailOTP="";
+            this.emailOTP = "";
             this.error.email = "";
 
             if (this.storeSetInterval) {
@@ -201,7 +224,7 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            this.isConfirmOTP=1;
+            this.isConfirmOTP = 1;
             this.error.emailOTP = "";
             return true;
           }
