@@ -8,6 +8,9 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
+          <div>
+            <h2 class="heading">my choice</h2>
+          </div>
           <div v-if="raw_material_image.length > 0">
             <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
@@ -353,5 +356,18 @@ export default {
 }
 .link-img{
   cursor: pointer;
+}
+.heading{
+  font-weight: 700;
+font-size: 40px;
+line-height: 100%;
+color: #9642F4;
+padding-bottom: 36px;
+}
+@media screen and (max-width: 768px) {
+  .heading{
+    font-size: 30px;
+    padding-bottom: 10px;
+  }
 }
 </style>

@@ -8,6 +8,7 @@ const state = reactive({
   myIP: '',
   isMobile: false,
   isiPhone: false,
+  SelectedLang: '',
 });
 
 const methods = {

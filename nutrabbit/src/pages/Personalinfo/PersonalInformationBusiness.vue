@@ -217,6 +217,8 @@ export default {
       error: {},
       isModalVisible:false,
       Detailaddress:"",
+      validateOnce: false,
+      globalLocale: "",
     }
   },
 
@@ -227,6 +229,22 @@ export default {
 
   created() {
     this.personalBusinessService = new PersonalBusinessService();
+  },
+
+  updated(){
+     this.globalLocale = this.$i18n.locale;
+  },
+  
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
   },
 
   methods: {
@@ -249,9 +267,8 @@ export default {
         this.Detailaddress = data.data[0].address;
       });
     },
-
-    async updateBusinessInfo() {
-      
+   
+   checkError() {
       let credential = {
         business_number: this.business_number,
         business_name: this.business_name,
@@ -265,8 +282,18 @@ export default {
       };
       const { isInvalid, error } = personalBusinessValidation(credential);
       if (isInvalid) {
-        
         this.error = error;
+        return false;
+      } else {
+        this.error = {};
+        return true;
+      }
+    },
+    
+    async updateBusinessInfo() {
+       this.validateOnce = true;
+      if (!this.checkError()) {
+        return;
       } else {
         
         this.personalBusinessService
