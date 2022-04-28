@@ -199,7 +199,7 @@ export default {
         }
         this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
-          if (res.status = 200) {
+          if (res.status == 200) {
             this.$swal("Application Data is successfuly submitted");
             this.$router.push("/");
           } else {
@@ -225,7 +225,7 @@ export default {
         }
         this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
-          if (res.status = 200) {
+          if (res.status == 200) {
             // this.$router.push("/");
             this.showModal = true;
           } else {
