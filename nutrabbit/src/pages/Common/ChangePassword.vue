@@ -100,7 +100,7 @@ export default {
         confirmPassword: this.confirmPassword,
       };
       const { isInvalid, error } = passwordValidation(credential);
-      this.validateOnce = true;
+      
       if (isInvalid) {
         this.error = error;
         return false;
@@ -115,6 +115,7 @@ export default {
       //   confirmPassword: this.confirmPassword,
       // };
       // const { isInvalid, error } = passwordValidation(credential);
+      this.validateOnce = true;
       if (!this.checkError()) {
         return;
       } else {

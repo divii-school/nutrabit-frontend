@@ -404,7 +404,7 @@ export default {
         
       };
       const { isInvalid, error } = validateRegistration(credential);
-      this.validateOnce = true;
+      
       if (isInvalid) {
         this.error = error;
         return false;
@@ -415,6 +415,7 @@ export default {
     },
     async BusinessRegistration() 
     {
+      this.validateOnce = true;
       if (!this.checkError()) {
         return;
       } else {
