@@ -189,21 +189,21 @@ export default {
     // }
   },
 
-  updated(){
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
-  watch: {
-    globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
-        this.onSubmit();
-      }
+  // watch: {
+  //   globalLocale(newVal) {
+  //     if (newVal == "en" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.onSubmit();
-      }
-    },
-  },
+  //     if (newVal == "kr" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+  //   },
+  // },
 
   methods: {
     checkError() {
