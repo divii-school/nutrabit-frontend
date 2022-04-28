@@ -147,47 +147,6 @@ export default {
     //   this.paymentService.requestPay();
     // },
 
-
-    // naverSignInCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/");
-    //   alert('naverSignInCallback');
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-    // naverLogin() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   var state = naver_id_login.getUniqState();
-    //   naver_id_login.setButton("green", 5, 50);
-    //   naver_id_login.setDomain("http://localhost:8082/login");
-    //   naver_id_login.setState(state);
-    //   // naver_id_login.setPopup();
-    //   naver_id_login.init_naver_id_login();
-    //   // this.naverLoginCallback();
-    // },
-
-    // naverLoginCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // 접근 토큰 값 출력
-    //   alert(naver_id_login.oauthParams.access_token);
-    //   // 네이버 사용자 프로필 조회
-    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    //   this.naverSignInCallback();  
-    // },
-
-    // naverSignInCallback() {
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-
-
-
-
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
