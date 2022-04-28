@@ -219,7 +219,11 @@
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li v-for="lang in langs" :key="lang.code" @click="changeLanguage(lang.code)">
+          <li
+            v-for="lang in langs"
+            :key="lang.code"
+            @click="changeLanguage(lang.code)"
+          >
             <router-link to>{{ lang.name }}</router-link>
           </li>
         </ul>
@@ -282,66 +286,6 @@ export default {
       activeLogin: false,
       showSearchpannel: false,
       personalInfoRouterLink: "",
-      // rightMenuItem: [
-      //   {
-      //     mainItem: this.$t('common.title.login'),
-      //   },
-      //   {
-      //     mainItem: "nutri 3.3",
-      //     subItemData: [
-      //       {
-      //         label: this.$t('header.SideNav.AboutUs'),
-      //         link: "/about-us",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.myChoice'),
-      //         link: "/my-choice",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.nutriBlending'),
-      //         link: "/service-intro",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.SampleMakingGuide'),
-      //         link: "/sample-making",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     mainItem: "ONLY ONE",
-      //     subItemData: [
-      //       {
-      //        label: this.$t('header.SideNav.RawMaterialStorage'),
-      //         link: "/add-ingredient",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.MyRecipe'),
-      //         link: "/my-recipe",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.MyApplication'),
-      //         link: "/my-application-detail",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     mainItem: "CUSTOMER CENTER",
-      //     subItemData: [
-      //       {
-      //         label: this.$t('header.SideNav.Notice'),
-      //         link: "/notice",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.FAQ'),
-      //         link: "/faq",
-      //       },
-      //       {
-      //         label: this.$t('header.SideNav.Inquiry'),
-      //         link: "/inquiry",
-      //       },
-      //     ],
-      //   },
-      // ],
       searchData: [],
       AllSearchId: [],
       langs: [
@@ -382,6 +326,14 @@ export default {
       if (localStorage.getItem("userType") == "personal_member") {
         this.personalInfoRouterLink = "/personal-information";
       }
+    }
+    if (this.$i18n.locale == "kr") {
+      this.common.state.SelectedLang = "KO";
+      localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+    }
+    if (this.$i18n.locale == "en") {
+      this.common.state.SelectedLang = "EN";
+      localStorage.setItem("selectedLang", this.common.state.SelectedLang);
     }
   },
 
@@ -496,7 +448,7 @@ export default {
       if (this.sarchInput == "") {
         // return ;
         // this.$swal("Please add searchData");
-        console.log("Please add searchData")
+        console.log("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
         this.searchData = e.target.value;

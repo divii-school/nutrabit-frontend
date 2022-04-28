@@ -48,7 +48,6 @@
   </footer>
 </template>
 <script>
-import VueNextSelect from "vue-next-select";
 
 export default {
   name: "Footer",
