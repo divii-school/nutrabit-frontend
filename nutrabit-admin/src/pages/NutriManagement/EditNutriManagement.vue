@@ -165,7 +165,7 @@
                         <label for="yes">Yes</label>
                         <input type="radio" id="no" name="status" value="inactive" v-model="status" />
                         <label for="no">No</label>
-                        <div class="text-red">{{ error.state }}</div>
+                        <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>
                 <br />
