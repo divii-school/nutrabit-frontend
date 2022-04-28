@@ -187,27 +187,27 @@ export default {
     // }
   },
 
-  updated(){
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
-  watch: {
-    globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
-        this.onSubmit();
-      }
+  // watch: {
+  //   globalLocale(newVal) {
+  //     if (newVal == "en" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.onSubmit();
-      }
-    },
-  },
+  //     if (newVal == "kr" && this.validateOnce == true) {
+  //       this.onSubmit();
+  //     }
+  //   },
+  // },
 
   methods: {
     onSubmit() {
       const setEmail = this.email;
       const setPassword = this.password;
-      this.validateOnce = true;
+      //this.validateOnce = true;
       if (setEmail == "") {
         // this.errorEmail = "Please enter an email id";
         return this.errorEmail = this.$t("common.Error.EnterId");
