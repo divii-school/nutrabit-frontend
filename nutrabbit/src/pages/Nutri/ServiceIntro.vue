@@ -90,7 +90,7 @@ export default {
     processData() {
       return [
         {
-          img: '~@/assets/images/blending1.png',
+          img: '../../../src/assets/images/blending1.png',
           step: "Step.1",
           desc: this.$t("nutri.title.desc1"),
         },
