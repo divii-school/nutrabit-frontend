@@ -127,6 +127,9 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
+  // updated(){
+  //   this.allNutidata();
+  // },
   methods: {
     // makePay test function
     // makePay() {
