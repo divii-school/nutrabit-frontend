@@ -4,12 +4,12 @@
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <div v-if="blending_image.length > 0">
-            <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper"
-              v-for="(items, index) of blending_data" :key="index">
-              <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-                <img :src="imgBaseUrl + item" alt />
+            <swiper class="mySwiper">
+              <swiper-slide>
+                <img :src="imgBaseUrl + thumb_image" alt />
               </swiper-slide>
             </swiper>
+            
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2" v-for="(items, index) of blending_data" :key="index">
               <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
@@ -125,6 +125,7 @@ export default {
       blending_id: null,
       blending_data: '',
       blending_image: '',
+      thumb_image:"",
       // pagination: {
       //   clickable: true,
       //   renderBullet: (index, className) => {
@@ -214,10 +215,11 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        //console.log(res.data.data[0].detail_image_path);
+        //console.log(res.data.data[0].thumbnail_1_path);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
           this.blending_image = res.data.data[0].detail_image_path;
+          this.thumb_image=res.data.data[0].thumbnail_1_path;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -237,7 +239,7 @@ export default {
 .mySwiper2 .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
   margin-bottom: 10px;
 }
 
