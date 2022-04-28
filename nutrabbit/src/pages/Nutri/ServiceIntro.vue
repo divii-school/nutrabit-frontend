@@ -90,22 +90,22 @@ export default {
     processData() {
       return [
         {
-          img: "../../../src/assets/images/blending1.png",
+          img: '~@/assets/images/blending1.png',
           step: "Step.1",
           desc: this.$t("nutri.title.desc1"),
         },
         {
-          img: "../../../src/assets/images/blending2.png",
+          img: "~@/assets/images/blending2.png",
           step: "Step.2",
           desc: this.$t("nutri.title.desc2"),
         },
         {
-          img: "../../../src/assets/images/blending3.png",
+          img: "~@/assets/images/blending3.png",
           step: "Step.3",
           desc: this.$t("nutri.title.desc3"),
         },
         {
-          img: "../../../src/assets/images/blending4.png",
+          img: "~@/assets/images/blending4.png",
           step: "Step.4",
           desc: this.$t("nutri.title.desc4"),
         },

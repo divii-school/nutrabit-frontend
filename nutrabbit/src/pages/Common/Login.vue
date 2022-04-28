@@ -7,7 +7,7 @@
             <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
           </div>
           <form action @submit="(e) => e.preventDefault()">
-            <div class="form-group" :class="errorEmail ? 'error' : ''">
+            <div class="form-group" :class="error.email ? 'error' : ''">
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -15,9 +15,9 @@
                     v-model="email" />
                 </div>
               </div>
-              <span class="error-msg">{{ errorEmail }}</span>
+              <span class="error-msg">{{ error.email }}</span>
             </div>
-            <div class="form-group" :class="errorPassword ? 'error' : ''">
+            <div class="form-group" :class="error.password ? 'error' : ''">
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -25,7 +25,7 @@
                     v-model="password" />
                 </div>
               </div>
-              <span class="error-msg">{{ errorPassword }}</span>
+              <span class="error-msg">{{ error.password }}</span>
             </div>
             <div class="form-group">
               <div class="check-box-wrap">
@@ -116,6 +116,7 @@ import Button from "../../components/Button.vue";
 import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
+import validateLogin from "../../Validation/validateLogin";
 // import axios from "axios";
 import { useRoute } from "vue-router";
 export default {
@@ -127,6 +128,7 @@ export default {
     return {
       email: "",
       password: "",
+      error: {},
       errorEmail: "",
       errorPassword: "",
       checkBox: "",
@@ -204,27 +206,36 @@ export default {
   // },
 
   methods: {
-    onSubmit() {
-      const setEmail = this.email;
-      const setPassword = this.password;
-      //this.validateOnce = true;
-      if (setEmail == "") {
-        // this.errorEmail = "Please enter an email id";
-        return this.errorEmail = this.$t("common.Error.EnterId");
-      } else if (setPassword == "") {
-        return this.errorPassword = this.$t("common.Error.EnterPassword");
+    checkError() {
+      let credential = {
+        email: this.email,
+        password: this.password,
+      };
+      const { isInvalid, error } = validateLogin(credential);
+      this.validateOnce = true;
+      if (isInvalid) {
+        this.error = error;
+        return false;
       } else {
-        this.commonService.getLogin(setEmail, setPassword).then((res) => {
+        this.error = {};
+        return true;
+      }
+    },
+    onSubmit() {
+      if (!this.checkError()) {
+        return;
+      } else {
+        this.commonService.getLogin(this.email, this.password).then((res) => {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                return this.errorPassword = this.$t("common.Error.checkPassword");
+                 this.error.password = this.$t("common.Error.checkPassword");
               }
-              if (
+              else if (
                 res.response.data.message ==
                 "User With The Email Does Not Exists"
               ) {
-                return this.errorEmail = this.$t("common.Error.chcekId");
+                 this.error.email = this.$t("common.Error.chcekId");
               }
               // this.$swal(res.response.data.message);
             }

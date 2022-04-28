@@ -168,7 +168,6 @@ export default {
         isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
-      this.validateOnce = true;
       if (isInvalid) {
         this.error = error;
         return false;
@@ -178,6 +177,7 @@ export default {
       }
     },
     confirmFindId() {
+      this.validateOnce = true;
       if (!this.checkError()) {
         return;
       } else {
