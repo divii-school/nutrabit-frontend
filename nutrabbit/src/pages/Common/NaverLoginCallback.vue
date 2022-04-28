@@ -13,8 +13,8 @@ export default {
 
   mounted() {
     naver.handleTokenResponse();
-    console.log('NaverLoginCallback');
-    console.log(naver.getAccessToken());
+    // console.log('NaverLoginCallback');
+    // console.log(naver.getAccessToken());
   },
 
 }

@@ -281,13 +281,13 @@ export default {
     },
 
     appleLoginHandler(res) {
-      console.log("appleLoginHandler", res);
+      // console.log("appleLoginHandler", res);
       const self = this;
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
-        alert(resData);
-        console.log("--appleLoginHandler--", resData);
+        // alert(resData);
+        // console.log("--appleLoginHandler--", resData);
         let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
         self.socialRegistration(
@@ -313,7 +313,7 @@ export default {
 
     // naver login
     async loginWithNaver() {
-      alert('testNaverLg');
+      // alert('testNaverLg');
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -326,7 +326,7 @@ export default {
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
       const callbackUrl = 'http://localhost:8082/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
-        console.log('testNaverLg---', res);
+        // console.log('testNaverLg---', res);
         self.naverAuth = res;
         self.naverProfile(res.access_token);
       });
@@ -335,7 +335,7 @@ export default {
     naverProfile(token) {
       const self = this;
       naver.getProfile(this.naverAuth.access_token).then((res) => {
-        console.log('naverProfile---', res);
+        // console.log('naverProfile---', res);
         self.naverProfiledata = res;
         self.socialRegistration(
           res.response.name,
@@ -427,9 +427,9 @@ export default {
           login_type
         )
         .then((res) => {
-          console.log("socialRegistration:--", res);
+          // console.log("socialRegistration:--", res);
           if (res.data.status == 200) {
-            console.log("socialRegistration success:--", res);
+            // console.log("socialRegistration success:--", res);
             // this.$router.push("member-registration-completed");
           }
         });
@@ -438,16 +438,16 @@ export default {
     //socialLogin
     socialLogin(email) {
       this.commonService.getSocialLogin(email).then((res) => {
-        console.log("socialLogin:--", res);
-        console.log("socialLogin res.response:--", res.response);
-        console.log("socialLogin res.data.status:--", res.data.status);
+        // console.log("socialLogin:--", res);
+        // console.log("socialLogin res.response:--", res.response);
+        // console.log("socialLogin res.data.status:--", res.data.status);
         if (res.response) {
           if (res.response.data.status == 400) {
-            console.log("res.response:", res.response);
+            // console.log("res.response:", res.response);
           }
         } else {
           if (res.data.status == 200) {
-            console.log("login res", res.data.data);
+            // console.log("login res", res.data.data);
             this.common.state.userId = res.data.data.userId;
             this.common.state.name = res.data.data.name;
             localStorage.setItem("token", res.data.data.token);
