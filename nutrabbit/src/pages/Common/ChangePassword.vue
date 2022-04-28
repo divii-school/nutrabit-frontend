@@ -69,11 +69,30 @@ export default {
       confirmPassword: "",
       error: {},
       localUserData: "",
+      validateOnce: false,
+      globalLocale: "",
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+
+  updated(){
+   this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
+  },
+
   methods: {
     checkError() {
       let credential = {
@@ -81,6 +100,7 @@ export default {
         confirmPassword: this.confirmPassword,
       };
       const { isInvalid, error } = passwordValidation(credential);
+      this.validateOnce = true;
       if (isInvalid) {
         this.error = error;
         return false;
