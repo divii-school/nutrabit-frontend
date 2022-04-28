@@ -15,9 +15,9 @@ const validateLogin = (data) => {
     if (validator.isEmpty(email)) {
         errors.email = t('common.Error.EnterEmail');
     }
-    else if (!validator.isEmail(email)) {
-        errors.email = "Enter a valid email address";
-    }
+    // else if (!validator.isEmail(email)) {
+    //     errors.email = "Enter a valid email address";
+    // }
 
     return {
         isInvalid: Object.keys(errors).length > 0,
