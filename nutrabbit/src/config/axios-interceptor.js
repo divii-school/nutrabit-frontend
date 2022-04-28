@@ -18,15 +18,15 @@ axios.interceptors.request.use(function (config) {
 });
 
 // Token expire redirection
-// axios.interceptors.response.use((response) => {
-//     return response
-// }, async function (error) {
-//     if (error.response.status === 403) {
-//         Toast.fire({ title: "Session Expired" });
-//         window.location.href = '/login';
-//         localStorage.clear();
-//         return axios(originalRequest);
+axios.interceptors.response.use((response) => {
+    return response
+}, async function (error) {
+    if (error.response.status === 403) {
+        // Toast.fire({ title: "Session Expired" });
+        window.location.href = '/login';
+        localStorage.clear();
+        return axios(originalRequest);
 
-//     }
-//     return Promise.reject(error);
-// });
+    }
+    return Promise.reject(error);
+});
