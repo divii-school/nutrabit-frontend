@@ -253,7 +253,7 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
-             console.log("this.nutriDetails",this.nutriDetails);
+            //  console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
               this.thumb_image= res.data.data[0].thumbnail_path;
