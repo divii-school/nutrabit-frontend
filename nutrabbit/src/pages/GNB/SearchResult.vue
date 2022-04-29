@@ -26,6 +26,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/nutri-detail/' + item.id"
                     />
                   </template>
                 </div>
@@ -56,6 +57,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
                     />
                   </template>
                 </div>
@@ -225,6 +227,7 @@ export default {
           })
           this.nutriBlending = nutriBlending;
           this.recomanedBlending = recomanedBlending;
+          console.log(recomanedBlending);
           this.rawMaterial = rawMaterial;
           this.faq = faq;
           this.myCallback1(1);
