@@ -110,7 +110,7 @@
     :btnText1="$t('nutri.nutrimodal.btntext')"
     :btnText2="$t('nutri.nutrimodal.btntext2')"
     @confirm="confirm"
-    link = ''
+    link = '/my-application-detail'
   />
   <KakaoChat />
 </template>
@@ -253,7 +253,7 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
-             console.log("this.nutriDetails",this.nutriDetails);
+            //  console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
               this.thumb_image= res.data.data[0].thumbnail_path;
@@ -266,12 +266,12 @@ export default {
 
     confirmbutton() {
       this.id = this.$route.params.id;
-      console.log("id",this.id);
+      // console.log("id",this.id);
       this.nutriService
         .confirmbutton(this.id)
         .then((res) => {
           if (res.status == 200) {
-            console.log("ress", res);
+            // console.log("ress", res);
           }
         })
         .catch((err) => {

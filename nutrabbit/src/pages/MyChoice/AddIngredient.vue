@@ -128,7 +128,7 @@ export default {
           let uid = localStorage.getItem('uid');
           this.mychoiceService.deleteIngredientsStorageBox(uid, box_id).then((res) => {
             //console.log(res.data);
-            if (res.status = 200) {
+            if (res.status == 200) {
               this.unchecked = true;
               // this.$swal("Successfully Deleted");
               this.storage_box_list();
