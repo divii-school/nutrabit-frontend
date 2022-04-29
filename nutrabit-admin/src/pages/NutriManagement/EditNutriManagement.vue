@@ -165,7 +165,7 @@
                         <label for="yes">Yes</label>
                         <input type="radio" id="no" name="status" value="inactive" v-model="status" />
                         <label for="no">No</label>
-                        <div class="text-red">{{ error.state }}</div>
+                        <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>
                 <br />
@@ -458,12 +458,14 @@ export default {
             // console.log(this.select_items)
             // console.log(this.selectedItems)
             let vcheckData = {
-                category_id: this.category_id,
-                raw_material_id: this.selectedItems,
-                pill_id: this.pill_id,
-                package_id: this.package_id,
+                category_id: this.category_id.toString(),
+                raw_material_id: this.selectedItems.toString(),
+                pill_id: this.pill_id.toString(),
+                package_id: this.package_id.toString(),
                 name_ko: this.name_ko,
                 name_en: this.name_en,
+                tags_ko: this.tags_ko,
+                tags_en: this.tags_en,
                 description_ko: this.description_ko,
                 description_en: this.description_en,
                 // type: this.dropdownValueType ? 'something' : 'something',
@@ -487,10 +489,11 @@ export default {
                 this.formData.append('package_id', this.package_id);
                 this.formData.append('name_ko', this.name_ko);
                 this.formData.append('name_en', this.name_en);
-                this.formData.append('description_ko', this.description_ko);
-                this.formData.append('description_en', this.description_en);
                 this.formData.append('tags_ko', this.tags_ko);
                 this.formData.append('tags_en', this.tags_en);
+                this.formData.append('description_ko', this.description_ko);
+                this.formData.append('description_en', this.description_en);
+                
 
                 this.formData.append('status', this.status);
 

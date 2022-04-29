@@ -1,11 +1,22 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
+       <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="true" :modules="modules" :speed="1000" class="mySwiper">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
+          <p class="banner-title text-center">{{ slider.title }}</p>
+        </swiper-slide>
+      </swiper>
+      <!-- slider for mobile -->
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
@@ -99,6 +110,7 @@ export default {
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       isModalVisible: false,
+      globalLocale: "",
     };
   },
   setup() {
@@ -127,9 +139,17 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  // updated(){
-  //   this.allNutidata();
-  // },
+  updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allNutidata();
+    },
+  },
+
   methods: {
     // makePay test function
     // makePay() {
@@ -138,51 +158,10 @@ export default {
     //   this.paymentService.requestPay();
     // },
 
-
-    // naverSignInCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/");
-    //   alert('naverSignInCallback');
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-    // naverLogin() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   var state = naver_id_login.getUniqState();
-    //   naver_id_login.setButton("green", 5, 50);
-    //   naver_id_login.setDomain("http://localhost:8082/login");
-    //   naver_id_login.setState(state);
-    //   // naver_id_login.setPopup();
-    //   naver_id_login.init_naver_id_login();
-    //   // this.naverLoginCallback();
-    // },
-
-    // naverLoginCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // 접근 토큰 값 출력
-    //   alert(naver_id_login.oauthParams.access_token);
-    //   // 네이버 사용자 프로필 조회
-    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    //   this.naverSignInCallback();  
-    // },
-
-    // naverSignInCallback() {
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-
-
-
-
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;
@@ -198,6 +177,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
+          //console.log(res)
 
         } else {
           // console.log('getNutridata res', res.data.blendingData);

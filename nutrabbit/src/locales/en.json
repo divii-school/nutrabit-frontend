@@ -82,9 +82,9 @@
         "Error": {
             "Resquired": "* Required",
             "EnterId": "Please enter your ID",
-            "chcekId": "User with the id does not exist",
+            "chcekId": "User ID doesn’t exist!",
             "EnterPassword": "Please enter password",
-            "checkPassword": "Password should match!",
+            "checkPassword": "Password doesn’t match",
             "EnterName": "Input your name, please",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
@@ -518,7 +518,8 @@
             "button": "Confirm",
             "bodytext": "Are you sure you want to withdraw this account?",
             "btntext": "Cancel",
-            "btntext1": "Confirm"
+            "btntext1": "Confirm",
+            "reason": "Please enter the reason"
         },
         "withdrawmodal": {
             "bodytext": "Your withdrawal is complete.",

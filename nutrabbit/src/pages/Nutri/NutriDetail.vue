@@ -4,7 +4,7 @@
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <div v-if="product_sub_image_path.length > 0">
-            <swiper
+            <!-- <swiper
               :spaceBetween="10"
               :modules="[Thumbs]"
               :thumbs="{ swiper: thumbsSwiper }"
@@ -17,6 +17,11 @@
                 :key="index"
               >
                 <img v-if="item" :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper> -->
+            <swiper class="mySwiper">
+              <swiper-slide>
+                <img :src="imgBaseUrl + thumb_image" alt />
               </swiper-slide>
             </swiper>
           </div>
@@ -107,6 +112,7 @@
     @confirm="confirm"
     link = ''
   />
+  <KakaoChat />
 </template>
 
 
@@ -124,6 +130,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "NutriDetail",
@@ -131,6 +138,7 @@ export default {
     Swiper,
     SwiperSlide,
     Modal,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -208,6 +216,7 @@ export default {
       nutriDetails: [],
       isModalVisible: false,
       product_sub_image_path: [],
+      thumb_image: ""
     };
   },
   created() {
@@ -244,9 +253,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
-            // console.log("this.nutriDetails",this.nutriDetails);
+             console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
+              this.thumb_image= res.data.data[0].thumbnail_path;
           }
         })
         .catch((err) => {
@@ -282,7 +292,7 @@ export default {
 .mySwiper2 .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
 }
 
 .thumbsSwiperCustom .swiper-slide {

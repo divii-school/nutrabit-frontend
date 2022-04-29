@@ -134,6 +134,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -144,13 +145,15 @@ import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
 import ModalWarning from "../../components/ModalWarning.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "RawMaterialEstimation",
   components: {
     // Popper,
     ProductList,
     Modal,
-    ModalWarning
+    ModalWarning,
+    KakaoChat
   },
   data() {
     return {
@@ -227,7 +230,7 @@ export default {
           }
           this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
             // console.log(res);
-            if (res.status = 200) {
+            if (res.status == 200) {
               this.$swal("Application Data is successfuly submitted");
               localStorage.removeItem('sub_category_id');
               localStorage.removeItem('raw_material_id');
@@ -268,7 +271,7 @@ export default {
           }
           this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
             // console.log(res);
-            if (res.status = 200) {
+            if (res.status == 200) {
               localStorage.removeItem('sub_category_id');
               localStorage.removeItem('raw_material_id');
               localStorage.removeItem('package_id');

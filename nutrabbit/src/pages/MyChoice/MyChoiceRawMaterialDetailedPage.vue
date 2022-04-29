@@ -12,9 +12,14 @@
             <h2 class="heading">my choice</h2>
           </div>
           <div v-if="raw_material_image.length > 0">
-            <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
+            <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
+              </swiper-slide>
+            </swiper> -->
+            <swiper class="mySwiper">
+              <swiper-slide>
+                <img :src="imgBaseUrl + thumb_image" alt />
               </swiper-slide>
             </swiper>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
@@ -112,6 +117,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 
@@ -128,12 +134,14 @@ import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -157,6 +165,7 @@ export default {
       raw_material_image: [],
       blendingData: '',
       item_exist: '',
+      thumb_image:'',
       similar_product_img: [],
       productDetails: [
         {
@@ -260,9 +269,10 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-        //console.log(res.data);
+        // console.log(res.data.data[0].thumbnail_fst_path);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
+          this.thumb_image= res.data.data[0].thumbnail_fst_path;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -347,7 +357,7 @@ export default {
 .mySwiper2 .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
   margin-bottom: 10px;
 }
 

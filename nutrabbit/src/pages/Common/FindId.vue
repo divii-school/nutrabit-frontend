@@ -81,6 +81,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
@@ -88,8 +89,12 @@ import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "FindId",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       email: "",
@@ -108,6 +113,7 @@ export default {
       isOtpSuccess: "",
       validateOnce: false,
       globalLocale: "",
+      isCheckUserEmail: false
     };
   },
   created() {
@@ -200,7 +206,8 @@ export default {
               this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.isCheckUserEmail=true;
+            return (this.error.email =this.$t("common.Error.chcekId"));
             //return (this.error.email = res.response.data.message);
           }
         });

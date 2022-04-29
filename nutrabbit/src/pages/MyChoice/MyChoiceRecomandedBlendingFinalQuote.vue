@@ -124,6 +124,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -133,12 +134,14 @@
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "RawMaterialEstimation",
   components: {
     // Popper,
     ProductList,
-    Modal
+    Modal,
+    KakaoChat
   },
   data() {
     return {
@@ -199,7 +202,7 @@ export default {
         }
         this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
-          if (res.status = 200) {
+          if (res.status == 200) {
             this.$swal("Application Data is successfuly submitted");
             this.$router.push("/");
           } else {
@@ -225,7 +228,7 @@ export default {
         }
         this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
-          if (res.status = 200) {
+          if (res.status == 200) {
             // this.$router.push("/");
             this.showModal = true;
           } else {
