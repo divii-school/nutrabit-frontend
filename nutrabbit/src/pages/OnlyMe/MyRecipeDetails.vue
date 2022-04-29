@@ -118,6 +118,7 @@
       @confirm="deleteRecipeDetail"
     />
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -127,13 +128,14 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
-
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,
     Modal,
+    KakaoChat
   },
   data() {
     return {

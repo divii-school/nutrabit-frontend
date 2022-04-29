@@ -135,6 +135,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -144,12 +145,14 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import validator from "validator";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
     ProductList,
+    KakaoChat
   },
   data() {
     return {

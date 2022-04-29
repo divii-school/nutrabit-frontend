@@ -124,6 +124,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -133,12 +134,14 @@
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "RawMaterialEstimation",
   components: {
     // Popper,
     ProductList,
-    Modal
+    Modal,
+    KakaoChat
   },
   data() {
     return {
