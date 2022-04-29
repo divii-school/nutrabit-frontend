@@ -234,7 +234,8 @@
                     }
                 }
                 .recomanded-list{
-                    @include flex-align-center;
+                    display: flex;
+                    align-items: flex-start;
                     flex-wrap: wrap;
                     margin: 40px -34px 0;
                     @media screen and (max-width: 768px){
