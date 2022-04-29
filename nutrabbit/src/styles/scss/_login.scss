@@ -154,7 +154,7 @@
         .login-signup-inner {
             .login-heading-wrap{
                 padding-bottom: 20px;
-                border-bottom: 1px solid $grey-CF;
+                border-bottom: 1px solid $grey-E0;
                 .login-heading {
                     text-align: left;
                 }
@@ -164,6 +164,7 @@
                     line-height: 22px;
                     color: $grey-7C;
                     margin-top: 10px;
+                    font-weight: 300;
                 }
             }
             .membership-list-wrap {
@@ -241,6 +242,7 @@
                                 color: $grey-66;
                                 text-align: center;
                                 margin-top: 5px;
+                                font-weight: 400;
                             }
                             .btn-primary {
                                 margin-top: 30px;

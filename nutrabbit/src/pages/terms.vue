@@ -44,6 +44,13 @@ export default {
 
 <style lang="scss">
 .terms-comp{
+  .my-recipe-section {
+    .heading {
+      h1{
+        font-size: 30px;
+      }
+    }
+  }
 .row-type {
   margin-bottom: 30px;
   h3 {
@@ -73,6 +80,7 @@ export default {
 }
 .my-recipe-body {
   padding-bottom: 50px;
+  margin-top: 40px !important;
   ol {
     list-style-type: auto;
     padding-left: 20px;
