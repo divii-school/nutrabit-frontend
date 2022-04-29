@@ -29,11 +29,16 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MemberRegistrationTypeSelection",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       active: false,

@@ -117,6 +117,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 
@@ -133,12 +134,14 @@ import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);

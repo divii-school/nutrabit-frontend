@@ -57,12 +57,17 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
 import CommonService from "../../services/CommonService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "ChangePassword",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       password: "",
