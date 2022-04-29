@@ -77,7 +77,7 @@
         </div>
       </div>
       <div class="nutriDetail">
-        <img src="../../assets/images/nutri-info.jpg" />
+        <img :src="imgBaseUrl + detail_image_path" />
       </div>
     </div>
   </div>
@@ -159,64 +159,14 @@ export default {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blending_id: null,
       blending_data: "",
-      productDetails: [
-        {
-          title: "dark blend",
-          tags: [
-            {
-              tag1: "Allergic",
-              tag2: "Masks",
-              tag3: "Disposable gloves",
-              tag4: "Immunomodulators",
-              tag5: "Vitamins",
-              tag6: "Nasal drop",
-            },
-          ],
-          innderData: [
-            {
-              title: "main raw material",
-              desc: "Description of the main ingredient",
-            },
-            {
-              title: "auxiliary material",
-              desc: "Description of auxiliary ingredients",
-            },
-            {
-              title: "efficacy",
-              desc: "Description of Efficacy",
-            },
-            {
-              title: "appearance",
-              desc: "Description of the features",
-            },
-            {
-              title: "Product Information",
-              desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada tristique nisl turpis nisl placerat ac, diam felis.",
-            },
-          ],
-        },
-      ],
-      silimarProduct: [
-        {
-          title: "similar products",
-          productImg: [
-            {
-              img1: "../../../src/assets/images/suggested-product-img.png",
-              img2: "../../../src/assets/images/suggested-product-img.png",
-              img3: "../../../src/assets/images/suggested-product-img.png",
-              img4: "../../../src/assets/images/suggested-product-img.png",
-              img5: "../../../src/assets/images/suggested-product-img.png",
-            },
-          ],
-        },
-      ],
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
       lang: "KO",
       id: "",
       nutriDetails: [],
       isModalVisible: false,
       product_sub_image_path: [],
-      thumb_image: ""
+      thumb_image: "",
+      detail_image_path:''
     };
   },
   created() {
@@ -257,6 +207,7 @@ export default {
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
               this.thumb_image= res.data.data[0].thumbnail_path;
+              this.detail_image_path=res.data.data[0].detail_image_path;
           }
         })
         .catch((err) => {
