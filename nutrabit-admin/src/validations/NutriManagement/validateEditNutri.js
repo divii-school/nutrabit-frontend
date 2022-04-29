@@ -3,62 +3,57 @@ import validator from 'validator';
 const validateEditNutri = (data) => {
   let errors = {}
   
-  const { name_ko, name_en} = data;
-  // if(validator.isEmpty(category_id)) {
-  //   errors.category_id =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(sub_category_id)) {
-  //   errors.sub_category_id =  "Please don't keep it blank";
-  // }
+  const { name_ko,name_en,category_id,raw_material_id,package_id,pill_id,tags_ko,tags_en,description_ko,description_en,file,addthumnail,newthumnail,status} = data;
+
   if(validator.isEmpty(name_ko)) {
-    errors.name_ko =  "Please don't keep it blank";
+    errors.name_ko =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
   }
   if(validator.isEmpty(name_en)) {
-    errors.name_en =  "Please don't keep it blank";
+    errors.name_en =  "재료 이름 EN은 필수 항목입니다.";
   }
-  // if(validator.isEmpty(standard_ko)) {
-  //   errors.standard_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(standard_en)) {
-  //   errors.standard_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_description_ko)) {
-  //   errors.material_description_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_description_en)) {
-  //   errors.material_description_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_function_ko)) {
-  //   errors.material_function_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_function_en)) {
-  //   errors.material_function_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_prequotion_ko)) {
-  //   errors.material_prequotion_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_prequotion_en)) {
-  //   errors.material_description_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_extra_info_ko)) {
-  //   errors.material_extra_info_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(material_extra_info_en)) {
-  //   errors.material_extra_info_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(daily_intake_amount_ko)) {
-  //   errors.daily_intake_amount_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(daily_intake_amount_en)) {
-  //   errors.material_description_en =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(tag_ko)) {
-  //   errors.tag_ko =  "Please don't keep it blank";
-  // }
-  // if(validator.isEmpty(tag_en)) {
-  //   errors.tag_en =  "Please don't keep it blank";
-  // }
+  if(validator.isEmpty(category_id)) {
+    errors.category_id =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
+  }
+  if(validator.isEmpty(raw_material_id)) {
+    errors.raw_material_id =  "재료 이름 EN은 필수 항목입니다.";
+  }
+  if(validator.isEmpty(package_id)) {
+    errors.package_id =  "Nutri 이름을 입력하세요. Ko는 필수 항목입니다.";
+  }
+  if(validator.isEmpty(pill_id)) {
+    errors.pill_id =  "재료 이름 EN은 필수 항목입니다.";
+  }
+  if(validator.isEmpty(tags_ko)) {
+    errors.tags_ko =  "태그를 입력하세요 Ko가 필요합니다";
+  }
+  if(validator.isEmpty(tags_en)) {
+    errors.tags_en =  "태그를 입력하세요. En이 필요합니다";
+  }
+  
+  if(validator.isEmpty(description_ko)) {
+    errors.description_ko =  "재료 설명 KO가 필요합니다";
+  }
+  if(validator.isEmpty(description_en)) {
+    errors.description_en =  "재료 설명 EN가 필요합니다";
+  }
 
+  if (validator.isEmpty(file)) {
+    errors.file = '파일을 업로드 해주세요';
+  }
+
+ 
+
+  if (validator.isEmpty(addthumnail)) {
+    errors.addthumnail = '파일을 업로드 해주세요';
+  }
+
+  if (validator.isEmpty(newthumnail)) {
+    errors.newthumnail = '파일을 업로드 해주세요';
+  }
+
+  if (validator.isEmpty(status)) {
+    errors.status = '선택 해주세요';
+}
  
   return {
     isInvalid: Object.keys(errors).length > 0,

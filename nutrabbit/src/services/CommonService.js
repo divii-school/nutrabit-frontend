@@ -10,8 +10,14 @@ export default class CommonService {
   async getLogin(loginId, loginPw) {
     return await axios.post(`/auth/login`, { login_id: loginId, password: loginPw, }).then((res) => res).catch((err) => err);
   }
+
+  // API Functions
+  async getSocialLogin(loginId) {
+    return await axios.post(`/auth/social-login`, { email: loginId }).then((res) => res).catch((err) => err);
+  }
+
   // Individuals signup
-  async individalRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName) {
+  async individalRegistration(name, username, password, email, phoneNumber, address, detsilAddress, checkName, login_token, login_type) {
     return await axios.post(`/user/individual_registration`, {
       name: name,
       username: username,
@@ -21,6 +27,8 @@ export default class CommonService {
       address: address,
       detail_address: detsilAddress,
       distribution_medium: checkName,
+      login_token: login_token,
+      login_type: login_type,
     })
       .then((res) => res)
       .catch((err) => err)
@@ -109,9 +117,9 @@ export default class CommonService {
   async getSearchResult(searchInput, ip) {
     return new Promise((resolve, reject) => {
       axios.post(`/search`, { searchData: searchInput, ipAddress: ip })
-      .then((res) => resolve(res))
-      .catch((err) => reject(err))
-    }) 
+        .then((res) => resolve(res))
+        .catch((err) => reject(err))
+    })
   }
   // get history
   async getSearchHistory(ip) {
@@ -122,14 +130,14 @@ export default class CommonService {
 
   // delete history
   async deleteSearchHistory(searchId) {
-    return await axios.post(`/search/delete`, {deleteIdArray: searchId})
+    return await axios.post(`/search/delete`, { deleteIdArray: searchId })
       .then((res) => res)
       .catch((err) => err)
   }
 
   // delete all
   async deleteAllHistory(ip) {
-    return await axios.post(`/search/deleteAll`, {ipAddress: ip})
+    return await axios.post(`/search/deleteAll`, { ipAddress: ip })
       .then((res) => res)
       .catch((err) => err)
   }
