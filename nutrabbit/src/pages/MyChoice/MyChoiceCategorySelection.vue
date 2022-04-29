@@ -37,7 +37,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :category="item.category_name_ko" :name="item.name_ko" :desc="item.description_ko"
+                <SearchCard :category="item.category_name" :name="item.name" :desc="item.description"
                   :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path" :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id" type2="recommended_data" />
               </li>
@@ -93,9 +93,9 @@
 
                   </div>
                   <div class="material-details">
-                    <h2 @click="gotoNextPage(data.id)">{{ data.material_name_ko }}</h2>
+                    <h2 @click="gotoNextPage(data.id)">{{ data.material_name }}</h2>
                     <div @click="gotoNextPage(data.id)" class="description">
-                      <p>{{ data.material_description_ko }}</p>
+                      <p>{{ data.material_description }}</p>
                     </div>
                   </div>
                 </div>
@@ -145,10 +145,21 @@ export default {
       showModal: false,
       raw_material_id: null,
       key: null,
+      globalLocale: "",
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.rawMaterial();
+      this.allBlendingData();
+    },
   },
   mounted() {
     this.rawMaterial();
@@ -175,7 +186,7 @@ export default {
       const setSubCategory = this.sub_category_id;
 
       this.mychoiceService.getRawMaterial(setSubCategory).then((res) => {
-        //console.log(res.data);
+        // console.log(res.data);
         if (res.status == 200) {
           // console.log('getRawMaterial res', res.data.data.rawMaterialData);
           this.rawMaterialData = res.data.data.rawMaterialData;
@@ -191,7 +202,7 @@ export default {
       let limit = 4;
       let page = 1;
       this.mychoiceService.getRecommendedData(limit, page).then((res) => {
-        //console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           //console.log('allBlendingData res', res.data.blendingData);
           this.blendingData = res.data.blendingData;
@@ -208,7 +219,7 @@ export default {
       if (this.key == 'alphabetical') {
 
         this.mychoiceService.getRawMaterialAlphabetical(this.sub_category_id).then((res) => {
-          //console.log(res.data);
+          // console.log(res.data);
           if (res.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
             this.rawMaterialData = res.data.data.rawMaterialData;
@@ -222,7 +233,7 @@ export default {
       }
       else {
         this.mychoiceService.getRawMaterialAlPopularity(this.sub_category_id).then((res) => {
-          //console.log(res.data);
+          console.log(res.data);
           if (res.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
             this.rawMaterialData = res.data.data.rawMaterialData;

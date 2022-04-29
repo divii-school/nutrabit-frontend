@@ -43,7 +43,7 @@
       </div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice">
+          <div class="nutri-choice greenTItle">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
             <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
@@ -161,7 +161,7 @@ export default {
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;

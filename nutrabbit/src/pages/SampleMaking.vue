@@ -11,7 +11,7 @@
             <p class="title text-center sampleBLueAfter">{{ $t("sampleMaking.title.subtitle") }}</p>
             <p class="desc text-center">
               {{ $t("sampleMaking.title.titledesc") }} <br>
-                {{ $t("sampleMaking.title.titledesc1") }}
+              {{ $t("sampleMaking.title.titledesc1") }}
             </p>
             <button class="btn-small-solid">
               <router-link to="/my-choice">{{ $t("sampleMaking.title.button") }}</router-link>
@@ -23,13 +23,45 @@
             <p class="title text-center samllTitle">my choice</p>
             <h4 class="title text-center">{{ $t("sampleMaking.sampleprocress.title") }}</h4>
             <ul>
-              <li v-for="(item, index) of processData" :key="index">
+              <li>
                 <div class="imgCont">
-                  <img :src="item.img">
+                  <img src="../../../src/assets/images/step1.png">
                 </div>
-                <span>{{ item.step }}</span>
-                <h5>{{ item.title }}</h5>
-                <p>{{ item.desc }}</p>
+                <span>STEP.1</span>
+                <h5>{{ $t("sampleMaking.sampleprocress.title1") }}</h5>
+                <p>{{ $t("sampleMaking.sampleprocress.desc1") }}</p>
+              </li>
+              <li>
+                <div class="imgCont">
+                  <img src="../../../src/assets/images/step2.png">
+                </div>
+                <span>STEP.2</span>
+                <h5>{{ $t("sampleMaking.sampleprocress.title2") }}</h5>
+                <p>{{ $t("sampleMaking.sampleprocress.desc2") }}</p>
+              </li>
+              <li>
+                <div class="imgCont">
+                  <img src="../../../src/assets/images/step3.png">
+                </div>
+                <span>STEP.3</span>
+                <h5>{{ $t("sampleMaking.sampleprocress.title3") }}</h5>
+                <p>{{ $t("sampleMaking.sampleprocress.desc3") }}</p>
+              </li>
+              <li>
+                <div class="imgCont">
+                  <img src="../../../src/assets/images/step4.png">
+                </div>
+                <span>STEP.4</span>
+                <h5>{{ $t("sampleMaking.sampleprocress.title4") }}</h5>
+                <p>{{ $t("sampleMaking.sampleprocress.desc4") }}</p>
+              </li>
+              <li>
+                <div class="imgCont">
+                  <img src="../../../src/assets/images/step5.png">
+                </div>
+                <span>STEP.5</span>
+                <h5>{{ $t("sampleMaking.sampleprocress.title5") }}</h5>
+                <p>{{ $t("sampleMaking.sampleprocress.desc5") }}</p>
               </li>
             </ul>
           </div>
@@ -46,7 +78,7 @@
                 <template v-slot:content>
                   <p class="accBody">
                     <!-- {{ $t("sampleMaking.sampleFaq.ans1") }} -->
-                     {{ item.description_en }}
+                    {{ item.description_en }}
                   </p>
                 </template>
               </accordion>
@@ -75,7 +107,6 @@ import Accordion from "../components/Accordion.vue";
 import CustomerCenterService from "../services/CustomerCenterService";
 import KakaoChat from "../components/KakaoChat.vue";
 export default {
-  
   name: "Samplemaking",
   components: {
     Accordion,
@@ -84,14 +115,14 @@ export default {
   data() {
     return {
       faqList: [],
-      totalfaqlist:[],
+      totalfaqlist: [],
       // page: 1,
       // limit: 4,
     };
   },
-
   computed: {
-    processData() { return[
+    processData() {
+      return [
         {
           img: "../../../src/assets/images/step1.png",
           step: "STEP.1",
@@ -125,11 +156,9 @@ export default {
       ]
     }
   },
-
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
-
   methods: {
     allFaqList() {
       this.CustomerCenterService.getFAQList()
@@ -143,11 +172,10 @@ export default {
           }
         })
         .catch((err) => {
-         return;
+          return;
         });
     },
   },
-
   mounted() {
     this.allFaqList();
   },
