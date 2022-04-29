@@ -77,7 +77,8 @@
             <!-- END kakao login for App -->
 
             <!-- Naver login for App -->
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn" @click="loginWithNaver">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn"
+              @click="loginWithNaver">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
@@ -213,13 +214,13 @@ export default {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                 this.error.password = this.$t("common.Error.checkPassword");
+                this.error.password = this.$t("common.Error.checkPassword");
               }
               else if (
                 res.response.data.message ==
                 "User With The Email Does Not Exists"
               ) {
-                 this.error.email = this.$t("common.Error.chcekId");
+                this.error.email = this.$t("common.Error.chcekId");
               }
               // this.$swal(res.response.data.message);
             }
@@ -316,23 +317,20 @@ export default {
       console.log('naverLoginHandler', res);
       const self = this;
       if (res) {
-        // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
         alert(resData);
         console.log("--naverLoginHandler--", resData);
-        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
-        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
         self.socialRegistration(
-          userName,
-          userName,
+          resData.userName,
+          resData.userName,
           "12345678",
           resData.emailId,
           "9999999999",
           "address",
           "detail address",
           "sns",
-          resData.accesstoken,
-          "apple"
+          resData.accessToken,
+          resData.loginVia
         );
         setTimeout(() => {
           self.socialLogin(resData.emailId);
@@ -350,19 +348,17 @@ export default {
         let resData = JSON.parse(res);
         alert(resData);
         console.log("--kakaoLoginHandler--", resData);
-        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
-        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
         self.socialRegistration(
-          userName,
-          userName,
+          resData.userName,
+          resData.userName,
           "12345678",
           resData.emailId,
           "9999999999",
           "address",
           "detail address",
           "sns",
-          resData.accesstoken,
-          "apple"
+          resData.accessToken,
+          resData.loginVia
         );
         setTimeout(() => {
           self.socialLogin(resData.emailId);
