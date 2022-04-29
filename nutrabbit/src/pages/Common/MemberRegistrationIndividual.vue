@@ -346,6 +346,10 @@ export default {
       verificationTimer:false,
       validateOnce: false,
       globalLocale: "",
+      usernameEmpty : false,
+      usernameAlpha : false,
+      usernameSuccess : false,
+
     };
   },
   created() {
@@ -365,18 +369,25 @@ export default {
         return this.$t('button.sendVerification');
       }
       
+    },
+
+    checkUserError(){
+      if(this.usernameEmpty){
+         return this.error.username = this.$t("common.Error.EnterId");
+      }
     }
   },
 
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
+      if (newVal == "en" && this.validateOnce == true && !this.usernameEmpty && !this.usernameAlpha && !this.usernameSuccess) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true) {
+      if (newVal == "kr" && this.validateOnce == true && !this.usernameEmpty && !this.usernameAlpha && !this.usernameSuccess) {
         this.checkError();
       }
+
     },
   },
 
@@ -435,12 +446,28 @@ export default {
           });
       }
     },
+
+    checkUserError(){
+       if(validator.isEmpty(this.username)){
+         this.error.username = this.$t("common.Error.EnterId");
+         return true;
+       }else if(!validator.isAlphanumeric(this.username)){
+         this.error.username = "Please use only letter and number";
+         return true;
+       }else{
+          return false;
+       }
+    },
     async checkUser() {
-      if (validator.isEmpty(this.username)) {
-        this.error.username = this.$t("common.Error.EnterId");
-      } else if (!validator.isAlphanumeric(this.username)) {
-        this.error.username = "Please use only letter and number";
-        this.isUserSuccess = "";
+      // if (validator.isEmpty(this.username)) {
+      //   //  this.usernameEmpty = true;
+      //   this.error.username = this.$t("common.Error.EnterId");
+      // } else if (!validator.isAlphanumeric(this.username)) {
+      //    this.error.username = "Please use only letter and number";
+      //   //this.isUserSuccess = "";
+
+      if(this.checkUserError()){
+         return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
