@@ -447,7 +447,7 @@ export default {
       }
     },
 
-    checkUserError(){
+    checkErrorUser(){
        if(validator.isEmpty(this.username)){
          this.error.username = this.$t("common.Error.EnterId");
          return true;
@@ -466,7 +466,7 @@ export default {
       //    this.error.username = "Please use only letter and number";
       //   //this.isUserSuccess = "";
 
-      if(this.checkUserError()){
+      if(this.checkErrorUser()){
          return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
