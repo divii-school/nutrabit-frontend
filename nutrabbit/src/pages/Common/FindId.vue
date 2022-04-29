@@ -81,6 +81,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
@@ -88,8 +89,12 @@ import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "FindId",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       email: "",

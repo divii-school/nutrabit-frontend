@@ -114,6 +114,7 @@
     <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')" :btnText1="$t('warningModal.btn1')"
       :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
   </my-modal-component>
+  <KakaoChat />
 </template>
 
           
@@ -123,12 +124,14 @@ import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import ModalWarning from "../../components/ModalWarning.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
-    ModalWarning
+    ModalWarning,
+    KakaoChat
   },
   data() {
     return {

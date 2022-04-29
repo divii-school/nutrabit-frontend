@@ -39,15 +39,18 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyChoice",
   components: {
     Popper,
+    KakaoChat
   },
   data() {
     return {
