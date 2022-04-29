@@ -11,11 +11,16 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
+import KakaoChat from "../components/KakaoChat.vue";
 export default {
   name: "Privacy",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       privacy: "privacy",

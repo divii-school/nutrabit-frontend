@@ -82,10 +82,12 @@
         "Error": {
             "Resquired": "* Required",
             "EnterId": "Please enter your ID",
-            "chcekId": "User with the id does not exist",
+            "chcekId": "User ID doesn’t exist!",
             "EnterPassword": "Please enter password",
-            "checkPassword": "Password should match!",
+            "checkPassword": "Password doesn’t match",
             "EnterName": "Input your name, please",
+            "useridFormatSignup" : "Please use only letter and number",
+            "useridAvailable" : "User ID available",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
             "EnterEmail": "Please enter your email address",
@@ -192,7 +194,9 @@
             "copyright" : "Copyright 2022 NUTRABBIT. All right reserved."
         },
         "term": "Terms of Use",
-        "privacy": "Privacy Policy"
+        "privacy": "Privacy Policy",
+        "total" : "Total",
+        "result" : "result"
     },
     "header": {
         "login": "login",
@@ -518,7 +522,8 @@
             "button": "Confirm",
             "bodytext": "Are you sure you want to withdraw this account?",
             "btntext": "Cancel",
-            "btntext1": "Confirm"
+            "btntext1": "Confirm",
+            "reason": "Please enter the reason"
         },
         "withdrawmodal": {
             "bodytext": "Your withdrawal is complete.",

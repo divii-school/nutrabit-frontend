@@ -75,7 +75,7 @@
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
-                  isUserSuccess
+                  $t('common.Error.useridAvailable')
                 }}</span>
                 <span class="error-msg">{{ error.username }}</span>
               </div>
@@ -301,13 +301,18 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MemberRegistrationIndividual",
+  components : {
+    KakaoChat
+  },
   data() {
     return {
       termsCheck: "",
@@ -341,6 +346,8 @@ export default {
       verificationTimer:false,
       validateOnce: false,
       globalLocale: "",
+      clickCheckAvailability : false,
+
     };
   },
   created() {
@@ -360,18 +367,29 @@ export default {
         return this.$t('button.sendVerification');
       }
       
+    },
+
+    checkUserError(){
+      if(this.usernameEmpty){
+         return this.error.username = this.$t("common.Error.EnterId");
+      }
     }
   },
 
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
+      if ((newVal == 'kr' || newVal == 'en') && this.validateOnce == true && !this.clickCheckAvailability) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.checkError();
+      // if (newVal == "kr" && this.validateOnce == true && !this.clickCheckAvailability) {
+      //   this.checkError();
+      // }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickCheckAvailability){
+        this.checkErrorUser();
       }
+
     },
   },
 
@@ -430,18 +448,34 @@ export default {
           });
       }
     },
+
+    checkErrorUser(){
+       if(validator.isEmpty(this.username)){
+         this.error.username = this.$t("common.Error.EnterId");
+         return true;
+       }else if(!validator.isAlphanumeric(this.username)){
+         this.error.username = this.$t("common.Error.useridFormatSignup");;
+         return true;
+       }else{
+          return false;
+       }
+    },
     async checkUser() {
-      if (validator.isEmpty(this.username)) {
-        this.error.username = this.$t("common.Error.EnterId");
-      } else if (!validator.isAlphanumeric(this.username)) {
-        this.error.username = "Please use only letter and number";
-        this.isUserSuccess = "";
+      // if (validator.isEmpty(this.username)) {
+      //   //  this.usernameEmpty = true;
+      //   this.error.username = this.$t("common.Error.EnterId");
+      // } else if (!validator.isAlphanumeric(this.username)) {
+      //    this.error.username = "Please use only letter and number";
+      //   //this.isUserSuccess = "";
+      this.clickCheckAvailability = true;
+      if(this.checkErrorUser()){
+         return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
             this.error.username = "";
-            this.isUserSuccess = "User ID available";
+            // this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             this.error.username = res.data.data.msg;
             this.isUserSuccess = '';

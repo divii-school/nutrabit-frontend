@@ -20,10 +20,25 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
-              <li v-for="(item, index) of processData" :key="index">
-                <img :src="item.img" />
-                <span>{{ item.step }}</span>
-                <p>{{ item.desc }}</p>
+              <li>
+                <img src="~@/assets/images/blending1.png"/>
+                <span>Step.1</span>
+                <p>{{$t("nutri.title.desc1")}}</p>
+              </li>
+              <li>
+                <img src="~@/assets/images/blending2.png"/>
+                <span>Step.2</span>
+                <p>{{$t("nutri.title.desc2")}}</p>
+              </li>
+              <li>
+                <img src="~@/assets/images/blending3.png"/>
+                <span>Step.3</span>
+                <p>{{$t("nutri.title.desc3")}}</p>
+              </li>
+              <li>
+                <img src="~@/assets/images/blending4.png"/>
+                <span>Step.3</span>
+                <p>{{$t("nutri.title.desc4")}}</p>
               </li>
             </ul>
           </div>
@@ -71,46 +86,23 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import NutriService from "../../services/NutriService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "ServiceIntro",
-  components: {},
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       lang: "",
       nutriList: [],
     };
-  },
-
-  computed: {
-    processData() {
-      return [
-        {
-          img: '../../../src/assets/images/blending1.png',
-          step: "Step.1",
-          desc: this.$t("nutri.title.desc1"),
-        },
-        {
-          img: "~@/assets/images/blending2.png",
-          step: "Step.2",
-          desc: this.$t("nutri.title.desc2"),
-        },
-        {
-          img: "~@/assets/images/blending3.png",
-          step: "Step.3",
-          desc: this.$t("nutri.title.desc3"),
-        },
-        {
-          img: "~@/assets/images/blending4.png",
-          step: "Step.4",
-          desc: this.$t("nutri.title.desc4"),
-        },
-      ];
-    },
   },
 
   created() {

@@ -83,6 +83,17 @@
                 }
             }
         }
+        .mySwiperDesktop{
+            @media screen and (max-width: 768px){
+                display: none;
+            }
+        }
+        .mySwiperMob{
+            display: none;
+            @media screen and (max-width: 768px){
+                display: block;
+            }
+        }
     }
     .main-page-body{
         .nutri-choice{

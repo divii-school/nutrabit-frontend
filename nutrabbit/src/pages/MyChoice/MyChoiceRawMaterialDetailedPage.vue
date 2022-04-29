@@ -1,6 +1,7 @@
 <template>
-  <div class="main-body themePurple">
+  <div class="main-body themePurple recomanded-blending-with-heading">
     <div class="container-medium">
+      <h2 class="mychoice-heading heading">my choice</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
@@ -8,9 +9,6 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
-          <div>
-            <h2 class="heading">my choice</h2>
-          </div>
           <div v-if="raw_material_image.length > 0">
             <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
@@ -19,7 +17,8 @@
             </swiper> -->
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image" alt />
+                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
+                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
               </swiper-slide>
             </swiper>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
@@ -117,6 +116,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 
@@ -133,12 +133,14 @@ import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -163,65 +165,9 @@ export default {
       blendingData: '',
       item_exist: '',
       thumb_image:'',
+      thumb_2nd_image:'',
       similar_product_img: [],
-      productDetails: [
-        {
-          title: "aloe gel",
-          tags: [
-            {
-              tag1: "Allergic",
-              tag2: "Masks",
-              tag3: "Disposable gloves",
-              tag4: "Immunomodulators",
-              tag5: "Vitamins",
-              tag6: "Nasal drop",
-            },
-          ],
-          innderData: [
-            {
-              title: "main raw material",
-              desc: "Description of the main ingredient",
-            },
-            {
-              title: "auxiliary material",
-              desc: "Description of auxiliary ingredients",
-            },
-            {
-              title: "efficacy",
-              desc: "Description of Efficacy",
-            },
-            {
-              title: "appearance",
-              desc: "Description of the features",
-            },
-            {
-              title: "Product Information",
-              desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada tristique nisl turpis nisl placerat ac, diam felis.",
-            },
-          ],
-        },
-      ],
-      silimarProduct: [
-        {
-          title: "similar products",
-          productImg: [
-            {
-              img1: "../../../src/assets/images/suggested-product-img.png",
-              img2: "../../../src/assets/images/suggested-product-img.png",
-              img3: "../../../src/assets/images/suggested-product-img.png",
-              img4: "../../../src/assets/images/suggested-product-img.png",
-              img5: "../../../src/assets/images/suggested-product-img.png",
-            },
-          ],
-        },
-      ],
-      ProductImages: [
-        "../../../src/assets/images/product-img1.png",
-        "../../../src/assets/images/product-img2.png",
-        "../../../src/assets/images/product-img3.png",
-        "../../../src/assets/images/product-img4.png",
-        "../../../src/assets/images/product-img6.png",
-      ],
+      active: false,
     };
   },
   created() {
@@ -234,6 +180,12 @@ export default {
     localStorage.removeItem('option');
   },
   methods: {
+     mouseOver() {
+      this.active = true;
+    },
+    mouseLeave() {
+      this.active = false;
+    },
     splitJoin(theText) {
       // console.log(theText.split(','))
       return theText.split(',');
@@ -266,10 +218,11 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-        // console.log(res.data.data[0].thumbnail_fst_path);
+        //  console.log(res.data.data);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
           this.thumb_image= res.data.data[0].thumbnail_fst_path;
+          this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -327,7 +280,7 @@ export default {
           else {
             this.mychoiceService.rawMaterialStorageBoxAdd(localStorage.getItem('raw_material_id')).then((res) => {
               //console.log(res.data);
-              if (res.data.status = 200) {
+              if (res.data.status == 200) {
                 this.$router.push('/add-ingredient')
 
               } else {
@@ -363,6 +316,12 @@ export default {
 }
 .link-img{
   cursor: pointer;
+}
+.hover-image {
+  position: absolute;
+  top: 0;
+  left:auto;
+  z-index: 2;
 }
 .heading{
   font-weight: 700;

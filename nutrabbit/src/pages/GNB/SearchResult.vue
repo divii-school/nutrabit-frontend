@@ -4,12 +4,12 @@
       <div class="search-result-main">
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
-            Total
+            {{ $t('footer.total') }}
             <span>{{ this.newSearchResult.length }}</span
-            >result
+            >{{ $t('footer.result') }}
           </p>
           <p class="search-result-title" v-else>
-            Total
+            {{ $t('footer.result') }}
             <span>0</span>result
           </p>
           <ul class="search-resul-list-wrap">
@@ -26,6 +26,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/nutri-detail/' + item.id"
                     />
                   </template>
                 </div>
@@ -41,7 +42,7 @@
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Recommended Blending</h1>
+              <h1 class="list-heading">{{$t('myChoice.RecommendedBlending.title')}}</h1>
               <div
                 class="search-list-inner"
                 v-if="recomanedBlending.length > 0"
@@ -56,6 +57,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
                     />
                   </template>
                 </div>
@@ -71,7 +73,7 @@
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Raw Material</h1>
+              <h1 class="list-heading">{{ $t('myChoice.RawMaterial.title') }}</h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
                   <template
@@ -83,6 +85,8 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/mychoice-rawMaterial-detailed-page/'"
+                      @click="setId(item.id)"
                     />
                   </template>
                 </div>
@@ -127,18 +131,21 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import CommonService from "../../services/CommonService";
+import KakaoChat from "../../components/KakaoChat.vue";
 import { inject } from "vue";
 export default {
   name: "SearchResult",
   components: {
     SearchCard,
     SearchAccordion,
+    KakaoChat
   },
   data() {
     return {
@@ -181,6 +188,9 @@ export default {
     },
   },
   methods: {
+    setId(raw_material_id) {
+      localStorage.setItem('raw_material_id', raw_material_id);
+    },
     showSarchResult(searchKeyword) {
       this.commonService
         .getSearchResult(searchKeyword, this.common.state.myIP)

@@ -148,12 +148,14 @@
                                 height: 240px;
                                 object-fit: cover;
                                 border-radius: 5px;
+                                cursor: pointer;
                                 @media screen and (max-width: 768px) {
                                     display: none;
                                 }
                             }
     
                             p {
+                                cursor: pointer;
                                 font-weight: 600;
                                 font-size: 18px;
                                 line-height: 27px;
