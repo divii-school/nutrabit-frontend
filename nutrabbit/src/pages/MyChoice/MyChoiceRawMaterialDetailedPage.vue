@@ -8,10 +8,18 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
+          <div>
+            <h2 class="heading">my choice</h2>
+          </div>
           <div v-if="raw_material_image.length > 0">
-            <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
+            <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
+              </swiper-slide>
+            </swiper> -->
+            <swiper class="mySwiper">
+              <swiper-slide>
+                <img :src="imgBaseUrl + thumb_image" alt />
               </swiper-slide>
             </swiper>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
@@ -41,53 +49,55 @@
                 <p>{{ desc.desc }}</p>
               </li> -->
               <li>
-                <h2>Standard</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Standard") }}</h2>
                 <p>{{ item.standard_ko }}</p>
               </li>
               <li>
-                <h2>Raw Material</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
                 <p>{{ item.material_description_ko }}</p>
               </li>
               <li>
-                <h2>Appearance</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
                 <p>{{ item.material_function_ko }}</p>
               </li>
               <li>
-                <h2>Functional Content</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Functionalcontent") }}</h2>
                 <p>{{ item.material_function_ko }}</p>
               </li>
               <li>
-                <h2>Daily Intake</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
                 <p>{{ item.daily_intake_amount_ko }}</p>
               </li>
               <li>
-                <h2>Precautions</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
                 <p>{{ item.material_prequotion_ko }}</p>
               </li>
               <li>
-                <h2>Etc</h2>
+                <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
                 <p>{{ item.material_extra_info_ko }}</p>
               </li>
             </ul>
             <div class="blendBtnList">
-              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">Add</button>
-              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">Next</button>
+              <button @click="addRawMaterial()" class="btn-primary purple-btn-outline">{{$t('button.add')}}</button>
+              <button @click="gotoNextPage()" class="btn-primary blue-btn-solid">{{$t('button.next')}}</button>
             </div>
           </div>
           <div class="suggested-product">
-            <h2>Recommended Blending</h2>
+            <h2>{{ $t('myChoice.RecommendedBlending.title') }}</h2>
             <ul class="smilar-product-img">
               <li v-for="(items, index) of blendingData" :key="index">
                 <img v-if="items.thumbnail_1_path"
+                class="link-img"
                   @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)"
                   :src="imgBaseUrl + items.thumbnail_1_path" alt />
                 <img v-else @click="this.$router.push(`/choice-recommended-blending-detailed-page/${items.id}`)"
+                  class="link-img"
                   src="../../assets/images/similar_place.png" alt />
               </li>
             </ul>
           </div>
           <div class="suggested-product">
-            <h2>Third-party similar products</h2>
+            <h2>{{$t('myChoice.RawMaterial.detail.Similar_Products')}}</h2>
             <div v-if="raw_material_image.length > 0">
               <ul class="smilar-product-img">
                 <li v-for="(item, index) of similar_product_img" :key="index">
@@ -107,6 +117,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 
@@ -123,12 +134,14 @@ import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -152,6 +165,7 @@ export default {
       raw_material_image: [],
       blendingData: '',
       item_exist: '',
+      thumb_image:'',
       similar_product_img: [],
       productDetails: [
         {
@@ -255,9 +269,10 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-        //console.log(res.data);
+        // console.log(res.data.data[0].thumbnail_fst_path);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
+          this.thumb_image= res.data.data[0].thumbnail_fst_path;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -308,7 +323,7 @@ export default {
 
           }
           if (this.item_exist == "yes") {
-            this.$swal("You have already added this item");
+            // this.$swal("You have already added this item");
             this.$router.push('/add-ingredient')
 
           }
@@ -342,10 +357,27 @@ export default {
 .mySwiper2 .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
+  margin-bottom: 10px;
 }
 
 .mySwiper2 .swiper-slide-thumb-active {
   opacity: 1;
+}
+.link-img{
+  cursor: pointer;
+}
+.heading{
+  font-weight: 700;
+font-size: 40px;
+line-height: 100%;
+color: #9642F4;
+padding-bottom: 36px;
+}
+@media screen and (max-width: 768px) {
+  .heading{
+    font-size: 30px;
+    padding-bottom: 10px;
+  }
 }
 </style>

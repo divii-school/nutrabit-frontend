@@ -3,14 +3,14 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>공지사항</h2>
+          <h2>{{$t("customer.title.Notice")}}</h2>
         </div>
         <div v-for="(item, index) of noticeDetailsData" :key="index">
           <div class="notice-list noBorder notice-list-main">
             <ul>
               <li>
                 <div class="item-left">
-                  <span v-if="item.top10 == 1">important</span>
+                  <span v-if="item.top10 == 1">{{$t("customer.content.Tag")}}</span>
                   <p>
                     {{ item.title_en }}
                   </p>
@@ -39,21 +39,26 @@
               class="btn-small-solid grey"
               @click="this.$router.push('/notice')"
             >
-              목록으로
+              {{$t("onlyme.button.List")}}
             </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+   <KakaoChat />
 </template>
 <script>
 
 import moment from 'moment';
 import { useRoute } from "vue-router";
 import CustomerCenterService from "../../services/CustomerCenterService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "NoticeDetailPage",
+  components : {
+    KakaoChat
+  },
   data() {
     return {
       noticeDetailsID: null,

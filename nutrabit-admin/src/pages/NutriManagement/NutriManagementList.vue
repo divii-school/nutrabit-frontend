@@ -235,7 +235,7 @@ export default {
             // this.calendarValue1 = '';
             this.loading1 = true;
             this.nutriManagementService
-                .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
+                .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -250,7 +250,7 @@ export default {
          resetdata(){
             if (this.name === ''){
                 this.nutriManagementService
-                 .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
+                 .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -265,7 +265,7 @@ export default {
             //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.nutriManagementService
-                    .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko,this.page,this.limit,this.sortBy,this.sortOrde)
+                    .getNurtiManagementList(this.name,this.tags_ko?this.tags_ko.tags_ko:this.tags_ko)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -343,16 +343,20 @@ export default {
                     axios({ method: 'delete', url: '/admin/nutriBlending/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
                         self.nutriManagementService
-                       
-                        .getNurtiManagementList(self.name,self.tags_ko,self.page,self.limit,self.sortBy,self.sortOrder)
-                        //.getNurtiManagementList(self.title,self.link,self.status,self.createdDate)
+                       .getNurtiManagementList(self.name,self.tags_ko)
                         .then((data) => {
-                        self.customer1 = data;
-                        self.loading1 = false;
-                            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                            //console.log(data);
-                        })
+                                self.customer1 = data;
+                                self.loading1 = false;
+                                self.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                            })
+                            .catch(() => {
+                                self.customer1 = [];
+                                self.loading1 = false;
+                            });
+
+                    console.log(response);
                     });
+
                     this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제됨', life: 3000 });
                 },
                 reject: () => {

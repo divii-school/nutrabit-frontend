@@ -16,17 +16,13 @@
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2 class="nutri-choice-heading text-center">
-            Opportunity to create <br>
-            Health Functional Food Recipes <br>
-            on your own!
-          </h2>
-          <p class="desc text-center">Combine whatever you want and make your own health functional food recipe!</p>
+          <h2 class="nutri-choice-heading text-center" v-html="$t('main.my_choice.title')"></h2>
+          <p class="desc text-center"> {{ $t("main.my_choice.desc") }}</p>
           <router-link to="/my-choice" v-if="token">
-            <button class="btn-small-solid">Go to my choice</button>
+            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
           </router-link>
           <router-link to="/" v-else @click="accessPage()">
-            <button class="btn-small-solid">Go to my choice</button>
+            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
           </router-link>
         </div>
         <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
@@ -38,20 +34,16 @@
         <div class="nutri-blending">
           <div class="nutri-choice">
             <span class="my-choice-title-top">nutri 3.3</span>
-            <p class="title text-center">nutri 3.3 blending</p>
-            <h2 class="nutri-choice-heading text-center">
-              A service only for you <br>
-              Don't miss the chance to launch your own product!
-            </h2>
-            <p class="desc text-center">We provide all services from A to Z of health functional food.</p>
-            <button @click="toNutri()" class="btn-small-solid green">What is nutri 3.3
-              Blending?</button>
+            <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
+            <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
+            <p class="desc text-center">{{ $t("main.nutri.desc") }}</p>
+            <button @click="toNutri()" class="btn-small-solid green">{{ $t("main.nutri.button") }}</button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
             <ul>
-              <li v-for="(item, index) of ProductData" :key="index" >
-                <MainProductCard :item="item" @login="accessPage"/>
+              <li v-for="(item, index) of ProductData" :key="index">
+                <MainProductCard :item="item" @login="accessPage" />
               </li>
             </ul>
           </div>
@@ -59,27 +51,19 @@
       </div>
 
       <!-- payment-test -->
-      <div class="devider">
+      <!-- <div class="devider">
         <i class="icon-grey-star"></i>
-      </div>
+      </div> -->
 
-      <div class="payment-test" style="padding:40px">
+      <!-- <div class="payment-test" style="padding:40px">
         <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
-        <!-- <button type="button" class="btn-small-solid" id="naver_id_login" @click="naverLogin">Naver Login</button>
-        <div id="naver_id_login"></div> -->
-      </div>
+      </div> -->
       <!-- payment-test -->
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    bodytext1="This service requires login."
-    bodytext2="Please use the service after logging in."
-    btnText1="Cancel"
-    btnText2="Login"
-    link="/login"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
+    link="/login" />
   <KakaoChat />
 </template>
 
@@ -114,7 +98,8 @@ export default {
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
-      isModalVisible : false,
+      isModalVisible: false,
+      globalLocale: "",
     };
   },
   setup() {
@@ -143,45 +128,24 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
+  updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allNutidata();
+    },
+  },
+
   methods: {
     // makePay test function
-    makePay() {
-      // console.log('makePay');
-      alert('makePay');
-      this.paymentService.requestPay();
-    },
-
-    // naverLogin() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   var state = naver_id_login.getUniqState();
-    //   naver_id_login.setButton("green", 5, 50);
-    //   naver_id_login.setDomain("http://localhost:8082/login");
-    //   naver_id_login.setState(state);
-    //   // naver_id_login.setPopup();
-    //   naver_id_login.init_naver_id_login();
-    //   // this.naverLoginCallback();
+    // makePay() {
+    //   // console.log('makePay');
+    //   alert('makePay');
+    //   this.paymentService.requestPay();
     // },
-
-    // naverLoginCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // 접근 토큰 값 출력
-    //   alert(naver_id_login.oauthParams.access_token);
-    //   // 네이버 사용자 프로필 조회
-    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    //   this.naverSignInCallback();  
-    // },
-
-    // naverSignInCallback() {
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-
-
-
-
 
     // allBanner list
     allBanner() {
@@ -202,6 +166,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
+          console.log(res)
 
         } else {
           // console.log('getNutridata res', res.data.blendingData);
@@ -216,15 +181,15 @@ export default {
 
     },
 
-    toNutri(){
-      if(this.token){
+    toNutri() {
+      if (this.token) {
         this.$router.push(`/service-intro`)
-      }else{
+      } else {
         this.isModalVisible = true;
       }
     },
 
-    closeModal(){
+    closeModal() {
       this.isModalVisible = false;
     }
   },

@@ -6,19 +6,19 @@
           <div class="footer-links-inner">
             <div class="link-left">
               <ul>
-                <li><router-link to="/terms">Terms of Use</router-link></li>
-                <li class="active"><router-link to="/privacy">privacy policy</router-link></li>
+                <li>
+                  <router-link to="/terms">{{ $t("footer.term") }}</router-link>
+                </li>
+                <li class="active">
+                  <router-link to="/privacy">{{ $t("footer.privacy") }}</router-link>
+                </li>
               </ul>
             </div>
             <div class="link-right">
               <div class="footer-dropdown">
                 <div class="lang-dropdown">
                   <select v-model="$i18n.locale" class="select-dropdown">
-                    <option
-                      v-for="lang in langs"
-                      :key="lang.code"
-                      :value="lang.code"
-                    >
+                    <option v-for="lang in langs" :key="lang.code" :value="lang.code">
                       {{ lang.name }}
                     </option>
                   </select>
@@ -35,14 +35,12 @@
           </a>
           <div class="address">
             <ul>
-              <li>Newtrabit Co., Ltd.</li>
-              <li>CEO: Min Kyung-ran</li>
-              <li class="active">Business registration number: 603-88-01301</li>
+              <li>{{$t('footer.address.co_name')}}</li>
+              <li>{{$t('footer.address.ceo')}}</li>
+              <li class='active'>{{$t('footer.address.reg_no')}} </li>
             </ul>
-            <p>
-              Headquarters: 1st floor, 15, Hyoryeong-ro 33-gil, Seocho-gu, Seoul
-            </p>
-            <a href="">Copyright 2020 Nutrabbit. All right saved.</a>
+            <p> {{$t('footer.address.location')}} </p> 
+            <a href=''>{{$t('footer.address.copyright')}}</a>
           </div>
         </div>
       </div>
@@ -50,7 +48,6 @@
   </footer>
 </template>
 <script>
-import VueNextSelect from "vue-next-select";
 
 export default {
   name: "Footer",

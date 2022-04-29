@@ -4,8 +4,8 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">Change Password</h1>
-            <p class="membership-desc">Please change your password</p>
+            <h1 class="login-heading">{{$t("common.title.ChangePassword")}}</h1>
+            <p class="membership-desc">{{$t("common.SubTitle.changePassword")}}</p>
           </div>
 
           
@@ -15,13 +15,13 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>New password</label>
+              <label for=""><i class="icon-required"></i>{{$t("common.label.NewPassword")}}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="Enter new password"
+                    :placeholder="$t('common.placeholder.EnterNewPassword')"
                     v-model="password"
                    
                   />
@@ -34,14 +34,14 @@
               :class="error.confirmPassword ? 'error' : ''"
             >
               <label for=""
-                ><i class="icon-required"></i>New password confirmation</label
+                ><i class="icon-required"></i>{{$t("common.label.Newpasswordconfirmation")}}</label
               >
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                    placeholder="New password confirmation"
+                   :placeholder="$t('common.placeholder.Newpasswordconfirmation')"
                     v-model="confirmPassword"
                    
                   />
@@ -50,30 +50,54 @@
               <span class="error-msg">{{ error.confirmPassword }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="changePassword">
-              change
+               {{ $t("button.change") }}
             </button>
           </form>
         </div>
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
 import CommonService from "../../services/CommonService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "ChangePassword",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       password: "",
       confirmPassword: "",
       error: {},
       localUserData: "",
+      validateOnce: false,
+      globalLocale: "",
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+
+  updated(){
+   this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
+  },
+
   methods: {
     checkError() {
       let credential = {
@@ -81,6 +105,7 @@ export default {
         confirmPassword: this.confirmPassword,
       };
       const { isInvalid, error } = passwordValidation(credential);
+      
       if (isInvalid) {
         this.error = error;
         return false;
@@ -95,6 +120,7 @@ export default {
       //   confirmPassword: this.confirmPassword,
       // };
       // const { isInvalid, error } = passwordValidation(credential);
+      this.validateOnce = true;
       if (!this.checkError()) {
         return;
       } else {

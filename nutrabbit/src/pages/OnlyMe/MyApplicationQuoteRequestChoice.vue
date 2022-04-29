@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>견적 신청내역</h2>
+          <h2>{{$t("onlyme.title.QuoteTab")}}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>카테고리</th>
-                      <th>설명</th>
+                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody
@@ -35,24 +35,24 @@
                 </table>
               </div>
               <div class="fGroup">
-                <label>제목</label>
-                <input type="text" name="" v-model="title" placeholder="구아검가수분해물로 만든 나만의 레시피">
+                <label>{{$t("onlyme.title.Title")}}</label>
+                <input type="text" name="" v-model="title" :placeholder="$t('onlyme.placeholder.title')">
               </div>
               <div class="fGroup">
-                <label>추가 요청 사항</label>
+                <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
                 <div class="ansBlock">
                   <p>{{ add_req }}</p>
                 </div>
               </div>
               <div class="fGroup">
-                <label>답변</label>
+                <label>{{$t("onlyme.title.Answer")}}</label>
                 <div class="ansBlock">
                   <p>{{ answer }}</p>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-application-detail')">이전</button>
+                  <button class="btn-small-solid grey" @click="$router.push('/my-application-detail')">{{$t("onlyme.button.Previous")}}</button>
                 </div>
               </div>
             </div>
@@ -61,12 +61,17 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import MyApplicationService from "../../services/MyApplicationQuoteService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyApplicationQuoteRequestChoice",
+  components : {
+    KakaoChat
+  },
 
   data() {
     return {

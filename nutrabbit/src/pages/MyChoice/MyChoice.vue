@@ -12,8 +12,8 @@
               <template #content>
                 <div class="heading-tooltip-content">
                   <ul>
-                    <li>This is a menu where I make my own health functional food recipes.</li>
-                    <li>Please select the desired function.</li>
+                    <li>{{$t('myChoice.popup.list1')}}</li>
+                    <li>{{$t('myChoice.popup.list2')}}</li>
                   </ul>
                 </div>
               </template>
@@ -39,15 +39,18 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyChoice",
   components: {
     Popper,
+    KakaoChat
   },
   data() {
     return {

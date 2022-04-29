@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>샘플 신청내역</h2>
+          <h2>{{$t("onlyme.title.SampleTab")}}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>선택 사항</h2>
+                <h2>{{$t("onlyme.title.Options")}}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,8 +18,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>카테고리</th>
-                      <th>설명</th>
+                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
+                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -33,24 +33,24 @@
                 </table>
               </div>
               <div class="fGroup" v-if="titletrue" @click="titleshow">
-                <label>제목</label>
+                <label>{{$t("onlyme.title.Title")}}</label>
                 <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
               </div>
               <div class="fGroup">
-                <label>추가 요청 사항</label>
+                <label>{{$t("onlyme.title.AdditionalRequest")}}</label>
                 <div class="ansBlock">
                     <p>{{additional_request}}</p>
                 </div>
               </div>
               <div class="fGroup">
-                <label>답변</label>
+                <label>{{$t("onlyme.title.Answer")}}</label>
                 <div class="ansBlock">
                     <p>{{answer_by_admin}}</p>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey" @click="$router.go(-1)">이전</button>
+                  <button class="btn-small-solid grey" @click="$router.go(-1)">{{$t("onlyme.button.Previous")}}</button>
                 </div>
             </div>
             </div>
@@ -59,6 +59,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -68,11 +69,13 @@
 import ProductList from "../../components/ProductList.vue";
 import MyApplicationDetails from "../../services/MyApplicationDetails";
 import { useRoute } from "vue-router";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,
+    KakaoChat
   },
   data() {
     return {

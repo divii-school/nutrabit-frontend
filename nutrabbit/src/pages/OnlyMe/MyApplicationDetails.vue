@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>내 신청내역</h2>
+          <h2>{{$t("onlyme.title.Application")}}</h2>
         </div>
 
         <div id="app">
           <ul class="overlay-panel-actions-primary">
             <li
-              v-for="(tab, index) in tabs"
+              v-for="(tab, index) in tabsTrns"
               @click="currentTab = index"
               :class="{ active: currentTab === index }"
               :key="index"
@@ -24,7 +24,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>nutri 3.3</h2>
+                        <h2>{{$t("onlyme.title.Nutri")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -33,8 +33,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -72,7 +72,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>추천 블랜딩</h2>
+                        <h2>{{$t("onlyme.title.RecommendedBlending")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -81,8 +81,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -120,7 +120,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>My Choice</h2>
+                        <h2>{{$t("onlyme.title.MyChoice")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -129,8 +129,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -170,7 +170,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>nutri 3.3</h2>
+                        <h2>{{$t("onlyme.title.Nutri")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -179,8 +179,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -218,7 +218,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>추천 블랜딩</h2>
+                        <h2>{{$t("onlyme.title.RecommendedBlending")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -227,8 +227,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -269,7 +269,7 @@
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
-                        <h2>My Choice</h2>
+                        <h2>{{$t("onlyme.title.MyChoice")}}</h2>
                       </div>
                     </div>
                     <div class="materialForm">
@@ -278,8 +278,8 @@
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>설명</th>
-                              <th>신청 날짜</th>
+                              <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                              <th>{{$t("onlyme.tableCaption.ApplicationDate")}}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -317,6 +317,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -327,11 +328,13 @@ import ProductList from "../../components/ProductList.vue";
 import MyApplicationDetails from "../../services/MyApplicationDetails";
 import moment from "moment";
 import { inject } from "vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,
+    KakaoChat
   },
   // tab code
   el: "#app",
@@ -387,10 +390,18 @@ export default {
     return { common };
   },
 
+  computed : {
+    tabsTrns(){
+      return [this.$t('onlyme.title.SampleTab'), this.$t('onlyme.title.QuoteTab')];
+    }
+  },
+
   created() {
     this.myApplicationDetails = new MyApplicationDetails();
   },
-
+  updated(){
+    console.log(this.tabsTrns)
+  },
   methods: {
     myCallback1(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;

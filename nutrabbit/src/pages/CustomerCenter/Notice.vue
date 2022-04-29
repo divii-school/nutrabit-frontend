@@ -3,11 +3,11 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>공지사항</h2>
+          <h2>{{$t("customer.title.Notice")}}</h2>
         </div>
         <div class="notice-heading">
-          <p class="title">제목</p>
-          <p class="date">게시날짜</p>
+          <p class="title">{{$t("onlyme.title.Title")}}</p>
+          <p class="date">{{$t("customer.title.PublishedDate")}}</p>
         </div>
         <div class="notice-list bBtm-0 notice-list-main">
           <ul>
@@ -16,7 +16,7 @@
                 class="item-left"
                 @click="this.$router.push(`/notice-detail-page/${item.id}`)"
               >
-                <span v-if="item.top10 == 1">Important</span>
+                <span v-if="item.top10 == 1">{{$t("customer.tag.Important")}}</span>
                 <p>{{ item.title_ko }}</p>
               </div>
               <div class="item-right">
@@ -50,15 +50,18 @@
       </div>
     </div>
   </div>
+   <KakaoChat />
 </template>
 <script>
 import moment from "moment";
 import CustomerCenterService from "../../services/CustomerCenterService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "Notice",
-  // components: {
-  //   Pagination,
-  // },
+  components: {
+    // Pagination,
+    KakaoChat
+  },
   data() {
     return {
       NoticeList: [],

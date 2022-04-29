@@ -49,7 +49,7 @@ export default {
             
           }
           if(this.item_exist=="yes"){
-            this.$swal("You have already added this item");
+            // this.$swal("You have already added this item");
             this.$emit('close');
 
           }
@@ -57,7 +57,7 @@ export default {
              this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
         //console.log(res.data);
         if (res.data.status=200) {
-          this.$swal("Successfully Added");
+          // this.$swal("Successfully Added");
            this.$emit('close');
          
         } else {
@@ -84,7 +84,7 @@ export default {
             
           }
           if(this.item_exist=="yes"){
-            this.$swal("You have already added this item");
+            // this.$swal("You have already added this item");
             this.$router.push('/add-ingredient');
 
           }
@@ -92,7 +92,7 @@ export default {
              this.mychoiceService.rawMaterialStorageBoxAdd(this.raw_material_id).then((res) => {
         //console.log(res.data);
         if (res.data.status=200) {
-          this.$swal("Successfully Added");
+          // this.$swal("Successfully Added");
            this.$router.push('/add-ingredient');
          
         } else {

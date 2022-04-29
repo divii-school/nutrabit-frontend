@@ -25,6 +25,7 @@
                       :category="item.name_en"
                       :image="item.image"
                       :image_link= imgBaseUrl
+                      type2="search"
                     />
                   </template>
                 </div>
@@ -54,6 +55,7 @@
                       :category="item.name_en"
                       :image="item.image"
                       :image_link= imgBaseUrl
+                      type2="search"
                     />
                   </template>
                 </div>
@@ -80,6 +82,7 @@
                       :category="item.name_en"
                       :image="item.image"
                       :image_link= imgBaseUrl
+                      type2="search"
                     />
                   </template>
                 </div>
@@ -124,18 +127,21 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import CommonService from "../../services/CommonService";
+import KakaoChat from "../../components/KakaoChat.vue";
 import { inject } from "vue";
 export default {
   name: "SearchResult",
   components: {
     SearchCard,
     SearchAccordion,
+    KakaoChat
   },
   data() {
     return {

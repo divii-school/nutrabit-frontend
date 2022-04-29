@@ -8,10 +8,17 @@
           </router-link>
           <ul class="flex">
             <li>
-              <router-link to="/my-choice">my choice</router-link>
+              <router-link v-if="token" to="/my-choice">{{
+                $t("header.myChoice")
+              }}</router-link>
+              <router-link v-else @click="accessPage()" to="">{{
+                $t("header.myChoice")
+              }}</router-link>
             </li>
             <li>
-              <router-link to="/service-intro">nutri 3.3 blending</router-link>
+              <router-link to="/service-intro">{{
+                $t("header.nutri")
+              }}</router-link>
             </li>
           </ul>
         </div>
@@ -24,7 +31,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  placeholder="Enter search term"
+                  :placeholder="$t('header.search')"
                   @click="getHistory"
                   v-model="sarchInput"
                   v-on:keyup.enter="getSearch"
@@ -62,7 +69,7 @@
                   </template>
                   <template v-else>
                     <div class="no-search-data">
-                      <p>There are no recent searches.</p>
+                      <p>{{ $t("header.searchHistory") }}</p>
                     </div>
                   </template>
                 </div>
@@ -74,9 +81,11 @@
                     class="delete-history"
                     :class="showSearchpannel ? 'showDelete' : 'hideDelete'"
                   >
-                    <i class="icon-delete"></i>Delete all
+                    <i class="icon-delete"></i>{{ $t("header.delete") }}
                   </router-link>
-                  <router-link to @click="toCloseBtn">Close</router-link>
+                  <router-link to @click="toCloseBtn">{{
+                    $t("header.close")
+                  }}</router-link>
                 </div>
               </div>
             </div>
@@ -97,16 +106,20 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link :to="personalInfoRouterLink"
-                    >Change of personal information</router-link
-                  >
-                  <router-link to @click="logOut()">Log out</router-link>
+                  <router-link :to="personalInfoRouterLink">{{
+                    $t("header.ChangePersonalInfo")
+                  }}</router-link>
+                  <router-link to @click="logOut()">{{
+                    $t("header.logout")
+                  }}</router-link>
                 </div>
               </div>
             </div>
           </template>
           <template v-else>
-            <router-link to="/login" class="login-item">login</router-link>
+            <router-link to="/login" class="login-item">{{
+              $t("header.login")
+            }}</router-link>
           </template>
 
           <div class="header-dropdown">
@@ -172,9 +185,11 @@
                     <router-link
                       :to="personalInfoRouterLink"
                       @click="goPersonalInfoMob"
-                      >Change personal information</router-link
+                      >{{ $t("header.ChangePersonalInfo") }}</router-link
                     >
-                    <router-link to @click="logOut()">Log out</router-link>
+                    <router-link to @click="logOut()">{{
+                      $t("header.logout")
+                    }}</router-link>
                   </div>
                 </div>
               </div>
@@ -204,11 +219,12 @@
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li>
-            <router-link to>KO</router-link>
-          </li>
-          <li>
-            <router-link to>EN</router-link>
+          <li
+            v-for="lang in langs"
+            :key="lang.code"
+            @click="changeLanguage(lang.code)"
+          >
+            <router-link to>{{ lang.name }}</router-link>
           </li>
         </ul>
       </div>
@@ -216,20 +232,20 @@
   </div>
   <Modal
     v-show="isModalVisible"
-    @close="closeModal"
-    bodytext1="This service requires login."
-    bodytext2="Please use the service after logging in."
-    btnText1="Cancel"
-    btnText2="Login"
+    @close="closeModal2"
+    :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')"
+    :btnText1="$t('requireModal.btn1')"
+    :btnText2="$t('requireModal.btn2')"
     link="/login"
   />
   <Modal
     v-show="isLogOutModalVisible"
     @close="closeLogOutModal"
     @confirm="logOutConfirm"
-    bodytext1="Are you sure you want to logout?"
-    btnText1="Cancel"
-    btnText2="Confirm"
+    :bodytext1="$t('logoutModal.text')"
+    :btnText1="$t('warningModal.btn1')"
+    :btnText2="$t('warningModal.btn2')"
     link="/login"
   />
   <div
@@ -270,66 +286,6 @@ export default {
       activeLogin: false,
       showSearchpannel: false,
       personalInfoRouterLink: "",
-      rightMenuItem: [
-        {
-          mainItem: "Login",
-        },
-        {
-          mainItem: "nutri 3.3",
-          subItemData: [
-            {
-              label: "About Us",
-              link: "/about-us",
-            },
-            {
-              label: "my choice",
-              link: "/my-choice",
-            },
-            {
-              label: "nutri 3.3 blending",
-              link: "/service-intro",
-            },
-            {
-              label: "Sample making guide",
-              link: "/sample-making",
-            },
-          ],
-        },
-        {
-          mainItem: "ONLY ONE",
-          subItemData: [
-            {
-              label: "raw material storage box",
-              link: "/add-ingredient",
-            },
-            {
-              label: "my recipe",
-              link: "/my-recipe",
-            },
-            {
-              label: "my application",
-              link: "/my-application-detail",
-            },
-          ],
-        },
-        {
-          mainItem: "CUSTOMER CENTER",
-          subItemData: [
-            {
-              label: "Notice",
-              link: "/notice",
-            },
-            {
-              label: "FAQ",
-              link: "/faq",
-            },
-            {
-              label: "1:1 inquiry",
-              link: "/inquiry",
-            },
-          ],
-        },
-      ],
       searchData: [],
       AllSearchId: [],
       langs: [
@@ -353,6 +309,7 @@ export default {
     this.personalInfoService = new PersonalInfoService();
     this.commonService = new CommonService();
   },
+
   updated() {
     if (localStorage.token) {
       this.logedInUserDetails = true;
@@ -370,6 +327,14 @@ export default {
         this.personalInfoRouterLink = "/personal-information";
       }
     }
+    if (this.$i18n.locale == "kr") {
+      this.common.state.SelectedLang = "KO";
+      localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+    }
+    if (this.$i18n.locale == "en") {
+      this.common.state.SelectedLang = "EN";
+      localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+    }
   },
 
   mounted() {
@@ -378,6 +343,14 @@ export default {
     this.changePersonalInfo();
   },
   methods: {
+    changeLanguage(lang) {
+      this.$i18n.locale = lang;
+    },
+    accessPage() {
+      //this.$router.push('/login')
+      //this.$swal("Unauthorized Access.Please Login.");
+      this.isModalVisible = true;
+    },
     rightMenuData(index) {
       this.activeSubmenu = this.activeSubmenu == index ? "" : index;
       if (index != 0) {
@@ -423,7 +396,7 @@ export default {
         this.token = false;
       }
     },
-    closeModal() {
+    closeModal2() {
       this.isModalVisible = false;
     },
 
@@ -473,7 +446,9 @@ export default {
     // search api (main)
     getSearch(e) {
       if (this.sarchInput == "") {
-        this.$swal("Please add searchData");
+        // return ;
+        // this.$swal("Please add searchData");
+        console.log("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
         this.searchData = e.target.value;
@@ -529,6 +504,68 @@ export default {
     },
   },
   computed: {
+    rightMenuItem() {
+      return [
+        {
+          mainItem: this.$t("common.title.login"),
+        },
+        {
+          mainItem: "nutri 3.3",
+          subItemData: [
+            {
+              label: this.$t("header.SideNav.AboutUs"),
+              link: "/about-us",
+            },
+            {
+              label: this.$t("header.SideNav.myChoice"),
+              link: "/my-choice",
+            },
+            {
+              label: this.$t("header.SideNav.nutriBlending"),
+              link: "/service-intro",
+            },
+            {
+              label: this.$t("header.SideNav.SampleMakingGuide"),
+              link: "/sample-making",
+            },
+          ],
+        },
+        {
+          mainItem: "ONLY ONE",
+          subItemData: [
+            {
+              label: this.$t("header.SideNav.RawMaterialStorage"),
+              link: "/add-ingredient",
+            },
+            {
+              label: this.$t("header.SideNav.MyRecipe"),
+              link: "/my-recipe",
+            },
+            {
+              label: this.$t("header.SideNav.MyApplication"),
+              link: "/my-application-detail",
+            },
+          ],
+        },
+        {
+          mainItem: "CUSTOMER CENTER",
+          subItemData: [
+            {
+              label: this.$t("header.SideNav.Notice"),
+              link: "/notice",
+            },
+            {
+              label: this.$t("header.SideNav.FAQ"),
+              link: "/faq",
+            },
+            {
+              label: this.$t("header.SideNav.Inquiry"),
+              link: "/inquiry",
+            },
+          ],
+        },
+      ];
+    },
     isHeaderPositionAbsolute() {
       return this.$route.name == "Main";
     },

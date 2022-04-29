@@ -57,11 +57,12 @@
     </div>
     <Modal v-show="isRecommendedModalVisible" @close="closeModalRecommended" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
-    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" bodytext1="Are you sure?"
+    <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
     <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -72,6 +73,7 @@ import Button from '../../components/Button.vue';
 import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   inject : ['common'],
@@ -81,6 +83,7 @@ export default {
     ProductListRecipe,
     Button,
     Modal,
+    KakaoChat
   },
 
   

@@ -3,35 +3,12 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <div v-if="product_sub_image_path.length>0">
-            <swiper
+          <div v-if="product_sub_image_path.length > 0">
+            <!-- <swiper
               :spaceBetween="10"
               :modules="[Thumbs]"
               :thumbs="{ swiper: thumbsSwiper }"
               class="mySwiper"
-              v-for="(items, index) of nutriDetails"
-              :key="index"
-            >
-                <swiper-slide
-                  v-for="(item, index) of items.product_sub_image_path"
-                  :key="index"
-                >
-                  <img v-if="item" :src="imgBaseUrl + item" alt />
-                </swiper-slide>
-            </swiper>
-            </div>
-          <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
-          </div>
-          <div v-if="product_sub_image_path.length>0">
-            <swiper
-              :spaceBetween="10"
-              :slidesPerView="4"
-              :freeMode="true"
-              :modules="[Thumbs]"
-              watch-slides-progress
-              @swiper="setThumbsSwiper"
-              class="mySwiper2"
               v-for="(items, index) of nutriDetails"
               :key="index"
             >
@@ -41,9 +18,36 @@
               >
                 <img v-if="item" :src="imgBaseUrl + item" alt />
               </swiper-slide>
-
+            </swiper> -->
+            <swiper class="mySwiper">
+              <swiper-slide>
+                <img :src="imgBaseUrl + thumb_image" alt />
+              </swiper-slide>
             </swiper>
-            </div>
+          </div>
+          <div v-else>
+            <img src="../../assets/images/content_place.png" alt="" />
+          </div>
+          <div v-if="product_sub_image_path.length > 0">
+            <swiper
+              :spaceBetween="10"
+              :slidesPerView="4"
+              :freeMode="true"
+              :modules="[Thumbs]"
+              watch-slides-progress
+              @swiper="setThumbsSwiper"
+              class="mySwiper2 thumbsSwiperCustom"
+              v-for="(items, index) of nutriDetails"
+              :key="index"
+            >
+              <swiper-slide
+                v-for="(item, index) of items.product_sub_image_path"
+                :key="index"
+              >
+                <img v-if="item" :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
+          </div>
           <div v-else>
             <img src="../../assets/images/content_place.png" alt="" />
           </div>
@@ -65,18 +69,15 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{item.description_ko}}</p>
-            <button
-              @click="openmodal()"
-              class="btn-primary blue-btn-solid"
-            >
-              Get an estimate
+            <p>{{ item.description_ko }}</p>
+            <button @click="openmodal()" class="btn-primary blue-btn-solid">
+              {{ $t("nutri.nutriDetails.button") }}
             </button>
           </div>
         </div>
       </div>
       <div class="nutriDetail">
-        <img src="../../assets/images/nutri-info.jpg">
+        <img src="../../assets/images/nutri-info.jpg" />
       </div>
     </div>
   </div>
@@ -87,26 +88,31 @@
         <div class="nutri-blending">
           <div class="nutri-choice">
             <h2 class="nutri-choice-heading text-center">
-              A service just for you<br> Easily seize your own product launch opportunity!
+              {{ $t("nutri.nutriDetails.title") }}<br />
+              {{ $t("nutri.nutriDetails.title2") }}
             </h2>
-            <p
-              class="desc text-center"
-            >Click the button below to become the hero of the product!</p>
-            <button class="btn-small-solid green" @click="openmodal()">Get an estimate</button>
+            <p class="desc text-center">
+              {{ $t("nutri.nutriDetails.subtitle") }}
+            </p>
+            <button class="btn-small-solid green" @click="openmodal()">
+              {{ $t("nutri.nutriDetails.button") }}
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <Modal 
+  <Modal
     v-show="isModalVisible"
     @close="closeModal"
-    bodytext1="Would you like to get an estimate for this product?"
-    bodytext2 = "An estimate will be sent to you by email when you click OK."
-    btnText1="cancellation"
-    btnText2="Confirm"
+    :bodytext1="$t('nutri.nutrimodal.bodytext')"
+    :bodytext2="$t('nutri.nutrimodal.bodytext2')"
+    :btnText1="$t('nutri.nutrimodal.btntext')"
+    :btnText2="$t('nutri.nutrimodal.btntext2')"
+    @confirm="confirm"
     link = ''
   />
+  <KakaoChat />
 </template>
 
 
@@ -124,13 +130,15 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
+import KakaoChat from "../../components/KakaoChat.vue";
 
 export default {
   name: "NutriDetail",
   components: {
     Swiper,
     SwiperSlide,
-    Modal
+    Modal,
+    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -203,11 +211,12 @@ export default {
         },
       ],
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
-      lang:"KO",
-      id:"",
-      nutriDetails:[],
-      isModalVisible:false,
-      product_sub_image_path:[],
+      lang: "KO",
+      id: "",
+      nutriDetails: [],
+      isModalVisible: false,
+      product_sub_image_path: [],
+      thumb_image: ""
     };
   },
   created() {
@@ -217,15 +226,18 @@ export default {
     this.getNutridetails();
   },
   methods: {
-
     closeModal() {
       this.isModalVisible = false;
       // window.location.href = "";
     },
 
+    confirm(){
+      this.confirmbutton();
+    },
+
     openmodal() {
       this.isModalVisible = true;
-      this.confirmbutton();
+      // this.confirmbutton();
     },
 
     splitJoin(theText) {
@@ -241,8 +253,10 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.nutriDetails = res.data.data;
-            // console.log("this.nutriDetails",this.nutriDetails);
-            this.product_sub_image_path = res.data.data[0].product_sub_image_path;
+             console.log("this.nutriDetails",this.nutriDetails);
+            this.product_sub_image_path =
+              res.data.data[0].product_sub_image_path;
+              this.thumb_image= res.data.data[0].thumbnail_path;
           }
         })
         .catch((err) => {
@@ -252,12 +266,12 @@ export default {
 
     confirmbutton() {
       this.id = this.$route.params.id;
-      // console.log("id",this.id);
+      console.log("id",this.id);
       this.nutriService
-        .confirmbutton()
+        .confirmbutton(this.id)
         .then((res) => {
           if (res.status == 200) {
-            console.log("ress",res);
+            console.log("ress", res);
           }
         })
         .catch((err) => {
@@ -278,7 +292,11 @@ export default {
 .mySwiper2 .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
+}
+
+.thumbsSwiperCustom .swiper-slide {
+  margin-bottom: 9px !important;
 }
 
 .mySwiper2 .swiper-slide-thumb-active {

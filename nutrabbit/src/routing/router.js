@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import Login from "../pages/Common/login.vue";
+import NaverLoginCallback from "../pages/Common/NaverLoginCallback.vue";
 import MemberRegistrationTypeSelection from "../pages/Common/MemberRegistrationTypeSelection.vue";
 import MemberRegistrationMethod from "../pages/Common/MemberRegistrationMethod.vue";
 import MemberRegistrationIndividuals from "../pages/Common/MemberRegistrationIndividual.vue";
@@ -47,7 +48,7 @@ import MyRecipeDetail from "../pages/MyRecipeDetail.vue";
 function guest(to, from, next) {
   if (localStorage.token) {
     next({ name: "Main" });
-    // Toast.fire({ title: "You already logged in" });
+    Toast.fire({ title: "You already logged in" });
   } else next();
 }
 
@@ -56,7 +57,7 @@ function guard(to, from, next) {
     next();
   } else {
     next({ name: "Login" });
-    // Toast.fire({ title: "Please login to access" });
+    Toast.fire({ title: "Please login to access" });
   }
 }
 
@@ -71,6 +72,12 @@ const routes = [
     name: "Login",
     path: "/login",
     component: Login,
+    beforeEnter: guest,
+  },
+  {
+    name: "NaverLogin",
+    path: "/callback/naverlogin",
+    component: NaverLoginCallback,
     beforeEnter: guest,
   },
   {
@@ -331,6 +338,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
 });
 
 export default router;

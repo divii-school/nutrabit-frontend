@@ -4,7 +4,7 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
-            <h1 class="login-heading">Find ID</h1>
+            <h1 class="login-heading">{{ $t("common.QuickLinks.FindID") }}</h1>
           </div>
           <form
             action=""
@@ -12,15 +12,17 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>Email</label>
+              <label for=""
+                ><i class="icon-required"></i
+                >{{ $t("common.label.Email") }}</label
+              >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="email"
-                    placeholder="Enter your email"
+                    :placeholder="$t('common.placeholder.Email')"
                     v-model="email"
-                    
                   />
                 </div>
                 <button
@@ -29,24 +31,26 @@
                   :class="{ grey: isVerification }"
                   :disabled="emailValidated"
                 >
-                  Send verification code
+                  {{ $t("button.sendVerification") }}
                 </button>
               </div>
               <span class="error-msg">{{ error.email }}</span>
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i>Email Verification Number</label
+                ><i class="icon-required"></i
+                >{{ $t("common.label.EmailVerification") }}</label
               >
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter your email verification code"
+                    :placeholder="
+                      $t('common.placeholder.EnterVerificationCode')
+                    "
                     v-model="emailOTP"
                     maxlength="6"
-                    
                   />
                   <span class="time" :class="{ startTimer: startTimer }">{{
                     newTime
@@ -61,20 +65,23 @@
                   @click="verifyOTP"
                   :disabled="otpValidate"
                 >
-                  certification
+                  {{ $t("button.verify") }}
                 </button>
               </div>
-               <span class="success-msg" v-if="isConfirmOTP==1">{{ isOtpSuccess }}</span>
-              <span class="error-msg" >{{ error.emailOTP }}</span>
+              <span class="success-msg" v-if="isConfirmOTP == 1">{{
+                isOtpSuccess
+              }}</span>
+              <span class="error-msg">{{ error.emailOTP }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="confirmFindId">
-              Confirm
+              {{ $t("button.Confirm") }}
             </button>
           </form>
         </div>
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
@@ -82,8 +89,12 @@ import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "FindId",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       email: "",
@@ -98,21 +109,43 @@ export default {
       showTick: true,
       storeSetInterval: null,
       newTime: "",
-      isConfirmOTP:0,
-      isOtpSuccess : '',
+      isConfirmOTP: 0,
+      isOtpSuccess: "",
+      validateOnce: false,
+      globalLocale: "",
+      isCheckUserEmail: false
     };
   },
   created() {
     this.commonService = new CommonService();
   },
+
+  updated() {
+    //console.log(this.$i18n.locale);
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.checkError();
+      }
+
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.checkError();
+      }
+    },
+  },
+
   methods: {
-     checkError() {
+    checkError() {
       let credential = {
         email: this.email,
         emailOTP: this.emailOTP,
         isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
+      
       if (isInvalid) {
         this.error = error;
         return false;
@@ -122,14 +155,13 @@ export default {
       }
     },
     async confirmFindId() {
+      this.validateOnce = true;
       if (!this.checkError()) {
         return;
-      }
-      else {
+      } else {
         //console.log(this.otpValidate)
-       
-          this.$router.push("/login");
-        
+
+        this.$router.push("/login");
       }
     },
     async userFindId() {
@@ -137,7 +169,7 @@ export default {
         this.error.email = "Enter a valid email address";
       }
       if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
+        this.error.email = this.$t("common.Error.EnterEmail");
       } else {
         this.commonService.userFindId(this.email).then((res) => {
           if (res.status == 200) {
@@ -147,7 +179,7 @@ export default {
             this.otpValidate = 0;
             this.startTimer = false;
             this.showTick = true;
-            this.emailOTP="";
+            this.emailOTP = "";
             this.error.email = "";
 
             if (this.storeSetInterval) {
@@ -174,7 +206,8 @@ export default {
               this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.isCheckUserEmail=true;
+            return (this.error.email =this.$t("common.Error.chcekId"));
             //return (this.error.email = res.response.data.message);
           }
         });
@@ -191,7 +224,7 @@ export default {
             btn_type: "certification",
           });
           if (verifyOtpData.data.status == 200) {
-            this.isOtpSuccess = 'OTP verified';
+            // this.isOtpSuccess = 'OTP verified';
             // this.$swal("OTP verified");
             this.startTimer = true;
             this.showTick = false;
@@ -199,12 +232,12 @@ export default {
             this.isVerification = false;
             this.emailValidated = 0;
             this.otpValidate = 1;
-            this.isConfirmOTP=1;
+            this.isConfirmOTP = 1;
             this.error.emailOTP = "";
             return true;
           }
         } catch (error) {
-          this.error.emailOTP = "The verification code does not match.";
+          this.error.emailOTP = this.$t("common.Error.OTPCheck");
           return false;
         }
       }
