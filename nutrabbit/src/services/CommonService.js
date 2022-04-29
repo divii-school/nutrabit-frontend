@@ -29,6 +29,7 @@ export default class CommonService {
       distribution_medium: checkName,
       login_token: login_token,
       login_type: login_type,
+      login_type: 'web',
     })
       .then((res) => res)
       .catch((err) => err)
@@ -72,6 +73,7 @@ export default class CommonService {
       business_name: businessName,
       department: depertment,
       contact_person: contactPerson,
+      login_type: 'web',
     })
       .then((res) => res)
       .catch((err) => err)
