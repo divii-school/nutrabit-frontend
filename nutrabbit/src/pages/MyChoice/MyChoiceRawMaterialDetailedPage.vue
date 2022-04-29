@@ -1,6 +1,7 @@
 <template>
-  <div class="main-body themePurple">
+  <div class="main-body themePurple recomanded-blending-with-heading">
     <div class="container-medium">
+      <h2 class="mychoice-heading heading">my choice</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
@@ -8,9 +9,6 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
-          <div>
-            <h2 class="heading">my choice</h2>
-          </div>
           <div v-if="raw_material_image.length > 0">
             <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
