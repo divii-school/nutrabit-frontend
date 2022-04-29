@@ -174,7 +174,7 @@ export default {
         editBanner() {
             let vcheckData = {
                 title: this.title,
-                state: this.dropdownValue ? 'something' : 'something',
+                status: this.status,
                 // type: this.dropdownValueType ? 'something' : 'something',
                 link: this.link,
                 file: this.fileName1 == '' ? '' : 'something',
@@ -187,7 +187,7 @@ export default {
                 this.formData.append('title', this.title);
                 this.formData.append('id', this.$route.params.id);
                 this.formData.append('link', this.link);
-                this.formData.append('status', this.dropdownValue?.name === undefined ? this.status : this.dropdownValue?.name);
+                this.formData.append('status', this.status);
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 return axios.put('/admin/banner/edit', this.formData).then((res) => {
