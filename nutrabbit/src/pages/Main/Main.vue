@@ -1,9 +1,20 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
+       <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
+          <p class="banner-title text-center">{{ slider.title }}</p>
+        </swiper-slide>
+      </swiper>
+      <!-- slider for mobile -->
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
