@@ -91,7 +91,8 @@
             <!-- END kakao login for App -->
 
             <!-- Naver login for App -->
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn" @click="loginWithNaver">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn"
+              @click="loginWithNaver">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
@@ -199,21 +200,21 @@ export default {
     // end web view get message
   },
 
-  // updated(){
-  //   this.globalLocale = this.$i18n.locale;
-  // },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
 
-  // watch: {
-  //   globalLocale(newVal) {
-  //     if (newVal == "en" && this.validateOnce == true) {
-  //       this.onSubmit();
-  //     }
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.onSubmit();
+      }
 
-  //     if (newVal == "kr" && this.validateOnce == true) {
-  //       this.onSubmit();
-  //     }
-  //   },
-  // },
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.onSubmit();
+      }
+    },
+  },
 
   methods: {
     checkError() {
@@ -282,11 +283,13 @@ export default {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
@@ -334,6 +337,64 @@ export default {
         return false;
       }
     },
+
+    naverLoginHandler(res) {
+      console.log('naverLoginHandler', res);
+      const self = this;
+      if (res) {
+        let resData = JSON.parse(res);
+        alert(resData);
+        console.log("--naverLoginHandler--", resData);
+        self.socialRegistration(
+          resData.userName,
+          resData.userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accessToken,
+          resData.loginVia
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
+    kakaoLoginHandler(res) {
+      console.log('kakaoLoginHandler', res);
+      const self = this;
+      if (res) {
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
+        console.log("--kakaoLoginHandler--", resData);
+        self.socialRegistration(
+          resData.userName,
+          resData.userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accessToken,
+          resData.loginVia
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
+
+
     // END Webview support
 
     // naver login

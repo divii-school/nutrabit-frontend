@@ -1,5 +1,5 @@
 <template>
-  <div class="search-card-inner">
+  <div class="search-card-inner" @click="this.$router.push(route_link)">
     <img v-if="image" @mouseover="mouseOver" class="search-result-img" :src="image_link + image" alt />
     <img v-else @mouseover="mouseOver2" class="search-result-img" src="../assets/images/recommended_place.png" alt />
 

@@ -490,6 +490,20 @@ textarea {
       background: $purple-F4;
     }
   }
+  &.recomanded-blending-with-heading{
+    .mychoice-heading{
+      margin-top: 80px;
+      padding-bottom: 0;
+      @media screen and (max-width: 768px) {
+        margin-top: 65px;
+      }
+    }
+    .recomanded-blending-details{
+      @media screen and (max-width: 768px) {
+        padding: 40px 0 155px 0;
+      }
+    }
+  }
 }
 
 /* theme green color */

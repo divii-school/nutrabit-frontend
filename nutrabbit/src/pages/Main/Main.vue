@@ -1,11 +1,22 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
+       <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="true" :modules="modules" :speed="1000" class="mySwiper">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
+          <p class="banner-title text-center">{{ slider.title }}</p>
+        </swiper-slide>
+      </swiper>
+      <!-- slider for mobile -->
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
@@ -150,7 +161,7 @@ export default {
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;
@@ -166,7 +177,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
-          console.log(res)
+          //console.log(res)
 
         } else {
           // console.log('getNutridata res', res.data.blendingData);
