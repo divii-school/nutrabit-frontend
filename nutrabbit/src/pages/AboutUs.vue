@@ -115,15 +115,18 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import Accordion from "../components/Accordion.vue";
+import KakaoChat from "../components/KakaoChat.vue";
 export default {
 
   name: "Samplemaking",
   components: {
     Accordion,
+    KakaoChat
   },
   data() {
     return {

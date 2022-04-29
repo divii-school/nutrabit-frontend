@@ -57,12 +57,17 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
 import MyApplicationService from "../../services/MyApplicationQuoteService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyApplicationQuoteRequestBlending",
+  components : {
+    KakaoChat
+  },
 
   data() {
     return {

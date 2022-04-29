@@ -99,6 +99,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
@@ -106,8 +107,12 @@ import validator from "validator";
 import axios from "axios";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "ForgotPassword",
+  components: {
+    KakaoChat
+  },
   data() {
     return {
       userId: "",

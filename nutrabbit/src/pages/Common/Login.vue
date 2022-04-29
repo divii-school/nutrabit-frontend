@@ -71,12 +71,9 @@
             </button>
           </form>
           <div class="getting-started">
-            <button
-              id="kakao_login"
-              v-if="!isPlatMobile"
-              class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao"
-            >
+            <!-- kakao login for Web -->
+            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao">
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
@@ -93,13 +90,8 @@
             </button>
             <!-- END kakao login for App -->
 
-            <!-- <button id="kakao-login-btn">kakao login test</button> -->
-
-            <button
-              id="naver_Login"
-              v-if="!isPlatMobile"
-              class="btn-primary with-icon green-btn"
-            >
+            <!-- Naver login for App -->
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn" @click="loginWithNaver">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
@@ -125,21 +117,15 @@
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
-            <!-- <button
-              type="button"
-              class="btn-primary with-icon green-btn"
-              id="naver_id_login"
-              @click="naverLogin"
-            >
-              Naver Login
-            </button> -->
 
-            <!-- <button class="btn-primary with-icon black-btn" @click="appleLoginHandler(this.testData)">testData check</button> -->
+            <div id="naver_id_login"></div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
 <script>
@@ -148,12 +134,13 @@ import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 import validateLogin from "../../Validation/validateLogin";
-// import axios from "axios";
-import { useRoute } from "vue-router";
+import KakaoChat from "../../components/KakaoChat.vue";
+import naver from 'naver-id-login';
 export default {
   name: "Login",
   components: {
     Button,
+    KakaoChat
   },
   data() {
     return {
@@ -164,6 +151,8 @@ export default {
       errorPassword: "",
       checkBox: "",
       loader: undefined,
+      naverAuth: undefined,
+      naverProfiledata: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
       validateOnce: false,
@@ -185,9 +174,7 @@ export default {
   },
   mounted() {
     if (this.cookies) {
-      const rememberUserPasswordCookie = this.cookies.get(
-        "rememberUserPassword"
-      );
+      const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
 
       if (rememberUserPasswordCookie && rememberUserEmailCookie) {
@@ -195,8 +182,6 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
-
-    // this.naverLogin();
     // this.createLoginButton();
     // this.kakaoAuthManage();
     // this.displayToken();
@@ -212,12 +197,6 @@ export default {
       this.sendAppleAccessToken(res);
     };
     // end web view get message
-
-    // get query for appale login
-    // const route = useRoute();
-    // if (route.query.isiPhone) {
-    //   this.isAppaleId = true;
-    // }
   },
 
   // updated(){
@@ -289,6 +268,8 @@ export default {
         });
       }
     },
+
+    // Webview support
     sendAccessToken(res) {
       if (res) {
         // this.testres = res;
@@ -313,6 +294,7 @@ export default {
       alert(ftoken);
       this.appleLoginHandler(ftoken);
     },
+    //post login
     mbKakaoLogin() {
       window.parent.postMessage("kakaoLoginClicked", "*");
     },
@@ -324,77 +306,39 @@ export default {
     },
 
     appleLoginHandler(res) {
-      console.log("appleLoginHandler", res);
+      // console.log("appleLoginHandler", res);
+      const self = this;
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
-        alert(resData);
-        console.log("--appleLoginHandler--", resData);
+        // alert(resData);
+        // console.log("--appleLoginHandler--", resData);
         let emailName = resData.emailId.match(/^([^@]*)@/)[1];
-        localStorage.setItem("token", resData.accesstoken);
-        localStorage.setItem("uid", resData.socialId);
-        localStorage.setItem(
-          "uname",
-          !resData.userName || resData.userName == ""
-            ? resData.userName
-            : emailName
+        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
+        self.socialRegistration(
+          userName,
+          userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accesstoken,
+          "apple"
         );
-        // localStorage.setItem("tokenexpiresAt", resData.expiresIn);
-        localStorage.setItem("userType", resData.loginVia);
-        this.$router.push("/");
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
       } else {
         return false;
       }
     },
+    // END Webview support
 
     // naver login
-    // naverLogin() {
-    //   // var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // var state = naver_id_login.getUniqState();
-    //   // naver_id_login.setButton("green", 5, 50);
-    //   // naver_id_login.setDomain("http://localhost:8082/login");
-    //   // naver_id_login.setState(state);
-    //   // // naver_id_login.setPopup();
-    //   // naver_id_login.init_naver_id_login();
-    //   // // this.naverLoginCallback();
-
-    //   var naverLogin = new window.naver_Login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   var state = naverLogin.getUniqState();
-
-    //   naverLogin.setButton(); //initialize Naver Login Button
-    //   naverLogin.setDomain("http://localhost:8082/login");
-    //   naverLogin.setState(state);
-    //   naverLogin.init_naver_id_login();
-
-    //   $(document).on("click", "#naver_Login", function () {
-    //     var btnNaverLogin = document.getElementById("naver_Login");
-    //     btnNaverLogin.click();
-    //   });
-
-    // },
-
-    // naverLoginCallback() {
-    //   var naver_id_login = new window.naver_id_login("RzAKRIVkiYS3ETx4MlTd", "http://localhost:8082/login");
-    //   // 접근 토큰 값 출력
-    //   alert(naver_id_login.oauthParams.access_token);
-    //   // 네이버 사용자 프로필 조회
-    //   naver_id_login.get_naver_userprofile(`this.naverSignInCallback()`);
-    //   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    //   this.naverSignInCallback();
-    // },
-
-    // naverSignInCallback() {
-    //   alert(naver_id_login.getProfileData('email'));
-    //   alert(naver_id_login.getProfileData('nickname'));
-    //   alert(naver_id_login.getProfileData('age'));
-    // },
-
-    // kakao
-    loginWithKakao() {
-      // const route = useRoute();
-      const self = this;
-      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
-      console.log(Kakao.isInitialized());
+    async loginWithNaver() {
+      // alert('testNaverLg');
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -403,24 +347,75 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
+      const self = this;
+      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
+      const callbackUrl = 'http://localhost:8082/callback/naverlogin';
+      await naver.login(clientId, callbackUrl).then((res) => {
+        // console.log('testNaverLg---', res);
+        self.naverAuth = res;
+        self.naverProfile(res.access_token);
+      });
+    },
 
+    naverProfile(token) {
+      const self = this;
+      naver.getProfile(this.naverAuth.access_token).then((res) => {
+        // console.log('naverProfile---', res);
+        self.naverProfiledata = res;
+        self.socialRegistration(
+          res.response.name,
+          res.response.nickname,
+          "12345678",
+          res.response.email,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          token,
+          "naver"
+        );
+        setTimeout(() => {
+          self.socialLogin(res.response.email);
+          self.loader.hide();
+        }, 1500);
+      });
+    },
+
+
+    // kakao Login
+    loginWithKakao() {
+      const self = this;
+      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+      this.loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: false,
+        width: 30,
+        height: 30,
+        onCancel: this.onCancel,
+      });
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log("authObj kakao--", authObj);
           Kakao.Auth.setAccessToken(authObj.access_token);
-          localStorage.setItem("token", authObj.access_token);
-          // localStorage.setItem("tokenexpiresAt", authObj.expires_in);
-          localStorage.setItem("tokenexpiresAt", 3600);
           Kakao.API.request({
             url: "/v2/user/me",
             success: function (res) {
-              console.log("res----", res);
-              localStorage.setItem("uid", res.id);
-              localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              localStorage.setItem("userType", "SNS");
-              self.loader.hide();
-              // self.$router.push("/");
-              // self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, authObj.access_token, 'kakao');
+              self.socialRegistration(
+                res.kakao_account.profile.nickname,
+                res.kakao_account.profile.nickname,
+                "12345678",
+                res.kakao_account.email,
+                "9999999999",
+                "address",
+                "detail address",
+                "sns",
+                authObj.access_token,
+                "kakao"
+              );
+              setTimeout(() => {
+                self.socialLogin(res.kakao_account.email);
+                self.loader.hide();
+              }, 1500);
             },
           });
         },
@@ -428,27 +423,71 @@ export default {
           console.log(err);
         },
       });
-      //  window.Kakao.Auth.authorize({
-      //   redirectUri: 'http://localhost:8082'
-      // });
     },
 
-    socialRegistration(name, username, email, phone, login_token, login_type) {
+    //socialRegistration
+    socialRegistration(
+      name,
+      username,
+      password,
+      email,
+      phoneNumber,
+      address,
+      detsilAddress,
+      checkName,
+      login_token,
+      login_type
+    ) {
       this.commonService
         .individalRegistration(
           name,
           username,
+          password,
           email,
-          phone,
+          phoneNumber,
+          address,
+          detsilAddress,
+          checkName,
           login_token,
           login_type
         )
         .then((res) => {
+          // console.log("socialRegistration:--", res);
           if (res.data.status == 200) {
-            console.log(res);
-            this.$router.push("member-registration-completed");
+            // console.log("socialRegistration success:--", res);
+            // this.$router.push("member-registration-completed");
           }
         });
+    },
+
+    //socialLogin
+    socialLogin(email) {
+      this.commonService.getSocialLogin(email).then((res) => {
+        // console.log("socialLogin:--", res);
+        // console.log("socialLogin res.response:--", res.response);
+        // console.log("socialLogin res.data.status:--", res.data.status);
+        if (res.response) {
+          if (res.response.data.status == 400) {
+            // console.log("res.response:", res.response);
+          }
+        } else {
+          if (res.data.status == 200) {
+            // console.log("login res", res.data.data);
+            this.common.state.userId = res.data.data.userId;
+            this.common.state.name = res.data.data.name;
+            localStorage.setItem("token", res.data.data.token);
+            localStorage.setItem("uid", res.data.data.userId);
+            localStorage.setItem("uname", res.data.data.name);
+            localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
+            localStorage.setItem("userType", res.data.data.account_type);
+            if (this.checkBox) {
+              this.cookies.set("rememberUserEmail", setEmail);
+              this.cookies.set("rememberUserPassword", setPassword);
+            }
+            this.$router.push({ name: "Main" });
+          }
+        }
+      });
     },
   },
 };

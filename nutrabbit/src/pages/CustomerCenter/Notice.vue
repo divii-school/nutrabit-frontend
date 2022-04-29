@@ -50,15 +50,18 @@
       </div>
     </div>
   </div>
+   <KakaoChat />
 </template>
 <script>
 import moment from "moment";
 import CustomerCenterService from "../../services/CustomerCenterService";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "Notice",
-  // components: {
-  //   Pagination,
-  // },
+  components: {
+    // Pagination,
+    KakaoChat
+  },
   data() {
     return {
       NoticeList: [],

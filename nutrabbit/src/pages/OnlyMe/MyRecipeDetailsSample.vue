@@ -59,6 +59,7 @@
       </div>
     </div>
   </div>
+  <KakaoChat />
 </template>
 
           
@@ -68,11 +69,13 @@
 import ProductList from "../../components/ProductList.vue";
 import MyApplicationDetails from "../../services/MyApplicationDetails";
 import { useRoute } from "vue-router";
+import KakaoChat from "../../components/KakaoChat.vue";
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,
+    KakaoChat
   },
   data() {
     return {
