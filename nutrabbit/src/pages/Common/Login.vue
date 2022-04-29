@@ -11,8 +11,12 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ error.email }}</span>
@@ -21,8 +25,12 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password" />
+                  <input
+                    class="form-control"
+                    type="password"
+                    :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ error.password }}</span>
@@ -42,11 +50,12 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link>
+                      {{ $t("common.QuickLinks.FindID") }}</router-link
+                    >
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
-                        $t("common.QuickLinks.FindPassword")
+                      $t("common.QuickLinks.FindPassword")
                     }}</router-link>
                   </li>
                 </ul>
@@ -62,13 +71,22 @@
             </button>
           </form>
           <div class="getting-started">
-            <button id="kakao_login" v-if="!isPlatMobile" class="btn-primary with-icon yellow-btn"
-              @click="loginWithKakao">
+            <button
+              id="kakao_login"
+              v-if="!isPlatMobile"
+              class="btn-primary with-icon yellow-btn"
+              @click="loginWithKakao"
+            >
               <i class="icon-chat-black"></i>
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
-            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
+            <button
+              id="kakao_login"
+              v-else
+              class="btn-primary with-icon yellow-btn"
+              @click="mbKakaoLogin"
+            >
               <i class="icon-chat-black"></i>
               <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
               kakao mobile login
@@ -77,12 +95,21 @@
 
             <!-- <button id="kakao-login-btn">kakao login test</button> -->
 
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn">
+            <button
+              id="naver_Login"
+              v-if="!isPlatMobile"
+              class="btn-primary with-icon green-btn"
+            >
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- Naver login for App -->
-            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
+            <button
+              id="naver_Login"
+              v-else
+              class="btn-primary with-icon green-btn"
+              @click="mbNaverLogin"
+            >
               <i class="icon-naver"></i>
               naver mobile login
               <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
@@ -90,7 +117,11 @@
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-            <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
+            <button
+              class="btn-primary with-icon black-btn"
+              v-show="isAppaleId"
+              @click="mbAppleLogin"
+            >
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
@@ -229,13 +260,12 @@ export default {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                 this.error.password = this.$t("common.Error.checkPassword");
-              }
-              else if (
+                this.error.password = this.$t("common.Error.checkPassword");
+              } else if (
                 res.response.data.message ==
                 "User With The Email Does Not Exists"
               ) {
-                 this.error.email = this.$t("common.Error.chcekId");
+                this.error.email = this.$t("common.Error.chcekId");
               }
               // this.$swal(res.response.data.message);
             }
@@ -387,11 +417,10 @@ export default {
               console.log("res----", res);
               localStorage.setItem("uid", res.id);
               localStorage.setItem("uname", res.kakao_account.profile.nickname);
-              localStorage.setItem("userType", 'SNS');
+              localStorage.setItem("userType", "SNS");
               self.loader.hide();
               // self.$router.push("/");
               // self.socialRegistration(res.kakao_account.profile.nickname, res.kakao_account.profile.nickname, authObj.access_token, 'kakao');
-
             },
           });
         },
@@ -405,15 +434,22 @@ export default {
     },
 
     socialRegistration(name, username, email, phone, login_token, login_type) {
-      this.commonService.individalRegistration(name, username, email, phone, login_token, login_type).then((res) => {
-        if (res.data.status == 200) {
-          console.log(res);
-          this.$router.push("member-registration-completed");
-        }
-      });
+      this.commonService
+        .individalRegistration(
+          name,
+          username,
+          email,
+          phone,
+          login_token,
+          login_type
+        )
+        .then((res) => {
+          if (res.data.status == 200) {
+            console.log(res);
+            this.$router.push("member-registration-completed");
+          }
+        });
     },
-
-
   },
 };
 </script>
