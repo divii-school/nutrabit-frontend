@@ -86,6 +86,8 @@
             "EnterPassword": "비밀번호를 입력 해주세요",
             "checkPassword": "비밀번호가 일치하지 않습니다",
             "EnterName": "이름을 입력해주세요",
+            "useridFormatSignup" : "문자와 숫자만 입력해주세요.",
+            "useridAvailable" : "사용 가능합니다.",
             "PasswordFormat": "비밀번호를 입력해주세요 (*10~20자 영문 대소문자, 숫자, 특수기호 포함)",
             "ConfirmPassword": "비밀번호를 확인해주세요",
             "EnterEmail": "이메일을 입력해주세요",
