@@ -161,7 +161,7 @@ export default {
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;

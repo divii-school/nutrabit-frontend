@@ -13,9 +13,9 @@
       <span>nutri 3.3</span>
     </div>
     <p v-if="token" @click="this.$router.push(`/nutri-detail/${item.id}`)" class="title">
-      {{ item.name_ko }}
+      {{ item.name }}
     </p>
-    <p v-else @click="accessPage()" class="title">{{ item.name_ko }}</p>
+    <p v-else @click="accessPage()" class="title">{{ item.name }}</p>
   </div>
 </template>
 

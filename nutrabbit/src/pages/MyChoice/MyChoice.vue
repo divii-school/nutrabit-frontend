@@ -56,10 +56,21 @@ export default {
     return {
       categories: '',
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      globalLocale: "",
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+    console.log(this.$i18n.locale);
+    console.log("test");
+  },
+   watch: {
+    globalLocale(newVal, oldVal) {
+      this.allCategories();
+    },
   },
   mounted() {
     this.allCategories();
@@ -71,6 +82,7 @@ export default {
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
   },
+  
   methods: {
     gotoNextPage(sub_category_id) {
 
@@ -83,7 +95,7 @@ export default {
       this.mychoiceService.getCategories().then((res) => {
         //console.log(res);
         if (res.status == 200) {
-          // console.log('getCategories res', res.data.parentCategoryData);
+          //  console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
         } else {
 
