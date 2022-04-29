@@ -257,11 +257,13 @@ export default {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
@@ -309,6 +311,69 @@ export default {
         return false;
       }
     },
+
+    naverLoginHandler(res) {
+      console.log('naverLoginHandler', res);
+      const self = this;
+      if (res) {
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
+        console.log("--naverLoginHandler--", resData);
+        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
+        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
+        self.socialRegistration(
+          userName,
+          userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accesstoken,
+          "apple"
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
+    kakaoLoginHandler(res) {
+      console.log('kakaoLoginHandler', res);
+      const self = this;
+      if (res) {
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        alert(resData);
+        console.log("--kakaoLoginHandler--", resData);
+        let emailName = resData.emailId.match(/^([^@]*)@/)[1];
+        let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
+        self.socialRegistration(
+          userName,
+          userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accesstoken,
+          "apple"
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
+
+
     // END Webview support
 
     // naver login
