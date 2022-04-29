@@ -134,6 +134,8 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
+    :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
   <KakaoChat />
 </template>
@@ -146,13 +148,16 @@ import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import validator from "validator";
 import KakaoChat from "../../components/KakaoChat.vue";
+import Modal from "../../components/Modal.vue";
+
 
 export default {
   name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
     ProductList,
-    KakaoChat
+    KakaoChat,
+    Modal,
   },
   data() {
     return {
@@ -183,6 +188,7 @@ export default {
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
       page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      isFieldEmptyVisible : false,
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -263,8 +269,9 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id  || (!this.isSample && !this.isQuote)){
+      if(!_id  ||! _additional_req || (!this.isSample && !this.isQuote)){
       //this.$swal('All fields required to be filled')
+      this.isFieldEmptyVisible = true;
       return
       }
       
@@ -299,7 +306,9 @@ export default {
       })
     },
     
-
+   closeModal(){
+     this.isFieldEmptyVisible = false;
+   }
 
     
   },

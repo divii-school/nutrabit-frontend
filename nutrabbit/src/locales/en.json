@@ -518,7 +518,8 @@
             "button": "Confirm",
             "bodytext": "Are you sure you want to withdraw this account?",
             "btntext": "Cancel",
-            "btntext1": "Confirm"
+            "btntext1": "Confirm",
+            "reason": "Please enter the reason"
         },
         "withdrawmodal": {
             "bodytext": "Your withdrawal is complete.",

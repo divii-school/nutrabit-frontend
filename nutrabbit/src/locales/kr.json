@@ -517,7 +517,8 @@
             "button": "확인",
             "bodytext": "해당 계정을 탈퇴하시겠습니까?",
             "btntext": "취소",
-            "btntext1": "확인"
+            "btntext1": "확인",
+            "reason": "사유를 기재해주세요."
         },
         "withdrawmodal": {
             "bodytext": "탈퇴가 완료되었습니다.",
