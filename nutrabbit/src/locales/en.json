@@ -194,7 +194,9 @@
             "copyright" : "Copyright 2022 NUTRABBIT. All right reserved."
         },
         "term": "Terms of Use",
-        "privacy": "Privacy Policy"
+        "privacy": "Privacy Policy",
+        "total" : "Total",
+        "result" : "result"
     },
     "header": {
         "login": "login",
