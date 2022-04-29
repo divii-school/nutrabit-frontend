@@ -8,7 +8,7 @@ export default class MainService {
 
   // API Functions
   async getSlider() {
-    return await axios.post(`/banner`, { lang: 'KO' }).then((res) => res.data).catch((err) => err);
+    return await axios.post(`/banner`, { lang: localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
   }
 
   //getNutriData API Functions
