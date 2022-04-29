@@ -75,7 +75,7 @@
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
-                  isUserSuccess
+                  $t('common.Error.useridAvailable')
                 }}</span>
                 <span class="error-msg">{{ error.username }}</span>
               </div>
@@ -346,9 +346,7 @@ export default {
       verificationTimer:false,
       validateOnce: false,
       globalLocale: "",
-      usernameEmpty : false,
-      usernameAlpha : false,
-      usernameSuccess : false,
+      clickCheckAvailability : false,
 
     };
   },
@@ -380,12 +378,16 @@ export default {
 
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true && !this.usernameEmpty && !this.usernameAlpha && !this.usernameSuccess) {
+      if ((newVal == 'kr' || newVal == 'en') && this.validateOnce == true && !this.clickCheckAvailability) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true && !this.usernameEmpty && !this.usernameAlpha && !this.usernameSuccess) {
-        this.checkError();
+      // if (newVal == "kr" && this.validateOnce == true && !this.clickCheckAvailability) {
+      //   this.checkError();
+      // }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickCheckAvailability){
+        this.checkErrorUser();
       }
 
     },
@@ -447,12 +449,12 @@ export default {
       }
     },
 
-    checkUserError(){
+    checkErrorUser(){
        if(validator.isEmpty(this.username)){
          this.error.username = this.$t("common.Error.EnterId");
          return true;
        }else if(!validator.isAlphanumeric(this.username)){
-         this.error.username = "Please use only letter and number";
+         this.error.username = this.$t("common.Error.useridFormatSignup");;
          return true;
        }else{
           return false;
@@ -465,15 +467,15 @@ export default {
       // } else if (!validator.isAlphanumeric(this.username)) {
       //    this.error.username = "Please use only letter and number";
       //   //this.isUserSuccess = "";
-
-      if(this.checkUserError()){
+      this.clickCheckAvailability = true;
+      if(this.checkErrorUser()){
          return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
             this.error.username = "";
-            this.isUserSuccess = "User ID available";
+            // this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             this.error.username = res.data.data.msg;
             this.isUserSuccess = '';

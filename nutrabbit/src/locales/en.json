@@ -86,6 +86,8 @@
             "EnterPassword": "Please enter password",
             "checkPassword": "Password doesn’t match",
             "EnterName": "Input your name, please",
+            "useridFormatSignup" : "Please use only letter and number",
+            "useridAvailable" : "User ID available",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
             "EnterEmail": "Please enter your email address",

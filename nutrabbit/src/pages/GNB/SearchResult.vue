@@ -85,6 +85,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/mychoice-rawMaterial-detailed-page/'"
                     />
                   </template>
                 </div>
