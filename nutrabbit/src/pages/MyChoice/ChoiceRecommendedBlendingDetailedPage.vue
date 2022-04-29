@@ -6,7 +6,8 @@
           <div v-if="blending_image.length > 0">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image" alt />
+                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
+                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
               </swiper-slide>
             </swiper>
             
@@ -129,6 +130,8 @@ export default {
       blending_data: '',
       blending_image: '',
       thumb_image:"",
+      thumb_2nd_image:"",
+      active: false,
       // pagination: {
       //   clickable: true,
       //   renderBullet: (index, className) => {
@@ -143,60 +146,6 @@ export default {
       //   },
       // },
       // modules: [Pagination],
-      productDetails: [
-        {
-          title: "dark blend",
-          tags: [
-            {
-              tag1: "Allergic",
-              tag2: "Masks",
-              tag3: "Disposable gloves",
-              tag4: "Immunomodulators",
-              tag5: "Vitamins",
-              tag6: "Nasal drop",
-            },
-          ],
-          innderData: [
-            {
-              title: "main raw material",
-              desc: "Description of the main ingredient",
-            },
-            {
-              title: "auxiliary material",
-              desc: "Description of auxiliary ingredients",
-            },
-            {
-              title: "efficacy",
-              desc: "Description of Efficacy",
-            },
-            {
-              title: "appearance",
-              desc: "Description of the features",
-            },
-            {
-              title: "Product Information",
-              desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada tristique nisl turpis nisl placerat ac, diam felis.",
-            },
-          ],
-        },
-      ],
-      silimarProduct: [
-        {
-          title: "similar products",
-          productImg: [
-            {
-              img1: "../../../src/assets/images/suggested-product-img.png",
-              img2: "../../../src/assets/images/suggested-product-img.png",
-              img3: "../../../src/assets/images/suggested-product-img.png",
-              img4: "../../../src/assets/images/suggested-product-img.png",
-              img5: "../../../src/assets/images/suggested-product-img.png",
-            },
-          ],
-        },
-      ],
-      ProductImages: [
-        "../../../src/assets/images/suggested-product-img.png",
-      ],
     };
   },
   created() {
@@ -206,6 +155,12 @@ export default {
     this.blendingDetail();
   },
   methods: {
+     mouseOver() {
+      this.active = true;
+    },
+    mouseLeave() {
+      this.active = false;
+    },
     splitJoin(theText) {
       // console.log(theText.split(','))
       return theText.split(',');
@@ -218,11 +173,12 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        //console.log(res.data.data[0].thumbnail_1_path);
+        console.log(res.data.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
           this.blending_image = res.data.data[0].detail_image_path;
           this.thumb_image=res.data.data[0].thumbnail_1_path;
+          this.thumb_2nd_image=res.data.data[0].thumbnail_2_path;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -248,5 +204,12 @@ export default {
 
 .mySwiper2 .swiper-slide-thumb-active {
   opacity: 1;
+}
+
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 </style>
