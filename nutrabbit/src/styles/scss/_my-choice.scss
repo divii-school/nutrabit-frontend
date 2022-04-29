@@ -306,6 +306,7 @@
                                     align-items: center;
                                 } 
                                 .img-wrap{
+                                    cursor: pointer;
                                     height: 180px;
                                     width: 180px;
                                     margin-right: 40px;
@@ -322,8 +323,8 @@
                                     }
                                     .img-wrap-hover{
                                         position: absolute;
-                                        left: 100px;
-                                        top: 50px;
+                                        left: 0px;
+                                        top: 0px;
                                         display: none;
                                         width: 230px;
                                         height: 230px;
