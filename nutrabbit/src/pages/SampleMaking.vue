@@ -25,7 +25,7 @@
             <ul>
               <li>
                 <div class="imgCont">
-                  <img src="../../../src/assets/images/step1.png">
+                  <img src="~@/assets/images/step1.png">
                 </div>
                 <span>STEP.1</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title1") }}</h5>
@@ -33,7 +33,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="../../../src/assets/images/step2.png">
+                  <img src="~@/assets/images/step2.png">
                 </div>
                 <span>STEP.2</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title2") }}</h5>
@@ -41,7 +41,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="../../../src/assets/images/step3.png">
+                  <img src="~@/assets/images/step3.png">
                 </div>
                 <span>STEP.3</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title3") }}</h5>
@@ -49,7 +49,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="../../../src/assets/images/step4.png">
+                  <img src="~@/assets/images/step4.png">
                 </div>
                 <span>STEP.4</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title4") }}</h5>
@@ -57,7 +57,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="../../../src/assets/images/step5.png">
+                  <img src="~@/assets/images/step5.png">
                 </div>
                 <span>STEP.5</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title5") }}</h5>
@@ -119,42 +119,6 @@ export default {
       // page: 1,
       // limit: 4,
     };
-  },
-  computed: {
-    processData() {
-      return [
-        {
-          img: "../../../src/assets/images/step1.png",
-          step: "STEP.1",
-          title: this.$t("sampleMaking.sampleprocress.title1"),
-          desc: this.$t("sampleMaking.sampleprocress.desc1")
-        },
-        {
-          img: "../../../src/assets/images/step2.png",
-          step: "STEP.2",
-          title: this.$t("sampleMaking.sampleprocress.title2"),
-          desc: this.$t("sampleMaking.sampleprocress.desc2")
-        },
-        {
-          img: "../../../src/assets/images/step3.png",
-          step: "STEP.3",
-          title: this.$t("sampleMaking.sampleprocress.title3"),
-          desc: this.$t("sampleMaking.sampleprocress.desc3")
-        },
-        {
-          img: "../../../src/assets/images/step4.png",
-          step: "STEP.4",
-          title: this.$t("sampleMaking.sampleprocress.title4"),
-          desc: this.$t("sampleMaking.sampleprocress.desc4")
-        },
-        {
-          img: "../../../src/assets/images/step5.png",
-          step: "STEP.5",
-          title: this.$t("sampleMaking.sampleprocress.title5"),
-          desc: this.$t("sampleMaking.sampleprocress.desc5")
-        },
-      ]
-    }
   },
   created() {
     this.CustomerCenterService = new CustomerCenterService();
