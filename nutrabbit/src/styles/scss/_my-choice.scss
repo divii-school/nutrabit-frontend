@@ -266,6 +266,7 @@
                             flex: 0 0 50%;
                         }
                         .search-card-inner{
+                            cursor: pointer;
                             img{
                                 @media screen and (max-width: 640px){
                                     height: 165px;
