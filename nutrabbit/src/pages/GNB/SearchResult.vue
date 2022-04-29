@@ -4,12 +4,12 @@
       <div class="search-result-main">
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
-            Total
+            {{ $t('footer.total') }}
             <span>{{ this.newSearchResult.length }}</span
-            >result
+            >{{ $t('footer.result') }}
           </p>
           <p class="search-result-title" v-else>
-            Total
+            {{ $t('footer.result') }}
             <span>0</span>result
           </p>
           <ul class="search-resul-list-wrap">
@@ -42,7 +42,7 @@
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Recommended Blending</h1>
+              <h1 class="list-heading">{{$t('myChoice.RecommendedBlending.title')}}</h1>
               <div
                 class="search-list-inner"
                 v-if="recomanedBlending.length > 0"
@@ -73,7 +73,7 @@
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Raw Material</h1>
+              <h1 class="list-heading">{{ $t('myChoice.RawMaterial.title') }}</h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
                   <template
@@ -86,6 +86,7 @@
                       :image_link= imgBaseUrl
                       type2="search"
                       :route_link="'/mychoice-rawMaterial-detailed-page/'"
+                      @click="setId(item.id)"
                     />
                   </template>
                 </div>
@@ -187,6 +188,9 @@ export default {
     },
   },
   methods: {
+    setId(raw_material_id) {
+      localStorage.setItem('raw_material_id', raw_material_id);
+    },
     showSarchResult(searchKeyword) {
       this.commonService
         .getSearchResult(searchKeyword, this.common.state.myIP)
@@ -228,7 +232,6 @@ export default {
           })
           this.nutriBlending = nutriBlending;
           this.recomanedBlending = recomanedBlending;
-          console.log(recomanedBlending);
           this.rawMaterial = rawMaterial;
           this.faq = faq;
           this.myCallback1(1);

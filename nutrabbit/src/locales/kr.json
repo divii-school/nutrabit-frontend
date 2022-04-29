@@ -195,7 +195,9 @@
             "copyright" : "Copyright 2022 NUTRABBIT. All right reseved."
         },
         "term": "이용약관",
-        "privacy": "개인정보처리방침"
+        "privacy": "개인정보처리방침",
+        "total" : "총",
+        "result" : "결과"
     },
     "header": {
         "login": "로그인",
