@@ -11,7 +11,7 @@
             <p class="title text-center sampleBLueAfter">{{ $t("sampleMaking.title.subtitle") }}</p>
             <p class="desc text-center">
               {{ $t("sampleMaking.title.titledesc") }} <br>
-                {{ $t("sampleMaking.title.titledesc1") }}
+              {{ $t("sampleMaking.title.titledesc1") }}
             </p>
             <button class="btn-small-solid">
               <router-link to="/my-choice">{{ $t("sampleMaking.title.button") }}</router-link>
@@ -46,7 +46,7 @@
                 <template v-slot:content>
                   <p class="accBody">
                     <!-- {{ $t("sampleMaking.sampleFaq.ans1") }} -->
-                     {{ item.description_en }}
+                    {{ item.description_en }}
                   </p>
                 </template>
               </accordion>
@@ -75,7 +75,6 @@ import Accordion from "../components/Accordion.vue";
 import CustomerCenterService from "../services/CustomerCenterService";
 import KakaoChat from "../components/KakaoChat.vue";
 export default {
-  
   name: "Samplemaking",
   components: {
     Accordion,
@@ -84,14 +83,14 @@ export default {
   data() {
     return {
       faqList: [],
-      totalfaqlist:[],
+      totalfaqlist: [],
       // page: 1,
       // limit: 4,
     };
   },
-
   computed: {
-    processData() { return[
+    processData() {
+      return [
         {
           img: "../../../src/assets/images/step1.png",
           step: "STEP.1",
@@ -125,11 +124,9 @@ export default {
       ]
     }
   },
-
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
-
   methods: {
     allFaqList() {
       this.CustomerCenterService.getFAQList()
@@ -143,11 +140,10 @@ export default {
           }
         })
         .catch((err) => {
-         return;
+          return;
         });
     },
   },
-
   mounted() {
     this.allFaqList();
   },
