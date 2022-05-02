@@ -391,8 +391,6 @@ export default {
       }
     },
 
-
-
     // END Webview support
 
     // naver login
@@ -479,7 +477,7 @@ export default {
           });
         },
         fail: function (err) {
-          console.log(err);
+          // console.log(err);
         },
       });
     },

@@ -11,9 +11,20 @@ export default {
   methods: {
     chatWithKakao() {
       window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
-      Kakao.Channel.chat({
-        channelPublicId: "_qaBKxb",
-      });
+      if (Kakao.isInitialized()) {
+        console.log('Kakao.isInitialized()');
+        window.Kakao.Channel.chat({
+          channelPublicId: "_qaBKxb",
+          success: function (result) {
+            console.log('result', result);
+          },
+          fail: function (error) {
+            console.log('error', error);
+          }
+        });
+      } else {
+        console.log('Kakao.isInitialized() is false');
+      };
     },
   },
 };
