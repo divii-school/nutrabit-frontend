@@ -103,7 +103,8 @@
             "BusinessName" : "Please enter your business name",
             "department" : "Please enter the department name",
             "contactPerson" : "Please enter the name of the person in charge",
-            "UserExists" : "User Already Exists"
+            "UserExists" : "User Already Exists",
+            "EmailExists" : "Email ID Already Exists"
         }
     },
     "button": {
