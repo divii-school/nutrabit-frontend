@@ -558,6 +558,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
+            this.emailExist = false;
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
