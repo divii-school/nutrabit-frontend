@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
