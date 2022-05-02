@@ -69,7 +69,6 @@
   </div>
   <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText1="$t('button.Confirm')" />
-    <KakaoChat />
 </template>
 
           
@@ -80,7 +79,7 @@ import Button from '../../components/Button.vue';
 import ProductListStorageBox from "../../components/ProductListStorageBox.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
@@ -88,7 +87,6 @@ export default {
     ProductListStorageBox,
     Button,
     Modal,
-    KakaoChat
   },
   data() {
     return {
