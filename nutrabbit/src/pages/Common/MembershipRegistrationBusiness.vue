@@ -410,6 +410,7 @@ export default {
   methods: {
     checkError() {
       let credential = {
+        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,

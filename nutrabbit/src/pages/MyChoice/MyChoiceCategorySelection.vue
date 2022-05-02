@@ -123,7 +123,6 @@ import Popper from "vue3-popper";
 import SearchCard from "../../components/SearchCard.vue";
 import VueNextSelect from "vue-next-select";
 import MyChoiceService from "../../services/MyChoiceService";
-import { useRoute } from 'vue-router'
 import ModalStorageBox from "../../components/ModalStorageBox.vue";
  
 export default {
@@ -231,7 +230,7 @@ export default {
       }
       else {
         this.mychoiceService.getRawMaterialAlPopularity(this.sub_category_id).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
             this.rawMaterialData = res.data.data.rawMaterialData;

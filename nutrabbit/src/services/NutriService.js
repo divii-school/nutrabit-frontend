@@ -10,7 +10,7 @@ export default class NutriService {
   async getNutriService() {
     return await axios.post(`/nutriBlending`,
       {
-        lang:"KO",
+        lang: localStorage.getItem('selectedLang')
       }).then((res) => res).catch((err) => err);
   }
 
@@ -18,14 +18,14 @@ export default class NutriService {
     return await axios.post(`/nutriBlending/id`,
       {
         id:id,
-        lang:"KO",
+        lang: localStorage.getItem('selectedLang')
       }).then((res) => res).catch((err) => err);
   }
 
   async confirmbutton(id) {
     return await axios.post(`/nutriBlending/get_quote`,{
       id:id,
-      lang:"KO"
+      lang: localStorage.getItem('selectedLang')
     }).then((res) => res).catch((err) => err);
 }
   

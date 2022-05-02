@@ -144,6 +144,14 @@
             display: block;
             // margin-top: 5px;
         }
+        .check-box-wrap{
+            .custom-check{
+                color: $red-3 !important;
+                .checkmark{
+                    border: 1px solid $red-3;
+                }
+            }
+        }
     }
     
     .success-msg{
