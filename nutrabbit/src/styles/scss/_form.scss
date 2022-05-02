@@ -78,7 +78,7 @@
             @include flex-align-center;
 
             .input-inner {
-                width: calc(100% - 119px);
+                width: calc(100% - 115px);
                 margin-right: 10px;
             }
         }
@@ -143,6 +143,14 @@
             color: $red-3;
             display: block;
             // margin-top: 5px;
+        }
+        .check-box-wrap{
+            .custom-check{
+                color: $red-3 !important;
+                .checkmark{
+                    border: 1px solid $red-3;
+                }
+            }
         }
     }
     

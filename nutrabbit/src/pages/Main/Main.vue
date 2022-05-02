@@ -1,6 +1,7 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
+      <div v-if="MainSlider.length > 0">
        <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
@@ -21,6 +22,10 @@
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
       </swiper>
+      </div>
+      <div v-else>
+            <img src="../../assets/images/banner_place.png" alt />
+          </div>
     </div>
     <div class="main-page-body">
       <div class="container-medium">

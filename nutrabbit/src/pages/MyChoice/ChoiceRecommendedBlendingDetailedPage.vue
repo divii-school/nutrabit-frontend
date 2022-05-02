@@ -179,7 +179,7 @@ export default {
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
           this.blending_image = res.data.data[0].detail_image_path;
