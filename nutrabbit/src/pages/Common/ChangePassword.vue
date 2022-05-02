@@ -15,7 +15,10 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>{{$t("common.label.NewPassword")}}</label>
+              <label for="">
+                <!-- <i class="icon-required">
+                </i> -->
+                {{$t("common.label.NewPassword")}}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -34,7 +37,10 @@
               :class="error.confirmPassword ? 'error' : ''"
             >
               <label for=""
-                ><i class="icon-required"></i>{{$t("common.label.Newpasswordconfirmation")}}</label
+                >
+                <!-- <i class="icon-required">
+                  </i> -->
+                  {{$t("common.label.Newpasswordconfirmation")}}</label
               >
               <div class="input-group">
                 <div class="input-inner">

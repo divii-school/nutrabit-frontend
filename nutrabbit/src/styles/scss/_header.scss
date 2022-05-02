@@ -503,8 +503,13 @@ header {
           background-size: auto 20px;
           height: 20px;
           width: 20px;
-          top: -22px;
+          top: -24px;
           left: 0;
+          @media screen and (max-width: 500px) {
+            height: 10px;
+            width: 10px;
+            background-size: auto 10px;           
+          }
         }
 
         li {
@@ -710,6 +715,7 @@ header {
 
               &:hover {
                 color: $green-68;
+                font-weight: 600;
               }
             }
 
