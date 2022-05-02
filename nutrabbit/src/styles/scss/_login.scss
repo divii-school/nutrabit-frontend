@@ -47,7 +47,7 @@
                         line-height: 22px;
                         color: $grey-7C;
                         margin-left: 20px;
-                        font-weight: 400;
+                        font-weight: 300;
                     }
                 }
                 span{
@@ -154,7 +154,7 @@
         .login-signup-inner {
             .login-heading-wrap{
                 padding-bottom: 20px;
-                border-bottom: 1px solid $grey-E0;
+                border-bottom: 1px solid $grey-CF;
                 .login-heading {
                     text-align: left;
                 }
@@ -177,7 +177,7 @@
                         border: 1px solid $grey-CF;
                         box-sizing: border-box;
                         border-radius: 5px;
-                        padding: 43px 40px;
+                        padding: 41px 40px;
                         margin-top: 40px;
                         width: 100%;
                         &:first-child {
