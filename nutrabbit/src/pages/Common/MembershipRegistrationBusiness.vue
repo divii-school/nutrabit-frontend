@@ -359,6 +359,7 @@ export default {
       clickVerifyOtp : false,
       otpCheck : false,
       userExists : false,
+      emailExist : false,
     };
   },
   created() {
@@ -401,6 +402,10 @@ export default {
 
       if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
         this.wrongOtpCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.emailExist){
+        this.emailExists();
       }
     },
   },
@@ -527,6 +532,10 @@ export default {
       }
     },
 
+    emailExists(){
+      this.error.email = this.$t("common.Error.EmailExists");
+    },
+
     async sendOtp() {
       // if (validator.isEmpty(this.email)) {
       //   this.error.email = this.$t("common.Error.EnterEmail");
@@ -576,7 +585,8 @@ export default {
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.emailExist = true;
+            this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           }
         });
