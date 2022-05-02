@@ -119,6 +119,7 @@ export default {
       recommendedDisabled : true,
       choiceDisabled : true,
       unchecked : true,
+      globalLocale : '',
     };
   },
 
@@ -127,6 +128,18 @@ export default {
     this.allRecommendedData();
     this.allChoiceData();
     
+  },
+
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allRecommendedData();
+    this.allChoiceData();
+    },
   },
 
   // updated(){

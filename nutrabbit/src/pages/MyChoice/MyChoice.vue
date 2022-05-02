@@ -64,13 +64,7 @@ export default {
   },
   updated(){
     this.globalLocale = this.$i18n.locale;
-    console.log(this.$i18n.locale);
-    console.log("test");
-  },
-   watch: {
-    globalLocale(newVal, oldVal) {
-      this.allCategories();
-    },
+    console.log(this.globalLocale)
   },
   mounted() {
     this.allCategories();
