@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection recomanded-blending-main">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item recomanded-blending">

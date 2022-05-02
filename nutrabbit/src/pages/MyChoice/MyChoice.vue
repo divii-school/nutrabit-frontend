@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <div class="tolltip-outer">
             <Popper>
               <button>
@@ -21,7 +21,6 @@
           </div>
         </div>
         <div class="my-choice-list-wrap">
-          <!-- <button class="btn-small-solid" @click="changeDOM">Change Button</button> -->
           <ul class="my-choice-list-outer">
             <li class="my-choice-list-outer-item" v-for="item in categories" :key="item">
               <h2 class="list-heading">{{ item.category_name }}</h2>
@@ -61,9 +60,6 @@ export default {
   created() {
     this.mychoiceService = new MyChoiceService();
   },
-  updated() {
-    console.log('updated')
-},
   mounted() {
     this.allCategories();
     localStorage.removeItem('sub_category_id');
@@ -74,11 +70,18 @@ export default {
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
   },
+ updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allCategories();
+    },
+  },
   
   methods: {
-    changeDOM() {
-      console.log('change DOM');
-    },
     gotoNextPage(sub_category_id) {
 
       localStorage.setItem('sub_category_id', sub_category_id);

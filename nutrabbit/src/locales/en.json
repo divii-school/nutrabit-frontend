@@ -31,7 +31,8 @@
         "label": {
             "ID": "ID",
             "Password": "Password",
-            "TermsCheckBox": "(Required) I agree to the Terms of Use.",
+            "TermsCheckBoxLink" : "Terms of Use.",
+            "TermsCheckBox": "(Required) I agree to the {0}",
             "PersonalInfoCheckBox": "(Required) I agree to the collection and use of personal information.",
             "Name": "Name",
             "VerifyPassword": "Verify Password",
@@ -203,7 +204,8 @@
         "term": "Terms of Use",
         "privacy": "Privacy Policy",
         "total" : "Total",
-        "result" : "result"
+        "result" : "result",
+        "no_result" : "No results were found for your search."
     },
     "header": {
         "login": "login",
