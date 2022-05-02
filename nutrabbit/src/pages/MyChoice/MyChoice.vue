@@ -39,27 +39,30 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyChoice",
   components: {
     Popper,
-    KakaoChat
   },
   data() {
     return {
       categories: '',
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      globalLocale: "",
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+    console.log(this.globalLocale)
   },
   mounted() {
     this.allCategories();
@@ -71,6 +74,7 @@ export default {
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
   },
+  
   methods: {
     gotoNextPage(sub_category_id) {
 
@@ -83,7 +87,7 @@ export default {
       this.mychoiceService.getCategories().then((res) => {
         //console.log(res);
         if (res.status == 200) {
-          // console.log('getCategories res', res.data.parentCategoryData);
+          //  console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
         } else {
 

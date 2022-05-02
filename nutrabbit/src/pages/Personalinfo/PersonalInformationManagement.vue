@@ -164,19 +164,17 @@
     :btnText2="$t('personalInfo.info_modal.btntext')"
     link = '/'
   />
-  <KakaoChat />
 </template>
 <script>
 import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import personalInfoValidation from "../../Validation/personalInfoValidation";
 import Modal from "../../components/Modal.vue";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "PersonalInformationManagement",
   components: {
     Modal,
-    KakaoChat
   },
   data() {
     return {

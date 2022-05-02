@@ -27,9 +27,9 @@
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
             <i class="login-icon"></i>
-            <h2>{{ item.name_ko }}</h2>
+            <h2>{{ item.name }}</h2>
             <div class="blending-tag">
-              <span v-for="(tag, index) in splitJoin(item.tags_ko)" :key="index" v-text="tag"></span>
+              <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -41,7 +41,7 @@
 
               <li>
                 <h2>{{ $t("myChoice.RecommendedBlending.detail.main_raw_material") }}</h2>
-                <p>{{ item.material_name_ko }}</p>
+                <p>{{ item.material_name }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RecommendedBlending.detail.Auxiliary_material") }}</h2>
@@ -49,15 +49,15 @@
               </li>
               <li>
                 <h2>{{ $t("myChoice.RecommendedBlending.detail.Efficacy") }}</h2>
-                <p>{{ item.efficiency_ko }}</p>
+                <p>{{ item.efficiency }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RecommendedBlending.detail.Appearance") }}</h2>
-                <p>{{ item.ingredients_en }}</p>
+                <p>{{ item.ingredients }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RecommendedBlending.detail.Product_Information") }}</h2>
-                <p>{{ item.description_ko }}</p>
+                <p>{{ item.description }}</p>
               </li>
             </ul>
             <button
@@ -83,7 +83,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 
@@ -98,16 +97,14 @@ import "swiper/css/free-mode"
 import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
-import { useRoute } from 'vue-router'
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 
 export default {
   name: "ChoiceRecommendedBlendingDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
-    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);
@@ -132,6 +129,7 @@ export default {
       thumb_image:"",
       thumb_2nd_image:"",
       active: false,
+      globalLocale:""
       // pagination: {
       //   clickable: true,
       //   renderBullet: (index, className) => {
@@ -154,6 +152,15 @@ export default {
   mounted() {
     this.blendingDetail();
   },
+   updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+       this.blendingDetail();
+    },
+  },
   methods: {
      mouseOver() {
       this.active = true;
@@ -167,13 +174,12 @@ export default {
     },
     // blendingDetails
     blendingDetail() {
-      let sub_cat = useRoute();
-      this.blending_id = sub_cat.params.id;
+      this.blending_id = this.$route.params.id;
       const setBlendingId = this.blending_id;
       // console.log(setBlendingId);
 
       this.mychoiceService.getRecommendedBlendingDetail(setBlendingId).then((res) => {
-        // console.log(res.data.data);
+        console.log(res.data.data);
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
           this.blending_image = res.data.data[0].detail_image_path;

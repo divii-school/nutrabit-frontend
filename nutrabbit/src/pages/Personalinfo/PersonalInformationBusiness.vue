@@ -188,20 +188,18 @@
     :btnText2="$t('personalInfo.info_modal.btntext')"
     link = '/'
   />
-  <KakaoChat />
 </template>
 <script>
 import { inject } from "vue";
 import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
 import personalBusinessValidation from "../../Validation/personalBusinessValidation";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "PersonalInformationBusiness",
   components: {
     // "vue-select": VueNextSelect,
     Modal,
-    KakaoChat
   },
   data(){
     return{

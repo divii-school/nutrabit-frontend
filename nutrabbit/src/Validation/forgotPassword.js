@@ -17,13 +17,13 @@ const forgotPassword = (data) => {
         errors.email = t('common.Error.EnterEmail');
     }
     else if (!validator.isEmail(email)) {
-        errors.email = "Enter a valid email address";
+        errors.email = t("common.Error.ValidEmail");
     }
     if (validator.isEmpty(emailOTP)) {
         errors.emailOTP =  t('common.Error.EnterOtp');
     }
     else if (isConfirmOTP==0) {
-        errors.emailOTP = "Please Verify OTP";
+        errors.emailOTP = t('common.Error.FindIdOtpVerify');
     }
 
     return {

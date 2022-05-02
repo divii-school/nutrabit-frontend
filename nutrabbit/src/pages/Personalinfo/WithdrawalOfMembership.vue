@@ -48,18 +48,16 @@
         link = '/'
       />
       </div>
-<KakaoChat />
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "WithdrawalOfMembership",
   components: {
     // "vue-select": VueNextSelect,
-    Modal,
-    KakaoChat
+    Modal
   },
   data() {
     return{

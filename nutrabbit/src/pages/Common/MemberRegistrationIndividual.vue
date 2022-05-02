@@ -71,13 +71,13 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
-                    Check Availability
+                    {{$t("button.checkAvailability")}}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
                   $t('common.Error.useridAvailable')
                 }}</span>
-                <span class="error-msg">{{ error.username }}</span>
+                <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""
@@ -301,18 +301,15 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MemberRegistrationIndividual",
-  components : {
-    KakaoChat
-  },
+
   data() {
     return {
       termsCheck: "",
@@ -347,6 +344,11 @@ export default {
       validateOnce: false,
       globalLocale: "",
       clickCheckAvailability : false,
+      clickSendOtp : false,
+      clickVerifyOtp : false,
+      otpCheck : false,
+      userExists : false,
+      emailExist : false,
 
     };
   },
@@ -369,25 +371,37 @@ export default {
       
     },
 
-    checkUserError(){
-      if(this.usernameEmpty){
-         return this.error.username = this.$t("common.Error.EnterId");
-      }
-    }
+    // checkUserError(){
+    //   if(this.usernameEmpty){
+    //      return this.error.username = this.$t("common.Error.EnterId");
+    //   }
+    // }
   },
 
   watch: {
     globalLocale(newVal) {
-      if ((newVal == 'kr' || newVal == 'en') && this.validateOnce == true && !this.clickCheckAvailability) {
+      if ((newVal == 'kr' || newVal == 'en') && this.validateOnce) {
         this.checkError();
       }
 
-      // if (newVal == "kr" && this.validateOnce == true && !this.clickCheckAvailability) {
-      //   this.checkError();
-      // }
-
       if((newVal == 'kr' || newVal == 'en') && this.clickCheckAvailability){
         this.checkErrorUser();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickSendOtp){
+        this.sendOtpErrorCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickVerifyOtp){
+        this.verifyOTPError();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
+        this.wrongOtpCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.emailExist){
+        this.emailExists();
       }
 
     },
@@ -410,7 +424,8 @@ export default {
         isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
-      
+      this.clickCheckAvailability = false;
+      this.clickSendOtp = false;
       if (isInvalid) {
         this.error = error;
         return false;
@@ -421,7 +436,9 @@ export default {
     },
     async individalRegistration() {
       this.validateOnce = true;
+      
       if (!this.checkError()) {
+        //this.isIDVerified = false;
         return;
       } else {
         // if (this.isOtpVerified == false) {
@@ -454,12 +471,19 @@ export default {
          this.error.username = this.$t("common.Error.EnterId");
          return true;
        }else if(!validator.isAlphanumeric(this.username)){
-         this.error.username = this.$t("common.Error.useridFormatSignup");;
+         this.isIDVerified = false;
+         this.error.username = this.$t("common.Error.useridFormatSignup");
          return true;
-       }else{
+       }else if(this.userExists){
+          this.error.username =  this.$t("common.Error.UserExists");
+          //return true;
+       }
+       else{
           return false;
        }
     },
+
+
     async checkUser() {
       // if (validator.isEmpty(this.username)) {
       //   //  this.usernameEmpty = true;
@@ -469,6 +493,7 @@ export default {
       //   //this.isUserSuccess = "";
       this.clickCheckAvailability = true;
       if(this.checkErrorUser()){
+        this.isIDVerified = false;
          return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
@@ -476,22 +501,45 @@ export default {
             this.isIDVerified = true;
             this.error.username = "";
             // this.isUserSuccess = "User ID available";
-          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            this.error.username = res.data.data.msg;
+          } 
+          if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            //this.error.username = res.data.data.msg;
+            this.userExists = true;
+            this.isIDVerified = false;
             this.isUserSuccess = '';
           }
         });
       }
     },
 
-    async sendOtp() {
+    sendOtpErrorCheck(){
        if (validator.isEmpty(this.email)) {
         this.error.email = this.$t("common.Error.EnterEmail");
+        return true;
       }
       else if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
+        this.error.email = this.$t("common.Error.ValidEmail");
+        return true;
+      }else{
+        return false;
       }
-       else {
+    },
+
+    emailExists(){
+      this.error.email = this.$t("common.Error.EmailExists");
+    },
+
+    async sendOtp() {
+      //  if (validator.isEmpty(this.email)) {
+      //   this.error.email = this.$t("common.Error.EnterEmail");
+      // }
+      // else if (!validator.isEmail(this.email)) {
+      //   this.error.email = "Enter a valid email address";
+      // }
+      this.clickSendOtp = true;
+      if(this.sendOtpErrorCheck()){
+         return;
+      }else {
         this.commonService.sendOTP(this.email).then((res) => {
           if (res.status == 200) {
             this.isActive = false;
@@ -502,6 +550,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
+            this.emailExist = false;
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -530,16 +579,34 @@ export default {
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.emailExist = true;
+            this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           }
         });
       }
     },
+    verifyOTPError(){
+      if (validator.isEmpty(this.emailOTP)) {
+         this.error.emailOTP = this.$t('common.Error.EnterOtp');
+         return true;
+      }else{
+         return false;
+      }
+    },
+
+    wrongOtpCheck(){
+      this.error.emailOTP = this.$t("common.Error.OTPCheck")
+    },
+
     async verifyOTP() {
-      if (this.emailOTP == "") {
-        return (this.error.emailOTP = "Enter an valid OTP");
-      } else {
+      // if (this.emailOTP == "") {
+      //   return (this.error.emailOTP = "Enter an valid OTP");
+      // } 
+      this.clickVerifyOtp = true;
+      if(this.verifyOTPError()){
+         return;
+      }else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             // this.$swal("OTP verified");
@@ -554,8 +621,11 @@ export default {
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            return (this.error.emailOTP =
-              this.$t("common.Error.OTPCheck"));
+            this.otpCheck = true;
+            //console.log('wrong otp')
+            this.error.emailOTP = this.$t("common.Error.OTPCheck");
+            // return (this.error.emailOTP =
+            //   this.$t("common.Error.OTPCheck"));
           }
         });
       }

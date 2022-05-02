@@ -61,17 +61,13 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
 import MyApplicationService from "../../services/MyApplicationQuoteService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyApplicationQuoteRequestChoice",
-  components : {
-    KakaoChat
-  },
 
   data() {
     return {
@@ -80,7 +76,7 @@ export default {
       add_req: "",
       answer: "",
       product_id: this.$route.params.id,
-     
+     globalLocale : '',
     };
   },
 
@@ -95,6 +91,19 @@ export default {
     this.getQuotionRequestDetails(this.product_id);
   },
 
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if(newVal == 'KO' || newVal == 'EN'){
+        this.getQuotionRequestDetails(this.product_id);
+      }
+    },
+  },
+
   methods: {
     getQuotionRequestDetails(_id) {
       this.myApplication.getApplicationChoiceDetails(_id).then(res=>{
@@ -103,7 +112,7 @@ export default {
                    this.add_req = res.data[0].additional_request;
                    this.title = res.data[0].title;
                    this.answer = res.data[0].answer_by_admin;
-
+                  this.options = [];
                    Array.from(res.data[0].options).forEach((ele)=>{
                      //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                       let op_type = ele.split(':')[0];
