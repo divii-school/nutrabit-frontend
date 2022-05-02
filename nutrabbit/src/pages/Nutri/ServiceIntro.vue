@@ -75,7 +75,7 @@
                       <span>nutri 3.3</span>
                     </div>
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">
-                      {{ item.name_ko }}
+                      {{ item.name }}
                     </p>
                   </div>
                 </li>
@@ -100,8 +100,8 @@ export default {
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
-      lang: "",
       nutriList: [],
+      lang:"",
     };
   },
 
@@ -117,7 +117,7 @@ export default {
           if (res.status == 200) {
             // console.log("res", res);
             this.nutriList = res.data.data.blendingData;
-            // console.log("nutriList", this.nutriList);
+            console.log("nutriList", this.nutriList);
           }
         })
         .catch((err) => {

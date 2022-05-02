@@ -443,12 +443,12 @@ export default {
       this.myApplicationDetails
         .appNutri(
           this.userId,
-          this.lang,
           this.application_type,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang
         )
         .then((res) => {
           if (res.status == 200) {
@@ -468,12 +468,12 @@ export default {
       this.myApplicationDetails
         .appRecommended(
           this.userId,
-          this.lang,
           this.application_type2,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang
         )
         .then((res) => {
           if (res.status == 200) {
@@ -493,12 +493,12 @@ export default {
       this.myApplicationDetails
         .appMychoice(
           this.userId,
-          this.lang,
           this.application_type3,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
@@ -518,12 +518,12 @@ export default {
       this.myApplicationDetails
         .QuoteNutri(
           this.userId,
-          this.lang,
           this.application_type,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
@@ -543,12 +543,12 @@ export default {
       this.myApplicationDetails
         .QuoteRecommended(
           this.userId,
-          this.lang,
           this.application_type2,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
@@ -568,12 +568,12 @@ export default {
       this.myApplicationDetails
         .QuoteMyChoice(
           this.userId,
-          this.lang,
           this.application_type3,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
