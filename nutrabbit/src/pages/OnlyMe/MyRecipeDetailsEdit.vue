@@ -134,8 +134,8 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
-    :btnText1="$t('onlyme.button.Confirm')"/>
+    <!-- <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
+    :btnText1="$t('onlyme.button.Confirm')"/> -->
   </div>
 </template>
 
