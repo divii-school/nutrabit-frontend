@@ -175,9 +175,9 @@
         .form-group {
             margin-top: 29px;
             .custom-check{
-                .custom-check-title{
+                p{
                     display: block;
-                    router-link{
+                    a{
                         color: $green-68;
                         text-decoration: underline;
                         margin-left: 3px;
