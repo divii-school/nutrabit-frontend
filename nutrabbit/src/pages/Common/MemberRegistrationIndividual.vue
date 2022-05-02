@@ -485,6 +485,8 @@ export default {
           return false;
        }
     },
+
+
     async checkUser() {
       // if (validator.isEmpty(this.username)) {
       //   //  this.usernameEmpty = true;
@@ -551,6 +553,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
+            this.emailExist = false;
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
