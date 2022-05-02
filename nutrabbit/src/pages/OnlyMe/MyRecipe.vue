@@ -62,7 +62,6 @@
     <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -73,7 +72,7 @@ import Button from '../../components/Button.vue';
 import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 
 export default {
   inject : ['common'],
@@ -83,7 +82,6 @@ export default {
     ProductListRecipe,
     Button,
     Modal,
-    KakaoChat
   },
 
   
@@ -138,7 +136,7 @@ export default {
   watch: {
     globalLocale(newVal, oldVal) {
       this.allRecommendedData();
-    this.allChoiceData();
+      this.allChoiceData();
     },
   },
 

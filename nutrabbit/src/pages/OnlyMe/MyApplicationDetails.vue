@@ -317,7 +317,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -328,13 +327,12 @@ import ProductList from "../../components/ProductList.vue";
 import MyApplicationDetails from "../../services/MyApplicationDetails";
 import moment from "moment";
 import { inject } from "vue";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyRecipeDetails",
   components: {
     // Popper,
     ProductList,
-    KakaoChat
   },
   // tab code
   el: "#app",
@@ -356,7 +354,7 @@ export default {
       chunkPage : { chunk : 5 },
 
       userId: this.common.state.userId,
-      lang: "KO",
+      lang: localStorage.getItem('selectedLang'),
       page1:1,
       page2: 1,
       page3:1,
@@ -382,6 +380,7 @@ export default {
       updateQuoteMychoiceList: [],
       updateQuoteRecom_List: [],
       updateQuoteNutri_List:[],
+      globalLocale : '',
     };
   },
 
@@ -400,7 +399,22 @@ export default {
     this.myApplicationDetails = new MyApplicationDetails();
   },
   updated(){
-    console.log(this.tabsTrns)
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if(newVal == 'KO' || newVal == 'EN'){
+    this.QuoteNutri();
+    this.QuoteRecommended();
+    this.QuoteMyChoice();
+
+    this.appNutri();
+    this.appRecommended();
+    this.appMychoice();
+      }
+    },
   },
   methods: {
     myCallback1(ClickPage) {

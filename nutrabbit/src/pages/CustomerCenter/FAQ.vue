@@ -64,17 +64,15 @@
       </div>
     </div>
   </div>
-   <KakaoChat />
 </template>
 <script>
 import FaqAccordion from "../../components/FaqAccordion.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "FAQ",
   components: {
     FaqAccordion,
-    KakaoChat
   },
   data() {
     return {

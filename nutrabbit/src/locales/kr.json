@@ -103,7 +103,8 @@
             "BusinessName" : "사업자명을 입력해주세요",
             "department" : "부서명을 입력해주세요",
             "contactPerson" : "담당자명을 입력해주세요",
-            "UserExists" : "이미 존재하는 아이디입니다."
+            "UserExists" : "이미 존재하는 아이디입니다.",
+            "EmailExists" : "이미 존재하는 이메일입니다."
         }
     },
     "onlyme": {

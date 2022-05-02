@@ -112,7 +112,6 @@
     @confirm="confirm"
     link = '/my-application-detail'
   />
-  <KakaoChat />
 </template>
 
 
@@ -130,7 +129,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 
 export default {
   name: "NutriDetail",
@@ -138,7 +137,6 @@ export default {
     Swiper,
     SwiperSlide,
     Modal,
-    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);

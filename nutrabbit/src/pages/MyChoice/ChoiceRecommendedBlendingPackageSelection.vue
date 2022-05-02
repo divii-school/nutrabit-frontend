@@ -109,7 +109,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -118,13 +117,12 @@
 import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
-    KakaoChat
   },
   data() {
     return {

@@ -46,19 +46,16 @@
       </div>
     </div>
   </div>
-   <KakaoChat />
 </template>
 <script>
 
 import moment from 'moment';
 import { useRoute } from "vue-router";
 import CustomerCenterService from "../../services/CustomerCenterService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "NoticeDetailPage",
-  components : {
-    KakaoChat
-  },
+
   data() {
     return {
       noticeDetailsID: null,

@@ -15,7 +15,9 @@
           >
             <div class="form-group" :class="error.userId ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i>{{ $t("common.label.ID") }}</label
+                >
+                <!-- <i class="icon-required"></i> -->
+                {{ $t("common.label.ID") }}</label
               >
               <div class="input-group">
                 <div class="input-inner">
@@ -31,8 +33,9 @@
             </div>
             <div class="form-group" :class="error.email ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.Email") }}</label
+                >
+                <!-- <i class="icon-required"></i> -->
+                {{ $t("common.label.Email") }}</label
               >
               <div class="input-group with-btn">
                 <div class="input-inner">
@@ -56,8 +59,10 @@
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
               <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.EmailVerification") }}</label
+                >
+                <!-- <i class="icon-required"></i
+                > -->
+                {{ $t("common.label.EmailVerification") }}</label
               >
               <div class="input-group with-btn">
                 <div class="input-inner">
@@ -99,7 +104,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
@@ -107,12 +111,10 @@ import validator from "validator";
 import axios from "axios";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ForgotPassword",
-  components: {
-    KakaoChat
-  },
+
   data() {
     return {
       userId: "",

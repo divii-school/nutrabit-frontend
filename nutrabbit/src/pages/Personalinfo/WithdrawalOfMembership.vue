@@ -48,18 +48,16 @@
         link = '/'
       />
       </div>
-<KakaoChat />
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "WithdrawalOfMembership",
   components: {
     // "vue-select": VueNextSelect,
-    Modal,
-    KakaoChat
+    Modal
   },
   data() {
     return{
@@ -79,7 +77,7 @@ export default {
 
     reasonkeyup(){
       if (this.reason == "") {
-        this.error.reason = "Please enter the reason";
+        this.error.reason = this.$t("personalInfo.withdrawal.reason");
       } else {
         this.error.reason = ""
       }
@@ -87,7 +85,7 @@ export default {
 
     modalWithdraw(){
       if (this.reason == "") {
-        this.error.reason = "Please enter the reason";
+        this.error.reason = this.$t("personalInfo.withdrawal.reason");
       } else {
         this.isModalVisible =  true;
       }

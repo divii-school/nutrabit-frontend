@@ -83,17 +83,15 @@
     :btnText2="$t('onlyme.button.Confirm')"
     link="/inquiry"
   />
-   <KakaoChat />
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "InquiryContactUs",
   components: {
     Modal,
-    KakaoChat
   },
   data() {
     return {

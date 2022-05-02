@@ -307,18 +307,15 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MembershipRegistrationBusiness",
-  components : {
-    KakaoChat
-  },
+
   data() {
     return {
       termsCheck: "",
@@ -359,6 +356,7 @@ export default {
       clickVerifyOtp : false,
       otpCheck : false,
       userExists : false,
+      emailExist : false,
     };
   },
   created() {
@@ -401,6 +399,10 @@ export default {
 
       if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
         this.wrongOtpCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.emailExist){
+        this.emailExists();
       }
     },
   },
@@ -527,6 +529,10 @@ export default {
       }
     },
 
+    emailExists(){
+      this.error.email = this.$t("common.Error.EmailExists");
+    },
+
     async sendOtp() {
       // if (validator.isEmpty(this.email)) {
       //   this.error.email = this.$t("common.Error.EnterEmail");
@@ -549,6 +555,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
+            this.emailExist = false;
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -576,7 +583,8 @@ export default {
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.emailExist = true;
+            this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           }
         });

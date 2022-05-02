@@ -53,7 +53,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -62,14 +61,13 @@ import Popper from "vue3-popper";
 import SearchCard from "../../components/SearchCard.vue";
 import VueNextSelect from "vue-next-select";
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyChoiceRecomandedBlending",
   components: {
     Popper,
     SearchCard,
     "vue-select": VueNextSelect,
-    KakaoChat
   },
   data() {
     return {

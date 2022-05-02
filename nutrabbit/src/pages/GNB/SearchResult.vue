@@ -131,21 +131,19 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import CommonService from "../../services/CommonService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 import { inject } from "vue";
 export default {
   name: "SearchResult",
   components: {
     SearchCard,
     SearchAccordion,
-    KakaoChat
   },
   data() {
     return {
