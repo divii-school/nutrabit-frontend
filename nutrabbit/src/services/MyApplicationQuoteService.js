@@ -14,6 +14,6 @@ export default class MyApplicationQuoteService{
     }
 
     async getOptionDetails(op_type, op_val){
-        return await axios.post(`application/options_details`, { lang : 'KO', option_type: op_type, option_val : op_val }).then((res) => res.data).catch((err) => err);
+        return await axios.post(`application/options_details`, { lang : localStorage.getItem('selectedLang'), option_type: op_type, option_val : op_val }).then((res) => res.data).catch((err) => err);
     }
 }

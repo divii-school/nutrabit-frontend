@@ -25,14 +25,10 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 <script>
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MemberRegistrationCompleted",
-  components: {
-    KakaoChat
-  }
 };
 </script>

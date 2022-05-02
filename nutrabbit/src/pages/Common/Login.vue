@@ -126,7 +126,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
@@ -135,13 +134,12 @@ import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 import validateLogin from "../../Validation/validateLogin";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 import naver from 'naver-id-login';
 export default {
   name: "Login",
   components: {
     Button,
-    KakaoChat
   },
   data() {
     return {

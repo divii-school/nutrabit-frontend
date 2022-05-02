@@ -114,7 +114,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -126,7 +125,7 @@ import VueNextSelect from "vue-next-select";
 import MyChoiceService from "../../services/MyChoiceService";
 import { useRoute } from 'vue-router'
 import ModalStorageBox from "../../components/ModalStorageBox.vue";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyChoiceCategorySelection",
   components: {
@@ -134,7 +133,6 @@ export default {
     SearchCard,
     ModalStorageBox,
     "vue-select": VueNextSelect,
-    KakaoChat
   },
   data() {
     return {

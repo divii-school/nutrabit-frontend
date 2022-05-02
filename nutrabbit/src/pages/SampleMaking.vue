@@ -99,7 +99,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
@@ -110,7 +109,6 @@ export default {
   name: "Samplemaking",
   components: {
     Accordion,
-    KakaoChat
   },
   data() {
     return {

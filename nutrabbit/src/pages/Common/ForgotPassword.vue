@@ -104,7 +104,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
@@ -112,12 +111,10 @@ import validator from "validator";
 import axios from "axios";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ForgotPassword",
-  components: {
-    KakaoChat
-  },
+
   data() {
     return {
       userId: "",
@@ -140,6 +137,10 @@ export default {
       isOtpSuccess: "",
       validateOnce: false,
       globalLocale: "",
+      isCheckUserEmail: false,
+      clickSendOtp : false,
+      clickVerifyOtp : false,
+      otpCheck : false,
     };
   },
   created() {
@@ -158,12 +159,24 @@ export default {
   },
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
+        if ((newVal == 'kr' || newVal == 'en') && this.validateOnce) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.checkError();
+      if((newVal == 'kr' || newVal == 'en') && this.clickSendOtp){
+        this.sendOtpErrorCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickVerifyOtp){
+        this.verifyOTPError();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
+        this.wrongOtpCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.isCheckUserEmail){
+        this.checkExistingUser();
       }
     },
   },
@@ -194,13 +207,35 @@ export default {
         this.$router.push("/change-password");
       }
     },
-    async forgetPassword() {
-      if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
+
+    sendOtpErrorCheck(){
+       if (validator.isEmpty(this.email)) {
+        this.error.email = this.$t("common.Error.EnterEmail");
+        return true;
       }
-      if (validator.isEmpty(this.email)) {
-        this.error.email = "Please enter your email address";
-      } else {
+      else if (!validator.isEmail(this.email)) {
+        this.error.email = this.$t("common.Error.ValidEmail");
+        return true;
+      }else{
+        return false;
+      }
+    },
+
+    checkExistingUser(){
+      this.error.email =this.$t("common.Error.chcekId")
+    },
+
+    async forgetPassword() {
+      // if (!validator.isEmail(this.email)) {
+      //   this.error.email = "Enter a valid email address";
+      // }
+      // if (validator.isEmpty(this.email)) {
+      //   this.error.email = "Please enter your email address";
+      // }
+      this.clickSendOtp = true;
+      if(this.sendOtpErrorCheck()){
+         return;
+      }else {
         this.commonService
           .forgetPassword(this.email, this.userId)
           .then((res) => {
@@ -213,7 +248,7 @@ export default {
               this.showTick = true;
               this.emailOTP = "";
               this.error.email = "";
-
+              this.isCheckUserEmail= false;
               if (this.storeSetInterval) {
                 clearInterval(this.storeSetInterval);
               }
@@ -238,14 +273,33 @@ export default {
                 this.startTimer = true;
               }, (this.timer + 1) * 1000);
             } else if (res.response.data.status == 400) {
+              this.isCheckUserEmail = true;
               return (this.error.email = this.$t("common.Error.chcekId"));
             }
           });
       }
     },
+
+    verifyOTPError(){
+      if (validator.isEmpty(this.emailOTP)) {
+         this.error.emailOTP = this.$t('common.Error.EnterOtp');
+         return true;
+      }else{
+         return false;
+      }
+    },
+
+    wrongOtpCheck(){
+      this.error.emailOTP = this.$t("common.Error.OTPCheck")
+    },
+
     async verifyOTP() {
-      if (this.emailOTP == "") {
-        return (this.error.emailOTP = "Enter an valid OTP");
+      // if (this.emailOTP == "") {
+      //   return (this.error.emailOTP = "Enter an valid OTP");
+      // }
+      this.clickVerifyOtp = true;
+      if(this.verifyOTPError()){
+         return;
       } else {
         try {
           const verifyOtpData = await axios.post("/user/find_password_post", {
@@ -271,6 +325,7 @@ export default {
             return true;
           }
         } catch (err) {
+          this.otpCheck = true;
           this.error.emailOTP = this.$t("common.Error.OTPCheck");
           return false;
         }

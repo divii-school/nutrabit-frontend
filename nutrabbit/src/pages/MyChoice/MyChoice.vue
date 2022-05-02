@@ -39,18 +39,16 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MyChoice",
   components: {
     Popper,
-    KakaoChat
   },
   data() {
     return {
@@ -64,13 +62,7 @@ export default {
   },
   updated(){
     this.globalLocale = this.$i18n.locale;
-    console.log(this.$i18n.locale);
-    console.log("test");
-  },
-   watch: {
-    globalLocale(newVal, oldVal) {
-      this.allCategories();
-    },
+    console.log(this.globalLocale)
   },
   mounted() {
     this.allCategories();

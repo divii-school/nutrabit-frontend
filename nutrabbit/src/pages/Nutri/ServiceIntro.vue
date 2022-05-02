@@ -86,17 +86,13 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 <script>
 import NutriService from "../../services/NutriService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ServiceIntro",
-  components: {
-    KakaoChat
-  },
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
