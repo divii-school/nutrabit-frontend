@@ -86,6 +86,7 @@ export default {
       application_type:"",
       titletrue: false,
       sampleDetailType:"",
+      globalLocale : '',
 
       // rwaMaterialData: [
       //   {
@@ -111,6 +112,20 @@ export default {
     this.myApplicationDetails = new MyApplicationDetails();
   },
 
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if(newVal == 'KO' || newVal == 'EN'){
+        this.sampledetail();
+        this.sampleBlendingDetails();
+      }
+    },
+  },
+
   methods: {
 
     sampledetail() {
@@ -126,7 +141,7 @@ export default {
           this.title = res.data.data[0].title;
           this.answer_by_admin = res.data.data[0].answer_by_admin;
           this.additional_request = res.data.data[0].additional_request;
-
+          this.options = [];
           Array.from(res.data.data[0].options).forEach((ele)=>{
             let op_type = ele.split(':')[0];
             let op_val = ele.split(':')[1];

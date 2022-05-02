@@ -136,7 +136,7 @@ export default {
   watch: {
     globalLocale(newVal, oldVal) {
       this.allRecommendedData();
-    this.allChoiceData();
+      this.allChoiceData();
     },
   },
 
