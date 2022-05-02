@@ -1,7 +1,7 @@
 <template>
   <div class="main-body">
     <div class="container-small">
-      <div class="login-signup-wrap">
+      <div class="login-signup-wrap login-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
