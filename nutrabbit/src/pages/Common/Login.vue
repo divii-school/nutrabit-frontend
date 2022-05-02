@@ -258,8 +258,8 @@ export default {
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
-                this.cookies.set("rememberUserEmail", setEmail);
-                this.cookies.set("rememberUserPassword", setPassword);
+                this.cookies.set("rememberUserEmail", this.email);
+                this.cookies.set("rememberUserPassword", this.password);
               }
               this.$router.push("/");
             }
@@ -538,8 +538,8 @@ export default {
             localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
             localStorage.setItem("userType", res.data.data.account_type);
             if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+              this.cookies.set("rememberUserEmail", email);
+              this.cookies.set("rememberUserPassword", password);
             }
             this.$router.push({ name: "Main" });
           }

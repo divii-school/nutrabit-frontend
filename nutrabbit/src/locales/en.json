@@ -204,7 +204,8 @@
         "term": "Terms of Use",
         "privacy": "Privacy Policy",
         "total" : "Total",
-        "result" : "result"
+        "result" : "result",
+        "no_result" : "No results were found for your search."
     },
     "header": {
         "login": "login",

@@ -10,7 +10,7 @@
           </p>
           <p class="search-result-title" v-else>
             {{ $t('footer.result') }}
-            <span>0</span>result
+            <span>0</span>{{ $t('footer.result') }}
           </p>
           <ul class="search-resul-list-wrap">
             <li class="search-resul-list">
@@ -38,7 +38,7 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
             <li class="search-resul-list">
@@ -69,7 +69,7 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
             <li class="search-resul-list">
@@ -98,7 +98,7 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
           </ul>
@@ -122,7 +122,7 @@
               </template>
               <template v-else>
                 <div class="no-result-found">
-                  <span>No results were found for your search.</span>
+                  <span>{{ $t('footer.no_result') }}</span>
                 </div>
               </template>
             </li>

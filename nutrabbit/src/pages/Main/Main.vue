@@ -1,7 +1,6 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
-      <div v-if="MainSlider.length > 0">
        <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
@@ -22,10 +21,6 @@
           <p class="banner-title text-center">{{ slider.title }}</p>
         </swiper-slide>
       </swiper>
-      </div>
-      <div v-else>
-            <img src="../../assets/images/banner_place.png" alt />
-          </div>
     </div>
     <div class="main-page-body">
       <div class="container-medium">
@@ -80,6 +75,7 @@
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
     :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
     link="/login" />
+  <KakaoChat />
 </template>
 
 <script>
@@ -93,7 +89,7 @@ import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
 import PaymentService from "../../services/PaymentService";
- 
+import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
   name: "Main",
@@ -102,6 +98,7 @@ export default {
     SwiperSlide,
     MainProductCard,
     Button,
+    KakaoChat,
     Modal,
   },
   data() {
