@@ -106,7 +106,7 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link :to="personalInfoRouterLink">{{
+                  <router-link :to="personalInfoRouterLink" class-active="active">{{
                     $t("header.ChangePersonalInfo")
                   }}</router-link>
                   <router-link to @click="logOut()">{{
