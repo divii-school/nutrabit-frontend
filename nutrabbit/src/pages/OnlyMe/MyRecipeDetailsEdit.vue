@@ -189,6 +189,7 @@ export default {
       option_items : [],
       page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
       isFieldEmptyVisible : false,
+      globalLocale : '',
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -208,7 +209,16 @@ export default {
   },
 
   updated() {
-    //console.log(this.services);
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if(newVal == 'KO' || newVal == 'EN'){
+        this.recipeSingleProductDetails(this.product_id, this.application_type);
+      }
+    },
   },
 
   methods: {
@@ -239,7 +249,7 @@ export default {
            this.isQuote = true;
          }
 
-
+        this.option_items = [];
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();

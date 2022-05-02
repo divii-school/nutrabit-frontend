@@ -88,9 +88,13 @@
             "EnterName": "이름을 입력해주세요",
             "useridFormatSignup" : "문자와 숫자만 입력해주세요.",
             "useridAvailable" : "사용 가능합니다.",
+            "checkIdAvailable" : "중복확인이 필요합니다.",
             "PasswordFormat": "비밀번호를 입력해주세요 (*10~20자 영문 대소문자, 숫자, 특수기호 포함)",
             "ConfirmPassword": "비밀번호를 확인해주세요",
             "EnterEmail": "이메일을 입력해주세요",
+            "ValidEmail" : "올바른 이메일 주소를 입력하십시오.",
+            "VerifyOtp" : "이메일 인증번호를 확인해주세요.",
+            "FindIdOtpVerify" : "이메일 인증번호를 확인해주세요.",
             "EnterOtp": "이메일 인증번호를 입력해주세요",
             "EnterPhone": "휴대폰번호를 입력해주세요",
             "EnterAddress": "주소를 입력해주세요",
@@ -98,7 +102,8 @@
             "BusinessNo" : "사업자번호를 입력해주세요",
             "BusinessName" : "사업자명을 입력해주세요",
             "department" : "부서명을 입력해주세요",
-            "contactPerson" : "담당자명을 입력해주세요"
+            "contactPerson" : "담당자명을 입력해주세요",
+            "UserExists" : "이미 존재하는 아이디입니다."
         }
     },
     "onlyme": {
@@ -171,7 +176,8 @@
         "resendVerification" : "인증번호 재전송",
         "verify": "인증",
         "SearchAddress": "주소 검색",
-        "change": "변경"
+        "change": "변경",
+        "checkAvailability" : "중복확인"
     },
     "main": {
         "my_choice": {
