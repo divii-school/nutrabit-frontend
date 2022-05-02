@@ -83,7 +83,6 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 
 
@@ -99,14 +98,13 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import MyChoiceService from "../../services/MyChoiceService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 
 export default {
   name: "ChoiceRecommendedBlendingDetailedPage",
   components: {
     Swiper,
     SwiperSlide,
-    KakaoChat
   },
   setup() {
     const thumbsSwiper = ref(null);

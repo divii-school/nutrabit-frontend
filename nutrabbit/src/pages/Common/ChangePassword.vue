@@ -15,7 +15,10 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>{{$t("common.label.NewPassword")}}</label>
+              <label for="">
+                <!-- <i class="icon-required">
+                </i> -->
+                {{$t("common.label.NewPassword")}}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -34,7 +37,10 @@
               :class="error.confirmPassword ? 'error' : ''"
             >
               <label for=""
-                ><i class="icon-required"></i>{{$t("common.label.Newpasswordconfirmation")}}</label
+                >
+                <!-- <i class="icon-required">
+                  </i> -->
+                  {{$t("common.label.Newpasswordconfirmation")}}</label
               >
               <div class="input-group">
                 <div class="input-inner">
@@ -57,17 +63,14 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
 import CommonService from "../../services/CommonService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "ChangePassword",
-  components: {
-    KakaoChat
-  },
+
   data() {
     return {
       password: "",

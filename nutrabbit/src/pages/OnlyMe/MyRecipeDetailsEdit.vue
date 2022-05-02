@@ -137,7 +137,6 @@
     <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
-  <KakaoChat />
 </template>
 
           
@@ -147,7 +146,7 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import validator from "validator";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 import Modal from "../../components/Modal.vue";
 
 
@@ -156,7 +155,6 @@ export default {
   components: {
     // Popper,
     ProductList,
-    KakaoChat,
     Modal,
   },
   data() {

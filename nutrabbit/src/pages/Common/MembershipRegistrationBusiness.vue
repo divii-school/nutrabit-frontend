@@ -307,18 +307,15 @@
       </div>
     </div>
   </div>
-  <KakaoChat />
 </template>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
-import KakaoChat from "../../components/KakaoChat.vue";
+ 
 export default {
   name: "MembershipRegistrationBusiness",
-  components : {
-    KakaoChat
-  },
+
   data() {
     return {
       termsCheck: "",
