@@ -219,7 +219,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
-
+            this.isCheckUserEmail= false;
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
             }
