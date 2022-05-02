@@ -733,6 +733,11 @@ header {
               margin-bottom: 5px;
             }
           }
+          &.active-side-menu-heading{
+            .icon-menu-downArw{
+              transform: rotate(180deg);
+            }
+          }
         }
       }
 
