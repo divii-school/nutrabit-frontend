@@ -37,10 +37,10 @@ const validateRegistration = (data) => {
     errors.username =  t('common.Error.EnterId');
   }
   else if (!(validator.isAlphanumeric(username))) {
-    errors.username = "Please use only letter and number";
+    errors.username = t("common.Error.useridFormatSignup");
   }
   else if (isIDVerified == false) {
-    errors.username = 'Have to check user ID availability';
+    errors.username = t("common.Error.checkIdAvailable");
   }
 
   if (validator.isEmpty(password)) {
@@ -56,7 +56,7 @@ const validateRegistration = (data) => {
     errors.confirmPassword =  t('common.Error.checkPassword');
   }
   if (!validator.isEmail(email)) {
-    errors.email = "Enter a valid email address";
+    errors.email = t("common.Error.ValidEmail");
   }
   if (validator.isEmpty(email)) {
     errors.email = t('common.Error.EnterEmail');
@@ -64,7 +64,7 @@ const validateRegistration = (data) => {
   if (validator.isEmpty(emailOTP)) {
     errors.emailOTP = t('common.Error.EnterOtp');
   } else if (isOtpVerified == false) {
-    errors.emailOTP = 'Have to verify the otp for email';
+    errors.emailOTP = t('common.Error.VerifyOtp');
   }
 
   if (validator.isEmpty(phoneNumber)) {

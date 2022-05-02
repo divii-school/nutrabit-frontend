@@ -88,9 +88,13 @@
             "EnterName": "Input your name, please",
             "useridFormatSignup" : "Please use only letter and number",
             "useridAvailable" : "User ID available",
+            "checkIdAvailable" : "Have to check user ID availability",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
             "EnterEmail": "Please enter your email address",
+            "ValidEmail" : "Enter a valid email address",
+            "VerifyOtp" : "Have to verify the otp for email",
+            "FindIdOtpVerify" : "Please Verify OTP",
             "EnterOtp": "Please enter your email verification code",
             "EnterPhone": "Please enter your mobile phone number",
             "EnterAddress": "Please enter your address",
@@ -98,7 +102,8 @@
             "BusinessNo" : "Please enter your business number",
             "BusinessName" : "Please enter your business name",
             "department" : "Please enter the department name",
-            "contactPerson" : "Please enter the name of the person in charge"
+            "contactPerson" : "Please enter the name of the person in charge",
+            "UserExists" : "User Already Exists"
         }
     },
     "button": {
@@ -111,7 +116,8 @@
         "resendVerification": "Resend verification code",
         "verify": "Verify",
         "SearchAddress": "Search Address",
-        "change": "Change"
+        "change": "Change",
+        "checkAvailability" : "Check Availability"
     },
     "onlyme": {
         "title": {

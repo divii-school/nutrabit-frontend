@@ -150,6 +150,7 @@ export default {
       serviceSample: false,
       serviceEstimate: false,
       serviceBoth: false,
+      globalLocale : '',
 
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -183,6 +184,17 @@ export default {
     // console.log(
     //   `product id is : ${this.product_id} and type is ${this.application_type}`
     // );
+  },
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if(newVal == 'KO' || newVal == 'EN'){
+        this.recipeSingleProductDetails(this.product_id, this.application_type);
+      }
+    },
   },
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
@@ -233,16 +245,17 @@ export default {
             } else {
               this.serviceBoth = true;
             }
+            this.option_items = [];
             Array.from(res.data[0].options).forEach((ele) => {
               console.log(Object.keys(ele)[0], Object.values(ele)[0]);
               let op_type = Object.keys(ele)[0].toString();
               let op_val = Object.values(ele)[0].toString();
 
               this.myRecipe.getOptionDetails(op_type, op_val).then((res) => {
-                //console.log(res.data[0])
+                console.log(res.data[0])
                 if (res.status == 200) {
                   this.option_items.push(res.data[0]),
-                    console.log(this.option_items);
+                  console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
                   console.log(res.message);
