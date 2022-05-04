@@ -1,7 +1,7 @@
 <template>
   <div class="main-body">
-    <div class="container-medium">
-      <div class="my-notice-wrap">
+    <div class="container-medium ">
+      <div class="my-notice-wrap inquery-wrap">
         <div class="my-notice-heading noFlex">
           <h2>{{$t("customer.title.Inquiry")}}</h2>
           <button
@@ -135,7 +135,7 @@ export default {
 </script>
 
 <style scoped>
-.grenn-btn2{
+.inquery-wrap .grenn-btn2{
   padding: 11px 30px;
 }
 </style>

@@ -184,7 +184,7 @@
         }
 
         .title {
-          padding-left: 41px;
+          padding-left: 23px;
         }
       }
 
@@ -232,6 +232,7 @@
             }
             p{
               text-align: left;
+              font-weight: 500;
             }
           }
 
@@ -245,9 +246,10 @@
             border-radius: 15px;
             padding: 5px 15px;
             margin-right: 10px;
+            font-weight: 600;
             // width: 94px;
             &.mr-2 {
-              margin-right: 35px;
+              margin-right: 20px;
             }
 
             &.grey {
@@ -317,13 +319,18 @@
         p {
           font-size: 16px;
           line-height: 140%;
-          color: #333;
+          color: $grey-66;
           width: calc(100% - 200px);
+          font-weight: 400;
 
           @media screen and (max-width: 640px) {
             width: auto;
             font-size: 14px;
             font-weight: 400;
+          }
+
+          a{
+            text-decoration-line: underline;
           }
         }
       }
