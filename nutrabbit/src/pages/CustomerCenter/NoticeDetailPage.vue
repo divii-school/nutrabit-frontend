@@ -36,7 +36,7 @@
           </div>
           <div class="btn flex justify-end">
             <button
-              class="btn-small-solid grey"
+              class="btn-small-solid grey-82"
               @click="this.$router.push('/notice')"
             >
               {{$t("onlyme.button.List")}}
@@ -91,3 +91,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.grey-82{
+  font-size: 18px;
+  line-height: 22px;
+}
+</style>

@@ -131,7 +131,9 @@ export default {
       package_id: 18,
       etc: '',
       etcbtn: '',
-      etcEmptyError: ''
+      etcEmptyError: '',
+      globalLocale: "",
+      ischeckETCError: false
     };
   },
   created() {
@@ -139,6 +141,17 @@ export default {
   },
   mounted() {
     this.blendingPackage();
+  },
+  updated() {
+    //console.log(this.$i18n.locale);
+    this.globalLocale = this.$i18n.locale;
+  },
+  watch: {
+    globalLocale(newVal) {
+      if((newVal == 'kr' || newVal == 'en') && this.ischeckETCError){
+        this.checkETCError();
+      }
+    },
   },
   methods: {
     // blending package Details
@@ -175,7 +188,8 @@ export default {
 
           if (this.etc == "") {
             // this.$swal("Please add custom package input");
-            this.etcEmptyError = "Please add custom package input.";
+            this.ischeckETCError=true;
+            this.etcEmptyError = this.$t("package.error_etc");
             return;
           }
           else {
@@ -190,9 +204,9 @@ export default {
         }
       }
     },
-    filterChanged(event) {
-      //console.log(event.target.value);
-    }
+    checkETCError(){
+       this.etcEmptyError = this.$t("package.error_etc");
+    },
   }
 };
 </script>

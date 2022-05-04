@@ -178,7 +178,8 @@
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
-            "DeleteBodyText": "Are you sure you want to delete it?"
+            "DeleteBodyText": "Are you sure you want to delete it?",
+            "ServiceSelect" : "Please select a service"
         }
     },
     "main": {
@@ -293,7 +294,8 @@
         },
         "etc": "Etc",
         "unchecked": "unchecked",
-        "etc_input": "Direct input"
+        "etc_input": "Direct input",
+        "error_etc" : "Please add custom package input."
     },
     "final": {
         "note": {

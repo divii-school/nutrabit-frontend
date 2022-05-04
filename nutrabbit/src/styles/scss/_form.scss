@@ -168,17 +168,26 @@
 }
 
 .signUp-form {
+    .form-group{
+        margin-top: 29px !important;
+        &:first-child{
+            margin-top: 0 !important;
+        }
+        @media screen and (max-width: 768px) {
+            margin-top: 30px !important;
+        }
+    }
     .terms-sec {
         padding-bottom: 20px;
         border-bottom: 1px solid $grey-CF;
 
         .form-group {
-            margin-top: 29px;
+            margin-top: 20px !important;
             .custom-check{
                 p{
                     display: block;
                     a{
-                        color: $green-68;
+                        color: $green-53;
                         text-decoration: underline;
                         margin-left: 3px;
                     }
@@ -201,7 +210,7 @@
     }
 
     .individuals-form {
-        margin-top: 40px;
+        // margin-top: 40px;
     }
 
     // .custom-check{
