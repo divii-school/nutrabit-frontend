@@ -100,6 +100,7 @@
             margin: 150px 0;
             @include flex-justify-center;
             flex-direction:  column;
+            position: relative;
             @media screen and (max-width: 1200px){
                 margin: 120px 0;
             }
@@ -113,9 +114,11 @@
             }
             .my-choice-title-top{
                 font-size: 50px;
-                line-height: 10px;
-                color: $purple-F4;
+                line-height: 55px;
+                color: rgba(150, 66, 244, .4);
                 font-family: $ballast-font;
+                position: absolute;
+                top: -34px;
                 @media screen and (max-width: 640px){
                     font-size: 20px;
                 }
@@ -241,7 +244,7 @@
             }
             .nutri-dom-product{
                 position: relative;
-                margin-bottom: 150px;
+                margin-bottom: 70px;
                 @media screen and (max-width: 768px){
                     margin-bottom: 170px;
                 }
@@ -323,7 +326,7 @@
                                 font-size: 26px;
                                 line-height: 31px;
                                 text-align: center;
-                                color: $black-18;
+                                color: $black-33;
                                 cursor: pointer;
                                 @media screen and (max-width: 992px){
                                     font-size: 18px;

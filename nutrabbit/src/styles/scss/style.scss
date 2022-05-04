@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  font-family: $default-font;
+  font-family: $default-font !important;
   margin: 0;
   padding: 0;
   height: 100%;
