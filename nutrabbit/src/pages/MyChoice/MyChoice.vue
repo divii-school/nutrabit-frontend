@@ -71,7 +71,6 @@ export default {
     localStorage.removeItem('storage_box');
   },
  updated(){
-    //this.allNutidata();
     this.globalLocale = this.$i18n.locale;
   },
 
