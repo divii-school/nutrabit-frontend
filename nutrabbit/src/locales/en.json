@@ -294,7 +294,8 @@
         },
         "etc": "Etc",
         "unchecked": "unchecked",
-        "etc_input": "Direct input"
+        "etc_input": "Direct input",
+        "error_etc" : "Please add custom package input."
     },
     "final": {
         "note": {
