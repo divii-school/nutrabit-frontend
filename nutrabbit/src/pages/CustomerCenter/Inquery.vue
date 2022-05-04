@@ -133,3 +133,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.grenn-btn2{
+  padding: 11px 30px;
+}
+</style>
