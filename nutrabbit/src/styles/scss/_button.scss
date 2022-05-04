@@ -25,6 +25,7 @@
   &.grenn-btn2{
     color: $white-1;
     background: $green-68;
+    padding: 11px 16px 11px;
   }
   &.grey-btn-outline{
     color: $grey-4C;
@@ -62,5 +63,8 @@
   }
   &.grey{
     background: $grey-66;
+  }
+  &.grey-82 {
+    background: $grey-82;
   }
 }

@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <div class="tolltip-outer">
             <Popper>
               <button>
@@ -60,10 +60,6 @@ export default {
   created() {
     this.mychoiceService = new MyChoiceService();
   },
-  updated(){
-    this.globalLocale = this.$i18n.locale;
-    console.log(this.globalLocale)
-  },
   mounted() {
     this.allCategories();
     localStorage.removeItem('sub_category_id');
@@ -73,6 +69,15 @@ export default {
     localStorage.removeItem('option');
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
+  },
+ updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.allCategories();
+    },
   },
   
   methods: {

@@ -42,7 +42,7 @@
                               v-for="(item, index) of updateAppNutri_List"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page1-1)+ index+1 }}</td>
                               <td
                                @click="
                                   $router.push({
@@ -90,7 +90,7 @@
                               v-for="(item, index) of updateAppRecom_List"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page2-1)+ index+1 }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -138,7 +138,7 @@
                               v-for="(item, index) of updateAppMychoiceList"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page3-1)+ index+1 }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -188,7 +188,7 @@
                               v-for="(item, index) of updateQuoteNutri_List"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page4-1)+ index+1 }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -236,7 +236,7 @@
                               v-for="(item, index) of updateQuoteRecom_List"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page5-1)+ index+1 }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -287,7 +287,7 @@
                               v-for="(item, index) of updateQuoteMychoiceList"
                               :key="index"
                             >
-                              <td>{{ index + 1 }}</td>
+                              <td>{{ perPage *(page6-1)+ index+1 }}</td>
                               <td @click="$router.push({
                                     name: 'MyApplicationQuoteRequestChoice',
                                     params: { id: item.id },
@@ -405,7 +405,7 @@ export default {
 
   watch: {
     globalLocale(newVal, oldVal) {
-      if(newVal == 'KO' || newVal == 'EN'){
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
     this.QuoteNutri();
     this.QuoteRecommended();
     this.QuoteMyChoice();
@@ -457,19 +457,19 @@ export default {
       this.myApplicationDetails
         .appNutri(
           this.userId,
-          this.lang,
           this.application_type,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.appNutriList = res.data.data.applicationData;
             this.appNutriTotal = res.data.data.total;
-            console.log("appNutriTotal", this.appNutriTotal);
+            // console.log("appNutriTotal", this.appNutriTotal);
             this.myCallback1(1);
           }
         })
@@ -482,19 +482,19 @@ export default {
       this.myApplicationDetails
         .appRecommended(
           this.userId,
-          this.lang,
           this.application_type2,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.appRecommendedList = res.data.data.applicationData;
             this.appRecommendedTotal = res.data.data.total;
-            console.log("appRecommendedTotal", this.appRecommendedTotal);
+            // console.log("appRecommendedTotal", this.appRecommendedTotal);
             this.myCallback2(1);
           }
         })
@@ -507,19 +507,19 @@ export default {
       this.myApplicationDetails
         .appMychoice(
           this.userId,
-          this.lang,
           this.application_type3,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.appMychoiceList = res.data.data.applicationData;
             this.appMychoiceTotal = res.data.data.total;
-            console.log("MyChoice", this.appMychoiceTotal);
+            // console.log("MyChoice", this.appMychoiceTotal);
             this.myCallback3(1);
           }
         })
@@ -532,19 +532,19 @@ export default {
       this.myApplicationDetails
         .QuoteNutri(
           this.userId,
-          this.lang,
           this.application_type,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.QuoteNutri_List = res.data.data.applicationData;
             this.quoteNutriTotal = res.data.data.total;
-            console.log("quoteNutriTotal", this.quoteNutriTotal);
+            // console.log("quoteNutriTotal", this.quoteNutriTotal);
             this.myCallback4(1);
           }
         })
@@ -557,19 +557,19 @@ export default {
       this.myApplicationDetails
         .QuoteRecommended(
           this.userId,
-          this.lang,
           this.application_type2,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.QuoteRecommendedList = res.data.data.applicationData;
             this.quoteRecommendedTotal = res.data.data.total;
-            console.log("quoteRecommendedTotal", this.quoteRecommendedTotal);
+            // console.log("quoteRecommendedTotal", this.quoteRecommendedTotal);
             this.myCallback5(1);
           }
         })
@@ -582,19 +582,19 @@ export default {
       this.myApplicationDetails
         .QuoteMyChoice(
           this.userId,
-          this.lang,
           this.application_type3,
           this.page,
           this.limit,
           this.sortBy,
-          this.sortOrder
+          this.sortOrder,
+          this.lang,
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.QuoteMyChoice_List = res.data.data.applicationData;
             this.quoteMychoiceTotal = res.data.data.total;
-            console.log("quoteMychoiceTotal", this.quoteMychoiceTotal);
+            // console.log("quoteMychoiceTotal", this.quoteMychoiceTotal);
             this.myCallback6(1);
           }
         })

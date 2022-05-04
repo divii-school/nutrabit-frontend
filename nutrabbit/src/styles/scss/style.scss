@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  font-family: $default-font;
+  font-family: $default-font !important;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -257,7 +257,7 @@ textarea {
           font-size: 16px;
           line-height: 24px;
           color: $grey-4C;
-
+          font-family: $Pretend-medium;
           @media screen and (max-width: 768px) {
             font-size: 12px;
             line-height: 18px;
@@ -277,9 +277,10 @@ textarea {
   }
 
   p {
+    font-family: $Pretend-semibold;
     font-weight: 600;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 27px;
     letter-spacing: 0.01em;
     color: $black-33;
     margin-top: 20px;
@@ -824,6 +825,7 @@ textarea {
 
           &.active {
             color: $black-18;
+            font-weight: 500;
           }
         }
 
@@ -886,6 +888,7 @@ textarea {
 
 .dropdown{
   select{
+    font-family: $Pretend-medium;
     background: $white-1;
     font-size: 16px;
     color: #181818;

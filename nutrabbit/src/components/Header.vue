@@ -106,7 +106,7 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link :to="personalInfoRouterLink">{{
+                  <router-link :to="personalInfoRouterLink" class-active="active">{{
                     $t("header.ChangePersonalInfo")
                   }}</router-link>
                   <router-link to @click="logOut()">{{
@@ -156,6 +156,7 @@
             v-for="(item, index) of rightMenuItem"
             :key="index"
             @click="rightMenuData(index)"
+            :class="activeSubmenu === index ? 'active-side-menu-heading' : ''"
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">

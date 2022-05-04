@@ -1,7 +1,7 @@
 <template>
   <div class="main-body themePurple recomanded-blending-with-heading">
     <div class="container-medium">
-      <h2 class="mychoice-heading heading">my choice</h2>
+      <h2 class="mychoice-heading heading">{{ $t("header.myChoice") }}</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
@@ -17,8 +17,8 @@
             </swiper> -->
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
-                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
@@ -28,9 +28,9 @@
               </swiper-slide>
             </swiper>
           </div>
-          <div v-else>
+          <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
-          </div>
+          </div> -->
 
         </div>
         <div class="blending-right" v-for="(item, index) of raw_material_data" :key="index">

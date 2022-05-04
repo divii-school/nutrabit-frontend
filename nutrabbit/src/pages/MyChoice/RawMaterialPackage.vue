@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
@@ -139,7 +139,9 @@ export default {
       etcbtn: '',
       to: '',
       showModal2: false,
-      etcEmptyError: ''
+      etcEmptyError: '',
+      globalLocale: "",
+      ischeckETCError: false
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -156,6 +158,17 @@ export default {
   },
   mounted() {
     this.blendingPackage();
+  },
+  updated() {
+    //console.log(this.$i18n.locale);
+    this.globalLocale = this.$i18n.locale;
+  },
+  watch: {
+    globalLocale(newVal) {
+      if((newVal == 'kr' || newVal == 'en') && this.ischeckETCError){
+        this.checkETCError();
+      }
+    },
   },
   methods: {
     closeModal2() {
@@ -190,6 +203,9 @@ export default {
     getetcbtn() {
       this.etcbtn = "ETC";
     },
+    checkETCError(){
+       this.etcEmptyError = this.$t("package.error_etc");
+    },
     checkPackageId() {
       this.to = "/raw-material-estimation/";
       if (this.package_id == "") {
@@ -200,7 +216,8 @@ export default {
         if (this.etcbtn == "ETC") {
 
           if (this.etc == "") {
-            this.etcEmptyError = "Please add custom package input.";
+            this.ischeckETCError=true;
+            this.etcEmptyError = this.$t("package.error_etc");
             return;
           }
           else {

@@ -119,7 +119,7 @@ export default {
 
   watch: {
     globalLocale(newVal, oldVal) {
-      if(newVal == 'KO' || newVal == 'EN'){
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
         this.sampledetail();
         this.sampleBlendingDetails();
       }

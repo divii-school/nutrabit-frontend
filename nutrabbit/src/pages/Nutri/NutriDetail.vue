@@ -48,9 +48,9 @@
               </swiper-slide>
             </swiper>
           </div>
-          <div v-else>
+          <!-- <div v-else>
             <img src="../../assets/images/content_place.png" alt="" />
-          </div>
+          </div> -->
         </div>
         <div
           class="blending-right"

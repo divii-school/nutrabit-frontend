@@ -53,6 +53,10 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
+  font-family: $Pretend-semibold;
+  @media screen and (max-width: 640px) {
+    padding: 11px 26px 11px;
+  }
 }
 @mixin small-solid-btn {
   @include flex-justify-center;
@@ -65,6 +69,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
+  font-family: $Pretend-semibold;
 }
 @mixin small-outline-btn {
   @include flex-justify-center;
@@ -72,10 +77,11 @@
   height: 45px;
   background: $white-1;
   border-radius: 5px;
-  width: 109px;
+  width: 105px;
   color: $green-68;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 16px;
   border: 1px solid $green-68;
+  font-family: $Pretend-semibold;
 }
