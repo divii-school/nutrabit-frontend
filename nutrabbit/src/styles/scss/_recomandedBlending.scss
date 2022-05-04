@@ -9,7 +9,7 @@
     }
 
     .blending-left {
-        width: 48%;
+        width: 50%;
         position: relative;
         @media screen and (max-width: 768px) {
             width: 100%;
@@ -63,7 +63,7 @@
                     .swiper-slide {
                         height: 80px;
                         width: 81px !important;
-                        // margin: 0 !important;
+                        margin: 0 0 15px !important;
                         img{
                             width: 81px;
                             height: 80px;
@@ -147,7 +147,7 @@
     }
 
     .blending-right {
-        width: 48%;
+        width: calc(50% - 80px);;
 
         @media screen and (max-width: 768px) {
             width: 100%;
@@ -160,7 +160,10 @@
 
             h2 {
                 @include heading1;
-
+                font-size: 42px;
+                line-height: 50px;
+                font-family: $Pretend-extrabold;
+                font-weight: 800;
                 @media screen and (max-width: 768px) {
                     font-weight: 800;
                     font-size: 30px;
