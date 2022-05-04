@@ -62,13 +62,13 @@
       </div>
 
       <!-- payment-test -->
-      <!-- <div class="devider">
+      <div class="devider">
         <i class="icon-grey-star"></i>
-      </div> -->
+      </div>
 
-      <!-- <div class="payment-test" style="padding:40px">
+      <div class="payment-test" style="padding:40px">
         <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
-      </div> -->
+      </div>
       <!-- payment-test -->
     </div>
   </div>
@@ -150,11 +150,11 @@ export default {
 
   methods: {
     // makePay test function
-    // makePay() {
-    //   // console.log('makePay');
-    //   alert('makePay');
-    //   this.paymentService.requestPay();
-    // },
+    makePay() {
+      // console.log('makePay');
+      alert('makePay');
+      this.paymentService.requestPay();
+    },
 
     // allBanner list
     allBanner() {

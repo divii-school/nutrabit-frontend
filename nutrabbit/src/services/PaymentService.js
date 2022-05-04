@@ -23,6 +23,7 @@ export default class PaymentService {
       //m_redirect_url :'{URL to redirect to after payment approval on Mobile}'
     }, function (rsp) {
       if (rsp.success) { // payment successful: payment accepted or virtual account issued
+        alert('"Payment Success. Success:' + rsp);
         console.log(rsp);
         /*
         // jQuery HTTP request
@@ -46,26 +47,41 @@ export default class PaymentService {
     });
   }
 
+  // API Functions
+  async addPayment(applicationId, applyNum, bankName, buyerAddr, buyerEmail, buyerName, buyerTel, cardName, cardNumber, cardQuota, currency, customData, impUid, merchantUid, name, paidAmount, paidAt, payMethod, pgProvider, pgTid, pgType, receiptUrl, requestId, status, success, errorCode, errorMsg) {
+    return await axios.post(`/payment/add`, {
+      application_id: applicationId,
+      apply_num: applyNum,
+      bank_name: bankName,
+      buyer_addr: buyerAddr,
+      buyer_email: buyerEmail,
+      buyer_name: buyerName,
+      buyer_tel: buyerTel,
+      card_name: cardName,
+      card_number: cardNumber,
+      card_quota: cardQuota,
+      currency: currency,
+      custom_data: customData,
+      imp_uid: impUid,
+      merchant_uid: merchantUid,
+      name: name,
+      paid_amount: paidAmount,
+      paid_at: paidAt,
+      pay_method: payMethod,
+      pg_provider: pgProvider,
+      pg_tid: pgTid,
+      pg_type: pgType,
+      receipt_url: receiptUrl,
+      request_id: requestId,
+      status: status,
+      success: success,
+      error_code: errorCode,
+      error_msg: errorMsg
+    }).then((res) => res).catch((err) => err);
+  }
 
-  //   IMP.request_pay({
-  //     pg : 'chai',
-  //     pay_method : 'trans',
-  //     merchant_uid : "{Merchant created Order ID}", 
-  //     name : 'Order name: payment test',
-  //     amount : 14000,
-  //     buyer_email : 'iamport@siot.do',
-  //     buyer_name : 'John Doe',
-  //     buyer_tel : '010-1234-5678',
-  //     buyer_addr : 'Shinsa-dong, Gangnam-gu, Seoul',
-  //     buyer_postcode : '123-456',
-  //     m_redirect_url : '{URL to redirect to after payment approval on Mobile}' 
-  // }, function(rsp) {
-  //     if ( !rsp.success ) {
 
-  //         var msg = 'An error occurred before initiating payment.';
-  //         msg += 'Error: ' + rsp.error_msg;
 
-  //         alert(msg);
-  //     }
-  // });
+
+
 }

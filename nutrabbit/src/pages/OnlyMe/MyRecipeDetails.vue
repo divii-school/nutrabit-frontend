@@ -292,6 +292,11 @@ export default {
       if (this.serviceNum == 1 || this.serviceNum == 3) {
         // for payment gatteway
         console.log(`product id for payment is  : ${_id}`);
+
+
+
+
+        
       } else {
         // if service is quote
         this.myRecipe.submitRecipeApplication(_id).then((res) => {
