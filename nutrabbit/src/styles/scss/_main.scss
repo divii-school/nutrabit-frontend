@@ -104,9 +104,6 @@
             @media screen and (max-width: 1200px){
                 margin: 120px 0;
             }
-            @media screen and (max-width: 640px){
-                margin: 80px 0;
-            }
             &.theme-green{
                 .my-choice-title-top, .title{
                     color: $green-68;
@@ -121,6 +118,8 @@
                 top: -34px;
                 @media screen and (max-width: 640px){
                     font-size: 20px;
+                    line-height: 23px;
+                    top: -14px;
                 }
             }
             .title{
@@ -129,8 +128,8 @@
                 line-height: 36px;
                 color: $purple-F4;
                 @media screen and (max-width: 640px){
-                    font-size: 24px;
-                    line-height: 36px;
+                    font-size: 16px;
+                    line-height: 19px;
                 }
             }
             .nutri-choice-heading{
@@ -205,11 +204,11 @@
                         }
                         @media screen and (max-width: 640px){
                             background: url(@/assets/images/nutri-choice-symbol-mob.svg) no-repeat top left;
-                            height: 70px;
-                            background-size: auto 70px;
-                            width: 68px;
+                            height: 42px;
+                            background-size: auto 42px;
+                            width: 31px;
                             content: "";
-                            left: -5px;
+                            left: -24px;
                             top: -20px;
                         }
                     }
@@ -221,6 +220,11 @@
             position: relative;
             i{
                 margin: 0 10px;
+                @media screen and (max-width: 640px){
+                    background-size: auto 10px;
+                    height: 10px;
+                    min-width: 10px;
+                }
             }
             &::before{
                 width: 100%;
@@ -246,7 +250,7 @@
                 position: relative;
                 margin-bottom: 70px;
                 @media screen and (max-width: 768px){
-                    margin-bottom: 170px;
+                    margin-bottom: 90px;
                 }
                 ul{
                     @include flex-align-center;
@@ -317,6 +321,8 @@
                                     @media screen and (max-width: 768px){
                                         font-size: 10px;
                                         line-height: 12px;
+                                        height: 20px;
+                                        padding: 2px 10px;
                                     }
                                 }
                             }
