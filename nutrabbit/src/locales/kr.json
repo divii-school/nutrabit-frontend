@@ -31,9 +31,10 @@
         "label": {
             "ID": "아이디",
             "Password": "비밀번호",
-            "TermsCheckBoxLink" : "Terms of Use.",
-            "TermsCheckBox": "(Required) I agree to the {0}",
-            "PersonalInfoCheckBox": "(필수) 개인정보 수집·이용에 동의합니다.",
+            "TermsCheckBoxLink" : "이용약관",
+            "TermsCheckBox": "(필수) {0}에 동의합니다.",
+            "PersonalInfoCheckBoxLink" : "개인정보 수집·이용",
+            "PersonalInfoCheckBox": "(필수) {0}에 동의합니다.",
             "Name": "이름",
             "VerifyPassword": "비밀번호 확인",
             "Email": "이메일",

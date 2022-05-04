@@ -32,10 +32,17 @@
                 :class="error.personalCheck ? 'error' : ''"
               >
                 <div class="check-box-wrap">
-                  <label class="custom-check">
+                  <!-- <label class="custom-check">
                     {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
+                  </label> -->
+                  <label class="custom-check">
+                  <i18n-t keypath="common.label.PersonalInfoCheckBox" tag="p" for="common.label.PersonalInfoCheckBoxLink">
+                    <router-link to="/privacy">{{ $t("common.label.PersonalInfoCheckBoxLink") }}</router-link>
+                  </i18n-t>
+                  <input type="checkbox" v-model="personalCheck" />
+                     <span class="checkmark"></span>
                   </label>
                 </div>
               </div>

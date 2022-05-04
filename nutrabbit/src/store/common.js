@@ -9,6 +9,7 @@ const state = reactive({
   isMobile: false,
   isiPhone: false,
   SelectedLang: '',
+  GlobalLocale : localStorage.getItem('selectedLang')
 });
 
 const methods = {
