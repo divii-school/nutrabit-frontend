@@ -131,15 +131,17 @@ export default {
   },
 
   updated(){
-    this.globalLocale = this.$i18n.locale;
+    this.globalLocale = localStorage.getItem('selectedLang');
     console.log(this.globalLocale)
   },
   
 
   watch: {
     globalLocale(newVal, oldVal) {
-      this.allRecommendedData();
-      this.allChoiceData();
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. allRecommendedData();
+        this.allChoiceData();
+      }
     },
   },
 

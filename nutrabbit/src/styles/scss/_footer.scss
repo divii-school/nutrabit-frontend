@@ -240,6 +240,7 @@ footer{
                             }
                         }
                         &:last-child{
+                            color: $black-18;
                             @media screen and (max-width: 551px){
                                 padding: 0;
                                 margin: 0;
