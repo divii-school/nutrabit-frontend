@@ -1,9 +1,11 @@
 <template>
+
   <div class="main-body themeGreen">
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
           <h2>{{ $t("onlyme.title.myRecipe") }}</h2>
+          <p>{{globalLocale}}</p>
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
@@ -117,7 +119,7 @@ export default {
       recommendedDisabled : true,
       choiceDisabled : true,
       unchecked : true,
-      globalLocale : '',
+      globalLocale : this.common.state.GlobalLocale,
     };
   },
 

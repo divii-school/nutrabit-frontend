@@ -31,8 +31,10 @@
         "label": {
             "ID": "ID",
             "Password": "Password",
-            "TermsCheckBox": "(Required) I agree to the Terms of Use.",
-            "PersonalInfoCheckBox": "(Required) I agree to the collection and use of personal information.",
+            "TermsCheckBoxLink" : "Terms of Use.",
+            "TermsCheckBox": "(Required) I agree to the {0}",
+            "PersonalInfoCheckBoxLink" : "personal information.",
+            "PersonalInfoCheckBox": "(Required) I agree to the collection and use of {0}",
             "Name": "Name",
             "VerifyPassword": "Verify Password",
             "Email": "Email",
@@ -203,7 +205,8 @@
         "term": "Terms of Use",
         "privacy": "Privacy Policy",
         "total" : "Total",
-        "result" : "result"
+        "result" : "result",
+        "no_result" : "No results were found for your search."
     },
     "header": {
         "login": "login",
