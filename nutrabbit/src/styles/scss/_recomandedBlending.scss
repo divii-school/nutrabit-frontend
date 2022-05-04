@@ -9,7 +9,7 @@
     }
 
     .blending-left {
-        width: 48%;
+        width: calc(100% - 579px);
         position: relative;
         @media screen and (max-width: 768px) {
             width: 100%;
@@ -63,7 +63,7 @@
                     .swiper-slide {
                         height: 80px;
                         width: 81px !important;
-                        // margin: 0 !important;
+                        margin: 0 0 15px !important;
                         img{
                             width: 81px;
                             height: 80px;
@@ -147,7 +147,8 @@
     }
 
     .blending-right {
-        width: 48%;
+        width: 100%;
+        max-width: 499px;
 
         @media screen and (max-width: 768px) {
             width: 100%;
@@ -160,7 +161,10 @@
 
             h2 {
                 @include heading1;
-
+                font-size: 42px;
+                line-height: 50px;
+                font-family: $Pretend-extrabold;
+                font-weight: 800;
                 @media screen and (max-width: 768px) {
                     font-weight: 800;
                     font-size: 30px;
@@ -210,6 +214,7 @@
                         color: $grey-4C;
                         width: 120px;
                         margin-right: 15px;
+                        font-family: $Pretend-medium;
                     }
 
                     p {
@@ -218,6 +223,7 @@
                         line-height: 19px;
                         color: $grey-82;
                         width: calc(100% - 102px);
+                        font-family: $default-font;
                     }
                 }
             }
@@ -239,12 +245,13 @@
                 font-size: 18px;
                 line-height: 22px;
                 color: $grey-4C;
+                font-family: $Pretend-medium;
             }
 
             .smilar-product-img {
                 @include flex-align-center;
                 flex-wrap: wrap;
-                margin: 25px -3.5px 0;
+                margin: 25px -1% 0;
 
                 @media screen and (max-width: 768px) {
                     margin: 15px -5px 0;
