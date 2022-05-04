@@ -6,8 +6,9 @@
           <div v-if="blending_image.length > 0">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
-                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                 <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img v-else :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
+               
               </swiper-slide>
             </swiper>
             

@@ -166,7 +166,8 @@
         },
         "modal": {
             "SelectedBodyText": "선택된 항목이 없습니다.",
-            "DeleteBodyText": "해당 사항을 삭제하시겠습니까?"
+            "DeleteBodyText": "해당 사항을 삭제하시겠습니까?",
+            "ServiceSelect" : "서비스를 선택해주세요."
         }
     },
     "button": {

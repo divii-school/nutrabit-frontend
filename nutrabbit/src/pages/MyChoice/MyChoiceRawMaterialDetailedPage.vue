@@ -17,8 +17,8 @@
             </swiper> -->
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
-                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
