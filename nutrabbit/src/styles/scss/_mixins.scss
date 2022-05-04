@@ -54,6 +54,9 @@
   font-size: 18px;
   line-height: 22px;
   font-family: $Pretend-semibold;
+  @media screen and (max-width: 640px) {
+    padding: 11px 26px 11px;
+  }
 }
 @mixin small-solid-btn {
   @include flex-justify-center;
@@ -77,7 +80,7 @@
   width: 105px;
   color: $green-68;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 16px;
   border: 1px solid $green-68;
   font-family: $Pretend-semibold;
