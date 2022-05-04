@@ -6,21 +6,17 @@
           <div v-if="blending_image.length > 0">
             <swiper class="mySwiper">
               <swiper-slide>
-                 <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
-                <img v-else :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
-               
+                <img v-if="active" loading="lazy" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img loading="lazy" :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
             
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2" v-for="(items, index) of blending_data" :key="index">
               <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-                <img :src="imgBaseUrl + item" alt />
+                <img loading="lazy" :src="imgBaseUrl + item" alt />
               </swiper-slide>
             </swiper>
-          </div>
-          <div v-else>
-            <img src="../../assets/images/thumbnail_place.png" alt />
           </div>
 
 

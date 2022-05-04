@@ -28,9 +28,9 @@
               </swiper-slide>
             </swiper>
           </div>
-          <div v-else>
+          <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
-          </div>
+          </div> -->
 
         </div>
         <div class="blending-right" v-for="(item, index) of raw_material_data" :key="index">
