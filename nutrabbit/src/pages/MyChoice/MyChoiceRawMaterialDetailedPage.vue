@@ -1,7 +1,7 @@
 <template>
   <div class="main-body themePurple recomanded-blending-with-heading">
     <div class="container-medium">
-      <h2 class="mychoice-heading heading">my choice</h2>
+      <h2 class="mychoice-heading heading">{{ $t("header.myChoice") }}</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
           <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >

@@ -132,8 +132,8 @@ textarea {
   position: relative;
   padding-left: 33px;
   cursor: pointer;
-  font-size: 14px !important;
-  line-height: 17px !important;
+  font-size: 16px !important;
+  line-height: 19px !important;
   color: $grey-82 !important;
   font-weight: normal !important;
   margin: 0 0 0 0 !important;
@@ -824,6 +824,7 @@ textarea {
 
           &.active {
             color: $black-18;
+            font-weight: 500;
           }
         }
 

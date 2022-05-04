@@ -1,7 +1,7 @@
 <template>
   <div class="main-body">
     <div class="container-small">
-      <div class="login-signup-wrap">
+      <div class="login-signup-wrap login-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
@@ -258,8 +258,8 @@ export default {
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
-                this.cookies.set("rememberUserEmail", setEmail);
-                this.cookies.set("rememberUserPassword", setPassword);
+                this.cookies.set("rememberUserEmail", this.email);
+                this.cookies.set("rememberUserPassword", this.password);
               }
               this.$router.push("/");
             }
@@ -391,8 +391,6 @@ export default {
       }
     },
 
-
-
     // END Webview support
 
     // naver login
@@ -479,7 +477,7 @@ export default {
           });
         },
         fail: function (err) {
-          console.log(err);
+          // console.log(err);
         },
       });
     },
@@ -540,8 +538,8 @@ export default {
             localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
             localStorage.setItem("userType", res.data.data.account_type);
             if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+              this.cookies.set("rememberUserEmail", email);
+              this.cookies.set("rememberUserPassword", password);
             }
             this.$router.push({ name: "Main" });
           }
