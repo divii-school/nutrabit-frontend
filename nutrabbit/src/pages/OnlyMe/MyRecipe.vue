@@ -5,7 +5,7 @@
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
           <h2>{{ $t("onlyme.title.myRecipe") }}</h2>
-          <p>{{globalLocale}}</p>
+          <!-- <p>{{globalLocale}}</p> -->
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
@@ -131,14 +131,17 @@ export default {
   },
 
   updated(){
-    this.globalLocale = this.$i18n.locale;
+    this.globalLocale = localStorage.getItem('selectedLang');
     console.log(this.globalLocale)
   },
+  
 
   watch: {
     globalLocale(newVal, oldVal) {
-      this.allRecommendedData();
-      this.allChoiceData();
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. allRecommendedData();
+        this.allChoiceData();
+      }
     },
   },
 

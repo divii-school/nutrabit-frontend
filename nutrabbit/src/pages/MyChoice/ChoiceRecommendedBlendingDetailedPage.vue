@@ -6,27 +6,24 @@
           <div v-if="blending_image.length > 0">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image"  @mouseover="mouseOver" alt />
-                <img class="hover-image" v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img v-if="active" loading="lazy" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
+                <img loading="lazy" :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
             
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2" v-for="(items, index) of blending_data" :key="index">
               <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-                <img :src="imgBaseUrl + item" alt />
+                <img loading="lazy" :src="imgBaseUrl + item" alt />
               </swiper-slide>
             </swiper>
-          </div>
-          <div v-else>
-            <img src="../../assets/images/thumbnail_place.png" alt />
           </div>
 
 
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
-            <i class="login-icon"></i>
+            <i class="icon-star-blue"></i>
             <h2>{{ item.name }}</h2>
             <div class="blending-tag">
               <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>

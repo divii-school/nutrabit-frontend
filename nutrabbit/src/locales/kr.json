@@ -166,7 +166,8 @@
         },
         "modal": {
             "SelectedBodyText": "선택된 항목이 없습니다.",
-            "DeleteBodyText": "해당 사항을 삭제하시겠습니까?"
+            "DeleteBodyText": "해당 사항을 삭제하시겠습니까?",
+            "ServiceSelect" : "서비스를 선택해주세요."
         }
     },
     "button": {
@@ -294,7 +295,8 @@
         },
         "etc": "기타",
         "unchecked": "선택 안 함",
-        "etc_input": "직접입력"
+        "etc_input": "직접입력",
+        "error_etc" : "패키지 타입을 기재해주세요."
     },
     "final": {
         "note": {
@@ -318,8 +320,8 @@
         "modal_msg": "임시저장이 완료되었습니다.",
         "title": "제목",
         "title_place": "제목을 입력해 주세요.",
-        "required_title_msg" : "Title is required",
-        "required_service_msg": "Please select a service"
+        "required_title_msg" : "제목을 입력해주세요.",
+        "required_service_msg": "서비스를 선택해주세요."
     },
     "storageBox": {
         "heading": "원료 보관함",

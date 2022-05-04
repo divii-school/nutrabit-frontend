@@ -1,6 +1,6 @@
 .main-body{
     .my-choce-wrap{
-        padding: 80px 0 28px;
+        padding: 80px 0 38px;
         @media screen and (max-width: 640px){
             padding: 65px 0 123px;
         }
@@ -9,10 +9,11 @@
             padding-bottom: 20px;
             border-bottom: 1px solid $grey-CF;
             h2{
-                font-weight: bold;
+                font-weight: 700;
                 font-size: 40px;
                 line-height: 40px;
                 color: $purple-F4;
+                font-family: $Pretend-bold;
                 @media screen and (max-width: 640px){
                     font-size: 30px;
                     line-height: 30px;
@@ -20,10 +21,10 @@
             }
         }
         .my-choice-list-wrap{
-            margin-top: 45px;
+            margin-top: 40px;
             .my-choice-list-outer{
                 .my-choice-list-outer-item{
-                    margin-top: 14px;
+                    margin-top: 15px;
                     &:first-child{
                         margin-top: 0;
                     }
@@ -102,6 +103,7 @@
                                 color: $grey-4C;
                                 text-align: center;
                                 margin-top: 15px;
+                                font-family: $Pretend-semibold;
                                 @media screen and (max-width: 768px){
                                     line-height: 27px;
                                 }
@@ -119,7 +121,7 @@
             .my-choice-heading{
                 padding: 0;
                 border: 0;
-                margin-bottom: 83px;
+                margin-bottom: 80px;
                 @media screen and (max-width: 640px){
                     margin-bottom: 45px;
                 }
@@ -127,7 +129,7 @@
             .choice-selection-item{
                 .heading-wrap{
                     @include flex-justify-between;
-                    padding-bottom: 25px;
+                    padding-bottom: 20px;
                     border-bottom: 1px solid $grey-CF;
                     @media screen and (max-width: 640px){
                         // flex-direction: column;
@@ -142,8 +144,9 @@
                             line-height: 24px;
                             letter-spacing: 0.01em;
                             color: $grey-66;
+                            font-family: $Pretend-bold;
                             @media screen and (max-width: 640px){
-                                font-size: 17px;
+                                font-size: 20px;
                                 line-height: 20px;
                             }
                         }
@@ -174,7 +177,7 @@
                             line-height: 16px;
                             color: $black-2E;
                             i{
-                                margin: 5px 5px 0 0;
+                                margin: 0 5px 0 0;
                             }
                         }
                         .vue-select{
@@ -240,10 +243,10 @@
                     flex-wrap: wrap;
                     margin: 40px -34px 0;
                     @media screen and (max-width: 768px){
-                        margin: 40px -25px 0;
+                        margin: 40px -20px 0;
                     }
                     @media screen and (max-width: 640px){
-                        margin: 30px -16px 0;
+                        margin: 30px -8px 0;
                     }
                     li{
                         width: 25%;
@@ -269,6 +272,7 @@
                         .search-card-inner{
                             cursor: pointer;
                             img{
+                                border-radius: 5px;
                                 @media screen and (max-width: 640px){
                                     height: 165px;
                                     width: 100%;
@@ -283,9 +287,9 @@
                     }
                 }
                 &.raw-material{
-                    margin-top: 53px;
+                    margin-top: 40px;
                     @media screen and (max-width: 640px){
-                        margin-top: 55px;
+                        margin-top: 50px;
                     }
                     .raw-material-list{
                         li{

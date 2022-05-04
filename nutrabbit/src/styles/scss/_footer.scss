@@ -91,6 +91,7 @@ footer{
                             font-size: 14px;
                             line-height: 17px;
                             color: $grey-4C;
+                            font-family: $default-font;
                             &:focus {
                                 outline: none;
                             }
@@ -102,73 +103,6 @@ footer{
                                padding: 0 10px;
                                background: transparent url(@/assets/icons/icon-arrowUp.svg) no-repeat right 10px center;
                             }
-                            // .vue-select-header{
-                            //     justify-content: center;
-                            //     cursor: pointer;
-                            //     .vue-input{
-                            //         width: 45px;
-                            //         padding: 0;
-                            //         @media screen and (max-width: 768px){
-                            //             width: 34px;
-                            //         }
-                            //         input{
-                            //             font-weight: 500;
-                            //             font-size: 14px;
-                            //             line-height: 17px;
-                            //             color: $grey-4C;
-                            //             @media screen and (max-width: 768px){
-                            //                 font-size: 10px;
-                            //                 line-height: 12px;
-                            //             }
-                            //             &::placeholder{
-                            //                 font-weight: 500;
-                            //                 color: $grey-4C;
-                            //             }
-                            //         }
-                            //     }
-                            //     .arrow-downward{
-                            //        margin: 0 0 0 29px;
-                            //        background: url(@/assets/icons/icon-arrowUp.svg) no-repeat right center;
-                            //        height: 6px;
-                            //        width: 8px;
-                            //        background-size: auto 6px;
-                            //        border: 0;
-                            //     }
-                            // }
-                            // .vue-dropdown{
-                            //     width: auto;
-                            //     border: 1px solid $grey-E0;
-                            //     border-radius: 0;
-                            //     li{
-                            //         @include flex-align-center;
-                            //         width: 119px;
-                            //         height: 49px;
-                            //         padding: 16px;
-                            //         border-radius: 0;
-                            //         @media screen and (max-width: 768px){
-                            //             width: 87px;
-                            //             height: 30px;
-                            //             padding: 5px 10px;
-                            //         }
-                            //         span{
-                            //             font-size: 14px;
-                            //             line-height: 17px;
-                            //             @media screen and (max-width: 768px){
-                            //                 font-size: 10px;
-                            //                 line-height: 12px;
-                            //             }
-                            //         }
-                            //         &:hover{
-                            //             background: transparent;
-                            //             span{
-                            //                 color: $green-68;
-                            //             }
-                            //         }
-                            //         &.highlighted{
-                            //             background: transparent;
-                            //         }
-                            //     }
-                            // }
                         }
                     }
                 }
@@ -213,8 +147,8 @@ footer{
                     
                     li{
                         position: relative;
-                        padding-left: 5px;
-                        margin-left: 5px;
+                        padding-left: 21px;
+                        margin-left: 21px;
                         // @media screen and (max-width: 768px){
                         //     padding-left: 5px;
                         //     margin-left: 5px;
@@ -225,7 +159,7 @@ footer{
                             background: $grey-4C;
                             height: 10px;
                             width: 1px;
-                            top: 7px;
+                            top: 6px;
                             left: 0;
                             @media screen and (max-width: 768px){
                                 height: 10px;
@@ -240,6 +174,7 @@ footer{
                             }
                         }
                         &:last-child{
+                            color: $black-18;
                             @media screen and (max-width: 551px){
                                 padding: 0;
                                 margin: 0;
@@ -266,9 +201,9 @@ footer{
                     }
                 }
                 a{
-                    font-size: 14px;
+                    font-size: 13px;
                     line-height: 22px;
-                    color: $grey-4C;
+                    color: $grey-BD;
                     margin-top: 22px;
                     display: block;
                     @media screen and (max-width: 992px){
