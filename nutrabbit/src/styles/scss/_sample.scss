@@ -164,7 +164,21 @@
 .about-recom{
     .samllTitle{
         color: $green-68;
+        margin-bottom: 5px;
+        @media screen and (max-width: 640px){
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
+    &.sampleServices {
+        h4{
+            font-size: 40px;
+            line-height: 48px;
+            @media screen and (max-width: 640px){
+                line-height: 45px;
+            }
+        }
+    } 
     .recom-section{
         
         .row-type{
@@ -181,6 +195,7 @@
                 span{
                     &.green-text{
                         color: $green-68;
+                        font-weight: 700;
                     }
                     &.black-text{
                         font-weight: 700;
@@ -250,6 +265,10 @@
 .green-belt{
     background: $green-68;
     padding: 150px 0;
+
+    @media screen and (max-width: 567px) {
+        padding: 60px 0;
+    }
     .green-belt-inner{
         position: relative;
         @include flex-justify-center;
@@ -336,6 +355,12 @@
     .row-type{
         @include flex-align-center;
         margin-top: 90px;
+
+        @media screen and (max-width: 900px) {
+            margin-top: 80px;
+            
+        }
+
         &:first-child{
             margin-top: 0;
             .num{
@@ -380,6 +405,11 @@
                 font-size: 100px;
                 line-height: 120px;
             }
+
+            &.num-type-2{
+                margin-left: 40px;
+                margin-right: 0;
+            }
         }
         .desc{
             h3{
@@ -393,7 +423,7 @@
             }
             p{
                 margin-left: 10px;
-                font-weight: 400;
+                font-weight: 500;
                 font-size: 26px;
                 line-height: 130%;
                 color: $grey-66;
@@ -402,6 +432,8 @@
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 150%;
+                    margin-top: 10px;
+                    margin-left: 0;
                 }
             }
         }
