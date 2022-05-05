@@ -134,6 +134,9 @@
       &.signUp-form {
         margin-top: 40px;
         max-width: 690px;
+        @media screen and (max-width: 1200px) {
+          margin-top: 20px;
+        }
         .btn-primary {
           margin-top: 40px;
         }
