@@ -19,7 +19,7 @@
                 <span v-if="item.top10 == 1">{{
                   $t("customer.tag.Important")
                 }}</span>
-                <p>{{ item.title_ko }}</p>
+                <p>{{ item.title }}</p>
               </div>
               <div class="item-right">
                 <p>{{ dateformat(item.createdDate) }}</p>
@@ -31,7 +31,7 @@
                 @click="this.$router.push(`/notice-detail-page/${item.id}`)"
               >
                 <!-- <span v-if="item.top10 == 1">Important</span> -->
-                <p>{{ item.title_ko }}</p>
+                <p>{{ item.title }}</p>
               </div>
               <div class="item-right">
                 <p>{{ dateformat(item.createdDate) }}</p>
@@ -122,6 +122,7 @@ export default {
       this.CustomerCenterService.getNoticeList()
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data.data)
             this.NoticeList = res.data.data.notice;
             this.totalItems = res.data.data.total;
             this.myCallback(1);

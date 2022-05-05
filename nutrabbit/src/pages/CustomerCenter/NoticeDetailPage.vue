@@ -14,7 +14,7 @@
                     $t("customer.content.Tag")
                   }}</span>
                   <p>
-                    {{ item.title_en }}
+                    {{ item.title }}
                   </p>
                 </div>
                 <div class="item-right">
@@ -33,7 +33,7 @@
           </div>
           <div class="details">
             <p>
-              {{ item.description_en }}
+              {{ item.description }}
             </p>
           </div>
           <div class="btn flex justify-end">

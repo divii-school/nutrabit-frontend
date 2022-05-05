@@ -432,7 +432,8 @@
         "sampleprocress": {
             "title": "Sample service process",
             "title1": "Request for Sample",
-            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3. (Sample production costs 300,000 won / Additional modifications are charged separately)",
+            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3.",
+            "desc_sub" : "(Sample production costs 300,000 won / Additional modifications are charged separately)",
             "title2": "Development Meeting",
             "desc2": "We check your requirements based on the sample service requested.",
             "title3": "Develop Product",
