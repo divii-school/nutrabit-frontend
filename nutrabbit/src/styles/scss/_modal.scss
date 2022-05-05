@@ -6,7 +6,7 @@
 	left: 0;
 	right: 0;
 	background-color: $grey-66;
-	z-index: 2;
+	z-index: 99;
     .modal {
 		padding: 80px 30px 50px;
 		max-width: 520px;
@@ -28,6 +28,7 @@
 				font-size: 24px;
 				line-height: 29px;
 				color: $black-33;
+				font-family: $Pretend-medium;
 				@media screen and (max-width: 768px){
 					font-size: 18px;
 					line-height: 22px;

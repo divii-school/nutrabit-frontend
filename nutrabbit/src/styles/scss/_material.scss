@@ -36,9 +36,13 @@
             display: block;
             font-size: 24px;
             font-weight: 700;
-            line-height: 110%;
+            line-height: 100%;
             margin-bottom: 15px;
             color: $grey-66;
+            @media screen and (max-width: 640px) {
+                font-size: 20px;
+                line-height: 100%;
+            }
             &.mb0{
                 margin-bottom: 0 !important;
             }
