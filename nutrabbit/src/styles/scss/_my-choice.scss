@@ -401,6 +401,9 @@
                 &.raw-material-product{
                     .product-list-wrap{
                         margin-top: 5px;
+                        @media screen and (max-width: 768px){
+                            margin-top: 0;
+                        }
                         .product-item{
                             @include flex-align-center;
                             width: 100%;
@@ -554,8 +557,22 @@
                                 }
                             }
                             &.recipeCheck{
+                                @media screen and (max-width: 768px){
+                                    padding: 20px 0 30px;
+                                }
+                                .material-details{
+                                    @media screen and (max-width: 768px){
+                                        margin: -7px 0 0 37px;
+                                    }
+                                }
                                 .check-box-wrap{
-                                    margin-top: -7px
+                                    margin-top: -10px;
+                                    @media screen and (max-width: 768px){
+                                        margin-top: 0;
+                                    }
+                                    .custom-check{
+                                        padding: 0 24px 0 0;
+                                    }
                                 }
                                 .material-details{
                                     margin-left: 40px
@@ -565,7 +582,9 @@
                         .btn-wrap{
                             @include flex-justify-between;
                             margin-top: 30px;
-                        
+                            @media screen and (max-width: 768px) {
+                                gap: 20px;
+                            }
                             button{
                                 min-width: 200px;
                                 height: 52px;
@@ -573,6 +592,7 @@
                                 @media screen and (max-width: 768px) {
                                     min-width: 162px;
                                     line-height: 22px;
+                                    width: 100%;
                                 }
                                 &.btn-disabled{
                                     background: $grey-CF;
@@ -580,6 +600,18 @@
                             }
                             &.flex-justify-end{
                                 justify-content: flex-end;
+                            }
+                            &.tripple-btn{
+                                .btn-left{
+                                    @media screen and (max-width: 640px) {
+                                        width: 33.33%;
+                                    }
+                                }
+                                .btnWrapRight{
+                                    @media screen and (max-width: 640px) {
+                                        width: calc(100% - 33.33%);
+                                    }
+                                }
                             }
                         }
                     }
@@ -595,9 +627,9 @@
             .my-choice-heading{
                 flex-direction: column;
                 align-items: flex-start;
-                margin-bottom: 80px;
+                margin-bottom: 40px;
                 @media screen and (max-width: 768px) {
-                    margin-bottom: 61px;
+                    margin-bottom: 40px;
                 }
                 h2{
                     color: $blue-E8

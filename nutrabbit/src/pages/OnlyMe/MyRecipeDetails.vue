@@ -82,8 +82,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="openModal">
+                <div class="btn-wrap tripple-btn">
+                  <button class="btn-small-solid grey btn-left" @click="openModal">
                     {{ $t("onlyme.button.Delete") }}
                   </button>
                   <div class="btnWrapRight">
