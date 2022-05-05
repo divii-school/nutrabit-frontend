@@ -9,25 +9,27 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
-          <div v-if="raw_material_image.length > 0">
+          
             <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
               </swiper-slide>
             </swiper> -->
+            <div v-if="raw_material_data">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
-                <img :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
+                <img v-if="active" @mouseleave="mouseLeave" :src="thumb_2nd_image" />
+                <img :src="thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
+             </div>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
               </swiper-slide>
             </swiper>
-          </div>
+         
           <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
           </div> -->
@@ -166,6 +168,7 @@ export default {
       thumb_2nd_image:'',
       similar_product_img: [],
       active: false,
+      placeholder_image: "../../src/assets/images/thumbnail_place.png",
     };
   },
   created() {
@@ -219,8 +222,10 @@ export default {
         //  console.log(res.data.data);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
-          this.thumb_image= res.data.data[0].thumbnail_fst_path;
-          this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
+          // this.thumb_image= res.data.data[0].thumbnail_fst_path;
+          // this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
+           this.thumb_image=(res.data.data[0].thumbnail_fst_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path : this.placeholder_image;
+           this.thumb_2nd_image=(res.data.data[0].thumbnail_scnd_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path : this.placeholder_image;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -247,7 +252,9 @@ export default {
     allBlendingData() {
       let limit = 5;
       let page = 1;
-      this.mychoiceService.getRecommendedData(limit, page).then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);

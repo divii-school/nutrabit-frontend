@@ -122,7 +122,7 @@
                 <span class="error-msg">{{ error.contactPerson }}</span>
               </div>
             </div>
-            <div class="individuals-form">
+            <div class="individuals-form business-with-individual">
               <div class="form-group" :class="error.name ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.Name") }}</label>
                 <div class="input-group">
