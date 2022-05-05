@@ -240,12 +240,13 @@ export default {
         //  console.log(res.data);
         if (res.data.status == 200) {
           var option_data = res.data.data[0].options;
+          // console.log(option_data);
           for (let i = 0; i <= option_data.length; i++) {
 
             var res_option_type = option_data[i].split(':')[0]; // raw_material:1
             var res_option_value = option_data[i].split(':')[1];
             // console.log(res_option_type);
-            // console.log(res_option_value);
+            console.log(res_option_value);
             this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
               this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
               // console.log(res);

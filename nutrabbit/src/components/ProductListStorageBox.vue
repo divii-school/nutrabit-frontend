@@ -12,9 +12,9 @@
       </div>
     </div>
     <div class="material-details" @click="gotoNextPage(item.id)">
-      <h2>{{item.name_ko}}</h2>
+      <h2>{{item.material_name}}</h2>
       <div class="description">
-        <p>{{item.description_ko}}</p>
+        <p>{{item.material_description}}</p>
         <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
       </div>
     </div>
