@@ -1,7 +1,7 @@
 <template>
   <div class="main-body themeGreen">
     <div class="container-medium">
-      <div class="my-choce-wrap my-choice-selection package-list-section">
+      <div class="my-choce-wrap my-choice-selection package-list-section my-aplication-details">
         <div class="my-choice-heading">
           <h2>{{$t("onlyme.title.Application")}}</h2>
         </div>
