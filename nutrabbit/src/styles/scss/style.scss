@@ -778,6 +778,10 @@ textarea {
   padding: 19px 0;
   text-align: center;
   cursor: pointer;
+  height: 62px;
+  line-height: 24px;
+  font-size: 20px;
+  font-family: $Pretend-semibold;
 }
 
 .overlay-panel-actions-primary li.active {

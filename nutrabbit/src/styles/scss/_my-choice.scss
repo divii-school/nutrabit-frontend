@@ -716,5 +716,28 @@
                 }
             }
         }
+        &.my-aplication-details{
+            .my-choice-heading{
+                margin-bottom: 40px;
+            }
+            .content-bd{
+                .tab-content{
+                    .choice-selection-item-wrap{
+                        border: 0;
+                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                        border-radius: 10px;
+                        .choice-selection-item{
+                            .heading-wrap{
+                                .heading{
+                                    h2{
+                                        color: $grey-4C !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
