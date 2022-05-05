@@ -288,6 +288,7 @@ export default {
       showSearchpannel: false,
       personalInfoRouterLink: "",
       searchData: [],
+      searchDataInput: '',
       AllSearchId: [],
       langs: [
         {
@@ -452,7 +453,7 @@ export default {
         console.log("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
-        this.searchData = e.target.value;
+        this.searchDataInput = e.target.value;
         e.target.value = "";
         this.showMobSearch = false;
         this.activeSearch = false;
