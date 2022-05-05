@@ -59,7 +59,7 @@
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
                             
-                            {{ data.sl_no + 1 }}
+                            {{ data.sl_no  }}
                         </template>
                     </Column>
                     
