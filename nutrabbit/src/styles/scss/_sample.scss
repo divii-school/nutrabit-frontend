@@ -45,6 +45,18 @@
     .samllTitle {
       margin-bottom: 5px;
     }
+    ul {
+        li {
+            h5{
+                font-size: 30px;
+                color: $black-33;
+            }
+            p{
+                font-size: 20px;
+                color: $black-4C;
+            }
+        }
+    }
   }
 
   h4 {
@@ -97,7 +109,7 @@
         border: 1px solid $purple-F4;
         border-radius: 20px;
         padding: 4px 10px;
-        margin: 60px 0 15px;
+        margin: 60px 0 10px;
         display: inline-block;
       }
       h5 {
