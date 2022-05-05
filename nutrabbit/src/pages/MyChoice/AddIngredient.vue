@@ -97,7 +97,8 @@ export default {
       showModal: false,
       btn: '',
       isItemSelectedVisible: false,
-      unchecked: true
+      unchecked: true,
+      globalLocale: "",
     };
   },
   created() {
@@ -110,6 +111,16 @@ export default {
     localStorage.removeItem('option');
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
+  },
+  updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.storage_box_list();
+    },
   },
   methods: {
     closeModal() {
@@ -180,7 +191,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.storage_box_list_data = res.data.data;
-          //console.log(res.data.data);
+          console.log(res.data.data);
         } else {
           this.$swal(res.message, "error");
         }

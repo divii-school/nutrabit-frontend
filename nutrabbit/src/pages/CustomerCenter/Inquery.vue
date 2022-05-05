@@ -97,11 +97,26 @@ export default {
       perPage: 10,
       inqId: localStorage.getItem("uid"),
       chunkPage : { chunk : 5 },
+      globalLocale : '',
     };
   },
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+       this.allEnqueryList();
+       this.dateformat();
+      }
+    },
+  },
+
   mounted() {
     this.allEnqueryList();
     this.dateformat();
@@ -117,6 +132,7 @@ export default {
       this.CustomerCenterService.getEnqueryList(this.inqId)
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data)
             this.enqueryList = res.data.data.inquery;
             this.myCallback(1);
           }
