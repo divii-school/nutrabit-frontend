@@ -113,7 +113,7 @@
     border-radius: 5px;
     .selectAllHeader{
         border-bottom: 1px solid $grey-CF;
-        padding: 24px 0;
+        padding: 20px 0;
         li{
             display: flex;
             justify-content: space-between;
@@ -153,6 +153,12 @@
         border-radius: 5px;
         margin: 15px 0 0 0;
         color: $grey-82;
+        font-size: 18px;
+        line-height: 110%;
+        font-family: $Pretend-semibold;
+        @media screen and (max-width: 640px) {
+            margin-top: 20px;
+        }
         button{
             display: flex;
             align-items: center;

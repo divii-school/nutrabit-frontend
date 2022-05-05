@@ -318,6 +318,8 @@
                                     width: 180px;
                                     margin-right: 40px;
                                     position: relative;
+                                    border-radius: 5px;
+                                    overflow: hidden;
                                     @media screen and (max-width: 992px){
                                         margin-right: 20px;
                                     } 
@@ -405,7 +407,7 @@
                             @include flex-align-center;
                             width: 100%;
                             align-items: center;
-                            padding: 44px 30px;
+                            padding: 47px 30px;
                             border-bottom: 1px solid $grey-CF;
                             @media screen and (max-width: 640px){
                                 align-items: flex-start;
@@ -510,8 +512,8 @@
                                         }
                                     }
                                     p{
-                                        font-size: 18px;
-                                        line-height: 23px;
+                                        font-size: 22px;
+                                        line-height: 150%;
                                         color: $grey-82;
                                     }
                                 }
@@ -597,7 +599,7 @@
                 align-items: flex-start;
                 margin-bottom: 80px;
                 @media screen and (max-width: 768px) {
-                    margin-bottom: 46px;
+                    margin-bottom: 40px;
                 }
                 h2{
                     color: $blue-E8
