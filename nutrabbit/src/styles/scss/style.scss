@@ -752,7 +752,7 @@ textarea {
 }
 
 .modal-backdrop {
-  z-index: 7;
+  z-index: 99;
 }
 
 .overlay-click-out-side {
@@ -791,6 +791,13 @@ textarea {
   line-height: 24px;
   font-size: 20px;
   font-family: $Pretend-semibold;
+  font-weight: 600;
+  @media screen and (max-width: 768px) {
+    height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 14px 0;
+  }
 }
 
 .overlay-panel-actions-primary li.active {
@@ -802,6 +809,9 @@ textarea {
 .content-bd {
   .tab-content {
     padding-top: 40px;
+    @media screen and (max-width: 768px) {
+      padding-top: 30px;
+    }
   }
 }
 
@@ -809,8 +819,11 @@ textarea {
   border: 1px solid $grey-CF;
   padding: 30px 30px 68px 30px;
   border-radius: 10px;
-
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
   p {
+    color: $grey-66;
     font-size: 16px;
     list-style: 110%;
     font-weight: 400;
@@ -834,7 +847,7 @@ textarea {
           line-height: 17px;
           letter-spacing: 0.02em;
           color: $grey-A4;
-
+          font-family: $Pretend-medium;
           &.active {
             color: $black-18;
             font-weight: 500;
