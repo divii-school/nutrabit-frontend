@@ -3,7 +3,7 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice">
+          <div class="nutri-choice sample-choice">
             <span class="my-choice-title-top">Sample Guide</span>
             <h2 class="nutri-choice-heading text-center">
               {{ $t("sampleMaking.title.title") }}
