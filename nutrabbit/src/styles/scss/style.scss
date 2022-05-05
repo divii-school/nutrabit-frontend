@@ -77,6 +77,15 @@ body {
     padding: 0 16px;
   }
 }
+.container-large {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1441px) {
+    padding: 0 16px;
+  }
+}
 
 h1,
 h2,
@@ -778,6 +787,10 @@ textarea {
   padding: 19px 0;
   text-align: center;
   cursor: pointer;
+  height: 62px;
+  line-height: 24px;
+  font-size: 20px;
+  font-family: $Pretend-semibold;
 }
 
 .overlay-panel-actions-primary li.active {
