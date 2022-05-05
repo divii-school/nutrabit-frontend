@@ -1,6 +1,10 @@
 .sampleBLueAfter {
   position: relative;
   margin: 80px 0 30px 0;
+
+  @media screen and (max-width: 640px) {
+    margin: 40px 0 30px;
+  }
   &:after {
     position: absolute;
     background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
@@ -26,8 +30,8 @@
       background-size: auto 70px;
       width: 68px;
       content: "";
-      left: -65px;
-      top: -20px;
+      left: -49px;
+      top: -23px;
     }
   }
 }
@@ -46,16 +50,24 @@
       margin-bottom: 5px;
     }
     ul {
-        li {
-            h5{
-                font-size: 30px;
-                color: $black-33;
-            }
-            p{
-                font-size: 20px;
-                color: $black-4C;
-            }
+      li {
+        h5 {
+          font-size: 30px;
+          color: $black-33;
         }
+        p {
+          font-size: 20px;
+          color: $black-4C;
+          line-height: 150%;
+        }
+      }
+    }
+    .light-grey{
+        color: $grey-A4;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+
     }
   }
 
@@ -134,7 +146,7 @@
       display: block;
       width: 100%;
       background: $purple-F4;
-      padding: 20px 35px 20px 85px;
+      padding: 30px 35px 30px 85px;
       position: relative;
       -webkit-border-radius: 20px;
       -webkit-border-bottom-left-radius: 0;
@@ -148,7 +160,8 @@
       &::before {
         position: absolute;
         left: 35px;
-        top: 10px;
+        top: 50%;
+        transform: translateY(-50%);
         content: "Q";
         font-size: 40px;
         line-height: 48px;
@@ -162,7 +175,7 @@
       color: $grey-66;
       text-align: right;
       margin: 30px 0 0 0;
-      padding: 20px 85px 20px 35px;
+      padding: 30px 85px 30px 35px;
       position: relative;
       -webkit-border-radius: 20px;
       -webkit-border-bottom-right-radius: 0;
@@ -175,7 +188,8 @@
       &::after {
         position: absolute;
         right: 35px;
-        top: 10px;
+        top: 50%;
+        transform: translateY(-50%);
         content: "A";
         font-size: 40px;
         line-height: 48px;

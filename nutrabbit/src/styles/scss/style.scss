@@ -77,6 +77,15 @@ body {
     padding: 0 16px;
   }
 }
+.container-large {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1441px) {
+    padding: 0 16px;
+  }
+}
 
 h1,
 h2,
