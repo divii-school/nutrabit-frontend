@@ -94,7 +94,9 @@ export default {
   methods: {
     // allBlendingData list
     allBlendingData() {
-      this.mychoiceService.getRecommendedData().then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);
