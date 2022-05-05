@@ -128,9 +128,13 @@
         }
         .deleteBtn{
             display: flex;
+            align-items: center;
             justify-content: space-between;
             color: $grey-A4;
             margin-top: -10px;
+            font-size: 16px;
+            line-height: 16px;
+            font-family: $Pretend-medium;
             i{
                 margin: 3px 0 0 12px;
             }

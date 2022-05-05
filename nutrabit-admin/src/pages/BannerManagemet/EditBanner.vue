@@ -16,7 +16,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2" >
                                 {{ $t('Banner.list.deskbanner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
                             </label>
                             <div class="custom-select" >
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
@@ -34,7 +34,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.mobbanner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`" >
                                 <span v-if="!filesName">{{$t('button.select_file')}}</span>
