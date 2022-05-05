@@ -40,8 +40,7 @@
                 <p>
                   {{ $t("sampleMaking.sampleprocress.desc1") }}<br /><br /><span
                     class="light-grey"
-                    >(Sample production costs 300,000 won / Additional
-                    modifications are charged separately)</span
+                    >{{ $t("sampleMaking.sampleprocress.desc_sub") }}</span
                   >
                 </p>
               </li>
