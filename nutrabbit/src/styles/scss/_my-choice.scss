@@ -485,7 +485,7 @@
                             }
                             .material-details{
                                 @media screen and (max-width: 640px){
-                                    margin: 20px 0 0 0px;
+                                    margin: 20px 0 0 37px;
                                 }
                                 h2{
                                     font-weight: 600;
@@ -522,7 +522,7 @@
                                             margin-bottom: 10px;
                                             @media screen and (max-width: 767px){
                                                 flex-wrap: wrap;
-                                                margin-bottom: 20px;
+                                                margin-bottom: 10px;
                                             }
                                             h3{
                                                 width: 120px;
@@ -535,6 +535,7 @@
                                                 @media screen and (max-width: 767px){
                                                     margin-bottom: 5px;
                                                     width: 100%;
+                                                    line-height: 27px;
                                                 }
                                             }
                                             p{
@@ -545,6 +546,7 @@
                                                 width: calc(100% - 150px);
                                                 @media screen and (max-width: 767px){
                                                     width: 100%;
+                                                    line-height: 24px;
                                                 }
                                             }
                                         }
