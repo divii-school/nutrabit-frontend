@@ -17,7 +17,7 @@
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("aboutus.recommended.title") }}</h4>
             <div class="recom-section">
-             <div class="row-type type-1">
+             <div class="row-type ">
                   <div class="num">1</div>
                   <figure><img src="~@/assets/images/about1.png"></figure>
                   <div class="text-box"><p><span class="green-text">{{ $t("aboutus.recommended.rule1") }}</span>{{ $t("aboutus.recommended.rule1_1") }}</p></div>
@@ -73,7 +73,7 @@
               </div>
             </div>
             <div class="row-type">
-              <div class="num">
+              <div class="num num-type-2">
                 2
               </div>
               <div class="desc">
@@ -91,7 +91,7 @@
               </div>
             </div>
             <div class="row-type">
-              <div class="num">
+              <div class="num num-type-2">
                 4
               </div>
               <div class="desc">

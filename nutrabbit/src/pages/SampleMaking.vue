@@ -8,24 +8,32 @@
             <h2 class="nutri-choice-heading text-center">
               {{ $t("sampleMaking.title.title") }}
             </h2>
-            <p class="title text-center sampleBLueAfter">{{ $t("sampleMaking.title.subtitle") }}</p>
-            <p class="desc text-center">
-              {{ $t("sampleMaking.title.titledesc") }} <br>
+            <p class="title text-center sampleBLueAfter sample-diff">
+              {{ $t("sampleMaking.title.subtitle") }}
+            </p>
+            <p class="sample-desc text-center">
+              {{ $t("sampleMaking.title.titledesc") }} <br />
               {{ $t("sampleMaking.title.titledesc1") }}
             </p>
             <button class="btn-small-solid">
-              <router-link to="/my-choice">{{ $t("sampleMaking.title.button") }}</router-link>
+              <router-link to="/my-choice">{{
+                $t("sampleMaking.title.button")
+              }}</router-link>
             </button>
             <p class="sampleNote">{{ $t("sampleMaking.title.text") }}</p>
           </div>
-          <div class="devider"><i class="icon-grey-star"></i></div>
-          <div class="sampleServices">
+        </div>
+        <div class="devider"><i class="icon-grey-star"></i></div>
+        <div class="container-medium">
+          <div class="sampleServices sampleMarketing">
             <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">{{ $t("sampleMaking.sampleprocress.title") }}</h4>
+            <h4 class="title text-center">
+              {{ $t("sampleMaking.sampleprocress.title") }}
+            </h4>
             <ul>
               <li>
                 <div class="imgCont">
-                  <img src="~@/assets/images/step1.png">
+                  <img src="~@/assets/images/step1.png" />
                 </div>
                 <span>STEP.1</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title1") }}</h5>
@@ -33,7 +41,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="~@/assets/images/step2.png">
+                  <img src="~@/assets/images/step2.png" />
                 </div>
                 <span>STEP.2</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title2") }}</h5>
@@ -41,7 +49,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="~@/assets/images/step3.png">
+                  <img src="~@/assets/images/step3.png" />
                 </div>
                 <span>STEP.3</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title3") }}</h5>
@@ -49,7 +57,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="~@/assets/images/step4.png">
+                  <img src="~@/assets/images/step4.png" />
                 </div>
                 <span>STEP.4</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title4") }}</h5>
@@ -57,7 +65,7 @@
               </li>
               <li>
                 <div class="imgCont">
-                  <img src="~@/assets/images/step5.png">
+                  <img src="~@/assets/images/step5.png" />
                 </div>
                 <span>STEP.5</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title5") }}</h5>
@@ -65,15 +73,25 @@
               </li>
             </ul>
           </div>
-          <div class="devider"><i class="icon-grey-star"></i></div>
+        </div>
+        <div class="devider"><i class="icon-grey-star"></i></div>
+        <div class="container-medium">
           <div class="sampleServices questionSection">
             <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">{{ $t("sampleMaking.sampleFaq.title") }}</h4>
+            <h4 class="title text-center">
+              {{ $t("sampleMaking.sampleFaq.title") }}
+            </h4>
             <div id="app" class="accCont">
-              <accordion class="mb-4" v-for="(item, index) of faqList" :key="index">
+              <accordion
+                class="mb-4"
+                v-for="(item, index) of faqList"
+                :key="index"
+              >
                 <template v-slot:title>
                   <!-- <span class="font-semibold text-xl accTItle">{{ $t("sampleMaking.sampleFaq.ques1") }}</span> -->
-                  <span class="font-semibold text-xl accTItle">{{ item.title_en }}</span>
+                  <span class="font-semibold text-xl accTItle">{{
+                    item.title_en
+                  }}</span>
                 </template>
                 <template v-slot:content>
                   <p class="accBody">
@@ -129,7 +147,7 @@ export default {
           if (res.status == 200) {
             this.totalfaqlist = res.data.data.faq;
 
-            const size = 4
+            const size = 4;
             this.faqList = this.totalfaqlist.slice(0, size);
           }
         })
@@ -143,3 +161,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.sample-desc {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 140%;
+  color: #4c4c4c;
+  margin-top: 19px;
+}
+</style>
