@@ -3,23 +3,21 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <div v-if="blending_image.length > 0">
+          <div v-if="blending_data">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img v-if="active" loading="lazy" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
-                <img loading="lazy" :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
+                <img v-if="active" @mouseleave="mouseLeave" :src="thumb_2nd_image" />
+                <img :src="thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
             
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2" v-for="(items, index) of blending_data" :key="index">
               <swiper-slide v-for="(item, index) of items.detail_image_path" :key="index">
-                <img loading="lazy" :src="imgBaseUrl + item" alt />
+                <img :src="imgBaseUrl + item" alt />
               </swiper-slide>
             </swiper>
-          </div>
-
-
+            </div>
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
@@ -126,7 +124,8 @@ export default {
       thumb_image:"",
       thumb_2nd_image:"",
       active: false,
-      globalLocale:""
+      globalLocale:"",
+      placeholder_image: "../../src/assets/images/thumbnail_place.png",
       // pagination: {
       //   clickable: true,
       //   renderBullet: (index, className) => {
@@ -147,7 +146,7 @@ export default {
     this.mychoiceService = new MyChoiceService();
   },
   mounted() {
-    this.blendingDetail();
+      this.blendingDetail();
   },
    updated(){
     this.globalLocale = this.$i18n.locale;
@@ -180,8 +179,12 @@ export default {
         if (res.data.status == 200) {
           this.blending_data = res.data.data;
           this.blending_image = res.data.data[0].detail_image_path;
-          this.thumb_image=res.data.data[0].thumbnail_1_path;
-          this.thumb_2nd_image=res.data.data[0].thumbnail_2_path;
+
+          // this.thumb_image=res.data.data[0].thumbnail_1_path;
+          this.thumb_image=(res.data.data[0].thumbnail_1_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_1_path : this.placeholder_image;
+
+          // this.thumb_2nd_image=res.data.data[0].thumbnail_2_path;
+          this.thumb_2nd_image=(res.data.data[0].thumbnail_2_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_2_path : this.placeholder_image;
         } else {
           this.$swal(res.data.message, "error");
         }

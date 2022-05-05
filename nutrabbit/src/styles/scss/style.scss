@@ -29,12 +29,11 @@ html {
 }
 
 body {
-  font-family: $default-font !important;
+  font-family: $default-font;
   margin: 0;
   padding: 0;
   height: 100%;
 }
-
 .main-body {
   min-height: 100vh;
 }

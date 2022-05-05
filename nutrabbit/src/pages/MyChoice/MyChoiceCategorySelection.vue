@@ -198,7 +198,9 @@ export default {
     allBlendingData() {
       let limit = 4;
       let page = 1;
-      this.mychoiceService.getRecommendedData(limit, page).then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //console.log('allBlendingData res', res.data.blendingData);
