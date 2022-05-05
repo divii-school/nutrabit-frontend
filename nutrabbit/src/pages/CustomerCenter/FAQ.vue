@@ -45,7 +45,7 @@
           <template v-slot:content>
             <h4>{{$t("customer.tag.Answred")}}</h4>
             <p>
-              {{ item.description_en }}
+              {{ item.description }}
             </p>
           </template>
         </FaqAccordion>
@@ -200,7 +200,7 @@ export default {
 
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data.data.faq)
+            //console.log(res.data.data.faq)
             this.FaqList = res.data.data.faq;
             this.myCallback(1);
           }

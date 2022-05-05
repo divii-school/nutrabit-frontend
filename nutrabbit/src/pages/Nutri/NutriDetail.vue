@@ -37,13 +37,13 @@
         <div class="blending-right" v-for="(item, index) of nutriDetails" :key="index">
           <div class="right-heading">
             <i class="login-icon-green"></i>
-            <h2>{{ item.name_ko }}</h2>
+            <h2>{{ item.name }}</h2>
             <div class="blending-tag">
-              <span v-for="(tag, index) in splitJoin(item.tags_ko)" :key="index" v-text="tag"></span>
+              <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{ item.description_ko }}</p>
+            <p>{{ item.description }}</p>
             <button @click="openmodal()" class="btn-primary blue-btn-solid">
               {{ $t("nutri.nutriDetails.button") }}
             </button>
@@ -99,6 +99,7 @@ import NutriService from "../../services/NutriService";
 
 export default {
   name: "NutriDetail",
+  inject : ['common'],
   components: {
     Swiper,
     SwiperSlide,
@@ -124,7 +125,7 @@ export default {
       blending_id: null,
       blending_data: "",
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
-      lang: "KO",
+      lang: "",
       id: "",
       nutriDetails: [],
       isModalVisible: false,
@@ -132,11 +133,26 @@ export default {
       thumb_image: "",
       detail_image_path: '',
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
+      globalLocale : this.common.state.GlobalLocale,
     };
   },
   created() {
     this.nutriService = new NutriService();
   },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    // console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. getNutridetails();
+      }
+    },
+  },
+
   mounted() {
     this.getNutridetails();
   },
@@ -164,10 +180,11 @@ export default {
       this.id = this.$route.params.id;
       // console.log("id",this.id);
       this.nutriService
-        .getNutridetails(this.id)
+        .getNutridetails(this.id,this.lang)
         .then((res) => {
           if (res.data.status == 200) {
             this.nutriDetails = res.data.data;
+            console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
             // this.thumb_image= res.data.data[0].thumbnail_path;

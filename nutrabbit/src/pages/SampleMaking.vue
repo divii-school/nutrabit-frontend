@@ -40,8 +40,7 @@
                 <p>
                   {{ $t("sampleMaking.sampleprocress.desc1") }}<br /><br /><span
                     class="light-grey"
-                    >(Sample production costs 300,000 won / Additional
-                    modifications are charged separately)</span
+                    >{{ $t("sampleMaking.sampleprocress.desc_sub") }}</span
                   >
                 </p>
               </li>
@@ -96,13 +95,13 @@
                 <template v-slot:title>
                   <!-- <span class="font-semibold text-xl accTItle">{{ $t("sampleMaking.sampleFaq.ques1") }}</span> -->
                   <span class="font-semibold text-xl accTItle">{{
-                    item.title_en
+                    item.title
                   }}</span>
                 </template>
                 <template v-slot:content>
                   <p class="accBody">
                     <!-- {{ $t("sampleMaking.sampleFaq.ans1") }} -->
-                    {{ item.description_en }}
+                    {{ item.description }}
                   </p>
                 </template>
               </accordion>
