@@ -109,8 +109,24 @@ export default {
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
+  
   mounted() {
     this.allEnqueryType();
+  },
+
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
+    console.log(this.globalLocale);
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.allEnqueryType();
+      }
+    },
   },
   methods: {
     allEnqueryType() {
