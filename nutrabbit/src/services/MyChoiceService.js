@@ -16,6 +16,11 @@ export default class MyChoiceService {
     return await axios.post(`/blending`, { lang: localStorage.getItem('selectedLang'), limit: limit, page: page }).then((res) => res.data).catch((err) => err);
   }
 
+  //recommended blending API Functions
+  async getRecommendedData(sub_cat_id, limit, page) {
+    return await axios.post(`/product/blending`, { lang: localStorage.getItem('selectedLang'), sub_category_id: sub_cat_id, limit: limit, page: page }).then((res) => res.data).catch((err) => err);
+  }
+
   //recommended blending alphabetical API Functions
   async getRecommendedBlendingAlphabetical() {
     return await axios.post(`/blending/alphabetic/`, { lang: localStorage.getItem('selectedLang') }).then((res) => res).catch((err) => err);
