@@ -16,6 +16,12 @@
         line-height: 17px;
         color: #4C4C4C;
       }
+      .form-group{
+          margin-top: 20px !important;
+          &:first-child {
+            margin-top: 0 !important;
+          }
+      }
     }
   }
 
@@ -128,6 +134,9 @@
       &.signUp-form {
         margin-top: 40px;
         max-width: 690px;
+        @media screen and (max-width: 1200px) {
+          margin-top: 20px;
+        }
         .btn-primary {
           margin-top: 40px;
         }
@@ -152,6 +161,7 @@
       ul {
         @include flex-align-center;
         li {
+            font-size: 14px;
           &:before {
             content: "I";
             margin: 0 10px;

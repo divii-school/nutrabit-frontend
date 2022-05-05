@@ -313,6 +313,7 @@ export default {
           .then((res) => {
             if (res.data.status == 200) {
               console.log(res.data.status);
+              localStorage.setItem("uname", this.contactPerson);
               this.openmodal();
             }
           });

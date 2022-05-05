@@ -21,7 +21,7 @@
         </div>
         <div class="blending-right" v-for="(item, index) of blending_data" :key="index">
           <div class="right-heading">
-            <i class="login-icon"></i>
+            <i class="icon-star-blue"></i>
             <h2>{{ item.name }}</h2>
             <div class="blending-tag">
               <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>

@@ -121,7 +121,7 @@
             .my-choice-heading{
                 padding: 0;
                 border: 0;
-                margin-bottom: 83px;
+                margin-bottom: 80px;
                 @media screen and (max-width: 640px){
                     margin-bottom: 45px;
                 }
@@ -129,7 +129,7 @@
             .choice-selection-item{
                 .heading-wrap{
                     @include flex-justify-between;
-                    padding-bottom: 25px;
+                    padding-bottom: 20px;
                     border-bottom: 1px solid $grey-CF;
                     @media screen and (max-width: 640px){
                         // flex-direction: column;
@@ -144,8 +144,9 @@
                             line-height: 24px;
                             letter-spacing: 0.01em;
                             color: $grey-66;
+                            font-family: $Pretend-bold;
                             @media screen and (max-width: 640px){
-                                font-size: 17px;
+                                font-size: 20px;
                                 line-height: 20px;
                             }
                         }
@@ -176,7 +177,7 @@
                             line-height: 16px;
                             color: $black-2E;
                             i{
-                                margin: 5px 5px 0 0;
+                                margin: 0 5px 0 0;
                             }
                         }
                         .vue-select{
@@ -242,10 +243,10 @@
                     flex-wrap: wrap;
                     margin: 40px -34px 0;
                     @media screen and (max-width: 768px){
-                        margin: 40px -25px 0;
+                        margin: 40px -20px 0;
                     }
                     @media screen and (max-width: 640px){
-                        margin: 30px -16px 0;
+                        margin: 30px -8px 0;
                     }
                     li{
                         width: 25%;
@@ -271,6 +272,7 @@
                         .search-card-inner{
                             cursor: pointer;
                             img{
+                                border-radius: 5px;
                                 @media screen and (max-width: 640px){
                                     height: 165px;
                                     width: 100%;
@@ -285,9 +287,9 @@
                     }
                 }
                 &.raw-material{
-                    margin-top: 53px;
+                    margin-top: 40px;
                     @media screen and (max-width: 640px){
-                        margin-top: 55px;
+                        margin-top: 50px;
                     }
                     .raw-material-list{
                         li{
@@ -403,7 +405,7 @@
                             @include flex-align-center;
                             width: 100%;
                             align-items: center;
-                            padding: 35px 30px;
+                            padding: 44px 30px;
                             border-bottom: 1px solid $grey-CF;
                             @media screen and (max-width: 640px){
                                 align-items: flex-start;
@@ -676,6 +678,15 @@
             .choice-selection-item-wrap{
                 &.recipeGap{
                     margin-bottom: 80px;
+                    .choice-selection-item{
+                        .heading-wrap{
+                            .heading{
+                                h2{
+                                    color: $grey-4C !important;
+                                }
+                            }
+                        }
+                    }
                 }
                 .choice-selection-item{
                     .package-list-wrap{
