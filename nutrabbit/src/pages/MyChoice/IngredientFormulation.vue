@@ -105,6 +105,7 @@ export default {
       storage_box: localStorage.getItem('storage_box'),
       to: '',
       showModal2: false,
+      globalLocale:""
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -138,6 +139,15 @@ export default {
   },
   mounted() {
     this.blendingFormulation();
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.blendingFormulation();
+    },
   },
   methods: {
     closeModal2() {

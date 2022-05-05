@@ -151,6 +151,7 @@ export default {
       if((newVal == 'kr' || newVal == 'en') && this.ischeckETCError){
         this.checkETCError();
       }
+      this.blendingPackage();
     },
   },
   methods: {
