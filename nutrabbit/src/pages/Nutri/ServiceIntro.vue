@@ -74,6 +74,7 @@
                       <span>nutri 3.3</span>
                       <span>nutri 3.3</span>
                     </div>
+
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">
                       {{ item.name }}
                     </p>
@@ -92,17 +93,33 @@
 import NutriService from "../../services/NutriService";
  
 export default {
+  inject : ['common'],
   name: "ServiceIntro",
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       nutriList: [],
       lang:"",
+      globalLocale : this.common.state.GlobalLocale,
     };
   },
 
   created() {
     this.nutriService = new NutriService();
+  },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    // console.log(this.globalLocale)
+  },
+  
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. getNutriService();
+      }
+    },
   },
 
   methods: {
@@ -113,13 +130,15 @@ export default {
           if (res.status == 200) {
             // console.log("res", res);
             this.nutriList = res.data.data.blendingData;
-            console.log("nutriList", this.nutriList);
+            // console.log("nutriList", this.nutriList);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     },
+
+    
   },
 
   mounted() {

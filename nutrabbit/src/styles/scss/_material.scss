@@ -40,9 +40,13 @@
             display: block;
             font-size: 24px;
             font-weight: 700;
-            line-height: 110%;
+            line-height: 100%;
             margin-bottom: 15px;
             color: $grey-66;
+            @media screen and (max-width: 640px) {
+                font-size: 20px;
+                line-height: 100%;
+            }
             &.mb0{
                 margin-bottom: 0 !important;
             }
@@ -147,7 +151,7 @@
     border-radius: 5px;
     .selectAllHeader{
         border-bottom: 1px solid $grey-CF;
-        padding: 24px 0;
+        padding: 20px 0;
         li{
             display: flex;
             justify-content: space-between;
@@ -187,6 +191,12 @@
         border-radius: 5px;
         margin: 15px 0 0 0;
         color: $grey-82;
+        font-size: 18px;
+        line-height: 110%;
+        font-family: $Pretend-semibold;
+        @media screen and (max-width: 640px) {
+            margin-top: 20px;
+        }
         button{
             display: flex;
             align-items: center;

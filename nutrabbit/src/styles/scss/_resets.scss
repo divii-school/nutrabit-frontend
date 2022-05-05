@@ -479,16 +479,16 @@ textarea {
 }
 
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  color: #bdbdbd;
+  color: #cfcfcf;
 }
 
 input::-ms-input-placeholder, textarea::-ms-input-placeholder {
-  color: #bdbdbd;
+  color: #cfcfcf;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #bdbdbd;
+  color: #cfcfcf !important;
   font-weight: 400;
 }
 

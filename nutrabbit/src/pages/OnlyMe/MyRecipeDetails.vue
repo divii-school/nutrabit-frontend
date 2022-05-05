@@ -250,7 +250,7 @@ export default {
               let op_val = Object.values(ele)[0].toString();
 
               this.myRecipe.getOptionDetails(op_type, op_val).then((res) => {
-                console.log(res.data[0])
+                //console.log(res.data[0])
                 if (res.status == 200) {
                   this.option_items.push(res.data[0]),
                   console.log(this.option_items);
