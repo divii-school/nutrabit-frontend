@@ -420,7 +420,7 @@ export default {
                 acceptLabel: "확인",
                 rejectLabel: "취소",
                 accept: () => {
-                    axios({ method: 'delete', url: '/admin/product_raw_material/delete', data: { deleteIdArray: id } }).then(function (response) {
+                    axios({ method: 'delete', url: '/admin/inquery/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
                         self.inquiryService
                             .getInquryList(self.status, self.title, self.business_name, self.repliedBy, self.startDate, self.endDate, self.sortBy, self.sortOrder)

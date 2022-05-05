@@ -167,7 +167,7 @@ export default {
         
         editFaq() {
             let vcheckData = {
-                category_id: this.category_id,
+                category_id: this.category_id.toString(),
                 title_ko: this.title_ko,
                 title_en: this.title_en,
                 description_ko: this.description_ko,
@@ -183,7 +183,7 @@ export default {
                 console.log(error);
             } else {
                 this.formData.append('id', this.$route.params.id);
-                this.formData.append('category_id', this.category_id);
+                this.formData.append('category_id', this.category_id.toString());
                 
                 this.formData.append('title_ko', this.title_ko);
                 this.formData.append('title_en', this.title_en);
