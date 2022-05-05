@@ -95,13 +95,13 @@
                 <template v-slot:title>
                   <!-- <span class="font-semibold text-xl accTItle">{{ $t("sampleMaking.sampleFaq.ques1") }}</span> -->
                   <span class="font-semibold text-xl accTItle">{{
-                    item.title_en
+                    item.title
                   }}</span>
                 </template>
                 <template v-slot:content>
                   <p class="accBody">
                     <!-- {{ $t("sampleMaking.sampleFaq.ans1") }} -->
-                    {{ item.description_en }}
+                    {{ item.description }}
                   </p>
                 </template>
               </accordion>
