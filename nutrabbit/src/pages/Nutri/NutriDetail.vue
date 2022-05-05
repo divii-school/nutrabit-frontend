@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <div v-if="product_sub_image_path.length > 0">
+          <div v-if="thumb_image">
             <!-- <swiper
               :spaceBetween="10"
               :modules="[Thumbs]"
@@ -21,51 +21,25 @@
             </swiper> -->
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image" alt />
+                <img :src="thumb_image" alt />
               </swiper-slide>
             </swiper>
           </div>
-          <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
+          <div v-if="product_sub_image_path">
+          <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
+            @swiper="setThumbsSwiper" class="mySwiper2 thumbsSwiperCustom">
+            <swiper-slide v-for="(item, index) of product_sub_image_path" :key="index">
+              <img v-if="item" :src="imgBaseUrl + item" alt />
+            </swiper-slide>
+          </swiper>
           </div>
-          <div v-if="product_sub_image_path.length > 0">
-            <swiper
-              :spaceBetween="10"
-              :slidesPerView="4"
-              :freeMode="true"
-              :modules="[Thumbs]"
-              watch-slides-progress
-              @swiper="setThumbsSwiper"
-              class="mySwiper2 thumbsSwiperCustom"
-              v-for="(items, index) of nutriDetails"
-              :key="index"
-            >
-              <swiper-slide
-                v-for="(item, index) of items.product_sub_image_path"
-                :key="index"
-              >
-                <img v-if="item" :src="imgBaseUrl + item" alt />
-              </swiper-slide>
-            </swiper>
-          </div>
-          <!-- <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
-          </div> -->
         </div>
-        <div
-          class="blending-right"
-          v-for="(item, index) of nutriDetails"
-          :key="index"
-        >
+        <div class="blending-right" v-for="(item, index) of nutriDetails" :key="index">
           <div class="right-heading">
             <i class="login-icon-green"></i>
             <h2>{{ item.name_ko }}</h2>
             <div class="blending-tag">
-              <span
-                v-for="(tag, index) in splitJoin(item.tags_ko)"
-                :key="index"
-                v-text="tag"
-              ></span>
+              <span v-for="(tag, index) in splitJoin(item.tags_ko)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -102,16 +76,9 @@
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    :bodytext1="$t('nutri.nutrimodal.bodytext')"
-    :bodytext2="$t('nutri.nutrimodal.bodytext2')"
-    :btnText1="$t('nutri.nutrimodal.btntext')"
-    :btnText2="$t('nutri.nutrimodal.btntext2')"
-    @confirm="confirm"
-    link = '/my-application-detail'
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('nutri.nutrimodal.bodytext')"
+    :bodytext2="$t('nutri.nutrimodal.bodytext2')" :btnText1="$t('nutri.nutrimodal.btntext')"
+    :btnText2="$t('nutri.nutrimodal.btntext2')" @confirm="confirm" link='/my-application-detail' />
 </template>
 
 
@@ -127,9 +94,8 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
- 
+
 
 export default {
   name: "NutriDetail",
@@ -164,7 +130,8 @@ export default {
       isModalVisible: false,
       product_sub_image_path: [],
       thumb_image: "",
-      detail_image_path:''
+      detail_image_path: '',
+      placeholder_image: "../../src/assets/images/thumbnail_place.png",
     };
   },
   created() {
@@ -179,7 +146,7 @@ export default {
       // window.location.href = "";
     },
 
-    confirm(){
+    confirm() {
       this.confirmbutton();
     },
 
@@ -199,17 +166,14 @@ export default {
       this.nutriService
         .getNutridetails(this.id)
         .then((res) => {
-          if (res.status == 200) {
+          if (res.data.status == 200) {
             this.nutriDetails = res.data.data;
-            //  console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
-              this.thumb_image= res.data.data[0].thumbnail_path;
-              this.detail_image_path=res.data.data[0].detail_image_path;
+            // this.thumb_image= res.data.data[0].thumbnail_path;
+            this.thumb_image = (res.data.data[0].thumbnail_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_path : this.placeholder_image;
+            this.detail_image_path = res.data.data[0].detail_image_path;
           }
-        })
-        .catch((err) => {
-          console.log(err);
         });
     },
 

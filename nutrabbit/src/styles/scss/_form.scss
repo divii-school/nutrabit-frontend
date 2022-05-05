@@ -151,7 +151,9 @@
         }
         .check-box-wrap{
             .custom-check{
+               p, a{
                 color: $red-3 !important;
+               }
                 .checkmark{
                     border: 1px solid $red-3;
                 }
@@ -188,6 +190,9 @@
 
         .form-group {
             margin-top: 20px !important;
+            &:first-child{
+                margin-top: 0 !important;
+            }
             .custom-check{
                 p{
                     display: block;
@@ -213,7 +218,9 @@
             padding-bottom: 40px;
         }
     }
-
+    .business-with-individual{
+        margin-top: 40px;
+    }
     .individuals-form {
         // margin-top: 40px;
     }
