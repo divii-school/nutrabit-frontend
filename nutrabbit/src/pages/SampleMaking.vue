@@ -3,7 +3,7 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice">
+          <div class="nutri-choice sample-choice">
             <span class="my-choice-title-top">Sample Guide</span>
             <h2 class="nutri-choice-heading text-center">
               {{ $t("sampleMaking.title.title") }}
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
-        <div class="container-medium">
+        <div class="container-large">
           <div class="sampleServices sampleMarketing">
             <p class="title text-center samllTitle">my choice</p>
             <h4 class="title text-center">
@@ -37,7 +37,13 @@
                 </div>
                 <span>STEP.1</span>
                 <h5>{{ $t("sampleMaking.sampleprocress.title1") }}</h5>
-                <p>{{ $t("sampleMaking.sampleprocress.desc1") }}</p>
+                <p>
+                  {{ $t("sampleMaking.sampleprocress.desc1") }}<br /><br /><span
+                    class="light-grey"
+                    >(Sample production costs 300,000 won / Additional
+                    modifications are charged separately)</span
+                  >
+                </p>
               </li>
               <li>
                 <div class="imgCont">
@@ -162,12 +168,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sample-desc {
   font-weight: 400;
   font-size: 22px;
   line-height: 140%;
-  color: #4c4c4c;
-  margin-top: 19px;
+  color: $grey-4C;
+  /* margin-top: 19px; */
+}
+.btn-small-solid {
+  margin-top: 40px !important;
+}
+.light-grey{
+  color: $grey-A4;
 }
 </style>
