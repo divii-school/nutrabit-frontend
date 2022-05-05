@@ -38,9 +38,9 @@
         <div class="blending-right" v-for="(item, index) of raw_material_data" :key="index">
           <div class="right-heading">
             <i class="login-icon"></i>
-            <h2>{{ item.material_name_ko }}</h2>
-            <div class="blending-tag" v-if="item.tag_ko">
-              <span v-for="(tag, index) in splitJoin(item.tag_ko)" :key="index" v-text="tag"></span>
+            <h2>{{ item.material_name }}</h2>
+            <div class="blending-tag" v-if="item.tag">
+              <span v-for="(tag, index) in splitJoin(item.tag)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -51,31 +51,31 @@
               </li> -->
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Standard") }}</h2>
-                <p>{{ item.standard_ko }}</p>
+                <p>{{ item.standard }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
-                <p>{{ item.material_description_ko }}</p>
+                <p>{{ item.material_description }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
-                <p>{{ item.material_function_ko }}</p>
+                <p>{{ item.material_function }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Functionalcontent") }}</h2>
-                <p>{{ item.material_function_ko }}</p>
+                <p>{{ item.material_function }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
-                <p>{{ item.daily_intake_amount_ko }}</p>
+                <p>{{ item.daily_intake_amount }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
-                <p>{{ item.material_prequotion_ko }}</p>
+                <p>{{ item.material_prequotion }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
-                <p>{{ item.material_extra_info_ko }}</p>
+                <p>{{ item.material_extra }}</p>
               </li>
             </ul>
             <div class="blendBtnList">
@@ -169,6 +169,7 @@ export default {
       similar_product_img: [],
       active: false,
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
+      globalLocale: ""
     };
   },
   created() {
@@ -179,6 +180,15 @@ export default {
     this.rawMaterialImage();
     this.allBlendingData();
     localStorage.removeItem('option');
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.rawMaterialDetail();
+    },
   },
   methods: {
      mouseOver() {
