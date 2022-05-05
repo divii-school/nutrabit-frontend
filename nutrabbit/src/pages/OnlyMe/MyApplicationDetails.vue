@@ -400,7 +400,7 @@ export default {
   },
   updated(){
     this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
+    // console.log(this.globalLocale)
   },
 
   watch: {
