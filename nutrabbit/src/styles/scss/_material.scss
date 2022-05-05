@@ -24,6 +24,10 @@
                 line-height: 110%;
                 color: $grey-66;
                 border-bottom: 1px solid $grey-EF;
+                @media screen and (max-width: 768px) {
+                    font-size: 14px;
+                    line-height: 14px;
+                }
             }
         }
     }
@@ -55,8 +59,8 @@
         }
         input,textarea{
             width: 100%;
-            padding: 14px 20px;
-            border: 1px solid $grey-A4;
+            padding: 30px;
+            border: 1px solid $grey-CF;
             border-radius: 5px;
             
         }
