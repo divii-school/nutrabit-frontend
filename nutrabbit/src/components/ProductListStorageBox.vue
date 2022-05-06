@@ -2,7 +2,7 @@
   <div class="product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
-        <input type="checkbox" :id="item.name_ko" :value="item.id" v-if="allSelected==true" checked @click="getStorageBoxId" />
+        <input type="checkbox" :id="item.name_ko" ref="checkbox" :value="item.id" v-if="allSelected==true" checked @click="getStorageBoxId" />
         <input type="checkbox" :id="item.name_ko" ref="checkbox" :value="item.id" v-else @click="getStorageBoxId" />
         <span class="checkmark"></span>
       </label>
@@ -38,7 +38,14 @@ export default {
   },
    methods: {
      getStorageBoxId(event) {
-       this.$emit('storageBoxId',event.target.value);
+
+       if(this.$refs.checkbox.checked==false) {
+         this.$emit('getUncheckedId',event.target.value);
+       }
+       else{
+         this.$emit('storageBoxId',event.target.value);
+       }
+       
         // console.log(event.target.value);
      },
       gotoNextPage(raw_material_id) {

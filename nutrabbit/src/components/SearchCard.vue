@@ -13,7 +13,7 @@
     <template v-if="type == 'recomandedBlending'">
       <router-link :to="route_link">
         <p class="recomanded-vitamin text-center">{{ name }}</p>
-        <p class="recomanded-quality text-center">{{ desc }}</p>
+        <p class="recomanded-quality text-center">{{ desc.substring(0,50) }}</p>
       </router-link>
     </template>
   </div>
