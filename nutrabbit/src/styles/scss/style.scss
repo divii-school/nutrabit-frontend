@@ -1010,24 +1010,26 @@ textarea {
         span{
           border-radius: 15px;
           border: 1px solid $green-68;
-          padding: 5px 10px;
+          padding: 4px 10px;
           font-weight: 600;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 110%;
           color: $green-68;
-          margin: 24px 10px;
+          margin: 20px 10px;
           @media screen and (max-width: 640px) {
           font-size: 10px;
-          margin: 14px 10px;
+          margin: 14px 5px;
           }
         }
       }
       p{
         font-size: 26px;
-        line-height: 110%;
+        line-height: 31px;
         font-weight: 600;
+        color: $black-33;
         @media screen and (max-width: 640px) {
           font-size: 14px;
+          line-height: 17px;
         }
       }
     }

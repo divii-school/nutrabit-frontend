@@ -52,7 +52,7 @@
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom">
+          <div class="sampleServices about-recom pb-70">
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("nutri.title.blending") }}</h4>
             <div class="nutri-dom-product blendedPro">
@@ -166,6 +166,11 @@ export default {
   span {
     color: $green-68;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 17px;
+    line-height: 150%;
+  }
 }
 .sampleServices .nutriBlending li p {
   color: $black-33;
@@ -184,6 +189,9 @@ export default {
 }
 .pb-160 {
   padding-bottom: 160px;
+}
+.pb-70{
+  padding-bottom: 70px;
 }
 .below-block {
   text-align: center;
