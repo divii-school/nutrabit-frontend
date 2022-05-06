@@ -11,7 +11,7 @@
           
           <form
             action=""
-            class="signUp-form"
+            class="signUp-form change-password"
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.password ? 'error' : ''">

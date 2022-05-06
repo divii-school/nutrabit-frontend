@@ -205,12 +205,21 @@ textarea {
 
   &.custom-check2{
     margin-top: -16px !important;
+    padding-left: 64px;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 39px;
+    }
+
+    .checkmark{
+      top: -3px;
+    }
   }
 }
 
 .checkmark {
   position: absolute;
-  top: -2px;
+  top: -3px;
   left: 0;
   height: 24px;
   width: 24px;
@@ -335,6 +344,12 @@ textarea {
   margin-bottom: 12px;
   line-height: 110%;
 
+  &.custom-radio2{
+    .checkmark:after{
+      top: 3px;
+    }
+  }
+
   /* Hide the browser's default radio button */
   input {
     position: absolute;
@@ -379,6 +394,7 @@ textarea {
   border-radius: 50%;
   background: $black-18;
 }
+
 
 
 .pagination-wrap {
