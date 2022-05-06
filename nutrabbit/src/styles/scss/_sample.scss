@@ -2,18 +2,20 @@
   position: relative;
   margin: 80px 0 30px 0;
 
+  
+
   @media screen and (max-width: 640px) {
     margin: 40px 0 30px;
   }
   &:after {
     position: absolute;
     background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
-    background-size: auto 115px;
-    height: 142px;
-    width: 129px;
+    background-size: auto 94px;
+    height: 122px;
+    width: 94px;
     content: "";
-    left: -82px;
-    top: -30px;
+    left: -59px;
+    top: -28px;
     z-index: -1;
     @media screen and (max-width: 992px) {
       height: 122px;
@@ -32,6 +34,17 @@
       content: "";
       left: -49px;
       top: -23px;
+    }
+  }
+
+  &.nutriBlend{
+    &::after{
+      background-size: auto 74px;
+      height: 122px;
+      width: 94px;
+      content: "";
+      left: -50px;
+      top: -28px;
     }
   }
 }

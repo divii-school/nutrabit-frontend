@@ -112,7 +112,7 @@
                             <div :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChangethum" />
+                                <input type="file" class="select-file" v-on:change="onFileChangethum" multiple />
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.addthumnail }}</div>
