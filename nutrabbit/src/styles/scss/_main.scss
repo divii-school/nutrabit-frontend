@@ -1,5 +1,8 @@
 .main-page {
   min-height: 100vh;
+  @media screen and (max-width: 768px) {
+    min-height: auto;
+  }
   .main-slider {
     img {
       width: 100%;
@@ -97,15 +100,15 @@
   }
   .main-page-body {
     .nutri-choice {
-      margin: 150px 0;
+      margin: 80px 0;
       @include flex-justify-center;
       flex-direction: column;
       position: relative;
       @media screen and (max-width: 1200px) {
-        margin: 120px 0;
+        margin: 80px 0;
       }
       @media screen and (max-width: 567px) {
-        margin: 120px 0 60px;
+        margin: 80px 0 60px;
       }
       &.theme-green {
         .my-choice-title-top,
@@ -152,9 +155,10 @@
         margin-top: 15px;
         position: relative;
         font-weight: bold;
-        font-size: 60px;
-        line-height: 78px;
-        color: $black-18;
+        font-size: 45px;
+        line-height: 58px;
+        font-family: $Pretend-semibold;
+        color: $black-33;
         @media screen and (max-width: 1200px) {
           font-size: 40px;
           line-height: 58px;
@@ -164,19 +168,20 @@
           line-height: 45px;
         }
         @media screen and (max-width: 640px) {
-          // font-size: 24px;
-          line-height: 31px;
+          font-size: 22px;
+          line-height: 28px;
         }
       }
       .desc {
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
-        color: $grey-82;
+        color: $grey-66;
         margin-top: 30px;
+        font-family: $Pretend-medium;
         @media screen and (max-width: 640px) {
-          font-size: 13px;
-          line-height: 16px;
+          font-size: 16px;
+          line-height: 19px;
           margin-top: 15px;
         }
       }
@@ -190,11 +195,10 @@
       .btn-small-solid {
         margin-top: 40px;
         @media screen and (max-width: 640px) {
-          margin-top: 30px;
           height: 34px;
           padding: 10px 20px;
-          font-size: 12px;
-          line-height: 14px;
+          font-size: 14px;
+          line-height: 16px;
         }
       }
       &.with-img {
@@ -265,13 +269,13 @@
       &::before {
         width: 100%;
         height: 1px;
-        background: $grey-CF;
+        background: $grey-66;
         content: "";
       }
       &::after {
         width: 100%;
         height: 1px;
-        background: $grey-CF;
+        background: $grey-66;
         content: "";
       }
     }
@@ -280,6 +284,9 @@
         margin-bottom: 80px;
         @media screen and (max-width: 1200px) {
           margin-bottom: 60px;
+        }
+        @media screen and (max-width: 768px) {
+          margin-bottom: 40px;
         }
       }
       .nutri-dom-product {
