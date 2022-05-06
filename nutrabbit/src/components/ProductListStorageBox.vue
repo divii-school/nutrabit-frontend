@@ -2,8 +2,8 @@
   <div class="product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
-        <input type="checkbox" :id="item.name_ko" ref="checkbox" :value="item.id" v-if="allSelected==true" checked @click="getStorageBoxId" />
-        <input type="checkbox" :id="item.name_ko" ref="checkbox" :value="item.id" v-else @click="getStorageBoxId" />
+        <input type="checkbox" :id="item.material_name" ref="checkbox" :value="item.id" v-if="allSelected==true" checked @click="getStorageBoxId" />
+        <input type="checkbox" :id="item.material_name" ref="checkbox" :value="item.id" v-else @click="getStorageBoxId" />
         <span class="checkmark"></span>
       </label>
       <div class="img-wrap">
