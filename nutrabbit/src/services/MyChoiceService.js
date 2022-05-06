@@ -12,9 +12,9 @@ export default class MyChoiceService {
   }
 
   //recommended blending API Functions
-  async getRecommendedData(limit, page) {
-    return await axios.post(`/blending`, { lang: localStorage.getItem('selectedLang'), limit: limit, page: page }).then((res) => res.data).catch((err) => err);
-  }
+  // async getRecommendedData(limit, page) {
+  //   return await axios.post(`/blending`, { lang: localStorage.getItem('selectedLang'), limit: limit, page: page }).then((res) => res.data).catch((err) => err);
+  // }
 
   //recommended blending API Functions
   async getRecommendedData(sub_cat_id, limit, page) {

@@ -3,14 +3,17 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice theme-green with-img servIntro">
-            <h2 class="nutri-choice-heading text-center">
+          <div class="nutri-choice theme-green servIntro">
+            <span class="my-choice-title-top">Nutri 3.3</span>
+            <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("nutri.title.heading") }}
             </h2>
-            <p class="title text-center">{{ $t("nutri.title.sub_heading") }}</p>
-            <p class="text-center">
-              {{ $t("nutri.title.paragraph1") }} <br />
-              {{ $t("nutri.title.paragraph2") }}
+            <p class="title text-center sampleBLueAfter nutriBlend sample-diff">
+              {{ $t("nutri.title.sub_heading") }}
+            </p>
+            <p class="text-center nutriBlend-para">
+              {{ $t("nutri.title.paragraph1") }} <span></span> <br />
+              {{ $t("nutri.title.paragraph2") }} <span></span>
             </p>
           </div>
         </div>
@@ -21,24 +24,24 @@
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
               <li>
-                <img src="~@/assets/images/blending1.png"/>
+                <img src="~@/assets/images/blending1.png" />
                 <span>Step.1</span>
-                <p>{{$t("nutri.title.desc1")}}</p>
+                <p>{{ $t("nutri.title.desc1") }}</p>
               </li>
               <li>
-                <img src="~@/assets/images/blending2.png"/>
+                <img src="~@/assets/images/blending2.png" />
                 <span>Step.2</span>
-                <p>{{$t("nutri.title.desc2")}}</p>
+                <p>{{ $t("nutri.title.desc2") }}</p>
               </li>
               <li>
-                <img src="~@/assets/images/blending3.png"/>
+                <img src="~@/assets/images/blending3.png" />
                 <span>Step.3</span>
-                <p>{{$t("nutri.title.desc3")}}</p>
+                <p>{{ $t("nutri.title.desc3") }}</p>
               </li>
               <li>
-                <img src="~@/assets/images/blending4.png"/>
+                <img src="~@/assets/images/blending4.png" />
                 <span>Step.3</span>
-                <p>{{$t("nutri.title.desc4")}}</p>
+                <p>{{ $t("nutri.title.desc4") }}</p>
               </li>
             </ul>
           </div>
@@ -91,16 +94,16 @@
 
 <script>
 import NutriService from "../../services/NutriService";
- 
+
 export default {
-  inject : ['common'],
+  inject: ["common"],
   name: "ServiceIntro",
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       nutriList: [],
-      lang:"",
-      globalLocale : this.common.state.GlobalLocale,
+      lang: "",
+      globalLocale: this.common.state.GlobalLocale,
     };
   },
 
@@ -108,16 +111,18 @@ export default {
     this.nutriService = new NutriService();
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
     // console.log(this.globalLocale)
   },
-  
 
   watch: {
     globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
-        this. getNutriService();
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.getNutriService();
       }
     },
   },
@@ -137,8 +142,6 @@ export default {
           console.log(err);
         });
     },
-
-    
   },
 
   mounted() {
@@ -147,9 +150,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nutri-product-item .nutri-pimg,
 .nutri-product-item p {
   cursor: pointer;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.nutriBlend-para {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 140%;
+  color: $grey-4C;
+  span{
+    color: $green-68;
+  }
 }
 </style>

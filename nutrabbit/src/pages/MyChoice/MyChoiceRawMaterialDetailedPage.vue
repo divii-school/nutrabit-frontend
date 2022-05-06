@@ -169,7 +169,8 @@ export default {
       similar_product_img: [],
       active: false,
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
-      globalLocale: ""
+      globalLocale: "",
+      sub_category_id:''
     };
   },
   created() {
@@ -178,7 +179,9 @@ export default {
   mounted() {
     this.rawMaterialDetail();
     this.rawMaterialImage();
-    this.allBlendingData();
+    setTimeout(() => {
+      this.allBlendingData();
+    }, 1000);
     localStorage.removeItem('option');
   },
   updated(){
@@ -229,11 +232,12 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-        //  console.log(res.data.data);
+         console.log(res.data.data[0].sub_category_id);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
           // this.thumb_image= res.data.data[0].thumbnail_fst_path;
           // this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
+          this.sub_category_id = res.data.data[0].sub_category_id;
            this.thumb_image=(res.data.data[0].thumbnail_fst_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path : this.placeholder_image;
            this.thumb_2nd_image=(res.data.data[0].thumbnail_scnd_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path : this.placeholder_image;
         } else {
@@ -262,7 +266,6 @@ export default {
     allBlendingData() {
       let limit = 5;
       let page = 1;
-      this.sub_category_id = localStorage.getItem('sub_category_id');
       const setSubCategory = this.sub_category_id;
       this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
         // console.log(res);

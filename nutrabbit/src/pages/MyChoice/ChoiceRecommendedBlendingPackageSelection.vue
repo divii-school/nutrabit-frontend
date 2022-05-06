@@ -66,7 +66,7 @@
                   />
                 </li>
               </ul>
-              <div class="product-item with-input">
+              <div class="product-item with-input auto-width">
                 <div class="radio-wrap">
                   <label class="custom-radio custom-radio2" for="17">
                     <input
@@ -103,7 +103,7 @@
                   </div>
                 </div>
               </div>
-              <div class="product-item with-input">
+              <div class="product-item with-input auto-width">
                 <div class="radio-wrap">
                   <label class="custom-radio custom-radio2" for="18">
                     <input
