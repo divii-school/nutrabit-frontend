@@ -115,6 +115,11 @@
         }
         &.my-choice-selection{
             padding: 80px 0;
+
+            &.recomanded-blending-main{
+                padding: 40px 0;
+            }
+
             @media screen and (max-width: 640px){
                 padding: 65px 0 155px;
             }
