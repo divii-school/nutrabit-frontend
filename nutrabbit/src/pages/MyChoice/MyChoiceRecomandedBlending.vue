@@ -108,10 +108,12 @@ export default {
       });
     },
     onChange(event) {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
       // console.log(event.target.value);
       if (event.target.value == 'popularity') {
 
-        this.mychoiceService.getRecommendedBlendingPopularity().then((res) => {
+        this.mychoiceService.getRecommendedBlendingPopularity(setSubCategory).then((res) => {
            console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
@@ -124,7 +126,7 @@ export default {
       }
       else if (event.target.value == 'alphabetical') {
 
-        this.mychoiceService.getRecommendedBlendingAlphabetical().then((res) => {
+        this.mychoiceService.getRecommendedBlendingAlphabetical(setSubCategory).then((res) => {
           // console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);

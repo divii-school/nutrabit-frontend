@@ -63,7 +63,7 @@
                   >{{$t('onlyme.add_req_caption.Caption')}}</span
                 >
                 <textarea
-                  placeholder="Please write freely"
+                  :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="add_req"
                 ></textarea>
               </div>
