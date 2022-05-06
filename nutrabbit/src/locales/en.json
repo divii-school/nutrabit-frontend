@@ -163,7 +163,7 @@
         },
         "placeholder": {
             "title": "My own recipe made with guar gum hydrolyzate",
-            "additionalRequest": ""
+            "additionalRequest": "Please write freely"
         },
         "button": {
             "DeleteSelection": "delete selection",

@@ -11,7 +11,7 @@
               <li>
                 <div class="item-left">
                   <span v-if="item.top10 == 1">{{
-                    $t("customer.content.Tag")
+                    $t("customer.tag.Important")
                   }}</span>
                   <p>
                     {{ item.title }}
