@@ -11,10 +11,12 @@
             <p class="title text-center sampleBLueAfter nutriBlend sample-diff">
               {{ $t("nutri.title.sub_heading") }}
             </p>
-            <p class="text-center nutriBlend-para">
-              {{ $t("nutri.title.paragraph1") }} <span></span> <br />
-              {{ $t("nutri.title.paragraph2") }} <span></span>
-            </p>
+            <p
+              class="text-center nutriBlend-para"
+              v-html="$t('nutri.title.paragraph1')"
+            ></p>
+            <!-- {{ $t("nutri.title.paragraph1") }} <span>sadasdas</span> <br /> -->
+            <!-- {{ $t("nutri.title.paragraph2") }} <span></span> -->
           </div>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
@@ -52,9 +54,11 @@
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom">
+          <div class="sampleServices about-recom pb-70">
             <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center">{{ $t("nutri.title.blending") }}</h4>
+            <h4 class="title text-center mb-80">
+              {{ $t("nutri.title.blending") }}
+            </h4>
             <div class="nutri-dom-product blendedPro">
               <ul>
                 <li v-for="(item, index) of nutriList" :key="index">
@@ -166,14 +170,24 @@ export default {
   span {
     color: $green-68;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 17px;
+    line-height: 150%;
+  }
 }
-.sampleServices .nutriBlending li p {
-  color: $black-33;
-  span {
-    color: $green-68;
-    margin: 0;
-    border: 0px;
-    padding: 0;
+.sampleServices {
+  h4{
+    margin-bottom: 40px;
+  }
+  .nutriBlending li p {
+    color: $black-33;
+    span {
+      color: $green-68;
+      margin: 0;
+      border: 0px;
+      padding: 0;
+    }
   }
 }
 .pb-40 {
@@ -184,6 +198,9 @@ export default {
 }
 .pb-160 {
   padding-bottom: 160px;
+}
+.pb-70 {
+  padding-bottom: 70px;
 }
 .below-block {
   text-align: center;

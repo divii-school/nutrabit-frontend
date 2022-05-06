@@ -156,7 +156,7 @@
         position: relative;
         font-weight: bold;
         font-size: 45px;
-        line-height: 58px;
+        line-height: 130%;
         font-family: $Pretend-semibold;
         color: $black-33;
         @media screen and (max-width: 1200px) {
@@ -168,7 +168,7 @@
           line-height: 45px;
         }
         @media screen and (max-width: 640px) {
-          font-size: 22px;
+          // font-size: 22px;
           line-height: 28px;
         }
       }
