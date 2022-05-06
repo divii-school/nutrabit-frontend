@@ -137,8 +137,6 @@ export default {
     return {
       faqList: [],
       totalfaqlist: [],
-      // page: 1,
-      // limit: 4,
     };
   },
   created() {

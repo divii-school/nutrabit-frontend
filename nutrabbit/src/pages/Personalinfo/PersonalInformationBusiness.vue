@@ -61,6 +61,7 @@
                     type="text"
                     v-model="contactPerson"
                     :placeholder="$t('personalInfo.placeholder.EntercontactPerson')"
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -234,6 +235,7 @@ export default {
 
   updated(){
      this.globalLocale = this.$i18n.locale;
+     this.personalInfo();
   },
   
   watch: {

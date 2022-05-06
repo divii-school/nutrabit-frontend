@@ -113,7 +113,8 @@ axios.defaults.headers = {
     // apiKey:'baL21di1202DAI01Ed0OnNiMDa2P3p0M',
     apiKey:'coN21di1202VII01Ed0OnNiMDa2P3p0M',
     token: localStorage.getItem('token'),
-    'Accept-Language':'en'
+    'Accept-Language':'en',
+    'Access-Control-Allow-Origin':'*',
 };
 // Token expire redirection
 
