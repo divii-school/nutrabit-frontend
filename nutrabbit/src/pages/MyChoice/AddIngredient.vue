@@ -17,7 +17,7 @@
                 <li>
                   <div class="radio-wrap">
                     <label class="custom-radio">
-                      <input type="checkbox" @click="selectAll" v-model="allSelected" />
+                      <input type="checkbox" :checked="this.storage_box_list_data.length==this.box_id_data.length" @click="selectAll" v-model="allSelected" />
                       <span class="checkmark"></span>
                       {{ $t("storageBox.selectAll") }}
                     </label>
@@ -100,7 +100,6 @@ export default {
       unchecked: true,
       globalLocale: "",
       isSelected: false,
-      isUpdatedUncheked:false
     };
   },
   created() {
@@ -117,6 +116,12 @@ export default {
   updated(){
     //this.allNutidata();
     this.globalLocale = this.$i18n.locale;
+    if(this.storage_box_list_data.length==this.box_id_data.length){
+      this.allSelected=true;
+    }
+    // if(this.storage_box_list_data.length!=this.box_id_data.length){
+    //   this.allSelected=false;
+    // }
   },
 
   watch: {
@@ -230,9 +235,10 @@ export default {
       this.box_id_data.pop(e);
     },
     UpdatedId(e) {
-      if(!this.box_id_data.includes(e)){
-        this.box_id_data.push(e);
-      }  
+      // if(!this.box_id_data.includes(e)){
+      //   this.box_id_data.push(e);
+      // }  
+      this.box_id_data.push(e);
       // if (this.box_id_data.length == 0) {
       //   this.box_id_data.push(e);
       //   console.log(this.box_id_data);
