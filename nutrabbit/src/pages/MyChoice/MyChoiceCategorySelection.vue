@@ -37,7 +37,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :category="item.category_name" :name="item.name" :desc="item.description"
+                <SearchCard :category="item.name" :name="item.material_name" :desc="item.description"
                   :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path" :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id" type2="recommended_data" />
               </li>

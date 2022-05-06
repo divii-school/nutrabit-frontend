@@ -43,7 +43,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard type="recomandedBlending" :category="item.category_name" :name="item.name"
+                <SearchCard type="recomandedBlending" :category="item.name" :name="item.material_name"
                   :desc="item.description" :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path"
                   :image_link="imgBaseUrl" :route_link="'/choice-recommended-blending-detailed-page/' + item.id" />
               </li>
@@ -114,7 +114,7 @@ export default {
       if (event.target.value == 'popularity') {
 
         this.mychoiceService.getRecommendedBlendingPopularity(setSubCategory).then((res) => {
-           console.log(res.data);
+          //  console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
             this.blendingData = res.data.data.blendingData;
