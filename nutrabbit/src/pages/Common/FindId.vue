@@ -12,10 +12,7 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.Email") }}</label
-              >
+              <label for="">{{ $t("common.label.Email") }}</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -37,10 +34,7 @@
               <span class="error-msg">{{ error.email }}</span>
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
-              <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.EmailVerification") }}</label
-              >
+              <label for="">{{ $t("common.label.EmailVerification") }}</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input

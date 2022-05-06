@@ -80,7 +80,7 @@
             <ul class="raw-material-list">
               <li v-for="data in rawMaterialData" :key="data">
                 <div class="list-left">
-                  <div class="img-wrap">
+                  <div class="img-wrap" @click="gotoNextPage(data.id)">
                     <img v-if="data.thumbnail_fst_path" :src="imgBaseUrl + data.thumbnail_fst_path" alt />
                     <img v-else src="../../assets/images/raw_material_place.png" alt />
 
