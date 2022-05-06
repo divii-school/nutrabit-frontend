@@ -272,4 +272,7 @@ export default {
 .pt-20{
   padding-top: 20px !important;
 }
+.btn-green-outline{
+  margin-right: 20px;
+}
 </style>
