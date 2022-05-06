@@ -21,7 +21,7 @@
   </div> -->
   <div class="product-item">
     <div class="radio-wrap">
-      <label class="custom-radio">
+      <label class="custom-radio custom-radio2">
         <input type="radio" name="radio" id="radio" :value="item.id" @click="getPackageId" />
         <span class="checkmark"></span>
       </label>
