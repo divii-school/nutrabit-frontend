@@ -115,12 +115,12 @@
         "Previous": "Previous",
         "Save_as_draft": "Save as Draft",
         "Confirm": "Confirm",
-        "sendVerification": "Send verification code",
-        "resendVerification": "Resend verification code",
+        "sendVerification": "Send code",
+        "resendVerification": "Resend",
         "verify": "Verify",
         "SearchAddress": "Search Address",
         "change": "Change",
-        "checkAvailability" : "Check Availability"
+        "checkAvailability" : "Check"
     },
     "onlyme": {
         "title": {
@@ -494,7 +494,7 @@
             "email": "Email",
             "phonenumber": "Phone Number",
             "address": "Address",
-            "searchaddress": "Address Search",
+            "searchaddress": "Search",
             "find us": "How did you find us?",
             "offline": "Offline",
             "online": "Online",
