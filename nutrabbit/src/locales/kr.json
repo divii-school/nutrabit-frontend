@@ -83,9 +83,9 @@
         },
         "Error": {
             "Resquired": "* 필수항목",
-            "EnterId": "아이디를 입력해주세요",
-            "chcekId": "이메일이 존재하지 않습니다",
-            "EnterPassword": "비밀번호를 입력 해주세요",
+            "EnterId": "[ID를 입력해주세요]",
+            "chcekId": "[ID가 존재하지 않습니다]",
+            "EnterPassword": "[비밀번호를 입력해주세요]",
             "checkPassword": "비밀번호가 일치하지 않습니다",
             "EnterName": "이름을 입력해주세요",
             "useridFormatSignup" : "문자와 숫자만 입력해주세요.",
@@ -395,7 +395,7 @@
         "title": {
             "heading": "nutri 3.3 블랜딩 이란?",
             "sub_heading": "nutri 3.3 블랜딩 소개",
-            "paragraph1": "nutri3.3 블랜딩은 출시만을 앞둔 준비된 제품을 제공합니다.",
+            "paragraph1": "nutri3.3 <span>블랜딩은 출시만을 앞둔 준비된 제품</span>을 제공합니다.<br>제품의 컨셉, 패키지, 브랜딩까지 <span>A to Z 모든 서비스를 간편하게 누릴 수 있는 기회</span>를 잡아보세요.",
             "paragraph2": "제품의 컨셉, 패키지, 브랜딩까지 A to Z 모든 서비스를 간편하게 누릴 수 있는 기회를 잡아보세요.",
             "heading2": "nuitri 3.3 블랜딩 이용방법",
             "blending": "nutri 3.3 블랜딩 제품",
