@@ -18,7 +18,8 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.deskbanner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px
+                                    )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
@@ -26,7 +27,7 @@
 
 
                                 <input type="file" class="select-file p-inputtext p-component"
-                                    :class="`${error.file ? 'p-invalid' : ''}`" v-on:change="onFileChange" />
+                                    :class="`${error.file ? 'p-invalid' : ''}`" v-on:change="onFileChange" id="file" />
 
                                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
                             </div>
@@ -39,7 +40,8 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.mobbanner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
+                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px
+                                    )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!filesName">{{ $t('button.select_file') }}</span>
@@ -138,21 +140,44 @@ export default {
             this.display = false;
         },
         onFileChange(e) {
+
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
+
             this.file = files[0];
+            // validation image
+             var file, img;
+            //end 
+
+
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+
+
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
                 return false;
             } else {
                 this.render1 = false;
                 this.fileName = this.file.name;
+                if ((file = this.fileName)) {
+                    img = new Image();
+                    img.onload = function () {
+                        alert(this.width + " " + this.height);
+                    };
+                    img.onerror = function () {
+                        alert("not a valid file: " + file.type);
+                    };
+                } else {
+
+
                 this.formData.append('desktop_banner', files[0]);
+                }
             }
-           
+
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
+
         },
         onFileChanges(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -172,6 +197,7 @@ export default {
             this.filesExtension = this.filesName.replace(/^.*\./, '');
             console.log(this.filesName);
         },
+
         addBanner() {
             let vcheckData = {
                 title: this.title,
