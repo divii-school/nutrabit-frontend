@@ -11,16 +11,9 @@
             <p class="title text-center sampleBLueAfter nutriBlend sample-diff">
               {{ $t("nutri.title.sub_heading") }}
             </p>
-<<<<<<< Updated upstream
-            <p class="text-center nutriBlend-para">
-              {{ $t("nutri.title.paragraph1") }} <span></span> <br />
-              {{ $t("nutri.title.paragraph2") }} <span></span>
-            </p>
-=======
             <p class="text-center nutriBlend-para" v-html="$t('nutri.title.paragraph1')"></p>
             <!-- {{ $t("nutri.title.paragraph1") }} <span>sadasdas</span> <br /> -->
               <!-- {{ $t("nutri.title.paragraph2") }} <span></span> -->
->>>>>>> Stashed changes
           </div>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
