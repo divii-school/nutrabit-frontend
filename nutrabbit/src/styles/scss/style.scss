@@ -219,7 +219,7 @@ textarea {
 
 .checkmark {
   position: absolute;
-  top: -2px;
+  top: -3px;
   left: 0;
   height: 24px;
   width: 24px;
@@ -1067,4 +1067,11 @@ textarea {
   .my-choice-title-top,.title{
     color: $green-68 !important;
   }
+}
+
+
+.nutriDetail{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px;
 }

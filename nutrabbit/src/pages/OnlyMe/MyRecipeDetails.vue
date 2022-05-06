@@ -56,7 +56,7 @@
               <div class="fGroup">
                 <label>{{ $t("onlyme.title.AdditionalRequest") }}</label>
                 <textarea
-                  placeholder="Please write freely"
+                  placeholder=""
                   v-model="additionalRequest"
                 ></textarea>
               </div>
