@@ -221,7 +221,7 @@
         </ul>
         <ul class="side-menu-language">
           <li
-            v-for="lang in langs"
+            v-for="lang in langs.slice().reverse()"
             :key="lang.code"
             @click="changeLanguage(lang.code)"
           >
