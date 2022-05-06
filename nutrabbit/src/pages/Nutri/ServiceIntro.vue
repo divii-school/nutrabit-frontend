@@ -12,14 +12,14 @@
               {{ $t("nutri.title.sub_heading") }}
             </p>
             <p class="text-center nutriBlend-para">
-              {{ $t("nutri.title.paragraph1") }} <span></span> <br />
+              {{ $t("nutri.title.paragraph1") }} <span>sadasdas</span> <br />
               {{ $t("nutri.title.paragraph2") }} <span></span>
             </p>
           </div>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom">
+          <div class="sampleServices about-recom pb-40">
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
@@ -36,7 +36,7 @@
               <li>
                 <img src="~@/assets/images/blending3.png" />
                 <span>Step.3</span>
-                <p>{{ $t("nutri.title.desc3") }}</p>
+                <p>{{ $t("nutri.title.desc3") }} <span>sasdas</span></p>
               </li>
               <li>
                 <img src="~@/assets/images/blending4.png" />
@@ -45,7 +45,7 @@
               </li>
             </ul>
           </div>
-          <ul>
+          <ul class="below-block pb-160">
             <li>{{ $t("nutri.title.nutri_list") }}</li>
             <li>{{ $t("nutri.title.nutri_list1") }}</li>
           </ul>
@@ -163,8 +163,33 @@ export default {
   font-size: 22px;
   line-height: 140%;
   color: $grey-4C;
-  span{
+  span {
     color: $green-68;
   }
+}
+.sampleServices .nutriBlending li p {
+  color: $black-33;
+  span {
+    color: $green-68;
+    margin: 0;
+    border: 0px;
+    padding: 0;
+  }
+}
+.pb-40 {
+  padding-bottom: 40px;
+}
+.block {
+  display: block !important;
+}
+.pb-160 {
+  padding-bottom: 160px;
+}
+.below-block {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #a4a4a4;
 }
 </style>
