@@ -12,7 +12,7 @@
               {{ $t("nutri.title.sub_heading") }}
             </p>
             <p class="text-center nutriBlend-para">
-              {{ $t("nutri.title.paragraph1") }} <span>sadasdas</span> <br />
+              {{ $t("nutri.title.paragraph1") }} <span></span> <br />
               {{ $t("nutri.title.paragraph2") }} <span></span>
             </p>
           </div>
@@ -36,7 +36,7 @@
               <li>
                 <img src="~@/assets/images/blending3.png" />
                 <span>Step.3</span>
-                <p>{{ $t("nutri.title.desc3") }} <span>sasdas</span></p>
+                <p>{{ $t("nutri.title.desc3") }} <span></span></p>
               </li>
               <li>
                 <img src="~@/assets/images/blending4.png" />
