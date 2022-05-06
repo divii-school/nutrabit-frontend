@@ -57,7 +57,7 @@
   </div>
   <div class="main-page">
     <div class="main-page-body">
-      <div class="devider"><i class="icon-grey-star"></i></div>
+      <div class="devider"><i class="icon-dark-grey-star"></i></div>
       <div class="container-medium">
         <div class="nutri-blending">
           <div class="nutri-choice">

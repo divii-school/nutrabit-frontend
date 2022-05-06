@@ -12,9 +12,9 @@ export default class MyChoiceService {
   }
 
   //recommended blending API Functions
-  async getRecommendedData(limit, page) {
-    return await axios.post(`/blending`, { lang: localStorage.getItem('selectedLang'), limit: limit, page: page }).then((res) => res.data).catch((err) => err);
-  }
+  // async getRecommendedData(limit, page) {
+  //   return await axios.post(`/blending`, { lang: localStorage.getItem('selectedLang'), limit: limit, page: page }).then((res) => res.data).catch((err) => err);
+  // }
 
   //recommended blending API Functions
   async getRecommendedData(sub_cat_id, limit, page) {
@@ -22,13 +22,13 @@ export default class MyChoiceService {
   }
 
   //recommended blending alphabetical API Functions
-  async getRecommendedBlendingAlphabetical() {
-    return await axios.post(`/blending/alphabetic/`, { lang: localStorage.getItem('selectedLang') }).then((res) => res).catch((err) => err);
+  async getRecommendedBlendingAlphabetical(sub_cat_id) {
+    return await axios.post(`/blending/alphabetic/`, { sub_category_id: sub_cat_id, lang: localStorage.getItem('selectedLang') }).then((res) => res).catch((err) => err);
   }
 
   //recommended blending popularity API Functions
-  async getRecommendedBlendingPopularity() {
-    return await axios.post(`/blending/popularity/`, { lang: localStorage.getItem('selectedLang') }).then((res) => res).catch((err) => err);
+  async getRecommendedBlendingPopularity(sub_cat_id) {
+    return await axios.post(`/blending/popularity/`, { sub_category_id: sub_cat_id, lang: localStorage.getItem('selectedLang') }).then((res) => res).catch((err) => err);
   }
 
   //RawMaterial API Functions

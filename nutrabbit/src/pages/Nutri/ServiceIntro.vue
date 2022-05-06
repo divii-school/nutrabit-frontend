@@ -4,7 +4,8 @@
       <div class="main-page-body">
         <div class="container-medium">
           <div class="nutri-choice theme-green with-img servIntro">
-            <h2 class="nutri-choice-heading text-center">
+            <span class="my-choice-title-top">Nutri 3.3</span>
+            <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("nutri.title.heading") }}
             </h2>
             <p class="title text-center">{{ $t("nutri.title.sub_heading") }}</p>
@@ -151,5 +152,8 @@ export default {
 .nutri-product-item .nutri-pimg,
 .nutri-product-item p {
   cursor: pointer;
+}
+.mt-0{
+  margin-top: 0 !important;
 }
 </style>
