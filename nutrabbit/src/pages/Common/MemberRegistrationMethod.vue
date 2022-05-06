@@ -29,6 +29,9 @@
                 <button class="btn-primary with-icon green-btn">
                   <i class="icon-naver"></i> {{$t('common.QuickLinks.NaverLogin')}}
                 </button>
+                <button class="btn-primary with-icon black-btn appale-login">
+                  <i class="icon-appale"></i> {{$t('common.QuickLinks.NaverLogin')}}
+                </button>
               </li>
             </ul>
           </div>

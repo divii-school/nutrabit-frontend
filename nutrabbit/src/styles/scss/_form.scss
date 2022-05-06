@@ -222,7 +222,8 @@
         margin-top: 40px;
     }
     .individuals-form {
-        // margin-top: 40px;
+        // do not change this, if you need to change then please add a class.
+        margin-top: 40px;
     }
 
     // .custom-check{
@@ -255,6 +256,11 @@
                     }
                 }
             }
+        }
+    }
+    &.change-password{
+        @media screen and (max-width: 1200px) {
+           margin-top: 40px !important;
         }
     }
 }
