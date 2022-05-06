@@ -30,7 +30,7 @@
                   <i class="icon-naver"></i> {{$t('common.QuickLinks.NaverLogin')}}
                 </button>
                 <button class="btn-primary with-icon black-btn appale-login">
-                  <i class="icon-appale"></i> {{$t('common.QuickLinks.NaverLogin')}}
+                  <i class="icon-appale"></i> 애플로 시작하기
                 </button>
               </li>
             </ul>
