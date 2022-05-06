@@ -69,7 +69,7 @@
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item with-input">
+                <div class="product-item with-input auto-width">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
@@ -80,7 +80,7 @@
                     <h2>{{ $t('final.check1') }}</h2>
                   </div>
                 </div>
-                <div class="product-item with-input">
+                <div class="product-item with-input auto-width">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="sample">
                       <input type="checkbox" id="sample" value="1" v-model="servicetype" />
