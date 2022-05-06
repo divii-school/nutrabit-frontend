@@ -65,11 +65,11 @@
               <div class="fGroup mb0">
                 <label class="mb0">
                   {{ $t('final.Select_Service') }}
-                  <span> {{ $t('final.Select_Service_desc') }}</span>
+                  <span class="mb0"> {{ $t('final.Select_Service_desc') }}</span>
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item with-input auto-width">
+                <div class="product-item with-input auto-width pt-20">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
@@ -267,3 +267,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.pt-20{
+  padding-top: 20px !important;
+}
+</style>
