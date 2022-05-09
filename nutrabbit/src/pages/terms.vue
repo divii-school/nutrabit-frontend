@@ -404,113 +404,84 @@
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 21 조 (회원의 의무)</h3>
+                        <h3>Article 21 (Member's obligations)</h3>
                         <ol>
                             <li>
-                                회원은 자사의홈페이지 서비스 이용시 다음 행위를 하여서는 안
-                                됩니다.
+                                The member must not do the following when using the company’s homepage service.
                                 <ul>
                                     <li>
-                                        개인정보관련:회원가입신청또는정보변경시허위내용의등록및타인의
-                                        정보 도용
+                                        Personal information related: Registration of false content and plagiarism of other people's information when applying for membership registration or changing information 
                                     </li>
                                     <li>
-                                        지적재산권관련:“몰”에게시된정보의무단변경,삭제등훼손행위및
-                                        제3자의 저작권 등 지적재산권에 대한 침해
+                                        Intellectual property rights: Damages such as unauthorized changes and deletions of information posted on "Mall" and infringement of intellectual property rights such as copyrights of third parties
                                     </li>
                                     <li>
-                                        기타 부적절한 행위 : “몰”이 정한 정보 이외의 정보(컴퓨터
-                                        프로그램 등)를 송신 또는 게시하는 행위, 제 3 자의 명예를
-                                        손상시키는 행위, 업무를 방해하는 행위, 외설적∙폭력적
-                                        이미지∙소리∙글 등 공서양속에 반하는 정보를 홈페이지에 공개
-                                        또는 게시
+                                        Other inappropriate acts: Sending or posting information other than the information specified by the "Mall" (computer programs, etc.), damaging the honor of a third party, obstructing business, and posting obscene or violent images, sounds and letters on the homepage that are offensive to public order and morals
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                “몰” 은 회원이 제 1 항의 의무를 위반하는 행위에 대하여 게시물
-                                삭제 등 필요한 조치를 취할 수 있습니다.
+                                 “Mall” can take necessary measures such as deleting notices for acts in which members violate the obligation of paragraph 1.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 22 조 (웹사이트 연결 등에 관한 책임)</h3>
+                        <h3>Article 22 (Responsibility for connecting to websites, etc.)</h3>
                         <p>
-                            nutri3.3 및 제휴사의 다른 웹사이트가 각종 링크 등의 방식으로
-                            연결된 경우, nutri3.3 및 제휴사의 회원이 링크로 연결된 웹사이트와
-                            독자적으로 행하는 일체의 거래에 대하여 책임이 없습니다.
+                           If nutri3.3 and other affiliated company websites are linked by various links, the company are not responsible for any transactions that nutri3.3 and affiliated company members make independently with the linked websites.
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 23 조 (지적재산권 관련)</h3>
+                        <h3>Article 23 (Intellectual property rights related) </h3>
                         <ol>
                             <li>
-                                “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은 ”몰“에
-                                귀속합니다.
+                                The copyright and other intellectual property rights to the works created by "Mall" belong to "Mall".
                             </li>
                             <li>
-                                회원은 “몰” 를 이용하여 얻은 정보를 “몰” 의 사전 승낙 없이
-                                무단으로 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여
-                                영리목적으로 이용하거나 제 3 자로 하여금 이용하게 할 수
-                                없습니다.
+                                The member cannot copy, transmit, publish, distribute or broadcast the information obtained by using the "Mall" for commercial purposes without the prior consent of the "Mall", or allow a third party to use it. 
                             </li>
                             <li>
-                                회원이 홈페이지에 게시한 정보가 타인의 지적재산권을 침해하는
-                                경우, 그로 인해 발생하는 일체의 민∙형사상의 책임은 모두 회원이
-                                부담하여야 합니다.
+                                If the information posted on the homepage by the member infringes the intellectual property rights of another person, the member must bear all civil and criminal liability arising from it. 
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 24 조 (홈페이지 서비스 이용 관련 분쟁 해결)</h3>
+                        <h3>Article 24 (Dispute resolution regarding the use of homepage services) </h3>
                         <p>
-                            회원이 “몰” 의 서비스 이용과 관련하여 불만이 있어 해당 홈페이지
-                            운영주체에게 연락한 경우, 몰은 회원의 불만사항을 신속하고 성실히
-                            처리합니다.
+                            If the member is dissatisfied with the use of the "Mall" service and contacts the operator of the homepage, the Mall shall handle the member's dissatisfaction promptly and in good faith.
                         </p>
                     </div>
-                    <h2>제 6 절 기타</h2>
+                    <h2>Section 6 Others</h2>
                     <div class="row-type type-1">
-                        <h3>제 25 조 (서비스 종료)</h3>
+                        <h3>Article 25 (End of service) </h3>
                         <p>
-                            몰 또는 제휴사가 영업부문의 폐지∙통합, 영업양도, 합병∙분할,
-                            경영정책의 변경 등 부득이한 사유로 이 약관에 의한 서비스를
-                            폐쇄하는 경우, 늦어도 폐쇄 예정일부터 늦어도 15 일 전에 회원에게
-                            공지합니다.
+                            If the Mall or affiliated company closes the service under this contract due to unavoidable reasons such as abolition, integration of sales department, business transfer, merger or split, change of management policy, etc., it shall be announced at least 15 days prior to the estimated closing date. 
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 26 조 (약관 위반시 책임)</h3>
+                        <h3>Article 26 (Responsibility in case of contract violation)</h3>
                         <p>
-                            “몰” 의 회원은 상호 신의 성실에 입각하여 이 약관의 내용을
-                            이행하며, 이 약관의 위반으로 발생된 결과는 그 책임 있는 당사자에게
-                            귀속됩니다.
+                           The member of the "Mall" shall implement the contents of this contract based on the integrity of mutual beliefs, and the consequences of this contract breach shall belong to the responsible party.
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 27 조 (분쟁해결)</h3>
+                        <h3>Article 27 (Dispute resolution)</h3>
                         <ol>
                             <li>
-                                이 약관에서 정하지 않은 사항과 이 약관의 해석에 관하여는
-                                대한민국 관련 법령 및 상관례에 따라 처리합니다.
+                                Matters not stipulated in this contract and the interpretation of this contract shall be processed in accordance with relevant laws and business practices of the Republic of Korea.
                             </li>
                             <li>
-                                이 약관에 의한 서비스 이용과 관련한 제반 분쟁 및 소송은 회원의
-                                주소지를 관할하는 법원 또는 서울서부지방법원을 제 1 심
-                                관할법원으로 합니다.
+                                For various disputes and proceedings regarding the use of services under this contract, the court having jurisdiction over the member's address or the Seoul Western District Court shall be the court of first instance.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 3 장(nutri3.3 사이트 서비스)</h3>
+                        <h3>Chapter 3 (nutri3.3 site service)</h3>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 1 조 (목적)</h3>
+                        <h3>Article 1 (Purpose)</h3>
                         <p>
-                            이 약관은 몰에서 제공하는 관련 서비스(이하 "서비스"라 함)를
-                            이용함에 있어 고객의 권리, 의무 및 책임사항을 규정함을 목적으로
-                            합니다. PC 통신, 모바일 등 기타 전자상거래에 대해서도 그 목적과
-                            성질에 반하지 않는 한 이 약관이 적용됩니다.
+                            The purpose of this contract is to specify the rights, obligations, and responsibilities of the customer when using the related services provided by the Mall (hereinafter referred to as "services"). This contract also applies to other electronic commerce such as personal computer communication and mobile, as long as it does not violate its purpose and nature.
                         </p>
                     </div>
                     <div class="row-type type-1">
