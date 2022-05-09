@@ -9,7 +9,7 @@
       </transition>
     </router-view>
     <!-- Kakao Chat -->
-    <KakaoChat />
+    <!-- <KakaoChat /> -->
     <!-- Kakao Chat -->
     <!-- Footer -->
     <Footer />
