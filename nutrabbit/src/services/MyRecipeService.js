@@ -45,7 +45,7 @@ export default class MyRecipeService{
 // Ssubmitting application option data for single product reff : MyRecipeDetailsEdit
 
     async submitRecipeApplication(app_id){
-        return await axios.post(`application/submit`, { application_id : app_id }).then((res) => res.data).catch((err) => err);
+        return await axios.post(`application/submit`, { application_id : app_id, lang : localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
     }
 
 // Delete data for a specific product reff : MyRecipe, MyRecipeDetails

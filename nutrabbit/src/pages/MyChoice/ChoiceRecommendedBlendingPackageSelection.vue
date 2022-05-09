@@ -31,6 +31,7 @@
             </li>
           </ul>
         </div>
+        
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product ">
             <div class="heading-wrap">
@@ -54,6 +55,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingPackageData" :key="index">

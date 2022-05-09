@@ -42,7 +42,7 @@
               </li>
               <li>
                 <img src="~@/assets/images/blending4.png" />
-                <span>Step.3</span>
+                <span>Step.4</span>
                 <p>{{ $t("nutri.title.desc4") }}</p>
               </li>
             </ul>
