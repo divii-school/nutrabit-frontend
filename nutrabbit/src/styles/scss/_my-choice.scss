@@ -598,6 +598,9 @@
             .btn-wrap {
               @include flex-justify-between;
               margin-top: 30px;
+              &.btn-wrap2{
+                margin-top: 40px;
+              }
               @media screen and (max-width: 768px) {
                 gap: 20px;
               }

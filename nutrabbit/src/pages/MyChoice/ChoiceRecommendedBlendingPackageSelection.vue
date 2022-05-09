@@ -124,7 +124,7 @@
                 </div>
               </div>
 
-              <div class="btn-wrap">
+              <div class="btn-wrap btn-wrap2">
                 <button
                   @click="
                     this.$router.push(

@@ -118,7 +118,7 @@
         "sendVerification": "Send code",
         "resendVerification": "Resend",
         "verify": "Verify",
-        "SearchAddress": "Search Address",
+        "SearchAddress": "Search",
         "change": "Change",
         "checkAvailability" : "Check"
     },
@@ -403,7 +403,7 @@
             "nutri_list1": "*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.",
             "desc1": "Take a look at our branded products",
             "desc2": "Choose the product you want to launch",
-            "desc3": "Click the Get an estimate button at the bottom of the detail page on selected product",
+            "desc3": "Click the <span>Get an estimate</span> button at the bottom of the detail page on selected product",
             "desc4": "We will contact you after checking"
         },
         "nutriDetails": {
