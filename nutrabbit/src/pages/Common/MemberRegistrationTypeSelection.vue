@@ -3,7 +3,7 @@
     <div class="container-small">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap">
+          <div class="login-heading-wrap type-2">
             <h1 class="login-heading">{{$t('common.title.Membershiptype')}}</h1>
             <p class="membership-desc">{{$t('common.SubTitle.MemberType')}}</p>
           </div>

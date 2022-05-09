@@ -5,6 +5,10 @@
         overflow: hidden;
         // margin: 20px 0 40px;
         margin: 30px 0 40px;
+
+        @media screen and (max-width: 767px){
+            margin: 20px 0 40px;
+        }
         table{
             width: 100%;
             thead{
@@ -28,6 +32,7 @@
                 @media screen and (max-width: 768px) {
                     font-size: 14px;
                     line-height: 14px;
+                    padding: 18px;
                 }
             }
         }
@@ -73,6 +78,7 @@
                 font-size: 16px;
                 line-height: 24px;
                 margin-top: 10px;
+                margin-bottom: 20px;
             }
         }
         input,textarea{
@@ -88,7 +94,7 @@
             min-height: 193px;
             @media screen and (max-width: 768px) {
                 padding: 20px;
-                min-height: auto;
+                min-height: 173px;
             }
         }
     }

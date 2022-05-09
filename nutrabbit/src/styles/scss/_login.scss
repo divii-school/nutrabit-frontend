@@ -181,6 +181,9 @@
       .login-heading-wrap {
         padding-bottom: 20px;
         border-bottom: 1px solid $grey-CF;
+        &.type-2{
+          border-bottom: 1px solid $grey-E0;
+        }
         .login-heading {
           text-align: left;
         }
