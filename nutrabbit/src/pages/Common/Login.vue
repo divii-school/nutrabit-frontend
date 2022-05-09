@@ -337,12 +337,12 @@ export default {
     },
 
     naverLoginHandler(res) {
-      console.log('naverLoginHandler', res);
+      // console.log('naverLoginHandler', res);
       const self = this;
       if (res) {
         let resData = JSON.parse(res);
-        alert(resData);
-        console.log("--naverLoginHandler--", resData);
+        // alert(resData);
+        // console.log("--naverLoginHandler--", resData);
         self.socialRegistration(
           resData.userName,
           resData.userName,
@@ -364,13 +364,13 @@ export default {
     },
 
     kakaoLoginHandler(res) {
-      console.log('kakaoLoginHandler', res);
+      // console.log('kakaoLoginHandler', res);
       const self = this;
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
-        alert(resData);
-        console.log("--kakaoLoginHandler--", resData);
+        // alert(resData);
+        // console.log("--kakaoLoginHandler--", resData);
         self.socialRegistration(
           resData.userName,
           resData.userName,
@@ -406,7 +406,7 @@ export default {
       });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = 'http://localhost:8082/callback/naverlogin';
+      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
