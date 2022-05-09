@@ -26,7 +26,7 @@
           <div class="content-bd">
             <div class="tab-content">
               <div v-show="currentTab === 0">
-                <div class="choice-selection-item-wrap choice-wrap-border">
+                <!-- <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
                       <div class="heading">
@@ -84,7 +84,7 @@
                       <span>{{ $t("footer.no_result") }}</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
                     <div class="heading-wrap">
@@ -440,7 +440,7 @@ export default {
       sortOrder: "",
       appMychoiceTotal: 0,
       appRecommendedTotal: 0,
-      appNutriTotal: 0,
+      // appNutriTotal: 0,
 
       quoteMychoiceTotal: 0,
       quoteRecommendedTotal: 0,
@@ -448,7 +448,7 @@ export default {
 
       updateAppMychoiceList: [],
       updateAppRecom_List: [],
-      updateAppNutri_List: [],
+      // updateAppNutri_List: [],
 
       updateQuoteMychoiceList: [],
       updateQuoteRecom_List: [],
@@ -489,18 +489,18 @@ export default {
         this.QuoteRecommended();
         this.QuoteMyChoice();
 
-        this.appNutri();
+        // this.appNutri();
         this.appRecommended();
         this.appMychoice();
       }
     },
   },
   methods: {
-    myCallback1(ClickPage) {
-      const startIndex = (ClickPage - 1) * this.perPage;
-      const endIndex = startIndex + this.perPage;
-      this.updateAppNutri_List = this.appNutriList.slice(startIndex, endIndex);
-    },
+    // myCallback1(ClickPage) {
+    //   const startIndex = (ClickPage - 1) * this.perPage;
+    //   const endIndex = startIndex + this.perPage;
+    //   this.updateAppNutri_List = this.appNutriList.slice(startIndex, endIndex);
+    // },
 
     myCallback2(ClickPage) {
       const startIndex = (ClickPage - 1) * this.perPage;
@@ -547,30 +547,30 @@ export default {
       );
     },
 
-    appNutri() {
-      this.myApplicationDetails
-        .appNutri(
-          this.userId,
-          this.application_type,
-          this.page,
-          this.limit,
-          this.sortBy,
-          this.sortOrder,
-          this.lang
-        )
-        .then((res) => {
-          if (res.status == 200) {
-            // console.log("res", res);
-            this.appNutriList = res.data.data.applicationData;
-            this.appNutriTotal = res.data.data.total;
-            // console.log("appNutriTotal", this.appNutriTotal);
-            this.myCallback1(1);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+    // appNutri() {
+    //   this.myApplicationDetails
+    //     .appNutri(
+    //       this.userId,
+    //       this.application_type,
+    //       this.page,
+    //       this.limit,
+    //       this.sortBy,
+    //       this.sortOrder,
+    //       this.lang
+    //     )
+    //     .then((res) => {
+    //       if (res.status == 200) {
+    //         // console.log("res", res);
+    //         this.appNutriList = res.data.data.applicationData;
+    //         this.appNutriTotal = res.data.data.total;
+    //         // console.log("appNutriTotal", this.appNutriTotal);
+    //         this.myCallback1(1);
+    //       }
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // },
 
     appRecommended() {
       this.myApplicationDetails
@@ -710,7 +710,7 @@ export default {
     this.QuoteRecommended();
     this.QuoteMyChoice();
 
-    this.appNutri();
+    // this.appNutri();
     this.appRecommended();
     this.appMychoice();
   },

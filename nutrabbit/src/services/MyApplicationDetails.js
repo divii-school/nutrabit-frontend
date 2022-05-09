@@ -8,18 +8,18 @@ export default class MyApplicationDetails {
 
   // API Functions
 
-    async appNutri(userId, application_type, page, limit, sortBy, sortOrder) {
-      return await axios.post(`/application/sample_application`,
-        {
-          userId: userId,
-          application_type:application_type,
-          page:page,
-          limit: limit,
-          sortBy: sortBy,
-          sortOrder:sortOrder,
-          lang: localStorage.getItem('selectedLang'),
-        }).then((res) => res).catch((err) => err);
-    }
+    // async appNutri(userId, application_type, page, limit, sortBy, sortOrder) {
+    //   return await axios.post(`/application/sample_application`,
+    //     {
+    //       userId: userId,
+    //       application_type:application_type,
+    //       page:page,
+    //       limit: limit,
+    //       sortBy: sortBy,
+    //       sortOrder:sortOrder,
+    //       lang: localStorage.getItem('selectedLang'),
+    //     }).then((res) => res).catch((err) => err);
+    // }
 
     async appRecommended(userId, application_type2, page, limit, sortBy, sortOrder) {
       return await axios.post(`/application/sample_application`,
