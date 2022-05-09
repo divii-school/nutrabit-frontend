@@ -118,7 +118,7 @@
         "sendVerification": "Send code",
         "resendVerification": "Resend",
         "verify": "Verify",
-        "SearchAddress": "Search Address",
+        "SearchAddress": "Search",
         "change": "Change",
         "checkAvailability" : "Check"
     },
