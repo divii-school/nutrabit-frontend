@@ -169,7 +169,7 @@ export default {
                             self.fileName = files[0].name;
                             console.log(self.fileName)
                         } else {
-                            alert("add Bigger Image Its to small ")
+                            alert("작은 이미지에 더 큰 이미지를 추가하십시오")
                         }
                     };
 
@@ -214,7 +214,7 @@ export default {
                             self.filesName = files[0].name;
                             console.log(self.filesName)
                         } else {
-                            alert("add Bigger Image Its to small ")
+                            alert("작은 이미지에 더 큰 이미지를 추가하십시오")
                         }
                     };
 
