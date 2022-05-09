@@ -133,7 +133,7 @@ export default {
       thumb_image: "",
       detail_image_path: '',
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
-      globalLocale : this.common.state.GlobalLocale,
+      globalLocale : "",
     };
   },
   created() {
