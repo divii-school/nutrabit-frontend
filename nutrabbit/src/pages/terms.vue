@@ -11,535 +11,395 @@
             <div class="row-type type-1">
                         <h3>Article 1 (Purpose) </h3>
                         <p class="pad-bottom-15">
-                            제1조(목적) 이 약관은 주식회사 뉴트래빗 (전자상거래 사업자)가
-                            운영하는 nutri3.3(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
-                            서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의
-                            권리.의무 및 책임사항을 규정함을 목적으로 합니다.
+                            Article 1 (Purpose) The purpose of this contract is to define the rights, obligations and 
+                            responsibilities of the cyber Mall and users in the use of internet related services 
+                            (hereinafter referred to as “service”) provided by nutri3.3 
+                            (hereinafter referred to as "Mall") operated by NUTRABBIT Co., Ltd. 
+                            (electronic commerce business operator).
                         </p>
                         <p>
-                            ※「PC 통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에
-                            반하지 않는 한 이 약관을 준용합니다.」
+                            ※ This contract shall be applied mutatis mutandis to electronic commerce using PC 
+                            communication, wireless communication, etc., as long as it does not violate its nature.
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 2 조 (용어의 정의)</h3>
-                        <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+                        <h3>Article 2 (Definition of terms) </h3>
+                        <p>The definitions of terms used in this contract are as follows:</p>
+                        <p>Member: It means a person who has concluded a usage contract with the company or is granted a user ID in order to receive the services.</p>
                         <ol type="1">
                             <li>
-                                회원서비스를 제공 받기 위하여 회사와 이용계약을 체결하거나
-                                이용자 아이디(ID)를 부여 받은 자를 말합니다.
+                                ID: It means the e-mail address entered by the member for identifying the member and using the service and approved by the company.
                             </li>
                             <li>
-                                아이디(ID)회원의 식별과 서비스를 이용을 위하여 기입한 회원이
-                                입력하고 회사가 승인한 이메일 주소를 말합니다.
+                                Password: It means a combination of letters and numbers specified by the member to confirm that the member matches the assigned ID and protect the member's confidentiality.
                             </li>
                             <li>
-                                비밀번호 회원이 부여 받은아이디(ID)와 일치된 회원임을 확인하고
-                                회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의
-                                조합을 말합니다.
+                                Cancellation: It means canceling the usage contract after the company or member opens the service.
                             </li>
                             <li>
-                                해지 회사 또는 회원이 서비스를 개통 후 이용계약을 해약 하는 것을
-                                말합니다.
+                                nutri3.3: It means an internet site operated by the company that allows to check various information and usage details related to the services provided by the company to its members.
                             </li>
                             <li>
-                                nutri3.3 회사가 운영하는 인터넷 사이트로서, 회사가 회원에게
-                                제공하는 서비스와 관련된 다양한 정보와 사용 내역 등을 확인할 수
-                                있는 사이트를 말합니다.
+                                Mall: It means a virtual business office set up so that the company can trade goods using information and communication equipment such as computers in order to provide goods or services (hereinafter referred to as "goods, etc.") to customers and is also used as the meaning of the homepage of the business operator or company that operates the Mall.
                             </li>
-                            <li>
-                                몰 회사가 재화 또는 용역(이하 "재화등")을 고객에게 제공하기
-                                위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수
-                                있도록 설정한 가상의 영업장을 말하며, 아울러 몰을 운영하는
-                                사업자 또는 회사의 홈페이지의 의미로도 사용합니다.
-                            </li>
-                            <li>
-                                고객 몰에 접속하여 이 약관에 따라 회사가 제공하는 서비스를 받는
-                                회원 및 비회원을 말합니다.
-                            </li>
-                            <li>
-                                샘플 은당사와의 제품개발을 목적으로 재화를 테스트를 해볼 수
-                                있도록 제공하는 것을 말한다.
+                            <li>Customer: It means a member and non-member who connects to the Mall and receive services provided by the company based on this contract.
                             </li>
                         </ol>
+                        <p>Sample: It means something that are provided so that goods can be tested for the purpose of product development with the company.</p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 3 조 (약관의 변경)</h3>
+                        <h3>Article 3 (Amendment of contract)</h3>
                         <p>
-                            1. 이 약관은 회사의 경영환경의 변화 또는 영업정책에 따라 변경이
-                            가능하며, 이 약관을 변경하고자 할 경우, 회사는 변경된 약관을
-                            적용하고자 하는 날(이하 "효력 발생일")로부터 7 일(회원에게 불리한
-                            변경의 경우 30 일) 이전에 이 약관이 변경된다는 사실과 변경된 내용
-                            등을 아래의 규정된 방법 중 1 가지 이상의 방법으로 회원에게
-                            고지합니다.
+                            1. This contract can be amended based on changes in the business environment of the company or the business policy, and if it is intended to amend this contract, the company shall notify members abut facts that this 
+                            contract will be amended and the contents of the amendment before 7 days (30 days in the case of an amendment that is disadvantageous to the member) from the date on which the company intends to apply the amended contract (hereinafter referred to as "effective date") in one or more of the following methods.  
                         </p>
                         <ul>
                             <li>
-                                회사 및 제휴사 홈페이지 등을 통한
-                                게시(https://www.nutri33.co.kr/)
+                                Posting on the websites of companies and affiliated companies(https://www.nutri33.co.kr/)
                             </li>
-                            <li>전자우편(e-Mail) 또는 전화연락을 통한 통지</li>
-                            <li>휴대 전화 메시지 (SMS, LMS, MMS, mDM, 알림톡 등)</li>
+                            <li>Notification by email or phone</li>
+                            <li>Mobile phone messages (SMS, LMS, MMS, mDM, notification talk, etc.)</li>
                         </ul>
                         <p>
-                            2. 이 약관이 변경된다는 사실과 변경된 내용 등을 회원에게
-                            전자우편(E-MAIL), 전화(휴대전화 포함), 모사전송, 주소 등을
-                            이용하여 통지할 경우에는 가장 최근에 수정된 정보에 따라
-                            통지합니다.
+                            2. If the fact of amendment of the contract and the contents of amendment are notified to members by email, telephone (including mobile phone), 
+                            facsimile, address, etc., it shall be notified based on the latest information.
                         </p>
                         <p>
-                            3. 본 조의 규정에 의한 변경된 약관(이하 "변경약관")은 원칙적으로
-                            그 효력 발생일로부터 유효합니다.
+                            3.In principle, the contract amended pursuant to the provisions of this Article (hereinafter referred to as “amended contract”) shall be effective from the effective date.
                         </p>
                         <p>
-                            4. 변경약관에 이의가 있는 회원은 회원 탈퇴 또는 이의 제기를 할 수
-                            있으며, 제 1 항의 고지가 있은 후 30 일 이내에 회원 탈퇴 또는 이의
-                            제기하지 않은 회원은 변경약관에 동의한 것으로 간주됩니다.
+                            4. A member who has an objection to the amended contract can withdraw or file an objection, and a member who does not withdraw or file an objection within 30 days after the notification in paragraph 1 is a member who does not withdraw or object to the amended contract, it shall be considered to be agreed with.
                         </p>
                         <p>
-                            5. 본 조의 고지방법은, 이 약관에서 달리 규정하지 않는 한, 이
-                            약관의 각 조항에서 규정하는 통보 또는 통지의 경우에 이를
-                            준용합니다.
+                            5. Unless otherwise specified in this contract, the notification method in this Article shall apply mutatis mutandis to the notification or announcement specified in each clause of this contract.
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 4 조 (약관 이외의 준칙)</h3>
+                        <h3>Article 4 (Rules other than the contract)</h3>
                         <p>
-                            이 약관에 언급되지 않은 사항이 관련법령에 규정되어 있는 경우 그
-                            규정에 따라 적용될 수 있습니다.
+                            If any matter not mentioned in this contract is provided in the relevant laws and regulations, 
+                            it may be applied in accordance with that provision.
                         </p>
                     </div>
-                    <h2>제 2 절 회원</h2>
+                    <h2>Section 2 Members</h2>
                     <div class="row-type type-1">
-                        <h3>제 5 조 (회원가입)</h3>
+                        <h3>Article 5 (Membership)</h3>
                         <ol>
                             <li>
-                                고객은 약관 내용에 대해 확인하고, 회사가 정한 가입 양식에 따라
-                                회원정보를 기입한 후 약관내용에 대하여 동의여부를 체크하는
-                                방법으로 동의할 수 있습니다. 고객이 동의 부분에 체크하면 이
-                                약관에 대해 동의한 것으로 봅니다.
+                                The customer can agree by checking the contents of the contract, filling in the member information according to the registration form set by the company, and then checking the consent or disapproval of the contents of the contract. 
+                                If the customer checks the consent part, it is considered that the customer has agreed to this contract.
                             </li>
                             <li>
-                                회사는 제 1 항과 같이 회원으로 가입할 것을 신청한 고객 중 다음
-                                각호에 해당하지 않는 한 회원으로 등록합니다.
+                                The company shall register the customer as a member among the those who applied for registration as a member as described in paragraph 1 unless they fall under any of the following items.
                                 <ul>
                                     <li>
-                                        가입신청자가 이전에 이 약관 의하여 회원자격을 상실한 적이
-                                        있는 경우
+                                        If the applicant has previously lost membership by this contract
                                     </li>
-                                    <li>등록 내용에 허위, 기재누락, 오기가 있는 경우</li>
-                                    <li>다른 사람의 명의를 사용하여 신청한 경우</li>
+                                    <li>If there are falsehoods, omissions, or typographical errors in the registered information</li>
+                                    <li>If applying in the name of another person</li>
                                     <li>
-                                        사회의 안녕질서 또는 미풍양속을 저해할 목적으로 신청한 경우
+                                        If applying for the purpose of disturbing social order or public order and morals
                                     </li>
-                                    <li>기타 회사 소정의 이용신청요건을 충족하지 못하는 경우</li>
+                                    <li>If the prescribed usage application requirements are not met </li>
                                 </ul>
                             </li>
                             <li>
-                                회사는 다음에 해당하는 경우에 그 신청에 대한 승낙 제한사유가
-                                해소될 때까지 승낙을 유보할 수 있습니다.
+                                In the following cases, the company may withhold consent until the reason for restriction of acceptance of the application is resolved.
                                 <ul>
-                                    <li>서비스관련설비에여유가없는경우</li>
-                                    <li>기술상 지장이 있는 경우</li>
-                                    <li>기타 회사가 필요하다고 인정되는 경우</li>
+                                    <li>If there is not enough equipment for the service</li>
+                                    <li>If there is a technical problem</li>
+                                    <li>If there are matters deemed necessary</li>
                                 </ul>
                             </li>
                             <li>
-                                회원가입계약의 성립시기는 회사의 승낙이 회원에게 도달한 시점으로
-                                합니다.
+                                The time when the membership registration contract is established is when the consent of the company reaches the member.
                             </li>
                             <li>
-                                가입신청 양식에 기재하는 모든 회원정보는 모두 실제 데이터인
-                                것으로 간주됩니다. 실명이나 실제 정보를 입력하지 않은 고객은
-                                법적인 보호를 받을 수 없으며 서비스의 제한을 받을 수 있습니다.
+                                All member information entered in the registration application form is considered to be actual data. Customers who do not enter their real name or actual information shall not be legally protected and may be subject to service restrictions.
                             </li>
                             <li>
-                                회원은 회원가입시 등록사항에 변동이 있는 경우, 즉시 전자우편
-                                기타 방법으로 몰에 대하여 그 변경사항을 알려야 합니다. 이를
-                                회사에 알리지 않음으로 인하여 발생하는 일체의 불이익에 대하여
-                                회사는 책임지지 않습니다.
+                                If there are any changes in the registration items at the time of membership registration, the member shall immediately notify the Mall of the changes by e-mail or other means. The company is not liable for any disadvantages caused by not notifying the company of this.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 6 조 (회원 탈퇴 및 자격 상실 등)</h3>
+                        <h3>Article 6 (Membership withdrawal and disqualification, etc.)</h3>
                         <ol>
                             <li>
-                                회원은 회사에 약관을 해지하고 언제든지 탈퇴를 요청할 수 있으며,
-                                요청을 받은 회사는 즉시 회원탈퇴 처리를 합니다
+                                Members can cancel the contract with the company and request withdrawal at any time, and the company shall immediately process the membership withdrawal upon the request.
                             </li>
                             <li>
-                                회원이 다음 각호의 사유에 해당하는 경우, 회사는 회원자격을 제한
-                                및 정지, 상실시킬 수 있습니다.
+                                If a member falls under any of the following reasons, the company may limit, suspend or lose membership.
                                 <ul>
-                                    <li>가입 신청 시 허위 내용을 등록 한 때</li>
+                                    <li>If the member registers false information when applying for registration</li>
                                     <li>
-                                        몰을 이용하여 구입한 재화 등의 대금, 기타 몰이용에 관련하여
-                                        회원이 부담하는 채무를 기일에 지급하지 않는 때
+                                        If the price of goods purchased using the Mall and other debts borne by the member regarding the use of the Mall are not paid on the due date
                                     </li>
                                     <li>
-                                        다른 사람의 서비스 이용을 방해하거나 그 정보를 도용하는 등
-                                        전자상거래 질서를 위협하는 때
+                                        If threatening the order of electronic commerce, such as obstructing the use of other people's services or stealing that information
                                     </li>
-                                    <li>서비스 운영을 고의로 방해한 경우</li>
+                                    <li>If the member intentionally interferes with the operation of the service</li>
                                     <li>
-                                        정보통신설비의 오작동이나 정보 등의 파괴를 유발시키는 컴퓨터
-                                        바이러스프로그램 등을 유포하는 경우
+                                        If disseminating a computer virus program that induces malfunction of information and communication equipment or destruction of information, etc.
                                     </li>
                                     <li>
-                                        정보통신설비의 오작동, 오류 현상 등을 이용하여 비정상적인
-                                        방법으로 서비스를이용하는 경우
+                                        If the service is used in an abnormal way by using malfunction of information and communication equipment, error phenomenon, etc.
                                     </li>
                                     <li>
-                                        타인의 개인정보, 이용자 아이디(ID) 및 비밀번호를 부정하게
-                                        사용하는 경우
+                                        If the personal information, user ID and password of another person are used illegally
                                     </li>
                                     <li>
-                                        회사의 서비스 정보를 이용하여 얻은 정보를 회사의 사전 승낙
-                                        없이 복제 또는 유통시키거나 상업적으로 이용하는 경우
+                                       If copying or distributing information obtained using company service information without the prior consent of the company, or for commercial use
                                     </li>
                                     <li>
-                                        서비스를 이용하여 법령 또는 이 약관이 금지하거나 공서양속에
-                                        반하는 행위를 하는 때
+                                        If using the service, the law or these contracts prohibit or act against public order and morals
                                     </li>
                                     <li>
-                                        타인의 명예를 손상시키거나 불이익을 주는 행위를 한 경우
+                                        If acting to hurt the honor of another person or give a disadvantage
                                     </li>
                                     <li>
-                                        서비스의 안정적 운영을 방해할 목적으로 다량의 정보를
-                                        전송하거나 광고성 정보를 전송한 경우
+                                        If a large amount of information is sent or advertising information is sent for the purpose of interfering with the stable operation of the service
                                     </li>
                                     <li>
-                                        회사, 다른 회원 또는 타인의 지적재산권을 침해하는 경우
+                                       If infringement of the intellectual property rights of the company, other members or others
                                     </li>
                                     <li>
-                                        정보통신윤리위원회 등 외부기관의 시정요구가 있거나 불법선거
-                                        운동과 관련하여 선거관리위원회의 유권해석을 받은 경우
+                                        If there is a request for correction from an external organization such as the Information and Communication Ethics Committee, or if the election administration committee is interpreted in connection with an illegal campaign.
                                     </li>
                                     <li>
-                                        회원이 홈페이지와 게시판에 음란물을 게재하거나 음란사이트를
-                                        링크하는 경우
+                                        If the member posts obscene materials on the homepage or bulletin board or links an obscene site
                                     </li>
                                     <li>
-                                        본약관을포함하여기타회사가정한이용조건및관계법령에위반한경우
+                                        If the member violates the terms of use and related laws and regulations set by the company, including this contract
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                회사가 회원의 자격을 상실시키는 경우에는 회원등록을 말소합니다.
-                                이 경우 회원에게 이를 통지하고, 회원등록 말소 전에 최소한 30 일
-                                이상의 기간을 정하여 소명할 기회를 부여합니다.
+                                If the company loses membership, the membership registration shall be cancelled. In this case, the member shall be notified to that effect and shall be given the opportunity to disclose the information for a period of at least 30 days before the cancellation of the membership registration.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 7 조 (회원에 대한 통지)</h3>
+                        <h3>Article 7 (Notification to members)</h3>
                         <ol>
                             <li>
-                                회사가 회원에 대한 통지를 하는 경우, 회원이 회사와 미리 약정하여
-                                지정한 전자우편 주소 및 가입시 등록한 정보에 기명된 수단으로 할
-                                수 있습니다.
+                                If the company notifies the member, the member can use it as a means registered in the specified e-mail address and the information registered at the time of registration by contracting with the company in advance.
                             </li>
                             <li>
-                                회사는 불특정 다수 회원에 대한 통지의 경우 1 주일이상 온라인
-                                서비스 게시판에 게시함으로써 개별 통지에 갈음할 수 있습니다.
-                                다만, 회원 본인의 거래와 관련하여 중대한 영향을 미치는 사항에
-                                대하여는 개별 통지합니다.
+                                In the case of notification to an unspecified number of members, the company can replace it with individual notification by posting it on the online service bulletin board for at least one week. However, the company shall notify the member individually of matters that have a significant impact on the member's transactions.
                             </li>
                         </ol>
                     </div>
-                    <h2>제 3 절 서비스 제공 및 이용</h2>
+                    <h2>Section 3 Provision and use of services</h2>
                     <div class="row-type type-1">
-                        <h3>제 8 조 (회사의 의무)</h3>
+                        <h3>Article 8 (Company's obligations)</h3>
                         <ol>
                             <li>
-                                회사는 서비스 제공과 관련하여 취득한 회원의 개인정보를 본인의
-                                사전 승낙 없이 타인에게 공개 또는 배포할 수 없습니다. 다만, 다음
-                                각호의 1에 해당하는 경우는 예외입니다.
+                                he company cannot disclose or distribute the personal information of members acquired in connection with the provision of services to others without the prior consent of the member. However, this does not apply if one of the following items applies.
                                 <ul>
                                     <li>
-                                        전기통신사업법 등 법률의 규정에 의해 국가기관의 요구가 있는
-                                        경우
+                                        If requested by a national institution pursuant to the provisions of the Telecommunications Business Act, etc.
                                     </li>
                                     <li>
-                                        범죄에 대한 수사상의 목적이 있거나 정보통신윤리위원회의
-                                        요청이 있는 경우
+                                        If there is an investigative purpose for a crime or at the request of the Information and Communication Ethics Committee
                                     </li>
-                                    <li>기타 관계법령에서 정한 절차에 따른 요청이 있는 경우</li>
+                                    <li>If requested by procedures stipulated in relevant laws and regulations </li>
                                 </ul>
                             </li>
                             <li>
-                                제 1 항의 범위 내에서, 회사는 업무와 관련하여 회원 전체 또는
-                                일부의 개인 정보에 관한 통계 자료를 작성하여 이를 사용할 수
-                                있고, 서비스를 통하여 회원의 컴퓨터 쿠키를전송할 수 있습니다. 이
-                                경우 회원은 쿠키의 수신을 거부하거나 쿠키의 수신에 대하여
-                                경고하도록 사용하는 컴퓨터의 브라우저의 설정을 변경할 수
-                                있습니다.
+                               The company can create and use statistical data on all or part of the personal information of the member related to the business, and send the member's computer cookie through the service within the scope of paragraph 1. In this case, the member may refuse to receive cookies or change the settings of the browser of the computer used to warn about the reception of cookies.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 9 조 (회원의 의무)</h3>
+                        <h3>Article 9 (Member's obligations)</h3>
                         <ol>
                             <li>
-                                회원은 서비스 이용 시 다음 각호의 행위를 하지 않아야 합니다.
+                               The member must not do any of the following when using the service.
                                 <ul>
-                                    <li>다른 회원의 아이디(ID)를 부정하게 사용하는 행위</li>
+                                    <li>Act of the unauthorized use of another member's ID</li>
                                     <li>
-                                        서비스에서 얻은 정보를 회사의 사전승낙 없이 회원의 이용
-                                        이외의 목적으로 복제하거나 이를 변경, 출판 및 방송 등에
-                                        사용하거나 타인에게 제공하는 행위
+                                        Act of copying the information obtained from the service for purposes other than the use of the member, using it for modification, publishing, broadcasting, etc., or providing it to others without the prior consent of the company.
                                     </li>
                                     <li>
-                                        회사의 저작권,타인의 저작권 등 기타 권리를 침해하는 행위
+                                        Act that infringes other rights such as the copyright of the company and the copyright of others
                                     </li>
                                     <li>
-                                        회사의 정책, 공공질서, 미풍양속에 위반되는 내용의 정보,
-                                        문장, 도형 등을 게시,공개하거나 타인에게 유포하는 행위
+                                        Act of posting, disclosing information, sentences, figures, etc. that violate company policy, public order, public order and morals, or disseminating it to others
                                     </li>
-                                    <li>범죄와 결부된다고 객관적으로 판단하는 행위</li>
-                                    <li>기타 관계법령에 위배되는 행위</li>
+                                    <li>Act that objectively judges that it shall lead to a crime</li>
+                                    <li>Act that violates other related laws and regulations</li>
                                 </ul>
                             </li>
                             <li>
-                                회원은 관계법령, 이 약관에서 규정하는 사항, 서비스 이용 안내 및
-                                주의 사항을 준수 하여야 합니다.
+                                Member must comply with relevant laws and regulations, matters stipulated in this contract, service usage guidance and precautions.
                             </li>
                             <li>
-                                회원은 내용별로 회사가 서비스 공지사항에 게시하거나 별도로
-                                공지한 이용 제한 사항을 준수하여야 합니다.
+                                member must either post the service notices by the company according to the content, or comply with the usage restrictions separately announced.
                             </li>
                             <li>
-                                회원은 회사의 사전 승낙 없이 서비스를 이용하여 어떠한 영리행위도
-                                할 수 없습니다.
+                                The member may not engage in any commercial activities by using the service without the prior consent of the company.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
                         <h3>
-                            제 10 조 (회원 아이디(ID)와 비밀번호 관리에 대한 회원의 의무)
+                            Article 10 (Member's obligation to manage member ID and password)
                         </h3>
                         <ol>
                             <li>
-                                아이디(ID)와 비밀번호에 대한 모든 관리는 회원에게 책임이
-                                있습니다. 회원에게 부여된 아이디(ID)와 비밀번호의 관리소홀,
-                                부정사용에 의하여 발생하는 모든 결과에 대한 전적인 책임은
-                                회원에게 있습니다.
+                                  The member shall be responsible for all management of IDs and passwords. The member shall be solely responsible for all consequences of negligence and misuse of the IDs and passwords given to the member.
                             </li>
                             <li>
-                                회원은 자신의 아이디(ID)가 부정하게 사용된 경우 또는 기타 보안
-                                위반에 대하여, 회원은 반드시 회사에 그 사실을 통보해야 합니다.
+                                The member must notify the company of any unauthorized use of their ID or other security breaches.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 11 조 (정보의 제공)</h3>
+                        <h3>Article 11 (Provision of information)</h3>
                         <p>
-                            회사는 회사의 브랜드 제품, 관련 브랜드 사이트, 매장정보, 이벤트 등
-                            회원의 서비스이용에 관련된 다양한 정보에 대해서 전자메일이나
-                            서신우편 등의 방법으로 회원에게 제공할 수 있으며, 회원은 원하지
-                            않을 경우 내프로필 메뉴에서 정보수신거부를 할 수 있습니다.
+                            The company can provide various information related to the member's use of services such as company brand products, related brand sites, store information, events, etc. to the member by e-mail, letter mail, etc. If the member does not want it, the member can refuse to receive information from My Profile menu inside. 
                         </p>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 12 조 (광고주와의 거래)</h3>
+                        <h3>Article 12 (Transactions with advertisers) </h3>
                         <p>
-                            회사는 본 서비스상에 게재되어 있거나 본 서비스를 통한 광고주의
-                            판촉활동에 회원이 참여하거나 교신 또는 거래의 결과로서 발생하는
-                            모든 손실 또는 손해에 대해 책임을 지지 않습니다.
+                            The company shall not be liable for any loss or damage that may occur as a result of any communication or transaction that is posted on the services or that the member participates in the promotional activities of advertisers through the Services.
                         </p>
                     </div>
                     <div class="row-type type-2">
-                        <h3>제 13 조 (회원의 게시물)</h3>
+                        <h3>Article 13 (Member's posting)</h3>
                         <p>
-                            회사는 회원이 본 서비스를 통하여 게시, 게재, 전자메일 또는 달리
-                            전송한 내용물에 대하여 책임을 지지 않으며, 다음 각호의 1 에
-                            해당한다고 판단되는 경우에 사전 통지 없이 삭제할 수 있습니다.
+                             The company shall not be responsible for the contents posted, posted, e-mailed or forwarded to others through this service, and if it is judged that one of the following items applies, it can be deleted without prior notice.
                         </p>
                         <ul>
                             <li>
-                                다른 회원이나 타인을 비방하거나, 프라이버시를 침해하거나,
-                                중상모략으로 명예를 손상시키는 내용인 경우
+                                If the content is defaming other members or others, infringing privacy, or defaming other members or defamation plots.
                             </li>
-                            <li>서비스의안정적인운영에지장을주거나줄우려가있는경우</li>
-                            <li>범죄적 행위에 관련된다고 인정되는 내용일 경우</li>
+                            <li>If there is a risk of hindering the stable operation of the service</li>
+                            <li>If the content is deemed to be related to criminal activity</li>
                             <li>
-                                회사의 지적재산권, 타인의 지적재산권 등 기타 권리를 침해하는
-                                내용인 경우
+                                If the content infringes other rights such as the intellectual property rights of the company and the intellectual property rights of others.
                             </li>
-                            <li>회사에서 규정한 게시기간을 초과한 경우</li>
-                            <li>기타 관계법령에 위반된다고 판단되는 경우</li>
+                            <li>If the posting period specified by the company is exceeded</li>
+                            <li>If it is determined that it violates other related laws and regulations</li>
                         </ul>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 14 조 (게시물에 대한 권리 및 책임)</h3>
+                        <h3>Article 14 (Rights and responsibilities for posting)</h3>
                         <ol>
                             <li>
-                                회사가 작성한 저작물에 대한 저작권 기타 지적재산권은 회사에
-                                귀속합니다.
+                                The copyright and other intellectual property rights to the copyrighted works created by the company belong to the company.
                             </li>
                             <li>
-                                회원은 회사의 서비스를 이용함으로써 얻는 정보 중 회사에게
-                                지적재산권이 귀속된 정보를 회사의 사전 승낙 없이 복제, 송신,
-                                출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제 3
-                                자에게 이용하게 하여서는 안됩니다.
+                                The member must not copy, transmit, publish, distribute, broadcast or otherwise commercialize the information to which the intellectual property rights belong to the company among the information obtained by using the services of the company without the prior consent of the company for any purpose of profit or let a third party use it.
                             </li>
                             <li>
-                                회사는 약정에 따라 회원에게 귀속된 저작권을 사용하는 경우 당해
-                                회원에게 통보합니다.
+                                 If the company uses the copyright belonging to the member based on the contract, it shall notify the member.
                             </li>
-                            <li>
-                                회원이 게시한 저작물이 회사 또는 제3자의 권리를 침해하거나
-                                공서양속에 반한다고 볼 합리적인 사유가 있는 경우, 회사는 이를
-                                임의로 삭제할 수 있고 이를 회원에게 통보합니다.
+                            <li>If the copyrighted work posted by the member infringes the rights of the company or a third party, or if there is a reasonable reason to consider it to be offensive to public order and morals, the company can arbitrarily delete it and notify the member of this.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 15 조 (상담게시판)</h3>
+                        <h3>Article 15 (Consultation bulletin board) </h3>
                         <ol>
                             <li>
-                                상담에 대한 답변 내용은 각 전문가의 지식을 바탕으로 한 주관적인
-                                답변입니다. 회사는 답변의 의견을 대표하지는 않습니다.
+                                 The content of the answer to the consultation is a subjective answer based on the knowledge of each expert. The company does not represent the opinion of the answer.
                             </li>
                             <li>
-                                회원이 신청한 상담에 대한 적절한 답변을 위하여 각 전문가들은
-                                상담 내용과 답변을 참고할 수 있습니다.
+                                Each expert can refer to the consultation content and answers for an appropriate answer to the member's application.
                             </li>
                             <li>
-                                서비스에서 진행된 상담의 내용은 개인신상정보를 삭제한 다음
-                                학술활동, 인쇄물 등의 저작활동, FAQ 등의 서비스 내용의 일부로
-                                사용할 수 있습니다.
+                                The consultation content provided by the service can be used as part of the service content such as academic activities, printed matter and other writing activities, and FAQs after deleting personal information.
                             </li>
                             <li>
-                                아래와 같은 상담을 신청하는 경우에는 상담서비스를 제공하지 않을
-                                수 있습니다.
+                                If applying for the following consultation, the consultation service shall not be provided.
                                 <ul>
-                                    <li>같은 내용의 상담을 반복하여 신청하는 경우</li>
-                                    <li>상식에 어긋나는 표현을 사용하여 상담을 신청하는 경우</li>
-                                    <li>진단명을 요구하는 상담을 신청하는 경우</li>
+                                    <li>If repeatedly applying for consultation with same contents</li>
+                                    <li>If applying for consultation using expressions that are out of the ordinary</li>
+                                    <li>If applying for a consultation requesting a diagnosis name</li>
                                     <li>
-                                        치료비, 검사비, 의약품 가격 등에 대하여 상담을 신청하는 경우
-                                        o 기타 회사가 상담이 적절하지 않다고 판단하는 경우
+                                        If applying for a consultation regarding treatment costs, examination costs, drug prices, etc.
+                                    </li>
+                                    <li>
+                                        If the company determines that the consultation is not appropriate
                                     </li>
                                 </ul>
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 16 조 (서비스 이용시간)</h3>
+                        <h3>Article 16 (Service usage time)</h3>
                         <ol>
                             <li>
-                                서비스는 회사의 업무상 또는 기술상의 장애, 기타 특별한 사유가
-                                없는 한 연중무휴, 1 일 24 시간 이용할 수 있습니다. 다만, 설비의
-                                점검 등 회사가 필요한 경우 또는 설비의장애, 서비스 이용의 폭주
-                                등 불가항력으로 인하여 서비스 이용에 지장이 있는 경우 예외적으로
-                                서비스 이용의 전부 또는 일부에 대하여 제한할 수 있습니다.
+                                he service is available 24 hours a day, 7 days a week, unless there is a business or technical obstacle to the company or other special reasons. However, if the company is required to inspect the equipment, or if there is an obstacle to the use of the service due to force majeure such as equipment failure or congestion of service use, all or part of the service use may be restricted exceptionally.
                             </li>
                             <li>
-                                회사는 제공하는 서비스 중 일부에 대한 서비스이용시간을 별도로
-                                정할 수 있으며, 이 경우 그 이용시간을 사전에 회원에게 공지 또는
-                                통지 합니다.
+                                The company can separately set the service usage time for some of the services provided, in which case the member shall be notified or announced of the usage time in advance.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 17 조 (서비스 이용 책임)</h3>
+                        <h3>Article 17 (Responsibility for using services)</h3>
                         <ol>
                             <li>
-                                회사는 B2B 서비스를 기본으로 회사와의 제품 개발 목적으로
-                                요청받은 샘플을 제공함에 있어서 발생하는 소정의 배송비와 포장비
-                                등을 비용을 부담하는 조건으로 서비스 차원에서 샘플을 제공한다.
+                                 Based on the B2B service, the company shall provide the sample at the service level under the condition that the prescribed shipping cost and packing cost borne by the member, which are incurred when providing the sample requested for the purpose of product development.
+                            </li>
+                            <li>The company's "Mall" shall carry out the procedure to confirm the business registration certificate on the B2B service platform, and due to the characteristics of the service, provide the requested sample for the purpose of testing. Therefore, the customer cannot claim any rights from the company and the company provides them on the premise that they do not claim any rights, and the company does not take any responsibility in providing the products.
                             </li>
                             <li>
-                                회사의 “몰”은 B2B 서비스 기반으로 사업자 등록증을 확인하는
-                                절차를 진행하며, 해당 서비스 특성상 요청받은 샘플에 대해서
-                                테스트 목적으로 제공한다. 이에 고객은 당사에 어떠한 권리를요구할
-                                수 없고, 권리를 요구하기 않는 것을 전제로 제공하며 회사는 제품
-                                제공에 있어서 어떠한 책임을 지지 아니 한다.
+                                The customer must not resell, distribute, transfer, dispose, reuse, profit, etc. the sample, and the customer applies for the service on the premise of complying with this.
                             </li>
                             <li>
-                                고객은 샘플의 재판매, 유통, 양도, 처분, 재사용, 수익 등을 해서는
-                                아니 되며, 고객은 이를 준수할 것을 전제로 서비스를 신청한다.
+                                If the sample provided is different from the one requested or if the customer receives a damaged sample, within 7 days from the date of receipt, the customer can contact the company through "ASK US" or the assigned person with a photo of the product.
                             </li>
                             <li>
-                                고객은 제공받은 샘플이 신청한 것과 다르거나 훼손된 샘플을 받은
-                                경우 받은 날로 부터 7 일 이내에 "ASK US" 또는 배정된 담당자에게
-                                해당 제품 사진과 함께 문의할 수 있다.
-                            </li>
-                            <li>
-                                회원은 서비스를 이용하여 불법 상품을 판매하는 영업 활동을 할 수
-                                없으며 특히 해킹, 돈벌기 광고, 음란사이트를 통한 상업행위, 상용
-                                S/W 불법배포 등을 할 수 없습니다. 이를 위반하여 발생한
-                                영업활동의 결과, 손실, 관계기관에 의한 법적 조치 등에 관해서는
-                                회사가 책임을 지지 아니 한다.
+                                The member cannot use the service to carry out sales activities to sell illegal products, especially hacking, money-making advertisements, commercial activities by nasty sites, illegal distribution of commercial software, etc. The company shall not be liable for any loss, legal action, etc. by related organizations as a result of business activities that occur in violation of thi
                             </li>
                         </ol>
                     </div>
-                    <h2>제 4 절 개인정보보호</h2>
+                    <h2>Section 4 Personal information protection</h2>
                     <div class="row-type type-1">
-                        <h3>제 18 조 (개인정보 수집, 이용 등)</h3>
+                        <h3>Article 18 (Collection and use of personal information, etc.)</h3>
                         <ol>
                             <li>
-                                회사는 회원으로 가입하고자 하는 고객의 동의를 얻어 서비스 제공에
-                                필요한 최소한의 정보를 수집하며, 가입 시 뿐만 아니라 가입기간 중
-                                회원제도 운영의 필요에 따라 추가적인 정보의 수집을 할 수
-                                있습니다.
+                                The company collects the minimum information necessary to provide the service with the consent of the customer who intends to register as a member, and collects additional information not only at the time of registration but also as necessary for the operation of the membership system during the registration period.
                             </li>
                             <li>
-                                회원은 개인정보의 변경이 있거나, 타인의 도용 등의 사정이 발생한
-                                때에는 회사 또는 제휴사의 고객센터로 통지하여야 지속적인 서비스
-                                혜택과 개인정보를 보호받을 수 있으며, 회사는 이를 게을리하여
-                                발생한 손해에 대해서는 책임지지 않습니다.
+                                 In the event of a change in personal information or theft of another person, the member cannot receive continuous service benefits and protection of personal information without notifying the customer center of the company or affiliated company. The company shall not be liable for any damages caused by neglecting this.
                             </li>
                             <li>
-                                이 약관을 통해 수집되는 회원의 개인정보는 회원에게 양질의
-                                서비스를 제공하기 위해 사용되며, 수집 받은 목적 외의 용도로
-                                활용하지 않습니다.
+                                The member's personal information collected through this contract shall be used to provide high-quality services to the member and shall not be used for any purpose other than the purpose for which it was collected.
                             </li>
                             <li>
-                                개인정보의 이용 목적은 회원의 서비스 변경에 따라 변경될 수
-                                있으며, 이 경우에는 이 약관에서 정한 절차에 따라 사전 통지해
-                                드립니다. 회사가 개인정보와 관련하여 변경사실을 고지 또는 통지한
-                                후 30 일 이내에 회원이 이의를 회사에 제기하지 않으면, 회사 및
-                                제휴사에 대하여 변경된 개인정보의 제공 및 이용 등에 동의한
-                                것으로 간주합니다. 다만, 그럼에도 불구하고 회원은 언제든지 이
-                                동의를 철회할 수 있습니다.
+                                The purpose of use of personal information may change due to changes in the member's service. In this case, the company shall notify the member in advance according to the procedure stipulated in this contract. If the member does not file an objection with the company within 30 days after the company announces or notifies the fact of the change in relation to personal information, it is considered that the member agrees to the provision and use of the changed personal information to the company and affiliated companies. However, the member may nevertheless withdraw this consent at any time.
                             </li>
                         </ol>
                     </div>
                     <div class="row-type type-1">
-                        <h3>제 19 조 (기타)</h3>
+                        <h3>Article 19 (Others)</h3>
                         <ol>
                             <li>
-                                회사는 회원의 개인정보에 대한 개인정보처리방침을 공개하고, 그에
-                                따라 개인정보 정책을 운영하고 있습니다.
+                                The company discloses the personal information processing policy for the personal information of members, and operates the personal information policy accordingly.
                             </li>
                             <li>
-                                회원은 자신의 개인정보의 처리와 관련한 자세한 내용을 홈페이지 첫
-                                화면을 통해 회사의 인터넷 홈페이지 개인정보취급방침을 통해
-                                확인할 수 있습니다.
+                                Members can check the details regarding the processing of their own personal information on the first screen of the homepage through the company's Internet homepage personal information handling policy.
                             </li>
                         </ol>
                     </div>
-                    <h2>제 5 절 홈페이지 관련</h2>
+                    <h2>Section 5 Homepage related</h2>
                     <div class="row-type type-1">
-                        <h3>제 20 조 (회원 ID 및 비밀번호)</h3>
+                        <h3>Article 20 (Member ID and password)</h3>
                         <ol>
                             <li>
-                                홈페이지 서비스를 이용하고자 하는 회원은 nutri3.3 및 제휴사가
-                                정한 바에 따라 회원 ID 와 비밀번호를 정하여 별도로 등록해야
-                                합니다.
+                                The member who wishes to use the homepage service must set a member ID and password based on the provisions of nutri3.3 and affiliated companies, and register separately.
                             </li>
                             <li>
-                                홈페이지 서비스를 이용하는 회원은 본인의 회원ID 및 비밀번호를
-                                본인 스스로 관리하고 제3자가 이용하게 해서는 안 되며, 회원ID 및
-                                비밀번호에 대한 관리책임은 원칙적으로 회원 본인에게 있습니다.
+                                The member who uses the homepage service must manage own member ID and password and must not allow a third party to use them. In principle, the member is responsible for managing the member ID and password.
                             </li>
                             <li>
-                                회원이 자신의 ID 및 비밀번호를 도난 당하거나 제3자가 사용하고
-                                있음을 인지한 경우에는 바로 “몰”에 통보하고 “몰”의 안내가 있는
-                                경우에는 그에 따라야 합니다.
+                                If the member recognizes that the ID and password are stolen or being used by a third party, the member must immediately notify the “Mall” and follow the “Mall” guidance, if any.
                             </li>
                         </ol>
                     </div>
