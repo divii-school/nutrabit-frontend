@@ -177,17 +177,27 @@ export default {
     line-height: 150%;
   }
 }
-.sampleServices {
-  h4{
+.about-recom.sampleServices {
+  h4 {
     margin-bottom: 40px;
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
   }
-  .nutriBlending li p {
-    color: $black-33;
-    span {
-      color: $green-68;
-      margin: 0;
-      border: 0px;
-      padding: 0;
+  .nutriBlending li {
+    p {
+      color: $black-33;
+      span {
+        color: $green-68;
+        margin: 0;
+        border: 0px;
+        padding: 0;
+      }
+    }
+    img {
+      @media screen and (max-width: 768px) {
+        padding: 0 14px;
+      }
     }
   }
 }
@@ -209,5 +219,9 @@ export default {
   font-size: 16px;
   line-height: 150%;
   color: #a4a4a4;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 </style>
