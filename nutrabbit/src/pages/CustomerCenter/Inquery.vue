@@ -8,7 +8,7 @@
             class="btn-primary grenn-btn2"
             @click="this.$router.push('/inquiry-contactUs')"
           >
-            {{$t("customer.title.Inquiry")}} 
+            {{$t("customer.button.Inquiry")}} 
           </button>
         </div>
         <div class="faq-heading inquiry">

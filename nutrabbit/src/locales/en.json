@@ -385,6 +385,7 @@
             "InquiryDetails" : "Please enter your inquiry details."
         },
         "button" : {
+            "Inquiry" : "1:1 Inquiry",
             "Submit" : "Submit"
         },
         "modal":{
