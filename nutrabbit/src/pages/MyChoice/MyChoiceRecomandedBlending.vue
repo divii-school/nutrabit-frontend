@@ -64,6 +64,7 @@ import MyChoiceService from "../../services/MyChoiceService";
  
 export default {
   name: "MyChoiceRecomandedBlending",
+  inject : ["common"],
   components: {
     Popper,
     SearchCard,
@@ -82,13 +83,15 @@ export default {
   mounted() {
     this.allBlendingData();
   },
-  updated(){
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
-      this.allBlendingData();
+watch: {
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allBlendingData();
+      }
     },
   },
   methods: {

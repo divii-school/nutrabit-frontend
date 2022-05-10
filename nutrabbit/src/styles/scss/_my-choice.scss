@@ -25,6 +25,9 @@
       .my-choice-list-outer {
         .my-choice-list-outer-item {
           margin-top: 15px;
+          @media screen and (max-width: 768px) {
+            margin-top: 40px; 
+          }
           &:first-child {
             margin-top: 0;
           }
@@ -87,12 +90,14 @@
                 width: 160px;
                 border: 1px solid $grey-E0;
                 border-radius: 10px;
+                overflow: hidden;
                 @media screen and (max-width: 768px) {
                   width: 100%;
                 }
                 img {
-                  height: 80px;
-                  width: 80px;
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
                 }
               }
               .desc {

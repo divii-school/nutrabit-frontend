@@ -62,8 +62,8 @@ export default class MyChoiceService {
   }
 
   //recommended blending package add API Functions
-  async getRecommendedBlendingPackageAdd(blending_id, package_id, etc, additional_request, service_type, is_temporary_storage) {
-    return await axios.post(`/blending/recommended/add`, { blending_id: blending_id, package_id: package_id, etc:etc, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage, lang: localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
+  async getRecommendedBlendingPackageAdd(blending_id, payment_status, package_id, etc, additional_request, service_type, is_temporary_storage) {
+    return await axios.post(`/blending/recommended/add`, { blending_id: blending_id, payment_status: payment_status, package_id: package_id, etc: etc, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage, lang: localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
   }
 
   //blending formulation API Functions
@@ -92,8 +92,8 @@ export default class MyChoiceService {
   }
 
   //raw material package add API Functions
-  async getRawMaterialPackageAdd(raw_material_ids, pill_id, package_id, title, additional_request, service_type, is_temporary_storage) {
-    return await axios.post(`/blending/raw_material/add`, { raw_material_ids: raw_material_ids, pill_id: pill_id, package_id: package_id, title: title, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage, lang: localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
+  async getRawMaterialPackageAdd(raw_material_ids, payment_status, pill_id, package_id, title, additional_request, service_type, is_temporary_storage) {
+    return await axios.post(`/blending/raw_material/add`, { raw_material_ids: raw_material_ids, payment_status: payment_status, pill_id: pill_id, package_id: package_id, title: title, additional_request: additional_request, service_type: service_type, is_temporary_storage: is_temporary_storage, lang: localStorage.getItem('selectedLang') }).then((res) => res.data).catch((err) => err);
   }
 
   //raw material storage box API Functions
