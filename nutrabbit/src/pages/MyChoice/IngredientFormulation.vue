@@ -60,7 +60,7 @@
                 </li>
               </ul>
 
-              <div class="btn-wrap">
+              <div class="btn-wrap btn-wrap2">
                 <button v-if="storage_box" @click="this.$router.push(`/add-ingredient/`)"
                   class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
