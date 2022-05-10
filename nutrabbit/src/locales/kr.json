@@ -99,6 +99,7 @@
             "FindIdOtpVerify" : "이메일 인증번호를 확인해주세요.",
             "EnterOtp": "이메일 인증번호를 입력해주세요",
             "EnterPhone": "휴대폰번호를 입력해주세요",
+            "OnlyNumber" : "Only numbers are allowed",
             "EnterAddress": "주소를 입력해주세요",
             "OTPCheck" : "인증번호가 일치하지 않습니다.",
             "BusinessNo" : "사업자번호를 입력해주세요",
