@@ -267,6 +267,7 @@ export default {
     "vue-select": VueNextSelect,
     Modal,
   },
+  inject : ["common"],
   data() {
     return {
       token: localStorage.token ? true : false,
@@ -332,10 +333,12 @@ export default {
     if (this.$i18n.locale == "kr") {
       this.common.state.SelectedLang = "KO";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+      
     }
     if (this.$i18n.locale == "en") {
       this.common.state.SelectedLang = "EN";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+      
     }
   },
 
