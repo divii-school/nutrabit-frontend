@@ -33,7 +33,7 @@
               <li>
                 <img src="~@/assets/images/blending2.png" />
                 <span>Step.2</span>
-                <p>{{ $t("nutri.title.desc2") }}</p>
+                <p v-html="$t('nutri.title.desc2')"></p>
               </li>
               <li>
                 <img src="~@/assets/images/blending3.png" />
@@ -44,7 +44,7 @@
               <li>
                 <img src="~@/assets/images/blending4.png" />
                 <span>Step.4</span>
-                <p>{{ $t("nutri.title.desc4") }}</p>
+                <p v-html="$t('nutri.title.desc4')"></p>
               </li>
             </ul>
           </div>
