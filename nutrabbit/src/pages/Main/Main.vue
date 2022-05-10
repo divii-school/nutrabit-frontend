@@ -139,14 +139,16 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  updated(){
-    //this.allNutidata();
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   //this.allNutidata();
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
-      this.allNutidata();
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.allNutidata();
+      }
     },
   },
 
