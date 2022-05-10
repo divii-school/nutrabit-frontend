@@ -476,7 +476,6 @@ export default {
   },
   updated() {
     this.globalLocale = localStorage.getItem("selectedLang");
-    // console.log(this.globalLocale)
   },
 
   watch: {
@@ -635,7 +634,7 @@ export default {
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log("res", res);
+            // console.log("res", res);
             this.QuoteNutri_List = res.data.data.applicationData;
             this.quoteNutriTotal = res.data.data.total;
             // console.log("quoteNutriTotal", this.quoteNutriTotal);
@@ -709,7 +708,6 @@ export default {
     this.QuoteNutri();
     this.QuoteRecommended();
     this.QuoteMyChoice();
-
     // this.appNutri();
     this.appRecommended();
     this.appMychoice();
