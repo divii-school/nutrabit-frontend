@@ -20,7 +20,7 @@
           <template v-slot:title>
             <div class="item-left lp-2">
               <div class="item-left-inner">
-                <p class="para-category">{{ dateformat(item.createdDate) }}</p>
+                <p class="para-category para-date">{{ dateformat(item.createdDate) }}</p>
                 <span
                   class="mr-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
