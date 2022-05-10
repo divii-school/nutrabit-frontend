@@ -150,6 +150,7 @@ export default {
       page: 1,
       perPage: 10,
       chunkPage: { chunk: 5 },
+      globalLocale: "",
     };
   },
 

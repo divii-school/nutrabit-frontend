@@ -72,7 +72,7 @@ export default {
     &.type-1 {
       table {
         width: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid $grey-CF;
         background: #fafafa;
         tr {
           border-bottom: 1px solid #ccc;

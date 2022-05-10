@@ -58,7 +58,7 @@
                   </Popper>
                 </div>
               </div>
-              <div class="btn-wrap flexEnd">
+              <div class="btn-wrap flexEnd btn-wrap2">
                 <button :class="!isSelected ? 'btn-disabled' : ''" :disabled="!isSelected" @click="gotoNextPage()" class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
