@@ -16,7 +16,7 @@
 <script>
 import KakaoChat from "../components/KakaoChat.vue";
 export default {
-
+inject : ["common"],
   data() {
     return {
       terms: "terms",
@@ -26,10 +26,20 @@ export default {
   mounted() {
     this.getTerms();
   },
+
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.getTerms();
+        //console.log(this.common.state.SelectedLang)
+      }
+    },
+  },
   methods: {
     async getTerms() {
       try {
-        const actualData = await axios.post("/cms", {key: this.terms});
+        const actualData = await axios.post("/cms", {key: this.terms, lang : localStorage.getItem('selectedLang')});
+        console.log(actualData)
         this.Terms = actualData.data.data;
        } catch (error) {
         return;
