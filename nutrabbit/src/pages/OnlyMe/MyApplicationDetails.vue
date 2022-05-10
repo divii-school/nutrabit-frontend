@@ -635,7 +635,7 @@ export default {
         )
         .then((res) => {
           if (res.status == 200) {
-            // console.log("res", res);
+            console.log("res", res);
             this.QuoteNutri_List = res.data.data.applicationData;
             this.quoteNutriTotal = res.data.data.total;
             // console.log("quoteNutriTotal", this.quoteNutriTotal);
