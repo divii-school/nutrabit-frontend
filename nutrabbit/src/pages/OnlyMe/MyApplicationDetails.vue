@@ -114,7 +114,7 @@
                                 v-for="(item, index) of updateAppRecom_List"
                                 :key="index"
                               >
-                                <td>{{ perPage * (page2 - 1) + index + 1 }}</td>
+                                <td>{{ (appRecommendedTotal- index) -(page2 - 1) *perPage }}</td>
                                 <td
                                   @click="
                                     $router.push({
@@ -174,7 +174,7 @@
                               v-for="(item, index) of updateAppMychoiceList"
                               :key="index"
                             >
-                              <td>{{ perPage * (page3 - 1) + index + 1 }}</td>
+                             <td>{{ (appMychoiceTotal- index) -(page3 - 1) *perPage }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -234,7 +234,7 @@
                               v-for="(item, index) of updateQuoteNutri_List"
                               :key="index"
                             >
-                              <td>{{ perPage * (page4 - 1) + index + 1 }}</td>
+                              <td>{{ (quoteNutriTotal- index) -(page4 - 1) *perPage }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -292,7 +292,7 @@
                               v-for="(item, index) of updateQuoteRecom_List"
                               :key="index"
                             >
-                              <td>{{ perPage * (page5 - 1) + index + 1 }}</td>
+                              <td>{{ (quoteRecommendedTotal- index) -(page5 - 1) *perPage }}</td>
                               <td
                                 @click="
                                   $router.push({
@@ -353,7 +353,7 @@
                               v-for="(item, index) of updateQuoteMychoiceList"
                               :key="index"
                             >
-                              <td>{{ perPage * (page6 - 1) + index + 1 }}</td>
+                              <td>{{ (quoteMychoiceTotal- index) -(page6 - 1) *perPage }}</td>
                               <td
                                 @click="
                                   $router.push({

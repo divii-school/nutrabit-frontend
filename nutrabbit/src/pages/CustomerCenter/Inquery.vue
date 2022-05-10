@@ -56,7 +56,7 @@
               </div>
               <div
                 class="contCol"
-                :class="item.status == 'Answer Complete' ? 'show' : 'hide'"
+                :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{$t("customer.tag.AnswerContent")}}</h4>
                 <p>
