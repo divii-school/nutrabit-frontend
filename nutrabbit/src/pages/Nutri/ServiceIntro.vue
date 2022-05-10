@@ -108,7 +108,7 @@ export default {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       nutriList: [],
       lang: "",
-      globalLocale: this.common.state.GlobalLocale,
+      globalLocale: "",
     };
   },
 

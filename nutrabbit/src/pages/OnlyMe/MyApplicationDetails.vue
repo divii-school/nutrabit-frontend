@@ -476,7 +476,6 @@ export default {
   },
   updated() {
     this.globalLocale = localStorage.getItem("selectedLang");
-    // console.log(this.globalLocale)
   },
 
   watch: {
@@ -709,7 +708,6 @@ export default {
     this.QuoteNutri();
     this.QuoteRecommended();
     this.QuoteMyChoice();
-
     // this.appNutri();
     this.appRecommended();
     this.appMychoice();
