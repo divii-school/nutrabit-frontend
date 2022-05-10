@@ -133,9 +133,12 @@
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
+import PersonalBusinessService from "../../services/PersonalBusinessService";
+import PersonalInfoService from "../../services/PersonalInfoService";
  
 export default {
   name: "RawMaterialEstimation",
+  inject : ['common'],
   components: {
     // Popper,
     ProductList,
@@ -151,27 +154,20 @@ export default {
       items: [],
       etc: localStorage.getItem('etc'),
       isServiceSelectedVisible:false,
-      // rwaMaterialData: [
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "Bottle",
-      //     desc: [
-      //       "Choose from a variety of sizes and shapes of bottles and caps.",
-      //     ],
-      //   },
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "PTP",
-      //     desc: [
-      //       "It is hygienic and convenient.",
-      //       "The packaging volume is slightly larger.",
-      //     ],
-      //   },
-      // ],
+      name: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      uuid:"",
+      Detailaddress:"",
+      userId: this.common.state.userId,
+      payment_status:''
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+    this.personalInfoservice = new PersonalInfoService();
+    this.personalBusinessService = new PersonalBusinessService();
   },
   mounted() {
     this.option_list();
@@ -197,8 +193,37 @@ export default {
         }
         else {
           service = this.servicetype.toString();
+        } 
+        
+        if (localStorage.getItem("userType") == "business_member") {
+          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+        let data = res.data;
+        // console.log("data",data);
+        this.name = data.data[0].name;
+        this.uuid = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
+        this.Detailaddress = data.data[0].address;
+      });
         }
-        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+        if (localStorage.getItem("userType") == "personal_member") {
+
+         this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+        console.log(res.data); 
+        let data = res.data;
+        this.name = data.data[0].name;
+        this.uuid = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
+        this.Detailaddress = data.data[0].address;
+        });
+        }
+
+        if(service=='2') {
+
+           this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
           if (res.status == 200) {
             this.$swal("Application Data is successfuly submitted");
@@ -207,6 +232,20 @@ export default {
             this.$swal(res.message, "error");
           }
         });
+
+        }
+        else {
+          this.payment_status='Success';
+          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+          // console.log(res);
+          if (res.status == 200) {
+            this.$swal("Application Data is successfuly submitted");
+            this.$router.push("/");
+          } else {
+            this.$swal(res.message, "error");
+          }
+        });
+        }
       }
     },
     package_temporary_add() {
@@ -224,7 +263,8 @@ export default {
         else {
           service = this.servicetype.toString();
         }
-        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+        this.payment_status='';
+        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
           if (res.status == 200) {
             // this.$router.push("/");
@@ -246,7 +286,7 @@ export default {
             var res_option_type = option_data[i].split(':')[0]; // raw_material:1
             var res_option_value = option_data[i].split(':')[1];
             // console.log(res_option_type);
-            console.log(res_option_value);
+            // console.log(res_option_value);
             this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
               this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
               // console.log(res);

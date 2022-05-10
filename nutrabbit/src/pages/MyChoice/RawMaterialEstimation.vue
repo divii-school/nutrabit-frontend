@@ -144,9 +144,12 @@ import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
 import ModalWarning from "../../components/ModalWarning.vue";
+import PersonalBusinessService from "../../services/PersonalBusinessService";
+import PersonalInfoService from "../../services/PersonalInfoService";
  
 export default {
   name: "RawMaterialEstimation",
+  inject : ['common'],
   components: {
     // Popper,
     ProductList,
@@ -167,10 +170,20 @@ export default {
       isServiceSelectedVisible: false,
       to: '',
       items: [],
+      name: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      uuid:"",
+      Detailaddress:"",
+      userId: this.common.state.userId,
+      payment_status:''
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+    this.personalInfoservice = new PersonalInfoService();
+    this.personalBusinessService = new PersonalBusinessService();
   },
   mounted() {
     this.option_list();
@@ -226,7 +239,37 @@ export default {
           else {
             service = this.servicetype.toString();
           }
-          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
+
+          if (localStorage.getItem("userType") == "business_member") {
+          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+        let data = res.data;
+        // console.log("data",data);
+        this.name = data.data[0].name;
+        this.uuid = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
+        this.Detailaddress = data.data[0].address;
+      });
+        }
+        if (localStorage.getItem("userType") == "personal_member") {
+
+         this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+        console.log(res.data); 
+        let data = res.data;
+        this.name = data.data[0].name;
+        this.uuid = data.data[0].uuid;
+        this.email = data.data[0].email;
+        this.phoneNumber = data.data[0].mobile;
+        this.address = data.data[0].address;
+        this.Detailaddress = data.data[0].address;
+        });
+        }
+
+        if(service=='2') {
+
+
+          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.payment_status, this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
             // console.log(res);
             if (res.status == 200) {
               this.$swal("Application Data is successfuly submitted");
@@ -243,6 +286,31 @@ export default {
               this.$swal(res.message, "error");
             }
           });
+
+        }
+
+        else {
+          this.payment_status='Success';
+
+          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.payment_status, this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
+            // console.log(res);
+            if (res.status == 200) {
+              this.$swal("Application Data is successfuly submitted");
+              localStorage.removeItem('sub_category_id');
+              localStorage.removeItem('raw_material_id');
+              localStorage.removeItem('package_id');
+              localStorage.removeItem('pill_id');
+              localStorage.removeItem('option');
+              localStorage.removeItem('etc');
+              localStorage.removeItem('storage_box');
+              // console.log("add");
+              this.$router.push(this.to);
+            } else {
+              this.$swal(res.message, "error");
+            }
+          });
+
+        }
         }
       }
     },
@@ -267,7 +335,7 @@ export default {
           else {
             service = this.servicetype.toString();
           }
-          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
+          this.mychoiceService.getRawMaterialPackageAdd(localStorage.getItem('raw_material_id'), this.payment_status, this.pill_id, this.package_id, this.title, this.additional_request, service, is_temporary_storage).then((res) => {
             // console.log(res);
             if (res.status == 200) {
               localStorage.removeItem('sub_category_id');

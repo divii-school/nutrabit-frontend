@@ -12,8 +12,8 @@
               <template #content>
                 <div class="heading-tooltip-content">
                   <ul>
-                    <li>{{$t('myChoice.popup.list1')}}</li>
-                    <li>{{$t('myChoice.popup.list2')}}</li>
+                    <li>{{ $t('myChoice.popup.list1') }}</li>
+                    <li>{{ $t('myChoice.popup.list2') }}</li>
                   </ul>
                 </div>
               </template>
@@ -44,9 +44,10 @@
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
- 
+
 export default {
   name: "MyChoice",
+  inject: ["common"],
   components: {
     Popper,
   },
@@ -70,16 +71,17 @@ export default {
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
   },
- updated(){
-    this.globalLocale = this.$i18n.locale;
-  },
-
+  //  updated(){
+  //     this.globalLocale = this.$i18n.locale;
+  //   },
   watch: {
-    globalLocale(newVal, oldVal) {
-      this.allCategories();
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allCategories();
+      }
     },
   },
-  
+
   methods: {
     gotoNextPage(sub_category_id) {
 
