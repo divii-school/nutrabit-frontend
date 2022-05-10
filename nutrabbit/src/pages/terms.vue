@@ -31,7 +31,7 @@ inject : ["common"],
     'common.state.SelectedLang' : function(newVal, oldVal) {
       if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
         this.getTerms();
-        //console.log(this.common.state.SelectedLang)
+        console.log(this.common.state.SelectedLang)
       }
     },
   },
