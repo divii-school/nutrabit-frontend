@@ -1,6 +1,6 @@
 {
-	"name": "freya",
-	"version": "2.0.0",
+	"name": "nutrabbitadmin",
+	"version": "3.0.0",
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
@@ -46,7 +46,7 @@
 		"sass": "^1.37.5",
 		"sass-loader": "^7.0.1",
 		"validator": "^13.7.0",
-		"vue": "3.1.5",
+		"vue": "^3.2.33",
 		"vue-class-component": "^7.2.6",
 		"vue-i18n": "^9.2.0-beta.26",
 		"vue-material": "^1.0.0-beta-15",

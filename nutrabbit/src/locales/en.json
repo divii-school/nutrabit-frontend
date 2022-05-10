@@ -99,6 +99,7 @@
             "FindIdOtpVerify" : "Please Verify OTP",
             "EnterOtp": "Please enter your email verification code",
             "EnterPhone": "Please enter your mobile phone number",
+            "OnlyNumber" : "Only numbers are allowed",
             "EnterAddress": "Please enter your address",
             "OTPCheck": "The verification code does not match.",
             "BusinessNo" : "Please enter your business number",
@@ -115,12 +116,12 @@
         "Previous": "Previous",
         "Save_as_draft": "Save as Draft",
         "Confirm": "Confirm",
-        "sendVerification": "Send verification code",
-        "resendVerification": "Resend verification code",
+        "sendVerification": "Send code",
+        "resendVerification": "Resend",
         "verify": "Verify",
-        "SearchAddress": "Search Address",
+        "SearchAddress": "Search",
         "change": "Change",
-        "checkAvailability" : "Check Availability"
+        "checkAvailability" : "Check"
     },
     "onlyme": {
         "title": {
@@ -163,7 +164,7 @@
         },
         "placeholder": {
             "title": "My own recipe made with guar gum hydrolyzate",
-            "additionalRequest": ""
+            "additionalRequest": "Please write freely"
         },
         "button": {
             "DeleteSelection": "delete selection",
@@ -384,6 +385,7 @@
             "InquiryDetails" : "Please enter your inquiry details."
         },
         "button" : {
+            "Inquiry" : "1:1 Inquiry",
             "Submit" : "Submit"
         },
         "modal":{
@@ -396,15 +398,14 @@
         "title": {
             "heading": "What is nutri 3.3 blending?",
             "sub_heading": "Introduction to nutri 3.3 blending?",
-            "paragraph1": "nutri3.3 blending provides ready-to-market products.",
-            "paragraph2": "Seize the opportunity to enjoy all services from A to Z from product concept, package, and branding.",
+            "paragraph1": "nutri3.3 blending provides <span>ready-to-market products</span>.<br>Seize <span>the opportunity to enjoy all services from A to Z</span> from product concept, package, and branding.",
             "heading2": "How to use nutri 3.3 blending",
             "blending": "nutri 3.3 blending product",
             "nutri_list":"* nutri3.3 blending can only be purchased within the options provided.",
             "nutri_list1": "*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.",
             "desc1": "Take a look at our branded products",
             "desc2": "Choose the product you want to launch",
-            "desc3": "Click the Get an estimate button at the bottom of the detail page on selected product",
+            "desc3": "Click the <span>Get an estimate</span> button at the bottom of the detail page on selected product",
             "desc4": "We will contact you after checking"
         },
         "nutriDetails": {
@@ -432,7 +433,8 @@
         "sampleprocress": {
             "title": "Sample service process",
             "title1": "Request for Sample",
-            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3. (Sample production costs 300,000 won / Additional modifications are charged separately)",
+            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3.",
+            "desc_sub" : "(Sample production costs 300,000 won / Additional modifications are charged separately)",
             "title2": "Development Meeting",
             "desc2": "We check your requirements based on the sample service requested.",
             "title3": "Develop Product",
@@ -493,7 +495,7 @@
             "email": "Email",
             "phonenumber": "Phone Number",
             "address": "Address",
-            "searchaddress": "Address Search",
+            "searchaddress": "Search",
             "find us": "How did you find us?",
             "offline": "Offline",
             "online": "Online",

@@ -65,11 +65,11 @@
               <div class="fGroup mb0">
                 <label class="mb0">
                   {{ $t('final.Select_Service') }}
-                  <span> {{ $t('final.Select_Service_desc') }}</span>
+                  <span class="mb0"> {{ $t('final.Select_Service_desc') }}</span>
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item with-input">
+                <div class="product-item with-input auto-width pt-20">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="qoute">
                       <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
@@ -80,7 +80,7 @@
                     <h2>{{ $t('final.check1') }}</h2>
                   </div>
                 </div>
-                <div class="product-item with-input">
+                <div class="product-item with-input auto-width">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="sample">
                       <input type="checkbox" id="sample" value="1" v-model="servicetype" />
@@ -240,12 +240,13 @@ export default {
         //  console.log(res.data);
         if (res.data.status == 200) {
           var option_data = res.data.data[0].options;
+          // console.log(option_data);
           for (let i = 0; i <= option_data.length; i++) {
 
             var res_option_type = option_data[i].split(':')[0]; // raw_material:1
             var res_option_value = option_data[i].split(':')[1];
             // console.log(res_option_type);
-            // console.log(res_option_value);
+            console.log(res_option_value);
             this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
               this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
               // console.log(res);
@@ -266,3 +267,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.pt-20{
+  padding-top: 20px !important;
+}
+.btn-green-outline{
+  margin-right: 20px;
+}
+</style>

@@ -37,7 +37,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :category="item.category_name" :name="item.name" :desc="item.description"
+                <SearchCard :category="item.name" :name="item.material_name" :desc="item.description"
                   :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path" :image_link="imgBaseUrl"
                   :route_link="'/choice-recommended-blending-detailed-page/' + item.id" type2="recommended_data" />
               </li>
@@ -80,7 +80,7 @@
             <ul class="raw-material-list">
               <li v-for="data in rawMaterialData" :key="data">
                 <div class="list-left">
-                  <div class="img-wrap">
+                  <div class="img-wrap" @click="gotoNextPage(data.id)">
                     <img v-if="data.thumbnail_fst_path" :src="imgBaseUrl + data.thumbnail_fst_path" alt />
                     <img v-else src="../../assets/images/raw_material_place.png" alt />
 
@@ -198,7 +198,9 @@ export default {
     allBlendingData() {
       let limit = 4;
       let page = 1;
-      this.mychoiceService.getRecommendedData(limit, page).then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //console.log('allBlendingData res', res.data.blendingData);

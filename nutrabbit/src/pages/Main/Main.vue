@@ -75,7 +75,7 @@
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
     :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
     link="/login" />
-  <KakaoChat />
+  <!-- <KakaoChat /> -->
 </template>
 
 <script>
@@ -139,14 +139,16 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  updated(){
-    //this.allNutidata();
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   //this.allNutidata();
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
-      this.allNutidata();
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.allNutidata();
+      }
     },
   },
 

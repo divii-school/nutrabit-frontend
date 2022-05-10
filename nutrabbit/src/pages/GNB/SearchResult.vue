@@ -162,7 +162,7 @@ export default {
       page3: 1,
       page4: 1,
       perPage: 4,
-      FaqPerPage: 1,
+      FaqPerPage: 3,
       res_data: "",
     };
   },

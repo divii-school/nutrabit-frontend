@@ -17,7 +17,7 @@
                 <li>
                   <div class="radio-wrap">
                     <label class="custom-radio">
-                      <input type="checkbox" @click="selectAll" v-model="allSelected" />
+                      <input type="checkbox" :checked="this.storage_box_list_data.length==this.box_id_data.length" @click="selectAll" v-model="allSelected" />
                       <span class="checkmark"></span>
                       {{ $t("storageBox.selectAll") }}
                     </label>
@@ -36,7 +36,7 @@
               <ul class="raw-material-list">
                 <li v-for="(item, index) of storage_box_list_data" :key="index">
                   <ProductListStorageBox :item="item" :allSelected="allSelected" :unchecked="unchecked"
-                    @storageBoxId="UpdatedId($event)" />
+                    @storageBoxId="UpdatedId($event)" @getUncheckedId="updateUnchekedId($event)" />
                 </li>
               </ul>
               <div class="addIng">
@@ -58,8 +58,8 @@
                   </Popper>
                 </div>
               </div>
-              <div class="btn-wrap flexEnd">
-                <button @click="gotoNextPage()" class="btn-small-solid blue">{{ $t("button.next") }}</button>
+              <div class="btn-wrap flexEnd btn-wrap2">
+                <button :class="!isSelected ? 'btn-disabled' : ''" :disabled="!isSelected" @click="gotoNextPage()" class="btn-small-solid blue">{{ $t("button.next") }}</button>
               </div>
             </div>
           </div>
@@ -97,7 +97,9 @@ export default {
       showModal: false,
       btn: '',
       isItemSelectedVisible: false,
-      unchecked: true
+      unchecked: true,
+      globalLocale: "",
+      isSelected: false,
     };
   },
   created() {
@@ -110,6 +112,33 @@ export default {
     localStorage.removeItem('option');
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
+  },
+  updated(){
+    //this.allNutidata();
+    this.globalLocale = this.$i18n.locale;
+    if(this.storage_box_list_data.length==this.box_id_data.length){
+      this.allSelected=true;
+    }
+    // if(this.storage_box_list_data.length!=this.box_id_data.length){
+    //   this.allSelected=false;
+    // }
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.storage_box_list();
+    },
+    box_id_data : {
+     handler(newVal) {
+       if(newVal.length > 0){
+         this.isSelected=true;
+       }
+       else {
+         this.isSelected=false;
+       }
+     },
+     deep:true
+    }
   },
   methods: {
     closeModal() {
@@ -180,7 +209,6 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.storage_box_list_data = res.data.data;
-          //console.log(res.data.data);
         } else {
           this.$swal(res.message, "error");
         }
@@ -195,26 +223,37 @@ export default {
           this.box_id_data.push(box_id.id);
           // console.log(box_id.id);
         }
+        this.isSelected=true;
 
       } else {
         this.box_id_data = [];
+        this.isSelected=false;
       }
 
     },
+    updateUnchekedId(e){
+      this.box_id_data.pop(e);
+    },
     UpdatedId(e) {
-      if (this.box_id_data.length == 0) {
-        this.box_id_data.push(e);
-      }
-      else {
-        // console.log(this.box_id_data.includes(e));
-        let data = this.box_id_data.includes(e);
-        if (data == false) {
-          this.box_id_data.push(e);
-        }
-        else if (data == true) {
-          this.box_id_data.pop(e);
-        }
-      }
+      // if(!this.box_id_data.includes(e)){
+      //   this.box_id_data.push(e);
+      // }  
+      this.box_id_data.push(e);
+      // if (this.box_id_data.length == 0) {
+      //   this.box_id_data.push(e);
+      //   console.log(this.box_id_data);
+      // }
+      // else {
+      //   // console.log(this.box_id_data.includes(e));
+      //   let data = this.box_id_data.includes(e);
+      //   if (data == false) {
+      //     this.box_id_data.push(e);
+      //   }
+      //   else if (data == true) {
+      //     this.box_id_data.pop(e);
+      //   }
+      // }
+      
     },
     deleteStorageBox() {
       //console.log(this.box_id_data.length);

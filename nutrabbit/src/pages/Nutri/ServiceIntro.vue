@@ -3,55 +3,63 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice theme-green with-img servIntro">
-            <h2 class="nutri-choice-heading text-center">
+          <div class="nutri-choice theme-green servIntro">
+            <span class="my-choice-title-top">Nutri 3.3</span>
+            <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("nutri.title.heading") }}
             </h2>
-            <p class="title text-center">{{ $t("nutri.title.sub_heading") }}</p>
-            <p class="text-center">
-              {{ $t("nutri.title.paragraph1") }} <br />
-              {{ $t("nutri.title.paragraph2") }}
+            <p class="title text-center sampleBLueAfter nutriBlend sample-diff">
+              {{ $t("nutri.title.sub_heading") }}
             </p>
+            <p
+              class="text-center nutriBlend-para"
+              v-html="$t('nutri.title.paragraph1')"
+            ></p>
+            <!-- {{ $t("nutri.title.paragraph1") }} <span>sadasdas</span> <br /> -->
+            <!-- {{ $t("nutri.title.paragraph2") }} <span></span> -->
           </div>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom">
+          <div class="sampleServices about-recom pb-40">
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
               <li>
-                <img src="~@/assets/images/blending1.png"/>
+                <img src="~@/assets/images/blending1.png" />
                 <span>Step.1</span>
-                <p>{{$t("nutri.title.desc1")}}</p>
+                <p>{{ $t("nutri.title.desc1") }}</p>
               </li>
               <li>
-                <img src="~@/assets/images/blending2.png"/>
+                <img src="~@/assets/images/blending2.png" />
                 <span>Step.2</span>
-                <p>{{$t("nutri.title.desc2")}}</p>
+                <p v-html="$t('nutri.title.desc2')"></p>
               </li>
               <li>
-                <img src="~@/assets/images/blending3.png"/>
+                <img src="~@/assets/images/blending3.png" />
                 <span>Step.3</span>
-                <p>{{$t("nutri.title.desc3")}}</p>
+                <p v-html="$t('nutri.title.desc3')"></p>
+                <!-- <p>{{ $t("nutri.title.desc3") }} <span></span></p> -->
               </li>
               <li>
-                <img src="~@/assets/images/blending4.png"/>
-                <span>Step.3</span>
-                <p>{{$t("nutri.title.desc4")}}</p>
+                <img src="~@/assets/images/blending4.png" />
+                <span>Step.4</span>
+                <p v-html="$t('nutri.title.desc4')"></p>
               </li>
             </ul>
           </div>
-          <ul>
+          <ul class="below-block pb-160">
             <li>{{ $t("nutri.title.nutri_list") }}</li>
             <li>{{ $t("nutri.title.nutri_list1") }}</li>
           </ul>
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom">
+          <div class="sampleServices about-recom pb-70">
             <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center">{{ $t("nutri.title.blending") }}</h4>
+            <h4 class="title text-center mb-80">
+              {{ $t("nutri.title.blending") }}
+            </h4>
             <div class="nutri-dom-product blendedPro">
               <ul>
                 <li v-for="(item, index) of nutriList" :key="index">
@@ -74,6 +82,7 @@
                       <span>nutri 3.3</span>
                       <span>nutri 3.3</span>
                     </div>
+
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">
                       {{ item.name }}
                     </p>
@@ -90,19 +99,37 @@
 
 <script>
 import NutriService from "../../services/NutriService";
- 
+
 export default {
+  inject: ["common"],
   name: "ServiceIntro",
   data() {
     return {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       nutriList: [],
-      lang:"",
+      lang: "",
+      globalLocale: "",
     };
   },
 
   created() {
     this.nutriService = new NutriService();
+  },
+
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
+    // console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.getNutriService();
+      }
+    },
   },
 
   methods: {
@@ -113,7 +140,7 @@ export default {
           if (res.status == 200) {
             // console.log("res", res);
             this.nutriList = res.data.data.blendingData;
-            console.log("nutriList", this.nutriList);
+            // console.log("nutriList", this.nutriList);
           }
         })
         .catch((err) => {
@@ -128,9 +155,59 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nutri-product-item .nutri-pimg,
 .nutri-product-item p {
   cursor: pointer;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.nutriBlend-para {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 140%;
+  color: $grey-4C;
+  span {
+    color: $green-68;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 17px;
+    line-height: 150%;
+  }
+}
+.sampleServices {
+  h4{
+    margin-bottom: 40px;
+  }
+  .nutriBlending li p {
+    color: $black-33;
+    span {
+      color: $green-68;
+      margin: 0;
+      border: 0px;
+      padding: 0;
+    }
+  }
+}
+.pb-40 {
+  padding-bottom: 40px;
+}
+.block {
+  display: block !important;
+}
+.pb-160 {
+  padding-bottom: 160px;
+}
+.pb-70 {
+  padding-bottom: 70px;
+}
+.below-block {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #a4a4a4;
 }
 </style>

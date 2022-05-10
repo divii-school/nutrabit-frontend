@@ -43,7 +43,7 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard type="recomandedBlending" :category="item.category_name" :name="item.name"
+                <SearchCard type="recomandedBlending" :category="item.name" :name="item.material_name"
                   :desc="item.description" :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path"
                   :image_link="imgBaseUrl" :route_link="'/choice-recommended-blending-detailed-page/' + item.id" />
               </li>
@@ -94,7 +94,9 @@ export default {
   methods: {
     // allBlendingData list
     allBlendingData() {
-      this.mychoiceService.getRecommendedData().then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);
@@ -106,11 +108,13 @@ export default {
       });
     },
     onChange(event) {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
       // console.log(event.target.value);
       if (event.target.value == 'popularity') {
 
-        this.mychoiceService.getRecommendedBlendingPopularity().then((res) => {
-           console.log(res.data);
+        this.mychoiceService.getRecommendedBlendingPopularity(setSubCategory).then((res) => {
+          //  console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
             this.blendingData = res.data.data.blendingData;
@@ -122,7 +126,7 @@ export default {
       }
       else if (event.target.value == 'alphabetical') {
 
-        this.mychoiceService.getRecommendedBlendingAlphabetical().then((res) => {
+        this.mychoiceService.getRecommendedBlendingAlphabetical(setSubCategory).then((res) => {
           // console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);

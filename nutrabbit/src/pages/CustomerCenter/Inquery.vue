@@ -8,13 +8,13 @@
             class="btn-primary grenn-btn2"
             @click="this.$router.push('/inquiry-contactUs')"
           >
-            {{$t("customer.title.Inquiry")}} 
+            {{$t("customer.button.Inquiry")}} 
           </button>
         </div>
         <div class="faq-heading inquiry">
           <p class="category">{{$t("customer.title.PublishedDate")}}</p>
-          <p class="status">{{$t("onlyme.title.Title")}}</p>
-          <p class="title">{{$t("customer.title.Status")}}</p>
+          <p class="status">{{$t("customer.title.Status")}}</p>
+          <p class="title">{{$t("onlyme.title.Title")}}</p>
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
@@ -56,7 +56,7 @@
               </div>
               <div
                 class="contCol"
-                :class="item.status == 'Answer Complete' ? 'show' : 'hide'"
+                :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{$t("customer.tag.AnswerContent")}}</h4>
                 <p>
@@ -97,11 +97,26 @@ export default {
       perPage: 10,
       inqId: localStorage.getItem("uid"),
       chunkPage : { chunk : 5 },
+      globalLocale : '',
     };
   },
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+       this.allEnqueryList();
+       this.dateformat();
+      }
+    },
+  },
+
   mounted() {
     this.allEnqueryList();
     this.dateformat();
@@ -117,6 +132,7 @@ export default {
       this.CustomerCenterService.getEnqueryList(this.inqId)
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data)
             this.enqueryList = res.data.data.inquery;
             this.myCallback(1);
           }

@@ -21,7 +21,7 @@
   </div> -->
   <div class="product-item">
     <div class="radio-wrap">
-      <label class="custom-radio">
+      <label class="custom-radio custom-radio2">
         <input type="radio" name="radio" id="radio" :value="item.id" @click="getPackageId" />
         <span class="checkmark"></span>
       </label>
@@ -31,9 +31,9 @@
       </div>
     </div>
     <div class="material-details">
-      <h2>{{ item.name_ko }}</h2>
+      <h2>{{ item.name }}</h2>
       <div class="description">
-        <p>{{ item.description_ko }}</p>
+        <p>{{ item.description }}</p>
         <!-- <p v-for="(description, ind) of item.desc" :key="ind">{{description}}</p> -->
       </div>
     </div>

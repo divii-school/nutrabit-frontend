@@ -41,14 +41,14 @@
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     @media screen and (max-width: 768px) {
-      padding: 60px 90px;
+      padding: 65px 90px;
       box-shadow: none;
     }
     // @media screen and (max-width: 640px){
     //     padding: 60px 69px;
     // }
     @media screen and (max-width: 640px) {
-      padding: 60px 16px;
+      padding: 65px 16px;
       box-shadow: none;
     }
     .login-heading-wrap {
@@ -134,6 +134,9 @@
       &.signUp-form {
         margin-top: 40px;
         max-width: 690px;
+        @media screen and (max-width: 1200px) {
+          margin-top: 20px;
+        }
         .btn-primary {
           margin-top: 40px;
         }
@@ -178,6 +181,9 @@
       .login-heading-wrap {
         padding-bottom: 20px;
         border-bottom: 1px solid $grey-CF;
+        &.type-2{
+          border-bottom: 1px solid $grey-E0;
+        }
         .login-heading {
           text-align: left;
         }

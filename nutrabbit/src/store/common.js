@@ -9,7 +9,7 @@ const state = reactive({
   isMobile: false,
   isiPhone: false,
   SelectedLang: '',
-  GlobalLocale : localStorage.getItem('selectedLang')
+  
 });
 
 const methods = {
@@ -38,6 +38,8 @@ const methods = {
     }, 4000);
   },
   // ENdx check if it's from APP
+
+  
 };
 
 export default {

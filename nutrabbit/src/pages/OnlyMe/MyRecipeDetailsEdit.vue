@@ -63,14 +63,14 @@
                   >{{$t('onlyme.add_req_caption.Caption')}}</span
                 >
                 <textarea
-                  placeholder="Please write freely"
+                  :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="add_req"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0"
                   >{{$t('onlyme.title.Service')}}
-                  <span
+                  <span class="mb0"
                     >{{$t('onlyme.service_caption.Caption')}}</span
                   >
                 </label>
@@ -122,8 +122,8 @@
                     {{$t("onlyme.service_info.ContentThree")}}
                   </li>
                 </ul>
-                <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
+                <div class="btn-wrap tripple-btn">
+                  <button class="btn-small-solid grey btn-left" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
                   <div class="btnWrapRight">
                     <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">{{$t('onlyme.button.Save')}}</button>
                   </div>

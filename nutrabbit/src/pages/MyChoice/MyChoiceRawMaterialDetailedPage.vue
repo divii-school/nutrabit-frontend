@@ -9,25 +9,27 @@
               <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
             </swiper-slide>
           </swiper> -->
-          <div v-if="raw_material_image.length > 0">
+          
             <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
               </swiper-slide>
             </swiper> -->
+            <div v-if="raw_material_data">
             <swiper class="mySwiper">
               <swiper-slide>
-                <img v-if="active" @mouseleave="mouseLeave" :src="imgBaseUrl + thumb_2nd_image" />
-                <img :src="imgBaseUrl + thumb_image" v-else  @mouseover="mouseOver" alt />
+                <img v-if="active" @mouseleave="mouseLeave" :src="thumb_2nd_image" />
+                <img :src="thumb_image" v-else  @mouseover="mouseOver" alt />
               </swiper-slide>
             </swiper>
+             </div>
             <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
               @swiper="setThumbsSwiper" class="mySwiper2">
               <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
                 <img :src="imgBaseUrl + item.image_path" alt="" />
               </swiper-slide>
             </swiper>
-          </div>
+         
           <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
           </div> -->
@@ -36,9 +38,9 @@
         <div class="blending-right" v-for="(item, index) of raw_material_data" :key="index">
           <div class="right-heading">
             <i class="login-icon"></i>
-            <h2>{{ item.material_name_ko }}</h2>
-            <div class="blending-tag" v-if="item.tag_ko">
-              <span v-for="(tag, index) in splitJoin(item.tag_ko)" :key="index" v-text="tag"></span>
+            <h2>{{ item.material_name }}</h2>
+            <div class="blending-tag" v-if="item.tag">
+              <span v-for="(tag, index) in splitJoin(item.tag)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -49,31 +51,31 @@
               </li> -->
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Standard") }}</h2>
-                <p>{{ item.standard_ko }}</p>
+                <p>{{ item.standard }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
-                <p>{{ item.material_description_ko }}</p>
+                <p>{{ item.material_description }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
-                <p>{{ item.material_function_ko }}</p>
+                <p>{{ item.material_function }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Functionalcontent") }}</h2>
-                <p>{{ item.material_function_ko }}</p>
+                <p>{{ item.material_function }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
-                <p>{{ item.daily_intake_amount_ko }}</p>
+                <p>{{ item.daily_intake_amount }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
-                <p>{{ item.material_prequotion_ko }}</p>
+                <p>{{ item.material_prequotion }}</p>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
-                <p>{{ item.material_extra_info_ko }}</p>
+                <p>{{ item.material_extra }}</p>
               </li>
             </ul>
             <div class="blendBtnList">
@@ -166,6 +168,9 @@ export default {
       thumb_2nd_image:'',
       similar_product_img: [],
       active: false,
+      placeholder_image: "../../src/assets/images/thumbnail_place.png",
+      globalLocale: "",
+      sub_category_id:''
     };
   },
   created() {
@@ -174,8 +179,19 @@ export default {
   mounted() {
     this.rawMaterialDetail();
     this.rawMaterialImage();
-    this.allBlendingData();
+    setTimeout(() => {
+      this.allBlendingData();
+    }, 1000);
     localStorage.removeItem('option');
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.rawMaterialDetail();
+    },
   },
   methods: {
      mouseOver() {
@@ -216,11 +232,14 @@ export default {
       //  console.log(setRawMaterialId);
 
       this.mychoiceService.getRawMaterialDetail(setRawMaterialId).then((res) => {
-        //  console.log(res.data.data);
+         console.log(res.data.data[0].sub_category_id);
         if (res.data.status == 200) {
           this.raw_material_data = res.data.data;
-          this.thumb_image= res.data.data[0].thumbnail_fst_path;
-          this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
+          // this.thumb_image= res.data.data[0].thumbnail_fst_path;
+          // this.thumb_2nd_image=res.data.data[0].thumbnail_scnd_path;
+          this.sub_category_id = res.data.data[0].sub_category_id;
+           this.thumb_image=(res.data.data[0].thumbnail_fst_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path : this.placeholder_image;
+           this.thumb_2nd_image=(res.data.data[0].thumbnail_scnd_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path : this.placeholder_image;
         } else {
           this.$swal(res.data.message, "error");
         }
@@ -247,7 +266,8 @@ export default {
     allBlendingData() {
       let limit = 5;
       let page = 1;
-      this.mychoiceService.getRecommendedData(limit, page).then((res) => {
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);
