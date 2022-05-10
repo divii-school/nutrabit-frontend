@@ -137,11 +137,29 @@ export default {
     return {
       faqList: [],
       totalfaqlist: [],
+      globalLocale: "",
     };
   },
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
+
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
+    console.log(this.globalLocale);
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.allFaqList();
+      }
+    },
+  },
+
   methods: {
     allFaqList() {
       this.CustomerCenterService.getFAQList()

@@ -99,6 +99,7 @@
             "FindIdOtpVerify" : "Please Verify OTP",
             "EnterOtp": "Please enter your email verification code",
             "EnterPhone": "Please enter your mobile phone number",
+            "OnlyNumber" : "Only numbers are allowed",
             "EnterAddress": "Please enter your address",
             "OTPCheck": "The verification code does not match.",
             "BusinessNo" : "Please enter your business number",
@@ -384,6 +385,7 @@
             "InquiryDetails" : "Please enter your inquiry details."
         },
         "button" : {
+            "Inquiry" : "1:1 Inquiry",
             "Submit" : "Submit"
         },
         "modal":{
