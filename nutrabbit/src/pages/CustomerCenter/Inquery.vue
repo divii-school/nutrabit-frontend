@@ -13,8 +13,8 @@
         </div>
         <div class="faq-heading inquiry">
           <p class="category">{{$t("customer.title.PublishedDate")}}</p>
-          <p class="status">{{$t("onlyme.title.Title")}}</p>
-          <p class="title">{{$t("customer.title.Status")}}</p>
+          <p class="status">{{$t("customer.title.Status")}}</p>
+          <p class="title">{{$t("onlyme.title.Title")}}</p>
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
