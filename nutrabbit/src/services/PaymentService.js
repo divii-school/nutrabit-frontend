@@ -13,7 +13,7 @@ export default class PaymentService {
       pg: "uplus",
       // pay_method: "card",
       merchant_uid: "ORDER_" + new Date().getTime(),
-      // name: "Norway swivel chair",
+      name: "Norway swivel chair",
       amount: 300000,
       buyer_email: buyerEmail,
       buyer_name: buyerName,
@@ -27,10 +27,14 @@ export default class PaymentService {
         console.log(rsp);
         state.isPayment = true;
         state.isPaymentDone = true;
+        localStorage.setItem("isPayment", true);
+        localStorage.setItem("isPaymentDone", true);
       } else {
         console.log(rsp);
         state.isPayment = false;
         state.isPaymentDone = true;
+        localStorage.setItem("isPayment", false);
+        localStorage.setItem("isPaymentDone", true);
         // addPayment(applicationId, applyNum, bankName, buyerAddr, buyerEmail, buyerName, buyerTel, 
         //   cardName, cardNumber, cardQuota, currency, customData, impUid, merchantUid, name, 
         //   paidAmount, paidAt, payMethod, pgProvider, pgTid, pgType, receiptUrl, requestId, status, 
