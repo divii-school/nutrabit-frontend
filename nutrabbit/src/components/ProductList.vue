@@ -30,7 +30,7 @@
         <img v-else src="../assets/images/package_place.png" alt />
       </div>
     </div>
-    <div class="material-details">
+    <div class="material-details ">
       <h2>{{ item.name }}</h2>
       <div class="description">
         <p>{{ item.description }}</p>
