@@ -1,7 +1,7 @@
 <template>
   <div class="main-body">
     <div class="container-small">
-      <div class="login-signup-wrap">
+      <div class="login-signup-wrap login-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap">
             <h1 class="login-heading">{{ $t("common.title.login") }}</h1>
@@ -11,8 +11,12 @@
               <label for>{{ $t("common.label.ID") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
-                    v-model="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    :placeholder="$t('common.placeholder.EnterId')"
+                    v-model="email"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ error.email }}</span>
@@ -21,8 +25,12 @@
               <label for>{{ $t("common.label.Password") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <input class="form-control" type="password" :placeholder="$t('common.placeholder.EnterPassword')"
-                    v-model="password" />
+                  <input
+                    class="form-control"
+                    type="password"
+                    :placeholder="$t('common.placeholder.EnterPassword')"
+                    v-model="password"
+                  />
                 </div>
               </div>
               <span class="error-msg">{{ error.password }}</span>
@@ -42,11 +50,12 @@
                 <ul>
                   <li>
                     <router-link to="/find-id">
-                      {{ $t("common.QuickLinks.FindID") }}</router-link>
+                      {{ $t("common.QuickLinks.FindID") }}</router-link
+                    >
                   </li>
                   <li>
                     <router-link to="/forgot-password">{{
-                        $t("common.QuickLinks.FindPassword")
+                      $t("common.QuickLinks.FindPassword")
                     }}</router-link>
                   </li>
                 </ul>
@@ -69,7 +78,12 @@
               {{ $t("common.QuickLinks.CacaoLogin") }}
             </button>
             <!-- kakao login for App -->
-            <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
+            <button
+              id="kakao_login"
+              v-else
+              class="btn-primary with-icon yellow-btn"
+              @click="mbKakaoLogin"
+            >
               <i class="icon-chat-black"></i>
               <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
               kakao mobile login
@@ -77,12 +91,18 @@
             <!-- END kakao login for App -->
 
             <!-- Naver login for App -->
-            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn" @click="loginWithNaver">
+            <button id="naver_Login" v-if="!isPlatMobile" class="btn-primary with-icon green-btn"
+              @click="loginWithNaver">
               <i class="icon-naver"></i>
               {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- Naver login for App -->
-            <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
+            <button
+              id="naver_Login"
+              v-else
+              class="btn-primary with-icon green-btn"
+              @click="mbNaverLogin"
+            >
               <i class="icon-naver"></i>
               naver mobile login
               <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
@@ -90,7 +110,11 @@
             <!-- ENd Naver login for App -->
 
             <!-- social login for appale -->
-            <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
+            <button
+              class="btn-primary with-icon black-btn"
+              v-show="isAppaleId"
+              @click="mbAppleLogin"
+            >
               <i class="icon-appale"></i>
               애플로 시작하기
             </button>
@@ -110,6 +134,7 @@ import { inject, onMounted } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 import validateLogin from "../../Validation/validateLogin";
+ 
 import naver from 'naver-id-login';
 export default {
   name: "Login",
@@ -173,21 +198,21 @@ export default {
     // end web view get message
   },
 
-  // updated(){
-  //   this.globalLocale = this.$i18n.locale;
-  // },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
 
-  // watch: {
-  //   globalLocale(newVal) {
-  //     if (newVal == "en" && this.validateOnce == true) {
-  //       this.onSubmit();
-  //     }
+  watch: {
+    globalLocale(newVal) {
+      if (newVal == "en" && this.validateOnce == true) {
+        this.onSubmit();
+      }
 
-  //     if (newVal == "kr" && this.validateOnce == true) {
-  //       this.onSubmit();
-  //     }
-  //   },
-  // },
+      if (newVal == "kr" && this.validateOnce == true) {
+        this.onSubmit();
+      }
+    },
+  },
 
   methods: {
     checkError() {
@@ -213,13 +238,12 @@ export default {
           if (res.response) {
             if (res.response.data.status == 400) {
               if (res.response.data.message == "Password Does Not Match") {
-                 this.error.password = this.$t("common.Error.checkPassword");
-              }
-              else if (
+                this.error.password = this.$t("common.Error.checkPassword");
+              } else if (
                 res.response.data.message ==
                 "User With The Email Does Not Exists"
               ) {
-                 this.error.email = this.$t("common.Error.chcekId");
+                this.error.email = this.$t("common.Error.chcekId");
               }
               // this.$swal(res.response.data.message);
             }
@@ -234,8 +258,8 @@ export default {
               localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
               localStorage.setItem("userType", res.data.data.account_type);
               if (this.checkBox) {
-                this.cookies.set("rememberUserEmail", setEmail);
-                this.cookies.set("rememberUserPassword", setPassword);
+                this.cookies.set("rememberUserEmail", this.email);
+                this.cookies.set("rememberUserPassword", this.password);
               }
               this.$router.push("/");
             }
@@ -257,11 +281,13 @@ export default {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
       alert(ftoken);
+      this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
@@ -309,6 +335,62 @@ export default {
         return false;
       }
     },
+
+    naverLoginHandler(res) {
+      // console.log('naverLoginHandler', res);
+      const self = this;
+      if (res) {
+        let resData = JSON.parse(res);
+        // alert(resData);
+        // console.log("--naverLoginHandler--", resData);
+        self.socialRegistration(
+          resData.userName,
+          resData.userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accessToken,
+          resData.loginVia
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
+    kakaoLoginHandler(res) {
+      // console.log('kakaoLoginHandler', res);
+      const self = this;
+      if (res) {
+        // let resData = JSON.parse(JSON.stringify(res));
+        let resData = JSON.parse(res);
+        // alert(resData);
+        // console.log("--kakaoLoginHandler--", resData);
+        self.socialRegistration(
+          resData.userName,
+          resData.userName,
+          "12345678",
+          resData.emailId,
+          "9999999999",
+          "address",
+          "detail address",
+          "sns",
+          resData.accessToken,
+          resData.loginVia
+        );
+        setTimeout(() => {
+          self.socialLogin(resData.emailId);
+        }, 1500);
+      } else {
+        return false;
+      }
+    },
+
     // END Webview support
 
     // naver login
@@ -324,7 +406,7 @@ export default {
       });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = 'http://localhost:8082/callback/naverlogin';
+      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
@@ -395,7 +477,7 @@ export default {
           });
         },
         fail: function (err) {
-          console.log(err);
+          // console.log(err);
         },
       });
     },
@@ -456,8 +538,8 @@ export default {
             localStorage.setItem("tokenexpiresAt", res.data.data.expiresIn);
             localStorage.setItem("userType", res.data.data.account_type);
             if (this.checkBox) {
-              this.cookies.set("rememberUserEmail", setEmail);
-              this.cookies.set("rememberUserPassword", setPassword);
+              this.cookies.set("rememberUserEmail", email);
+              this.cookies.set("rememberUserPassword", password);
             }
             this.$router.push({ name: "Main" });
           }

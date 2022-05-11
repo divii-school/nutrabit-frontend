@@ -9,6 +9,7 @@ axios.interceptors.request.use(function (config) {
     config.headers.source = 'nutrabbit';
     config.headers.apiKey = 'coN21di1202VII01Ed0OnNiMDa2P3p0M';
     config.headers['Accept-Language'] = 'en';
+    config.headers['Access-Control-Allow-Origin'] = '*';
     if (token) {
         config.headers.token = `${token}`;
     }

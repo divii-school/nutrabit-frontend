@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
@@ -60,7 +60,7 @@
                 </li>
               </ul>
 
-              <div class="btn-wrap">
+              <div class="btn-wrap btn-wrap2">
                 <button v-if="storage_box" @click="this.$router.push(`/add-ingredient/`)"
                   class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
                 <button v-else @click="this.$router.push(`/mychoice-rawMaterial-detailed-page/`)"
@@ -88,12 +88,13 @@ import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import ModalWarning from "../../components/ModalWarning.vue";
+ 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
-    ModalWarning
+    ModalWarning,
 
   },
   data() {
@@ -104,6 +105,7 @@ export default {
       storage_box: localStorage.getItem('storage_box'),
       to: '',
       showModal2: false,
+      globalLocale:""
       // rwaMaterialData: [
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -137,6 +139,15 @@ export default {
   },
   mounted() {
     this.blendingFormulation();
+  },
+  updated(){
+    this.globalLocale = this.$i18n.locale;
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      this.blendingFormulation();
+    },
   },
   methods: {
     closeModal2() {

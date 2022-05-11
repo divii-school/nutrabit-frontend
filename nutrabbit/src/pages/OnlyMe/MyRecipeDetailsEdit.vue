@@ -3,8 +3,8 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <!-- <h2>{{ page_header }}</h2> -->
-          <h2>My Choice</h2>
+          <h2>{{ page_header }}</h2>
+          <!-- <h2>My Choice</h2> -->
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -63,55 +63,25 @@
                   >{{$t('onlyme.add_req_caption.Caption')}}</span
                 >
                 <textarea
-                  placeholder="Please write freely"
+                  :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="add_req"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0"
                   >{{$t('onlyme.title.Service')}}
-                  <span
+                  <!-- <span class="mb0"
                     >{{$t('onlyme.service_caption.Caption')}}</span
-                  >
+                  > -->
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isQuote"
-                          value="2"
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
+                <div class="product-item with-input recipe-without-input">
                   <div class="material-details">
-                    <h2>{{$t("onlyme.title.Estimate")}}</h2>
+                    <h2>{{ serviceType }}</h2>
                   </div>
                 </div>
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isSample"
-                          value='1'
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="material-details">
-                    <h2>
-                      {{$t("onlyme.title.SampleAppliction")}}
-                      <span>{{$t("onlyme.title.SampleApplicationCost")}}</span>
-                    </h2>
-                  </div>
-                </div>
-                <ul>
+                <!-- <ul>
                   <li>
                     {{$t("onlyme.service_info.ContentOne")}}
                   </li>
@@ -121,9 +91,9 @@
                   <li>
                     {{$t("onlyme.service_info.ContentThree")}}
                   </li>
-                </ul>
-                <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
+                </ul> -->
+                <div class="btn-wrap tripple-btn">
+                  <button class="btn-small-solid grey btn-left" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
                   <div class="btnWrapRight">
                     <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">{{$t('onlyme.button.Save')}}</button>
                   </div>
@@ -134,6 +104,8 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.ServiceSelect')"
+    :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
 
@@ -144,12 +116,16 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import validator from "validator";
+ 
+import Modal from "../../components/Modal.vue";
+
 
 export default {
   name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
     ProductList,
+    Modal,
   },
   data() {
     return {
@@ -179,7 +155,9 @@ export default {
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
-      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      isFieldEmptyVisible : false,
+      globalLocale : '',
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -199,7 +177,39 @@ export default {
   },
 
   updated() {
-    //console.log(this.services);
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  
+  computed :{
+    serviceType(){
+      if(this.isSample){
+        return this.$t("onlyme.title.SampleAppliction");
+      }
+
+      if(this.isQuote){
+        return this.$t("onlyme.title.Estimate");
+      }
+    },
+
+    page_header(){
+      if(this.$route.params.type == 'my-choice'){
+          return this.$t("onlyme.title.MyChoice")
+      }
+
+      if(this.$route.params.type == 'recommended-blending'){
+          return this.$t("onlyme.title.RecommendedBlending")
+      }
+
+
+    }
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.recipeSingleProductDetails(this.product_id, this.application_type);
+      }
+    },
   },
 
   methods: {
@@ -219,18 +229,20 @@ export default {
 
          if(res.data[0].service_type == 1){
            this.isSample = true;
+           this.serviceType = "Sample application"
          }
           
           if(res.data[0].service_type == 2){
            this.isQuote = true;
+           this.serviceType = "Get a quote"
          }
 
-         if(res.data[0].service_type == 3){
-           this.isSample = true;
-           this.isQuote = true;
-         }
+        //  if(res.data[0].service_type == 3){
+        //    this.isSample = true;
+        //    this.isQuote = true;
+        //  }
 
-
+        this.option_items = [];
          Array.from(res.data[0].options).forEach((ele)=>{
                //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                let op_type = Object.keys(ele)[0].toString();
@@ -260,8 +272,9 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id  || (!this.isSample && !this.isQuote)){
+      if(!_id   || (!this.isSample && !this.isQuote)){
       //this.$swal('All fields required to be filled')
+      this.isFieldEmptyVisible = true;
       return
       }
       
@@ -290,13 +303,16 @@ export default {
           console.log(res.message)
         } else {
 
-          this.$swal(res.message, "error");
+          // this.$swal(res.message, "error");
+          console.log(res.message)
         }
     
       })
     },
     
-
+   closeModal(){
+     this.isFieldEmptyVisible = false;
+   }
 
     
   },

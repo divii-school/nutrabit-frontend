@@ -16,7 +16,7 @@
         display: inline-block;
         display: flex;
         align-items: flex-start;
-
+        font-family: $Pretend-semibold;
         i {
             margin: 6px 5px 0 0;
         }
@@ -33,7 +33,7 @@
                 border: 1px solid $grey-A4;
                 border-radius: 5px;
                 padding: 14px 20px;
-                color: $black-33;
+                color: #4C4C4C;
                 height: 45px;
 
                 &::placeholder {
@@ -66,6 +66,11 @@
             .textarea {
                 width: 690px;
                 height: 278px;
+                padding: 30px;
+                
+                @media screen and (max-width: 640px) {
+                    width: 100%;
+                }
             }
 
             .inquiry-textarea {
@@ -78,7 +83,7 @@
             @include flex-align-center;
 
             .input-inner {
-                width: calc(100% - 119px);
+                width: calc(100% - 115px);
                 margin-right: 10px;
             }
         }
@@ -142,7 +147,17 @@
             line-height: 17px;
             color: $red-3;
             display: block;
-            margin-top: 5px;
+            // margin-top: 5px;
+        }
+        .check-box-wrap{
+            .custom-check{
+               p, a{
+                color: $red-3 !important;
+               }
+                .checkmark{
+                    border: 1px solid $red-3;
+                }
+            }
         }
     }
     
@@ -160,17 +175,29 @@
 }
 
 .signUp-form {
+    .form-group{
+        margin-top: 29px !important;
+        &:first-child{
+            margin-top: 0 !important;
+        }
+        @media screen and (max-width: 768px) {
+            margin-top: 30px !important;
+        }
+    }
     .terms-sec {
         padding-bottom: 20px;
         border-bottom: 1px solid $grey-CF;
 
         .form-group {
-            margin-top: 24px;
+            margin-top: 20px !important;
+            &:first-child{
+                margin-top: 0 !important;
+            }
             .custom-check{
-                .custom-check-title{
+                p{
                     display: block;
-                    router-link{
-                        color: $green-68;
+                    a{
+                        color: $green-53;
                         text-decoration: underline;
                         margin-left: 3px;
                     }
@@ -191,8 +218,11 @@
             padding-bottom: 40px;
         }
     }
-
+    .business-with-individual{
+        margin-top: 40px;
+    }
     .individuals-form {
+        // do not change this, if you need to change then please add a class.
         margin-top: 40px;
     }
 
@@ -226,6 +256,11 @@
                     }
                 }
             }
+        }
+    }
+    &.change-password{
+        @media screen and (max-width: 1200px) {
+           margin-top: 40px !important;
         }
     }
 }

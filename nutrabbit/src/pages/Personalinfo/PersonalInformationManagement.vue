@@ -170,10 +170,11 @@ import { inject } from "vue";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import personalInfoValidation from "../../Validation/personalInfoValidation";
 import Modal from "../../components/Modal.vue";
+ 
 export default {
   name: "PersonalInformationManagement",
   components: {
-    Modal
+    Modal,
   },
   data() {
     return {
@@ -518,7 +519,8 @@ export default {
           )
           .then((res) => {
             if (res.data.status == 200) {
-              console.log(res.data.status);
+              localStorage.setItem("uname", this.name);
+              // console.log(res.data.status);
               this.openmodal();
             }
           });

@@ -3,7 +3,7 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap">
+          <div class="login-heading-wrap type-2">
             <h1 class="login-heading">{{$t("common.title.ChangePassword")}}</h1>
             <p class="membership-desc">{{$t("common.SubTitle.changePassword")}}</p>
           </div>
@@ -11,11 +11,14 @@
           
           <form
             action=""
-            class="signUp-form"
+            class="signUp-form change-password"
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.password ? 'error' : ''">
-              <label for=""><i class="icon-required"></i>{{$t("common.label.NewPassword")}}</label>
+              <label for="">
+                <!-- <i class="icon-required">
+                </i> -->
+                {{$t("common.label.NewPassword")}}</label>
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -34,7 +37,10 @@
               :class="error.confirmPassword ? 'error' : ''"
             >
               <label for=""
-                ><i class="icon-required"></i>{{$t("common.label.Newpasswordconfirmation")}}</label
+                >
+                <!-- <i class="icon-required">
+                  </i> -->
+                  {{$t("common.label.Newpasswordconfirmation")}}</label
               >
               <div class="input-group">
                 <div class="input-inner">
@@ -61,8 +67,10 @@
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
 import CommonService from "../../services/CommonService";
+ 
 export default {
   name: "ChangePassword",
+
   data() {
     return {
       password: "",

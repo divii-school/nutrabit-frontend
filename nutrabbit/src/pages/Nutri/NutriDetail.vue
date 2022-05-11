@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <div v-if="product_sub_image_path.length > 0">
+          <div v-if="thumb_image">
             <!-- <swiper
               :spaceBetween="10"
               :modules="[Thumbs]"
@@ -21,55 +21,29 @@
             </swiper> -->
             <swiper class="mySwiper">
               <swiper-slide>
-                <img :src="imgBaseUrl + thumb_image" alt />
+                <img :src="thumb_image" alt />
               </swiper-slide>
             </swiper>
           </div>
-          <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
-          </div>
-          <div v-if="product_sub_image_path.length > 0">
-            <swiper
-              :spaceBetween="10"
-              :slidesPerView="4"
-              :freeMode="true"
-              :modules="[Thumbs]"
-              watch-slides-progress
-              @swiper="setThumbsSwiper"
-              class="mySwiper2 thumbsSwiperCustom"
-              v-for="(items, index) of nutriDetails"
-              :key="index"
-            >
-              <swiper-slide
-                v-for="(item, index) of items.product_sub_image_path"
-                :key="index"
-              >
-                <img v-if="item" :src="imgBaseUrl + item" alt />
-              </swiper-slide>
-            </swiper>
-          </div>
-          <div v-else>
-            <img src="../../assets/images/content_place.png" alt="" />
+          <div v-if="product_sub_image_path">
+          <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
+            @swiper="setThumbsSwiper" class="mySwiper2 thumbsSwiperCustom">
+            <swiper-slide v-for="(item, index) of product_sub_image_path" :key="index">
+              <img v-if="item" :src="imgBaseUrl + item" alt />
+            </swiper-slide>
+          </swiper>
           </div>
         </div>
-        <div
-          class="blending-right"
-          v-for="(item, index) of nutriDetails"
-          :key="index"
-        >
+        <div class="blending-right" v-for="(item, index) of nutriDetails" :key="index">
           <div class="right-heading">
             <i class="login-icon-green"></i>
-            <h2>{{ item.name_ko }}</h2>
+            <h2>{{ item.name }}</h2>
             <div class="blending-tag">
-              <span
-                v-for="(tag, index) in splitJoin(item.tags_ko)"
-                :key="index"
-                v-text="tag"
-              ></span>
+              <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{ item.description_ko }}</p>
+            <p>{{ item.description }}</p>
             <button @click="openmodal()" class="btn-primary blue-btn-solid">
               {{ $t("nutri.nutriDetails.button") }}
             </button>
@@ -77,17 +51,17 @@
         </div>
       </div>
       <div class="nutriDetail">
-        <img src="../../assets/images/nutri-info.jpg" />
+        <img :src="imgBaseUrl + detail_image_path" />
       </div>
     </div>
   </div>
   <div class="main-page">
     <div class="main-page-body">
-      <div class="devider"><i class="icon-grey-star"></i></div>
+      <div class="devider devider-lg"><i class="icon-dark-grey-star"></i></div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice">
-            <h2 class="nutri-choice-heading text-center">
+          <div class="nutri-choice design-2">
+            <h2 class="nutri-choice-heading text-center design-2">
               {{ $t("nutri.nutriDetails.title") }}<br />
               {{ $t("nutri.nutriDetails.title2") }}
             </h2>
@@ -102,16 +76,9 @@
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    :bodytext1="$t('nutri.nutrimodal.bodytext')"
-    :bodytext2="$t('nutri.nutrimodal.bodytext2')"
-    :btnText1="$t('nutri.nutrimodal.btntext')"
-    :btnText2="$t('nutri.nutrimodal.btntext2')"
-    @confirm="confirm"
-    link = ''
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('nutri.nutrimodal.bodytext')"
+    :bodytext2="$t('nutri.nutrimodal.bodytext2')" :btnText1="$t('nutri.nutrimodal.btntext')"
+    :btnText2="$t('nutri.nutrimodal.btntext2')" @confirm="confirm" link='/my-application-detail' />
 </template>
 
 
@@ -127,11 +94,12 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import { useRoute } from "vue-router";
 import NutriService from "../../services/NutriService";
+
 
 export default {
   name: "NutriDetail",
+  inject : ['common'],
   components: {
     Swiper,
     SwiperSlide,
@@ -156,69 +124,35 @@ export default {
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       blending_id: null,
       blending_data: "",
-      productDetails: [
-        {
-          title: "dark blend",
-          tags: [
-            {
-              tag1: "Allergic",
-              tag2: "Masks",
-              tag3: "Disposable gloves",
-              tag4: "Immunomodulators",
-              tag5: "Vitamins",
-              tag6: "Nasal drop",
-            },
-          ],
-          innderData: [
-            {
-              title: "main raw material",
-              desc: "Description of the main ingredient",
-            },
-            {
-              title: "auxiliary material",
-              desc: "Description of auxiliary ingredients",
-            },
-            {
-              title: "efficacy",
-              desc: "Description of Efficacy",
-            },
-            {
-              title: "appearance",
-              desc: "Description of the features",
-            },
-            {
-              title: "Product Information",
-              desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada tristique nisl turpis nisl placerat ac, diam felis.",
-            },
-          ],
-        },
-      ],
-      silimarProduct: [
-        {
-          title: "similar products",
-          productImg: [
-            {
-              img1: "../../../src/assets/images/suggested-product-img.png",
-              img2: "../../../src/assets/images/suggested-product-img.png",
-              img3: "../../../src/assets/images/suggested-product-img.png",
-              img4: "../../../src/assets/images/suggested-product-img.png",
-              img5: "../../../src/assets/images/suggested-product-img.png",
-            },
-          ],
-        },
-      ],
       ProductImages: ["../../../src/assets/images/suggested-product-img.png"],
-      lang: "KO",
+      lang: "",
       id: "",
       nutriDetails: [],
       isModalVisible: false,
       product_sub_image_path: [],
-      thumb_image: ""
+      thumb_image: "",
+      detail_image_path: '',
+      placeholder_image: "../../src/assets/images/thumbnail_place.png",
+      globalLocale : "",
     };
   },
   created() {
     this.nutriService = new NutriService();
   },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    // console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. getNutridetails();
+      }
+    },
+  },
+
   mounted() {
     this.getNutridetails();
   },
@@ -228,7 +162,7 @@ export default {
       // window.location.href = "";
     },
 
-    confirm(){
+    confirm() {
       this.confirmbutton();
     },
 
@@ -246,29 +180,28 @@ export default {
       this.id = this.$route.params.id;
       // console.log("id",this.id);
       this.nutriService
-        .getNutridetails(this.id)
+        .getNutridetails(this.id,this.lang)
         .then((res) => {
-          if (res.status == 200) {
+          if (res.data.status == 200) {
             this.nutriDetails = res.data.data;
-             console.log("this.nutriDetails",this.nutriDetails);
+            console.log("this.nutriDetails",this.nutriDetails);
             this.product_sub_image_path =
               res.data.data[0].product_sub_image_path;
-              this.thumb_image= res.data.data[0].thumbnail_path;
+            // this.thumb_image= res.data.data[0].thumbnail_path;
+            this.thumb_image = (res.data.data[0].thumbnail_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_path : this.placeholder_image;
+            this.detail_image_path = res.data.data[0].detail_image_path;
           }
-        })
-        .catch((err) => {
-          console.log(err);
         });
     },
 
     confirmbutton() {
       this.id = this.$route.params.id;
-      console.log("id",this.id);
+      // console.log("id",this.id);
       this.nutriService
         .confirmbutton(this.id)
         .then((res) => {
           if (res.status == 200) {
-            console.log("ress", res);
+            // console.log("ress", res);
           }
         })
         .catch((err) => {

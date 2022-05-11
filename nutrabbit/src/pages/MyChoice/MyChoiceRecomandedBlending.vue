@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection recomanded-blending-main">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item recomanded-blending">
@@ -43,8 +43,8 @@
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard type="recomandedBlending" :category="item.category_name_ko" :name="item.name_ko"
-                  :desc="item.description_ko" :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path"
+                <SearchCard type="recomandedBlending" :category="item.name" :name="item.material_name"
+                  :desc="item.description" :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path"
                   :image_link="imgBaseUrl" :route_link="'/choice-recommended-blending-detailed-page/' + item.id" />
               </li>
             </ul>
@@ -61,8 +61,10 @@ import Popper from "vue3-popper";
 import SearchCard from "../../components/SearchCard.vue";
 import VueNextSelect from "vue-next-select";
 import MyChoiceService from "../../services/MyChoiceService";
+ 
 export default {
   name: "MyChoiceRecomandedBlending",
+  inject : ["common"],
   components: {
     Popper,
     SearchCard,
@@ -72,6 +74,7 @@ export default {
     return {
       blendingData: [],
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      globalLocale: "",
     };
   },
   created() {
@@ -80,10 +83,23 @@ export default {
   mounted() {
     this.allBlendingData();
   },
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
+
+watch: {
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allBlendingData();
+      }
+    },
+  },
   methods: {
     // allBlendingData list
     allBlendingData() {
-      this.mychoiceService.getRecommendedData().then((res) => {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
+      this.mychoiceService.getRecommendedData(setSubCategory).then((res) => {
         // console.log(res);
         if (res.status == 200) {
           //  console.log('allBlendingData res', res.data.blendingData);
@@ -95,10 +111,12 @@ export default {
       });
     },
     onChange(event) {
+      this.sub_category_id = localStorage.getItem('sub_category_id');
+      const setSubCategory = this.sub_category_id;
       // console.log(event.target.value);
       if (event.target.value == 'popularity') {
 
-        this.mychoiceService.getRecommendedBlendingPopularity().then((res) => {
+        this.mychoiceService.getRecommendedBlendingPopularity(setSubCategory).then((res) => {
           //  console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);
@@ -111,7 +129,7 @@ export default {
       }
       else if (event.target.value == 'alphabetical') {
 
-        this.mychoiceService.getRecommendedBlendingAlphabetical().then((res) => {
+        this.mychoiceService.getRecommendedBlendingAlphabetical(setSubCategory).then((res) => {
           // console.log(res.data);
           if (res.data.status == 200) {
             // console.log('getRawMaterial res', res.data.data.rawMaterialData);

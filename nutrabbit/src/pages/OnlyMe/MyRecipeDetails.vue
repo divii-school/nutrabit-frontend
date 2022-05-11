@@ -3,7 +3,8 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My Choice</h2>
+           <h2>{{ page_header }}</h2>
+          <!-- <h2>My Choice</h2> -->
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -56,7 +57,7 @@
               <div class="fGroup">
                 <label>{{ $t("onlyme.title.AdditionalRequest") }}</label>
                 <textarea
-                  placeholder="Please write freely"
+                  :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="additionalRequest"
                 ></textarea>
               </div>
@@ -82,8 +83,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="btn-wrap">
-                  <button class="btn-small-solid grey" @click="openModal">
+                <div class="btn-wrap tripple-btn">
+                  <button class="btn-small-solid grey btn-left" @click="openModal">
                     {{ $t("onlyme.button.Delete") }}
                   </button>
                   <div class="btnWrapRight">
@@ -127,7 +128,7 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
-
+ 
 export default {
   name: "MyRecipeDetails",
   components: {
@@ -148,6 +149,7 @@ export default {
       serviceSample: false,
       serviceEstimate: false,
       serviceBoth: false,
+      globalLocale : '',
 
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -172,7 +174,7 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
-      //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "추천 블랜딩",
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
     };
   },
 
@@ -181,6 +183,17 @@ export default {
     // console.log(
     //   `product id is : ${this.product_id} and type is ${this.application_type}`
     // );
+  },
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.recipeSingleProductDetails(this.product_id, this.application_type);
+      }
+    },
   },
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
@@ -204,6 +217,19 @@ export default {
 
       return service;
     },
+    
+    page_header(){
+      if(this.$route.params.type == 'my-choice'){
+          return this.$t("onlyme.title.MyChoice")
+      }
+
+      if(this.$route.params.type == 'recommended-blending'){
+          return this.$t("onlyme.title.RecommendedBlending")
+      }
+
+
+    }
+    
   },
   methods: {
     recipeSingleProductDetails(_productID, _type) {
@@ -231,6 +257,7 @@ export default {
             } else {
               this.serviceBoth = true;
             }
+            this.option_items = [];
             Array.from(res.data[0].options).forEach((ele) => {
               console.log(Object.keys(ele)[0], Object.values(ele)[0]);
               let op_type = Object.keys(ele)[0].toString();
@@ -240,7 +267,7 @@ export default {
                 //console.log(res.data[0])
                 if (res.status == 200) {
                   this.option_items.push(res.data[0]),
-                    console.log(this.option_items);
+                  console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
                   console.log(res.message);
@@ -276,9 +303,14 @@ export default {
     toPaymentGateway(_id) {
       //console.log(this.serviceNum)
 
-      if (this.serviceNum == 1 || this.serviceNum == 3) {
+      if (this.serviceNum == 1) {
         // for payment gatteway
         console.log(`product id for payment is  : ${_id}`);
+
+
+
+
+        
       } else {
         // if service is quote
         this.myRecipe.submitRecipeApplication(_id).then((res) => {

@@ -8,6 +8,9 @@
         <component :is="Component" />
       </transition>
     </router-view>
+    <!-- Kakao Chat -->
+    <!-- <KakaoChat /> -->
+    <!-- Kakao Chat -->
     <!-- Footer -->
     <Footer />
     <!-- Footer -->
@@ -19,11 +22,13 @@ import { provide } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import common from "./store/common";
+// import KakaoChat from "./components/KakaoChat.vue";
 export default {
   name: "App",
   components: {
     Header,
     Footer,
+    // KakaoChat,
   },
   setup() {
     provide("common", common);
@@ -36,14 +41,14 @@ export default {
   methods: {
     sendPushNotificationData(res) {
       if (res) {
-        alert('sendPushNotificationData');
+        alert("sendPushNotificationData");
         alert(JSON.stringify(res));
         console.log(res);
       } else {
-        return false
+        return false;
       }
     },
-  }
+  },
 };
 </script>
 

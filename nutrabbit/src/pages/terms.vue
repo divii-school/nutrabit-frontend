@@ -14,7 +14,9 @@
 </template>
 
 <script>
+import KakaoChat from "../components/KakaoChat.vue";
 export default {
+inject : ["common"],
   data() {
     return {
       terms: "terms",
@@ -24,10 +26,20 @@ export default {
   mounted() {
     this.getTerms();
   },
+
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.getTerms();
+        console.log(this.common.state.SelectedLang)
+      }
+    },
+  },
   methods: {
     async getTerms() {
       try {
-        const actualData = await axios.post("/cms", {key: this.terms});
+        const actualData = await axios.post("/cms", {key: this.terms, lang : localStorage.getItem('selectedLang')});
+        console.log(actualData)
         this.Terms = actualData.data.data;
        } catch (error) {
         return;
@@ -39,6 +51,13 @@ export default {
 
 <style lang="scss">
 .terms-comp{
+  .my-recipe-section {
+    .heading {
+      h1{
+        font-size: 30px;
+      }
+    }
+  }
 .row-type {
   margin-bottom: 30px;
   h3 {
@@ -68,6 +87,7 @@ export default {
 }
 .my-recipe-body {
   padding-bottom: 50px;
+  margin-top: 40px !important;
   ol {
     list-style-type: auto;
     padding-left: 20px;

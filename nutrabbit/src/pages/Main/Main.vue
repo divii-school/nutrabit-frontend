@@ -1,13 +1,28 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
+      <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :navigation="true" :modules="modules" :speed="1000" class="mySwiper">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <a :href="slider.link">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
+          </a>
+        </swiper-slide>
+      </swiper>
+      <!-- slider for mobile -->
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+        <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <a :href="slider.link">
+          <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
+          <img v-else src="../../assets/images/banner_place.png" alt />
+          <p class="banner-title text-center">{{ slider.title }}</p>
+          </a>
         </swiper-slide>
       </swiper>
     </div>
@@ -32,7 +47,7 @@
       </div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice">
+          <div class="nutri-choice greenTItle">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
             <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
@@ -49,27 +64,17 @@
           </div>
         </div>
       </div>
-
-      <!-- payment-test -->
-      <!-- <div class="devider">
-        <i class="icon-grey-star"></i>
-      </div> -->
-
-      <!-- <div class="payment-test" style="padding:40px">
-        <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
-      </div> -->
-      <!-- payment-test -->
     </div>
   </div>
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
     :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
     link="/login" />
-  <KakaoChat />
+  <!-- <KakaoChat /> -->
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
@@ -77,7 +82,6 @@ import MainProductCard from "../../components/MainProductCard.vue";
 import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
-import PaymentService from "../../services/PaymentService";
 import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
@@ -99,7 +103,6 @@ export default {
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       isModalVisible: false,
-      globalLocale: "",
     };
   },
   setup() {
@@ -108,13 +111,12 @@ export default {
       common.methods.isFromApp();
     });
     return {
-      modules: [Pagination, Navigation],
+      modules: [Pagination, Navigation, Autoplay],
       common
     };
   },
   created() {
     this.MainService = new MainService();
-    this.paymentService = new PaymentService();
   },
   mounted() {
     this.allBanner();
@@ -128,25 +130,15 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  updated(){
-    //this.allNutidata();
-    this.globalLocale = this.$i18n.locale;
-  },
-
   watch: {
-    globalLocale(newVal, oldVal) {
-      this.allNutidata();
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allNutidata();
+      }
     },
   },
 
   methods: {
-    // makePay test function
-    // makePay() {
-    //   // console.log('makePay');
-    //   alert('makePay');
-    //   this.paymentService.requestPay();
-    // },
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
@@ -166,7 +158,7 @@ export default {
         //console.log(res);
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
-          console.log(res)
+          //console.log(res)
 
         } else {
           // console.log('getNutridata res', res.data.blendingData);

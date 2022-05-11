@@ -5,11 +5,15 @@ header {
 
   .header-container {
     max-width: 1760px;
-    width: 95%;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 100%;
     margin: 0 auto;
-
+    @media screen and (max-width: 1850px) {
+      width: 95%;
+      padding: 0 16px;
+    }
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
     .header-menu {
       @include flex-justify-between;
       min-height: 80px;
@@ -80,12 +84,13 @@ header {
               font-size: 14px;
               line-height: 17px;
               color: $black-33;
-
+              font-family: $default-font;
               &::placeholder {
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 17px;
                 color: $black-33;
+                font-family: $default-font;
               }
             }
           }
@@ -267,7 +272,7 @@ header {
           color: $black-33;
           margin-left: 32px;
           font-weight: 500;
-
+          font-family: $Pretend-medium;
           @media screen and (max-width: 1200px) {
             margin-left: 20px;
           }
@@ -291,7 +296,11 @@ header {
             .dropbtn {
               @include flex-align-center;
               min-height: 41px;
-
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 19px;
+              color: $black-33;
+              font-family: $Pretend-medium;
               i {
                 margin-right: 5px;
               }
@@ -301,7 +310,7 @@ header {
               border-top: 1px solid $green-45;
               display: none;
               position: absolute;
-              min-width: 260px;
+              min-width: 253px;
               box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
               z-index: 1;
               left: -125px;
@@ -315,6 +324,13 @@ header {
                 letter-spacing: 0.03em;
                 color: $black-33;
                 background: $white-1;
+                font-family: $default-font;
+                &:hover,:active {
+                  color: $green-45;
+                }
+              }
+              .active {
+                color: $green-45;
               }
             }
           }
@@ -331,7 +347,7 @@ header {
             justify-content: center;
             select {
               height: 40px;
-              width: 68px;
+              width: 75px;
               padding-left: 10px;
               font-weight: 500;
               font-size: 14px;
@@ -363,7 +379,7 @@ header {
         }
 
         .menu-toggle {
-          margin-left: 20px;
+          margin-left: 0;
 
           @media screen and (max-width: 768px) {
             margin-left: 16px;
@@ -503,22 +519,31 @@ header {
           background-size: auto 20px;
           height: 20px;
           width: 20px;
-          top: -22px;
+          top: -24px;
           left: 0;
+          @media screen and (max-width: 500px) {
+            height: 10px;
+            width: 10px;
+            background-size: auto 10px;           
+          }
         }
 
         li {
           display: flex;
           align-items: flex-start;
-          margin-top: 39px;
+          margin-top: 52px;
           pointer-events: none;
-
           @media screen and (max-width: 768px) {
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 27px;
             pointer-events: auto;
           }
-
+          &:nth-child(2){
+            margin-top: 39px;
+            @media screen and (max-width: 768px) {
+              margin-top: 22px;
+            }
+          }
           &:hover>.side-menu-heading a {
             border-bottom: 3px solid $green-68;
           }
@@ -534,28 +559,31 @@ header {
           }
 
           .side-menu-heading {
-            min-width: 245px;
-            max-width: 245px;
-            margin-right: 100px;
+            // min-width: 245px;
+            // max-width: 245px;
+            width: 177px;
+            margin-right: 168px;
             @include flex-justify-between;
             cursor: pointer;
             position: relative;
             @media screen and (max-width: 1800px) {
-              min-width: 200px;
-              max-width: 200px;
+              // min-width: 200px;
+              // max-width: 200px;
               margin-right: 50px;
             }
 
             @media screen and (max-width: 1200px) {
-              min-width: 180px;
-              max-width: 180px;
-              margin-right: 30px;
+              // min-width: 180px;
+              // max-width: 180px;
+              width: 140px;
+              margin-right: 60px;
             }
 
             @media screen and (max-width: 992px) {
-              min-width: 120px;
-              max-width: 120px;
-              margin-right: 25px;
+              // min-width: 120px;
+              // max-width: 120px;
+              width: 110px;
+              margin-right: 45px;
             }
 
             @media screen and (max-width: 768px) {
@@ -575,6 +603,7 @@ header {
               pointer-events: auto;
               padding-bottom: 10px;
               border-bottom: 3px solid transparent;
+              font-family: $Pretend-bold;
 
               @media screen and (max-width: 1200px) {
                 font-size: 25px;
@@ -587,6 +616,7 @@ header {
               }
 
               @media screen and (max-width: 768px) {
+                padding-bottom: 3px;
                 font-size: 16px;
                 line-height: 19px;
               }
@@ -604,8 +634,8 @@ header {
                 }
                 .icon-leftArw{
                   position: absolute;
-                  right: -30px;
-                  top: 50%;
+                  right: -36px;
+                  top: 54%;
                   margin-top: -23px;
                   cursor: pointer;
                   pointer-events: all;
@@ -614,7 +644,9 @@ header {
                     background-size: auto 24px;
                     height:   24px;
                     width: 24px;
-                    margin-top: -20px;
+                    margin-top: -16px;
+                    right: -30px;
+                    top: 50%;
                   }
                 }
                 &.side-menu-web-login{
@@ -642,6 +674,7 @@ header {
                       border: 0;
                       padding: 0;
                       margin-top: 30px;
+                      font-family: $default-font;
                       &:first-child{
                         margin-top: 0;
                       }
@@ -686,7 +719,7 @@ header {
               display: block;
               margin-top: 20px;
               pointer-events: auto;
-
+              font-family: $default-font;
               @media screen and (max-width: 1400px) {
                 font-size: 18px;
                 line-height: 22px;
@@ -710,6 +743,7 @@ header {
 
               &:hover {
                 color: $green-68;
+                // font-weight: 600;
               }
             }
 
@@ -727,6 +761,11 @@ header {
               margin-bottom: 5px;
             }
           }
+          &.active-side-menu-heading{
+            .icon-menu-downArw{
+              transform: rotate(180deg);
+            }
+          }
         }
       }
 
@@ -735,7 +774,7 @@ header {
         margin-top: 80px;
 
         @media screen and (max-width: 768px) {
-          margin-top: 46px;
+          margin-top: 40px;
         }
 
         li {
@@ -743,7 +782,7 @@ header {
           font-size: 16px;
           line-height: 19px;
           color: $grey-82;
-
+          font-family: $default-font;
           @media screen and (max-width: 768px) {
             font-size: 14px;
             line-height: 17px;
@@ -803,6 +842,7 @@ header {
           line-height: 17px;
           letter-spacing: 0.03em;
           color: $grey-66;
+          font-family: $default-font;
         }
 
         .search-item-close {
@@ -837,6 +877,7 @@ header {
       font-size: 12px;
       line-height: 14px;
       color: $grey-A4;
+      font-family: $default-font;
       &:last-child{
         margin-left: auto;
       }

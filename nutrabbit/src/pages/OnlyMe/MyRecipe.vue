@@ -1,9 +1,11 @@
 <template>
+
   <div class="main-body themeGreen">
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
           <h2>{{ $t("onlyme.title.myRecipe") }}</h2>
+          <!-- <p>{{globalLocale}}</p> -->
         </div>
         <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
@@ -59,8 +61,8 @@
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeRecommendedItem(product_id)"/>
     <Modal v-show="isChoiceModalVisible" @close="closeModalChoice" :bodytext1="$t('onlyme.modal.DeleteBodyText')"
     :btnText1="$t('onlyme.button.Cancel')"  :btnText2 ="$t('onlyme.button.Confirm')"  link="/my-recipe" @confirm="deleteRecipeChoiceItem(product_id)"/>
-    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')"
-    :btnText1="$t('onlyme.button.Confirm')"/>
+    <Modal v-show="isItemSelectedVisible" @close="closeModalDelete" :bodytext1="$t('onlyme.modal.SelectedBodyText')" link="/my-recipe"
+    :btnText2="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
 
@@ -72,6 +74,7 @@ import Button from '../../components/Button.vue';
 import ProductListRecipe from "../../components/ProductListRecipe.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
+ 
 
 export default {
   inject : ['common'],
@@ -116,6 +119,7 @@ export default {
       recommendedDisabled : true,
       choiceDisabled : true,
       unchecked : true,
+      globalLocale : this.common.state.GlobalLocale,
     };
   },
 
@@ -124,6 +128,21 @@ export default {
     this.allRecommendedData();
     this.allChoiceData();
     
+  },
+
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this. allRecommendedData();
+        this.allChoiceData();
+      }
+    },
   },
 
   // updated(){

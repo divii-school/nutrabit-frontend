@@ -31,8 +31,10 @@
         "label": {
             "ID": "ID",
             "Password": "Password",
-            "TermsCheckBox": "(Required) I agree to the Terms of Use.",
-            "PersonalInfoCheckBox": "(Required) I agree to the collection and use of personal information.",
+            "TermsCheckBoxLink" : "Terms of Use.",
+            "TermsCheckBox": "(Required) I agree to the {0}",
+            "PersonalInfoCheckBoxLink" : "personal information.",
+            "PersonalInfoCheckBox": "(Required) I agree to the collection and use of {0}",
             "Name": "Name",
             "VerifyPassword": "Verify Password",
             "Email": "Email",
@@ -82,21 +84,30 @@
         "Error": {
             "Resquired": "* Required",
             "EnterId": "Please enter your ID",
-            "chcekId": "User with the id does not exist",
+            "chcekId": "User ID doesn’t exist!",
             "EnterPassword": "Please enter password",
-            "checkPassword": "Password should match!",
+            "checkPassword": "Password doesn’t match",
             "EnterName": "Input your name, please",
+            "useridFormatSignup" : "Please use only letter and number",
+            "useridAvailable" : "User ID available",
+            "checkIdAvailable" : "Have to check user ID availability",
             "PasswordFormat": "Enter your password (*10-20 characters including uppercase and lowercase letters, numbers, and special symbols)",
             "ConfirmPassword": "Please confirm your password",
             "EnterEmail": "Please enter your email address",
+            "ValidEmail" : "Enter a valid email address",
+            "VerifyOtp" : "Have to verify the otp for email",
+            "FindIdOtpVerify" : "Please Verify OTP",
             "EnterOtp": "Please enter your email verification code",
             "EnterPhone": "Please enter your mobile phone number",
+            "OnlyNumber" : "Only numbers are allowed",
             "EnterAddress": "Please enter your address",
             "OTPCheck": "The verification code does not match.",
             "BusinessNo" : "Please enter your business number",
             "BusinessName" : "Please enter your business name",
             "department" : "Please enter the department name",
-            "contactPerson" : "Please enter the name of the person in charge"
+            "contactPerson" : "Please enter the name of the person in charge",
+            "UserExists" : "User Already Exists",
+            "EmailExists" : "Email ID Already Exists"
         }
     },
     "button": {
@@ -105,11 +116,12 @@
         "Previous": "Previous",
         "Save_as_draft": "Save as Draft",
         "Confirm": "Confirm",
-        "sendVerification": "Send verification code",
-        "resendVerification": "Resend verification code",
+        "sendVerification": "Send code",
+        "resendVerification": "Resend",
         "verify": "Verify",
-        "SearchAddress": "Search Address",
-        "change": "Change"
+        "SearchAddress": "Search",
+        "change": "Change",
+        "checkAvailability" : "Check"
     },
     "onlyme": {
         "title": {
@@ -152,7 +164,7 @@
         },
         "placeholder": {
             "title": "My own recipe made with guar gum hydrolyzate",
-            "additionalRequest": ""
+            "additionalRequest": "Please write freely"
         },
         "button": {
             "DeleteSelection": "delete selection",
@@ -167,7 +179,8 @@
         },
         "modal": {
             "SelectedBodyText": "There are no items selected.",
-            "DeleteBodyText": "Are you sure you want to delete it?"
+            "DeleteBodyText": "Are you sure you want to delete it?",
+            "ServiceSelect" : "Please select a service"
         }
     },
     "main": {
@@ -192,7 +205,10 @@
             "copyright" : "Copyright 2022 NUTRABBIT. All right reserved."
         },
         "term": "Terms of Use",
-        "privacy": "Privacy Policy"
+        "privacy": "Privacy Policy",
+        "total" : "Total",
+        "result" : "result",
+        "no_result" : "No results were found for your search."
     },
     "header": {
         "login": "login",
@@ -279,7 +295,8 @@
         },
         "etc": "Etc",
         "unchecked": "unchecked",
-        "etc_input": "Direct input"
+        "etc_input": "Direct input",
+        "error_etc" : "Please add custom package input."
     },
     "final": {
         "note": {
@@ -368,6 +385,7 @@
             "InquiryDetails" : "Please enter your inquiry details."
         },
         "button" : {
+            "Inquiry" : "1:1 Inquiry",
             "Submit" : "Submit"
         },
         "modal":{
@@ -380,15 +398,14 @@
         "title": {
             "heading": "What is nutri 3.3 blending?",
             "sub_heading": "Introduction to nutri 3.3 blending?",
-            "paragraph1": "nutri3.3 blending provides ready-to-market products.",
-            "paragraph2": "Seize the opportunity to enjoy all services from A to Z from product concept, package, and branding.",
+            "paragraph1": "nutri3.3 blending provides <span>ready-to-market products</span>.<br>Seize <span>the opportunity to enjoy all services from A to Z</span> from product concept, package, and branding.",
             "heading2": "How to use nutri 3.3 blending",
             "blending": "nutri 3.3 blending product",
             "nutri_list":"* nutri3.3 blending can only be purchased within the options provided.",
             "nutri_list1": "*After receiving product quotation, consultation and contract are concluded, payment and production will proceed.",
             "desc1": "Take a look at our branded products",
             "desc2": "Choose the product you want to launch",
-            "desc3": "Click the Get an estimate button at the bottom of the detail page on selected product",
+            "desc3": "Click the <span>Get an estimate</span> button at the bottom of the detail page on selected product",
             "desc4": "We will contact you after checking"
         },
         "nutriDetails": {
@@ -416,7 +433,8 @@
         "sampleprocress": {
             "title": "Sample service process",
             "title1": "Request for Sample",
-            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3. (Sample production costs 300,000 won / Additional modifications are charged separately)",
+            "desc1": "Request for sample production on your desired sample from my choice in nutri 3.3.",
+            "desc_sub" : "(Sample production costs 300,000 won / Additional modifications are charged separately)",
             "title2": "Development Meeting",
             "desc2": "We check your requirements based on the sample service requested.",
             "title3": "Develop Product",
@@ -477,7 +495,7 @@
             "email": "Email",
             "phonenumber": "Phone Number",
             "address": "Address",
-            "searchaddress": "Address Search",
+            "searchaddress": "Search",
             "find us": "How did you find us?",
             "offline": "Offline",
             "online": "Online",
@@ -518,7 +536,8 @@
             "button": "Confirm",
             "bodytext": "Are you sure you want to withdraw this account?",
             "btntext": "Cancel",
-            "btntext1": "Confirm"
+            "btntext1": "Confirm",
+            "reason": "Please enter the reason"
         },
         "withdrawmodal": {
             "bodytext": "Your withdrawal is complete.",

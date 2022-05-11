@@ -9,12 +9,22 @@
       svg{
         margin-left: 20px;
         height: 12px;
-        min-width: 12px;
+        min-width: 6px;
+      }
+      &.inquery-wrap{
+        .my-notice-heading {
+          @media screen and (max-width: 640px) {
+            border-bottom: 0px;
+          }
+        }
       }
       .my-notice-heading {
         @include flex-align-center;
         padding-bottom: 40px;
         border-bottom: 1px solid $grey-CF;
+        // @media screen and (max-width: 640px) {
+        //   border-bottom: 0px;
+        // }
 
         &.noFlex {
           justify-content: space-between !important;
@@ -41,12 +51,14 @@
       .notice-heading {
         @include flex-justify-between;
         border-bottom: 1px solid $grey-CF;
-        padding: 20px 50px 20px 20px;
+        padding: 20px 38px 20px 20px;
         font-size: 18px;
-        line-height: 18px;
+        line-height: 100%;
         color: $grey-A4;
         @media screen and (max-width: 640px) {
           font-size: 14px;
+          padding: 20px 0px;
+          font-weight: 600;
         }
       }
 
@@ -81,10 +93,10 @@
                 color: $green-68;
                 border: 1px solid $green-68;
                 border-radius: 15px;
-                padding: 5px 0;
+                padding: 5px 15px;
                 margin-right: 10px;
                 font-weight: 600;
-                width: 98px;
+                // width: 98px;
                 @media screen and (max-width: 640px) {
                   font-size: 12px;
                   line-height: 14px;
@@ -123,6 +135,10 @@
 
       .background {
         margin-top: 40px;
+
+        @media screen and (max-width: 640px) {
+          margin-top: 18px;
+        }
       }
 
       .details {
@@ -179,7 +195,7 @@
         }
 
         .title {
-          padding-left: 37px;
+          padding-left: 23px;
         }
       }
 
@@ -188,8 +204,8 @@
         align-items: center;
         display: flex;
         width: 100%;
-        padding: 18px 0;
-        border-bottom: 1px solid $grey-E0;
+        padding: 15px 0;
+        border-bottom: 1px solid $grey-CF;
         .item-left {
           display: flex;
           align-items: center;
@@ -227,6 +243,7 @@
             }
             p{
               text-align: left;
+              font-weight: 500;
             }
           }
 
@@ -238,11 +255,12 @@
             color: $green-68;
             border: 1px solid $green-68;
             border-radius: 15px;
-            padding: 5px 0;
+            padding: 5px 15px;
             margin-right: 10px;
-            width: 94px;
+            font-weight: 600;
+            // width: 94px;
             &.mr-2 {
-              margin-right: 35px;
+              margin-right: 20px;
             }
 
             &.grey {
@@ -268,6 +286,13 @@
             min-width: 145px;
             text-align: center;
 
+            &.para-date{
+              color: $grey-A4;
+              @media screen and (max-width: 640px) {
+                font-size: 14px;
+              }
+            }
+
             @media screen and (max-width: 640px) {
               text-align: justify;
               min-width: auto;
@@ -283,6 +308,13 @@
             }
           }
         }
+        &.notice-diff-border{
+          ul {
+            li {
+              border-bottom: 1px solid $grey-E0;
+            }
+          }
+        }
       }
 
       .accroCont {
@@ -290,6 +322,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
+        border-bottom: 1px solid $grey-CF;
 
         @media screen and (max-width: 640px) {
           font-size: 14px;
@@ -310,12 +343,19 @@
 
         p {
           font-size: 16px;
-          line-height: 130%;
-          color: #333;
+          line-height: 140%;
+          color: $grey-66;
           width: calc(100% - 200px);
+          font-weight: 400;
 
           @media screen and (max-width: 640px) {
             width: auto;
+            font-size: 14px;
+            font-weight: 400;
+          }
+
+          a{
+            text-decoration-line: underline;
           }
         }
       }

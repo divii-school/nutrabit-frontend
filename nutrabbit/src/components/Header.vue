@@ -106,7 +106,7 @@
                   {{ userName }}
                 </button>
                 <div class="dropdown-content">
-                  <router-link :to="personalInfoRouterLink">{{
+                  <router-link :to="personalInfoRouterLink" class-active="active">{{
                     $t("header.ChangePersonalInfo")
                   }}</router-link>
                   <router-link to @click="logOut()">{{
@@ -156,6 +156,7 @@
             v-for="(item, index) of rightMenuItem"
             :key="index"
             @click="rightMenuData(index)"
+            :class="activeSubmenu === index ? 'active-side-menu-heading' : ''"
           >
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">
@@ -220,7 +221,7 @@
         </ul>
         <ul class="side-menu-language">
           <li
-            v-for="lang in langs"
+            v-for="lang in langs.slice().reverse()"
             :key="lang.code"
             @click="changeLanguage(lang.code)"
           >
@@ -266,6 +267,7 @@ export default {
     "vue-select": VueNextSelect,
     Modal,
   },
+  inject : ["common"],
   data() {
     return {
       token: localStorage.token ? true : false,
@@ -287,6 +289,7 @@ export default {
       showSearchpannel: false,
       personalInfoRouterLink: "",
       searchData: [],
+      searchDataInput: '',
       AllSearchId: [],
       langs: [
         {
@@ -330,10 +333,12 @@ export default {
     if (this.$i18n.locale == "kr") {
       this.common.state.SelectedLang = "KO";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+      
     }
     if (this.$i18n.locale == "en") {
       this.common.state.SelectedLang = "EN";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
+      
     }
   },
 
@@ -451,7 +456,7 @@ export default {
         console.log("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
-        this.searchData = e.target.value;
+        this.searchDataInput = e.target.value;
         e.target.value = "";
         this.showMobSearch = false;
         this.activeSearch = false;

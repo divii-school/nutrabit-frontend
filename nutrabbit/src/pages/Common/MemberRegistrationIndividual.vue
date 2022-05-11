@@ -19,9 +19,11 @@
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    {{ $t("common.label.TermsCheckBox") }}
-                    <input type="checkbox" v-model="termsCheck" />
-                    <span class="checkmark"></span>
+                  <i18n-t keypath="common.label.TermsCheckBox" tag="p" for="common.label.TermsCheckBoxLink">
+                    <router-link to="/terms">{{ $t("common.label.TermsCheckBoxLink") }}</router-link>
+                  </i18n-t>
+                  <input type="checkbox" v-model="termsCheck" />
+                     <span class="checkmark"></span>
                   </label>
                 </div>
               </div>
@@ -30,10 +32,17 @@
                 :class="error.personalCheck ? 'error' : ''"
               >
                 <div class="check-box-wrap">
-                  <label class="custom-check">
+                  <!-- <label class="custom-check">
                     {{ $t("common.label.PersonalInfoCheckBox") }}
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
+                  </label> -->
+                  <label class="custom-check">
+                  <i18n-t keypath="common.label.PersonalInfoCheckBox" tag="p" for="common.label.PersonalInfoCheckBoxLink">
+                    <router-link to="/privacy">{{ $t("common.label.PersonalInfoCheckBoxLink") }}</router-link>
+                  </i18n-t>
+                  <input type="checkbox" v-model="personalCheck" />
+                     <span class="checkmark"></span>
                   </label>
                 </div>
               </div>
@@ -71,13 +80,13 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
-                    Check Availability
+                    {{ $t("button.checkAvailability") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
-                  isUserSuccess
+                  $t("common.Error.useridAvailable")
                 }}</span>
-                <span class="error-msg">{{ error.username }}</span>
+                <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
                 <label for=""
@@ -219,7 +228,7 @@
                     />
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
-                   {{ $t("button.SearchAddress") }}
+                    {{ $t("button.SearchAddress") }}
                   </button>
                 </div>
                 <div class="input-group">
@@ -306,8 +315,10 @@
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
+
 export default {
   name: "MemberRegistrationIndividual",
+
   data() {
     return {
       termsCheck: "",
@@ -338,39 +349,64 @@ export default {
       isOtpVerified: false,
       isUserSuccess: "",
       isOtpSuccess: "",
-      verificationTimer:false,
+      verificationTimer: false,
       validateOnce: false,
       globalLocale: "",
+      clickCheckAvailability: false,
+      clickSendOtp: false,
+      clickVerifyOtp: false,
+      otpCheck: false,
+      userExists: false,
+      emailExist: false,
     };
   },
   created() {
     this.commonService = new CommonService();
   },
 
-  updated(){
+  updated() {
     this.globalLocale = this.$i18n.locale;
   },
-  computed : {
+  computed: {
     verificationStatus() {
+      if (this.verificationTimer) {
+        return this.$t("button.resendVerification");
+      } else {
+        return this.$t("button.sendVerification");
+      }
+    },
 
-      if(this.verificationTimer) {
-        return this.$t('button.resendVerification');
-      }
-      else {
-        return this.$t('button.sendVerification');
-      }
-      
-    }
+    // checkUserError(){
+    //   if(this.usernameEmpty){
+    //      return this.error.username = this.$t("common.Error.EnterId");
+    //   }
+    // }
   },
 
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
+      if ((newVal == "kr" || newVal == "en") && this.validateOnce) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.checkError();
+      if ((newVal == "kr" || newVal == "en") && this.clickCheckAvailability) {
+        this.checkErrorUser();
+      }
+
+      if ((newVal == "kr" || newVal == "en") && this.clickSendOtp) {
+        this.sendOtpErrorCheck();
+      }
+
+      if ((newVal == "kr" || newVal == "en") && this.clickVerifyOtp) {
+        this.verifyOTPError();
+      }
+
+      if ((newVal == "kr" || newVal == "en") && this.otpCheck) {
+        this.wrongOtpCheck();
+      }
+
+      if ((newVal == "kr" || newVal == "en") && this.emailExist) {
+        this.emailExists();
       }
     },
   },
@@ -378,6 +414,7 @@ export default {
   methods: {
     checkError() {
       let credential = {
+        termsCheck: this.termsCheck,
         personalCheck: this.personalCheck,
         name: this.name,
         username: this.username,
@@ -392,7 +429,8 @@ export default {
         isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
-      
+      this.clickCheckAvailability = false;
+      this.clickSendOtp = false;
       if (isInvalid) {
         this.error = error;
         return false;
@@ -403,7 +441,9 @@ export default {
     },
     async individalRegistration() {
       this.validateOnce = true;
+
       if (!this.checkError()) {
+        //this.isIDVerified = false;
         return;
       } else {
         // if (this.isOtpVerified == false) {
@@ -430,34 +470,78 @@ export default {
           });
       }
     },
-    async checkUser() {
+
+    checkErrorUser() {
       if (validator.isEmpty(this.username)) {
         this.error.username = this.$t("common.Error.EnterId");
+        return true;
       } else if (!validator.isAlphanumeric(this.username)) {
-        this.error.username = "Please use only letter and number";
-        this.isUserSuccess = "";
+        this.isIDVerified = false;
+        this.error.username = this.$t("common.Error.useridFormatSignup");
+        return true;
+      } else if (this.userExists) {
+        this.error.username = this.$t("common.Error.UserExists");
+        //return true;
+      } else {
+        return false;
+      }
+    },
+
+    async checkUser() {
+      // if (validator.isEmpty(this.username)) {
+      //   //  this.usernameEmpty = true;
+      //   this.error.username = this.$t("common.Error.EnterId");
+      // } else if (!validator.isAlphanumeric(this.username)) {
+      //    this.error.username = "Please use only letter and number";
+      //   //this.isUserSuccess = "";
+      this.clickCheckAvailability = true;
+      if (this.checkErrorUser()) {
+        this.isIDVerified = false;
+        return;
       } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
             this.error.username = "";
-            this.isUserSuccess = "User ID available";
-          } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
-            this.error.username = res.data.data.msg;
-            this.isUserSuccess = '';
+            // this.isUserSuccess = "User ID available";
+          }
+          if (res.data.status == 200 && res.data.data.is_exist === 1) {
+            //this.error.username = res.data.data.msg;
+            this.userExists = true;
+            this.isIDVerified = false;
+            this.isUserSuccess = "";
           }
         });
       }
     },
 
-    async sendOtp() {
-       if (validator.isEmpty(this.email)) {
+    sendOtpErrorCheck() {
+      if (validator.isEmpty(this.email)) {
         this.error.email = this.$t("common.Error.EnterEmail");
+        return true;
+      } else if (!validator.isEmail(this.email)) {
+        this.error.email = this.$t("common.Error.ValidEmail");
+        return true;
+      } else {
+        return false;
       }
-      else if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
-      }
-       else {
+    },
+
+    emailExists() {
+      this.error.email = this.$t("common.Error.EmailExists");
+    },
+
+    async sendOtp() {
+      //  if (validator.isEmpty(this.email)) {
+      //   this.error.email = this.$t("common.Error.EnterEmail");
+      // }
+      // else if (!validator.isEmail(this.email)) {
+      //   this.error.email = "Enter a valid email address";
+      // }
+      this.clickSendOtp = true;
+      if (this.sendOtpErrorCheck()) {
+        return;
+      } else {
         this.commonService.sendOTP(this.email).then((res) => {
           if (res.status == 200) {
             this.isActive = false;
@@ -468,6 +552,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
+            this.emailExist = false;
 
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
@@ -491,20 +576,38 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
-              this.verificationTimer=true;
+              this.verificationTimer = true;
               //this.verificationStatus = "Resend verification code";
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            return (this.error.email = res.response.data.message);
+            this.emailExist = true;
+            this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           }
         });
       }
     },
+    verifyOTPError() {
+      if (validator.isEmpty(this.emailOTP)) {
+        this.error.emailOTP = this.$t("common.Error.EnterOtp");
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    wrongOtpCheck() {
+      this.error.emailOTP = this.$t("common.Error.OTPCheck");
+    },
+
     async verifyOTP() {
-      if (this.emailOTP == "") {
-        return (this.error.emailOTP = "Enter an valid OTP");
+      // if (this.emailOTP == "") {
+      //   return (this.error.emailOTP = "Enter an valid OTP");
+      // }
+      this.clickVerifyOtp = true;
+      if (this.verifyOTPError()) {
+        return;
       } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
@@ -520,8 +623,11 @@ export default {
             this.error.emailOTP = "";
             return true;
           } else if (res.data.status == 200 && res.data.data.otp_verify === 0) {
-            return (this.error.emailOTP =
-              this.$t("common.Error.OTPCheck"));
+            this.otpCheck = true;
+            //console.log('wrong otp')
+            this.error.emailOTP = this.$t("common.Error.OTPCheck");
+            // return (this.error.emailOTP =
+            //   this.$t("common.Error.OTPCheck"));
           }
         });
       }

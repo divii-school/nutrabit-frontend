@@ -3,16 +3,18 @@
     <div class="container-medium">
       <div class="my-notice-wrap">
         <div class="my-notice-heading">
-          <h2>{{$t("customer.title.Notice")}}</h2>
+          <h2>{{ $t("customer.title.Notice") }}</h2>
         </div>
         <div v-for="(item, index) of noticeDetailsData" :key="index">
           <div class="notice-list noBorder notice-list-main">
             <ul>
               <li>
                 <div class="item-left">
-                  <span v-if="item.top10 == 1">{{$t("customer.content.Tag")}}</span>
+                  <span v-if="item.top10 == 1">{{
+                    $t("customer.tag.Important")
+                  }}</span>
                   <p>
-                    {{ item.title_en }}
+                    {{ item.title }}
                   </p>
                 </div>
                 <div class="item-right">
@@ -31,15 +33,15 @@
           </div>
           <div class="details">
             <p>
-              {{ item.description_en }}
+              {{ item.description }}
             </p>
           </div>
           <div class="btn flex justify-end">
             <button
-              class="btn-small-solid grey"
+              class="btn-small-solid grey-82"
               @click="this.$router.push('/notice')"
             >
-              {{$t("onlyme.button.List")}}
+              {{ $t("onlyme.button.List") }}
             </button>
           </div>
         </div>
@@ -48,12 +50,13 @@
   </div>
 </template>
 <script>
-
-import moment from 'moment';
+import moment from "moment";
 import { useRoute } from "vue-router";
 import CustomerCenterService from "../../services/CustomerCenterService";
+
 export default {
   name: "NoticeDetailPage",
+
   data() {
     return {
       noticeDetailsID: null,
@@ -65,7 +68,22 @@ export default {
   },
   mounted() {
     this.NoticeDetails();
-     this.dateformat();
+    this.dateformat();
+  },
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
+    console.log(this.globalLocale);
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.NoticeDetails();
+        this.dateformat();
+      }
+    },
   },
   methods: {
     NoticeDetails() {
@@ -89,3 +107,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.grey-82 {
+  font-size: 18px;
+  line-height: 22px;
+}
+</style>

@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <ul class="recomanded-status-wrap">
             <li class="recomanded-status visited">
               <div class="d-item">
@@ -123,12 +123,13 @@ import Popper from "vue3-popper";
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import ModalWarning from "../../components/ModalWarning.vue";
+ 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
   components: {
     Popper,
     ProductList,
-    ModalWarning
+    ModalWarning,
   },
   data() {
     return {
@@ -138,7 +139,9 @@ export default {
       etcbtn: '',
       to: '',
       showModal2: false,
-      etcEmptyError: ''
+      etcEmptyError: '',
+      globalLocale: "",
+      ischeckETCError: false
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -155,6 +158,18 @@ export default {
   },
   mounted() {
     this.blendingPackage();
+  },
+  updated() {
+    //console.log(this.$i18n.locale);
+    this.globalLocale = this.$i18n.locale;
+  },
+  watch: {
+    globalLocale(newVal) {
+      if((newVal == 'kr' || newVal == 'en') && this.ischeckETCError){
+        this.checkETCError();
+      }
+      this.blendingPackage();
+    },
   },
   methods: {
     closeModal2() {
@@ -189,6 +204,9 @@ export default {
     getetcbtn() {
       this.etcbtn = "ETC";
     },
+    checkETCError(){
+       this.etcEmptyError = this.$t("package.error_etc");
+    },
     checkPackageId() {
       this.to = "/raw-material-estimation/";
       if (this.package_id == "") {
@@ -199,7 +217,8 @@ export default {
         if (this.etcbtn == "ETC") {
 
           if (this.etc == "") {
-            this.etcEmptyError = "Please add custom package input.";
+            this.ischeckETCError=true;
+            this.etcEmptyError = this.$t("package.error_etc");
             return;
           }
           else {

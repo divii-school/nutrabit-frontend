@@ -63,7 +63,7 @@
   display: inline-block;
 }
 .green-tick-circle {
-  background: url('@/assets/icons/green-tick-circle.svg') no-repeat center center;
+  background: url('@/assets/images/green-tick-circle.png') no-repeat center center;
   background-size: auto 24px;
   height: 24px;
   width: 24px;
@@ -71,6 +71,13 @@
 }
 .icon-grey-star {
   background: url('@/assets/icons/icon-grey-star.svg') no-repeat center center;
+  background-size: auto 20px;
+  height: 20px;
+  min-width: 20px;
+  display: inline-block;
+}
+.icon-dark-grey-star {
+  background: url('@/assets/icons/dark-grey-star.png') no-repeat center center;
   background-size: auto 20px;
   height: 20px;
   min-width: 20px;
@@ -172,5 +179,12 @@
   background-size: auto 30px;
   height:   30px;
   width: 30px;
+  display: inline-block;
+}
+.icon-star-blue {
+  background: url('@/assets/icons/icon-star-blue.svg') no-repeat center center;
+  background-size: auto 20px;
+  height:   20px;
+  width: 20px;
   display: inline-block;
 }

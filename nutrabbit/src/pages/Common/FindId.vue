@@ -3,7 +3,7 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap">
+          <div class="login-heading-wrap type-2">
             <h1 class="login-heading">{{ $t("common.QuickLinks.FindID") }}</h1>
           </div>
           <form
@@ -12,10 +12,7 @@
             @submit="(e) => e.preventDefault()"
           >
             <div class="form-group" :class="error.email ? 'error' : ''">
-              <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.Email") }}</label
-              >
+              <label for="">{{ $t("common.label.Email") }}</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -37,10 +34,7 @@
               <span class="error-msg">{{ error.email }}</span>
             </div>
             <div class="form-group" :class="error.emailOTP ? 'error' : ''">
-              <label for=""
-                ><i class="icon-required"></i
-                >{{ $t("common.label.EmailVerification") }}</label
-              >
+              <label for="">{{ $t("common.label.EmailVerification") }}</label>
               <div class="input-group with-btn">
                 <div class="input-inner">
                   <input
@@ -88,8 +82,10 @@ import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
+ 
 export default {
   name: "FindId",
+
   data() {
     return {
       email: "",
@@ -108,7 +104,11 @@ export default {
       isOtpSuccess: "",
       validateOnce: false,
       globalLocale: "",
-      isCheckUserEmail: false
+      isCheckUserEmail: false,
+      clickSendOtp : false,
+      clickVerifyOtp : false,
+      otpCheck : false,
+
     };
   },
   created() {
@@ -122,12 +122,24 @@ export default {
 
   watch: {
     globalLocale(newVal) {
-      if (newVal == "en" && this.validateOnce == true) {
+       if ((newVal == 'kr' || newVal == 'en') && this.validateOnce) {
         this.checkError();
       }
 
-      if (newVal == "kr" && this.validateOnce == true) {
-        this.checkError();
+      if((newVal == 'kr' || newVal == 'en') && this.clickSendOtp){
+        this.sendOtpErrorCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.clickVerifyOtp){
+        this.verifyOTPError();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
+        this.wrongOtpCheck();
+      }
+
+      if((newVal == 'kr' || newVal == 'en') && this.isCheckUserEmail){
+        this.checkExistingUser();
       }
     },
   },
@@ -159,13 +171,35 @@ export default {
         this.$router.push("/login");
       }
     },
-    async userFindId() {
-      if (!validator.isEmail(this.email)) {
-        this.error.email = "Enter a valid email address";
-      }
-      if (validator.isEmpty(this.email)) {
+
+    sendOtpErrorCheck(){
+       if (validator.isEmpty(this.email)) {
         this.error.email = this.$t("common.Error.EnterEmail");
-      } else {
+        return true;
+      }
+      else if (!validator.isEmail(this.email)) {
+        this.error.email = this.$t("common.Error.ValidEmail");
+        return true;
+      }else{
+        return false;
+      }
+    },
+
+    checkExistingUser(){
+      this.error.email =this.$t("common.Error.chcekId")
+    },
+
+    async userFindId() {
+      // if (!validator.isEmail(this.email)) {
+      //   this.error.email = "Enter a valid email address";
+      // }
+      // if (validator.isEmpty(this.email)) {
+      //   this.error.email = this.$t("common.Error.EnterEmail");
+      // } 
+      this.clickSendOtp = true;
+      if(this.sendOtpErrorCheck()){
+         return;
+      }else {
         this.commonService.userFindId(this.email).then((res) => {
           if (res.status == 200) {
             this.isActive = false;
@@ -176,7 +210,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
-
+            this.isCheckUserEmail= false;
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
             }
@@ -208,10 +242,28 @@ export default {
         });
       }
     },
+
+    verifyOTPError(){
+      if (validator.isEmpty(this.emailOTP)) {
+         this.error.emailOTP = this.$t('common.Error.EnterOtp');
+         return true;
+      }else{
+         return false;
+      }
+    },
+
+    wrongOtpCheck(){
+      this.error.emailOTP = this.$t("common.Error.OTPCheck")
+    },
+
     async verifyOTP() {
-      if (this.emailOTP == "") {
-        return (this.error.emailOTP = "Enter an valid OTP");
-      } else {
+      // if (this.emailOTP == "") {
+      //   return (this.error.emailOTP = "Enter an valid OTP");
+      // } 
+      this.clickVerifyOtp = true;
+      if(this.verifyOTPError()){
+         return;
+      }else {
         try {
           const verifyOtpData = await axios.post("/user/find_id_post", {
             email: this.email,
@@ -232,6 +284,7 @@ export default {
             return true;
           }
         } catch (error) {
+          this.otpCheck = true;
           this.error.emailOTP = this.$t("common.Error.OTPCheck");
           return false;
         }

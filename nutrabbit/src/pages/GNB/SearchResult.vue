@@ -4,13 +4,13 @@
       <div class="search-result-main">
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
-            Total
+            {{ $t('footer.total') }}
             <span>{{ this.newSearchResult.length }}</span
-            >result
+            >{{ $t('footer.result') }}
           </p>
           <p class="search-result-title" v-else>
-            Total
-            <span>0</span>result
+            {{ $t('footer.result') }}
+            <span>0</span>{{ $t('footer.result') }}
           </p>
           <ul class="search-resul-list-wrap">
             <li class="search-resul-list">
@@ -26,6 +26,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/nutri-detail/' + item.id"
                     />
                   </template>
                 </div>
@@ -37,11 +38,11 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Recommended Blending</h1>
+              <h1 class="list-heading">{{$t('myChoice.RecommendedBlending.title')}}</h1>
               <div
                 class="search-list-inner"
                 v-if="recomanedBlending.length > 0"
@@ -56,6 +57,7 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
                     />
                   </template>
                 </div>
@@ -67,11 +69,11 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">Raw Material</h1>
+              <h1 class="list-heading">{{ $t('myChoice.RawMaterial.title') }}</h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
                   <template
@@ -83,6 +85,8 @@
                       :image="item.image"
                       :image_link= imgBaseUrl
                       type2="search"
+                      :route_link="'/mychoice-rawMaterial-detailed-page/'"
+                      @click="setId(item.id)"
                     />
                   </template>
                 </div>
@@ -94,7 +98,7 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>No results were found for your search.</span>
+                <span>{{ $t('footer.no_result') }}</span>
               </div>
             </li>
           </ul>
@@ -118,7 +122,7 @@
               </template>
               <template v-else>
                 <div class="no-result-found">
-                  <span>No results were found for your search.</span>
+                  <span>{{ $t('footer.no_result') }}</span>
                 </div>
               </template>
             </li>
@@ -133,6 +137,7 @@
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import CommonService from "../../services/CommonService";
+ 
 import { inject } from "vue";
 export default {
   name: "SearchResult",
@@ -157,7 +162,7 @@ export default {
       page3: 1,
       page4: 1,
       perPage: 4,
-      FaqPerPage: 1,
+      FaqPerPage: 3,
       res_data: "",
     };
   },
@@ -181,6 +186,9 @@ export default {
     },
   },
   methods: {
+    setId(raw_material_id) {
+      localStorage.setItem('raw_material_id', raw_material_id);
+    },
     showSarchResult(searchKeyword) {
       this.commonService
         .getSearchResult(searchKeyword, this.common.state.myIP)

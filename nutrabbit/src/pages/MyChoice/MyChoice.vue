@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap">
         <div class="my-choice-heading">
-          <h2>my choice</h2>
+          <h2>{{ $t("header.myChoice") }}</h2>
           <div class="tolltip-outer">
             <Popper>
               <button>
@@ -12,8 +12,8 @@
               <template #content>
                 <div class="heading-tooltip-content">
                   <ul>
-                    <li>{{$t('myChoice.popup.list1')}}</li>
-                    <li>{{$t('myChoice.popup.list2')}}</li>
+                    <li>{{ $t('myChoice.popup.list1') }}</li>
+                    <li>{{ $t('myChoice.popup.list2') }}</li>
                   </ul>
                 </div>
               </template>
@@ -44,8 +44,10 @@
 <script>
 import Popper from "vue3-popper";
 import MyChoiceService from "../../services/MyChoiceService";
+
 export default {
   name: "MyChoice",
+  inject: ["common"],
   components: {
     Popper,
   },
@@ -53,6 +55,7 @@ export default {
     return {
       categories: '',
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
+      globalLocale: "",
     };
   },
   created() {
@@ -68,6 +71,17 @@ export default {
     localStorage.removeItem('etc');
     localStorage.removeItem('storage_box');
   },
+  //  updated(){
+  //     this.globalLocale = this.$i18n.locale;
+  //   },
+  watch: {
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allCategories();
+      }
+    },
+  },
+
   methods: {
     gotoNextPage(sub_category_id) {
 
@@ -80,7 +94,7 @@ export default {
       this.mychoiceService.getCategories().then((res) => {
         //console.log(res);
         if (res.status == 200) {
-          // console.log('getCategories res', res.data.parentCategoryData);
+          //  console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
         } else {
 

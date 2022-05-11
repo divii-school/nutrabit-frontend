@@ -1,5 +1,5 @@
 <template>
-  <div class="search-card-inner">
+  <div class="search-card-inner" @click="this.$router.push(route_link)">
     <img v-if="image" @mouseover="mouseOver" class="search-result-img" :src="image_link + image" alt />
     <img v-else @mouseover="mouseOver2" class="search-result-img" src="../assets/images/recommended_place.png" alt />
 
@@ -13,7 +13,7 @@
     <template v-if="type == 'recomandedBlending'">
       <router-link :to="route_link">
         <p class="recomanded-vitamin text-center">{{ name }}</p>
-        <p class="recomanded-quality text-center">{{ desc }}</p>
+        <p class="recomanded-quality text-center">{{ desc.substring(0,50) }}</p>
       </router-link>
     </template>
   </div>

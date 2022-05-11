@@ -14,7 +14,7 @@
               <label for="">{{ $t("personalInfo.withdrawal.header") }}</label>
               <div class="input-group">
                 <div class="input-inner">
-                  <textarea class="form-control textarea" @keyup="reasonkeyup" :placeholder= "$t('personalInfo.withdrawal.placeholder')" v-model="reason"></textarea>
+                  <textarea class="form-control textarea" @keyup="reasonkeyup" :placeholder="$t('personalInfo.withdrawal.placeholder')" v-model="reason"></textarea>
                 </div>
               </div>
               <span class="error-msg">{{ error.reason }}</span>
@@ -48,16 +48,16 @@
         link = '/'
       />
       </div>
-
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
+ 
 export default {
   name: "WithdrawalOfMembership",
   components: {
     // "vue-select": VueNextSelect,
-    Modal,
+    Modal
   },
   data() {
     return{
@@ -66,6 +66,7 @@ export default {
       isModalVisible: false,
       confirmModal: false,
       saveModal: false,
+      globalLocale : '',
     }
   },
 
@@ -73,11 +74,27 @@ export default {
     this.personalBusinessService = new PersonalBusinessService();
   },
 
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' || newVal == 'EN') && this.reason == ''){
+        this.emptyReason();
+      }
+    },
+  },
+
   methods:{
+
+    emptyReason(){
+      this.error.reason = this.$t("personalInfo.withdrawal.reason");
+    },
 
     reasonkeyup(){
       if (this.reason == "") {
-        this.error.reason = "Please enter the reason";
+        this.error.reason = this.$t("personalInfo.withdrawal.reason");
       } else {
         this.error.reason = ""
       }
@@ -85,7 +102,7 @@ export default {
 
     modalWithdraw(){
       if (this.reason == "") {
-        this.error.reason = "Please enter the reason";
+        this.error.reason = this.$t("personalInfo.withdrawal.reason");
       } else {
         this.isModalVisible =  true;
       }

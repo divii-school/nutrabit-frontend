@@ -14,21 +14,32 @@
 </template>
 
 <script>
+import KakaoChat from "../components/KakaoChat.vue";
 export default {
+  inject : ["common"],
   name: "Privacy",
   data() {
     return {
       privacy: "privacy",
       Privecy: [],
+      
     };
   },
   mounted() {
     this.getPrivecy();
   },
+
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.getPrivecy();
+      }
+    },
+  },
   methods: {
     async getPrivecy() {
       try {
-        const actualData = await axios.post("/cms", { key: this.privacy });
+        const actualData = await axios.post("/cms", { key: this.privacy, lang : localStorage.getItem('selectedLang') });
         this.Privecy = actualData.data.data;
       } catch (error) {
         return;
@@ -40,6 +51,13 @@ export default {
 
 <style lang="scss">
 .privecy-comp {
+  .my-recipe-section {
+    .heading {
+      h1 {
+        font-size: 30px;
+      }
+    }
+  }
   .row-type {
     margin-bottom: 30px;
     h3 {
@@ -64,7 +82,7 @@ export default {
     &.type-1 {
       table {
         width: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid $grey-CF;
         background: #fafafa;
         tr {
           border-bottom: 1px solid #ccc;
@@ -99,6 +117,7 @@ export default {
   }
   .my-recipe-body {
     padding-bottom: 50px;
+    margin-top: 40px !important;
     ol {
       list-style-type: auto;
       padding-left: 20px;

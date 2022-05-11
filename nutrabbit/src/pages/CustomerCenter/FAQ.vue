@@ -13,18 +13,18 @@
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
-                <p class="para-category">{{ item.category_name_en }}</p>
+                <p class="para-category">{{ item.category_name }}</p>
                 <span v-if="item.top10 == y">{{$t("customer.tag.Important")}}</span>
               </div>
               <div class="item-right-inner">
-                <p>{{ item.title_en }}</p>
+                <p>{{ item.title }}</p>
               </div>
             </div>
           </template>
           <template v-slot:content>
             <h4>{{$t("customer.tag.Answred")}}</h4>
             <p>
-              {{ item.description_en }}
+              {{ item.description }}
             </p>
           </template>
         </FaqAccordion>
@@ -35,17 +35,17 @@
           <template v-slot:title>
             <div class="item-left">
               <div class="item-left-inner">
-                <p class="para-category">{{ item.category_name_en }}</p>
+                <p class="para-category">{{ item.category_name }}</p>
               </div>
               <div class="item-right-inner">
-                <p>{{ item.title_en }}</p>
+                <p>{{ item.title }}</p>
               </div>
             </div>
           </template>
           <template v-slot:content>
             <h4>{{$t("customer.tag.Answred")}}</h4>
             <p>
-              {{ item.description_en }}
+              {{ item.description }}
             </p>
           </template>
         </FaqAccordion>
@@ -68,6 +68,7 @@
 <script>
 import FaqAccordion from "../../components/FaqAccordion.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
+ 
 export default {
   name: "FAQ",
   components: {
@@ -149,6 +150,7 @@ export default {
       page: 1,
       perPage: 10,
       chunkPage: { chunk: 5 },
+      globalLocale: "",
     };
   },
 
@@ -169,6 +171,21 @@ export default {
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
+
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
+    console.log(this.globalLocale);
+  },
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.allFaqList();
+      }
+    },
+  },
   mounted() {
     this.allFaqList();
   },
@@ -184,6 +201,7 @@ export default {
 
         .then((res) => {
           if (res.status == 200) {
+            //console.log(res.data.data.faq)
             this.FaqList = res.data.data.faq;
             this.myCallback(1);
           }

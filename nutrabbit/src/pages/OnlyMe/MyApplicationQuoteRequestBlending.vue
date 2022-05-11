@@ -61,6 +61,7 @@
 
 <script>
 import MyApplicationService from "../../services/MyApplicationQuoteService";
+ 
 export default {
   name: "MyApplicationQuoteRequestBlending",
 
@@ -74,6 +75,7 @@ export default {
         this.$route.params.type == "recommended"
           ? "recommended_blending"
           : 'nutri_blending',
+      globalLocale : '',
       
     };
   },
@@ -89,6 +91,19 @@ export default {
     this.getQuotionBlendingDetails(this.product_id, this.application_type);
   },
 
+  updated(){
+    this.globalLocale = localStorage.getItem('selectedLang');
+    console.log(this.globalLocale)
+  },
+
+  watch: {
+    globalLocale(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+        this.getQuotionBlendingDetails(this.product_id, this.application_type);
+      }
+    },
+  },
+
   methods: {
     getQuotionBlendingDetails(_id, _app_type) {
       this.myApplication.getApplicationBlendingDetails(_id, _app_type).then(res=>{
@@ -97,7 +112,7 @@ export default {
                    this.title = res.data[0].title;
                    this.add_req = res.data[0].additional_request;
                    this.answer = res.data[0].answer_by_admin;
-
+                   this.options = [];
                    Array.from(res.data[0].options).forEach((ele)=>{
                      //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                       let op_type = ele.split(':')[0];
