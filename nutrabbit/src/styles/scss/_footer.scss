@@ -60,6 +60,7 @@ footer{
                                 line-height: 17px;
                                 color: $grey-4C;
                                 display: inline-block;
+                                font-family: $default-font;
                                 @media screen and (max-width: 768px){
                                     font-size: 10px;
                                     line-height: 12px;
@@ -68,6 +69,7 @@ footer{
                             &.active{
                                 a{
                                     font-weight: 600;
+                                    font-family: $Pretend-semibold;
                                 }
                             }
                         }
@@ -91,7 +93,6 @@ footer{
                             font-size: 14px;
                             line-height: 17px;
                             color: $grey-4C;
-                            font-family: $default-font;
                             &:focus {
                                 outline: none;
                             }
@@ -192,6 +193,7 @@ footer{
                     font-size: 14px;
                     line-height: 22px;
                     color: $grey-4C;
+                    font-family: $default-font;
                     @media screen and (max-width: 992px){
                         font-size: 12px;
                     }
@@ -206,6 +208,7 @@ footer{
                     color: $grey-BD;
                     margin-top: 22px;
                     display: block;
+                    font-family: $default-font;
                     @media screen and (max-width: 992px){
                         font-size: 12px;
                     }
