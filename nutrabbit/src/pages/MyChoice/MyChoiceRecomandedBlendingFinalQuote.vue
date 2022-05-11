@@ -237,33 +237,31 @@ export default {
     },
 
     getUserInfo() {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+          let data = res.data;
+          // console.log("data",data);
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
 
-              if (localStorage.getItem("userType") == "business_member") {
-          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
-            let data = res.data;
-            // console.log("data",data);
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-        if (localStorage.getItem("userType") == "personal_member") {
-
-          this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-            // console.log(res.data);
-            let data = res.data;
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-
+        this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+          // console.log(res.data);
+          let data = res.data;
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
     },
 
     // payment
@@ -271,8 +269,7 @@ export default {
       alert('makePay');
       this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
     },
-
-
+    
     package_temporary_add() {
       let is_temporary_storage = 'Y';
       let length = this.servicetype.length;
