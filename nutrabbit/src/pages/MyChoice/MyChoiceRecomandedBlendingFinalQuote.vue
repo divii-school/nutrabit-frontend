@@ -173,6 +173,7 @@ export default {
   },
   mounted() {
     this.option_list();
+    this.getUserInfo();
   },
   methods: {
     closeModalService() {
@@ -197,7 +198,47 @@ export default {
           service = this.servicetype.toString();
         }
 
-        if (localStorage.getItem("userType") == "business_member") {
+        if (service == '2') {
+          //Only get a quote
+          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+            // console.log(res);
+            if (res.status == 200) {
+              this.$router.push({ name: 'MyApplicationDetails' });
+            } else {
+              this.$swal(res.message, "error");
+            }
+          });
+
+        }
+        else {
+          // sample Application and both get a quote
+          this.makePay();
+          console.log('payemnt status---', this.common.state.isPayment);
+          this.payment_status = this.common.state.isPayment ? 'Success' : 'Failed';
+          if (this.common.state.isPaymentDone) {
+            // this.payment_status = 'Success';
+            alert(`sdvds`);
+            this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+              // console.log(res);
+              if (res.status == 200) {
+                if (this.payment_status == 'Success') {
+                  this.$router.push({ name: 'MyApplicationDetails' });
+                }
+                if (this.payment_status == 'Failed') {
+                  this.$router.push({ name: 'MyRecipe' });
+                }
+              } else {
+                this.$swal(res.message, "error");
+              }
+            });
+          }
+        }
+      }
+    },
+
+    getUserInfo() {
+
+              if (localStorage.getItem("userType") == "business_member") {
           this.personalBusinessService.getBusinessData(this.userId).then((res) => {
             let data = res.data;
             // console.log("data",data);
@@ -223,54 +264,11 @@ export default {
           });
         }
 
-        if (service == '2') {
-          //Only get a quote
-          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-            // console.log(res);
-            if (res.status == 200) {
-              this.$router.push({ name: 'MyApplicationDetails' });
-            } else {
-              this.$swal(res.message, "error");
-            }
-          });
-
-        }
-        else {
-          // sample Application and both get a quote
-          this.makePay();
-          // console.log('payemnt status---',localStorage.getItem('isPayment'));
-          // console.log('payemnt done status---', localStorage.getItem('isPaymentDone'));
-          if (localStorage.getItem('isPaymentDone')) {
-
-            if(localStorage.getItem('isPayment')==false) {
-               this.payment_status = 'Success';
-            }
-            else {
-              this.payment_status = 'Failed';
-            }
-          console.log('payemnt status---',this.payment_status);
-            // alert(`sdvds`);
-            this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-              // console.log(res);
-              if (res.status == 200) {
-                if (this.payment_status == 'Success') {
-                  this.$router.push({ name: 'MyApplicationDetails' });
-                }
-                if (this.payment_status == 'Failed') {
-                  this.$router.push({ name: 'MyRecipe' });
-                }
-              } else {
-                this.$swal(res.message, "error");
-              }
-            });
-          }
-        }
-      }
     },
 
     // payment
     makePay() {
-      // alert('makePay');
+      alert('makePay');
       this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
     },
 
