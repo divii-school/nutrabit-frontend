@@ -70,16 +70,6 @@
           </div>
         </div>
       </div>
-
-      <!-- payment-test -->
-      <div class="devider">
-        <i class="icon-grey-star"></i>
-      </div>
-
-      <div class="payment-test" style="padding:40px">
-        <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
-      </div>
-      <!-- payment-test -->
     </div>
   </div>
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
@@ -98,7 +88,6 @@ import MainProductCard from "../../components/MainProductCard.vue";
 import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
-import PaymentService from "../../services/PaymentService";
 import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
@@ -134,7 +123,6 @@ export default {
   },
   created() {
     this.MainService = new MainService();
-    this.paymentService = new PaymentService();
   },
   mounted() {
     this.allBanner();
@@ -157,13 +145,6 @@ export default {
   },
 
   methods: {
-    // makePay test function
-    makePay() {
-      // console.log('makePay');
-      alert('makePay');
-      this.paymentService.requestPay();
-    },
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
