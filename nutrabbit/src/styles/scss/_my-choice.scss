@@ -375,7 +375,7 @@
                     margin-top: 15px;
                     p {
                       font-size: 18px;
-                      line-height: 150%;
+                      line-height: 130%;
                       color: $grey-82;
                       font-family: $default-font;
                       @media screen and (max-width: 768px) {
@@ -605,6 +605,13 @@
                 }
                 .material-details {
                   margin-left: 40px;
+                }
+              }
+              &.recipe-without-input{
+                margin-top: 0;
+                padding: 36px 30px;
+                @media screen and (max-width: 768px){
+                  padding: 20px 10px 30px;
                 }
               }
             }
