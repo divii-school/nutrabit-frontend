@@ -55,6 +55,7 @@
       .login-heading {
         @include heading1;
         text-align: center;
+        font-family: $Pretend-bold;
         @media screen and (max-width: 540px) {
           font-size: 30px;
           line-height: 36px;
@@ -194,6 +195,7 @@
           color: $grey-7C;
           margin-top: 10px;
           font-weight: 300;
+          font-family: $Pretend-thin;
         }
       }
       .membership-list-wrap {
@@ -325,6 +327,9 @@
       }
       .btn-wrap {
         margin-top: 80px;
+        button{
+          max-width: 340px;
+        }
       }
     }
   }
@@ -339,14 +344,7 @@
   .btn-wrap {
     width: 100%;
     &.dual-btn {
-      button {
-        &:first-child {
-          margin-right: 5px;
-        }
-        &:last-child {
-          margin-left: 5px;
-        }
-      }
+     gap: 10px
     }
   }
 }

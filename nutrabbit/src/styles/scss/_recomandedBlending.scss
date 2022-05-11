@@ -2,14 +2,18 @@
   @include flex-start-between;
   width: 100%;
   padding: 120px 0;
+  gap: 80px;
 
+  @media screen and (max-width: 1200px) {
+    gap: 40;
+  }
   @media screen and (max-width: 768px) {
     flex-direction: column;
     padding: 80px 0 80px 0;
   }
 
   .blending-left {
-    width: calc(100% - 579px);
+    width: 50%;
     position: relative;
     @media screen and (max-width: 768px) {
       width: 100%;
@@ -22,8 +26,8 @@
             width: calc(100% - 112px);
             padding-left: 112px;
             display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
+            justify-content: center;
+            align-items: center;
             height: auto !important;
             @media screen and (max-width: 768px) {
               padding-left: 0;
@@ -35,7 +39,7 @@
               border-radius: 230px 230px 0 0;
               @media screen and (max-width: 768px) {
                 height: 343px;
-                width: 100%;
+                width: auto;
                 border-radius: 50% 50% 0 0;
               }
             }
@@ -48,8 +52,8 @@
         position: absolute;
         left: 0;
         top: 0;
-        padding: 30px 0 35px;
         @media screen and (max-width: 768px) {
+          padding: 30px 0 35px;
           position: relative;
           height: auto;
           padding-bottom: 50px;
@@ -76,90 +80,18 @@
               width: 81px;
               height: 80px;
               @media screen and (max-width: 768px) {
-                width: 62px;
-                height: 62px;
+                width: 58px;
+                height: 58px;
               }
             }
           }
         }
       }
     }
-
-    // .swiper{
-    //     .swiper-pagination{
-    //         width: auto;
-    //         display: flex;
-    //         flex-direction: column;
-    //         margin: -8px 0;
-    //         bottom: 0;
-    //         @media screen and (max-width: 768px){
-    //             flex-direction: row;
-    //             justify-content: center;
-    //             margin: 0 -8px;
-    //             width: 100%;
-    //             bottom: -90px;
-    //         }
-    //         span{
-    //             height: 80px;
-    //             width: 81px;
-    //             margin: 8px 0;
-    //             background: $white-1;
-    //             @media screen and (max-width: 992px){
-    //                 height: 60px;
-    //                 width: 61px;
-    //             }
-    //             @media screen and (max-width: 768px){
-    //                margin: 0 8px;
-    //             }
-    //             img{
-    //                 height: 80px;
-    //                 width: 81px;
-    //                 background: $white-1;
-    //                 @media screen and (max-width: 992px){
-    //                     height: 60px;
-    //                     width: 61px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     .swiper-wrapper{
-    //         .swiper-slide{
-    //             width: calc(100% - 112px);
-    //             padding-left: 112px;
-    //             height: 465px;
-    //             display: flex;
-    //             justify-content: flex-end;
-    //             align-items: flex-end;
-    //             @media screen and (max-width: 992px){
-    //                 width: calc(100% - 90px);
-    //                 padding-left: 90px;
-    //             }
-    //             @media screen and (max-width: 768px){
-    //                 width: 100%;
-    //                 padding-left: 0;
-    //             }
-    //             @media screen and (max-width: 580px){
-    //                 height: 343px;
-    //             }
-    //             img{
-    //                 height: 100%;
-    //                 width: 100%;
-    //                 border-radius: 230px 230px 0px 0px;
-    //                 object-fit: cover;
-    //                 @media screen and (max-width: 768px){
-    //                     border-radius: 50% 50% 0px 0px;
-    //                 }
-    //                 @media screen and (max-width: 580px){
-    //                     height: 343px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
   }
 
   .blending-right {
-    width: 100%;
+    width: 50%;
     max-width: 499px;
 
     @media screen and (max-width: 768px) {
@@ -177,8 +109,8 @@
         line-height: 50px;
         font-family: $Pretend-extrabold;
         color: $black-18;
+        font-weight: 800;
         @media screen and (max-width: 768px) {
-          font-weight: 800;
           font-size: 30px;
           line-height: 36px;
           color: $black-18;
@@ -237,6 +169,9 @@
             color: $grey-82;
             width: calc(100% - 102px);
             font-family: $default-font;
+            @media screen and (max-width: 768px) {
+              line-height: 24px;
+            }
           }
         }
       }
