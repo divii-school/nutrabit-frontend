@@ -2,7 +2,7 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">{{$t("customer.title.Inquiry")}}</h1>
+        <h1 class="inquiry-heading">{{ $t("customer.title.Inquiry") }}</h1>
         <div class="login-signup-inner">
           <form
             action=""
@@ -11,12 +11,12 @@
           >
             <div class="individuals-form">
               <div class="form-group">
-                <label for="">{{$t("customer.inquiryLabel.Subject")}}</label>
+                <label for="">{{ $t("customer.inquiryLabel.Subject") }}</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
                     <select v-model="selected">
                       <option value="" disabled hidden>
-                        {{$t("customer.placeholder.InquirySubject")}}
+                        {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
                       <option
                         v-for="(item, index) of EnqueryTypeList"
@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{$t("customer.inquiryLabel.Details")}}</label>
+                <label for="">{{ $t("customer.inquiryLabel.Details") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <textarea
@@ -42,7 +42,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{$t("customer.inquiryLabel.Upload")}}</label>
+                <label for="">{{ $t("customer.inquiryLabel.Upload") }}</label>
                 <div class="input-group">
                   <div class="file-input">
                     <input
@@ -51,7 +51,7 @@
                       v-on:change="onFileChange"
                     />
                     <label for="file">
-                      {{$t("customer.inquiryLabel.Upload")}}
+                      {{ $t("customer.inquiryLabel.Upload") }}
                       <img src="../../assets/icons/upload.png" />
                     </label>
                   </div>
@@ -65,10 +65,10 @@
             </div>
             <div class="btn-wrap flex dual-btn">
               <button class="btn-primary grey-btn-solid" @click="resetForm">
-                {{$t("onlyme.button.Cancel")}}
+                {{ $t("onlyme.button.Cancel") }}
               </button>
               <button class="btn-primary grenn-btn2" @click="submitData">
-                {{$t("customer.button.Submit")}}
+                {{ $t("customer.button.Submit") }}
               </button>
             </div>
           </form>
@@ -87,7 +87,7 @@
 <script>
 import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
- 
+
 export default {
   name: "InquiryContactUs",
   components: {
@@ -104,12 +104,13 @@ export default {
       InqDesc: "",
       isModalVisible: false,
       errorMsg: "",
+     
     };
   },
   created() {
     this.CustomerCenterService = new CustomerCenterService();
   },
-  
+
   mounted() {
     this.allEnqueryType();
   },
@@ -150,25 +151,26 @@ export default {
         this.errorMsg = "please upload .jpg, .jpeg and .png only";
         return false;
       } else if (allowedExtensions.exec(this.file.name)) {
-        this.errorMsg = '';
+        this.errorMsg = "";
         this.render = false;
         this.fileName = this.file.name;
-      } 
+      }
       this.fileExtension = this.fileName.replace(/^.*\./, "");
       this.this.errorMsg = "";
     },
     async submitData() {
-      let formData = new FormData();
-      formData.append("type_id", this.selected);
-      formData.append("description", this.InqDesc);
-      formData.append("attachment", this.file);
-      // const data1 = await axios.post("/inquery/add", formData);
-      try {
-        const res = await axios.post("/inquery/add", formData);
-        this.isModalVisible = true;
-      } catch (error) {
-        return;
-      }
+        let formData = new FormData();
+        formData.append("type_id", this.selected);
+        formData.append("description", this.InqDesc);
+        formData.append("attachment", this.file);
+        // const data1 = await axios.post("/inquery/add", formData);
+        try {
+          const res = await axios.post("/inquery/add", formData);
+          this.isModalVisible = true;
+        } catch (error) {
+          return;
+        }
+      
     },
     removeFile() {
       this.fileName = "";

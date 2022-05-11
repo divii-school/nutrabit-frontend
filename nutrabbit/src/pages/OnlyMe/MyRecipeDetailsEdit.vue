@@ -76,39 +76,9 @@
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isQuote"
-                          value="2"
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
+                <div class="product-item with-input recipe-without-input">
                   <div class="material-details">
-                    <h2>{{$t("onlyme.title.Estimate")}}</h2>
-                  </div>
-                </div>
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isSample"
-                          value='1'
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="material-details">
-                    <h2>
-                      {{$t("onlyme.title.SampleAppliction")}}
-                      <span>{{$t("onlyme.title.SampleApplicationCost")}}</span>
-                    </h2>
+                    <h2>Sample application</h2>
                   </div>
                 </div>
                 <ul>

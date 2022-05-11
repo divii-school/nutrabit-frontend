@@ -4,12 +4,9 @@
       <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <a :href="slider.link" target="_blank">
+          <a :href="slider.link">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
@@ -19,12 +16,9 @@
       <!-- slider for mobile -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <a :href="slider.link" target="_blank">
+          <a :href="slider.link">
           <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
@@ -70,16 +64,6 @@
           </div>
         </div>
       </div>
-
-      <!-- payment-test -->
-      <!-- <div class="devider">
-        <i class="icon-grey-star"></i>
-      </div> -->
-
-      <!-- <div class="payment-test" style="padding:40px">
-        <button type="button" class="btn-small-solid" @click="makePay">Make Payment Test</button>
-      </div> -->
-      <!-- payment-test -->
     </div>
   </div>
   <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
@@ -98,7 +82,6 @@ import MainProductCard from "../../components/MainProductCard.vue";
 import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
 import Button from '../../components/Button.vue';
-import PaymentService from "../../services/PaymentService";
 import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
@@ -134,7 +117,6 @@ export default {
   },
   created() {
     this.MainService = new MainService();
-    this.paymentService = new PaymentService();
   },
   mounted() {
     this.allBanner();
@@ -157,13 +139,6 @@ export default {
   },
 
   methods: {
-    // makePay test function
-    // makePay() {
-    //   // console.log('makePay');
-    //   alert('makePay');
-    //   this.paymentService.requestPay();
-    // },
-
     // allBanner list
     allBanner() {
       this.MainService.getSlider().then((res) => {
