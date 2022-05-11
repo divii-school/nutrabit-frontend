@@ -1,5 +1,5 @@
 .main-page {
-  min-height: 100vh;
+  // min-height: 100vh; 
   @media screen and (max-width: 768px) {
     min-height: auto;
   }
@@ -119,7 +119,6 @@
         }
         .btn-small-solid{
           height: 45px;
-          width: 110px;
         }
       }
       &.theme-green {
