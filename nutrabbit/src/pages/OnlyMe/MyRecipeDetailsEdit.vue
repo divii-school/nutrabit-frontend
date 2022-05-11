@@ -70,48 +70,18 @@
               <div class="fGroup mb0">
                 <label class="mb0"
                   >{{$t('onlyme.title.Service')}}
-                  <span class="mb0"
+                  <!-- <span class="mb0"
                     >{{$t('onlyme.service_caption.Caption')}}</span
-                  >
+                  > -->
                 </label>
               </div>
               <div class="product-list-wrap">
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isQuote"
-                          value="2"
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
+                <div class="product-item with-input recipe-without-input">
                   <div class="material-details">
-                    <h2>{{$t("onlyme.title.Estimate")}}</h2>
+                    <h2>{{ serviceType }}</h2>
                   </div>
                 </div>
-                <div class="product-item recipeCheck">
-                  <div class="form-group">
-                    <div class="check-box-wrap">
-                      <label class="custom-check">
-                        <input
-                          type="checkbox"
-                          v-model="isSample"
-                          value='1'
-                        /><span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="material-details">
-                    <h2>
-                      {{$t("onlyme.title.SampleAppliction")}}
-                      <span>{{$t("onlyme.title.SampleApplicationCost")}}</span>
-                    </h2>
-                  </div>
-                </div>
-                <ul>
+                <!-- <ul>
                   <li>
                     {{$t("onlyme.service_info.ContentOne")}}
                   </li>
@@ -121,7 +91,7 @@
                   <li>
                     {{$t("onlyme.service_info.ContentThree")}}
                   </li>
-                </ul>
+                </ul> -->
                 <div class="btn-wrap tripple-btn">
                   <button class="btn-small-solid grey btn-left" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
                   <div class="btnWrapRight">
@@ -210,7 +180,18 @@ export default {
     this.globalLocale = localStorage.getItem('selectedLang');
     console.log(this.globalLocale)
   },
+  
+  computed :{
+    serviceType(){
+      if(this.isSample){
+        return this.$t("onlyme.title.SampleAppliction");
+      }
 
+      if(this.isQuote){
+        return this.$t("onlyme.title.Estimate");
+      }
+    }
+  },
   watch: {
     globalLocale(newVal, oldVal) {
       if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
@@ -236,16 +217,18 @@ export default {
 
          if(res.data[0].service_type == 1){
            this.isSample = true;
+           this.serviceType = "Sample application"
          }
           
           if(res.data[0].service_type == 2){
            this.isQuote = true;
+           this.serviceType = "Get a quote"
          }
 
-         if(res.data[0].service_type == 3){
-           this.isSample = true;
-           this.isQuote = true;
-         }
+        //  if(res.data[0].service_type == 3){
+        //    this.isSample = true;
+        //    this.isQuote = true;
+        //  }
 
         this.option_items = [];
          Array.from(res.data[0].options).forEach((ele)=>{

@@ -84,12 +84,13 @@ header {
               font-size: 14px;
               line-height: 17px;
               color: $black-33;
-
+              font-family: $default-font;
               &::placeholder {
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 17px;
                 color: $black-33;
+                font-family: $default-font;
               }
             }
           }
@@ -271,7 +272,7 @@ header {
           color: $black-33;
           margin-left: 32px;
           font-weight: 500;
-
+          font-family: $Pretend-medium;
           @media screen and (max-width: 1200px) {
             margin-left: 20px;
           }
@@ -299,6 +300,7 @@ header {
               font-size: 16px;
               line-height: 19px;
               color: $black-33;
+              font-family: $Pretend-medium;
               i {
                 margin-right: 5px;
               }
@@ -322,6 +324,7 @@ header {
                 letter-spacing: 0.03em;
                 color: $black-33;
                 background: $white-1;
+                font-family: $default-font;
                 &:hover,:active {
                   color: $green-45;
                 }
@@ -344,7 +347,7 @@ header {
             justify-content: center;
             select {
               height: 40px;
-              width: 68px;
+              width: 75px;
               padding-left: 10px;
               font-weight: 500;
               font-size: 14px;
@@ -376,7 +379,7 @@ header {
         }
 
         .menu-toggle {
-          margin-left: 20px;
+          margin-left: 0;
 
           @media screen and (max-width: 768px) {
             margin-left: 16px;
@@ -528,15 +531,19 @@ header {
         li {
           display: flex;
           align-items: flex-start;
-          margin-top: 39px;
+          margin-top: 52px;
           pointer-events: none;
-
           @media screen and (max-width: 768px) {
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 27px;
             pointer-events: auto;
           }
-
+          &:nth-child(2){
+            margin-top: 39px;
+            @media screen and (max-width: 768px) {
+              margin-top: 22px;
+            }
+          }
           &:hover>.side-menu-heading a {
             border-bottom: 3px solid $green-68;
           }
@@ -596,6 +603,7 @@ header {
               pointer-events: auto;
               padding-bottom: 10px;
               border-bottom: 3px solid transparent;
+              font-family: $Pretend-bold;
 
               @media screen and (max-width: 1200px) {
                 font-size: 25px;
@@ -666,6 +674,7 @@ header {
                       border: 0;
                       padding: 0;
                       margin-top: 30px;
+                      font-family: $default-font;
                       &:first-child{
                         margin-top: 0;
                       }
@@ -710,7 +719,7 @@ header {
               display: block;
               margin-top: 20px;
               pointer-events: auto;
-
+              font-family: $default-font;
               @media screen and (max-width: 1400px) {
                 font-size: 18px;
                 line-height: 22px;
@@ -765,7 +774,7 @@ header {
         margin-top: 80px;
 
         @media screen and (max-width: 768px) {
-          margin-top: 46px;
+          margin-top: 40px;
         }
 
         li {
@@ -773,7 +782,7 @@ header {
           font-size: 16px;
           line-height: 19px;
           color: $grey-82;
-
+          font-family: $default-font;
           @media screen and (max-width: 768px) {
             font-size: 14px;
             line-height: 17px;
@@ -833,6 +842,7 @@ header {
           line-height: 17px;
           letter-spacing: 0.03em;
           color: $grey-66;
+          font-family: $default-font;
         }
 
         .search-item-close {
@@ -867,6 +877,7 @@ header {
       font-size: 12px;
       line-height: 14px;
       color: $grey-A4;
+      font-family: $default-font;
       &:last-child{
         margin-left: auto;
       }

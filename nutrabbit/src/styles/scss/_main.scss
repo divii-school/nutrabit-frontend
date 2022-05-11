@@ -1,5 +1,5 @@
 .main-page {
-  min-height: 100vh;
+  // min-height: 100vh; 
   @media screen and (max-width: 768px) {
     min-height: auto;
   }
@@ -27,6 +27,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
+      font-family: $Pretend-bold;
       @media screen and (max-width: 1200px) {
         font-size: 100px;
         line-height: 130px;
@@ -55,6 +56,7 @@
       transform: translate(-50%, 0);
       font-size: 14px;
       line-height: 18px;
+      font-family: $default-font;
       @media screen and (max-width: 768px) {
         bottom: 30px;
         height: 21px;
@@ -68,6 +70,7 @@
         text-align: center;
         color: $white-1;
         position: relative;
+        font-family: $default-font;
         @media screen and (max-width: 768px) {
           font-size: 10px;
           line-height: 13px;
@@ -114,7 +117,7 @@
         margin: 80px 0;
       }
       @media screen and (max-width: 567px) {
-        margin: 80px 0 60px;
+        margin: 120px 0;
       }
       &.design-2{
         @media screen and (max-width: 567px) {
@@ -122,7 +125,6 @@
         }
         .btn-small-solid{
           height: 45px;
-          width: 110px;
         }
       }
       &.theme-green {
@@ -152,6 +154,7 @@
         font-size: 30px;
         line-height: 36px;
         color: $purple-F4;
+        font-family: $Pretend-bold;
         @media screen and (max-width: 640px) {
           font-size: 16px;
           line-height: 19px;
@@ -169,7 +172,6 @@
       .nutri-choice-heading {
         margin-top: 15px;
         position: relative;
-        font-weight: bold;
         font-size: 45px;
         line-height: 130%;
         font-family: $Pretend-semibold;
@@ -212,6 +214,7 @@
         line-height: 20px;
         margin-top: 30px;
         color: $grey-A4;
+        font-family: $default-font;
       }
       .btn-small-solid {
         margin-top: 40px;
@@ -391,6 +394,7 @@
                   height: 25px;
                   padding: 4px 10px;
                   margin: 0 5px;
+                  font-family: $Pretend-semibold;
                   @media screen and (max-width: 768px) {
                     font-size: 10px;
                     line-height: 12px;
@@ -407,6 +411,7 @@
                 text-align: center;
                 color: $black-33;
                 cursor: pointer;
+                font-family: $Pretend-semibold;
                 @media screen and (max-width: 992px) {
                   font-size: 18px;
                   line-height: 23px;

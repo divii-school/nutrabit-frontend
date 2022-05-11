@@ -95,10 +95,10 @@
                   </div>
                 </div>
                 <ul>
-                  <li>{{$t('final.note.list1')}}</li>
-                  <li>{{$t('final.note.list2')}}</li>
-                  <li>{{$t('final.note.list3')}}</li>
-                  <li>{{$t('final.note.list4')}}</li>
+                  <li>{{ $t('final.note.list1') }}</li>
+                  <li>{{ $t('final.note.list2') }}</li>
+                  <li>{{ $t('final.note.list3') }}</li>
+                  <li>{{ $t('final.note.list4') }}</li>
                 </ul>
                 <div class="btn-wrap">
                   <button
@@ -106,7 +106,7 @@
                     class="btn-small-solid grey">{{ $t("button.Previous") }}</button>
                   <div class="btnWrapRight">
                     <button class="btn-green-outline blue" @click="package_temporary_add">{{
-                      $t("button.Save_as_draft")
+                        $t("button.Save_as_draft")
                     }}</button>
                     <button class="btn-small-solid blue ml-4" @click="package_add">{{ $t("button.next") }}</button>
                   </div>
@@ -133,9 +133,13 @@
 import ProductList from "../../components/ProductList.vue";
 import MyChoiceService from "../../services/MyChoiceService";
 import Modal from "../../components/Modal.vue";
- 
+import PersonalBusinessService from "../../services/PersonalBusinessService";
+import PersonalInfoService from "../../services/PersonalInfoService";
+import PaymentService from "../../services/PaymentService";
+
 export default {
   name: "RawMaterialEstimation",
+  inject: ['common'],
   components: {
     // Popper,
     ProductList,
@@ -150,46 +154,40 @@ export default {
       showModal: false,
       items: [],
       etc: localStorage.getItem('etc'),
-      isServiceSelectedVisible:false,
-      // rwaMaterialData: [
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "Bottle",
-      //     desc: [
-      //       "Choose from a variety of sizes and shapes of bottles and caps.",
-      //     ],
-      //   },
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "PTP",
-      //     desc: [
-      //       "It is hygienic and convenient.",
-      //       "The packaging volume is slightly larger.",
-      //     ],
-      //   },
-      // ],
+      isServiceSelectedVisible: false,
+      name: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      uuid: "",
+      Detailaddress: "",
+      userId: this.common.state.userId,
+      payment_status: '',
     };
   },
   created() {
     this.mychoiceService = new MyChoiceService();
+    this.personalInfoservice = new PersonalInfoService();
+    this.personalBusinessService = new PersonalBusinessService();
+    this.paymentService = new PaymentService();
   },
   mounted() {
     this.option_list();
   },
   methods: {
-     closeModalService() {
+    closeModalService() {
       this.isServiceSelectedVisible = false;
     },
-     closeModal() {
-    this.showModal = false;
-  },
+    closeModal() {
+      this.showModal = false;
+    },
     package_add() {
       let is_temporary_storage = 'N';
       let length = this.servicetype.length;
       let service = '';
       if (length == 0) {
         // this.$swal("Please select a service");
-         this.isServiceSelectedVisible = true;
+        this.isServiceSelectedVisible = true;
       }
       else {
         if (length == 2) {
@@ -198,24 +196,92 @@ export default {
         else {
           service = this.servicetype.toString();
         }
-        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-          // console.log(res);
-          if (res.status == 200) {
-            this.$swal("Application Data is successfuly submitted");
-            this.$router.push("/");
-          } else {
-            this.$swal(res.message, "error");
+
+        if (localStorage.getItem("userType") == "business_member") {
+          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+            let data = res.data;
+            // console.log("data",data);
+            this.name = data.data[0].name;
+            this.uuid = data.data[0].uuid;
+            this.email = data.data[0].email;
+            this.phoneNumber = data.data[0].mobile;
+            this.address = data.data[0].address;
+            this.Detailaddress = data.data[0].address;
+          });
+        }
+        if (localStorage.getItem("userType") == "personal_member") {
+
+          this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+            // console.log(res.data);
+            let data = res.data;
+            this.name = data.data[0].name;
+            this.uuid = data.data[0].uuid;
+            this.email = data.data[0].email;
+            this.phoneNumber = data.data[0].mobile;
+            this.address = data.data[0].address;
+            this.Detailaddress = data.data[0].address;
+          });
+        }
+
+        if (service == '2') {
+          //Only get a quote
+          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+            // console.log(res);
+            if (res.status == 200) {
+              this.$router.push({ name: 'MyApplicationDetails' });
+            } else {
+              this.$swal(res.message, "error");
+            }
+          });
+
+        }
+        else {
+          // sample Application and both get a quote
+          this.makePay();
+          // console.log('payemnt status---',localStorage.getItem('isPayment'));
+          // console.log('payemnt done status---', localStorage.getItem('isPaymentDone'));
+          if (localStorage.getItem('isPaymentDone')) {
+
+            if(localStorage.getItem('isPayment')==false) {
+               this.payment_status = 'Success';
+            }
+            else {
+              this.payment_status = 'Failed';
+            }
+          console.log('payemnt status---',this.payment_status);
+            // alert(`sdvds`);
+            this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+              // console.log(res);
+              if (res.status == 200) {
+                if (this.payment_status == 'Success') {
+                  this.$router.push({ name: 'MyApplicationDetails' });
+                }
+                if (this.payment_status == 'Failed') {
+                  this.$router.push({ name: 'MyRecipe' });
+                }
+              } else {
+                this.$swal(res.message, "error");
+              }
+            });
           }
-        });
+        }
       }
     },
+
+    // payment
+    makePay() {
+      // alert('makePay');
+      this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
+    },
+
+
     package_temporary_add() {
       let is_temporary_storage = 'Y';
       let length = this.servicetype.length;
       let service = '';
       if (length == 0) {
         // this.$swal("Please select a service");
-         this.isServiceSelectedVisible = true;
+        this.isServiceSelectedVisible = true;
       }
       else {
         if (length == 2) {
@@ -224,7 +290,8 @@ export default {
         else {
           service = this.servicetype.toString();
         }
-        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+        this.payment_status = '';
+        this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
           // console.log(res);
           if (res.status == 200) {
             // this.$router.push("/");
@@ -246,7 +313,7 @@ export default {
             var res_option_type = option_data[i].split(':')[0]; // raw_material:1
             var res_option_value = option_data[i].split(':')[1];
             // console.log(res_option_type);
-            console.log(res_option_value);
+            // console.log(res_option_value);
             this.mychoiceService.optiondetails(res_option_type, res_option_value).then((res) => {
               this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
               // console.log(res);
@@ -269,10 +336,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pt-20{
+.pt-20 {
   padding-top: 20px !important;
 }
-.btn-green-outline{
+
+.btn-green-outline {
   margin-right: 20px;
 }
 </style>

@@ -25,6 +25,9 @@
       .my-choice-list-outer {
         .my-choice-list-outer-item {
           margin-top: 15px;
+          @media screen and (max-width: 768px) {
+            margin-top: 40px; 
+          }
           &:first-child {
             margin-top: 0;
           }
@@ -87,12 +90,14 @@
                 width: 160px;
                 border: 1px solid $grey-E0;
                 border-radius: 10px;
+                overflow: hidden;
                 @media screen and (max-width: 768px) {
                   width: 100%;
                 }
                 img {
-                  height: 80px;
-                  width: 80px;
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
                 }
               }
               .desc {
@@ -370,8 +375,9 @@
                     margin-top: 15px;
                     p {
                       font-size: 18px;
-                      line-height: 150%;
+                      line-height: 130%;
                       color: $grey-82;
+                      font-family: $default-font;
                       @media screen and (max-width: 768px) {
                         text-align: center;
                       }
@@ -511,9 +517,10 @@
                   line-height: 26px;
                   color: $black-18;
                   cursor: pointer;
+                  font-family: $Pretend-semibold;
                   @media screen and (max-width: 640px) {
                     font-size: 20px;
-                    line-height: 30px;
+                    line-height: 24px;
                   }
                 }
                 .description {
@@ -529,9 +536,13 @@
                     }
                   }
                   p {
+                    font-family: $default-font;
                     font-size: 18px;
-                    line-height: 150%;
+                    line-height: 22px;
                     color: $grey-82;
+                    @media screen and (max-width: 768px) {
+                      line-height: 27px;
+                    }
                   }
                 }
                 .description {
@@ -551,6 +562,7 @@
                         color: $grey-66;
                         width: 150px;
                         margin-right: 15px;
+                        font-family: $Pretend-medium;
                         @media screen and (max-width: 767px) {
                           margin-bottom: 5px;
                           width: 100%;
@@ -563,6 +575,7 @@
                         line-height: 19px;
                         color: #828282;
                         width: calc(100% - 150px);
+                        font-family: $default-font;
                         @media screen and (max-width: 767px) {
                           width: 100%;
                           line-height: 24px;
@@ -592,6 +605,13 @@
                 }
                 .material-details {
                   margin-left: 40px;
+                }
+              }
+              &.recipe-without-input{
+                margin-top: 0;
+                padding: 36px 30px;
+                @media screen and (max-width: 768px){
+                  padding: 20px 10px 30px;
                 }
               }
             }
@@ -663,8 +683,10 @@
           @include flex-justify-between;
           width: 100%;
           margin-top: 30px;
+          margin-bottom: 40px;
           @media screen and (max-width: 768px) {
             margin-top: 32px;
+            margin-bottom: 20px;
             align-items: flex-start;
           }
           .recomanded-status {
@@ -688,6 +710,7 @@
                 line-height: 18px;
                 color: $grey-A4;
                 margin-top: 10px;
+                font-family: $Pretend-medium;
                 @media screen and (max-width: 768px) {
                   font-size: 14px;
                   line-height: 14px;
