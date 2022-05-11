@@ -4,12 +4,9 @@
       <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <a :href="slider.link" target="_blank">
+          <a :href="slider.link">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
@@ -19,12 +16,9 @@
       <!-- slider for mobile -->
       <swiper :pagination="{
         type: 'fraction',
-      }" :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <a :href="slider.link" target="_blank">
+          <a :href="slider.link">
           <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
