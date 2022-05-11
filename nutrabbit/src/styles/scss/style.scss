@@ -304,11 +304,11 @@ textarea {
 
   .recomanded-vitamin {
     font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 16px !important;
+    line-height: 19px !important;
     color: $blue-E8;
-    margin-top: 5px;
-
+    margin-top: 5px !important;
+    font-family: $Pretend-semibold;
     @media screen and (max-width: 640px) {
       font-size: 14px;
       line-height: 21px;
@@ -321,7 +321,7 @@ textarea {
     color: $grey-82;
     margin-top: 10px;
     font-weight: 400;
-
+    font-family: $default-font;
     @media screen and (max-width: 640px) {
       font-size: 16px;
       line-height: 24px;
