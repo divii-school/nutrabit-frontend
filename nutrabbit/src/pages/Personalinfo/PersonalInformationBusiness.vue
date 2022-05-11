@@ -142,7 +142,7 @@
               </div>
               <span class="error-msg">{{ error.phoneNumber }}</span>
             </div>
-            <div class="form-group" :class="error.address || error.Detailaddress ? 'error' : ''">
+            <div class="form-group" :class="error.address ? 'error' : ''">
               <label for="">{{ $t("personalInfo.labels.address") }}</label>
               <div class="input-group with-btn dual-input">
                 <div class="input-inner">
@@ -283,7 +283,7 @@ export default {
         email: this.email,
         phoneNumber: this.phoneNumber,
         address: this.address,
-        address:this.Detailaddress
+        // address:this.Detailaddress
       };
       const { isInvalid, error } = personalBusinessValidation(credential);
       if (isInvalid) {

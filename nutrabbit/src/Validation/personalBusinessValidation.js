@@ -9,7 +9,7 @@ const personalBusinessValidation = (data) => {
 
   const { business_number, business_name, department, contactPerson, password, 
 
-    confirmPassword, phoneNumber, address, Detailaddress } = data;
+    confirmPassword, phoneNumber, address } = data;
 
   // if (account_type == 'business') {
     if (validator.isEmpty(business_number)) {
@@ -40,7 +40,7 @@ const personalBusinessValidation = (data) => {
     if (validator.isEmpty(phoneNumber)) {
         errors.phoneNumber = t('common.Error.EnterPhone');
     }
-    if (validator.isEmpty(address) || validator.isEmpty(Detailaddress)) {
+    if (validator.isEmpty(address)) {
       errors.address = t('common.Error.EnterAddress');
     }
 
