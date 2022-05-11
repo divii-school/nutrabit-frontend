@@ -607,6 +607,13 @@
                   margin-left: 40px;
                 }
               }
+              &.recipe-without-input{
+                margin-top: 0;
+                padding: 36px 30px;
+                @media screen and (max-width: 768px){
+                  padding: 20px 10px 30px;
+                }
+              }
             }
             .btn-wrap {
               @include flex-justify-between;
