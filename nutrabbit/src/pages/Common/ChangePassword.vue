@@ -3,7 +3,7 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap">
+          <div class="login-heading-wrap type-2">
             <h1 class="login-heading">{{$t("common.title.ChangePassword")}}</h1>
             <p class="membership-desc">{{$t("common.SubTitle.changePassword")}}</p>
           </div>

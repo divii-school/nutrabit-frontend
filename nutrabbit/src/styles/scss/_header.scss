@@ -344,7 +344,7 @@ header {
             justify-content: center;
             select {
               height: 40px;
-              width: 68px;
+              width: 75px;
               padding-left: 10px;
               font-weight: 500;
               font-size: 14px;
@@ -376,7 +376,7 @@ header {
         }
 
         .menu-toggle {
-          margin-left: 20px;
+          margin-left: 0;
 
           @media screen and (max-width: 768px) {
             margin-left: 16px;
@@ -528,15 +528,19 @@ header {
         li {
           display: flex;
           align-items: flex-start;
-          margin-top: 39px;
+          margin-top: 52px;
           pointer-events: none;
-
           @media screen and (max-width: 768px) {
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 27px;
             pointer-events: auto;
           }
-
+          &:nth-child(2){
+            margin-top: 39px;
+            @media screen and (max-width: 768px) {
+              margin-top: 22px;
+            }
+          }
           &:hover>.side-menu-heading a {
             border-bottom: 3px solid $green-68;
           }
@@ -765,7 +769,7 @@ header {
         margin-top: 80px;
 
         @media screen and (max-width: 768px) {
-          margin-top: 46px;
+          margin-top: 40px;
         }
 
         li {
