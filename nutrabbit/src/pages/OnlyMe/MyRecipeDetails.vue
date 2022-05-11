@@ -289,7 +289,7 @@ export default {
     toPaymentGateway(_id) {
       //console.log(this.serviceNum)
 
-      if (this.serviceNum == 1 || this.serviceNum == 3) {
+      if (this.serviceNum == 1) {
         // for payment gatteway
         console.log(`product id for payment is  : ${_id}`);
       } else {
