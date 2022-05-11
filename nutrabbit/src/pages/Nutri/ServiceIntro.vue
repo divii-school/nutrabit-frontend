@@ -21,7 +21,7 @@
         </div>
         <div class="devider"><i class="icon-grey-star"></i></div>
         <div class="container-medium">
-          <div class="sampleServices about-recom pb-40">
+          <div class="sampleServices sampleBlendSpecial about-recom pb-40">
             <p class="title text-center samllTitle">nutri 3.3</p>
             <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
@@ -48,7 +48,7 @@
               </li>
             </ul>
           </div>
-          <ul class="below-block pb-160">
+          <ul class="below-block pb-150">
             <li>{{ $t("nutri.title.nutri_list") }}</li>
             <li>{{ $t("nutri.title.nutri_list1") }}</li>
           </ul>
@@ -207,8 +207,8 @@ export default {
 .block {
   display: block !important;
 }
-.pb-160 {
-  padding-bottom: 160px;
+.pb-150 {
+  padding-bottom: 150px;
 }
 .pb-70 {
   padding-bottom: 70px;
