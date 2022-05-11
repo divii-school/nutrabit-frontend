@@ -186,9 +186,7 @@ export default {
       this.showModal = false;
     },
     package_add() {
-      // let is_temporary_storage = 'N';
       let length = this.servicetype.length;
-      // let service = '';
       if (length == 0) {
         // this.$swal("Please select a service");
         this.isServiceSelectedVisible = true;
@@ -200,7 +198,6 @@ export default {
         else {
           this.service = this.servicetype.toString();
         }
-
         if (this.service == '2') {
           //Only get a quote
           this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, this.is_temporary_storage).then((res) => {
@@ -215,33 +212,11 @@ export default {
         }
         else {
           // sample Application and both get a quote
-          // this.makePay();
           this.requestPay(this.email, this.name, this.phoneNumber, this.address);
-
-          console.log('payemnt status---', this.common.state.isPayment);
-          // this.payment_status = this.common.state.isPayment ? 'Success' : 'Failed';
-          // this.payment_done = this.common.state.isPaymentDone ? true : false;
-          console.log('this.payment_done', this.payment_done);
-          // if (this.payment_done) {
-          //   alert(`sdvds`);
-          //   this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, is_temporary_storage).then((res) => {
-          //     // console.log(res);
-          //     if (res.status == 200) {
-          //       if (this.payment_status == 'Success') {
-          //         this.$router.push({ name: 'MyApplicationDetails' });
-          //       }
-          //       if (this.payment_status == 'Failed') {
-          //         this.$router.push({ name: 'MyRecipe' });
-          //       }
-          //     } else {
-          //       this.$swal(res.message, "error");
-          //     }
-          //   });
-          // }
         }
       }
     },
-
+    // sample Application and both get a quote
     recommendedBlendingPackageAdd() {
       this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, this.is_temporary_storage).then((res) => {
         // console.log(res);
@@ -257,7 +232,7 @@ export default {
         }
       });
     },
-
+    // get user info for payement
     getUserInfo() {
       if (localStorage.getItem("userType") == "business_member") {
         this.personalBusinessService.getBusinessData(this.userId).then((res) => {
@@ -285,20 +260,12 @@ export default {
         });
       }
     },
-
     // payment
-    // makePay() {
-    //   alert('makePay');
-    //   this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
-    // },
-
     requestPay(buyerEmail, buyerName, buyerTel, buyerAddr) {
       let self = this;
       let IMP = window.IMP;
       IMP.init("imp55488636");
-      // IMP.request_pay(param, callback) call payment window
       IMP.request_pay({
-        //pg: "html5_inicis",
         pg: "uplus",
         // pay_method: "card",
         merchant_uid: "ORDER_" + new Date().getTime(),
@@ -309,7 +276,6 @@ export default {
         buyer_tel: buyerTel,
         buyer_addr: buyerAddr,
         app_scheme: "NutrabbitIAmPort",
-        //m_redirect_url :'{URL to redirect to after payment approval on Mobile}'
       }, function (rsp) {
         if (rsp.success) { // payment successful: payment accepted or virtual account issued
           alert('"Payment Success. Success:' + rsp);
@@ -322,12 +288,11 @@ export default {
           self.payment_status = 'Failed';
           self.payment_done = true;
           self.recommendedBlendingPackageAdd();
-          // addPayment(applicationId, applyNum, bankName, buyerAddr, buyerEmail, buyerName, buyerTel, 
-          //   cardName, cardNumber, cardQuota, currency, customData, impUid, merchantUid, name, 
-          //   paidAmount, paidAt, payMethod, pgProvider, pgTid, pgType, receiptUrl, requestId, status, 
-          //   success, errorCode, errorMsg);
+          self.paymentService.addPayment(applicationId, rsp.apply_num, rsp.bank_name, buyerAddr, buyerEmail, buyerName, buyerTel, 
+            rsp.card_name, rsp.card_number, rsp.card_quota, rsp.currency, rsp.custom_data, rsp.imp_uid, rsp.merchant_uid, rsp.name, 
+            rsp.paid_amount, rsp.paid_at, rsp.pay_method, rsp.pg_provider, rsp.pg_tid, rsp.pg_type, rsp.receipt_url, rsp.request_id, rsp.status, 
+            rsp.success, rsp.error_code, rsp.error_msg);
           alert("Payment failed. Error: " + rsp.error_msg);
-
         }
       });
     },
