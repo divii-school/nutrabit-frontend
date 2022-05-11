@@ -113,6 +113,21 @@
       line-height: 22px;
     }
   }
+
+  &.sampleBlendSpecial{
+    ul {
+      li {
+        width: 25%;
+
+        span {
+          margin: 15px 0;
+        }
+        p{
+          line-height: 150%;
+        }
+      }
+    }
+  }
   ul {
     display: flex;
     align-items: flex-start;

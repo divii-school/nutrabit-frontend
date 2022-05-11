@@ -173,6 +173,7 @@ export default {
   },
   mounted() {
     this.option_list();
+    this.getUserInfo();
   },
   methods: {
     closeModalService() {
@@ -197,32 +198,6 @@ export default {
           service = this.servicetype.toString();
         }
 
-        if (localStorage.getItem("userType") == "business_member") {
-          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
-            let data = res.data;
-            // console.log("data",data);
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-        if (localStorage.getItem("userType") == "personal_member") {
-
-          this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-            // console.log(res.data);
-            let data = res.data;
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-
         if (service == '2') {
           //Only get a quote
           this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
@@ -238,18 +213,11 @@ export default {
         else {
           // sample Application and both get a quote
           this.makePay();
-          // console.log('payemnt status---',localStorage.getItem('isPayment'));
-          // console.log('payemnt done status---', localStorage.getItem('isPaymentDone'));
-          if (localStorage.getItem('isPaymentDone')) {
-
-            if(localStorage.getItem('isPayment')==false) {
-               this.payment_status = 'Success';
-            }
-            else {
-              this.payment_status = 'Failed';
-            }
-          console.log('payemnt status---',this.payment_status);
-            // alert(`sdvds`);
+          console.log('payemnt status---', this.common.state.isPayment);
+          this.payment_status = this.common.state.isPayment ? 'Success' : 'Failed';
+          if (this.common.state.isPaymentDone) {
+            // this.payment_status = 'Success';
+            alert(`sdvds`);
             this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
               // console.log(res);
               if (res.status == 200) {
@@ -268,13 +236,40 @@ export default {
       }
     },
 
-    // payment
-    makePay() {
-      // alert('makePay');
-      this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
+    getUserInfo() {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+          let data = res.data;
+          // console.log("data",data);
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
+
+        this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+          // console.log(res.data);
+          let data = res.data;
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
     },
 
-
+    // payment
+    makePay() {
+      alert('makePay');
+      this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
+    },
+    
     package_temporary_add() {
       let is_temporary_storage = 'Y';
       let length = this.servicetype.length;
