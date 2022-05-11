@@ -9,7 +9,7 @@
           <p class="title">{{ $t("onlyme.title.Title") }}</p>
           <p class="date">{{ $t("customer.title.PublishedDate") }}</p>
         </div>
-        <div class="notice-list bBtm-0 notice-list-main">
+        <div class="notice-list bBtm-0 notice-list-main notice-diff-border">
           <ul>
             <li v-for="(item, index) of importantNoticeList" :key="index">
               <div

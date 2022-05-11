@@ -127,6 +127,7 @@ import ModalStorageBox from "../../components/ModalStorageBox.vue";
  
 export default {
   name: "MyChoiceCategorySelection",
+  inject : ["common"],
   components: {
     Popper,
     SearchCard,
@@ -148,16 +149,19 @@ export default {
   created() {
     this.mychoiceService = new MyChoiceService();
   },
-  updated(){
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated(){
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
   watch: {
-    globalLocale(newVal, oldVal) {
-      this.rawMaterial();
-      this.allBlendingData();
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.rawMaterial();
+        this.allBlendingData();
+      }
     },
   },
+
   mounted() {
     this.rawMaterial();
     this.allBlendingData();

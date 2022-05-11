@@ -41,7 +41,7 @@ const personalBusinessValidation = (data) => {
         errors.phoneNumber = t('common.Error.EnterPhone');
     }
     if (validator.isEmpty(address)) {
-        errors.address = t('common.Error.EnterAddress');
+      errors.address = t('common.Error.EnterAddress');
     }
 
     // if (withdraw_type == "bussiness") {

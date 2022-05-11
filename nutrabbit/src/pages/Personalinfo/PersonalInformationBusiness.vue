@@ -24,7 +24,7 @@
               </div>
               <span class="error-msg">{{ error.business_number }}</span>
             </div>
-            <div class="form-group" :class="error.business_name ? 'error' : ''">
+            <div class="form-group" :class="error.businessName ? 'error' : ''">
               <label for="">{{ $t("personalInfo.personalBussiness.businessname") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -36,9 +36,9 @@
                   />
                 </div>
               </div>
-              <span class="error-msg">{{ error.business_name }}</span>
+              <span class="error-msg">{{ error.businessName }}</span>
             </div>
-            <div class="form-group" :class="error.depertment ? 'error' : ''">
+            <div class="form-group" :class="error.department ? 'error' : ''">
               <label for="">{{ $t("personalInfo.personalBussiness.dept") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -149,8 +149,9 @@
                   <input
                     class="form-control"
                     type="text"
-                   v-model="address"
-                   disabled
+                    :placeholder="$t('common.placeholder.EnterAddress')"
+                    v-model="address"
+                    disabled
                   />
                 </div>
                 <button class="btn-green-outline" @click="getAddress">{{ $t("personalInfo.labels.searchaddress") }}</button>
@@ -161,7 +162,7 @@
                     class="form-control"
                     type="text"
                     v-model="Detailaddress"
-                    :placeholder="$t('personalInfo.placeholder.EnterDetailedAddress')"
+                    :placeholder="$t('common.placeholder.EnterDetailedAddress')"
                   />
                 </div>
               </div>
@@ -235,7 +236,7 @@ export default {
 
   updated(){
      this.globalLocale = this.$i18n.locale;
-     this.personalInfo();
+    //  this.personalInfo();
   },
   
   watch: {
@@ -257,7 +258,7 @@ export default {
       this.personalBusinessService.getBusinessData(this.userId).then((res) => {
         
         let data = res.data;
-        // console.log("data",data);
+        console.log("data",data);
         this.business_number = data.data[0].business_number;
         this.business_name = data.data[0].business_name;        
         this.department = data.data[0].department;
@@ -282,6 +283,7 @@ export default {
         email: this.email,
         phoneNumber: this.phoneNumber,
         address: this.address,
+        // address:this.Detailaddress
       };
       const { isInvalid, error } = personalBusinessValidation(credential);
       if (isInvalid) {

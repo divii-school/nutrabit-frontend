@@ -1,14 +1,16 @@
 <template>
   <div class="main-page">
     <div class="main-slider">
-       <!-- slider for desktop -->
+      <!-- slider for desktop -->
       <swiper :pagination="{
         type: 'fraction',
       }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <a :href="slider.link">
           <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
+          </a>
         </swiper-slide>
       </swiper>
       <!-- slider for mobile -->
@@ -16,9 +18,11 @@
         type: 'fraction',
       }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
+          <a :href="slider.link">
           <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
           <img v-else src="../../assets/images/banner_place.png" alt />
           <p class="banner-title text-center">{{ slider.title }}</p>
+          </a>
         </swiper-slide>
       </swiper>
     </div>
@@ -80,7 +84,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
@@ -110,7 +114,6 @@ export default {
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       isModalVisible: false,
-      globalLocale: "",
     };
   },
   setup() {
@@ -119,7 +122,7 @@ export default {
       common.methods.isFromApp();
     });
     return {
-      modules: [Pagination, Navigation],
+      modules: [Pagination, Navigation, Autoplay],
       common
     };
   },
@@ -139,14 +142,11 @@ export default {
     localStorage.removeItem('storage_box');
 
   },
-  updated(){
-    //this.allNutidata();
-    this.globalLocale = this.$i18n.locale;
-  },
-
   watch: {
-    globalLocale(newVal, oldVal) {
-      this.allNutidata();
+    'common.state.SelectedLang': function (newVal, oldVal) {
+      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+        this.allNutidata();
+      }
     },
   },
 

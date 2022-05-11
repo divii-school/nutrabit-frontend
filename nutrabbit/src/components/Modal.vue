@@ -56,3 +56,11 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.modal-footer{
+  .btn-primary{
+    width: 50%;
+  }
+}
+</style>
+

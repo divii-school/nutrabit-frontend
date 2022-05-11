@@ -57,11 +57,11 @@
   </div>
   <div class="main-page">
     <div class="main-page-body">
-      <div class="devider"><i class="icon-dark-grey-star"></i></div>
+      <div class="devider devider-lg"><i class="icon-dark-grey-star"></i></div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice">
-            <h2 class="nutri-choice-heading text-center">
+          <div class="nutri-choice design-2">
+            <h2 class="nutri-choice-heading text-center design-2">
               {{ $t("nutri.nutriDetails.title") }}<br />
               {{ $t("nutri.nutriDetails.title2") }}
             </h2>
