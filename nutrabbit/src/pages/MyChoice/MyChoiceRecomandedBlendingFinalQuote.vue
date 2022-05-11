@@ -242,6 +242,7 @@ export default {
       }
     },
 
+    // sample Application and both get a quote
     recommendedBlendingPackageAdd() {
       this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, this.is_temporary_storage).then((res) => {
         // console.log(res);
