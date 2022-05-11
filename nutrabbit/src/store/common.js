@@ -9,7 +9,8 @@ const state = reactive({
   isMobile: false,
   isiPhone: false,
   SelectedLang: '',
-  
+  isPayment: false,
+  isPaymentDone: false, 
 });
 
 const methods = {
