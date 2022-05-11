@@ -27,6 +27,8 @@ if (!validator.equals(password, confirmPassword)) {
 }
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = t('common.Error.EnterPhone');
+  }else if(!validator.isNumeric(phoneNumber)){
+    errors.phoneNumber = t("common.Error.OnlyNumber");
   }
   if (validator.isEmpty(address)) {
     errors.address = t('common.Error.EnterAddress');
