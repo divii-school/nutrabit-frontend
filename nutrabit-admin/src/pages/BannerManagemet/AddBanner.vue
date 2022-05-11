@@ -8,13 +8,8 @@
           <div class="p-grid p-formgrid p-mb-3">
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="title2">{{ $t("Banner.list.title") }}</label>
-              <InputText
-                :class="`${error.title ? 'p-invalid' : ''}`"
-                type="text"
-                :placeholder="$t('Banner.list.bannertitle')"
-                id="title2"
-                v-model="title"
-              ></InputText>
+              <InputText :class="`${error.title ? 'p-invalid' : ''}`" type="text"
+                :placeholder="$t('Banner.list.bannertitle')" id="title2" v-model="title"></InputText>
               <div class="text-red">{{ error.title }}</div>
             </div>
           </div>
@@ -23,21 +18,14 @@
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="subtitle2">
                 {{ $t("Banner.list.deskbanner") }}
-                <span class="img-info"
-                  >(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span
-                >
+                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
               </label>
               <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                 <span v-if="!fileName">{{ $t("button.select_file") }}</span>
                 <span v-else>{{ fileName }}</span>
 
-                <input
-                  type="file"
-                  class="select-file p-inputtext p-component"
-                  :class="`${error.file ? 'p-invalid' : ''}`"
-                  v-on:change="onFileChange"
-                  id="file"
-                />
+                <input type="file" class="select-file p-inputtext p-component"
+                  :class="`${error.file ? 'p-invalid' : ''}`" v-on:change="onFileChange" id="file" />
 
                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
               </div>
@@ -52,14 +40,12 @@
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="subtitle2">
                 {{ $t("Banner.list.mobbanner") }}
-                <span class="img-info"
-                  >(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span
-                >
+                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
               </label>
               <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                 <span v-if="!filesName">{{ $t("button.select_file") }}</span>
                 <span v-else>{{ filesName }}</span>
-                <input type="file" class="select-file" v-on:change="onFileChanges" />
+                <input type="file" class="select-file" v-on:change="onFileChanges" id="files" />
                 <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
               </div>
               <div class="text-red">{{ error.file }}</div>
@@ -73,13 +59,8 @@
           <div class="p-grid p-formgrid p-mb-3">
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="title2">{{ $t("Banner.list.link") }}</label>
-              <InputText
-                :class="`${error.link ? 'p-invalid' : ''}`"
-                type="text"
-                :placeholder="$t('Banner.list.link')"
-                id="title2"
-                v-model="link"
-              ></InputText>
+              <InputText :class="`${error.link ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.link')"
+                id="title2" v-model="link"></InputText>
 
               <div class="text-red">{{ error.link }}</div>
             </div>
@@ -91,22 +72,10 @@
               <br />
               <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
               <div :class="`${error.status ? 'p-invalid' : ''}`">
-                <input
-                  type="radio"
-                  id="yes"
-                  value="active"
-                  name="status"
-                  v-model="status"
-                />
+                <input type="radio" id="yes" value="active" name="status" v-model="status" />
                 <label for="yes">Yes</label>
 
-                <input
-                  type="radio"
-                  id="no"
-                  name="status"
-                  value="inactive"
-                  v-model="status"
-                />
+                <input type="radio" id="no" name="status" value="inactive" v-model="status" />
                 <label for="no">No</label>
               </div>
 
@@ -116,23 +85,13 @@
         </div>
       </div>
       <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
-        <Button
-          :label="$t('button.confirm')"
-          icon="pi pi-check"
-          iconPos="left"
-          class="p-button p-button-sm p-mr-2 p-mb-2"
-          @click="addBanner"
-        ></Button>
+        <Button :label="$t('button.confirm')" icon="pi pi-check" iconPos="left"
+          class="p-button p-button-sm p-mr-2 p-mb-2" @click="addBanner"></Button>
       </div>
       <div class="p-d-flex p-jc-end p-ai-center">
         <div>
-          <Button
-            :label="$t('button.back')"
-            icon="pi pi-replay"
-            iconPos="left"
-            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
-            @click="$router.go(-1)"
-          ></Button>
+          <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
+            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
         </div>
       </div>
     </form>
@@ -200,31 +159,43 @@ export default {
         return false;
       } else {
         this.render1 = false;
-        this.fileName = this.file.name;
+        let self = this;
+        //  this.fileName = this.file.name;
         console.log("this.filename--", this.fileName);
         console.log("this.file--", this.file);
         if ((sfile = this.file)) {
           simg = new Image();
           simg.onload = function () {
             alert(this.width + " " + this.height);
+            if (this.width >= 1920 && this.height >= 828) {
+
+              self.fileName = files[0].name;
+              console.log(self.fileName)
+            } else {
+              alert("작은 이미지에 더 큰 이미지를 추가하십시오 ")
+            }
           };
+
           simg.onerror = function () {
             alert("not a valid file: " + sfile.type);
           };
           simg.src = _URL.createObjectURL(sfile);
-        } else {
+
           this.formData.append("desktop_banner", files[0]);
+
         }
       }
 
       this.fileExtension = this.fileName.replace(/^.*\./, "");
       console.log(this.fileName);
     },
-    
+
     onFileChanges(e) {
+      var _URL = window.URL || window.webkitURL;
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.files = files[0];
+      var sfiles, simgs;
       if (!files.length) return;
       this.files = files[0];
       var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -233,8 +204,31 @@ export default {
         return false;
       } else {
         this.render2 = false;
-        this.filesName = this.files.name;
-        this.formData.append("mobile_banner", files[0]);
+        let self = this;
+        // this.filesName = this.files.name;
+
+        console.log("this.filesname--", this.filesName);
+        console.log("this.files--", this.files);
+        if ((sfiles = this.files)) {
+          simgs = new Image();
+          simgs.onload = function () {
+            alert(this.width + " " + this.height);
+            if (this.width >= 1920 && this.height >= 828) {
+
+              self.filesName = files[0].name;
+              console.log(self.filesName)
+            } else {
+              alert("작은 이미지에 더 큰 이미지를 추가하십시오 ")
+            }
+          };
+
+          simgs.onerror = function () {
+            alert("not a valid file: " + sfiles.type);
+          };
+          simgs.src = _URL.createObjectURL(sfiles);
+
+          this.formData.append("mobile_banner", files[0]);
+        }
       }
       this.filesExtension = this.filesName.replace(/^.*\./, "");
       console.log(this.filesName);
