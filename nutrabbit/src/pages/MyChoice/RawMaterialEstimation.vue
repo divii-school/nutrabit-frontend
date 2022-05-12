@@ -123,10 +123,10 @@
                   <li>{{ $t("final.note.list3") }}</li>
                   <li>{{ $t("final.note.list4") }}</li>
                 </ul>
-                <div class="btn-wrap">
+                <div class="btn-wrap tripple-btn">
                   <button
                     @click="this.$router.push('/raw-material-package/')"
-                    class="btn-small-solid grey"
+                    class="btn-small-solid grey btn-left"
                   >
                     {{ $t("button.Previous") }}
                   </button>
