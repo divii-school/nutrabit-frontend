@@ -313,11 +313,12 @@ export default {
           this.is_temporary_storage
         )
         .then((res) => {
-          console.log(res.data.application_Id);
+          // console.log(res.data.application_Id);
           if (res.status == 200) {
             this.applicationId = res.data.application_Id;
             if (this.payment_status == "Success") {
               this.$router.push({ name: "MyApplicationDetails" });
+               this.addPayment();
             }
             if (this.payment_status == "Failed") {
               this.$router.push({ name: "MyRecipe" });
@@ -419,9 +420,30 @@ export default {
             self.payment_status = "Success";
             self.payment_done = true;
             self.recommendedBlendingPackageAdd();
+            self.card_name = rsp.card_name;
+            self.card_number = rsp.card_number;
+            self.card_quota = rsp.card_quota;
+            self.currency = rsp.currency;
+            self.custom_data = rsp.custom_data;
+            self.imp_uid = rsp.imp_uid;
+            self.merchant_uid = rsp.merchant_uid;
+            self.merchant_name = rsp.name;
+            self.paid_amount = rsp.paid_amount;
+            self.paid_at = rsp.paid_at;
+            self.pay_method = rsp.pay_method;
+            self.pg_provider = rsp.pg_provider;
+            self.pg_tid = rsp.pg_tid;
+            self.pg_type = rsp.pg_type;
+            self.receipt_url = rsp.receipt_url;
+            self.request_id = rsp.request_id;
+            self.status = rsp.status;
+            self.success = rsp.success;
+            self.error_code = rsp.error_code;
+            self.error_msg = rsp.error_msg;
           } else {
             console.log("failed", rsp);
             self.payment_status = "Failed";
+            console.log("failed status", self.payment_status);
             self.payment_done = true;
             self.recommendedBlendingPackageAdd();
 

@@ -282,7 +282,7 @@ export default {
       this.mychoiceService
         .getRawMaterialDetail(setRawMaterialId)
         .then((res) => {
-          console.log(res.data.data[0].sub_category_id);
+          // console.log(res.data.data[0].sub_category_id);
           if (res.data.status == 200) {
             this.raw_material_data = res.data.data;
             this.sub_category_id = res.data.data[0].sub_category_id;

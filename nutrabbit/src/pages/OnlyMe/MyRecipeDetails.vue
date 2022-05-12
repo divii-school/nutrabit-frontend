@@ -258,6 +258,7 @@ export default {
     if(this.$route.params.type == "recommended-blending"){
        this.isRecomm = false;
     }
+    this.getUserInfo();
   },
 
   computed: {
@@ -514,7 +515,6 @@ export default {
             self.error_code = rsp.error_code;
             self.error_msg = rsp.error_msg;
             self.addPayment();
-            self.submitApplication(self);
             self.$router.push({ name: "MyRecipe" })
           }
         }
