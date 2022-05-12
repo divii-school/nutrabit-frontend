@@ -29,7 +29,7 @@
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
-                      <td>{{ option_item.category }}</td>
+                      <td>{{ $t(option_item.category) }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
                     <!-- <tr>
@@ -290,12 +290,13 @@ export default {
                   console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
-                  console.log(res.message);
+                  console.log( "error", res.message);
                 }
               });
             });
           } else {
-            this.$swal(res.message, "error");
+            // this.$swal(res.message, "error");
+            console.log("error", res.message )
           }
         });
     },
