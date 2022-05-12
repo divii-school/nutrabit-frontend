@@ -28,7 +28,7 @@
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
-                      <td>{{ option.category }}</td>
+                      <td>{{ $t(option.category) }}</td>
                       <td>{{ option.explanation }}</td>
                     </tr>
                   </tbody>
