@@ -290,12 +290,13 @@ export default {
                   console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
-                  console.log(res.message);
+                  console.log( "error", res.message);
                 }
               });
             });
           } else {
-            this.$swal(res.message, "error");
+            // this.$swal(res.message, "error");
+            console.log("error", res.message )
           }
         });
     },
