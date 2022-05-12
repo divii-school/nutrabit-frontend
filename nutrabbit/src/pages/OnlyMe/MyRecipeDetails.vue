@@ -52,6 +52,7 @@
                   name=""
                   :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
+                  disabled
                 />
               </div>
               <div class="fGroup">
@@ -59,6 +60,7 @@
                 <textarea
                   :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="additionalRequest"
+                  disabled
                 ></textarea>
               </div>
               <div class="fGroup mb0">
