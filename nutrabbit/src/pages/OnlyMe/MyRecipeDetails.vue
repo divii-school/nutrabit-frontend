@@ -45,7 +45,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="fGroup">
+              <div class="fGroup" v-if="isRecomm">
                 <label>{{ $t("onlyme.title.Title") }}</label>
                 <input
                   type="text"
@@ -141,6 +141,10 @@ export default {
       rwaMaterialData: [],
       additionalRequest: "",
       title: "",
+      // choice_title : "",
+      // recom_title : "",
+      // recom_ko : "",
+      // recom_en : "",
       serviceType: [],
       option_items: [],
       isModalVisible: false,
@@ -150,6 +154,7 @@ export default {
       serviceEstimate: false,
       serviceBoth: false,
       globalLocale : '',
+      isRecomm : true,
 
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -193,10 +198,22 @@ export default {
       if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
         this.recipeSingleProductDetails(this.product_id, this.application_type);
       }
+
+      // if(newVal == 'KO'){
+      //   this.recom_title = this.recom_ko;
+      // }
+
+      // if(newVal == 'EN'){
+      //   this.recom_title = this.recom_ko;
+      // }
     },
   },
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
+
+    if(this.$route.params.type == "recommended-blending"){
+       this.isRecomm = false;
+    }
   },
 
   computed: {
@@ -248,7 +265,8 @@ export default {
             console.log(this.rwaMaterialData);
             this.additionalRequest = res.data[0].additional_request;
             this.title =
-              _type == "my_choice" ? res.data[0].title : res.data[0].name_ko;
+              _type == "my_choice" ? res.data[0].title : '';
+
             this.serviceNum = res.data[0].service_type;
             if (this.serviceNum == 1) {
               this.serviceSample = true;
