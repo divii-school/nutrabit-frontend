@@ -127,6 +127,9 @@
       li {
         width: 25%;
 
+        @media screen and (max-width: 640px) {
+          width: 100%;
+        }
         span {
           margin: 15px 0;
         }
