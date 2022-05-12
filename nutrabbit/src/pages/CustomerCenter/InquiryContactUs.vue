@@ -104,7 +104,7 @@ export default {
       InqDesc: "",
       isModalVisible: false,
       errorMsg: "",
-     
+      globalLocale:'',
     };
   },
   created() {

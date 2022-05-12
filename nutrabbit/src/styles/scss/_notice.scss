@@ -96,6 +96,7 @@
                 padding: 5px 15px;
                 margin-right: 10px;
                 font-weight: 600;
+                font-family: $Pretend-semibold;
                 // width: 98px;
                 @media screen and (max-width: 640px) {
                   font-size: 12px;
@@ -137,7 +138,7 @@
         margin-top: 40px;
 
         @media screen and (max-width: 640px) {
-          margin-top: 18px;
+          margin-top: 20px;
         }
       }
 
@@ -312,6 +313,11 @@
           ul {
             li {
               border-bottom: 1px solid $grey-E0;
+              padding-right: 33px;
+
+              @media screen and (max-width: 640px) {
+                padding-right: 0;
+              }
             }
           }
         }
