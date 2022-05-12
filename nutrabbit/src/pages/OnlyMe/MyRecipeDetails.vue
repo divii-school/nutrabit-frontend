@@ -3,7 +3,8 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>My Choice</h2>
+           <h2>{{ page_header }}</h2>
+          <!-- <h2>My Choice</h2> -->
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -173,7 +174,7 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
-      //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "추천 블랜딩",
+      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
     };
   },
 
@@ -216,6 +217,19 @@ export default {
 
       return service;
     },
+    
+    page_header(){
+      if(this.$route.params.type == 'my-choice'){
+          return this.$t("onlyme.title.MyChoice")
+      }
+
+      if(this.$route.params.type == 'recommended-blending'){
+          return this.$t("onlyme.title.RecommendedBlending")
+      }
+
+
+    }
+    
   },
   methods: {
     recipeSingleProductDetails(_productID, _type) {

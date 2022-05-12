@@ -3,8 +3,8 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <!-- <h2>{{ page_header }}</h2> -->
-          <h2>My Choice</h2>
+          <h2>{{ page_header }}</h2>
+          <!-- <h2>My Choice</h2> -->
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
@@ -155,7 +155,7 @@ export default {
       product_id: this.$route.params.id,
       application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
       option_items : [],
-      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
       isFieldEmptyVisible : false,
       globalLocale : '',
       // emptyTitle : false,
@@ -190,6 +190,18 @@ export default {
       if(this.isQuote){
         return this.$t("onlyme.title.Estimate");
       }
+    },
+
+    page_header(){
+      if(this.$route.params.type == 'my-choice'){
+          return this.$t("onlyme.title.MyChoice")
+      }
+
+      if(this.$route.params.type == 'recommended-blending'){
+          return this.$t("onlyme.title.RecommendedBlending")
+      }
+
+
     }
   },
   watch: {

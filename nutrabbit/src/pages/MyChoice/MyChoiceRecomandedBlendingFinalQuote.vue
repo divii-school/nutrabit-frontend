@@ -163,6 +163,9 @@ export default {
       Detailaddress: "",
       userId: this.common.state.userId,
       payment_status: '',
+      payment_done: '',
+      service: '',
+      is_temporary_storage: 'N',
     };
   },
   created() {
@@ -183,24 +186,21 @@ export default {
       this.showModal = false;
     },
     package_add() {
-      let is_temporary_storage = 'N';
       let length = this.servicetype.length;
-      let service = '';
       if (length == 0) {
         // this.$swal("Please select a service");
         this.isServiceSelectedVisible = true;
       }
       else {
         if (length == 2) {
-          service = 3;
+          this.service = 3;
         }
         else {
-          service = this.servicetype.toString();
+          this.service = this.servicetype.toString();
         }
-
-        if (service == '2') {
+        if (this.service == '2') {
           //Only get a quote
-          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
+          this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, this.is_temporary_storage).then((res) => {
             // console.log(res);
             if (res.status == 200) {
               this.$router.push({ name: 'MyApplicationDetails' });
@@ -212,66 +212,90 @@ export default {
         }
         else {
           // sample Application and both get a quote
-          this.makePay();
-          console.log('payemnt status---', this.common.state.isPayment);
-          this.payment_status = this.common.state.isPayment ? 'Success' : 'Failed';
-          if (this.common.state.isPaymentDone) {
-            // this.payment_status = 'Success';
-            alert(`sdvds`);
-            this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, service, is_temporary_storage).then((res) => {
-              // console.log(res);
-              if (res.status == 200) {
-                if (this.payment_status == 'Success') {
-                  this.$router.push({ name: 'MyApplicationDetails' });
-                }
-                if (this.payment_status == 'Failed') {
-                  this.$router.push({ name: 'MyRecipe' });
-                }
-              } else {
-                this.$swal(res.message, "error");
-              }
-            });
-          }
+          this.requestPay(this.email, this.name, this.phoneNumber, this.address);
         }
       }
     },
-
+    // sample Application and both get a quote
+    recommendedBlendingPackageAdd() {
+      this.mychoiceService.getRecommendedBlendingPackageAdd(this.blending_id, this.payment_status, this.package_id, this.etc, this.additional_request, this.service, this.is_temporary_storage).then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          if (this.payment_status == 'Success') {
+            this.$router.push({ name: 'MyApplicationDetails' });
+          }
+          if (this.payment_status == 'Failed') {
+            this.$router.push({ name: 'MyRecipe' });
+          }
+        } else {
+          this.$swal(res.message, "error");
+        }
+      });
+    },
+    // get user info for payement
     getUserInfo() {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalBusinessService.getBusinessData(this.userId).then((res) => {
+          let data = res.data;
+          // console.log("data",data);
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
 
-              if (localStorage.getItem("userType") == "business_member") {
-          this.personalBusinessService.getBusinessData(this.userId).then((res) => {
-            let data = res.data;
-            // console.log("data",data);
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-        if (localStorage.getItem("userType") == "personal_member") {
-
-          this.personalInfoservice.getPersonalData(this.userId).then((res) => {
-            // console.log(res.data);
-            let data = res.data;
-            this.name = data.data[0].name;
-            this.uuid = data.data[0].uuid;
-            this.email = data.data[0].email;
-            this.phoneNumber = data.data[0].mobile;
-            this.address = data.data[0].address;
-            this.Detailaddress = data.data[0].address;
-          });
-        }
-
+        this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+          // console.log(res.data);
+          let data = res.data;
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
     },
-
     // payment
-    makePay() {
-      alert('makePay');
-      this.paymentService.requestPay(this.email, this.name, this.phoneNumber, this.address);
+    requestPay(buyerEmail, buyerName, buyerTel, buyerAddr) {
+      let self = this;
+      let IMP = window.IMP;
+      IMP.init("imp55488636");
+      IMP.request_pay({
+        pg: "uplus",
+        // pay_method: "card",
+        merchant_uid: "ORDER_" + new Date().getTime(),
+        name: buyerName,
+        amount: 300000,
+        buyer_email: buyerEmail,
+        buyer_name: buyerName,
+        buyer_tel: buyerTel,
+        buyer_addr: buyerAddr,
+        app_scheme: "NutrabbitIAmPort",
+      }, function (rsp) {
+        if (rsp.success) { // payment successful: payment accepted or virtual account issued
+          alert('"Payment Success. Success:' + rsp);
+          console.log('success', rsp);
+          self.payment_status = 'Success';
+          self.payment_done = true;
+          self.recommendedBlendingPackageAdd();
+        } else {
+          console.log('failed', rsp);
+          self.payment_status = 'Failed';
+          self.payment_done = true;
+          self.recommendedBlendingPackageAdd();
+          self.paymentService.addPayment(applicationId, rsp.apply_num, rsp.bank_name, buyerAddr, buyerEmail, buyerName, buyerTel, 
+            rsp.card_name, rsp.card_number, rsp.card_quota, rsp.currency, rsp.custom_data, rsp.imp_uid, rsp.merchant_uid, rsp.name, 
+            rsp.paid_amount, rsp.paid_at, rsp.pay_method, rsp.pg_provider, rsp.pg_tid, rsp.pg_type, rsp.receipt_url, rsp.request_id, rsp.status, 
+            rsp.success, rsp.error_code, rsp.error_msg);
+          alert("Payment failed. Error: " + rsp.error_msg);
+        }
+      });
     },
-
 
     package_temporary_add() {
       let is_temporary_storage = 'Y';
