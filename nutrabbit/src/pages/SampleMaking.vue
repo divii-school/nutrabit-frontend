@@ -3,9 +3,9 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice sample-choice">
+          <div class="nutri-choice sample-choice servIntro">
             <span class="my-choice-title-top">Sample Guide</span>
-            <h2 class="nutri-choice-heading text-center">
+            <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("sampleMaking.title.title") }}
             </h2>
             <p class="title text-center sampleBLueAfter sample-diff">
@@ -196,5 +196,8 @@ export default {
 }
 .light-grey{
   color: $grey-A4;
+}
+.mt-0{
+  margin-top: 0px;
 }
 </style>

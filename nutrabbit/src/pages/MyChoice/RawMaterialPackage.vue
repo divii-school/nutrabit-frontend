@@ -111,11 +111,11 @@
                   <label class="custom-radio" for="18">
                     <input
                       type="radio"
-                      checked="checked"
                       id="18"
                       name="radio"
                       v-model="package_id"
                       value="18"
+                      @click="checkuncheckbtn"
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -131,7 +131,8 @@
                 >
                   {{ $t("button.Previous") }}
                 </button>
-                <button @click="checkPackageId" class="btn-small-solid blue">
+                <button :class="!isSelected ? 'btn-disabled' : ''"
+                  :disabled="!isSelected" @click="checkPackageId" class="btn-small-solid blue">
                   {{ $t("button.next") }}
                 </button>
               </div>
@@ -170,7 +171,7 @@ export default {
   data() {
     return {
       blendingPackageData: "",
-      package_id: 18,
+      package_id: '',
       etc: "",
       etcbtn: "",
       to: "",
@@ -178,6 +179,7 @@ export default {
       etcEmptyError: "",
       globalLocale: "",
       ischeckETCError: false,
+      isSelected: false,
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -229,6 +231,7 @@ export default {
     },
     UpdatedId(e) {
       this.package_id = e;
+      this.isSelected = true;
     },
     UpdatedEtcInput(e) {
       this.etc = e;
@@ -238,6 +241,11 @@ export default {
     },
     getetcbtn() {
       this.etcbtn = "ETC";
+      this.isSelected = true;
+    },
+    checkuncheckbtn() {
+      this.isSelected = true;
+      this.etcbtn = "";
     },
     checkETCError() {
       this.etcEmptyError = this.$t("package.error_etc");

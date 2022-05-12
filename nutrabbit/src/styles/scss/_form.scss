@@ -83,7 +83,7 @@
             @include flex-align-center;
 
             .input-inner {
-                width: calc(100% - 115px);
+                width: calc(100% - 119px);
                 margin-right: 10px;
             }
         }
@@ -171,6 +171,10 @@
     &.form-full-width{
         margin: 0;
         width: 100%;
+    }
+
+    .btn-green-outline{
+        width: 109px;
     }
 }
 

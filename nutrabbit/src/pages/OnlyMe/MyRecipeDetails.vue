@@ -29,7 +29,7 @@
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
-                      <td>{{ option_item.category }}</td>
+                      <td>{{ $t(option_item.category) }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
                     <!-- <tr>
@@ -52,6 +52,7 @@
                   name=""
                   :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
+                  disabled
                 />
               </div>
               <div class="fGroup">
@@ -59,6 +60,7 @@
                 <textarea
                   :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="additionalRequest"
+                  disabled
                 ></textarea>
               </div>
               <div class="fGroup mb0">
@@ -288,12 +290,13 @@ export default {
                   console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
-                  console.log(res.message);
+                  console.log( "error", res.message);
                 }
               });
             });
           } else {
-            this.$swal(res.message, "error");
+            // this.$swal(res.message, "error");
+            console.log("error", res.message )
           }
         });
     },

@@ -110,11 +110,11 @@
                   <label class="custom-radio custom-radio2" for="18">
                     <input
                       type="radio"
-                      checked="checked"
                       id="18"
                       name="radio"
                       v-model="package_id"
                       value="18"
+                      @click="checkuncheckbtn"
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -135,7 +135,12 @@
                 >
                   {{ $t("button.Previous") }}
                 </button>
-                <button @click="checkPackageId" class="btn-small-solid blue">
+                <button
+                  :class="!isSelected ? 'btn-disabled' : ''"
+                  :disabled="!isSelected"
+                  @click="checkPackageId"
+                  class="btn-small-solid blue"
+                >
                   {{ $t("button.next") }}
                 </button>
               </div>
@@ -164,12 +169,13 @@ export default {
     return {
       blending_id: this.$route.query.blending_id,
       blendingPackageData: "",
-      package_id: 18,
+      package_id: "",
       etc: "",
       etcbtn: "",
       etcEmptyError: "",
       globalLocale: "",
       ischeckETCError: false,
+      isSelected: false,
     };
   },
   created() {
@@ -204,12 +210,18 @@ export default {
     },
     UpdatedId(e) {
       this.package_id = e;
+      this.isSelected = true;
     },
     UpdatedEtcInput(e) {
       this.etc = e;
     },
     getetcbtn() {
       this.etcbtn = "ETC";
+      this.isSelected = true;
+    },
+    checkuncheckbtn() {
+      this.isSelected = true;
+      this.etcbtn = "";
     },
     etcCheckedValue(e) {
       this.etcbtn = e;
@@ -217,7 +229,7 @@ export default {
     checkPackageId() {
       // console.log(this.blending_id);
       if (this.package_id == "") {
-        this.$swal("Please Choose a Package");
+        // this.$swal("Please Choose a Package");
       } else {
         if (this.etcbtn == "ETC") {
           if (this.etc == "") {

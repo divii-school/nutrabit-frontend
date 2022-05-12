@@ -148,9 +148,9 @@ export default {
   mounted() {
     this.blendingFormulation();
   },
-  updated() {
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated() {
+  //   this.globalLocale = this.$i18n.locale;
+  // },
 
   watch: {
     "common.state.SelectedLang": function (newVal, oldVal) {
