@@ -11,8 +11,10 @@
         }
         table{
             width: 100%;
-            tr{
-                cursor: pointer;
+            tbody{
+                tr{
+                    cursor: pointer;
+                }
             }
             thead{
                 th{
