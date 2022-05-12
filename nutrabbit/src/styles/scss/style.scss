@@ -66,6 +66,11 @@ body {
   max-width: 870px;
   width: 100%;
   margin: 0 auto;
+  .login-signup-inner{
+    @media screen and (max-width: 900px) {
+     box-shadow: none;
+    }
+  }
 }
 
 .container-medium {

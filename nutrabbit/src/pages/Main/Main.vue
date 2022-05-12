@@ -2,26 +2,46 @@
   <div class="main-page">
     <div class="main-slider">
       <!-- slider for desktop -->
-      <swiper :pagination="{
-        type: 'fraction',
-      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
+      <swiper
+        :pagination="{
+          type: 'fraction',
+        }"
+        :navigation="false"
+        :modules="modules"
+        :speed="1000"
+        class="mySwiper mySwiperDesktop"
+      >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link">
-          <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
-          <img v-else src="../../assets/images/banner_place.png" alt />
-          <p class="banner-title text-center">{{ slider.title }}</p>
+            <img
+              v-if="slider.desktop_banner_path"
+              :src="imgBaseUrl + slider.desktop_banner_path"
+              alt=""
+            />
+            <img v-else src="../../assets/images/banner_place.png" alt />
+            <p class="banner-title text-center">{{ slider.title }}</p>
           </a>
         </swiper-slide>
       </swiper>
       <!-- slider for mobile -->
-      <swiper :pagination="{
-        type: 'fraction',
-      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
+      <swiper
+        :pagination="{
+          type: 'fraction',
+        }"
+        :navigation="false"
+        :modules="modules"
+        :speed="1000"
+        class="mySwiper mySwiperMob"
+      >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link">
-          <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
-          <img v-else src="../../assets/images/banner_place.png" alt />
-          <p class="banner-title text-center">{{ slider.title }}</p>
+            <img
+              v-if="slider.mobile_banner_path"
+              :src="imgBaseUrl + slider.mobile_banner_path"
+              alt=""
+            />
+            <img v-else src="../../assets/images/banner_place.png" alt />
+            <p class="banner-title text-center">{{ slider.title }}</p>
           </a>
         </swiper-slide>
       </swiper>
@@ -31,13 +51,20 @@
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2 class="nutri-choice-heading text-center" v-html="$t('main.my_choice.title')"></h2>
-          <p class="desc text-center"> {{ $t("main.my_choice.desc") }}</p>
+          <h2
+            class="nutri-choice-heading text-center"
+            v-html="$t('main.my_choice.title')"
+          ></h2>
+          <p class="desc text-center">{{ $t("main.my_choice.desc") }}</p>
           <router-link to="/my-choice" v-if="token">
-            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
+            <button class="btn-small-solid">
+              {{ $t("main.my_choice.button") }}
+            </button>
           </router-link>
           <router-link to="/" v-else @click="accessPage()">
-            <button class="btn-small-solid">{{ $t("main.my_choice.button") }}</button>
+            <button class="btn-small-solid">
+              {{ $t("main.my_choice.button") }}
+            </button>
           </router-link>
         </div>
         <!-- {{ 'ENV = ' +  process.env.VITE_SOME_KEY }} -->
@@ -50,9 +77,14 @@
           <div class="nutri-choice greenTItle">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
-            <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
+            <h2
+              class="nutri-choice-heading text-center"
+              v-html="$t('main.nutri.title')"
+            ></h2>
             <p class="desc text-center">{{ $t("main.nutri.desc") }}</p>
-            <button @click="toNutri()" class="btn-small-solid green">{{ $t("main.nutri.button") }}</button>
+            <button @click="toNutri()" class="btn-small-solid green">
+              {{ $t("main.nutri.button") }}
+            </button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
           </div>
           <div class="nutri-dom-product">
@@ -66,9 +98,15 @@
       </div>
     </div>
   </div>
-  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
-    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
-    link="/login" />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')"
+    :btnText1="$t('requireModal.btn1')"
+    :btnText2="$t('requireModal.btn2')"
+    link="/login"
+  />
   <!-- <KakaoChat /> -->
 </template>
 
@@ -81,7 +119,7 @@ import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
 import { inject, onMounted } from "vue";
 import MainService from "../../services/MainService";
-import Button from '../../components/Button.vue';
+import Button from "../../components/Button.vue";
 import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
 export default {
@@ -98,7 +136,7 @@ export default {
     return {
       MainSlider: [],
       ProductData: [],
-      token: localStorage.getItem('token'),
+      token: localStorage.getItem("token"),
       isMobile: false,
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
@@ -112,7 +150,7 @@ export default {
     });
     return {
       modules: [Pagination, Navigation, Autoplay],
-      common
+      common,
     };
   },
   created() {
@@ -121,18 +159,20 @@ export default {
   mounted() {
     this.allBanner();
     this.allNutidata();
-    localStorage.removeItem('sub_category_id');
-    localStorage.removeItem('raw_material_id');
-    localStorage.removeItem('package_id');
-    localStorage.removeItem('pill_id');
-    localStorage.removeItem('option');
-    localStorage.removeItem('etc');
-    localStorage.removeItem('storage_box');
-
+    localStorage.removeItem("sub_category_id");
+    localStorage.removeItem("raw_material_id");
+    localStorage.removeItem("package_id");
+    localStorage.removeItem("pill_id");
+    localStorage.removeItem("option");
+    localStorage.removeItem("etc");
+    localStorage.removeItem("storage_box");
   },
   watch: {
-    'common.state.SelectedLang': function (newVal, oldVal) {
-      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.allNutidata();
       }
     },
@@ -146,9 +186,9 @@ export default {
         if (res.status == 200) {
           // console.log('getBanner res', res.data.bannerData);
           this.MainSlider = res.data.bannerData;
-
         } else {
-          this.$swal(res.message, "error");
+          // this.$swal(res.message, "error");
+          console.log(res.message);
         }
       });
     },
@@ -159,10 +199,10 @@ export default {
         if (res.status == 200) {
           this.ProductData = res.data.blendingData;
           //console.log(res)
-
         } else {
           // console.log('getNutridata res', res.data.blendingData);
-          this.$swal(res.message, "error");
+          // this.$swal(res.message, "error");
+          console.log(res.message);
         }
       });
     },
@@ -170,12 +210,11 @@ export default {
       //this.$router.push('/login')
       //this.$swal("Unauthorized Access.Please Login.");
       this.isModalVisible = true;
-
     },
 
     toNutri() {
       if (this.token) {
-        this.$router.push(`/service-intro`)
+        this.$router.push(`/service-intro`);
       } else {
         this.isModalVisible = true;
       }
@@ -183,7 +222,7 @@ export default {
 
     closeModal() {
       this.isModalVisible = false;
-    }
+    },
   },
 };
 </script>
