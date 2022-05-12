@@ -52,7 +52,6 @@
                 <input
                   type="text"
                   name=""
-                  disabled
                   :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
                 />
