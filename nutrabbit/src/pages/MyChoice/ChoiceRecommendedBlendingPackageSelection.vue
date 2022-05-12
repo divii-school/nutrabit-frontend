@@ -31,9 +31,9 @@
             </li>
           </ul>
         </div>
-        
+
         <div class="choice-selection-item-wrap">
-          <div class="choice-selection-item raw-material-product ">
+          <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
                 <h2 class="grey-4c">{{ $t("package.title") }}</h2>
@@ -55,7 +55,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="product-list-wrap">
               <ul class="raw-material-list">
                 <li v-for="(item, index) of blendingPackageData" :key="index">
@@ -194,12 +194,11 @@ export default {
     // blending package Details
     blendingPackage() {
       this.mychoiceService.getRecommendedBlendingPackage().then((res) => {
-        // console.log(res);
         if (res.status == 200) {
           this.blendingPackageData = res.data.packageData;
-          // console.log(res.data.packageData);
         } else {
-          this.$swal(res.message, "error");
+          // this.$swal(res.message, "error");
+          console.log(res.message);
         }
       });
     },
