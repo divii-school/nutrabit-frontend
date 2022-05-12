@@ -20,7 +20,7 @@
              <div class="row-type ">
                   <div class="num">1</div>
                   <figure><img src="~@/assets/images/about1.png"></figure>
-                  <div class="text-box"><p><span class="green-text">{{ $t("aboutus.recommended.rule1") }}</span>{{ $t("aboutus.recommended.rule1_1") }}</p></div>
+                  <div class="text-box"><p><span class="green-text">{{ $t("aboutus.recommended.rule1") }}</span> {{ $t("aboutus.recommended.rule1_1") }}</p></div>
                 </div>
               <div class="row-type">
                 <div class="num">2</div>
