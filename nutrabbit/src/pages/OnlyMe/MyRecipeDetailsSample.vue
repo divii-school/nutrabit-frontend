@@ -26,7 +26,7 @@
                     <tr v-for="(item, index) of options" :key="index">
                       <!-- <tr> -->
                         <td>{{ index +1 }}</td>
-                        <td>{{ item.category }}</td>
+                        <td>{{ $t(item.category) }}</td>
                         <td>{{ item.explanation }}</td>
                     </tr>
                   </tbody>
