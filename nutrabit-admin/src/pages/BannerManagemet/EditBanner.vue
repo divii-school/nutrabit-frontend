@@ -47,7 +47,7 @@
                             </div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <div class="text-red">{{ error.file }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" :alt="fileName1"
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" :alt="fileName2"
                                 class="product-image" />
                         </div>
                     </div>
@@ -163,7 +163,7 @@ export default {
                 if ((sfile = this.file)) {
                     simg = new Image();
                     simg.onload = function () {
-                        alert(this.width + " " + this.height);
+                        // alert(this.width + " " + this.height);
                         if (this.width >= 1920 && this.height >= 828) {
 
                             self.fileName = files[0].name;
@@ -208,7 +208,7 @@ export default {
                 if ((sfiles = this.files)) {
                     simgs = new Image();
                     simgs.onload = function () {
-                        alert(this.width + " " + this.height);
+                        // alert(this.width + " " + this.height);
                         if (this.width >= 1920 && this.height >= 828) {
 
                             self.filesName = files[0].name;
