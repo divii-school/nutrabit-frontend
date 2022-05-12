@@ -3,7 +3,7 @@
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
-          <div class="login-heading-wrap type-2">
+          <div class="login-heading-wrap">
             <h1 class="login-heading">{{ $t("common.QuickLinks.FindID") }}</h1>
           </div>
           <form
