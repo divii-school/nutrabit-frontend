@@ -485,9 +485,9 @@
               }
               .radio-wrap {
                 @include flex-align-center;
-                @media screen and (max-width: 640px) {
-                  width: 100%;
-                }
+                // @media screen and (max-width: 640px) {
+                //   width: 100%;
+                // }
                 .custom-radio {
                   @media screen and (max-width: 640px) {
                     padding-left: 37px;
@@ -639,18 +639,6 @@
               }
               &.flex-justify-end {
                 justify-content: flex-end;
-              }
-              &.tripple-btn {
-                .btn-left {
-                  @media screen and (max-width: 640px) {
-                    width: 33.33%;
-                  }
-                }
-                .btnWrapRight {
-                  @media screen and (max-width: 640px) {
-                    width: calc(100% - 33.33%);
-                  }
-                }
               }
             }
           }
