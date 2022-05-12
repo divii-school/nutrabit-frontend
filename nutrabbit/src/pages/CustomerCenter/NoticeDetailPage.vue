@@ -113,4 +113,7 @@ export default {
   font-size: 18px;
   line-height: 22px;
 }
+.main-body .container-medium .my-notice-wrap .btn{
+  margin-top: 0px;
+}
 </style>
