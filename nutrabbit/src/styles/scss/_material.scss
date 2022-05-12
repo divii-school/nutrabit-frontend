@@ -11,6 +11,11 @@
         }
         table{
             width: 100%;
+            tbody{
+                tr{
+                    cursor: pointer;
+                }
+            }
             thead{
                 th{
                     background: $grey-9;

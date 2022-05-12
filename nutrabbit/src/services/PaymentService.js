@@ -26,11 +26,11 @@ export default class PaymentService {
         alert('"Payment Success. Success:' + rsp);
         console.log('success',rsp);
         state.isPayment = true;
-        state.isPaymentDone = true;
+        state.isPaymentDone = 'done';
       } else {
         console.log('failed',rsp);
         state.isPayment = false;
-        state.isPaymentDone = true;
+        state.isPaymentDone = 'notdone';
         // addPayment(applicationId, applyNum, bankName, buyerAddr, buyerEmail, buyerName, buyerTel, 
         //   cardName, cardNumber, cardQuota, currency, customData, impUid, merchantUid, name, 
         //   paidAmount, paidAt, payMethod, pgProvider, pgTid, pgType, receiptUrl, requestId, status, 

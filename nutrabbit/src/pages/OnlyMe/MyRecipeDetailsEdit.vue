@@ -47,7 +47,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="fGroup">
+              <div class="fGroup" v-if="isRecomm">
                 <label>{{$t("onlyme.title.Title")}}</label>
                 <input
                   type="text"
@@ -158,6 +158,7 @@ export default {
       //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
       isFieldEmptyVisible : false,
       globalLocale : '',
+      isRecomm : true,
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -174,6 +175,10 @@ export default {
 
   mounted(){
       this.recipeSingleProductDetails(this.product_id, this.application_type);
+
+      if(this.$route.params.type == "recommended-blending"){
+       this.isRecomm = false;
+    }
   },
 
   updated() {

@@ -12,8 +12,8 @@
               <template #content>
                 <div class="heading-tooltip-content">
                   <ul>
-                    <li>{{ $t('myChoice.popup.list1') }}</li>
-                    <li>{{ $t('myChoice.popup.list2') }}</li>
+                    <li>{{ $t("myChoice.popup.list1") }}</li>
+                    <li>{{ $t("myChoice.popup.list2") }}</li>
                   </ul>
                 </div>
               </template>
@@ -22,13 +22,32 @@
         </div>
         <div class="my-choice-list-wrap">
           <ul class="my-choice-list-outer">
-            <li class="my-choice-list-outer-item" v-for="item in categories" :key="item">
+            <li
+              class="my-choice-list-outer-item"
+              v-for="item in categories"
+              :key="item"
+            >
               <h2 class="list-heading">{{ item.category_name }}</h2>
               <ul class="my-choice-list-inner">
-                <li class="my-choice-list-inner-item" v-for="(item, i) of item.sub_category_arr" :key="i + 1">
-                  <div class="choice-card" @click="gotoNextPage(item.sub_category_id)">
-                    <img v-if="item.sub_category_image_path" :src="imgBaseUrl + item.sub_category_image_path" alt />
-                    <img v-else src="../../assets/images/my_choice_place.png" alt />
+                <li
+                  class="my-choice-list-inner-item"
+                  v-for="(item, i) of item.sub_category_arr"
+                  :key="i + 1"
+                >
+                  <div
+                    class="choice-card"
+                    @click="gotoNextPage(item.sub_category_id)"
+                  >
+                    <img
+                      v-if="item.sub_category_image_path"
+                      :src="imgBaseUrl + item.sub_category_image_path"
+                      alt
+                    />
+                    <img
+                      v-else
+                      src="../../assets/images/my_choice_place.png"
+                      alt
+                    />
                   </div>
                   <p class="desc">{{ item.sub_category_name }}</p>
                 </li>
@@ -53,7 +72,7 @@ export default {
   },
   data() {
     return {
-      categories: '',
+      categories: "",
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       globalLocale: "",
     };
@@ -63,20 +82,23 @@ export default {
   },
   mounted() {
     this.allCategories();
-    localStorage.removeItem('sub_category_id');
-    localStorage.removeItem('raw_material_id');
-    localStorage.removeItem('package_id');
-    localStorage.removeItem('pill_id');
-    localStorage.removeItem('option');
-    localStorage.removeItem('etc');
-    localStorage.removeItem('storage_box');
+    localStorage.removeItem("sub_category_id");
+    localStorage.removeItem("raw_material_id");
+    localStorage.removeItem("package_id");
+    localStorage.removeItem("pill_id");
+    localStorage.removeItem("option");
+    localStorage.removeItem("etc");
+    localStorage.removeItem("storage_box");
   },
   //  updated(){
   //     this.globalLocale = this.$i18n.locale;
   //   },
   watch: {
-    'common.state.SelectedLang': function (newVal, oldVal) {
-      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.allCategories();
       }
     },
@@ -84,21 +106,17 @@ export default {
 
   methods: {
     gotoNextPage(sub_category_id) {
-
-      localStorage.setItem('sub_category_id', sub_category_id);
-      this.$router.push('/my-choice-category-selection/');
-
+      localStorage.setItem("sub_category_id", sub_category_id);
+      this.$router.push("/my-choice-category-selection/");
     },
     // allCategories list
     allCategories() {
       this.mychoiceService.getCategories().then((res) => {
-        //console.log(res);
         if (res.status == 200) {
-          //  console.log('getCategories res', res.data.parentCategoryData);
           this.categories = res.data.parentCategoryData;
         } else {
-
-          this.$swal(res.message, "error");
+          // this.$swal(res.message, "error");
+          console.log(res.message);
           this.$router.push("/login");
         }
       });
