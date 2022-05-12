@@ -492,7 +492,7 @@ export default {
           } else {
             console.log("failed", rsp);
             alert("Payment failed. Error: " + rsp.error_msg);
-            self.payment_status = "Success";
+            // self.payment_status = "Success";
             self.payment_done = true;
             self.card_name = rsp.card_name;
             self.card_number = rsp.card_number;
