@@ -66,6 +66,11 @@ body {
   max-width: 870px;
   width: 100%;
   margin: 0 auto;
+  .login-signup-inner{
+    @media screen and (max-width: 900px) {
+     box-shadow: none;
+    }
+  }
 }
 
 .container-medium {
@@ -684,6 +689,7 @@ textarea {
     font-size: 24px;
     line-height: 29px;
     color: $black-33;
+    font-family: $default-font;
     // margin-top: 30px;
     padding: 0;
     color: $black-33;
@@ -710,6 +716,7 @@ textarea {
       width: 100%;
       border: 0;
       box-shadow: none;
+      font-family: $default-font;
     }
   }
   &.colored-toast {
@@ -805,7 +812,7 @@ textarea {
   font-family: $Pretend-semibold;
   font-weight: 600;
   @media screen and (max-width: 768px) {
-    height: 50px;
+    height: auto;
     font-size: 18px;
     line-height: 22px;
     padding: 14px 0;
@@ -1108,6 +1115,19 @@ textarea {
     img{
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+.tripple-btn {
+  .btn-left {
+    @media screen and (max-width: 768px) {
+      width: 33.33% !important;
+    }
+  }
+  .btnWrapRight {
+    @media screen and (max-width: 768px) {
+      width: calc(100% - 33.33%);
     }
   }
 }

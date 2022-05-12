@@ -159,6 +159,7 @@
       justify-content: flex-end;
       margin: 41px 0;
       color: $grey-66;
+      font-family: $default-font;
       ul {
         @include flex-align-center;
         li {

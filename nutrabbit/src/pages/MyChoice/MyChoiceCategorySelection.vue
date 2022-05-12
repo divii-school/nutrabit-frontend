@@ -9,7 +9,7 @@
           <div class="choice-selection-item recomanded-blending">
             <div class="heading-wrap">
               <div class="heading heading-blue">
-                <h2>{{ $t('myChoice.RecommendedBlending.title') }}</h2>
+                <h2>{{ $t("myChoice.RecommendedBlending.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -18,9 +18,15 @@
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
-                          <li>{{ $t("myChoice.RecommendedBlending.popup.list1") }}</li>
-                          <li>{{ $t("myChoice.RecommendedBlending.popup.list2") }}</li>
-                          <li>{{ $t("myChoice.RecommendedBlending.popup.list3") }}</li>
+                          <li>
+                            {{ $t("myChoice.RecommendedBlending.popup.list1") }}
+                          </li>
+                          <li>
+                            {{ $t("myChoice.RecommendedBlending.popup.list2") }}
+                          </li>
+                          <li>
+                            {{ $t("myChoice.RecommendedBlending.popup.list3") }}
+                          </li>
                         </ul>
                       </div>
                     </template>
@@ -30,23 +36,33 @@
               <div class="heading-left">
                 <router-link to="/my-choice-recomanded-blending">
                   <a href class="see-more">
-                    <i class="icon-plus"></i>{{ $t('myChoice.RecommendedBlending.more') }}
+                    <i class="icon-plus"></i
+                    >{{ $t("myChoice.RecommendedBlending.more") }}
                   </a>
                 </router-link>
               </div>
             </div>
             <ul class="recomanded-list">
               <li v-for="item in blendingData" :key="item">
-                <SearchCard :category="item.name" :name="item.material_name" :desc="item.description"
-                  :image="item.thumbnail_1_path" :image_hover="item.thumbnail_2_path" :image_link="imgBaseUrl"
-                  :route_link="'/choice-recommended-blending-detailed-page/' + item.id" type2="recommended_data" />
+                <SearchCard
+                  :category="item.name"
+                  :name="item.material_name"
+                  :desc="item.description"
+                  :image="item.thumbnail_1_path"
+                  :image_hover="item.thumbnail_2_path"
+                  :image_link="imgBaseUrl"
+                  :route_link="
+                    '/choice-recommended-blending-detailed-page/' + item.id
+                  "
+                  type2="recommended_data"
+                />
               </li>
             </ul>
           </div>
           <div class="choice-selection-item raw-material">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{ $t('myChoice.RawMaterial.title') }}</h2>
+                <h2>{{ $t("myChoice.RawMaterial.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -55,8 +71,8 @@
                     <template #content>
                       <div class="heading-tooltip-content">
                         <ul>
-                          <li>{{ $t('myChoice.RawMaterial.popup.list1') }}</li>
-                          <li>{{ $t('myChoice.RawMaterial.popup.list2') }}</li>
+                          <li>{{ $t("myChoice.RawMaterial.popup.list1") }}</li>
+                          <li>{{ $t("myChoice.RawMaterial.popup.list2") }}</li>
                         </ul>
                       </div>
                     </template>
@@ -71,8 +87,12 @@
                     close-on-select
                   ></vue-select>-->
                   <select @change="sortingMethod($event)">
-                    <option value="popularity">{{ $t('myChoice.RawMaterial.popularity') }}</option>
-                    <option value="alphabetical">{{ $t('myChoice.RawMaterial.alphabetical') }}</option>
+                    <option value="popularity">
+                      {{ $t("myChoice.RawMaterial.popularity") }}
+                    </option>
+                    <option value="alphabetical">
+                      {{ $t("myChoice.RawMaterial.alphabetical") }}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -81,31 +101,50 @@
               <li v-for="data in rawMaterialData" :key="data">
                 <div class="list-left">
                   <div class="img-wrap" @click="gotoNextPage(data.id)">
-                    <img v-if="data.thumbnail_fst_path" :src="imgBaseUrl + data.thumbnail_fst_path" alt />
-                    <img v-else src="../../assets/images/raw_material_place.png" alt />
+                    <img
+                      v-if="data.thumbnail_fst_path"
+                      :src="imgBaseUrl + data.thumbnail_fst_path"
+                      alt
+                    />
+                    <img
+                      v-else
+                      src="../../assets/images/raw_material_place.png"
+                      alt
+                    />
 
                     <div v-if="data.thumbnail_scnd_path" class="img-wrap-hover">
                       <img :src="imgBaseUrl + data.thumbnail_scnd_path" alt />
                     </div>
                     <div v-else class="img-wrap-hover">
-                      <img src="../../assets/images/raw_material_place.png" alt />
+                      <img
+                        src="../../assets/images/raw_material_place.png"
+                        alt
+                      />
                     </div>
-
                   </div>
                   <div class="material-details">
-                    <h2 @click="gotoNextPage(data.id)">{{ data.material_name }}</h2>
+                    <h2 @click="gotoNextPage(data.id)">
+                      {{ data.material_name }}
+                    </h2>
                     <div @click="gotoNextPage(data.id)" class="description">
                       <p>{{ data.material_description }}</p>
                     </div>
                   </div>
                 </div>
                 <div class="list-right">
-                  <button @click="showDetails(data.id)" class="btn-small-solid">{{ $t('button.add') }}</button>
+                  <button @click="showDetails(data.id)" class="btn-small-solid">
+                    {{ $t("button.add") }}
+                  </button>
                 </div>
                 <my-modal-component v-show="showModal">
-                  <ModalStorageBox @close="closeModal" :bodytext1="$t('myChoice.RawMaterial.modal.heading')"
-                    :btnText1="$t('myChoice.RawMaterial.modal.btn1')" :btnText2="$t('myChoice.RawMaterial.modal.btn2')"
-                    :raw_material_id="raw_material_id" :sub_category_id="this.sub_category_id" />
+                  <ModalStorageBox
+                    @close="closeModal"
+                    :bodytext1="$t('myChoice.RawMaterial.modal.heading')"
+                    :btnText1="$t('myChoice.RawMaterial.modal.btn1')"
+                    :btnText2="$t('myChoice.RawMaterial.modal.btn2')"
+                    :raw_material_id="raw_material_id"
+                    :sub_category_id="this.sub_category_id"
+                  />
                 </my-modal-component>
               </li>
             </ul>
@@ -124,10 +163,10 @@ import SearchCard from "../../components/SearchCard.vue";
 import VueNextSelect from "vue-next-select";
 import MyChoiceService from "../../services/MyChoiceService";
 import ModalStorageBox from "../../components/ModalStorageBox.vue";
- 
+
 export default {
   name: "MyChoiceCategorySelection",
-  inject : ["common"],
+  inject: ["common"],
   components: {
     Popper,
     SearchCard,
@@ -154,8 +193,11 @@ export default {
   // },
 
   watch: {
-    'common.state.SelectedLang': function (newVal, oldVal) {
-      if ((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')) {
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.rawMaterial();
         this.allBlendingData();
       }
@@ -165,35 +207,31 @@ export default {
   mounted() {
     this.rawMaterial();
     this.allBlendingData();
-    localStorage.removeItem('raw_material_id');
+    localStorage.removeItem("raw_material_id");
   },
   methods: {
     showDetails(id) {
       this.showModal = true;
-      this.raw_material_id = id
+      this.raw_material_id = id;
     },
     closeModal() {
       this.showModal = false;
     },
     gotoNextPage(raw_material_id) {
-
-      localStorage.setItem('raw_material_id', raw_material_id);
-      this.$router.push('/mychoice-rawMaterial-detailed-page/');
-
+      localStorage.setItem("raw_material_id", raw_material_id);
+      this.$router.push("/mychoice-rawMaterial-detailed-page/");
     },
     // rawMaterial list
     rawMaterial() {
-      this.sub_category_id = localStorage.getItem('sub_category_id');
+      this.sub_category_id = localStorage.getItem("sub_category_id");
       const setSubCategory = this.sub_category_id;
 
       this.mychoiceService.getRawMaterial(setSubCategory).then((res) => {
-        // console.log(res.data);
         if (res.status == 200) {
-          // console.log('getRawMaterial res', res.data.data.rawMaterialData);
           this.rawMaterialData = res.data.data.rawMaterialData;
-
         } else {
-          this.$swal(res.data.message, "error");
+          // this.$swal(res.data.message, "error");
+          console.log(res.data.message);
         }
       });
     },
@@ -202,52 +240,47 @@ export default {
     allBlendingData() {
       let limit = 4;
       let page = 1;
-      this.sub_category_id = localStorage.getItem('sub_category_id');
+      this.sub_category_id = localStorage.getItem("sub_category_id");
       const setSubCategory = this.sub_category_id;
-      this.mychoiceService.getRecommendedData(setSubCategory, limit, page).then((res) => {
-        // console.log(res);
-        if (res.status == 200) {
-          //console.log('allBlendingData res', res.data.blendingData);
-          this.blendingData = res.data.blendingData;
-
-        } else {
-          this.$swal(res.data.message, "error");
-        }
-      });
+      this.mychoiceService
+        .getRecommendedData(setSubCategory, limit, page)
+        .then((res) => {
+          // console.log(res);
+          if (res.status == 200) {
+            this.blendingData = res.data.blendingData;
+          } else {
+            // this.$swal(res.data.message, "error");
+            console.log(res.data.message);
+          }
+        });
     },
 
     sortingMethod(event) {
       this.key = event.target.value;
-      // console.log(this.key);
-      if (this.key == 'alphabetical') {
-
-        this.mychoiceService.getRawMaterialAlphabetical(this.sub_category_id).then((res) => {
-          // console.log(res.data);
-          if (res.status == 200) {
-            // console.log('getRawMaterial res', res.data.data.rawMaterialData);
-            this.rawMaterialData = res.data.data.rawMaterialData;
-
-          } else {
-            this.$swal(res.data.message, "error");
-          }
-        });
-
-
+      if (this.key == "alphabetical") {
+        this.mychoiceService
+          .getRawMaterialAlphabetical(this.sub_category_id)
+          .then((res) => {
+            if (res.status == 200) {
+              this.rawMaterialData = res.data.data.rawMaterialData;
+            } else {
+              // this.$swal(res.data.message, "error");
+              console.log(res.data.message);
+            }
+          });
+      } else {
+        this.mychoiceService
+          .getRawMaterialAlPopularity(this.sub_category_id)
+          .then((res) => {
+            if (res.status == 200) {
+              this.rawMaterialData = res.data.data.rawMaterialData;
+            } else {
+              // this.$swal(res.data.message, "error");
+              console.log(res.data.message);
+            }
+          });
       }
-      else {
-        this.mychoiceService.getRawMaterialAlPopularity(this.sub_category_id).then((res) => {
-          // console.log(res.data);
-          if (res.status == 200) {
-            // console.log('getRawMaterial res', res.data.data.rawMaterialData);
-            this.rawMaterialData = res.data.data.rawMaterialData;
-
-          } else {
-            this.$swal(res.data.message, "error");
-          }
-        });
-      }
-    }
-
-  }
+    },
+  },
 };
 </script>

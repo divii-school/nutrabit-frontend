@@ -83,7 +83,7 @@
             @include flex-align-center;
 
             .input-inner {
-                width: calc(100% - 115px);
+                width: calc(100% - 119px);
                 margin-right: 10px;
             }
         }
@@ -172,6 +172,10 @@
         margin: 0;
         width: 100%;
     }
+
+    .btn-green-outline{
+        width: 109px;
+    }
 }
 
 .signUp-form {
@@ -238,7 +242,7 @@
             border-radius: 5px;
             padding: 0 10px;
             select{
-                margin-top: 8px;
+                margin-top: 14px;
             }
             .inquiry-select{
                 .input-group {
