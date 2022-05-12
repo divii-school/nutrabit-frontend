@@ -29,7 +29,7 @@
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
-                      <td>{{ option_item.category }}</td>
+                      <td>{{ $t(option_item.category) }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
                     <!-- <tr>
@@ -52,6 +52,7 @@
                   name=""
                   :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
+                  disabled
                 />
               </div>
               <div class="fGroup">
@@ -59,6 +60,7 @@
                 <textarea
                   :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="additionalRequest"
+                  disabled
                 ></textarea>
               </div>
               <div class="fGroup mb0">
@@ -128,8 +130,12 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import Modal from "../../components/Modal.vue";
+import PersonalBusinessService from "../../services/PersonalBusinessService";
+import PersonalInfoService from "../../services/PersonalInfoService";
+import PaymentService from "../../services/PaymentService";
  
 export default {
+  inject : ['common'],
   name: "MyRecipeDetails",
   components: {
     // Popper,
@@ -138,6 +144,7 @@ export default {
   },
   data() {
     return {
+      userId : this.common.state.userId,
       rwaMaterialData: [],
       additionalRequest: "",
       title: "",
@@ -180,11 +187,48 @@ export default {
           : "recommended_blending",
       app_type: this.$route.params.type,
       page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+
+      // for payment
+      applicationId : this.$route.params.id,
+      name: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      uuid: "",
+      Detailaddress: "",
+      userId: this.common.state.userId,
+      payment_status: "",
+      payment_done: "",
+      apply_num: "",
+      bank_name: "",
+      card_name: "",
+      card_number: "",
+      card_quota: "",
+      currency: "",
+      custom_data: "",
+      imp_uid: "",
+      merchant_uid: "",
+      merchant_name: "",
+      paid_amount: "",
+      paid_at: "",
+      pay_method: "",
+      pg_provider: "",
+      pg_tid: "",
+      pg_type: "",
+      receipt_url: "",
+      request_id: "",
+      status: "",
+      success: "",
+      error_code: "",
+      error_msg: "",
     };
   },
 
   created() {
     this.myRecipe = new MyRecipeService();
+    this.personalInfoservice = new PersonalInfoService();
+    this.personalBusinessService = new PersonalBusinessService();
+    this.paymentService = new PaymentService();
     // console.log(
     //   `product id is : ${this.product_id} and type is ${this.application_type}`
     // );
@@ -288,12 +332,13 @@ export default {
                   console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
-                  console.log(res.message);
+                  console.log( "error", res.message);
                 }
               });
             });
           } else {
-            this.$swal(res.message, "error");
+            // this.$swal(res.message, "error");
+            console.log("error", res.message )
           }
         });
     },
@@ -325,7 +370,13 @@ export default {
         // for payment gatteway
         console.log(`product id for payment is  : ${_id}`);
 
-
+         // sample Application 
+          this.requestPay(
+            this.email,
+            this.name,
+            this.phoneNumber,
+            this.address
+          );
 
 
         
@@ -336,7 +387,8 @@ export default {
             // console.log(`application submit status : ${res.message}`);
             this.$router.replace("/my-application-detail");
           } else {
-            this.$swal(res.message, "error");
+            //this.$swal(res.message, "error");
+            console.log("Error", res.message)
           }
         });
         
@@ -358,6 +410,163 @@ export default {
         }
       });
     },
+
+      // get user info for payement
+    getUserInfo() {
+      if (localStorage.getItem("userType") == "business_member") {
+        this.personalBusinessService
+          .getBusinessData(this.userId)
+          .then((res) => {
+            let data = res.data;
+            // console.log("data",data);
+            this.name = data.data[0].name;
+            this.uuid = data.data[0].uuid;
+            this.email = data.data[0].email;
+            this.phoneNumber = data.data[0].mobile;
+            this.address = data.data[0].address;
+            this.Detailaddress = data.data[0].address;
+          });
+      }
+      if (localStorage.getItem("userType") == "personal_member") {
+        this.personalInfoservice.getPersonalData(this.userId).then((res) => {
+          // console.log(res.data);
+          let data = res.data;
+          this.name = data.data[0].name;
+          this.uuid = data.data[0].uuid;
+          this.email = data.data[0].email;
+          this.phoneNumber = data.data[0].mobile;
+          this.address = data.data[0].address;
+          this.Detailaddress = data.data[0].address;
+        });
+      }
+    },
+
+    // payment
+    requestPay(buyerEmail, buyerName, buyerTel, buyerAddr) {
+      let self = this;
+      let IMP = window.IMP;
+      IMP.init("imp55488636");
+      IMP.request_pay(
+        {
+          pg: "uplus",
+          // pay_method: "card",
+          merchant_uid: "ORDER_" + new Date().getTime(),
+          name: buyerName,
+          amount: 300000,
+          buyer_email: buyerEmail,
+          buyer_name: buyerName,
+          buyer_tel: buyerTel,
+          buyer_addr: buyerAddr,
+          app_scheme: "NutrabbitIAmPort",
+        },
+        function (rsp) {
+          if (rsp.success) {
+            // payment successful: payment accepted or virtual account issued
+            alert('"Payment Success. Success:' + rsp);
+            console.log("success", rsp);
+            self.payment_status = "Success";
+            self.payment_done = true;
+            self.card_name = rsp.card_name;
+            self.card_number = rsp.card_number;
+            self.card_quota = rsp.card_quota;
+            self.currency = rsp.currency;
+            self.custom_data = rsp.custom_data;
+            self.imp_uid = rsp.imp_uid;
+            self.merchant_uid = rsp.merchant_uid;
+            self.merchant_name = rsp.name;
+            self.paid_amount = rsp.paid_amount;
+            self.paid_at = rsp.paid_at;
+            self.pay_method = rsp.pay_method;
+            self.pg_provider = rsp.pg_provider;
+            self.pg_tid = rsp.pg_tid;
+            self.pg_type = rsp.pg_type;
+            self.receipt_url = rsp.receipt_url;
+            self.request_id = rsp.request_id;
+            self.status = rsp.status;
+            self.success = rsp.success;
+            self.error_code = rsp.error_code;
+            self.error_msg = rsp.error_msg;
+            self.addPayment();
+            self.submitApplication();
+          } else {
+            console.log("failed", rsp);
+            alert("Payment failed. Error: " + rsp.error_msg);
+            self.payment_status = "Success";
+            self.payment_done = true;
+            self.card_name = rsp.card_name;
+            self.card_number = rsp.card_number;
+            self.card_quota = rsp.card_quota;
+            self.currency = rsp.currency;
+            self.custom_data = rsp.custom_data;
+            self.imp_uid = rsp.imp_uid;
+            self.merchant_uid = rsp.merchant_uid;
+            self.merchant_name = rsp.name;
+            self.paid_amount = rsp.paid_amount;
+            self.paid_at = rsp.paid_at;
+            self.pay_method = rsp.pay_method;
+            self.pg_provider = rsp.pg_provider;
+            self.pg_tid = rsp.pg_tid;
+            self.pg_type = rsp.pg_type;
+            self.receipt_url = rsp.receipt_url;
+            self.request_id = rsp.request_id;
+            self.status = rsp.status;
+            self.success = rsp.success;
+            self.error_code = rsp.error_code;
+            self.error_msg = rsp.error_msg;
+            self.addPayment();
+            self.submitApplication(self);
+            self.$router.push({ name: "MyRecipe" })
+          }
+        }
+      );
+    },
+
+      // add payment
+
+    addPayment() {
+      this.paymentService.addPayment(
+        this.applicationId,
+        this.apply_num,
+        this.bank_name,
+        this.address,
+        this.email,
+        this.name,
+        this.phoneNumber,
+        this.card_name,
+        this.card_number,
+        this.card_quota,
+        this.currency,
+        this.custom_data,
+        this.imp_uid,
+        this.merchant_uid,
+        this.name,
+        this.paid_amount,
+        this.paid_at,
+        this.pay_method,
+        this.pg_provider,
+        this.pg_tid,
+        this.pg_type,
+        this.receipt_url,
+        this.request_id,
+        this.status,
+        this.success,
+        this.error_code,
+        this.error_msg
+      );
+    },
+
+    submitApplication(){
+      this.myRecipe.submitRecipeApplication(this.applicationId).then((res) => {
+          if (res.status == 200) {
+            // console.log(`application submit status : ${res.message}`);
+            this.$router.replace({ name: "MyApplicationDetails" });
+          } else {
+            //this.$swal(res.message, "error");
+            console.log("Error", res.message)
+          }
+        });
+    }
+
   },
 };
 </script>

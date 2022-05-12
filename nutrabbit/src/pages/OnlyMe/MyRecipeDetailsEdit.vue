@@ -26,7 +26,7 @@
                   <tbody v-for="(option_item, index) in option_items" :key="index">
                     <tr>
                       <td>{{index + 1 }}</td>
-                      <td>{{ option_item.category }}</td>
+                      <td>{{ $t(option_item.category) }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
                     <!-- <tr>
@@ -52,7 +52,6 @@
                 <input
                   type="text"
                   name=""
-                  disabled
                   :placeholder="$t('onlyme.placeholder.title')"
                   v-model="title"
                 />
