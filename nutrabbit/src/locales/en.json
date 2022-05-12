@@ -542,5 +542,7 @@
     },
     "Raw Material": "Raw material",
     "Formulation": "Formulation",
-    "Package": "Package"
+    "Package": "Package",
+    "Unanswered" : "Unanswered",
+    "Answered" : "Answered"
 }
