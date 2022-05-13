@@ -6,19 +6,19 @@
       @media screen and (max-width: 640px) {
         padding: 65px 0 123px;
       }
-      svg{
+      svg {
         margin-left: 20px;
         height: 12px;
         min-width: 6px;
       }
-      &.inquery-wrap{
+      &.inquery-wrap {
         .my-notice-heading {
           @media screen and (max-width: 640px) {
             border-bottom: 0px;
           }
         }
-        .faq-heading{
-          .title{
+        .faq-heading {
+          .title {
             padding-left: 12px;
           }
         }
@@ -27,9 +27,11 @@
         @include flex-align-center;
         padding-bottom: 40px;
         border-bottom: 1px solid $grey-CF;
-        // @media screen and (max-width: 640px) {
-        //   border-bottom: 0px;
-        // }
+        &.faq-diff-head {
+          @media screen and (max-width: 640px) {
+            border-bottom: 0px;
+          }
+        }
 
         &.noFlex {
           justify-content: space-between !important;
@@ -70,7 +72,7 @@
       .notice-list {
         &.noBorder {
           li {
-            border-bottom: 0 !important
+            border-bottom: 0 !important;
           }
         }
 
@@ -134,7 +136,6 @@
                 font-size: 14px;
               }
             }
-            
           }
         }
       }
@@ -148,7 +149,6 @@
       }
 
       .details {
-
         // margin-top:35px;
         // border-bottom: 1px solid $grey-CF;
         p {
@@ -169,7 +169,6 @@
 
       .btn {
         margin-top: 40px;
-
       }
 
       .faq-heading {
@@ -250,7 +249,7 @@
               padding-right: 15px;
               margin-top: 10px;
             }
-            p{
+            p {
               text-align: left;
               font-weight: 500;
             }
@@ -296,7 +295,7 @@
             min-width: 145px;
             text-align: center;
 
-            &.para-date{
+            &.para-date {
               color: $grey-A4;
               @media screen and (max-width: 640px) {
                 font-size: 14px;
@@ -310,15 +309,15 @@
             }
           }
         }
-        &.notice-list-main{
+        &.notice-list-main {
           padding: 0;
-          .item-left{
+          .item-left {
             @media screen and (max-width: 640px) {
               flex-direction: row;
             }
           }
         }
-        &.notice-diff-border{
+        &.notice-diff-border {
           ul {
             li {
               border-bottom: 1px solid $grey-E0;
@@ -349,7 +348,7 @@
           width: 200px;
           font-size: 16px;
           font-weight: 500;
-          color: #A4A4A4;
+          color: #a4a4a4;
 
           @media screen and (max-width: 640px) {
             margin-bottom: 10px;
@@ -369,7 +368,7 @@
             font-weight: 400;
           }
 
-          a{
+          a {
             text-decoration-line: underline;
           }
         }
@@ -378,7 +377,7 @@
       .pagination-wrap {
         margin-top: 40px;
       }
-      .btn-small-solid{
+      .btn-small-solid {
         min-width: 190px;
       }
     }
