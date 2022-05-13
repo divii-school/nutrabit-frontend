@@ -851,6 +851,7 @@ textarea {
   border: 1px solid $grey-CF;
   padding: 30px 30px 68px 30px;
   border-radius: 10px;
+  background: $white-FA;
   @media screen and (max-width: 768px) {
     padding: 20px;
   }
@@ -919,6 +920,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-prev-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;
@@ -930,6 +932,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-next-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;

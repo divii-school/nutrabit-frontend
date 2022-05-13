@@ -120,6 +120,7 @@ import Modal from "../../components/Modal.vue";
 
 
 export default {
+  inject : ["common"],
   name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
@@ -180,10 +181,10 @@ export default {
     }
   },
 
-  updated() {
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated() {
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
   
   computed :{
     serviceType(){
@@ -209,9 +210,13 @@ export default {
     }
   },
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.recipeSingleProductDetails(this.product_id, this.application_type);
+        console.log(this.common.state.SelectedLang);
       }
     },
   },
