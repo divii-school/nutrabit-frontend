@@ -542,5 +542,7 @@
     },
     "Raw Material": "원료",
     "Formulation": "제형",
-    "Package": "패키지"
+    "Package": "패키지",
+    "Unanswered" : "미답변",
+    "Answered" : "답변완료"
 }

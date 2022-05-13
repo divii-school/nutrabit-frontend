@@ -812,7 +812,7 @@ textarea {
   font-family: $Pretend-semibold;
   font-weight: 600;
   @media screen and (max-width: 768px) {
-    height: 50px;
+    height: auto;
     font-size: 18px;
     line-height: 22px;
     padding: 14px 0;
@@ -1115,6 +1115,19 @@ textarea {
     img{
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+.tripple-btn {
+  .btn-left {
+    @media screen and (max-width: 768px) {
+      width: 33.33% !important;
+    }
+  }
+  .btnWrapRight {
+    @media screen and (max-width: 768px) {
+      width: calc(100% - 33.33%);
     }
   }
 }
