@@ -96,9 +96,10 @@
   </div>
   <Modal
     v-show="isItemSelectedVisible"
+    :btnFull="true"
     @close="closeModalDelete"
     :bodytext1="$t('onlyme.modal.SelectedBodyText')"
-    :btnText1="$t('button.Confirm')"
+    :btnText2="$t('button.Confirm')"
   />
 </template>
 

@@ -477,6 +477,7 @@ export default {
           buyer_tel: buyerTel,
           buyer_addr: buyerAddr,
           app_scheme: "NutrabbitIAmPort",
+          m_redirect_url : "https://frontned-nutrabbit-dev.dvconsulting.org/callback/payment",
         },
         function (rsp) {
           if (rsp.success) {
