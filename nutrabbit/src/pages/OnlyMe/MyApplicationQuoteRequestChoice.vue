@@ -28,7 +28,7 @@
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
-                      <td>{{ option.category }}</td>
+                      <td>{{ $t(option.category)}}</td>
                       <td>{{ option.explanation }}</td>
                     </tr>
                   </tbody>
@@ -36,7 +36,7 @@
               </div>
               <div class="fGroup">
                 <label>{{$t("onlyme.title.Title")}}</label>
-                <input type="text" name="" v-model="title" :placeholder="$t('onlyme.placeholder.title')">
+                <input type="text" name="" v-model="title" disabled :placeholder="$t('onlyme.placeholder.title')">
               </div>
               <div class="fGroup">
                 <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
@@ -68,7 +68,7 @@ import MyApplicationService from "../../services/MyApplicationQuoteService";
  
 export default {
   name: "MyApplicationQuoteRequestChoice",
-
+ inject : ["common"],
   data() {
     return {
       options: [],
@@ -91,15 +91,19 @@ export default {
     this.getQuotionRequestDetails(this.product_id);
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+ watch: {
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.getQuotionRequestDetails(this.product_id);
+        console.log(this.common.state.SelectedLang);
       }
     },
   },

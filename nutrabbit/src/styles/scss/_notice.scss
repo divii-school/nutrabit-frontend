@@ -6,15 +6,20 @@
       @media screen and (max-width: 640px) {
         padding: 65px 0 123px;
       }
-      svg{
+      svg {
         margin-left: 20px;
         height: 12px;
         min-width: 6px;
       }
-      &.inquery-wrap{
+      &.inquery-wrap {
         .my-notice-heading {
           @media screen and (max-width: 640px) {
             border-bottom: 0px;
+          }
+        }
+        .faq-heading {
+          .title {
+            padding-left: 12px;
           }
         }
       }
@@ -22,9 +27,11 @@
         @include flex-align-center;
         padding-bottom: 40px;
         border-bottom: 1px solid $grey-CF;
-        // @media screen and (max-width: 640px) {
-        //   border-bottom: 0px;
-        // }
+        &.faq-diff-head {
+          @media screen and (max-width: 640px) {
+            border-bottom: 0px;
+          }
+        }
 
         &.noFlex {
           justify-content: space-between !important;
@@ -65,7 +72,7 @@
       .notice-list {
         &.noBorder {
           li {
-            border-bottom: 0 !important
+            border-bottom: 0 !important;
           }
         }
 
@@ -96,6 +103,7 @@
                 padding: 5px 15px;
                 margin-right: 10px;
                 font-weight: 600;
+                font-family: $Pretend-semibold;
                 // width: 98px;
                 @media screen and (max-width: 640px) {
                   font-size: 12px;
@@ -128,7 +136,6 @@
                 font-size: 14px;
               }
             }
-            
           }
         }
       }
@@ -137,12 +144,11 @@
         margin-top: 40px;
 
         @media screen and (max-width: 640px) {
-          margin-top: 18px;
+          margin-top: 20px;
         }
       }
 
       .details {
-
         // margin-top:35px;
         // border-bottom: 1px solid $grey-CF;
         p {
@@ -151,16 +157,18 @@
           line-height: 19px;
           color: $black-33;
           margin: 20px 0;
+          font-family: $default-font;
 
           @media screen and (max-width: 640px) {
             margin: 20px 0;
+            font-size: 14px;
+            line-height: 17px;
           }
         }
       }
 
       .btn {
         margin-top: 40px;
-
       }
 
       .faq-heading {
@@ -195,7 +203,7 @@
         }
 
         .title {
-          padding-left: 23px;
+          padding-left: 41px;
         }
       }
 
@@ -241,7 +249,7 @@
               padding-right: 15px;
               margin-top: 10px;
             }
-            p{
+            p {
               text-align: left;
               font-weight: 500;
             }
@@ -258,6 +266,7 @@
             padding: 5px 15px;
             margin-right: 10px;
             font-weight: 600;
+            font-family: $Pretend-semibold;
             // width: 94px;
             &.mr-2 {
               margin-right: 20px;
@@ -286,7 +295,7 @@
             min-width: 145px;
             text-align: center;
 
-            &.para-date{
+            &.para-date {
               color: $grey-A4;
               @media screen and (max-width: 640px) {
                 font-size: 14px;
@@ -300,18 +309,23 @@
             }
           }
         }
-        &.notice-list-main{
+        &.notice-list-main {
           padding: 0;
-          .item-left{
+          .item-left {
             @media screen and (max-width: 640px) {
               flex-direction: row;
             }
           }
         }
-        &.notice-diff-border{
+        &.notice-diff-border {
           ul {
             li {
               border-bottom: 1px solid $grey-E0;
+              padding-right: 33px;
+
+              @media screen and (max-width: 640px) {
+                padding-right: 0;
+              }
             }
           }
         }
@@ -334,7 +348,7 @@
           width: 200px;
           font-size: 16px;
           font-weight: 500;
-          color: #A4A4A4;
+          color: #a4a4a4;
 
           @media screen and (max-width: 640px) {
             margin-bottom: 10px;
@@ -344,7 +358,7 @@
         p {
           font-size: 16px;
           line-height: 140%;
-          color: $grey-66;
+          color: $black-33;
           width: calc(100% - 200px);
           font-weight: 400;
 
@@ -354,7 +368,7 @@
             font-weight: 400;
           }
 
-          a{
+          a {
             text-decoration-line: underline;
           }
         }
@@ -363,7 +377,7 @@
       .pagination-wrap {
         margin-top: 40px;
       }
-      .btn-small-solid{
+      .btn-small-solid {
         min-width: 190px;
       }
     }

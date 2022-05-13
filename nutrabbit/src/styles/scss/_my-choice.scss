@@ -24,7 +24,7 @@
       margin-top: 40px;
       .my-choice-list-outer {
         .my-choice-list-outer-item {
-          margin-top: 15px;
+          margin-top: 10px;
           @media screen and (max-width: 768px) {
             margin-top: 40px; 
           }
@@ -56,7 +56,7 @@
             }
             .my-choice-list-inner-item {
               padding: 0 20px;
-              margin-bottom: 42px;
+              margin-bottom: 30px;
               flex: 0 0 16.66%;
               width: 16.66%;
               max-width: 16.66%;
@@ -148,6 +148,7 @@
           }
           .heading {
             @include flex-align-center;
+            width: calc(50% - 34px);
             h2 {
               font-weight: 700;
               font-size: 24px;
@@ -155,9 +156,10 @@
               letter-spacing: 0.01em;
               color: $grey-66;
               font-family: $Pretend-bold;
+
               @media screen and (max-width: 640px) {
-                font-size: 20px;
-                line-height: 20px;
+                font-size: 16px;
+                line-height: 16px;
               }
             }
             &.heading-blue {
@@ -177,11 +179,20 @@
             }
           }
           .heading-left {
+            width: 50%;
             @media screen and (max-width: 640px) {
               // margin-top: 10px;
             }
+            .dropdown{
+              display: flex;
+              justify-content: flex-end;
+              select{
+                width: auto;
+              }
+            }
             .see-more {
               @include flex-align-center;
+              justify-content: flex-end;
               font-weight: 500;
               font-size: 16px;
               line-height: 16px;
@@ -252,33 +263,25 @@
           display: flex;
           align-items: flex-start;
           flex-wrap: wrap;
-          margin: 40px -34px 0;
-          @media screen and (max-width: 768px) {
-            margin: 40px -20px 0;
+          margin: 40px 0 0;
+          gap: 68px;
+          @media screen and (max-width: 992px) {
+            margin: 40px 0 0;
+            gap: 40px;
           }
-          @media screen and (max-width: 640px) {
-            margin: 30px -8px 0;
+          @media screen and (max-width: 768px) {
+            margin: 30px 0 0;
+            gap: 16px;
           }
           li {
-            width: 25%;
-            max-width: 25%;
-            flex: 0 0 25%;
-            padding: 0 34px;
+            width: calc((100% - 204px) / 4);
             margin-bottom: 40px;
             @media screen and (max-width: 992px) {
-              width: 33.33%;
-              max-width: 33.33%;
-              flex: 0 0 33.33%;
+              width: calc((100% - 80px) / 3);
             }
             @media screen and (max-width: 768px) {
-              padding: 0 20px;
+              width: calc((100% - 16px) / 2);
               margin-bottom: 30px;
-            }
-            @media screen and (max-width: 640px) {
-              padding: 0 8px;
-              width: 50%;
-              max-width: 50%;
-              flex: 0 0 50%;
             }
             .search-card-inner {
               cursor: pointer;
@@ -429,6 +432,9 @@
                 flex-direction: column;
                 padding: 30px 0 30px;
               }
+              &.my-choice-product-item{
+                padding: 25px 30px;
+              }
               &.with-input {
                 @include flex-align-center;
                 width: 100%;
@@ -485,9 +491,9 @@
               }
               .radio-wrap {
                 @include flex-align-center;
-                @media screen and (max-width: 640px) {
-                  width: 100%;
-                }
+                // @media screen and (max-width: 640px) {
+                //   width: 100%;
+                // }
                 .custom-radio {
                   @media screen and (max-width: 640px) {
                     padding-left: 37px;
@@ -639,18 +645,6 @@
               }
               &.flex-justify-end {
                 justify-content: flex-end;
-              }
-              &.tripple-btn {
-                .btn-left {
-                  @media screen and (max-width: 640px) {
-                    width: 33.33%;
-                  }
-                }
-                .btnWrapRight {
-                  @media screen and (max-width: 640px) {
-                    width: calc(100% - 33.33%);
-                  }
-                }
               }
             }
           }

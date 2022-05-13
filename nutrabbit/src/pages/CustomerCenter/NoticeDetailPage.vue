@@ -55,6 +55,7 @@ import { useRoute } from "vue-router";
 import CustomerCenterService from "../../services/CustomerCenterService";
 
 export default {
+  inject : ["common"],
   name: "NoticeDetailPage",
 
   data() {
@@ -70,28 +71,27 @@ export default {
     this.NoticeDetails();
     this.dateformat();
   },
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-    console.log(this.globalLocale);
-  },
-  watch: {
-    globalLocale(newVal, oldVal) {
-      if (
-        (newVal == "KO" && oldVal == "EN") ||
-        (newVal == "EN" && oldVal == "KO")
-      ) {
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  //   console.log(this.globalLocale);
+  // },
+  watch : {
+    'common.state.SelectedLang' : function(newVal, oldVal) {
+      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
         this.NoticeDetails();
         this.dateformat();
+        console.log(this.common.state.SelectedLang)
       }
     },
   },
   methods: {
     NoticeDetails() {
-      let noticeListId = useRoute();
-      this.noticeDetailsID = noticeListId.params.id;
+      //let noticeListId = useRoute();
+      this.noticeDetailsID = this.$route.params.id;
       this.CustomerCenterService.getNoticeDetails(this.noticeDetailsID).then(
         (res) => {
           if (res.status == 200) {
+            console.log(res)
             this.noticeDetailsData = res.data.data;
           } else {
             console.log("error");
@@ -112,5 +112,8 @@ export default {
 .grey-82 {
   font-size: 18px;
   line-height: 22px;
+}
+.main-body .container-medium .my-notice-wrap .btn{
+  margin-top: 0px;
 }
 </style>

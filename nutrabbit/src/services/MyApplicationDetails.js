@@ -86,6 +86,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
+    //My applicaton - My choice
     async sampledetail(id) {
       return await axios.post(`/application/my_choice/details`,
         {
@@ -102,6 +103,7 @@ export default class MyApplicationDetails {
         }).then((res) => res).catch((err) => err);
     }
 
+ //My applicaton - recommended_blending & nutri
     async sampleBlendingDetails(id, application_type) {
       return await axios.post(`/application/blending/details`,
         {
@@ -109,13 +111,4 @@ export default class MyApplicationDetails {
           application_type:application_type,
         }).then((res) => res).catch((err) => err);
     }
-
-    // async getsampleBlendingDetails(op_type,op_val) {
-    //   return await axios.post(`/application/options_details`,
-    //     {
-    //       lang:"KO",
-    //       option_type:op_type,
-    //       option_val:op_val,
-    //     }).then((res) => res).catch((err) => err);
-    // }
 }

@@ -24,7 +24,7 @@
                 <span
                   class="mr-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
-                  >{{ item.status }}</span
+                  >{{ $t(item.status) }}</span
                 >
               </div>
               <div class="item-right-inner">
@@ -89,6 +89,7 @@ export default {
   components: {
     FaqAccordion
   },
+  inject : ["common"],
   data() {
     return {
       enqueryList: [],
@@ -104,15 +105,19 @@ export default {
     this.CustomerCenterService = new CustomerCenterService();
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
-       this.allEnqueryList();
-       this.dateformat();
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.allEnqueryList();
+        this.dateformat();
+        console.log(this.common.state.SelectedLang);
       }
     },
   },
