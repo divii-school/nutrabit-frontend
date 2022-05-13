@@ -178,7 +178,7 @@
                               <td
                                 @click="
                                   $router.push({
-                                    name: 'MyRecipeDetailsSample',
+                                    name: 'MyRecipeDetailsChoice',
                                     params: { id: item.id, type: 'choice' },
                                   })
                                 "
@@ -402,6 +402,7 @@ import moment from "moment";
 import { inject } from "vue";
 
 export default {
+  inject: ["common"],
   name: "MyRecipeDetails",
   components: {
     // Popper,
@@ -474,12 +475,12 @@ export default {
   created() {
     this.myApplicationDetails = new MyApplicationDetails();
   },
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-  },
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
+    watch: {
+    "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
         (newVal == "EN" && oldVal == "KO")
@@ -494,6 +495,23 @@ export default {
       }
     },
   },
+
+  // watch: {
+  //   globalLocale(newVal, oldVal) {
+  //     if (
+  //       (newVal == "KO" && oldVal == "EN") ||
+  //       (newVal == "EN" && oldVal == "KO")
+  //     ) {
+  //       this.QuoteNutri();
+  //       this.QuoteRecommended();
+  //       this.QuoteMyChoice();
+
+  //       // this.appNutri();
+  //       this.appRecommended();
+  //       this.appMychoice();
+  //     }
+  //   },
+  // },
   methods: {
     // myCallback1(ClickPage) {
     //   const startIndex = (ClickPage - 1) * this.perPage;
