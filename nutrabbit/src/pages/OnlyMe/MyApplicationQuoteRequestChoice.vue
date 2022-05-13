@@ -36,7 +36,7 @@
               </div>
               <div class="fGroup">
                 <label>{{$t("onlyme.title.Title")}}</label>
-                <input type="text" name="" v-model="title" :placeholder="$t('onlyme.placeholder.title')">
+                <input type="text" name="" v-model="title" disabled :placeholder="$t('onlyme.placeholder.title')">
               </div>
               <div class="fGroup">
                 <label>{{$t('onlyme.title.AdditionalRequest')}}</label>

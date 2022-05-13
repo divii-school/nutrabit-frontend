@@ -1147,3 +1147,12 @@ textarea {
     }
   }
 }
+
+#addressLayer{
+  #__daum__layer_1{
+    @media screen and (max-width: 768px) {
+      max-width: 500px;
+      width: 100% !important;
+    }
+  }
+}
