@@ -11,7 +11,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Blending') }}</label>
                            
-                            <InputText id="googlurl" type="text" placeholder="search blending name" v-model="name" @keyup="resetdata"/>
+                            <InputText id="googlurl" type="text" placeholder="검색 혼합 이름" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Tag') }}</label>
