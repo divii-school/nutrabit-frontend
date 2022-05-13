@@ -258,6 +258,7 @@ export default {
     if(this.$route.params.type == "recommended-blending"){
        this.isRecomm = false;
     }
+    this.getUserInfo();
   },
 
   computed: {
@@ -491,7 +492,7 @@ export default {
           } else {
             console.log("failed", rsp);
             alert("Payment failed. Error: " + rsp.error_msg);
-            self.payment_status = "Success";
+            // self.payment_status = "Success";
             self.payment_done = true;
             self.card_name = rsp.card_name;
             self.card_number = rsp.card_number;
@@ -514,7 +515,6 @@ export default {
             self.error_code = rsp.error_code;
             self.error_msg = rsp.error_msg;
             self.addPayment();
-            self.submitApplication(self);
             self.$router.push({ name: "MyRecipe" })
           }
         }

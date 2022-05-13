@@ -24,7 +24,7 @@
                 <span
                   class="mr-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
-                  >{{ item.status }}</span
+                  >{{ $t(item.status) }}</span
                 >
               </div>
               <div class="item-right-inner">
