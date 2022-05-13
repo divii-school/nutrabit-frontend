@@ -24,6 +24,6 @@ export default class CustomerCenterService {
     }
     // Inquiry type
     async getEnqueryType() {
-        return await axios.get(`/inquery/get_inquery_type`).then((res) => res).catch((err) => err);
+        return await axios.get(`/inquery/get_inquery_type`, { lang: localStorage.getItem('selectedLang')}).then((res) => res).catch((err) => err);
     }
 }

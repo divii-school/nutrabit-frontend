@@ -134,6 +134,7 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data.data.inqueryType)
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })
