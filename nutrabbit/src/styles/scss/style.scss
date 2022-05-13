@@ -642,6 +642,9 @@ textarea {
     position: absolute;
     z-index: 2;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
   }
   label {
     display: block;
@@ -661,6 +664,7 @@ textarea {
     font-family: $default-font;
     cursor: pointer;
     transition: transform 0.2s ease-out;
+    background-color: #ffffff;
 
     img {
       margin-left: 0px;
