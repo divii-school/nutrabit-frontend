@@ -52,7 +52,7 @@
                     />
                     <label for="file">
                       {{ $t("customer.inquiryLabel.Upload") }}
-                      <img src="../../assets/icons/upload.png" />
+                      <img src="../../assets/icons/upload.svg" />
                     </label>
                   </div>
                   <div class="file-name-details" v-if="fileName">
@@ -134,6 +134,7 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data.data.inqueryType)
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })
