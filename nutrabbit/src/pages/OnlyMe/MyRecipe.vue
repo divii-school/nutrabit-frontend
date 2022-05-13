@@ -121,6 +121,7 @@
     <Modal
       v-show="isItemSelectedVisible"
       @close="closeModalDelete"
+      :btnFull="true"
       :bodytext1="$t('onlyme.modal.SelectedBodyText')"
       link="/my-recipe"
       :btnText2="$t('onlyme.button.Confirm')"

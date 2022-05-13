@@ -3,7 +3,7 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-           <h2>{{ page_header }}</h2>
+          <h2>{{ page_header }}</h2>
           <!-- <h2>My Choice</h2> -->
         </div>
         <div class="choice-selection-item-wrap">
@@ -86,7 +86,10 @@
                   </div>
                 </div>
                 <div class="btn-wrap tripple-btn">
-                  <button class="btn-small-solid grey btn-left" @click="openModal">
+                  <button
+                    class="btn-small-solid grey btn-left"
+                    @click="openModal"
+                  >
                     {{ $t("onlyme.button.Delete") }}
                   </button>
                   <div class="btnWrapRight">
@@ -133,9 +136,9 @@ import Modal from "../../components/Modal.vue";
 import PersonalBusinessService from "../../services/PersonalBusinessService";
 import PersonalInfoService from "../../services/PersonalInfoService";
 import PaymentService from "../../services/PaymentService";
- 
+
 export default {
-  inject : ['common'],
+  inject: ["common"],
   name: "MyRecipeDetails",
   components: {
     // Popper,
@@ -144,7 +147,7 @@ export default {
   },
   data() {
     return {
-      userId : this.common.state.userId,
+      userId: this.common.state.userId,
       rwaMaterialData: [],
       additionalRequest: "",
       title: "",
@@ -160,8 +163,8 @@ export default {
       serviceSample: false,
       serviceEstimate: false,
       serviceBoth: false,
-      globalLocale : '',
-      isRecomm : true,
+      globalLocale: "",
+      isRecomm: true,
 
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
@@ -186,10 +189,13 @@ export default {
           ? "my_choice"
           : "recommended_blending",
       app_type: this.$route.params.type,
-      page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
+      page_header:
+        this.$route.params.type == "my-choice"
+          ? "My Choice"
+          : "Recommended Blending",
 
       // for payment
-      applicationId : this.$route.params.id,
+      applicationId: this.$route.params.id,
       name: "",
       email: "",
       phoneNumber: "",
@@ -251,8 +257,8 @@ export default {
   mounted() {
     this.recipeSingleProductDetails(this.product_id, this.application_type);
 
-    if(this.$route.params.type == "recommended-blending"){
-       this.isRecomm = false;
+    if (this.$route.params.type == "recommended-blending") {
+      this.isRecomm = false;
     }
     this.getUserInfo();
   },
@@ -275,19 +281,16 @@ export default {
 
       return service;
     },
-    
-    page_header(){
-      if(this.$route.params.type == 'my-choice'){
-          return this.$t("onlyme.title.MyChoice")
+
+    page_header() {
+      if (this.$route.params.type == "my-choice") {
+        return this.$t("onlyme.title.MyChoice");
       }
 
-      if(this.$route.params.type == 'recommended-blending'){
-          return this.$t("onlyme.title.RecommendedBlending")
+      if (this.$route.params.type == "recommended-blending") {
+        return this.$t("onlyme.title.RecommendedBlending");
       }
-
-
-    }
-    
+    },
   },
   methods: {
     recipeSingleProductDetails(_productID, _type) {
@@ -305,8 +308,7 @@ export default {
             this.rwaMaterialData = res.data[0];
             console.log(this.rwaMaterialData);
             this.additionalRequest = res.data[0].additional_request;
-            this.title =
-              _type == "my_choice" ? res.data[0].title : '';
+            this.title = _type == "my_choice" ? res.data[0].title : "";
 
             this.serviceNum = res.data[0].service_type;
             if (this.serviceNum == 1) {
@@ -326,16 +328,16 @@ export default {
                 //console.log(res.data[0])
                 if (res.status == 200) {
                   this.option_items.push(res.data[0]),
-                  console.log(this.option_items);
+                    console.log(this.option_items);
                 } else {
                   // this.$swal(res.message, "error");
-                  console.log( "error", res.message);
+                  console.log("error", res.message);
                 }
               });
             });
           } else {
             // this.$swal(res.message, "error");
-            console.log("error", res.message )
+            console.log("error", res.message);
           }
         });
     },
@@ -367,16 +369,8 @@ export default {
         // for payment gatteway
         console.log(`product id for payment is  : ${_id}`);
 
-         // sample Application 
-          this.requestPay(
-            this.email,
-            this.name,
-            this.phoneNumber,
-            this.address
-          );
-
-
-        
+        // sample Application
+        this.requestPay(this.email, this.name, this.phoneNumber, this.address);
       } else {
         // if service is quote
         this.myRecipe.submitRecipeApplication(_id).then((res) => {
@@ -385,10 +379,9 @@ export default {
             this.$router.replace("/my-application-detail");
           } else {
             //this.$swal(res.message, "error");
-            console.log("Error", res.message)
+            console.log("Error", res.message);
           }
         });
-        
       }
     },
 
@@ -408,7 +401,7 @@ export default {
       });
     },
 
-      // get user info for payement
+    // get user info for payement
     getUserInfo() {
       if (localStorage.getItem("userType") == "business_member") {
         this.personalBusinessService
@@ -512,13 +505,13 @@ export default {
             self.error_code = rsp.error_code;
             self.error_msg = rsp.error_msg;
             self.addPayment();
-            self.$router.push({ name: "MyRecipe" })
+            self.$router.push({ name: "MyRecipe" });
           }
         }
       );
     },
 
-      // add payment
+    // add payment
 
     addPayment() {
       this.paymentService.addPayment(
@@ -552,18 +545,23 @@ export default {
       );
     },
 
-    submitApplication(){
+    submitApplication() {
       this.myRecipe.submitRecipeApplication(this.applicationId).then((res) => {
-          if (res.status == 200) {
-            // console.log(`application submit status : ${res.message}`);
-            this.$router.replace({ name: "MyApplicationDetails" });
-          } else {
-            //this.$swal(res.message, "error");
-            console.log("Error", res.message)
-          }
-        });
-    }
-
+        if (res.status == 200) {
+          // console.log(`application submit status : ${res.message}`);
+          this.$router.replace({ name: "MyApplicationDetails" });
+        } else {
+          //this.$swal(res.message, "error");
+          console.log("Error", res.message);
+        }
+      });
+    },
   },
 };
 </script>
+
+<style scoped>
+.material-details h2 {
+  cursor: default !important;
+}
+</style>

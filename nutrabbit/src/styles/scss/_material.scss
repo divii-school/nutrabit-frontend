@@ -12,7 +12,7 @@
         table{
             width: 100%;
             tbody{
-                tr{
+                .applicationDesc{
                     cursor: pointer;
                 }
             }
@@ -194,7 +194,8 @@
             margin-top: -10px;
             font-size: 16px;
             line-height: 16px;
-            font-family: $Pretend-medium;
+            font-weight: 500;
+            font-family: $default-font;
             i{
                 margin: 0px 0 0 12px;
             }

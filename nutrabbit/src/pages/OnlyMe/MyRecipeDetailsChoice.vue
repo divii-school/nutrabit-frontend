@@ -32,10 +32,10 @@
                   </tbody>
                 </table>
               </div>
-              <!-- <div class="fGroup">
+              <div class="fGroup">
                 <label>{{$t("onlyme.title.Title")}}</label>
-                <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
-              </div> -->
+                <input type="text" name="" disabled v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
+              </div>
               <div class="fGroup">
                 <label>{{$t("onlyme.title.AdditionalRequest")}}</label>
                 <div class="ansBlock">
@@ -78,7 +78,7 @@ export default {
   },
   data() {
     return {
-      sampleBlendingDetailID:"",
+      sampleDetailID:"",
       title:"",
       answer_by_admin:"",
       additional_request:"",
@@ -94,32 +94,32 @@ export default {
     this.myApplicationDetails = new MyApplicationDetails();
   },
 
-  // updated(){
-  //   this.globalLocale = localStorage.getItem('selectedLang');
-  //   console.log(this.globalLocale)
-  // },
+//   updated(){
+//     this.globalLocale = localStorage.getItem('selectedLang');
+//     console.log(this.globalLocale)
+//   },
 
-  watch: {
-    "common.state.SelectedLang": function (newVal, oldVal) {
-      if (
-        (newVal == "KO" && oldVal == "EN") ||
-        (newVal == "EN" && oldVal == "KO")
-      ) {
-        this.sampleBlendingDetails();
-      }
+    watch: {
+        "common.state.SelectedLang": function (newVal, oldVal) {
+        if (
+            (newVal == "KO" && oldVal == "EN") ||
+            (newVal == "EN" && oldVal == "KO")
+        ) {
+            this.sampledetail();
+        }
+        },
     },
-  },
 
   methods: {
 
-    sampleBlendingDetails() {
-      this.sampleBlendingDetailID = this.$route.params.id;
-      
-      this.application_type = "recommended_blending"
-      this.myApplicationDetails.sampleBlendingDetails(this.sampleBlendingDetailID,this.application_type)
+    sampledetail() {
+      this.sampleDetailID = this.$route.params.id;
+
+      this.myApplicationDetails.sampledetail(this.sampleDetailID)
       .then((res) => {
         if (res.status == 200) {
           console.log("res",res);
+          // this.options = res.data.data[0].options;
           this.title = res.data.data[0].title;
           this.answer_by_admin = res.data.data[0].answer_by_admin;
           this.additional_request = res.data.data[0].additional_request;
@@ -132,8 +132,8 @@ export default {
 
             this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
               if(res.status == 200){
-                console.log("res",res.data.data[0] );
-                this.options.push( res.data.data[0] );
+                console.log( res.data.data[0] );
+                this.options.push( res.data.data[0]);
               }
             })
           })
@@ -147,7 +147,7 @@ export default {
   },
 
   mounted() {
-    this.sampleBlendingDetails();
+    this.sampledetail();
   }
 
 };
