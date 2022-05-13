@@ -849,8 +849,9 @@ textarea {
 
 .ansBlock {
   border: 1px solid $grey-CF;
-  padding: 30px 30px 68px 30px;
+  padding: 30px 30px 30px 30px;
   border-radius: 10px;
+  min-height: 193px;
   background: $white-FA;
   @media screen and (max-width: 768px) {
     padding: 20px;
