@@ -53,7 +53,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Banner.list.link') }}</label>
+                            <label for="title2">{{ $t('Banner.list.link') }} (URL Type must be https )</label>
                             <InputText type="text" placeholder="link" id="title2" v-model="link"></InputText>
                             <div class="text-red">{{ error.link }}</div>
                         </div>
