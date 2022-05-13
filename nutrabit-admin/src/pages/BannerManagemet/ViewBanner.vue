@@ -13,7 +13,8 @@
                         for="title"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Banner.list.title') }}:</label>
-                    <div class="p-col-12 p-md-10">
+                    <div class="p-col-12 p-md-10 bannerTitle">
+                        
                         <p>{{ mydata.title }}</p>
                     </div>
                 </div>
@@ -172,6 +173,12 @@ export default {
 </script>
 
 <style scoped>
+
+.bannerTitle{
+    white-space: break-spaces;
+    white-space: -moz-break-spaces;
+    word-break: break-word;
+}
 .product-image {
     margin-top: 10px;
     border: 1px solid #ddd;

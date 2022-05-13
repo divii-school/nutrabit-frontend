@@ -48,8 +48,12 @@
                         </Column>
                          <Column field="Title" :header="$t('Banner.list.title')" style="min-width: 12rem">
                             <template #body="{ data }">
-                                <span class="p-column-title">Title</span>
-                                {{ data.title }}
+                           <span class="p-column-title">Title</span>
+  <template class="p-column-title" v-if="data.title.length<8"> {{ data.title }}</template>
+  <template class="p-column-title" v-else> {{ data.title.substring(0,8)+".." }}</template>
+
+                               
+                                <!-- {{ data.title }} -->
                             </template>
                         </Column>
                         <Column field="URL" :header="$t('Banner.list.url')" style="min-width: 12rem">
@@ -141,6 +145,7 @@ export default {
     mounted() {
          const route = useRoute();
          console.log(route.params);
+         
         this.bannerService
             .getBannerList(this.title,this.link,this.status,this.createdDate)
             .then((res) => {
