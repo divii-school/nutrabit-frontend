@@ -17,6 +17,11 @@
             border-bottom: 0px;
           }
         }
+        .faq-heading{
+          .title{
+            padding-left: 12px;
+          }
+        }
       }
       .my-notice-heading {
         @include flex-align-center;
@@ -199,7 +204,7 @@
         }
 
         .title {
-          padding-left: 35px;
+          padding-left: 41px;
         }
       }
 
