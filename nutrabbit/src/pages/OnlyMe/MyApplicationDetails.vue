@@ -178,7 +178,7 @@
                               <td
                                 @click="
                                   $router.push({
-                                    name: 'MyRecipeDetailsSample',
+                                    name: 'MyRecipeDetailsChoice',
                                     params: { id: item.id, type: 'choice' },
                                   })
                                 "
