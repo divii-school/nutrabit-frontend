@@ -59,7 +59,7 @@
               </ul>
               <div class="addIng">
                 <button
-                  @click="this.$router.push(`/my-choice-category-selection/`)"
+                  @click="this.$router.push(`/my-choice/`)"
                 >
                   <i class="icon-menu-add"></i>{{ $t("storageBox.add") }}
                 </button>
