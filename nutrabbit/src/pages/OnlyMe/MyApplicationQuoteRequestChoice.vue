@@ -68,7 +68,7 @@ import MyApplicationService from "../../services/MyApplicationQuoteService";
  
 export default {
   name: "MyApplicationQuoteRequestChoice",
-
+ inject : ["common"],
   data() {
     return {
       options: [],
@@ -91,15 +91,19 @@ export default {
     this.getQuotionRequestDetails(this.product_id);
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
 
-  watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+ watch: {
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.getQuotionRequestDetails(this.product_id);
+        console.log(this.common.state.SelectedLang);
       }
     },
   },
