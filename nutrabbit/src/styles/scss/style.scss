@@ -247,6 +247,9 @@ textarea {
   > div {
     margin: 0 0 0 10px !important;
     border: 0 !important;
+    @media screen and (max-width: 640px) {
+      margin: 0 0 0 5px !important;
+    }
   }
 
   .popper {
