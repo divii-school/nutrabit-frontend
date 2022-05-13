@@ -101,7 +101,7 @@
                       {{ $t("onlyme.button.Cancel") }}
                     </button>
                   </div>
-                  <div>
+                  <div class="flexRight">
                     <button
                       class="btn-small-solid blue ml-4"
                       @click="
