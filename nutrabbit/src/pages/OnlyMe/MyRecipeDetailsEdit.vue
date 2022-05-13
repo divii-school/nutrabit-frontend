@@ -281,7 +281,7 @@ export default {
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if(!_id   || (!this.isSample && !this.isQuote)){
+      if( this.application_type == "my_choice" && this.title == ""){
       //this.$swal('All fields required to be filled')
       this.isFieldEmptyVisible = true;
       return

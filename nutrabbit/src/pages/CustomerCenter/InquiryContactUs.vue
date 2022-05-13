@@ -89,6 +89,7 @@ import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 
 export default {
+  inject : ["common"],
   name: "InquiryContactUs",
   components: {
     Modal,
@@ -115,17 +116,18 @@ export default {
     this.allEnqueryType();
   },
 
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-    console.log(this.globalLocale);
-  },
-  watch: {
-    globalLocale(newVal, oldVal) {
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  //   console.log(this.globalLocale);
+  // },
+ watch: {
+    "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
         (newVal == "EN" && oldVal == "KO")
       ) {
         this.allEnqueryType();
+        console.log(this.common.state.SelectedLang);
       }
     },
   },
@@ -134,6 +136,7 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data.data.inqueryType)
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })
