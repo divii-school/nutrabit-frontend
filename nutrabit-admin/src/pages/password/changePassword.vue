@@ -25,8 +25,8 @@
                         <label for="confirm_pass">{{ $t('password.confirm') }}</label>
                         <Password @keyup="cnfpass" id="confirm_pass" :class="`${error.confi ? 'p-invalid' : ''}`" placeholder="Example: Admin@dfc" v-model="confirm_pass" />
                         <div class="text-red">{{ error.confi }}</div>
-                        <div v-show="render" class="text-red">Password not Matching</div>
-                        <div v-show="render1" class="text-green">Password Matched</div>
+                        <div v-show="render" class="text-red">비밀번호가 일치하지 않음</div>
+                        <div v-show="render1" class="text-green">비밀번호 일치</div>
                     </div>
                 </div>
 
@@ -82,14 +82,14 @@ export default {
                 this.passwordService
                     .changePassword(this.Current_pass, this.new_pass, this.confirm_pass)
                     .then(() => {
-                        this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'password changed Succesfully.', life: 3000 });
+                        this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: '비밀번호가 성공적으로 변경되었습니다.', life: 3000 });
                         setTimeout(() => {
                             localStorage.clear();
                             this.$router.push({ name: 'login' });
                         }, 3000);
                     })
                     .catch((err) => {
-                        this.$toast.add({ severity: 'error', summary: 'Rejected', detail: err.response.data.message, life: 3000 });
+                        this.$toast.add({ severity: 'error', summary: '거부됨', detail: err.response.data.message, life: 3000 });
                         // console.log('error',err.response.data.message);
                     });
             }
