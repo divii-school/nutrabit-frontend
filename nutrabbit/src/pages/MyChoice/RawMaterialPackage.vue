@@ -163,6 +163,7 @@ import ModalWarning from "../../components/ModalWarning.vue";
 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
+   inject: ["common"],
   components: {
     Popper,
     ProductList,
@@ -196,16 +197,30 @@ export default {
   mounted() {
     this.blendingPackage();
   },
-  updated() {
-    //console.log(this.$i18n.locale);
-    this.globalLocale = this.$i18n.locale;
-  },
+  // updated() {
+  //   //console.log(this.$i18n.locale);
+  //   this.globalLocale = this.$i18n.locale;
+  // },
+  // watch: {
+  //   globalLocale(newVal) {
+  //     if ((newVal == "kr" || newVal == "en") && this.ischeckETCError) {
+  //       this.checkETCError();
+  //     }
+  //     this.blendingPackage();
+  //   },
+  // },
   watch: {
-    globalLocale(newVal) {
-      if ((newVal == "kr" || newVal == "en") && this.ischeckETCError) {
-        this.checkETCError();
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        ((newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")) && this.ischeckETCError
+      ) {
+         this.checkETCError();
+         this.blendingPackage();
       }
-      this.blendingPackage();
+      else {
+        this.blendingPackage();
+      }
     },
   },
   methods: {

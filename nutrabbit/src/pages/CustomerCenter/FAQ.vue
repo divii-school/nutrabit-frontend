@@ -74,6 +74,7 @@ export default {
   components: {
     FaqAccordion,
   },
+  inject : ["common"],
   data() {
     return {
       FaqList: [
@@ -172,17 +173,18 @@ export default {
     this.CustomerCenterService = new CustomerCenterService();
   },
 
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-    console.log(this.globalLocale);
-  },
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  //   console.log(this.globalLocale);
+  // },
   watch: {
-    globalLocale(newVal, oldVal) {
+    "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
         (newVal == "EN" && oldVal == "KO")
       ) {
         this.allFaqList();
+        console.log(this.common.state.SelectedLang);
       }
     },
   },

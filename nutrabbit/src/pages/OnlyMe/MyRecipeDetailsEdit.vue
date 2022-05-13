@@ -118,12 +118,8 @@
         </div>
       </div>
     </div>
-    <Modal
-      v-show="isFieldEmptyVisible"
-      @close="closeModal"
-      :bodytext1="$t('onlyme.modal.ServiceSelect')"
-      :btnText1="$t('onlyme.button.Confirm')"
-    />
+    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('final.required_title_msg')"
+    :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
 
@@ -356,5 +352,8 @@ export default {
     .product-item.recipe-without-input {
     padding: 30px 10px 30px;
   }
+}
+.material-details h2 {
+  cursor: default !important;
 }
 </style>
