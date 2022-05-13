@@ -71,10 +71,10 @@ export default {
     this.NoticeDetails();
     this.dateformat();
   },
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-    console.log(this.globalLocale);
-  },
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  //   console.log(this.globalLocale);
+  // },
   watch : {
     'common.state.SelectedLang' : function(newVal, oldVal) {
       if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){

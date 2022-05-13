@@ -230,9 +230,6 @@ export default {
     }, 1000);
     localStorage.removeItem("option");
   },
-  // updated(){
-  //   this.globalLocale = this.$i18n.locale;
-  // },
   watch: {
     "common.state.SelectedLang": function (newVal, oldVal) {
       if (
