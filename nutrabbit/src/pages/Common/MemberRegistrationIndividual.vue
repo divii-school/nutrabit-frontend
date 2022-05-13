@@ -533,12 +533,10 @@ export default {
       if(window.innerWidth < 576){
         win_width = window.innerWidth - 60;
       }
-      alert(win_width);
       element_layer.style.display = "flex";
       new daum.Postcode({
         width: win_width,
         oncomplete: (data) => {
-          // console.log(data);
           element_layer.style.display = "none";
           return (this.address = data.address);
         },
