@@ -233,23 +233,19 @@ export default {
     //   `product id is : ${this.product_id} and type is ${this.application_type}`
     // );
   },
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.recipeSingleProductDetails(this.product_id, this.application_type);
+        console.log(this.common.state.SelectedLang);
       }
-
-      // if(newVal == 'KO'){
-      //   this.recom_title = this.recom_ko;
-      // }
-
-      // if(newVal == 'EN'){
-      //   this.recom_title = this.recom_ko;
-      // }
     },
   },
   mounted() {
@@ -492,7 +488,7 @@ export default {
           } else {
             console.log("failed", rsp);
             alert("Payment failed. Error: " + rsp.error_msg);
-            self.payment_status = "Success";
+            // self.payment_status = "Success";
             self.payment_done = true;
             self.card_name = rsp.card_name;
             self.card_number = rsp.card_number;
