@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item">
+  <div class="product-item my-choice-product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
         <input type="radio" name="radio" ref="radio" :id="'radio-'+ item.id" :value="item.id" @click="getPackageId" :data-type="'radio'+ type" />

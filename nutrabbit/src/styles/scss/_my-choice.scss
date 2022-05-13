@@ -429,6 +429,9 @@
                 flex-direction: column;
                 padding: 30px 0 30px;
               }
+              &.my-choice-product-item{
+                padding: 25px 30px;
+              }
               &.with-input {
                 @include flex-align-center;
                 width: 100%;
