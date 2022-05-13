@@ -103,7 +103,7 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.ServiceSelect')"
+    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('final.required_title_msg')"
     :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
