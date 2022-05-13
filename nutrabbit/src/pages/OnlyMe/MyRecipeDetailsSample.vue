@@ -32,10 +32,10 @@
                   </tbody>
                 </table>
               </div>
-              <div class="fGroup" v-if="titletrue" @click="titleshow">
+              <!-- <div class="fGroup">
                 <label>{{$t("onlyme.title.Title")}}</label>
                 <input type="text" name="" v-model="title" placeholder="My own recipe made with guar gum hydrolyzate">
-              </div>
+              </div> -->
               <div class="fGroup">
                 <label>{{$t("onlyme.title.AdditionalRequest")}}</label>
                 <div class="ansBlock">
@@ -70,6 +70,7 @@ import MyApplicationDetails from "../../services/MyApplicationDetails";
 import { useRoute } from "vue-router";
  
 export default {
+  inject: ["common"],
   name: "MyRecipeDetails",
   components: {
     // Popper,
@@ -77,7 +78,6 @@ export default {
   },
   data() {
     return {
-      // sampleDetailID:"",
       sampleBlendingDetailID:"",
       title:"",
       answer_by_admin:"",
@@ -87,24 +87,6 @@ export default {
       titletrue: false,
       sampleDetailType:"",
       globalLocale : '',
-
-      // rwaMaterialData: [
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "Bottle",
-      //     desc: [
-      //       "Choose from a variety of sizes and shapes of bottles and caps.",
-      //     ],
-      //   },
-      //   {
-      //     img: "../../../src/assets/images/pkgSelection.png",
-      //     title: "PTP",
-      //     desc: [
-      //       "It is hygienic and convenient.",
-      //       "The packaging volume is slightly larger.",
-      //     ],
-      //   },
-      // ],
     };
   },
 
@@ -112,56 +94,23 @@ export default {
     this.myApplicationDetails = new MyApplicationDetails();
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
 
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
-        // this.sampledetail();
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.sampleBlendingDetails();
       }
     },
   },
 
   methods: {
-
-    // sampledetail() {
-    //   this.sampleDetailID = this.$route.params.id;
-    //   this.sampleDetailType = this.$route.params.type;
-    //   console.log("this.sampleDetailType",this.sampleDetailType);
-
-    //   this.myApplicationDetails.sampledetail(this.sampleDetailID)
-    //   .then((res) => {
-    //     if (res.status == 200) {
-    //       console.log("res",res);
-    //       // this.options = res.data.data[0].options;
-    //       this.title = res.data.data[0].title;
-    //       this.answer_by_admin = res.data.data[0].answer_by_admin;
-    //       this.additional_request = res.data.data[0].additional_request;
-    //       this.options = [];
-    //       Array.from(res.data.data[0].options).forEach((ele)=>{
-    //         let op_type = ele.split(':')[0];
-    //         let op_val = ele.split(':')[1];
-    //         console.log("op_type",op_type);
-    //         console.log("op_val",op_val);
-
-    //         this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
-    //           if(res.status == 200){
-    //             console.log( res.data.data[0] );
-    //             this.options.push( res.data.data[0]);
-    //           }
-    //         })
-    //       })
-    //     }
-    //   })
-    //   .catch((err)=>{
-    //     console.log(err)
-    //   })
-    // },
-
 
     sampleBlendingDetails() {
       this.sampleBlendingDetailID = this.$route.params.id;
@@ -195,18 +144,10 @@ export default {
       })
     },
 
-    titleshow(){
-      if (this.sampleDetailType == "choice") {
-        this.titletrue = true;
-      }
-    },
-
   },
 
   mounted() {
-    // this.sampledetail();
     this.sampleBlendingDetails();
-    this.titleshow();
   }
 
 };
