@@ -327,3 +327,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.material-details h2 {
+  cursor: default !important;
+}
+</style>
