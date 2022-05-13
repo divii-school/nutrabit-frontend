@@ -906,6 +906,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-prev-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;
@@ -917,6 +918,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-next-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;
