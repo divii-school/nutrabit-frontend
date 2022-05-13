@@ -529,10 +529,14 @@ export default {
     getAddress() {
       var element_layer = document.getElementById('postcodeWrap');
       var element_layer2 = document.getElementById('addressLayer');
+      var win_width;
+      if(window.innerWidth < 576){
+        win_width = window.innerWidth - 60;
+      }
       element_layer.style.display = "flex";
       new daum.Postcode({
+        width: win_width,
         oncomplete: (data) => {
-          // console.log(data);
           element_layer.style.display = "none";
           return (this.address = data.address);
         },
