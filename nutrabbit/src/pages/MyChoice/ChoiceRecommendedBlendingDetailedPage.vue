@@ -181,20 +181,6 @@ export default {
       active: false,
       globalLocale: "",
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
-      // pagination: {
-      //   clickable: true,
-      //   renderBullet: (index, className) => {
-      //     return (
-      //       '<span class="' +
-      //       className +
-      //       '" >' +
-      //       `<img src="${this.ProductImages[index]}" alt="" />` +
-      //       "</span>"
-      //     );
-
-      //   },
-      // },
-      // modules: [Pagination],
     };
   },
   created() {
