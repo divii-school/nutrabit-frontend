@@ -233,23 +233,19 @@ export default {
     //   `product id is : ${this.product_id} and type is ${this.application_type}`
     // );
   },
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.recipeSingleProductDetails(this.product_id, this.application_type);
+        console.log(this.common.state.SelectedLang);
       }
-
-      // if(newVal == 'KO'){
-      //   this.recom_title = this.recom_ko;
-      // }
-
-      // if(newVal == 'EN'){
-      //   this.recom_title = this.recom_ko;
-      // }
     },
   },
   mounted() {
