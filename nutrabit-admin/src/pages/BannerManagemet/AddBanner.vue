@@ -166,7 +166,7 @@ export default {
         if ((sfile = this.file)) {
           simg = new Image();
           simg.onload = function () {
-            alert(this.width + " " + this.height);
+            // alert(this.width + " " + this.height);
             if (this.width >= 1920 && this.height >= 828) {
 
               self.fileName = files[0].name;
@@ -212,7 +212,7 @@ export default {
         if ((sfiles = this.files)) {
           simgs = new Image();
           simgs.onload = function () {
-            alert(this.width + " " + this.height);
+            // alert(this.width + " " + this.height);
             if (this.width >= 1920 && this.height >= 828) {
 
               self.filesName = files[0].name;
