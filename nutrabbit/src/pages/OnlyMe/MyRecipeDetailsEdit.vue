@@ -10,7 +10,7 @@
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{$t("onlyme.title.Options")}}</h2>
+                <h2>{{ $t("onlyme.title.Options") }}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -19,13 +19,16 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
-                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                      <th>{{ $t("onlyme.tableCaption.Category") }}</th>
+                      <th>{{ $t("onlyme.tableCaption.Description") }}</th>
                     </tr>
                   </thead>
-                  <tbody v-for="(option_item, index) in option_items" :key="index">
+                  <tbody
+                    v-for="(option_item, index) in option_items"
+                    :key="index"
+                  >
                     <tr>
-                      <td>{{index + 1 }}</td>
+                      <td>{{ index + 1 }}</td>
                       <td>{{ $t(option_item.category) }}</td>
                       <td>{{ option_item.explanation }}</td>
                     </tr>
@@ -48,7 +51,7 @@
                 </table>
               </div>
               <div class="fGroup" v-if="isRecomm">
-                <label>{{$t("onlyme.title.Title")}}</label>
+                <label>{{ $t("onlyme.title.Title") }}</label>
                 <input
                   type="text"
                   name=""
@@ -57,18 +60,16 @@
                 />
               </div>
               <div class="fGroup">
-                <label>{{$t('onlyme.title.AdditionalRequest')}}</label>
-                <span
-                  >{{$t('onlyme.add_req_caption.Caption')}}</span
-                >
+                <label>{{ $t("onlyme.title.AdditionalRequest") }}</label>
+                <span>{{ $t("onlyme.add_req_caption.Caption") }}</span>
                 <textarea
                   :placeholder="$t('onlyme.placeholder.additionalRequest')"
                   v-model="add_req"
                 ></textarea>
               </div>
               <div class="fGroup mb0">
-                <label class="mb0"
-                  >{{$t('onlyme.title.Service')}}
+                <label class="mb0 special-label-edit"
+                  >{{ $t("onlyme.title.Service") }}
                   <!-- <span class="mb0"
                     >{{$t('onlyme.service_caption.Caption')}}</span
                   > -->
@@ -91,10 +92,24 @@
                     {{$t("onlyme.service_info.ContentThree")}}
                   </li>
                 </ul> -->
-                <div class="btn-wrap tripple-btn">
-                  <button class="btn-small-solid grey btn-left" @click="$router.push('/my-recipe')">{{$t('onlyme.button.Cancel')}}</button>
-                  <div class="btnWrapRight">
-                    <button class="btn-small-solid blue ml-4" @click="saveRecipeDetails(product_id, title, add_req, services)">{{$t('onlyme.button.Save')}}</button>
+                <div class="btn-wrap">
+                  <div>
+                    <button
+                      class="btn-small-solid grey btn-left"
+                      @click="$router.push('/my-recipe')"
+                    >
+                      {{ $t("onlyme.button.Cancel") }}
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      class="btn-small-solid blue ml-4"
+                      @click="
+                        saveRecipeDetails(product_id, title, add_req, services)
+                      "
+                    >
+                      {{ $t("onlyme.button.Save") }}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -103,7 +118,7 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('onlyme.modal.ServiceSelect')"
+    <Modal v-show="isFieldEmptyVisible" @close="closeModal" :bodytext1="$t('final.required_title_msg')"
     :btnText1="$t('onlyme.button.Confirm')"/>
   </div>
 </template>
@@ -115,12 +130,11 @@
 import ProductList from "../../components/ProductList.vue";
 import MyRecipeService from "../../services/MyRecipeService";
 import validator from "validator";
- 
+
 import Modal from "../../components/Modal.vue";
 
-
 export default {
-  inject : ["common"],
+  inject: ["common"],
   name: "MyRecipeDetailsEdit",
   components: {
     // Popper,
@@ -129,7 +143,7 @@ export default {
   },
   data() {
     return {
-       rwaMaterialData: [],
+      rwaMaterialData: [],
       //   {
       //     img: "../../../src/assets/images/pkgSelection.png",
       //     title: "Bottle",
@@ -150,15 +164,18 @@ export default {
       title: "",
       add_req: "",
       services: [],
-      isSample : false,
-      isQuote : false,
+      isSample: false,
+      isQuote: false,
       product_id: this.$route.params.id,
-      application_type : ( this.$route.params.type == 'my-choice') ? 'my_choice' : 'recommended_blending',
-      option_items : [],
+      application_type:
+        this.$route.params.type == "my-choice"
+          ? "my_choice"
+          : "recommended_blending",
+      option_items: [],
       //page_header : (this.$route.params.type == "my-choice") ? "My Choice" : "Recommended Blending",
-      isFieldEmptyVisible : false,
-      globalLocale : '',
-      isRecomm : true,
+      isFieldEmptyVisible: false,
+      globalLocale: "",
+      isRecomm: true,
       // emptyTitle : false,
       // emptyReq : false,
       // emptyService : false,
@@ -173,11 +190,11 @@ export default {
     );
   },
 
-  mounted(){
-      this.recipeSingleProductDetails(this.product_id, this.application_type);
+  mounted() {
+    this.recipeSingleProductDetails(this.product_id, this.application_type);
 
-      if(this.$route.params.type == "recommended-blending"){
-       this.isRecomm = false;
+    if (this.$route.params.type == "recommended-blending") {
+      this.isRecomm = false;
     }
   },
 
@@ -185,29 +202,27 @@ export default {
   //   this.globalLocale = localStorage.getItem('selectedLang');
   //   console.log(this.globalLocale)
   // },
-  
-  computed :{
-    serviceType(){
-      if(this.isSample){
+
+  computed: {
+    serviceType() {
+      if (this.isSample) {
         return this.$t("onlyme.title.SampleAppliction");
       }
 
-      if(this.isQuote){
+      if (this.isQuote) {
         return this.$t("onlyme.title.Estimate");
       }
     },
 
-    page_header(){
-      if(this.$route.params.type == 'my-choice'){
-          return this.$t("onlyme.title.MyChoice")
+    page_header() {
+      if (this.$route.params.type == "my-choice") {
+        return this.$t("onlyme.title.MyChoice");
       }
 
-      if(this.$route.params.type == 'recommended-blending'){
-          return this.$t("onlyme.title.RecommendedBlending")
+      if (this.$route.params.type == "recommended-blending") {
+        return this.$t("onlyme.title.RecommendedBlending");
       }
-
-
-    }
+    },
   },
   watch: {
     "common.state.SelectedLang": function (newVal, oldVal) {
@@ -222,113 +237,122 @@ export default {
   },
 
   methods: {
-
-     recipeSingleProductDetails(_productID, _type){
-      this.myRecipe.getSingleRecipeProductDetails(_productID, _type)
-    .then((res)=>{
-     console.log(res.data[0])
-        if (res.status == 200) {
-          if(res.data[0].is_temporary_storage == 'N'){
-              this.$router.push('/my-recipe')
+    recipeSingleProductDetails(_productID, _type) {
+      this.myRecipe
+        .getSingleRecipeProductDetails(_productID, _type)
+        .then((res) => {
+          console.log(res.data[0]);
+          if (res.status == 200) {
+            if (res.data[0].is_temporary_storage == "N") {
+              this.$router.push("/my-recipe");
               return;
+            }
+            this.rwaMaterialData = res.data;
+            this.add_req = res.data[0].additional_request;
+            this.title =
+              _type == "my_choice" ? res.data[0].title : res.data[0].name_ko;
+
+            if (res.data[0].service_type == 1) {
+              this.isSample = true;
+              this.serviceType = "Sample application";
+            }
+
+            if (res.data[0].service_type == 2) {
+              this.isQuote = true;
+              this.serviceType = "Get a quote";
+            }
+
+            //  if(res.data[0].service_type == 3){
+            //    this.isSample = true;
+            //    this.isQuote = true;
+            //  }
+
+            this.option_items = [];
+            Array.from(res.data[0].options).forEach((ele) => {
+              //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+              let op_type = Object.keys(ele)[0].toString();
+              let op_val = Object.values(ele)[0].toString();
+
+              this.myRecipe.getOptionDetails(op_type, op_val).then((res) => {
+                //  console.log(res.data[0])
+                if (res.status == 200) {
+                  this.option_items.push(res.data[0]);
+                  //  console.log(this.option_items)
+                } else {
+                  //this.$swal(res.message, "error");
+                  console.log(res.message);
+                }
+              });
+            });
+          } else {
+            this.$swal(res.message, "error");
           }
-          this.rwaMaterialData = res.data
-          this.add_req = res.data[0].additional_request;
-          this.title = (_type == 'my_choice') ? res.data[0].title : res.data[0].name_ko;
-
-         if(res.data[0].service_type == 1){
-           this.isSample = true;
-           this.serviceType = "Sample application"
-         }
-          
-          if(res.data[0].service_type == 2){
-           this.isQuote = true;
-           this.serviceType = "Get a quote"
-         }
-
-        //  if(res.data[0].service_type == 3){
-        //    this.isSample = true;
-        //    this.isQuote = true;
-        //  }
-
-        this.option_items = [];
-         Array.from(res.data[0].options).forEach((ele)=>{
-               //console.log(Object.keys(ele)[0], Object.values(ele)[0])
-               let op_type = Object.keys(ele)[0].toString();
-               let op_val = Object.values(ele)[0].toString();
-
-               this.myRecipe.getOptionDetails(op_type, op_val).then(res => {
-                 //  console.log(res.data[0])
-                 if(res.status == 200){
-                      this.option_items.push( res.data[0] )
-                    //  console.log(this.option_items)
-                 }else{
-                   //this.$swal(res.message, "error");
-                   console.log(res.message)
-                 }
-               }
-              
-               
-               )
-         
-         })
-      
-        } else {
-
-          this.$swal(res.message, "error");
-        }
-    })
+        });
     },
 
     saveRecipeDetails(_id, _title, _additional_req, _services) {
-      if( this.application_type == "my_choice" && this.title == ""){
-      //this.$swal('All fields required to be filled')
-      this.isFieldEmptyVisible = true;
-      return
+      if (this.application_type == "my_choice" && this.title == "") {
+        //this.$swal('All fields required to be filled')
+        this.isFieldEmptyVisible = true;
+        return;
       }
-      
+
       //let ser_tp = (_services.length > 1) ? '3' : _services[0]
 
       let ser_tp;
 
-      if(this.isSample){
-        ser_tp = '1';
+      if (this.isSample) {
+        ser_tp = "1";
       }
 
-      if(this.isQuote){
-        ser_tp = '2';
+      if (this.isQuote) {
+        ser_tp = "2";
       }
 
-      if(this.isSample && this.isQuote){
-        ser_tp = '3';
+      if (this.isSample && this.isQuote) {
+        ser_tp = "3";
       }
 
-      console.log(_id, _title, _additional_req, ser_tp)
-      this.myRecipe.editRecipeDetail(_id, _title, _additional_req, ser_tp).then(res => {
-        // console.log(_id, _title, _additional_req, ser_tp)
-        // console.log(res)
-        if(res.status == 200){
-           this.$router.go(-1);
-          console.log(res.message)
-        } else {
-
-          // this.$swal(res.message, "error");
-          console.log(res.message)
-        }
-    
-      })
+      console.log(_id, _title, _additional_req, ser_tp);
+      this.myRecipe
+        .editRecipeDetail(_id, _title, _additional_req, ser_tp)
+        .then((res) => {
+          // console.log(_id, _title, _additional_req, ser_tp)
+          // console.log(res)
+          if (res.status == 200) {
+            this.$router.go(-1);
+            console.log(res.message);
+          } else {
+            // this.$swal(res.message, "error");
+            console.log(res.message);
+          }
+        });
     },
-    
-   closeModal(){
-     this.isFieldEmptyVisible = false;
-   }
 
-    
+    closeModal() {
+      this.isFieldEmptyVisible = false;
+    },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.btn-wrap div {
+  width: 50%;
+}
+.special-label-edit {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $grey-CF;
+}
+@media screen and (max-width: 768px) {
+  .main-body
+    .my-choce-wrap.my-choice-selection
+    .choice-selection-item.raw-material-product
+    .product-list-wrap
+    .product-item.recipe-without-input {
+    padding: 30px 10px 30px;
+  }
+}
 .material-details h2 {
   cursor: default !important;
 }
