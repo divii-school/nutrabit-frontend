@@ -107,7 +107,7 @@
                                 <template #body="{ data }">
                                     <span class="p-column-title">Quetion Type</span>
                                    
-                                    {{ data.type_title }}
+                                    {{ data.type_title_ko }}
                                 </template>
                             </Column>
 
@@ -250,6 +250,7 @@ export default {
             searchData: '',
             type_title: '',
             statusitem: '',
+            type_title_ko:'',
 
         };
     },
