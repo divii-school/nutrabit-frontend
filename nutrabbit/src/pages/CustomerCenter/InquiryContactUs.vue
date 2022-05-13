@@ -52,7 +52,7 @@
                     />
                     <label for="file">
                       {{ $t("customer.inquiryLabel.Upload") }}
-                      <img src="../../assets/icons/upload.png" />
+                      <img src="../../assets/icons/upload.svg" />
                     </label>
                   </div>
                   <div class="file-name-details" v-if="fileName">

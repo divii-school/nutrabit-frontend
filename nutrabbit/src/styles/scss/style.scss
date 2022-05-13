@@ -645,6 +645,7 @@ textarea {
     position: relative;
     width: auto;
     height: 45px;
+    line-height: 19px;
     background: none;
     border: 1px solid #a4a4a4;
     border-radius: 4px;
@@ -654,11 +655,12 @@ textarea {
     color: #a4a4a4;
     font-size: 16px;
     font-weight: 500;
+    font-family: $default-font;
     cursor: pointer;
     transition: transform 0.2s ease-out;
 
     img {
-      margin-left: 5px;
+      margin-left: 0px;
     }
   }
 }
@@ -673,6 +675,17 @@ textarea {
   .login-signup-inner {
     @media screen and (max-width: 640px) {
       padding: 40px 16px !important;
+    }
+    form{
+      &.signUp-form{
+        max-width: 100%;
+        .btn-wrap.dual-btn{
+          gap: 20px;
+          .btn-primary{
+            width: 50%;
+          }
+        }
+      }
     }
   }
 }
