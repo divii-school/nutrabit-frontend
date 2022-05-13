@@ -77,8 +77,8 @@ export default {
   },
   data() {
     return {
-      // sampleDetailID:"",
-      sampleBlendingDetailID:"",
+      sampleDetailID:"",
+    //   sampleBlendingDetailID:"",
       title:"",
       answer_by_admin:"",
       additional_request:"",
@@ -120,57 +120,24 @@ export default {
   watch: {
     globalLocale(newVal, oldVal) {
       if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
-        // this.sampledetail();
-        this.sampleBlendingDetails();
+        this.sampledetail();
+        // this.sampleBlendingDetails();
       }
     },
   },
 
   methods: {
 
-    // sampledetail() {
-    //   this.sampleDetailID = this.$route.params.id;
-    //   this.sampleDetailType = this.$route.params.type;
-    //   console.log("this.sampleDetailType",this.sampleDetailType);
+    sampledetail() {
+      this.sampleDetailID = this.$route.params.id;
+      this.sampleDetailType = this.$route.params.type;
+      console.log("this.sampleDetailType",this.sampleDetailType);
 
-    //   this.myApplicationDetails.sampledetail(this.sampleDetailID)
-    //   .then((res) => {
-    //     if (res.status == 200) {
-    //       console.log("res",res);
-    //       // this.options = res.data.data[0].options;
-    //       this.title = res.data.data[0].title;
-    //       this.answer_by_admin = res.data.data[0].answer_by_admin;
-    //       this.additional_request = res.data.data[0].additional_request;
-    //       this.options = [];
-    //       Array.from(res.data.data[0].options).forEach((ele)=>{
-    //         let op_type = ele.split(':')[0];
-    //         let op_val = ele.split(':')[1];
-    //         console.log("op_type",op_type);
-    //         console.log("op_val",op_val);
-
-    //         this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
-    //           if(res.status == 200){
-    //             console.log( res.data.data[0] );
-    //             this.options.push( res.data.data[0]);
-    //           }
-    //         })
-    //       })
-    //     }
-    //   })
-    //   .catch((err)=>{
-    //     console.log(err)
-    //   })
-    // },
-
-
-    sampleBlendingDetails() {
-      this.sampleBlendingDetailID = this.$route.params.id;
-      
-      this.application_type = "recommended_blending"
-      this.myApplicationDetails.sampleBlendingDetails(this.sampleBlendingDetailID,this.application_type)
+      this.myApplicationDetails.sampledetail(this.sampleDetailID)
       .then((res) => {
         if (res.status == 200) {
           console.log("res",res);
+          // this.options = res.data.data[0].options;
           this.title = res.data.data[0].title;
           this.answer_by_admin = res.data.data[0].answer_by_admin;
           this.additional_request = res.data.data[0].additional_request;
@@ -183,8 +150,8 @@ export default {
 
             this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
               if(res.status == 200){
-                console.log("res",res.data.data[0] );
-                this.options.push( res.data.data[0] );
+                console.log( res.data.data[0] );
+                this.options.push( res.data.data[0]);
               }
             })
           })
@@ -195,6 +162,39 @@ export default {
       })
     },
 
+
+    // sampleBlendingDetails() {
+    //   this.sampleBlendingDetailID = this.$route.params.id;
+      
+    //   this.application_type = "recommended_blending"
+    //   this.myApplicationDetails.sampleBlendingDetails(this.sampleBlendingDetailID,this.application_type)
+    //   .then((res) => {
+    //     if (res.status == 200) {
+    //       console.log("res",res);
+    //       this.title = res.data.data[0].title;
+    //       this.answer_by_admin = res.data.data[0].answer_by_admin;
+    //       this.additional_request = res.data.data[0].additional_request;
+    //       this.options = [];
+    //       Array.from(res.data.data[0].options).forEach((ele)=>{
+    //         let op_type = ele.split(':')[0];
+    //         let op_val = ele.split(':')[1];
+    //         console.log("op_type",op_type);
+    //         console.log("op_val",op_val);
+
+    //         this.myApplicationDetails.getsampleDetails(op_type, op_val).then(res =>{
+    //           if(res.status == 200){
+    //             console.log("res",res.data.data[0] );
+    //             this.options.push( res.data.data[0] );
+    //           }
+    //         })
+    //       })
+    //     }
+    //   })
+    //   .catch((err)=>{
+    //     console.log(err)
+    //   })
+    // },
+
     titleshow(){
       if (this.sampleDetailType == "choice") {
         this.titletrue = true;
@@ -204,8 +204,8 @@ export default {
   },
 
   mounted() {
-    // this.sampledetail();
-    this.sampleBlendingDetails();
+    this.sampledetail();
+    // this.sampleBlendingDetails();
     this.titleshow();
   }
 

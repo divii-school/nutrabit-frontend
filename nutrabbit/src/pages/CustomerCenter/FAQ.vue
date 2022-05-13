@@ -2,7 +2,7 @@
   <div class="main-body">
     <div class="container-medium">
       <div class="my-notice-wrap">
-        <div class="my-notice-heading">
+        <div class="my-notice-heading faq-diff-head">
           <h2>{{$t("customer.title.Faq")}}</h2>
         </div>
         <div class="faq-heading">
