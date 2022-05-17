@@ -40,13 +40,9 @@
 				margin-top: 50px;
 				@include flex-justify-center;
 				&.dual-btn{
+					gap: 10px;
 					button{
-						&:first-child{
-							margin-right: 5px;
-						}
-						&:last-child{
-							margin-left: 5px;
-						}
+						width: calc(50% - 5px);
 					}
 				}
 			}

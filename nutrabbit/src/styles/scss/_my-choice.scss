@@ -2,7 +2,7 @@
   .my-choce-wrap {
     padding: 80px 0 38px;
     @media screen and (max-width: 640px) {
-      padding: 65px 0 123px;
+      padding: 60px 0 123px;
     }
     .my-choice-heading {
       @include flex-align-center;
