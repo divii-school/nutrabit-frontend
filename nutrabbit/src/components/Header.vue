@@ -180,6 +180,7 @@ import { inject } from "vue";
 import PersonalInfoService from "../services/PersonalInfoService";
 import CommonService from "../services/CommonService";
 import Modal from "./Modal.vue";
+import naver from 'naver-id-login';
 export default {
   name: "Header",
   components: {
@@ -333,7 +334,7 @@ export default {
       });
     },
     async naverLogout() {
-      alert("naverLogout");
+      // alert("naverLogout");
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
       const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
       await naver.logout(clientId, callbackUrl).then((res) => {
