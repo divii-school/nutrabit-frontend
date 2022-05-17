@@ -1164,3 +1164,8 @@ textarea {
     }
   }
 }
+
+.flexRight{
+  display: flex;
+  flex-direction: row-reverse;
+}
