@@ -34,6 +34,8 @@ export default {
     provide("common", common);
   },
   mounted() {
+    window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+    console.log(Kakao.isInitialized());
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };

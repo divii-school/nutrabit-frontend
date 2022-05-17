@@ -302,7 +302,6 @@ export default {
     // kakao Login
     loginWithKakao() {
       const self = this;
-      window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
       this.loader = this.$loading.show({
         // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
