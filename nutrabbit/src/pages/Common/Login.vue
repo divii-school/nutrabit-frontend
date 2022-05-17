@@ -119,7 +119,7 @@
               애플로 시작하기
             </button>
 
-            <div id="naver_id_login"></div>
+            <!-- <div id="naver_id_login"></div> -->
 
           </div>
         </div>
@@ -280,19 +280,19 @@ export default {
     sendKakoAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
       console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.appleLoginHandler(ftoken);
     },
     //post login
