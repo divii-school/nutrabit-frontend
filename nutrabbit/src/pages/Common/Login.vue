@@ -280,19 +280,19 @@ export default {
     sendKakoAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
       console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.appleLoginHandler(ftoken);
     },
     //post login
