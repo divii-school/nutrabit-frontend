@@ -23,7 +23,7 @@
                 <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                     <div class="p-mb-4 p-mb-lg-0"></div>
                     <div>
-                        <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchIndividual"></Button>
+                        <Button label="찾다" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchIndividual"></Button>
                         <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-sm  p-mr-2 p-mb-2" @click="resetUser"></Button>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             <div class="card" >
                 <div class="p-d-flex p-jc-between p-mb-2">
                     <div>
-                        <h5>{{ $t('dfc_user.list.header') }}</h5>
+                        <h5>개인 회원 목록</h5>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                     <template #loading> Loading data. Please wait. </template>
                     
                     
-                    <Column header="번호" >
+                    <Column header="#" >
                         <template #body="{ data }">
                             <span class="p-column-title ">#</span>
                             

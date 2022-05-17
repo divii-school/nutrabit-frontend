@@ -130,7 +130,7 @@
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange"
                                     :disabled="isdisable" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap"
+                                <Button label="파일을 선택" class="SelectBtn n-wrap"
                                     :disabled="isdisable" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
@@ -161,7 +161,7 @@
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges"
                                     :disabled="isdisable1" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap"
+                                <Button label="파일을 선택" class="SelectBtn n-wrap"
                                     :disabled="isdisable1" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
@@ -192,7 +192,7 @@
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div>
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -212,7 +212,7 @@
                                 <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div>
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>

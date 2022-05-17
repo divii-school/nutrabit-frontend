@@ -5,11 +5,11 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('RawMaterialadd.list.editRawHeader') }}</strong>
+                    <strong>원료 수정</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
-                        <label for="nameuser">{{ $t('RawMaterialadd.list.categorylist') }}</label>
+                        <label for="nameuser">카테고리</label>
 
                         <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id"
                             :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"

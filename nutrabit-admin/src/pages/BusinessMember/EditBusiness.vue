@@ -5,7 +5,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('Business.list.EditBusiness') }}</strong>
+                    <strong>사업자 회원 정보 수정</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="p-formgrid p-grid">   
                     <div class="p-field p-col-12 p-md-6">
-                        <label for="remark">{{ $t('Business.list.RegistrationDate') }}</label>
+                        <label for="remark">등록 날짜 및 시간</label>
                         <InputText id="remark" type="text" placeholder="Registration Date & Time" v-model="mydata.createdDate" disabled />
                     </div>
                 </div>

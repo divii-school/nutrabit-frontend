@@ -5,7 +5,7 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
@@ -55,7 +55,7 @@
                     <template #loading> Loading data. Please wait. </template>
                      
                     
-                    <Column header="번호" >
+                    <Column header="슬. 아니." >
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
                             
@@ -70,14 +70,14 @@
                             {{ data.name_ko }}
                         </template>
                     </Column>
-                    <Column :header="$t('Nutri3.list.Tags')" >
+                    <Column header="상태" >
                         <template #body="{ data }">
                             <span class="p-column-title">Category</span>
                           
                              {{ data.tags_ko }}
                         </template>
                     </Column>
-                    <Column field="Exposure" :header="$t('Nutri3.list.status')" >
+                    <Column field="Exposure" header="동작" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
                                 

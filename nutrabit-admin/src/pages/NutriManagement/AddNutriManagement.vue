@@ -96,7 +96,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -113,7 +113,7 @@
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" multiple />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.addthumnail }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
@@ -130,7 +130,7 @@
                                 <span v-if="!newthumnail">파일 선택</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.newthumnail }}</div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>

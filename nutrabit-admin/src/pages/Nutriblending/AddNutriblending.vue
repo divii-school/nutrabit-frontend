@@ -4,7 +4,7 @@
         <form>
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
-                    <h5>{{ $t('Blending.addnew_blending') }}</h5>
+                    <h5>추천 블렌딩 추가</h5>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.name') }}</label>
@@ -30,7 +30,7 @@
 
                             <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues"
                                 optionLabel="category_name_ko" optionValue="id"
-                                :placeholder="$t('Banner.placeholder.select')" />
+                                placeholder="선택" />
                                 <div class="text-red">{{ error.category_id }}</div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
 
                             <Dropdown :class="`${error.raw_material_id ? 'p-invalid' : ''}`" v-model="raw_material_id" :options="RawDropdownValues"
                                 optionLabel="material_name_ko" optionValue="id"
-                                :placeholder="$t('Banner.placeholder.select')" />
+                                placeholder="선택" />
                                 <div class="text-red">{{ error.raw_material_id }}</div>
                         </div>
 
@@ -155,7 +155,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -173,7 +173,7 @@
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
@@ -193,7 +193,7 @@
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -211,7 +211,7 @@
                                 <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>

@@ -4,12 +4,12 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('Blending.s-header') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid p-mb-3">
                     <div class="p-field p-col-12 p-md-3">
                         <label for="nameuser">{{ $t('Blending.search.blending') }}</label>
-                        <InputText id="nameuser" type="text" :placeholder="$t('Blending.search.blending')"
+                        <InputText id="nameuser" type="text" placeholder="이름 검색"
                             v-model="name" @keyup="resetdata" />
                     </div>
 
@@ -17,7 +17,7 @@
                         <label for="nameuser">{{ $t('Blending.search.category') }}</label>
 
                         <Dropdown v-model="sub_category_id" :options="categoryDropdownValues"
-                            optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"
+                            optionLabel="category_name_ko" placeholder="선택"
                             name="sub_category_id" id="sub_category_id" />
                     </div>
                 </div>

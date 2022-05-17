@@ -4,7 +4,7 @@
     <form>
       <div class="p-grid p-fluid">
         <div class="p-col-12">
-          <h5>{{ $t("Banner.addnew_banner") }}</h5>
+          <h5>배너 추가</h5>
           <div class="p-grid p-formgrid p-mb-3">
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="title2">{{ $t("Banner.list.title") }}</label>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
-        <Button :label="$t('button.confirm')" icon="pi pi-check" iconPos="left"
+        <Button label="추가" icon="pi pi-check" iconPos="left"
           class="p-button p-button-sm p-mr-2 p-mb-2" @click="addBanner"></Button>
       </div>
       <div class="p-d-flex p-jc-end p-ai-center">

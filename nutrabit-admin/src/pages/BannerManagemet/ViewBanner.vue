@@ -23,7 +23,7 @@
                     <label
                         for="desktopimage"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Banner.list.deskbanner') }}:</label>
+                    >PC 배너:</label>
                     <div class="p-col-12 p-md-10">
                         <img
                             :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.desktop_banner"
@@ -61,7 +61,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col p-md-3">
                         <strong>
-                            <label for="mobileuser">{{ $t('Banner.list.status') }} :</label>
+                            <label for="mobileuser">노출 :</label>
                         </strong>
                         <br />
                         <input
