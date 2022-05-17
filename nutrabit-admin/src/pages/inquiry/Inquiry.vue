@@ -80,7 +80,7 @@
                             <template #loading>Loading data. Please wait.</template>
 
                             
-                            <Column header="번호" style="min-width: 12rem">
+                            <Column header="번호" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
                                    
@@ -91,7 +91,7 @@
                             <Column
                                 field="ReferralCode"
                                 :header="$t('Inquiry.list.title')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Title</span>
@@ -102,7 +102,7 @@
 
                             <Column
                                 :header="$t('Inquiry.list.QuestionType')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Quetion Type</span>
@@ -111,14 +111,14 @@
                                 </template>
                             </Column>
 
-                            <Column :header="$t('Inquiry.list.appname')" style="min-width: 12rem">
+                            <Column :header="$t('Inquiry.list.appname')" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
                                     
                                     {{ data.business_name }}
                                 </template>
                             </Column>
-                            <Column :header="$t('Inquiry.list.Reopenby')" style="min-width: 12rem">
+                            <Column :header="$t('Inquiry.list.Reopenby')" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Responded by</span>
                                    
@@ -127,7 +127,7 @@
                             </Column>
                             <Column
                                 :header="$t('Inquiry.list.inqurydate')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Registration Date</span>
@@ -138,7 +138,7 @@
                             <Column
                                 field="Exposure"
                                 :header="$t('Inquiry.list.status')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>

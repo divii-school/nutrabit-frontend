@@ -84,7 +84,7 @@
                         <template #empty>No Category found.</template>
                         <template #loading>Loading Category data. Please wait.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}

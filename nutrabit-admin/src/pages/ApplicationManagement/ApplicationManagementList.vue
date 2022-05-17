@@ -91,7 +91,7 @@
                         <template #empty>데이터가 없습니다</template>
                         <template #loading>Loading data. Please wait.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
@@ -100,7 +100,7 @@
                         <Column
                             field="companyname"
                             :header="$t('Application.list.companyname')"
-                            style="min-width: 12rem"
+                           
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Applicant name/ company name</span>
@@ -110,7 +110,7 @@
                         <Column
                             field="product"
                             :header="$t('Application.list.product')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Product</span>
@@ -120,7 +120,7 @@
                         <Column
                             field="service"
                             :header="$t('Application.list.service')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Service</span>
@@ -130,7 +130,7 @@
                         <Column
                             field="Status"
                             :header="$t('Application.list.status')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
@@ -142,7 +142,7 @@
                         <Column
                             field="Creation-Date"
                             :header="$t('Application.list.created_dt')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Creation-Date</span>

@@ -65,19 +65,19 @@
                         </template>
                     </Column>
                     <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                    <Column field="ReferralCode" :header="$t('Blending.search.blending')" style="min-width: 12rem">
+                    <Column field="ReferralCode" :header="$t('Blending.search.blending')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                             {{ data.name_ko }}
                         </template>
                     </Column>
-                    <Column :header="$t('Blending.search.category')" style="min-width: 12rem">
+                    <Column :header="$t('Blending.search.category')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                             {{ data.category_name_ko }}
                         </template>
                     </Column>
-                    <Column field="Status" :header="$t('Blending.list.status')" style="min-width: 12rem">
+                    <Column field="Status" :header="$t('Blending.list.status')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Status</span>
                             <!-- {{ data.id }} -->

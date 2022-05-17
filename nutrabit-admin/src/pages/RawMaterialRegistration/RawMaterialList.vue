@@ -102,7 +102,7 @@
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column
                                 header="번호"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
@@ -114,7 +114,7 @@
                             <Column
                                 field="ReferralCode"
                                 :header="$t('RawMaterialadd.list.name')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Name</span>
@@ -124,7 +124,7 @@
                             </Column>
                             <Column
                                 :header="$t('RawMaterialadd.list.Categories')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Category</span>
@@ -135,7 +135,7 @@
                             <Column
                                 field="Exposure"
                                 :header="$t('RawMaterialadd.list.status')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>

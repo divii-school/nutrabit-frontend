@@ -55,7 +55,7 @@
                     <template #loading> Loading data. Please wait. </template>
                      
                     
-                    <Column header="번호" style="min-width: 12rem">
+                    <Column header="번호" >
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
                             
@@ -63,21 +63,21 @@
                         </template>
                     </Column>
                     
-                    <Column field="ReferralCode" :header="$t('Nutri3.list.Nutri3-Blending')" style="min-width: 12rem">
+                    <Column field="ReferralCode" :header="$t('Nutri3.list.Nutri3-Blending')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                            
                             {{ data.name_ko }}
                         </template>
                     </Column>
-                    <Column :header="$t('Nutri3.list.Tags')" style="min-width: 12rem">
+                    <Column :header="$t('Nutri3.list.Tags')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Category</span>
                           
                              {{ data.tags_ko }}
                         </template>
                     </Column>
-                    <Column field="Exposure" :header="$t('Nutri3.list.status')" style="min-width: 12rem">
+                    <Column field="Exposure" :header="$t('Nutri3.list.status')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
                                 

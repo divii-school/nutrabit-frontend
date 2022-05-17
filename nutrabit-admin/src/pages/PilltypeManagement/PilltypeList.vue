@@ -19,7 +19,7 @@
                         <template #empty>No Data found.</template>
                         <template #loading>Loading banner data. Please wait.</template>
 
-                        <Column field="Sl. No." :header="$t('PillType.list.sr')" style="min-width: 3rem">
+                        <Column field="Sl. No." :header="$t('PillType.list.sr')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
@@ -31,7 +31,7 @@
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.pillImage" :alt="data.pillImage" class="product-image" />
                             </template>
                         </Column>
-                        <Column field="name" :header="$t('PillType.list.name')" style="min-width: 12rem">
+                        <Column field="name" :header="$t('PillType.list.name')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Name</span>
                                 {{ data.name_ko }}

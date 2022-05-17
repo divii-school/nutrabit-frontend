@@ -40,13 +40,13 @@
                         <template #empty>배너를 찾을 수 없습니다.</template>
                         <template #loading>Loading banner data. Please wait.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
                             </template>
                         </Column>
-                         <Column field="Title" :header="$t('Banner.list.title')" style="min-width: 12rem">
+                         <Column field="Title" :header="$t('Banner.list.title')" >
                             <template #body="{ data }">
                            <span class="p-column-title">Title</span>
                             <template class="p-column-title" v-if="data.title.length<8"> {{ data.title }}</template>
@@ -56,13 +56,13 @@
                                 <!-- {{ data.title }} -->
                             </template>
                         </Column>
-                        <Column field="URL" :header="$t('Banner.list.url')" style="min-width: 12rem">
+                        <Column field="URL" :header="$t('Banner.list.url')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">URL</span>
                                 {{ data.link }}
                             </template>
                         </Column>
-                        <Column field="Status" :header="$t('Banner.list.status')" style="min-width: 12rem">
+                        <Column field="Status" :header="$t('Banner.list.status')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
@@ -71,7 +71,7 @@
                             </template>
                         </Column>
                          
-                        <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" style="min-width: 12rem">
+                        <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Creation-Date</span>
                                 {{ dateformat(data.createdDate) }}
