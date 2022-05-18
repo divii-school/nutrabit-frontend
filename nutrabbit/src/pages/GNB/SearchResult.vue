@@ -184,6 +184,14 @@ export default {
         this.showSarchResult(newkeyword);
       }
     },
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.showSarchResult(this.searchKeyword);
+      }
+    },
   },
   methods: {
     setId(raw_material_id) {
@@ -197,34 +205,45 @@ export default {
           const recomanedBlending = [];
           const rawMaterial = [];
           const faq = [];
+          const search_name='';
+          const search_description='';
           this.newSearchResult = res.data.data.search;
           this.newSearchResult.map((value)=> {
+            if(localStorage.getItem('selectedLang')=='KO') {
+              this.search_name=value.name_ko;
+              this.search_description=value.description_ko;
+          }
+          else {
+             this.search_name=value.name_en;
+             this.search_description=value.description_en;
+          }
             if (value.type == "nutri_blending") {
                 nutriBlending.push({
                   id: value.id,
-                  name_en: value.name_en,
+                  name_en:this.search_name,
                   image: value.image,
                 });
               }
+              console.log(search_name);
               if (value.type == "recommended_blending") {
                 recomanedBlending.push({
                   id: value.id,
-                  name_en: value.name_en,
+                  name_en: this.search_name,
                   image: value.image,
                 });
               }
               if (value.type == "raw_material") {
                 rawMaterial.push({
                   id: value.id,
-                  name_en: value.name_en,
+                  name_en: this.search_name,
                   image: value.image,
                 });
               }
               if (value.type == "faq") {
                 faq.push({
                   id: value.id,
-                  name_en: value.name_en,
-                  description_en: value.description_en,
+                  name_en: this.search_name,
+                  description_en: this.search_description,
                 });
               }
           })
