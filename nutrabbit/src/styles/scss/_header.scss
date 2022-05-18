@@ -191,7 +191,7 @@ header {
                   width: 100%;
                   padding: 0 40px 0 12px;
                   height: 48px;
-
+                  font-family: $default-font;
                   &:focus {
                     border: 1px solid $green-68;
                   }
@@ -212,12 +212,12 @@ header {
                 max-width: 100%;
                 .search-data-inner {
                   height: 100vh;
-                  padding: 0 16px 16px;
+                  padding: 0 16px 102px 16px;
                   ul {
-                    height: auto;
+                    min-height: 132px;
                     overflow-y: auto;
                     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-                    padding: 16px 16px 93px;
+                    padding: 16px;
                     li {
                       margin-top: 20px;
                       padding: 1.5px 0;
@@ -326,7 +326,7 @@ header {
                 letter-spacing: 0.03em;
                 color: $black-33;
                 background: $white-1;
-                font-family: $default-font;
+                font-family: $Pretend-medium;
                 &:hover,
                 :active {
                   color: $green-45;
@@ -727,6 +727,7 @@ header {
               margin-top: 20px;
               pointer-events: auto;
               font-family: $default-font;
+              font-weight: 400;
               @media screen and (max-width: 1400px) {
                 font-size: 18px;
                 line-height: 22px;
