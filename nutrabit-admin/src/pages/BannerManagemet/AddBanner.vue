@@ -18,7 +18,7 @@
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="subtitle2">
                 {{ $t("Banner.list.deskbanner") }}
-                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
+                <span class="img-info">(파일 형식 jpg,jpeg,png )(이미지 너비 1920px and 고저 828px )</span>
               </label>
               <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                 <span v-if="!fileName">{{ $t("button.select_file") }}</span>
@@ -40,7 +40,7 @@
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
               <label for="subtitle2">
                 {{ $t("Banner.list.mobbanner") }}
-                <span class="img-info">(File Type jpg,jpeg,png )(Image width 1920px and hieght 828px )</span>
+                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 1920px and 고저 828px )</span>
               </label>
               <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                 <span v-if="!filesName">{{ $t("button.select_file") }}</span>
@@ -58,7 +58,7 @@
 
           <div class="p-grid p-formgrid p-mb-3">
             <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-              <label for="title2">{{ $t("Banner.list.link") }} (URL Type must be https://example.com )</label>
+              <label for="title2">{{ $t("Banner.list.link") }} (URL 유형은 다음과 같아야 합니다: https://example.com )</label>
               <InputText :class="`${error.link ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Banner.list.link')"
                 id="title2" v-model="link"></InputText>
 
@@ -73,10 +73,10 @@
               <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
               <div :class="`${error.status ? 'p-invalid' : ''}`">
                 <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                <label for="yes">Yes</label>
+                <label for="yes">활성</label>
 
                 <input type="radio" id="no" name="status" value="inactive" v-model="status" />
-                <label for="no">No</label>
+                <label for="no">비활성</label>
               </div>
 
               <div class="text-red">{{ error.status }}</div>
