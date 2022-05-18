@@ -7,7 +7,7 @@
           <form
             action=""
             class="signUp-form"
-            @submit="(e) => e.preventDefault()"
+            @submit="(e) => e.preventDefault()" enctype="multipart/form-data"
           >
             <div class="individuals-form">
               <div class="form-group">
