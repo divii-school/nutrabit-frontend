@@ -29,7 +29,7 @@
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                             <div class="text-red">{{ error.file }}</div>

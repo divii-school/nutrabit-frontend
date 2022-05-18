@@ -11,7 +11,7 @@
 
 
                             <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionLabel="name_ko"
-                                optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                                optionValue="id" placeholder="All (전체)" />
                                 <div class="text-red">{{ error.category_id }}</div>
 
                         </div>

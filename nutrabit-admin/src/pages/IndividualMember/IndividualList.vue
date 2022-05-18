@@ -30,49 +30,49 @@
             </div>
         </div>
         <div class="p-col-12" v-show="clientlist">
-            <div class="card">
+            <div class="card" >
                 <div class="p-d-flex p-jc-between p-mb-2">
                     <div>
-                        <h5>{{ $t('dfc_user.list.header') }}</h5>
+                        <h5>개인 회원 목록</h5>
                     </div>
                 </div>
 
-                <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
+                <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines p-jc-center" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
                     <ConfirmDialog group="dialog" />
 
                     <template #empty> 데이터가 없습니다 </template>
                     <template #loading> Loading data. Please wait. </template>
-
                     
-                    <Column header="번호" style="min-width: 12rem">
+                    
+                    <Column header="번호" >
                         <template #body="{ data }">
-                            <span class="p-column-title">#</span>
+                            <span class="p-column-title ">#</span>
                             
                             {{ data.sl_no }}
                         </template>
                     </Column>
-                    <Column field="ReferralCode" :header="$t('Individual.list.Username')" style="min-width: 12rem">
-                        <template #body="{ data }">
-                            <span class="p-column-title">User Name</span>
+                    <Column field="ReferralCode" :header="$t('Individual.list.Username')"  >
+                        <template #body="{ data }" >
+                            <span class="p-column-title"  >User Name</span>
                             
                             {{ data.name }}
                         </template>
                     </Column>
-                    <Column :header="$t('Individual.list.Email')" style="min-width: 12rem">
+                    <Column :header="$t('Individual.list.Email')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Email</span>
                             
                              {{ data.email }}
                         </template>
                     </Column>
-                    <Column :header="$t('Individual.list.ID')" style="min-width: 12rem">
+                    <Column :header="$t('Individual.list.ID')" >
                         <template #body="{ data }">
                             <span class="p-column-title">ID</span>
                            
                             {{ data.uuid }}
                         </template>
                     </Column>
-                    <Column :header="$t('Individual.list.RegistrationDate')" style="min-width: 12rem">
+                    <Column :header="$t('Individual.list.RegistrationDate')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Registration Date</span>
                          
@@ -352,6 +352,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.p-datatable-table{
+    td{
+        text-align: center;
+    }
+}
+
 .p-datatable-tbody {
     .p-button {
         white-space: nowrap;

@@ -5,7 +5,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('DFC.details.editindividual') }}</strong>
+                    <strong>회원 정보 수정</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
-                        <label for="address">{{ $t('DFC.details.address') }}</label>
+                        <label for="address">주소</label>
                         <Textarea id="address" type="text" placeholder="address" v-model="mydata.address" />
                     </div>
                     </div>
