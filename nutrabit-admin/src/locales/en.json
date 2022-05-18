@@ -91,6 +91,7 @@
       "created_dt": "2nd Category (EN)"
     }
   },
+  
 
   "page": {
     "user": {
@@ -104,5 +105,7 @@
         "heading":"User more Information"
       }
     }
-  }
+  },
+  "active":"active",
+"inactive":"inactive"
 }

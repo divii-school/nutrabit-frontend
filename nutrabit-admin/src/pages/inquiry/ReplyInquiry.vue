@@ -65,7 +65,7 @@
             <div class="card p-fluid" style="height:250px;">
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="title2">Reply</label>
+                        <label for="title2" style="font-size: x-large;font-family: sans-serif;">Reply</label>
                         <div class="textbox">
                             <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="text" />
                         </div>
@@ -76,6 +76,8 @@
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i> {{ $t('button.delete') }}</Button> -->
                     <Button label="회신하다" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="replayans"></Button>
+                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
+            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
                 </div>
             </div>
          </div>

@@ -5,7 +5,7 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
@@ -14,15 +14,15 @@
                         <InputText
                             id="googlurl"
                             type="text"
-                            placeholder="원료 검색"
+                            placeholder="원료명"
                             v-model="searchData"
                             @keyup="resetdata"
                         />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
-                        <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
+                        <label for="type">카테고리</label>
                        
-                        <Dropdown v-model="sub_category_id"  :options="dropdownValues"   optionLabel="category_name_ko" :placeholder="$t('RawMaterialadd.list.category')"  name="sub_category_id"
+                        <Dropdown v-model="sub_category_id"  :options="dropdownValues"   optionLabel="category_name_ko" placeholder="카테고리"  name="sub_category_id"
                             id="sub_category_id" />
                     </div>
                     <!-- <div class="p-field p-col-12 p-md-3">
@@ -102,7 +102,7 @@
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column
                                 header="번호"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
@@ -114,7 +114,7 @@
                             <Column
                                 field="ReferralCode"
                                 :header="$t('RawMaterialadd.list.name')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Name</span>
@@ -124,7 +124,7 @@
                             </Column>
                             <Column
                                 :header="$t('RawMaterialadd.list.Categories')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Category</span>
@@ -134,18 +134,18 @@
                             </Column>
                             <Column
                                 field="Exposure"
-                                :header="$t('RawMaterialadd.list.status')"
-                                style="min-width: 12rem"
+                                header="상태"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
                                    
-                                    {{ data.status }}
+                                    {{ $t(data.status) }}
                                     <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
                                 </template>
                             </Column>
 
-                            <Column :header="$t('RawMaterialadd.list.Function')">
+                            <Column header="기능">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>

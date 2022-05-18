@@ -12,7 +12,7 @@
                     <label
                         for="fst_category_name_ko"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Category.list.title') }}:</label>
+                    >1차 카테고리 명 (KO):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.fst_category_name_ko }}</p>
                     </div>
@@ -22,7 +22,7 @@
                     <label
                         for="fst_category_name_en"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Category.list.url') }}:</label>
+                    >1차 카테고리 명 (EN):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.fst_category_name_en }}</p>
                     </div>
@@ -32,7 +32,7 @@
                     <label
                         for="scnd_category_name_ko"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Category.list.status') }}:</label>
+                    >2차 카테고리 명 (KO):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.scnd_category_name_ko }}</p>
                     </div>
@@ -42,7 +42,7 @@
                     <label
                         for="scnd_category_name_en"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Category.list.created_dt') }}:</label>
+                    >2차 카테고리 명 (EN):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.scnd_category_name_en }}</p>
                     </div>
@@ -52,7 +52,7 @@
                     <label
                         for="categoryimage"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Category.list.deskcategory') }}:</label>
+                    >2차 카테고리:</label>
                     <div class="p-col-12 p-md-10">
                         <img
                             :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image"
