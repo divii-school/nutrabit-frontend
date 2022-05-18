@@ -74,12 +74,17 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isModalVisible" @confirm="goToLogin" :bodytext1="$t('common.Modal.EmailVerified')"
-     :bodytext2="$t('common.Modal.ID')" :btnText2="$t('button.Confirm')"
-    link="/login" />
+    <Modal
+      v-show="isModalVisible"
+      @confirm="goToLogin"
+      :bodytext1="$t('common.Modal.EmailVerified')"
+      :bodytext2="$t('common.Modal.ID', { ID: user_id.data.login_id })"
+      :btnText2="$t('button.Confirm')"
+      link="/login"
+    />
   </div>
 </template>
-
+<!-- {{ $t('message.hello', { msg: 'hello' }) }} -->
 <script>
 import axios from "axios";
 import validator from "validator";
@@ -89,8 +94,8 @@ import Modal from "../../components/Modal.vue";
 
 export default {
   name: "FindId",
-  components :{
-   Modal,
+  components: {
+    Modal,
   },
 
   data() {
@@ -112,12 +117,11 @@ export default {
       validateOnce: false,
       globalLocale: "",
       isCheckUserEmail: false,
-      clickSendOtp : false,
-      clickVerifyOtp : false,
-      otpCheck : false,
-      user_id : "",
-      isModalVisible : false,
-
+      clickSendOtp: false,
+      clickVerifyOtp: false,
+      otpCheck: false,
+      user_id: "",
+      isModalVisible: false,
     };
   },
   created() {
@@ -131,30 +135,30 @@ export default {
 
   watch: {
     globalLocale(newVal) {
-       if ((newVal == 'kr' || newVal == 'en') && this.validateOnce) {
+      if ((newVal == "kr" || newVal == "en") && this.validateOnce) {
         this.checkError();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.clickSendOtp){
+      if ((newVal == "kr" || newVal == "en") && this.clickSendOtp) {
         this.sendOtpErrorCheck();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.clickVerifyOtp){
+      if ((newVal == "kr" || newVal == "en") && this.clickVerifyOtp) {
         this.verifyOTPError();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
+      if ((newVal == "kr" || newVal == "en") && this.otpCheck) {
         this.wrongOtpCheck();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.isCheckUserEmail){
+      if ((newVal == "kr" || newVal == "en") && this.isCheckUserEmail) {
         this.checkExistingUser();
       }
     },
   },
 
   methods: {
-    goToLogin(){
+    goToLogin() {
       this.isModalVisible = false;
     },
     checkError() {
@@ -164,7 +168,7 @@ export default {
         isConfirmOTP: this.isConfirmOTP,
       };
       const { isInvalid, error } = forgotPassword(credential);
-      
+
       if (isInvalid) {
         this.error = error;
         return false;
@@ -179,26 +183,25 @@ export default {
         return;
       } else {
         //console.log(this.otpValidate)
-       this.isModalVisible = true;
-       //this.$router.push("/login");
+        this.isModalVisible = true;
+        //this.$router.push("/login");
       }
     },
 
-    sendOtpErrorCheck(){
-       if (validator.isEmpty(this.email)) {
+    sendOtpErrorCheck() {
+      if (validator.isEmpty(this.email)) {
         this.error.email = this.$t("common.Error.EnterEmail");
         return true;
-      }
-      else if (!validator.isEmail(this.email)) {
+      } else if (!validator.isEmail(this.email)) {
         this.error.email = this.$t("common.Error.ValidEmail");
         return true;
-      }else{
+      } else {
         return false;
       }
     },
 
-    checkExistingUser(){
-      this.error.email =this.$t("common.Error.chcekId")
+    checkExistingUser() {
+      this.error.email = this.$t("common.Error.chcekId");
     },
 
     async userFindId() {
@@ -207,14 +210,14 @@ export default {
       // }
       // if (validator.isEmpty(this.email)) {
       //   this.error.email = this.$t("common.Error.EnterEmail");
-      // } 
+      // }
       this.clickSendOtp = true;
-      if(this.sendOtpErrorCheck()){
-         return;
-      }else {
+      if (this.sendOtpErrorCheck()) {
+        return;
+      } else {
         this.commonService.userFindId(this.email).then((res) => {
           if (res.status == 200) {
-            console.log(res)
+            console.log(res);
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
@@ -223,7 +226,7 @@ export default {
             this.showTick = true;
             this.emailOTP = "";
             this.error.email = "";
-            this.isCheckUserEmail= false;
+            this.isCheckUserEmail = false;
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
             }
@@ -248,35 +251,35 @@ export default {
               this.startTimer = true;
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
-            this.isCheckUserEmail=true;
-            return (this.error.email =this.$t("common.Error.chcekId"));
+            this.isCheckUserEmail = true;
+            return (this.error.email = this.$t("common.Error.chcekId"));
             //return (this.error.email = res.response.data.message);
           }
         });
       }
     },
 
-    verifyOTPError(){
+    verifyOTPError() {
       if (validator.isEmpty(this.emailOTP)) {
-         this.error.emailOTP = this.$t('common.Error.EnterOtp');
-         return true;
-      }else{
-         return false;
+        this.error.emailOTP = this.$t("common.Error.EnterOtp");
+        return true;
+      } else {
+        return false;
       }
     },
 
-    wrongOtpCheck(){
-      this.error.emailOTP = this.$t("common.Error.OTPCheck")
+    wrongOtpCheck() {
+      this.error.emailOTP = this.$t("common.Error.OTPCheck");
     },
 
     async verifyOTP() {
       // if (this.emailOTP == "") {
       //   return (this.error.emailOTP = "Enter an valid OTP");
-      // } 
+      // }
       this.clickVerifyOtp = true;
-      if(this.verifyOTPError()){
-         return;
-      }else {
+      if (this.verifyOTPError()) {
+        return;
+      } else {
         try {
           const verifyOtpData = await axios.post("/user/find_id_post", {
             email: this.email,
@@ -286,7 +289,7 @@ export default {
           if (verifyOtpData.data.status == 200) {
             // this.isOtpSuccess = 'OTP verified';
             // this.$swal("OTP verified");
-            
+
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
