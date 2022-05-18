@@ -78,7 +78,7 @@
       v-show="isModalVisible"
       @confirm="goToLogin"
       :bodytext1="$t('common.Modal.EmailVerified')"
-      :bodytext2="$t('common.Modal.ID', { ID: user_id.data.login_id })"
+      :bodytext2="$t('common.Modal.ID', { ID: user_id })"
       :btnText2="$t('button.Confirm')"
       link="/login"
     />
@@ -231,7 +231,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 30;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -298,7 +298,7 @@ export default {
             this.otpValidate = 1;
             this.isConfirmOTP = 1;
             this.error.emailOTP = "";
-            this.user_id = verifyOtpData.data;
+            this.user_id = verifyOtpData.data.data.login_id;
             console.log(verifyOtpData.data);
             return true;
           }
