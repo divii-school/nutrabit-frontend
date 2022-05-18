@@ -55,7 +55,7 @@
                     <template #loading> Loading data. Please wait. </template>
                      
                     
-                    <Column header="슬. 아니." >
+                    <Column header="번호" >
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
                             
@@ -86,7 +86,7 @@
                             </template>
                         </Column>
                    
-                    <Column header="동작">
+                    <Column header="기능">
                         <template #body="{ data }">
                             <span class="p-column-title">Balance</span>
                             <p style="display: none">{{ data.mobile }}</p>

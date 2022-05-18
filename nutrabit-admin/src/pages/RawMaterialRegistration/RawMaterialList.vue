@@ -145,7 +145,7 @@
                                 </template>
                             </Column>
 
-                            <Column header="동작">
+                            <Column header="기능">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>

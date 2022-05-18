@@ -135,7 +135,7 @@
                         </Column>
                        
 
-                        <Column field="Actions" header="동작">
+                        <Column field="Actions" header="기능">
                             <template #body="{ data }">
                                 <span class="p-column-title">Actions</span>
                                 <p style="display: none">{{ data.status }}</p>

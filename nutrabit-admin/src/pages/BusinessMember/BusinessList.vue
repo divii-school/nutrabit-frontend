@@ -44,7 +44,7 @@
                     <template #loading> Loading data. Please wait. </template>
 
                     <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                    <Column header="#" >
+                    <Column header="번호" >
                         <template #body="{ data }">
                             <span class="p-column-title">#</span>
                             
