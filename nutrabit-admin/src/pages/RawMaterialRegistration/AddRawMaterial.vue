@@ -152,7 +152,7 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
+                                <input type="file" class="select-file" v-on:change="onFileChange" multiple/>
                                 <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -203,7 +203,7 @@
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">파일 선택</span>
                                 <span v-else>{{ similar }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
+                                <input type="file" class="select-file" v-on:change="onFileChanges" multiple/>
                                 <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.files }}</div>
@@ -353,6 +353,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.file = files[0];
+            if(files.length > 5 ){
+                console.log("please select 5 image");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
@@ -360,7 +364,12 @@ export default {
             } else {
                 this.render1 = false;
                 this.detail = this.file.name;
-                this.formData.append('similar_product_img', files[0]);
+                Array.from(files).forEach(element => {
+               this.formData.append('similar_product_img', element)
+                
+                
+            });
+                // this.formData.append('similar_product_img', files[0]);
             }
             this.fileExtension = this.detail.replace(/^.*\./, '');
             console.log(this.detail);
@@ -369,8 +378,12 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.files = files[0];
-            if (!files.length) return;
-            this.files = files[0];
+            
+            
+            if(files.length > 5 ){
+                console.log("please select 5 image");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.files.name)) {
                 this.render2 = true;
@@ -378,7 +391,12 @@ export default {
             } else {
                 this.render2 = false;
                 this.similar = this.files.name;
-                this.formData.append('raw_material_img', files[0]);
+                Array.from(files).forEach(element => {
+               this.formData.append('raw_material_img', element)
+                
+                
+            });
+                //this.formData.append('raw_material_img', files[0]);
             }
             this.filesExtension = this.similar.replace(/^.*\./, '');
             console.log(this.similar);

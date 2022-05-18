@@ -146,7 +146,7 @@
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
-                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" />
+                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" multiple />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
@@ -213,7 +213,7 @@
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" multiple/>
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
@@ -461,13 +461,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+             if(files.length > 5 ){
+                console.log("please select 5 image");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
                 return false;
             } else {
                 this.render1 = false;
                 this.fileName = this.file.name;
-                this.formData.append('similar_product_img', files[0]);
+                 Array.from(files).forEach(element => {
+               this.formData.append('similar_product_img', element)
+                
+                
+            });
+                // this.formData.append('similar_product_img', files[0]);
             }
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
@@ -478,13 +487,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+             if(files.length > 5 ){
+                console.log("please select 5 image");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render2 = true;
                 return false;
             } else {
                 this.render2 = false;
                 this.filesNames = this.file.name;
-                this.formData.append('raw_material_img', files[0]);
+                Array.from(files).forEach(element => {
+               this.formData.append('raw_material_img', element)
+                
+                
+            });
+                // this.formData.append('raw_material_img', files[0]);
             }
             this.filesExtension = this.filesNames.replace(/^.*\./, '');
             console.log(this.filesNames);

@@ -117,7 +117,7 @@
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
 
-                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" multiple/>
                             <Button label="파일을 선택" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
 
@@ -374,13 +374,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+            if(files.length > 5 ){
+                console.log("please select 5 image");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render2 = true;
                 return false;
             } else {
                 this.render2 = false;
                 this.filesNames = this.file.name;
-                this.formData.append('product_sub_image', files[0]);
+                 Array.from(files).forEach(element => {
+               this.formData.append('product_sub_image', element)
+                
+                
+            });
+                // this.formData.append('product_sub_image', files[0]);
             }
             this.filesExtension = this.filesNames.replace(/^.*\./, '');
             console.log(this.filesNames);
