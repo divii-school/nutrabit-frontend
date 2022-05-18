@@ -7,15 +7,20 @@
           <form
             action=""
             class="signUp-form"
-            @submit="(e) => e.preventDefault()"
+            @submit="(e) => e.preventDefault()" enctype="multipart/form-data"
           >
             <div class="individuals-form">
               <div class="form-group">
                 <label for="">{{ $t("customer.inquiryLabel.Subject") }}</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
+<<<<<<< Updated upstream
                     <select v-model="selected" required>
                       <option value="" disabled selected hidden>
+=======
+                    <select v-model="selected">
+                      <option value="" disabled hidden>
+>>>>>>> Stashed changes
                         {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
                       <option
