@@ -22,6 +22,13 @@
           color: $grey-4C;
           appearance: none;
           background: url(@/assets/images/down.png) right 16px center no-repeat;
+          
+        }
+        select:required:invalid {
+          color: $grey-CF;
+        }
+        option {
+          color: $grey-4C;
         }
       }
       .form-group{
