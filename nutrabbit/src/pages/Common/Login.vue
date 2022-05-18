@@ -176,7 +176,7 @@ export default {
 
   updated() {
     this.globalLocale = this.$i18n.locale;
-    alert('Platform: -' + this.isPlatMobile);
+    // alert('Platform: -' + this.isPlatMobile);
   },
 
   watch: {
