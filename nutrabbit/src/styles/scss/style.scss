@@ -153,7 +153,6 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-weight: normal;
 
   &.error {
     color: $red-3 !important;
@@ -228,7 +227,7 @@ textarea {
   height: 24px;
   width: 24px;
   background-color: $white-1;
-  border-radius: 0;
+  border-radius: 1px;
   border: 1px solid $grey-CF;
 
   &:after {
@@ -642,6 +641,9 @@ textarea {
     position: absolute;
     z-index: 2;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
   }
   label {
     display: block;
@@ -661,6 +663,7 @@ textarea {
     font-family: $default-font;
     cursor: pointer;
     transition: transform 0.2s ease-out;
+    background-color: #ffffff;
 
     img {
       margin-left: 0px;
@@ -1159,4 +1162,9 @@ textarea {
       width: 100% !important;
     }
   }
+}
+
+.flexRight{
+  display: flex;
+  flex-direction: row-reverse;
 }
