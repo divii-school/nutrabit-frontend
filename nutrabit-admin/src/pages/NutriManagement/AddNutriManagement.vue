@@ -204,7 +204,7 @@ export default {
             selectedItems: [],
             Multiselect: '',
             filesExtensions: '',
-
+            demo:[],
             name_ko: '',
             name_en: '',
             description_ko: '',
