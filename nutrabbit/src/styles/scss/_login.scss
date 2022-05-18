@@ -28,10 +28,12 @@
           color: $grey-CF;
         }
         option {
+          padding: 5px 0;
           color: $grey-4C;
         }
         &:focus{
-          outline: none;
+          outline: 0;
+          bordeR: 0;
         }
       }
       .form-group{
