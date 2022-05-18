@@ -9,10 +9,10 @@
                        
 
                         <div class="p-field p-col-12 p-md-3" :key="list">
-                            <p for="type">{{ $t('Category.search.type') }}</p>
+                            <p for="type">카테고리 명</p>
                             
                             <AutoComplete
-                                placeholder="검색"
+                                placeholder="검색어 입력"
                                 :dropdown="true"
                                 :multiple="false"
                                 v-model="selectedAutoValue"
@@ -33,7 +33,7 @@
                 <div class="p-mb-4 p-mb-lg-0"></div>
                 <div>
                     <Button
-                        :label="$t('button.search')"
+                        label="검색"
                         icon="pi pi-search"
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"
@@ -84,7 +84,7 @@
                         <template #empty>No Category found.</template>
                         <template #loading>Loading Category data. Please wait.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
@@ -135,7 +135,7 @@
                         </Column>
                        
 
-                        <Column field="Actions" :header="$t('Category.list.see_more')">
+                        <Column field="Actions" header="기능">
                             <template #body="{ data }">
                                 <span class="p-column-title">Actions</span>
                                 <p style="display: none">{{ data.status }}</p>

@@ -9,7 +9,7 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Category.list.title') }}</label>
+                            <label for="title2">1차 카테고리 명 (KO)</label>
                            <AutoComplete
                                 placeholder="Search"
                                 :dropdown="true"
@@ -24,7 +24,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Category.list.url') }}</label>
+                            <label for="title2">1차 카테고리 명 (EN)</label>
                             <InputText
                                 type="text"
                                 placeholder="link"
@@ -35,7 +35,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Category.list.status') }}</label>
+                            <label for="title2">2차 카테고리 명 (KO)</label>
                             <InputText
                                 type="text"
                                 placeholder="link"
@@ -46,7 +46,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Category.list.created_dt') }}</label>
+                            <label for="title2">2차 카테고리 명 (EN)</label>
                             <InputText
                                 type="text"
                                 placeholder="link"
@@ -60,7 +60,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
-                                {{ $t('Category.list.thumnail') }}
+                                2차 카테고리 썸네일
                                 <span
                                     class="img-info"
                                 >(File Type jpg,jpeg,png )(Image width 200px )</span>
