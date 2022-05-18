@@ -3,7 +3,7 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice theme-green">
+          <div class="nutri-choice theme-green about-us-wrap">
             <span class="my-choice-title-top">Nutri 3.3</span>
             <p class="title text-center">{{ $t("aboutus.title.title") }}</p>
             <h2 class="nutri-choice-heading text-center">

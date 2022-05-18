@@ -136,7 +136,7 @@ export default {
           .then((res) => {
             if (res.status == 200) {
               this.$router.push("/login");
-              this.$swal(res.data.data);
+              // this.$swal(res.data.data);
             }
           });
       }
