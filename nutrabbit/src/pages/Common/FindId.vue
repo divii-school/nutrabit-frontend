@@ -74,6 +74,9 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isModalVisible" @confirm="goToLogin" :bodytext1="$t('common.Modal.EmailVerified')"
+     :bodytext2="$t('common.Modal.ID')" :btnText2="$t('button.Confirm')"
+    link="/login" />
   </div>
 </template>
 
@@ -82,9 +85,13 @@ import axios from "axios";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import forgotPassword from "../../Validation/forgotPassword";
- 
+import Modal from "../../components/Modal.vue";
+
 export default {
   name: "FindId",
+  components :{
+   Modal,
+  },
 
   data() {
     return {
@@ -108,6 +115,8 @@ export default {
       clickSendOtp : false,
       clickVerifyOtp : false,
       otpCheck : false,
+      user_id : "",
+      isModalVisible : false,
 
     };
   },
@@ -145,6 +154,9 @@ export default {
   },
 
   methods: {
+    goToLogin(){
+      this.isModalVisible = false;
+    },
     checkError() {
       let credential = {
         email: this.email,
@@ -167,8 +179,8 @@ export default {
         return;
       } else {
         //console.log(this.otpValidate)
-
-        this.$router.push("/login");
+       this.isModalVisible = true;
+       //this.$router.push("/login");
       }
     },
 
@@ -283,6 +295,7 @@ export default {
             this.otpValidate = 1;
             this.isConfirmOTP = 1;
             this.error.emailOTP = "";
+            this.user_id = verifyOtpData.data;
             console.log(verifyOtpData.data);
             return true;
           }

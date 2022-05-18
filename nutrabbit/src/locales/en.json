@@ -108,6 +108,11 @@
             "contactPerson": "Please enter the name of the person in charge",
             "UserExists": "User Already Exists",
             "EmailExists": "Email ID Already Exists"
+        },
+
+        "Modal" :{
+           "EmailVerified" : "Email verified",
+           "ID" : "Your user ID is {ID}"
         }
     },
     "button": {
