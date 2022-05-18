@@ -88,7 +88,7 @@
                                 </template>
                             </Column>
 
-                            <Column
+                            <!-- <Column
                                 field="ReferralCode"
                                 :header="$t('Inquiry.list.title')"
                                 
@@ -98,7 +98,7 @@
                                     
                                     {{ data.title }}
                                 </template>
-                            </Column>
+                            </Column> -->
 
                             <Column
                                 :header="$t('Inquiry.list.QuestionType')"

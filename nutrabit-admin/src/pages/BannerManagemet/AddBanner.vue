@@ -72,10 +72,10 @@
               <br />
               <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
               <div :class="`${error.status ? 'p-invalid' : ''}`">
-                <input type="radio" id="yes" value="활동적인" name="status" v-model="status" />
+                <input type="radio" id="yes" value="active" name="status" v-model="status" />
                 <label for="yes">Yes</label>
 
-                <input type="radio" id="no" name="status" value="비활성" v-model="status" />
+                <input type="radio" id="no" name="status" value="inactive" v-model="status" />
                 <label for="no">No</label>
               </div>
 

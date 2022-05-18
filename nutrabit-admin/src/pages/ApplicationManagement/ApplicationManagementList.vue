@@ -113,8 +113,8 @@
                             
                         >
                             <template #body="{ data }">
-                                <span class="p-column-title">Product</span>
-                                {{ data.goods }}
+                                <span class="p-column-title" >Product</span>
+                                {{ data.goods.toLowerCase() }}
                             </template>
                         </Column>
                         <Column

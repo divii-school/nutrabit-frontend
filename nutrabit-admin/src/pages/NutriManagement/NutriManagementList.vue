@@ -81,7 +81,7 @@
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
                                 
-                                {{ data.status }}
+                                {{ $t(data.status) }}
                                 <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
                             </template>
                         </Column>

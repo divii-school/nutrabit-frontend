@@ -105,5 +105,7 @@
         "heading":"User more Information"
       }
     }
-  }
+  },
+  "active":"active",
+"inactive":"inactive"
 }

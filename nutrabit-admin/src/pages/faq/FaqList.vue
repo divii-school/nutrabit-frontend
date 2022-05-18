@@ -108,7 +108,7 @@
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
                                 {{ data.status }}-->
-                                {{ data.status }}
+                                {{ $t(data.status) }}
                             </template>
                         </Column>
 
