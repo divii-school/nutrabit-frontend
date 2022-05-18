@@ -268,7 +268,7 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
-        this.Detailaddress = data.data[0].address;
+        this.Detailaddress = data.data[0].detail_address;
       });
     },
    
@@ -312,7 +312,8 @@ export default {
             this.confirmPassword,
             this.email,
             this.phoneNumber,
-            this.address
+            this.address,
+            this.Detailaddress
           )
           .then((res) => {
             if (res.data.status == 200) {

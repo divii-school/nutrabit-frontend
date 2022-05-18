@@ -10,13 +10,31 @@
       form.signUp-form {
         margin-top: 0;
       }
-      .dropdown select {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        color: #4C4C4C;
-        appearance: none;
-        background: url(@/assets/images/down.png) right center no-repeat;
+      .dropdown {
+        padding: 0;
+        select {
+          margin: 0;
+          height: 45px;
+          padding: 0 16px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: $grey-4C;
+          appearance: none;
+          background: url(@/assets/images/down.png) right 16px center no-repeat;
+          
+        }
+        select:required:invalid {
+          color: $grey-CF;
+        }
+        option {
+          padding: 5px 0;
+          color: $grey-4C;
+        }
+        &:focus{
+          outline: 0;
+          bordeR: 0;
+        }
       }
       .form-group{
           margin-top: 20px !important;
@@ -143,6 +161,16 @@
         }
         .btn-primary {
           margin-top: 40px;
+        }
+        .form-group{
+          &.error{
+            margin-bottom: -19px;
+          }
+          &:last-child{
+            &.error{
+              margin: 0;
+            }
+          }
         }
       }
     }
