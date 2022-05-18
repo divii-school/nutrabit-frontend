@@ -5,7 +5,7 @@
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
             {{ $t('footer.total') }}
-            <span>{{ this.newSearchResult.length }}개</span
+            <span>{{ this.newSearchResult.length }}</span
             >{{ $t('footer.result') }}
           </p>
           <p class="search-result-title" v-else>
