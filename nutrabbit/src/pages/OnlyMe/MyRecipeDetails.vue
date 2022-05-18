@@ -30,7 +30,7 @@
                     <tr>
                       <td>{{ index + 1 }}</td>
                       <td>{{ $t(option_item.category) }}</td>
-                      <td>{{ option_item.explanation }}</td>
+                      <td>{{ $t(option_item.explanation) }}</td>
                     </tr>
                     <!-- <tr>
                       <td>2</td>
