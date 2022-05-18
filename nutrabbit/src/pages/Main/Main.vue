@@ -2,44 +2,24 @@
   <div class="main-page">
     <div class="main-slider">
       <!-- slider for desktop -->
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="false"
-        :modules="modules"
-        :speed="1000"
-        class="mySwiper mySwiperDesktop"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link" target="_blank">
-            <img
-              v-if="slider.desktop_banner_path"
-              :src="imgBaseUrl + slider.desktop_banner_path"
-              alt=""
-            />
+            <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
             <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
         </swiper-slide>
       </swiper>
       <!-- slider for mobile -->
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="false"
-        :modules="modules"
-        :speed="1000"
-        class="mySwiper mySwiperMob"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link">
-            <img
-              v-if="slider.mobile_banner_path"
-              :src="imgBaseUrl + slider.mobile_banner_path"
-              alt=""
-            />
+            <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
             <p class="banner-title text-center">{{ slider.title }}</p>
           </a>
@@ -51,10 +31,7 @@
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2
-            class="nutri-choice-heading text-center"
-            v-html="$t('main.my_choice.title')"
-          ></h2>
+          <h2 class="nutri-choice-heading text-center" v-html="$t('main.my_choice.title')"></h2>
           <p class="desc text-center">{{ $t("main.my_choice.desc") }}</p>
           <router-link to="/my-choice" v-if="token">
             <button class="btn-small-solid">
@@ -77,10 +54,7 @@
           <div class="nutri-choice greenTItle">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
-            <h2
-              class="nutri-choice-heading text-center"
-              v-html="$t('main.nutri.title')"
-            ></h2>
+            <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
             <p class="desc text-center">{{ $t("main.nutri.desc") }}</p>
             <button @click="toNutri()" class="btn-small-solid green">
               {{ $t("main.nutri.button") }}
@@ -98,15 +72,9 @@
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    :bodytext1="$t('requireModal.text1')"
-    :bodytext2="$t('requireModal.text2')"
-    :btnText1="$t('requireModal.btn1')"
-    :btnText2="$t('requireModal.btn2')"
-    link="/login"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
+    link="/login" />
   <!-- <KakaoChat /> -->
 </template>
 
@@ -117,7 +85,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
 import MainProductCard from "../../components/MainProductCard.vue";
-import { inject, onMounted } from "vue";
+import { inject, onMounted, onUpdated } from "vue";
 import MainService from "../../services/MainService";
 import Button from "../../components/Button.vue";
 import KakaoChat from "../../components/KakaoChat.vue";
@@ -146,6 +114,9 @@ export default {
   setup() {
     const common = inject("common");
     onMounted(() => {
+      common.methods.isFromApp();
+    });
+    onUpdated(() => {
       common.methods.isFromApp();
     });
     return {
