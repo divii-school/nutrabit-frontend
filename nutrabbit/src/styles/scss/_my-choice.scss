@@ -352,9 +352,15 @@
                     width: 230px;
                     height: 230px;
                   }
+                  .img-hover-hide {
+                    display: block;
+                  }
                   &:hover {
                     .img-wrap-hover {
                       display: block;
+                    }
+                    .img-hover-hide {
+                      display: none;
                     }
                   }
                 }

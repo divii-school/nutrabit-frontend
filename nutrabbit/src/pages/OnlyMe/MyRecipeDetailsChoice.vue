@@ -27,7 +27,7 @@
                       <!-- <tr> -->
                         <td>{{ index +1 }}</td>
                         <td>{{ $t(item.category) }}</td>
-                        <td>{{ item.explanation }}</td>
+                        <td>{{ $t(item.explanation) }}</td>
                     </tr>
                   </tbody>
                 </table>

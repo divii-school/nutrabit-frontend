@@ -470,6 +470,7 @@ export default {
           });
         },
         fail: function (err) {
+          alert('kakao error');
           // console.log(err);
         },
       });
