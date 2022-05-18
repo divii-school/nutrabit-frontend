@@ -21,10 +21,8 @@ const methods = {
   isFromApp() {
     var queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log('urlParams--', urlParams);
     var mobile = urlParams.get("mobile");
     var iphone = urlParams.get("isiPhone");
-    console.log(mobile, iphone);
     if (mobile == 'true') {
       state.isMobile = true;
       localStorage.setItem("isMobile", true);
@@ -34,8 +32,10 @@ const methods = {
       }
     }
     setTimeout(() => {
-      console.log("state.isMobile", state.isMobile);
-      console.log("state.isiPhone", state.isiPhone);
+      alert(state.isMobile);
+      alert(state.isiPhone);
+      console.log("state.isMobile:-", state.isMobile);
+      console.log("state.isiPhone:-", state.isiPhone);
     }, 4000);
   },
   // ENdx check if it's from APP

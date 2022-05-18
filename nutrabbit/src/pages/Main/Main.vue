@@ -12,14 +12,14 @@
         class="mySwiper mySwiperDesktop"
       >
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
-          <a :href="slider.link">
+          <a :href="slider.link" target="_blank">
             <img
               v-if="slider.desktop_banner_path"
               :src="imgBaseUrl + slider.desktop_banner_path"
               alt=""
             />
             <img v-else src="../../assets/images/banner_place.png" alt />
-            <p class="banner-title text-center">{{ slider.title }}</p>
+            <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
         </swiper-slide>
       </swiper>

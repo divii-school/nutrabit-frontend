@@ -27,6 +27,7 @@
         @include flex-align-center;
         padding-bottom: 40px;
         border-bottom: 1px solid $grey-CF;
+        font-family: $Pretend-bold;
         &.faq-diff-head {
           @media screen and (max-width: 640px) {
             border-bottom: 0px;
@@ -62,6 +63,8 @@
         font-size: 18px;
         line-height: 100%;
         color: $grey-A4;
+        font-family: $default-font;
+        font-weight: 400;
         @media screen and (max-width: 640px) {
           font-size: 14px;
           padding: 20px 0px;
