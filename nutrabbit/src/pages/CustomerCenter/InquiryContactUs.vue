@@ -13,9 +13,9 @@
               <div class="form-group">
                 <label for="">{{ $t("customer.inquiryLabel.Subject") }}</label>
                 <div class="input-group">
-                  <div class="header-dropdown dropdown">
+                  <div class="header-dropdown dropdown inquery-dropdown">
                     <select v-model="selected">
-                      <option value="" disabled hidden>
+                      <option value="" disabled selected>
                         {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
                       <option

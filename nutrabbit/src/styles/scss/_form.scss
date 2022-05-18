@@ -275,6 +275,15 @@
                     }
                 }
             }
+            &.inquery-dropdown{
+                select{
+                    height: 45px;
+                    margin: 0;
+                    &:disabled{
+                        color: $grey-CF;
+                    }
+                }
+            }
         }
     }
     &.change-password{
