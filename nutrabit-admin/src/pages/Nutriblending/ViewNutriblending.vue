@@ -5,7 +5,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('Blending.details.header') }}</strong>
+                    <strong>추천 블랜딩 정보</strong>
                 </h4>
 
                 <div class="p-field p-grid">

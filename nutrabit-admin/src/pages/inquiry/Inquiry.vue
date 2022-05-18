@@ -5,7 +5,7 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
@@ -22,13 +22,13 @@
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.appname') }}</label>
                         
-                        <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" :placeholder="$t('Inquiry.list.appname')" />
+                        <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" placeholder="유저명 입력" />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
-                        <label for="type">{{ $t('Inquiry.list.status') }}</label>
+                        <label for="type">상태</label>
                         
                       
-                        <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" :placeholder="$t('Inquiry.list.status')" />
+                        <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" placeholder="선택" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
@@ -80,7 +80,7 @@
                             <template #loading>Loading data. Please wait.</template>
 
                             
-                            <Column header="번호" style="min-width: 12rem">
+                            <Column header="번호" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
                                    
@@ -88,37 +88,37 @@
                                 </template>
                             </Column>
 
-                            <Column
+                            <!-- <Column
                                 field="ReferralCode"
                                 :header="$t('Inquiry.list.title')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Title</span>
                                     
                                     {{ data.title }}
                                 </template>
-                            </Column>
+                            </Column> -->
 
                             <Column
                                 :header="$t('Inquiry.list.QuestionType')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Quetion Type</span>
                                    
-                                    {{ data.type_title }}
+                                    {{ data.type_title_ko }}
                                 </template>
                             </Column>
 
-                            <Column :header="$t('Inquiry.list.appname')" style="min-width: 12rem">
+                            <Column :header="$t('Inquiry.list.appname')" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
                                     
                                     {{ data.business_name }}
                                 </template>
                             </Column>
-                            <Column :header="$t('Inquiry.list.Reopenby')" style="min-width: 12rem">
+                            <Column :header="$t('Inquiry.list.Reopenby')" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Responded by</span>
                                    
@@ -126,19 +126,9 @@
                                 </template>
                             </Column>
                             <Column
-                                :header="$t('Inquiry.list.inqurydate')"
-                                style="min-width: 12rem"
-                            >
-                                <template #body="{ data }">
-                                    <span class="p-column-title">Registration Date</span>
-                                  
-                                    {{ dateformat(data.createdDate) }}
-                                </template>
-                            </Column>
-                            <Column
                                 field="Exposure"
                                 :header="$t('Inquiry.list.status')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
@@ -147,8 +137,19 @@
                                   
                                 </template>
                             </Column>
+                            <Column
+                                :header="$t('Inquiry.list.inqurydate')"
+                               
+                            >
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Registration Date</span>
+                                  
+                                    {{ dateformat(data.createdDate) }}
+                                </template>
+                            </Column>
+                            
 
-                            <Column :header="$t('Inquiry.list.Action')">
+                            <Column header="기능">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>
@@ -250,6 +251,7 @@ export default {
             searchData: '',
             type_title: '',
             statusitem: '',
+            type_title_ko:'',
 
         };
     },

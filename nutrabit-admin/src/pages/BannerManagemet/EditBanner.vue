@@ -23,7 +23,7 @@
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" id="file" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="이미지 추가" class="SelectBtn n-wrap" />
                             </div>
                             <div>
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -43,7 +43,7 @@
                                 <span v-if="!filesName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ filesName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" id="files" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="이미지 추가" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <div class="text-red">{{ error.file }}</div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Banner.list.link') }}</label>
+                            <label for="title2">{{ $t('Banner.list.link') }} (URL Type must be https://example.com )</label>
                             <InputText type="text" placeholder="link" id="title2" v-model="link"></InputText>
                             <div class="text-red">{{ error.link }}</div>
                         </div>
@@ -64,7 +64,7 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Banner.list.status') }}</label>
+                            <label for="state2">활성화</label>
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                             <input type="radio" id="yes" value="active" name="status" v-model="status">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
-                <Button :label="$t('button.update')" icon="pi pi-save" iconPos="left"
+                <Button label="저장" icon="pi pi-save" iconPos="left"
                     class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">

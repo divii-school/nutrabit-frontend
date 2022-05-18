@@ -32,8 +32,8 @@ const methods = {
       }
     }
     setTimeout(() => {
-      alert(state.isMobile);
-      alert(state.isiPhone);
+      // alert(state.isMobile);
+      // alert(state.isiPhone);
       console.log("state.isMobile:-", state.isMobile);
       console.log("state.isiPhone:-", state.isiPhone);
     }, 4000);

@@ -40,7 +40,7 @@
                             <template #loading>Loading data. Please wait.</template>
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                            <Column header="번호" style="min-width: 3rem">
+                            <Column header="번호" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">번호</span>
                                     
@@ -51,7 +51,7 @@
                             <Column
                                 field="image"
                                 :header="$t('PackageType.list.Image')"
-                                style="min-width: 12rem"
+                                
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Image</span>
@@ -65,7 +65,7 @@
                             </Column>
                             <Column
                                 :header="$t('PackageType.list.PackageName')"
-                                style="min-width: 12rem"
+                               
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Package Name</span>
