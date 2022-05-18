@@ -19,6 +19,7 @@ import "../src/assets/js/postcode.v2.js";
 import Pagination from 'v-pagination-3';
 
 // cookie
+import VueCookies from 'vue3-cookies';
 import { globalCookiesConfig } from "vue3-cookies";
 
 
@@ -33,6 +34,7 @@ globalCookiesConfig({
 
 const app = createApp(App);
 app.use(VueLoading);
+app.use(VueCookies);
 app.use(VueSweetalert2);
 app.use(VueAxios, axios);
 app.use(i18n);
