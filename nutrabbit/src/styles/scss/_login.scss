@@ -22,6 +22,18 @@
           color: $grey-4C;
           appearance: none;
           background: url(@/assets/images/down.png) right 16px center no-repeat;
+          
+        }
+        select:required:invalid {
+          color: $grey-CF;
+        }
+        option {
+          padding: 5px 0;
+          color: $grey-4C;
+        }
+        &:focus{
+          outline: 0;
+          bordeR: 0;
         }
       }
       .form-group{
