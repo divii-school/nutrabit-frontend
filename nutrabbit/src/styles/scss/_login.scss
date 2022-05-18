@@ -31,6 +31,10 @@
           padding: 5px 0;
           color: $grey-4C;
         }
+        &:focus{
+          outline: 0;
+          border: 0;
+        }
       }
       .form-group{
           margin-top: 20px !important;
