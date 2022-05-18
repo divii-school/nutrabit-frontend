@@ -274,7 +274,7 @@ export default {
           if (verifyOtpData.data.status == 200) {
             // this.isOtpSuccess = 'OTP verified';
             // this.$swal("OTP verified");
-            //console.log(res)
+            
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -283,6 +283,7 @@ export default {
             this.otpValidate = 1;
             this.isConfirmOTP = 1;
             this.error.emailOTP = "";
+            console.log(verifyOtpData.data);
             return true;
           }
         } catch (error) {
