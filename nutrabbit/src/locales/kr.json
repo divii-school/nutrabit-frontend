@@ -543,5 +543,9 @@
     "Formulation": "제형",
     "Package": "패키지",
     "Unanswered" : "미답변",
-    "Answered" : "답변완료"
+    "Answered" : "답변완료",
+    "Etc": "기타",
+    "Unchecked": "선택 안 함",
+    "Get a quote": "견적 받기",
+    "Sample Request": "샘플 신청"
 }

@@ -543,5 +543,9 @@
     "Formulation": "Formulation",
     "Package": "Package",
     "Unanswered" : "Unanswered",
-    "Answered" : "Answered"
+    "Answered" : "Answered",
+    "Etc": "Etc",
+    "Unchecked": "Unchecked",
+    "Get a quote": "Get an estimate",
+    "Sample Request": "Sample Request"
 }
