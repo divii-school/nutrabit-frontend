@@ -202,6 +202,7 @@ export default {
       }else {
         this.commonService.userFindId(this.email).then((res) => {
           if (res.status == 200) {
+            console.log(res)
             this.isActive = false;
             this.isVerification = true;
             this.emailValidated = 1;
@@ -215,7 +216,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 180;
+            this.timer = 30;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -273,6 +274,7 @@ export default {
           if (verifyOtpData.data.status == 200) {
             // this.isOtpSuccess = 'OTP verified';
             // this.$swal("OTP verified");
+            
             this.startTimer = true;
             this.showTick = false;
             this.isActive = true;
@@ -281,6 +283,7 @@ export default {
             this.otpValidate = 1;
             this.isConfirmOTP = 1;
             this.error.emailOTP = "";
+            console.log(verifyOtpData.data);
             return true;
           }
         } catch (error) {

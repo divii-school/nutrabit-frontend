@@ -171,7 +171,6 @@
         line-height: 16px;
         font-weight: 600;
         color: $purple-F4;
-        text-transform: uppercase;
         border: 1px solid $purple-F4;
         border-radius: 20px;
         padding: 4px 10px;
@@ -312,7 +311,7 @@
           p {
             font-weight: 700;
             font-size: 26px;
-            line-height: 130%;
+            line-height: 34px;
             color: $grey-4C;
             @media screen and (max-width: 900px) {
               font-size: 24px;
@@ -359,8 +358,12 @@
           line-height: 140%;
           color: $grey-4C;
           text-align: center;
+          font-family: $Pretend-medium;
           @media screen and (max-width: 900px) {
             font-size: 24px;
+          }
+          span{
+            font-family: $Pretend-bold;
           }
         }
       }

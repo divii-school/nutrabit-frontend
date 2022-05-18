@@ -241,7 +241,7 @@ export default {
         this.phoneNumber = data.data[0].mobile;
         this.address = data.data[0].address;
         this.userID = this.common.state.userId;
-        this.Detailaddress = data.data[0].address;
+        this.Detailaddress = data.data[0].detail_address;
 
         // this.checkName = data.data[0].distribution_medium;
         // console.log("this.checkName",this.checkName);
@@ -515,6 +515,7 @@ export default {
             this.email,
             this.phoneNumber,
             this.address,
+            this.Detailaddress,
             checkboxName
           )
           .then((res) => {

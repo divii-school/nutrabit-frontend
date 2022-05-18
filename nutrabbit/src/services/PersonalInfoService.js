@@ -14,7 +14,7 @@ export default class PersonalInfoService {
       }).then((res) => res).catch((err) => err);
   }
 
-  async updatePersonalInfo(userID, name, password, confirmPassword, email, phoneNumber, address, checkboxName) {
+  async updatePersonalInfo(userID, name, password, confirmPassword, email, phoneNumber, address, Detailaddress, checkboxName) {
     return await axios.post(`/profile/personal_information/update`, {
       userID: userID,
       name: name,
@@ -23,6 +23,7 @@ export default class PersonalInfoService {
       email:email,
       mobile: phoneNumber,
       address: address,
+      detail_address: Detailaddress,
       distribution_medium: checkboxName,   
     }).then((res) => res);
   }
