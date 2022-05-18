@@ -48,7 +48,7 @@
           font-size: 30px;
           line-height: 100%;
           color: $green-68;
-
+          font-family: $Pretend-bold;
           @media screen and (max-width: 640px) {
             font-size: 30px;
             line-height: 30px;
@@ -69,6 +69,10 @@
           font-size: 14px;
           padding: 20px 0px;
           font-weight: 600;
+        }
+        .title{
+          font-weight: 400;
+          font-family: $default-font;
         }
       }
 
@@ -118,8 +122,8 @@
                 font-size: 18px;
                 line-height: 22px;
                 color: $black-33;
-                font-weight: 500;
-                font-family: $Pretend-medium;
+                font-weight: 400;
+                font-family: $default-font;
                 @media screen and (max-width: 640px) {
                   overflow: hidden;
                   white-space: nowrap;
