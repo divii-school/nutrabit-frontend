@@ -266,6 +266,12 @@
           }
         }
       }
+      &.about-us-wrap{
+        margin: 205px 0 160px;
+        @media screen and (max-width: 768px) {
+         margin: 102px 0 75px
+        }
+      }
     }
     .sample-choice {
       .btn-small-solid {

@@ -312,7 +312,7 @@
           p {
             font-weight: 700;
             font-size: 26px;
-            line-height: 130%;
+            line-height: 34px;
             color: $grey-4C;
             @media screen and (max-width: 900px) {
               font-size: 24px;
@@ -359,8 +359,12 @@
           line-height: 140%;
           color: $grey-4C;
           text-align: center;
+          font-family: $Pretend-medium;
           @media screen and (max-width: 900px) {
             font-size: 24px;
+          }
+          span{
+            font-family: $Pretend-bold;
           }
         }
       }
