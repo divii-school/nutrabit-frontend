@@ -37,7 +37,7 @@
                 <div class="text-box">
                   <!-- <p>I’m concerned about minimum
                     quantity and high cost.</p> -->
-                    <p>{{ $t("aboutus.recommended.rule3") }}</p>
+                    <p v-html="$t('aboutus.recommended.rule3')"></p>
                 </div>
               </div>
             </div>

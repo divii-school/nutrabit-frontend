@@ -455,10 +455,10 @@
         "recommended": {
             "title": "Recommend to these people!",
             "rule1": "I don’t know <span class='green-text'>how to start!</span>.",
-            "rule2": "I need <span class='green-text'>professional support </span> because there are too many prohibitions like pharmaceuticals, complicated approval process from public organization!",
+            "rule2": "I need <span class='green-text'>professional support </span><br/> because there are too many<br/> prohibitions<br/> like pharmaceuticals,<br/> complicated approval process<br/> from public organization!",
             "rule2_1": "professional support",
             "rule2_2": "because there are too many prohibitions like pharmaceuticals, complicated approval process from public organization!",
-            "rule3": "I’m concerned about minimum quantity and high cost.",
+            "rule3": "I’m concerned about<br/> minimum quantity and high cost.",
             "subtitle": "Nutri3.3 provides A-Z full service in the manufacturing process.",
             "content1": "It is a",
             "content2": "One Step Nutrition Platform."
