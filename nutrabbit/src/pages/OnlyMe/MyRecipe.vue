@@ -13,7 +13,7 @@
                 <h2>{{ $t("onlyme.title.RecommendedBlending") }}</h2>
               </div>
             </div>
-            <div class="product-list-wrap">
+            <div class="product-list-wrap" v-if="recommendedBlendingData.length > 0">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
                   <button
@@ -52,6 +52,9 @@
                 </button>
               </div>
             </div>
+            <div class="no-result-found text-center" v-else>
+                <span>{{ $t('footer.no_result') }}</span>
+              </div>
           </div>
         </div>
         <div class="choice-selection-item-wrap">
@@ -61,7 +64,7 @@
                 <h2>{{ $t("onlyme.title.MyChoice") }}</h2>
               </div>
             </div>
-            <div class="product-list-wrap">
+            <div class="product-list-wrap" v-if="myChoiceData.length > 0">
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
                   <button class="deleteBtn" @click="deleteRecipeItemChoice">
@@ -70,7 +73,7 @@
                   </button>
                 </li>
               </ul>
-              <ul class="raw-material-list">
+              <ul class="raw-material-list" >
                 <li v-for="(item, index) of myChoiceData" :key="index">
                   <ProductListRecipe
                     :item="item"
@@ -96,6 +99,9 @@
                 </button>
               </div>
             </div>
+            <div class="no-result-found text-center" v-else>
+                <span>{{ $t('footer.no_result') }}</span>
+              </div>
           </div>
         </div>
       </div>

@@ -153,7 +153,6 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-weight: normal;
 
   &.error {
     color: $red-3 !important;
@@ -228,7 +227,7 @@ textarea {
   height: 24px;
   width: 24px;
   background-color: $white-1;
-  border-radius: 0;
+  border-radius: 1px;
   border: 1px solid $grey-CF;
 
   &:after {

@@ -3,7 +3,7 @@
     <div class="main-slider">
       <div class="main-page-body">
         <div class="container-medium">
-          <div class="nutri-choice theme-green">
+          <div class="nutri-choice theme-green about-us-wrap">
             <span class="my-choice-title-top">Nutri 3.3</span>
             <p class="title text-center">{{ $t("aboutus.title.title") }}</p>
             <h2 class="nutri-choice-heading text-center">
@@ -20,7 +20,7 @@
              <div class="row-type ">
                   <div class="num">1</div>
                   <figure><img src="~@/assets/images/about1.png"></figure>
-                  <div class="text-box"><p><span class="green-text">{{ $t("aboutus.recommended.rule1") }}</span> {{ $t("aboutus.recommended.rule1_1") }}</p></div>
+                  <div class="text-box"><p v-html="$t('aboutus.recommended.rule1')"></p></div>
                 </div>
               <div class="row-type">
                 <div class="num">2</div>
@@ -28,8 +28,7 @@
                 <div class="text-box">
                   <!-- <p><span class="black-text">I need</span> <span class="green-text">professional support</span> because there are too many prohibitions
                     like pharmaceuticals, complicated approval process from public organization!</p> -->
-                    <p>{{ $t("aboutus.recommended.rule2") }}
-                      <span class="green-text">{{ $t("aboutus.recommended.rule2_1") }}</span>{{ $t("aboutus.recommended.rule2_2") }}</p>
+                    <p v-html="$t('aboutus.recommended.rule2')"></p>
                 </div>
               </div>
               <div class="row-type">
