@@ -5,7 +5,7 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
@@ -22,13 +22,13 @@
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.appname') }}</label>
                         
-                        <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" :placeholder="$t('Inquiry.list.appname')" />
+                        <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" placeholder="유저명 입력" />
                     </div>
                     <div class="p-field p-col-12 p-md-4">
-                        <label for="type">{{ $t('Inquiry.list.status') }}</label>
+                        <label for="type">상태</label>
                         
                       
-                        <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" :placeholder="$t('Inquiry.list.status')" />
+                        <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" placeholder="선택" />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
@@ -126,16 +126,6 @@
                                 </template>
                             </Column>
                             <Column
-                                :header="$t('Inquiry.list.inqurydate')"
-                               
-                            >
-                                <template #body="{ data }">
-                                    <span class="p-column-title">Registration Date</span>
-                                  
-                                    {{ dateformat(data.createdDate) }}
-                                </template>
-                            </Column>
-                            <Column
                                 field="Exposure"
                                 :header="$t('Inquiry.list.status')"
                                
@@ -147,6 +137,17 @@
                                   
                                 </template>
                             </Column>
+                            <Column
+                                :header="$t('Inquiry.list.inqurydate')"
+                               
+                            >
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Registration Date</span>
+                                  
+                                    {{ dateformat(data.createdDate) }}
+                                </template>
+                            </Column>
+                            
 
                             <Column :header="$t('Inquiry.list.Action')">
                                 <template #body="{ data }">

@@ -11,7 +11,7 @@
                             <InputText
                                 id="googlurl"
                                 type="text"
-                                placeholder="검색어 입력"
+                                placeholder="제목입력"
                                 v-model="title"
                                  @keyup="resetdata"
                             />
@@ -47,7 +47,7 @@
                         <div>
                             <router-link to="/add-notice">
                                 <Button
-                                    :label="$t('Notice.addnew_notice')"
+                                    label="추가"
                                     icon="pi pi-plus"
                                     iconPos="left"
                                     class="p-button p-button-sm p-mr-2 p-mb-2"

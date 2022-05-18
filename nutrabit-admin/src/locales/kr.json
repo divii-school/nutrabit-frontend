@@ -599,14 +599,14 @@
 "Inquiry": {
   "list": {
     "header": "1:1 문의 목록",
-    "appname":"신청자명/업체명",
+    "appname":"신청자명 / 업체명",
     "slNo": "#",
     "title": "제목",
     "QuestionType": "문의 타입",
     "inqurydate":"문의 날짜",
     "Reopenby":"답변자",
-    "status":"지위",
-    "Action": "기능",
+    "status":"상태",
+    "Action": "동작",
     "cancel":"취소",
     "confirm":"확인",
     "Blending":"제목",
@@ -1078,8 +1078,8 @@
   "Edit":{
     "Editheader":"nutri 3.3 제품 수정",
     "EditNutri3-name":"nutri 3.3 제품명",
-    "EditNutri3-name3":"nutri 3.3 제품명(KO)",
-    "EditNutri3-name4":"nutri 3.3 제품명(EN)",
+    "EditNutri3-name3":"nutri 3.3 제품명 (KO)",
+    "EditNutri3-name4":"nutri 3.3 제품명 (EN)",
     "EditCategory":"카테고리",
     "EditMainRaw1":"주요 원료",
     "EditPiltype1":"정제선택",

@@ -11,12 +11,12 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Blending') }}</label>
                            
-                            <InputText id="googlurl" type="text" placeholder="검색 혼합 이름" v-model="name" @keyup="resetdata"/>
+                            <InputText id="googlurl" type="text" placeholder="혼합 이름" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Tag') }}</label>
                             
-                           <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" :placeholder="$t('Nutri3.list.Tag')" />
+                           <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" placeholder="선택하다" />
                         </div>
                     
                     </div>
@@ -70,14 +70,14 @@
                             {{ data.name_ko }}
                         </template>
                     </Column>
-                    <Column header="상태" >
+                    <Column header="태그" >
                         <template #body="{ data }">
                             <span class="p-column-title">Category</span>
                           
                              {{ data.tags_ko }}
                         </template>
                     </Column>
-                    <Column field="Exposure" header="동작" >
+                    <Column field="Exposure" header="상태" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
                                 
@@ -86,7 +86,7 @@
                             </template>
                         </Column>
                    
-                    <Column :header="$t('Nutri3.list.Action')">
+                    <Column header="동작">
                         <template #body="{ data }">
                             <span class="p-column-title">Balance</span>
                             <p style="display: none">{{ data.mobile }}</p>

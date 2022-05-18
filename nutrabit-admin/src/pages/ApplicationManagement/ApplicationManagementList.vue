@@ -30,7 +30,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.status') }}</label>
                            
-                            <Dropdown v-model="status_by_admin" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="$t('Application.search.status')" />
+                            <Dropdown v-model="status_by_admin" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" placeholder="선택" />
                         </div>
 
                     </div>
@@ -39,7 +39,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.product') }}</label>
                            
-                            <Dropdown v-model="goods" modelValue="productdropdownValues[0].name" :options="productdropdownValues" optionLabel="name" :placeholder="$t('Application.search.product') " />
+                            <Dropdown v-model="goods" modelValue="productdropdownValues[0].name" :options="productdropdownValues" optionLabel="name" placeholder="검색어 입력" />
                         </div>
 
                         <div class="p-field p-col-12 p-md-4">
@@ -47,7 +47,7 @@
 
                             
 
-                             <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" :placeholder="$t('Application.search.service') " />
+                             <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" placeholder="선택" />
                         </div>
                     </div>
                 </div>

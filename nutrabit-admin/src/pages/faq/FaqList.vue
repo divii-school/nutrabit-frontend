@@ -73,7 +73,7 @@
                         <template #empty>FAQ 찾을 수 없음</template>
                         <template #loading>Loading faq data. Please wait.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="순서" style="min-width: 3rem">
                             <template #body="{ data }">
                                 <span class="p-column-title">순서</span>
                                 {{ data.sl_no }}
