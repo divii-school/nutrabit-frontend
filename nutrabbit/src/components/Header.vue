@@ -9,59 +9,38 @@
           <ul class="flex">
             <li>
               <router-link v-if="token" to="/my-choice">{{
-                $t("header.myChoice")
+                  $t("header.myChoice")
               }}</router-link>
               <router-link v-else @click="accessPage()" to="">{{
-                $t("header.myChoice")
+                  $t("header.myChoice")
               }}</router-link>
             </li>
             <li>
               <router-link to="/service-intro">{{
-                $t("header.nutri")
+                  $t("header.nutri")
               }}</router-link>
             </li>
           </ul>
         </div>
         <div class="manuRight">
           <div class="search-wrap-outer">
-            <div
-              class="search-wrap"
-              :class="showMobSearch ? 'search-wrap-mob' : ''"
-            >
+            <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
-                <input
-                  type="text"
-                  :placeholder="$t('header.search')"
-                  @click="getHistory"
-                  v-model="sarchInput"
-                  v-on:keyup.enter="getSearch"
-                />
+                <input type="text" :placeholder="$t('header.search')" @click="getHistory" v-model="sarchInput"
+                  v-on:keyup.enter="getSearch" />
                 <router-link to @click="getSearch">
                   <i class="icon-search-black"></i>
                 </router-link>
               </div>
-              <div
-                class="header-search-data"
-                :class="activeSearch ? 'activeSearch' : ''"
-              >
-                <div
-                  class="search-data-inner"
-                  :class="showSearchpannel ? 'showSearchpannel' : ''"
-                >
+              <div class="header-search-data" :class="activeSearch ? 'activeSearch' : ''">
+                <div class="search-data-inner" :class="showSearchpannel ? 'showSearchpannel' : ''">
                   <template v-if="searchData.length > 0">
                     <ul>
                       <li v-for="(item, index) in searchData" :key="index">
-                        <router-link
-                          to
-                          class="search-title"
-                          @click="getSearchFromHistory(item.search_data)"
-                          >{{ item.search_data }}</router-link
-                        >
-                        <router-link
-                          to
-                          class="search-item-close"
-                          @click="deleteHistory(item.id)"
-                        >
+                        <router-link to class="search-title" @click="getSearchFromHistory(item.search_data)">{{
+                            item.search_data
+                        }}</router-link>
+                        <router-link to class="search-item-close" @click="deleteHistory(item.id)">
                           <i class="icon-close-search"></i>
                         </router-link>
                       </li>
@@ -74,27 +53,18 @@
                   </template>
                 </div>
                 <div class="delete-close">
-                  <router-link
-                    to
-                    @click="deleteAllHistory"
-                    v-if="searchData.length > 0"
-                    class="delete-history"
-                    :class="showSearchpannel ? 'showDelete' : 'hideDelete'"
-                  >
+                  <router-link to @click="deleteAllHistory" v-if="searchData.length > 0" class="delete-history"
+                    :class="showSearchpannel ? 'showDelete' : 'hideDelete'">
                     <i class="icon-delete"></i>{{ $t("header.delete") }}
                   </router-link>
                   <router-link to @click="toCloseBtn">{{
-                    $t("header.close")
+                      $t("header.close")
                   }}</router-link>
                 </div>
               </div>
             </div>
-            <router-link
-              to
-              class="mobile-search-icon"
-              :class="showMobSearch ? 'icon-show' : ''"
-              @click="showMobSearchF"
-            >
+            <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : ''"
+              @click="showMobSearchF">
               <i class="icon-search-black"></i>
             </router-link>
           </div>
@@ -107,10 +77,10 @@
                 </button>
                 <div class="dropdown-content">
                   <router-link :to="personalInfoRouterLink" class-active="active">{{
-                    $t("header.ChangePersonalInfo")
+                      $t("header.ChangePersonalInfo")
                   }}</router-link>
                   <router-link to @click="logOut()">{{
-                    $t("header.logout")
+                      $t("header.logout")
                   }}</router-link>
                 </div>
               </div>
@@ -118,18 +88,14 @@
           </template>
           <template v-else>
             <router-link to="/login" class="login-item">{{
-              $t("header.login")
+                $t("header.login")
             }}</router-link>
           </template>
 
           <div class="header-dropdown">
             <div class="lang-dropdown">
               <select v-model="$i18n.locale" class="select-dropdown">
-                <option
-                  v-for="lang in langs"
-                  :key="lang.code"
-                  :value="lang.code"
-                >
+                <option v-for="lang in langs" :key="lang.code" :value="lang.code">
                   {{ lang.name }}
                 </option>
               </select>
@@ -152,44 +118,28 @@
           </router-link>
         </div>
         <ul class="right-menu-items">
-          <li
-            v-for="(item, index) of rightMenuItem"
-            :key="index"
-            @click="rightMenuData(index)"
-            :class="activeSubmenu === index ? 'active-side-menu-heading' : ''"
-          >
+          <li v-for="(item, index) of rightMenuItem" :key="index" @click="rightMenuData(index)"
+            :class="activeSubmenu === index ? 'active-side-menu-heading' : ''">
             <div class="side-menu-heading">
               <div v-if="token && index == 0" class="after-login-wrap">
                 <div class="after-login side-menu-web-login">
-                  <router-link
-                    to
-                    :class="token ? 'login-item' : ''"
-                    @click="activeLogin = !activeLogin"
-                    >{{ userName }}
+                  <router-link to :class="token ? 'login-item' : ''" @click="activeLogin = !activeLogin">{{ userName }}
                   </router-link>
                   <i class="icon-leftArw" @click="goChangePersonalInfo"></i>
                 </div>
                 <div class="side-menu-mob-login">
                   <div class="after-login">
-                    <router-link
-                      to
-                      :class="token ? 'login-item' : ''"
-                      @click="activeLogin = !activeLogin"
-                      >{{ userName }}
+                    <router-link to :class="token ? 'login-item' : ''" @click="activeLogin = !activeLogin">{{ userName
+                    }}
                     </router-link>
                     <i class="icon-leftArw"></i>
                   </div>
-                  <div
-                    class="side-menu-logout-mob"
-                    :class="{ activeLogin: activeLogin }"
-                  >
-                    <router-link
-                      :to="personalInfoRouterLink"
-                      @click="goPersonalInfoMob"
-                      >{{ $t("header.ChangePersonalInfo") }}</router-link
-                    >
+                  <div class="side-menu-logout-mob" :class="{ activeLogin: activeLogin }">
+                    <router-link :to="personalInfoRouterLink" @click="goPersonalInfoMob">{{
+                        $t("header.ChangePersonalInfo")
+                    }}</router-link>
                     <router-link to @click="logOut()">{{
-                      $t("header.logout")
+                        $t("header.logout")
                     }}</router-link>
                   </div>
                 </div>
@@ -197,62 +147,31 @@
               <router-link to v-else @click="index == 0 ? goToLogin() : ''">
                 {{ item.mainItem }}
               </router-link>
-              <i
-                class="icon-menu-downArw"
-                :class="
-                  item.subItemData && item.subItemData.length ? '' : 'no-arrow'
-                "
-              ></i>
+              <i class="icon-menu-downArw" :class="
+                item.subItemData && item.subItemData.length ? '' : 'no-arrow'
+              "></i>
             </div>
-            <div
-              class="side-menu-list"
-              :class="activeSubmenu === index ? 'activeSubmenu' : ''"
-            >
-              <router-link
-                to
-                @click="onClickLink(item.link)"
-                v-for="(item, index2) of item.subItemData"
-                :key="index2"
-              >
-                {{ item.label }}</router-link
-              >
+            <div class="side-menu-list" :class="activeSubmenu === index ? 'activeSubmenu' : ''">
+              <router-link to @click="onClickLink(item.link)" v-for="(item, index2) of item.subItemData" :key="index2">
+                {{ item.label }}</router-link>
             </div>
           </li>
         </ul>
         <ul class="side-menu-language">
-          <li
-            v-for="lang in langs.slice().reverse()"
-            :key="lang.code"
-            @click="changeLanguage(lang.code)"
-          >
+          <li v-for="lang in langs.slice().reverse()" :key="lang.code" @click="changeLanguage(lang.code)">
             <router-link to>{{ lang.name }}</router-link>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal2"
-    :bodytext1="$t('requireModal.text1')"
-    :bodytext2="$t('requireModal.text2')"
-    :btnText1="$t('requireModal.btn1')"
-    :btnText2="$t('requireModal.btn2')"
-    link="/login"
-  />
-  <Modal
-    v-show="isLogOutModalVisible"
-    @close="closeLogOutModal"
-    @confirm="logOutConfirm"
-    :bodytext1="$t('logoutModal.text')"
-    :btnText1="$t('warningModal.btn1')"
-    :btnText2="$t('warningModal.btn2')"
-    link="/login"
-  />
-  <div
-    :class="activeSearch ? 'overlay-click-out-side' : ''"
-    @click="activeSearch = false"
-  ></div>
+  <Modal v-show="isModalVisible" @close="closeModal2" :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
+    link="/login" />
+  <Modal v-show="isLogOutModalVisible" @close="closeLogOutModal" @confirm="logOutConfirm"
+    :bodytext1="$t('logoutModal.text')" :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')"
+    link="/login" />
+  <div :class="activeSearch ? 'overlay-click-out-side' : ''" @click="activeSearch = false"></div>
 </template>
 
 <script>
@@ -261,13 +180,14 @@ import { inject } from "vue";
 import PersonalInfoService from "../services/PersonalInfoService";
 import CommonService from "../services/CommonService";
 import Modal from "./Modal.vue";
+import naver from 'naver-id-login';
 export default {
   name: "Header",
   components: {
     "vue-select": VueNextSelect,
     Modal,
   },
-  inject : ["common"],
+  inject: ["common"],
   data() {
     return {
       token: localStorage.token ? true : false,
@@ -333,12 +253,12 @@ export default {
     if (this.$i18n.locale == "kr") {
       this.common.state.SelectedLang = "KO";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
-      
+
     }
     if (this.$i18n.locale == "en") {
       this.common.state.SelectedLang = "EN";
       localStorage.setItem("selectedLang", this.common.state.SelectedLang);
-      
+
     }
   },
 
@@ -394,12 +314,32 @@ export default {
     logOutConfirm() {
       this.isLogOutModalVisible = false;
       if (this.logedInUserDetails) {
+        this.kakaoLogout();
+        this.naverLogout();
         localStorage.clear();
         this.$router.push("/login");
         this.active = false;
         this.activeLogin = !this.activeLogin;
         this.token = false;
       }
+    },
+    kakaoLogout() {
+      // alert("kakaoLogout");
+      if (!window.Kakao.Auth.getAccessToken()) {
+        console.log('Not logged in.');
+        return;
+      }
+      window.Kakao.Auth.logout(function () {
+        console.log(Kakao.Auth.getAccessToken());
+      });
+    },
+    async naverLogout() {
+      // alert("naverLogout");
+      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
+      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
+      await naver.logout(clientId, callbackUrl).then((res) => {
+        console.log('testNaverLg---', res);
+      });
     },
     closeModal2() {
       this.isModalVisible = false;
@@ -437,6 +377,7 @@ export default {
       if (this.userId) {
         this.personalInfoService.getPersonalData(this.userId).then((res) => {
           this.userDetails = res.data.data[0];
+          console.log('##Userdetails:---', this.userDetails);
         });
       }
     },

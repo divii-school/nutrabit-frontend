@@ -20,6 +20,14 @@
         i {
             margin: 6px 5px 0 0;
         }
+        &.custom-check{
+            font-weight: 400;
+            font-family: $default-font;
+            p{
+                font-weight: 400;
+                font-family: $default-font; 
+            }
+        }
     }
 
     .input-group {
@@ -33,11 +41,12 @@
                 border: 1px solid $grey-A4;
                 border-radius: 5px;
                 padding: 14px 20px;
-                color: #4C4C4C;
+                color: $black-33;
                 height: 45px;
-
+                font-family: $default-font;
                 &::placeholder {
                     color: $grey-CF;
+                    font-family: $default-font;
                 }
 
                 &.disabled {
@@ -116,7 +125,6 @@
 
     .multi-checkbox {
         @include flex-justify-between;
-
         @media screen and (max-width: 768px) {
             flex-direction: column;
             align-items: flex-start;
@@ -125,10 +133,12 @@
         .check-box-wrap {
             @media screen and (max-width: 768px) {
                 margin-top: 17px;
-
                 &:first-child {
                     margin-top: 0;
                 }
+            }
+            .custom-check{
+                font-family: $default-font;
             }
         }
     }
@@ -147,12 +157,15 @@
             line-height: 17px;
             color: $red-3;
             display: block;
+            font-family: $default-font;
+            font-weight: 400;
             // margin-top: 5px;
         }
         .check-box-wrap{
             .custom-check{
                p, a{
                 color: $red-3 !important;
+                font-family: $default-font;
                }
                 .checkmark{
                     border: 1px solid $red-3;
@@ -175,6 +188,7 @@
 
     .btn-green-outline{
         width: 109px;
+        line-height: 17px;
     }
 }
 
@@ -199,6 +213,7 @@
             }
             .custom-check{
                 p{
+                    font-family: $default-font;
                     display: block;
                     a{
                         color: $green-53;
