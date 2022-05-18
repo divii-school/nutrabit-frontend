@@ -138,7 +138,7 @@
                
 
                 <div class="p-d-flex p-jc-end" style="float: left">
-                    <Button @click="isShowing ^= true" label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"> <i class="pi pi-user-edit p-mr-2"></i> 어드민 메모 </Button>
+                    <Button @click="isShowing ^= true" label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"> <i class="pi pi-user-edit p-mr-2"></i> 답변하기 </Button>
 
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i>{{$t('button.delete')}}</Button> -->
                 </div>
@@ -162,7 +162,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col p-md-4">
                         <strong>
-                            <label for="status">{{ $t('Application.details.status') }} :</label>
+                            <label for="status">상태:</label>
                         </strong>
                         <p style="float: right; margin-right: 19%">{{ mydata.status_by_admin }}</p>
                     </div>
@@ -170,7 +170,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col p-md-4">
                         <strong>
-                            <label for="answer">{{ $t('Application.details.answer') }} :</label>
+                            <label for="answer">어드민 답변:</label>
                         </strong>
                         <p style="float: right; margin-right: 19%">{{ mydata.answer_by_admin }}</p>
                     </div>
@@ -178,7 +178,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col p-md-4">
                         <strong>
-                            <label for="memo">{{ $t('Application.details.memo') }} :</label>
+                            <label for="memo">어드민 메모:</label>
                         </strong>
                         <p style="float: right; margin-right: 19%">{{ mydata.memo_by_admin }}</p>
                     </div>
@@ -188,7 +188,7 @@
                     <router-link :to="'/app-managementedit/' + $route.params.id">
                         <Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2">
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정
                         </Button>
                     </router-link>
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i>{{$t('button.delete')}}</Button> -->

@@ -30,7 +30,7 @@
                     <label
                         for="uploadimage"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('PillType.list.uploadimage') }}:</label>
+                    >이미지:</label>
                     <div class="p-col-12 p-md-10">
                        <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + image_path" :alt="image_path" class="product-image" />

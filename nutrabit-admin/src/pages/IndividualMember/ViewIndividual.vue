@@ -6,7 +6,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('DFC.details.individualheader') }}</strong>
+                    <strong>회원 정보</strong>
                 </h4>
                 <div class="p-field p-grid">
                     <label
@@ -105,7 +105,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정
                         </Button>
                     </router-link>
                 </div>
@@ -116,7 +116,7 @@
                         class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                     >
                         <i class="pi pi-trash p-mr-2"></i>
-                        {{ $t('button.delete') }}
+                        삭제
                     </Button>
                 </div>
             </div>
@@ -130,7 +130,7 @@
         >
             <div class="p-field p-fluid">
                 <label for="username">{{ $t('Individual.list.newpassword') }}:</label>
-                <InputText id="password" type="text" v-model="new_password"  />
+                <InputText id="password" placeholder="#123Abc" type="text" v-model="new_password"  />
                 <small v-show="helptxt">{{ $t('password.help') }}</small>
                 <!-- <div class="text-redx">{{ error.new_password }}{{ errmsg }}</div> -->
             </div>

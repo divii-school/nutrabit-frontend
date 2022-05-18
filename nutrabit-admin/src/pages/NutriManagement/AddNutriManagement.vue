@@ -9,12 +9,12 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Nutri3-name') }}</label>
-                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Nutri3-name')" id="title2" v-model="name_ko"></InputText>
+                            <InputText :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text" placeholder="제품명 입력" id="title2" v-model="name_ko"></InputText>
                             <div class="text-red">{{ error.name_ko }}</div>
                         </div>
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Nutri3-name1') }}</label>
-                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Nutri3-name1')" id="title2" v-model="name_en"></InputText>
+                            <InputText :class="`${error.name_en ? 'p-invalid' : ''}`" type="text" placeholder="제품명 입력" id="title2" v-model="name_en"></InputText>
                             <div class="text-red">{{ error.name_en }}</div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Category') }}</label>
 
-                            <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" :placeholder="$t('Nutri3.Add.Category')" />
+                            <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionValue="id" optionLabel="category_name_ko" placeholder="선택" />
                             <div class="text-red">{{ error.category_id }}</div>
                         </div>
                         <div class="p-field p-col-12 p-md-3">
@@ -34,7 +34,7 @@
                                 :options="mainRawDropdownValues"
                                 v-model="select_items"
                                 name="raw_material_id"
-                                :placeholder="$t('Nutri3.Add.MainRaw')"
+                                placeholder="선택"
                                 optionLabel="material_name_ko"
                                 :filter="false"
                                 @change="selects"
@@ -47,13 +47,13 @@
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Piltype') }}</label>
 
-                            <Dropdown :class="`${error.pill_id ? 'p-invalid' : ''}`" v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Piltype')" />
+                            <Dropdown :class="`${error.pill_id ? 'p-invalid' : ''}`" v-model="pill_id" :options="pilltypeDropdownValues" optionValue="id" optionLabel="name_ko" placeholder="선택" />
                             <div class="text-red">{{ error.pill_id }}</div>
                         </div>
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Nutri3.Add.Package') }}</label>
 
-                            <Dropdown :class="`${error.package_id ? 'p-invalid' : ''}`" v-model="package_id" :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" :placeholder="$t('Nutri3.Add.Package')" />
+                            <Dropdown :class="`${error.package_id ? 'p-invalid' : ''}`" v-model="package_id" :options="packageDropdownValues" optionValue="id" optionLabel="name_ko" placeholder="선택" />
                             <div class="text-red">{{ error.package_id }}</div>
                         </div>
                     </div>
@@ -61,28 +61,28 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.AddTags(KO)') }}</label>
-                            <InputText :class="`${error.tags_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.AddTags(KO)')" id="title2" v-model="tags_ko"></InputText>
+                            <InputText :class="`${error.tags_ko ? 'p-invalid' : ''}`" type="text" placeholder="태그 이름" id="title2" v-model="tags_ko"></InputText>
                             <div class="text-red">{{ error.tags_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.AddTags(EN)') }}</label>
-                            <InputText :class="`${error.tags_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.AddTags(EN)')" id="title2" v-model="tags_en"></InputText>
+                            <InputText :class="`${error.tags_en ? 'p-invalid' : ''}`" type="text" placeholder="태그 이름" id="title2" v-model="tags_en"></InputText>
                             <div class="text-red">{{ error.tags_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(KO)') }}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Description(KO)')" id="title2" v-model="description_ko"></Textarea>
+                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" placeholder="설명" id="title2" v-model="description_ko"></Textarea>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(EN)') }}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Nutri3.Add.Description(EN)')" id="title2" v-model="description_en"></Textarea>
+                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" placeholder="설명" id="title2" v-model="description_en"></Textarea>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -112,14 +112,18 @@
                             <div :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChangethum" multiple />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <input type="file" class="select-file" v-on:change="onFileChangethum"  name="demo[]" multiple />
+                                
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
+                            
                             <div class="text-red">{{ error.addthumnail }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
+
+                
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
@@ -130,7 +134,7 @@
                                 <span v-if="!newthumnail">파일 선택</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.newthumnail }}</div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -173,11 +177,13 @@ import { useRoute } from 'vue-router';
 import NutriManagementService from '../../service/API/NutriManagementService';
 import validateAddNutri from '../../validations/NutriManagement/validateAddNutri';
 
+
 export default {
     name: 'AddNutriManagement',
 
     data() {
         return {
+          
             value12: '',
             render1: false,
             render2: false,
@@ -198,7 +204,7 @@ export default {
             selectedItems: [],
             Multiselect: '',
             filesExtensions: '',
-
+            demo:[],
             name_ko: '',
             name_en: '',
             description_ko: '',
@@ -308,11 +314,11 @@ export default {
             console.log(this.detail);
         },
         onFileChangethum(e) {
+            console.log(e);
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.filesaddthumnail = files[0];
-            if (!files.length) return;
-            this.filesaddthumnail = files[0];
+           
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.filesaddthumnail.name)) {
                 this.render3 = true;

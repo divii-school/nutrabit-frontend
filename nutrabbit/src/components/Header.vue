@@ -222,6 +222,7 @@ export default {
         },
       ],
       // SearchHistoryTitle: [],
+      isPlatMobile: localStorage.getItem("isMobile") === "true",
     };
   },
   setup() {
@@ -317,7 +318,8 @@ export default {
         this.kakaoLogout();
         this.naverLogout();
         localStorage.clear();
-        this.$router.push("/login");
+        if(this.isPlatMobile)
+        this.$router.push({name: 'Login'});
         this.active = false;
         this.activeLogin = !this.activeLogin;
         this.token = false;

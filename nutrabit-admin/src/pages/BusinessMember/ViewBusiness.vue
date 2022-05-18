@@ -111,7 +111,7 @@
                     <label
                         for="createdDate"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Business.list.RegistrationDate') }}:</label>
+                    >등록 날짜 및 시간:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.createdDate }}</p>
                     </div>
@@ -125,7 +125,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정
                         </Button>
                     </router-link>
                 </div>
@@ -150,7 +150,7 @@
         >
             <div class="p-field p-fluid">
                 <label for="username">{{ $t('Individual.list.newpassword') }}:</label>
-                <InputText id="password" type="text" v-model="new_password" />
+                <InputText id="password" placeholder="#123Abc" type="text" v-model="new_password" />
                 <small v-show="helptxt">{{ $t('password.help') }}</small>
                 <!-- <div class="text-redx">{{ error.new_password }}{{ errmsg }}</div> -->
             </div>
