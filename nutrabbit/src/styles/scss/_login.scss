@@ -30,6 +30,9 @@
         option {
           color: $grey-4C;
         }
+        &:focus{
+          outline: none;
+        }
       }
       .form-group{
           margin-top: 20px !important;
