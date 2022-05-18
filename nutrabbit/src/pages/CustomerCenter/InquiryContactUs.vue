@@ -15,7 +15,7 @@
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
                     <select v-model="selected">
-                      <option value="" disabled hidden>
+                      <option value="" disabled selected>
                         {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
                       <option

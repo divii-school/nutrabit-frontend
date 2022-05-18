@@ -379,7 +379,7 @@
             "Upload": "File Upload"
         },
         "placeholder": {
-            "InquirySubject": "Please inquire about service.",
+            "InquirySubject": "Choose the subject of your inquiry",
             "InquiryDetails": "Please enter your inquiry details."
         },
         "button": {
