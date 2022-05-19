@@ -233,7 +233,7 @@
       @media screen and (max-width: 640px) {
         padding: 30px 35px 30px 72px;
         font-size: 18px;
-        line-height: 22px;
+        line-height: 150%;
       }
     }
     .accBody {
@@ -268,8 +268,8 @@
         content: "A";
         font-size: 40px;
         line-height: 48px;
-        font-weight: 700;
-        font-family: $Pretend-bold;
+        font-weight: 600;
+        font-family: $Pretend-semibold;
       }
     }
   }
