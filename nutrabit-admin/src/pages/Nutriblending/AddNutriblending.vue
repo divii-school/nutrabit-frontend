@@ -363,7 +363,7 @@ export default {
             if (!files.length) return;
             this.file = files[0];
             if(files.length > 5 ){
-                console.log("please select 5 image");
+                 alert("5 이미지 선택");
                 return;
             } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -388,7 +388,7 @@ export default {
             if (!files.length) return;
             this.files = files[0];
             if(files.length > 5 ){
-                console.log("please select 5 image");
+                 alert("5 이미지 선택");
                 return;
             } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -398,8 +398,8 @@ export default {
             } else {
                 this.render2 = false;
                 this.similar = this.files.name;
-                 Array.from(files).forEach(element => {
-               this.formData.append('similar_image', element)
+                 Array.from(files).forEach(element1 => {
+               this.formData.append('similar_image', element1)
                 
                 
             });

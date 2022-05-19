@@ -320,7 +320,7 @@ export default {
             this.filesaddthumnail = files[0];
             console.log(files.length)
             if(files.length > 5 ){
-                console.log("please select 5 image");
+                alert("5 이미지 선택");
                 return;
             } 
             // let productimg = []

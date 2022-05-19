@@ -375,7 +375,7 @@ export default {
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
             if(files.length > 5 ){
-                console.log("please select 5 image");
+                 alert("5 이미지 선택");
                 return;
             } 
             if (!allowedExtensions.exec(this.file.name)) {

@@ -462,7 +462,7 @@ export default {
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
              if(files.length > 5 ){
-                console.log("please select 5 image");
+                 alert("5 이미지 선택");
                 return;
             } 
             if (!allowedExtensions.exec(this.file.name)) {
@@ -488,7 +488,7 @@ export default {
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
              if(files.length > 5 ){
-                console.log("please select 5 image");
+                 alert("5 이미지 선택");
                 return;
             } 
             if (!allowedExtensions.exec(this.file.name)) {
@@ -497,8 +497,8 @@ export default {
             } else {
                 this.render2 = false;
                 this.filesNames = this.file.name;
-                Array.from(files).forEach(element => {
-               this.formData.append('raw_material_img', element)
+                Array.from(files).forEach(element1 => {
+               this.formData.append('raw_material_img', element1)
                 
                 
             });
