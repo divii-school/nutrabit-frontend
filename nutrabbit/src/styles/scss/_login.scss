@@ -167,12 +167,13 @@
           margin-top: 40px;
         }
         .form-group{
-          &.error{
-            margin-bottom: -19px;
+          position: relative;
+          .error-msg{
+            position: absolute;
           }
           &:last-child{
-            &.error{
-              margin: 0;
+            .error-msg{
+              position: relative;
             }
           }
         }
