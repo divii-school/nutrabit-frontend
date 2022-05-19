@@ -73,7 +73,7 @@
                             @click="open"
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                             style=" background: white;border: 1px solid #0A0A0A;color: #000000; margin-left: 1%;"
-                        >{{ $t('Change Password') }}</a>
+                        >{{ $t('비밀번호 재설정') }}</a>
                     </div>
                 </div>
 

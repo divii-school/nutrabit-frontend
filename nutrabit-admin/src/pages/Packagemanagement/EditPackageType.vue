@@ -25,7 +25,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('PackageType.Edit.image') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>

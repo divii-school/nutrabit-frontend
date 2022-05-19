@@ -223,6 +223,7 @@ export default {
       ],
       // SearchHistoryTitle: [],
       isPlatMobile: localStorage.getItem("isMobile") === "true",
+      isAppaleId: localStorage.getItem("isiPhone") === "true",
     };
   },
   setup() {
@@ -318,8 +319,14 @@ export default {
         this.kakaoLogout();
         this.naverLogout();
         localStorage.clear();
-        if(this.isPlatMobile)
-        this.$router.push({name: 'Login'});
+        // if(this.isPlatMobile){
+        //   this.$router.push("/login?mobile=true");
+        // } else if(this.isAppaleId) {
+        //   this.$router.push("/login?mobile=true&isiPhone=true");
+        // } else {
+        //   this.$router.push({name: 'Login'});
+        // }
+        this.$router.push({ name: 'Login' });
         this.active = false;
         this.activeLogin = !this.activeLogin;
         this.token = false;
@@ -368,7 +375,7 @@ export default {
       }
     },
     goToLogin() {
-      this.$router.push("/login");
+      this.$router.push({ name: "Login" });
       this.active = false;
     },
     sideMenuOpen() {
