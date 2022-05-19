@@ -213,6 +213,7 @@
         "privacy": "Privacy Policy",
         "total": "Total",
         "result": "result",
+        "number_text":"",
         "no_result": "No results were found for your search."
     },
     "header": {

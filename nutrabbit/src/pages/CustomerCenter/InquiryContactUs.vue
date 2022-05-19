@@ -11,7 +11,7 @@
           >
             <div class="individuals-form">
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Subject") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Subject") }}</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
                     <select v-model="selected" required>
@@ -30,25 +30,25 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Details") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Details") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <textarea
                       class="form-control inquiry-textarea"
                       :placeholder="$t('customer.placeholder.InquiryDetails')"
-                      v-model="InqDesc"
+                      v-model="InqDesc" required
                     ></textarea>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Upload") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Upload") }}</label>
                 <div class="input-group">
                   <div class="file-input">
                     <input
                       type="file"
                       class="select-file"
-                      v-on:change="onFileChange"
+                      v-on:change="onFileChange" required
                     />
                     <label for="file">
                       {{ $t("customer.inquiryLabel.Upload") }}
