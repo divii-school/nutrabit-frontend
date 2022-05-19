@@ -13,18 +13,18 @@ const personalInfoValidation = (data) => {
     errors.name = t('common.Error.EnterName');
   }
 
-  if (validator.isEmpty(password)) {
-    errors.password = t('common.Error.PasswordFormat');
-}
-else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-    errors.password = t('common.Error.PasswordFormat');
-}
-if (validator.isEmpty(confirmPassword)) {
-    errors.confirmPassword = t('common.Error.ConfirmPassword');
-}
-if (!validator.equals(password, confirmPassword)) {
-    errors.confirmPassword = t('common.Error.checkPassword');
-}
+  if(!validator.isEmpty(password)) {
+    if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
+      errors.password = t('common.Error.PasswordFormat');
+    }
+    if (validator.isEmpty(confirmPassword)) {
+      errors.confirmPassword = t('common.Error.ConfirmPassword');
+    }
+    if (!validator.equals(password, confirmPassword)) {
+        errors.confirmPassword = t('common.Error.checkPassword');
+    }
+  }
+  
   if (validator.isEmpty(phoneNumber)) {
     errors.phoneNumber = t('common.Error.EnterPhone');
   }else if(!validator.isNumeric(phoneNumber)){
