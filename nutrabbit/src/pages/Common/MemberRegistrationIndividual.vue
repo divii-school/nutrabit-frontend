@@ -124,7 +124,7 @@
                 }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-              <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
+              <!-- <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -133,8 +133,8 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
-              </div>
-              <div class="form-group" :class="error.address || error.detsilAddress ? 'error' : ''">
+              </div> -->
+              <!-- <div class="form-group" :class="error.address || error.detsilAddress ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
@@ -144,13 +144,13 @@
                   <button class="btn-green-outline" @click="getAddress">
                     {{ $t("button.SearchAddress") }}
                   </button>
-                </div>
+                </div> -->
                 <!-- postcodeWrap modal -->
-                <div id="postcodeWrap">
+                <!-- <div id="postcodeWrap">
                   <div id="addressLayer"></div>
-                </div>
+                </div> -->
                 <!-- postcodeWrap modal -->
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" :placeholder="
                       $t('common.placeholder.EnterDetailedAddress')
@@ -158,7 +158,7 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label for=""> {{ $t("common.label.FindUs") }}</label>
                 <div class="multi-checkbox">
