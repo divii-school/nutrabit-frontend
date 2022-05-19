@@ -5,6 +5,7 @@
   @media screen and (max-width: 640px) {
     margin: 40px 0 30px;
   }
+
   &:after {
     position: absolute;
     background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
@@ -35,6 +36,17 @@
     }
   }
 
+  &.sampleMaking-before-diff{
+    &::after{
+      background: url(@/assets/icons/sample_graphics.svg) no-repeat top left;
+
+      @media screen and (max-width: 640px) {
+        background: url(@/assets/icons/sample_graphics_mob.svg) no-repeat top
+          left;
+      }
+    }
+  }
+
   &.nutriBlend {
     &::after {
       background-size: auto 74px;
@@ -56,6 +68,7 @@
   &.sampleMarketing {
     h4 {
       font-size: 40px;
+      line-height: 48px;
 
       @media screen and (max-width: 640px) {
         font-size: 30px;
@@ -74,10 +87,11 @@
         p {
           font-size: 20px;
           color: $black-4C;
-          line-height: 150%;
+          line-height: 130%;
 
           @media screen and (max-width: 640px) {
             margin-bottom: 77px;
+            line-height: 150%;
           }
         }
       }
@@ -87,6 +101,8 @@
       margin: 0px;
       border: 0px;
       padding: 0px;
+      font-family: $default-font;
+      font-weight: 400;
 
       @media screen and (max-width: 640px) {
         font-size: 12px;
@@ -231,7 +247,7 @@
       @media screen and (max-width: 640px) {
         padding: 30px 35px 30px 72px;
         font-size: 18px;
-        line-height: 22px;
+        line-height: 150%;
       }
     }
     .accBody {
@@ -266,8 +282,8 @@
         content: "A";
         font-size: 40px;
         line-height: 48px;
-        font-weight: 700;
-        font-family: $Pretend-bold;
+        font-weight: 600;
+        font-family: $Pretend-semibold;
       }
     }
   }
