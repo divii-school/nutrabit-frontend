@@ -11,24 +11,26 @@
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
                       
-                        <InputText
-                            id="googlurl"
-                            type="text"
-                            placeholder="제목 입력"
-                            v-model="title"
-                            @keyup="resetdata"
-                        />
+                        <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력" />
+                        
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.appname') }}</label>
+                         <InputText
+                            id="googlurl"
+                            type="text"
+                            placeholder="유저명 입력"
+                            v-model="name"
+                            @keyup="resetdata"
+                        />
                         
-                        <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" placeholder="유저명 입력" />
+                        <!-- <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" placeholder="유저명 입력" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">상태</label>
                         
-                      
-                        <Dropdown v-model="status"  :options="statusDropdownValues"  optionLabel="status" placeholder="선택" />
+                      <Dropdown v-model="status" modelValue="statusDropdownValues[0].status" :options="statusDropdownValues" optionLabel="name" placeholder="선택" />
+                        
                     </div>
                 </div>
                 <div class="p-formgrid p-grid p-mb-3">
@@ -133,7 +135,7 @@
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
                                    
-                                    {{ data.status }}
+                                    {{ $t(data.status) }}
                                   
                                 </template>
                             </Column>
@@ -155,7 +157,8 @@
                                     <p style="display: none">{{ data.mobile }}</p>
                                     <div style="display: flex">
                                        
-                                        <router-link :to="'/reply-inquiry/' + data.id">
+                                        <router-link :to="'/reply-inquiry/' + data.id" 
+                                        >
                                             <Button
                                                 label="help"
                                                 class="p-button-outlined p-button-help p-mr-2 p-mb-2"
@@ -238,14 +241,16 @@ export default {
             sortOrder: '',
             createdDate: '',
             business_name: '',
+            title_ko:'',
             title: '',
             type_id: '',
             repliedBy: '',
             sl_no:'',
             dropdownValue: null,
             dropdownValues: '',
+            statusDropdownValues: [{ name: '답변', value: 'answer' }, { name: '미답변', value: 'unanswered' }],
             statusDropdownValue: null,
-            statusDropdownValues: '',
+           
             businessDropdownValues: '',
             businessDropdownValue: null,
             searchData: '',
@@ -265,7 +270,7 @@ export default {
         console.log(route.params);
         this.loading1 = true;
         this.inquiryService
-            .getInquryList(this.title,this.name,this.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+            .getInquryList(this.inquiry_id,this.title,this.name,this.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
             .then((data) => {
                 this.customer1 = data;
                 this.loading1 = false;
@@ -273,8 +278,10 @@ export default {
             })
         this.loading1 = true;
         this.inquiryService
+
             .dropdownBusiness()
             .then((data) => {
+                
                 this.businessDropdownValues = data;
                 // this.products = data;
                 this.loading1 = false;
@@ -282,17 +289,7 @@ export default {
                 console.log(this.customer1);
                 console.log(data);
             })
-        this.loading1 = true;
-        this.inquiryService
-            .dropdownStatus()
-            .then((data) => {
-                this.statusDropdownValues = data;
-                // this.products = data;
-                this.loading1 = false;
-                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                console.log(this.customer1);
-                console.log(data);
-            })
+       
 
             
             .catch((err) => {
@@ -328,7 +325,7 @@ export default {
         resetdata(){
             if (this.title === ''){
                 this.inquiryService
-                 .getInquryList(this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                 .getInquryList(this.inquiry_id,this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -341,12 +338,12 @@ export default {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.title === '' && this.name === '' && this.status === '' ) {
+            if (this.inquiry_id === '' && this.title === '' && this.name === '' && this.status === '' ) {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } 
             else {
                 this.inquiryService
-                    .getInquryList(this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .getInquryList(this.inquiry_id?.id,this.title,this.name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;

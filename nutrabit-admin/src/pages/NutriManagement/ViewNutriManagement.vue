@@ -97,7 +97,7 @@
                 <div class="p-field p-grid">
                     <label for="status" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">상태:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ status }}</p>
+                        <p>{{ $t(status) }}</p>
                     </div>
                 </div>
                 <div class="p-d-flex p-jc-end" style="float: left">

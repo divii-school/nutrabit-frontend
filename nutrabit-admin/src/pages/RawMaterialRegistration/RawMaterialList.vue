@@ -73,7 +73,7 @@
                                 </router-link>
                                 <router-link to="/addRawMaterial">
                                     <Button
-                                        :label="$t('RawMaterialadd.list.addnew_rawmaterial')"
+                                        label="새 원료 추가"
                                         icon="pi pi-plus"
                                         iconPos="left"
                                         class="p-button p-button-sm p-mr-2 p-mb-2"

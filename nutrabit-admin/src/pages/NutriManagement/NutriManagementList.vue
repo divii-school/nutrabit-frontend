@@ -43,7 +43,7 @@
                          <div>
                             
                             <router-link to="/addnutri-management">
-                                <Button :label="$t('Nutri3.list.add_nutri')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
+                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
                         </div>
                     </div>

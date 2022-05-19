@@ -5,12 +5,13 @@ export default class InquiryService {
     // async getUserList(name, email, mobile, date1, date2) {
     //     return await axios.post(`/user`, { status: 'active', name: name, email: email, mobile: mobile, startDate: date1, endDate: date2 }).then((res) => res.data.data.users);
     // }
-        async getInquryList(title,business_name,status,startDate,endDate,sortBy,sortOrder) {
+        async getInquryList(inquiry_id,name,title,status,startDate,endDate,sortBy,sortOrder) {
             return await axios
                 .post(`/admin/inquery`, {
-                    
-                    business_name:business_name,
+                    inquiry_id: inquiry_id,
+                    name:name,
                     title: title,
+                    
                     status: status,
                     // searchData: searchData,
                     startDate: startDate,
@@ -36,7 +37,8 @@ export default class InquiryService {
        
          }
         async dropdownBusiness() {
-            return await axios.post(`/admin/inquery/`, {}).then((res) => res.data.data.inquery);
+            return await axios.post(`/admin/inquery_type/`, {}).then((res) => res.data.data.inquery);
+            
         }
         async ReplyInquiry(id , replyText) {
             // console.log(ids)

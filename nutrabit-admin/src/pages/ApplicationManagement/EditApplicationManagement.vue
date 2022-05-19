@@ -190,7 +190,7 @@ export default {
         return {
             // render1: false,
             // render2: false,
-            dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
+            dropdownValues: [{ name: 'pending', code: '미답변 ' }, { name: 'completed', code: '답변 ' }],
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
             // dropdownValueType: null,

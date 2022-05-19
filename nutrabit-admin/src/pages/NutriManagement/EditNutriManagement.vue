@@ -450,7 +450,7 @@ export default {
         },
         remove_raw(id, product_sub_image) {
             console.log(id)
-            // console.log(similar_product_img)
+            console.log(product_sub_image)
             let product_sub_image_arr = product_sub_image.toString().split('/');
             let image_name = product_sub_image_arr[3];
             // console.log(similar_prod_image_arr[3])

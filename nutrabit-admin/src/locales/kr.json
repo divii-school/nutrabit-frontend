@@ -275,7 +275,7 @@
     "startDate":"날짜",
     "category": "범주",
     "name": "원료",
-    "Categories": "범주",
+    "Categories": "카테고리",
     "status": "활성화",
     "Function": "제구실",
     "editRawHeader":"원료 편집",
@@ -1113,6 +1113,13 @@
     }
   }
 },
-"active":"활동적인",
-"inactive":"비활성"
+"active":"활성",
+"inactive":"비활성",
+"pending":"미답변",
+"not_answered":"대답하지 않았다",
+"answered":"답변",
+"Reply":"댓글",
+"Get a quote":"견적",
+"Sample Request":"샘플 요청",
+"recommanded blending":"명령된 블렌딩"
 }

@@ -224,7 +224,7 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Blending.list.addstatus') }}</label>
+                            <label for="state2">상태</label>
                             <br />
                             <div :class="`${error.state ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status">
