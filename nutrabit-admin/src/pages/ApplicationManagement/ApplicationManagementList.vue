@@ -209,7 +209,7 @@ export default {
             dropdownValue: null,
             productdropdownValues: [{ name: '내 선택', value: 'my_choice' }, { name: '명령된 블렌딩', value: 'recommanded' },{ name: '뉴트리 3.3', value: 'nutri' }],
 
-            servicedropdownValues: [{ name: 'Sample Request', value: '1' }, { name: 'Get a quote', value: '2' }, { name: 'Both', value: '3' }],
+            servicedropdownValues: [{ name: '샘플 요청', value: '1' }, { name: '견적', value: '2' }, { name: 'Both', value: '3' }],
 
             calendarValue1: '',
             calendarValue2: '',
