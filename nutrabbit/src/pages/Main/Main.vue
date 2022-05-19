@@ -21,7 +21,7 @@
           <a :href="slider.link">
             <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
-            <p class="banner-title text-center">{{ slider.title }}</p>
+            <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
         </swiper-slide>
       </swiper>
