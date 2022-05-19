@@ -5,7 +5,7 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
@@ -44,49 +44,49 @@
                     <template #loading> Loading data. Please wait. </template>
 
                     <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
-                    <Column header="번호" style="min-width: 12rem">
+                    <Column header="번호" >
                         <template #body="{ data }">
                             <span class="p-column-title">#</span>
                             
                               {{ data.sl_no }}
                         </template>
                     </Column>
-                    <Column field="ReferralCode" :header="$t('Business.list.BusinessNumber')" style="min-width: 12rem">
+                    <Column field="ReferralCode" :header="$t('Business.list.BusinessNumber')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Business Number</span>
                            
                             {{ data.business_number }}
                         </template>
                     </Column>
-                    <Column :header="$t('Business.list.BusinessName')" style="min-width: 12rem">
+                    <Column :header="$t('Business.list.BusinessName')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Business Name</span>
                             
                             {{ data.business_name }}
                         </template>
                     </Column>
-                    <Column :header="$t('Business.list.Username')" style="min-width: 12rem">
+                    <Column :header="$t('Business.list.Username')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                            
                              {{ data.username }}
                         </template>
                     </Column>
-                    <Column :header="$t('Business.list.Email')" style="min-width: 12rem">
+                    <Column :header="$t('Business.list.Email')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Email</span>
                             
                             {{ data.email }}
                         </template>
                     </Column>
-                    <Column :header="$t('Business.list.ID')" style="min-width: 12rem">
+                    <Column :header="$t('Business.list.ID')" >
                         <template #body="{ data }">
                             <span class="p-column-title" style="background-color: lightblue">ID</span>
                            
                             {{ data.uuid }}
                         </template>
                     </Column>
-                    <Column :header="$t('Business.list.RegistrationDate')" style="min-width: 12rem">
+                    <Column :header="$t('Business.list.RegistrationDate')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Registration Date</span>
                            

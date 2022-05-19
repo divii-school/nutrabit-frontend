@@ -29,7 +29,7 @@
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
                             <div class="text-red">{{ error.file }}</div>
@@ -59,10 +59,10 @@
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                              <input type="radio" id="yes" value="1" name="status" v-model="expose">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
                                 
                                 <input type="radio" id="no" name="status" value="0" v-model="expose">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             
                             <div class="text-red">{{ error.state }}</div>
                         </div>
@@ -74,10 +74,10 @@
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                              <input type="radio" id="yes" value="1" name="top_10" v-model="top10" />
-                            <label for="yes">Yes</label>
+                            <label for="yes">활성</label>
 
                             <input type="radio" id="no" name="top_10" value="0" v-model="top10" />
-                            <label for="no">No</label>
+                            <label for="no">비활성</label>
 
                             <div class="text-red">{{ error.top }}</div>
                         </div>

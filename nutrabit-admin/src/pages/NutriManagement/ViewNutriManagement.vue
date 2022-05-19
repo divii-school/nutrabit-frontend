@@ -25,13 +25,13 @@
                     </div>
                 </div>
                 <div class="p-field p-grid">
-                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.MainRaw1') }}:</label>
+                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">주원료:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ material_name_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
-                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Piltype1') }}:</label>
+                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">정제:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ pillName_ko }}</p>
                     </div>
@@ -43,13 +43,13 @@
                     </div>
                 </div>
                 <div class="p-field p-grid">
-                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.AddTags1(KO)') }}:</label>
+                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">태그 (KO):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ tags_ko }}</p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
-                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.AddTags2(EN)') }}:</label>
+                    <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">태그 (EN):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ tags_en }}</p>
                     </div>
@@ -68,7 +68,7 @@
                 </div>
                 
                 <div class="p-field p-grid">
-                    <label for="thumbnail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Thumbnailimg') }}:</label>
+                    <label for="thumbnail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">썸네일 이미지:</label>
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                         <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
@@ -85,7 +85,7 @@
                 </div>
            
                 <div class="p-field p-grid">
-                    <label for="detail_image" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.productdetailimg1') }}:</label>
+                    <label for="detail_image" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">상세 페이지 이미지:</label>
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                         <div class="raw-image">
@@ -95,7 +95,7 @@
                 </div>
              
                 <div class="p-field p-grid">
-                    <label for="status" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Exposure1') }}:</label>
+                    <label for="status" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">상태:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ status }}</p>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="p-d-flex p-jc-end" style="float: left">
                    
                     <router-link :to="'/editnutri-management/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정</Button></router-link
                     >
                 </div>
                 <div class="p-d-flex p-jc-end">

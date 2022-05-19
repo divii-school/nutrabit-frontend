@@ -108,6 +108,11 @@
             "contactPerson": "Please enter the name of the person in charge",
             "UserExists": "User Already Exists",
             "EmailExists": "Email ID Already Exists"
+        },
+
+        "Modal" :{
+           "EmailVerified" : "Email verified",
+           "ID" : "Your user ID is {ID}"
         }
     },
     "button": {
@@ -167,7 +172,7 @@
             "additionalRequest": "Please write freely"
         },
         "button": {
-            "DeleteSelection": "delete selection",
+            "DeleteSelection": "Delete Selected",
             "Next": "Next",
             "Confirm": "Confirm",
             "Cancel": "Cancel",
@@ -327,7 +332,7 @@
         "heading": "Raw material storage box",
         "title": "Raw material",
         "selectAll": "Select All",
-        "delete": "delete selection",
+        "delete": "Delete selection",
         "add": "Add additional ingredients",
         "popup": "Add more ingredients of your choice.",
         "deleteModal": {
@@ -379,7 +384,7 @@
             "Upload": "File Upload"
         },
         "placeholder": {
-            "InquirySubject": "Please inquire about service.",
+            "InquirySubject": "Choose the subject of your inquiry",
             "InquiryDetails": "Please enter your inquiry details."
         },
         "button": {
@@ -424,7 +429,7 @@
             "titledesc": "Make the health functional core food sample you want in nutri 3.3!",
             "titledesc1": "It can be produced at a sampling cost of 300,000 won (VAT included) per one time.",
             "button": "Go to sample",
-            "text": "*Sample service is a paid service, and it usually takes 3 weeks for delivery after payment is completed."
+            "text": "*Sample service is a paid service, and it usually takes 2 weeks for delivery after payment is completed."
         },
         "sampleprocress": {
             "title": "Sample service process",
@@ -455,10 +460,10 @@
         "recommended": {
             "title": "Recommend to these people!",
             "rule1": "I don’t know <span class='green-text'>how to start!</span>.",
-            "rule2": "I need <span class='green-text'>professional support </span> because there are too many prohibitions like pharmaceuticals, complicated approval process from public organization!",
+            "rule2": "I need <span class='green-text'>professional support </span><br/> because there are too many<br/> prohibitions<br/> like pharmaceuticals,<br/> complicated approval process<br/> from public organization!",
             "rule2_1": "professional support",
             "rule2_2": "because there are too many prohibitions like pharmaceuticals, complicated approval process from public organization!",
-            "rule3": "I’m concerned about minimum quantity and high cost.",
+            "rule3": "I’m concerned about<br/> minimum quantity and high cost.",
             "subtitle": "Nutri3.3 provides A-Z full service in the manufacturing process.",
             "content1": "It is a",
             "content2": "One Step Nutrition Platform."
@@ -544,7 +549,7 @@
     "Package": "Package",
     "Unanswered" : "Unanswered",
     "Answered" : "Answered",
-    "Etc": "Etc",
+    "ETC": "Etc",
     "Unchecked": "Unchecked",
     "Get a quote": "Get an estimate",
     "Sample Request": "Sample Request"

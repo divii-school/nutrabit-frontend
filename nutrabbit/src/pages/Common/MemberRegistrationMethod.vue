@@ -77,7 +77,7 @@
   </div>
 </template>
 <script>
-import { inject, onMounted } from "vue";
+import { inject, onMounted, onUpdated } from "vue";
 import { useCookies } from "vue3-cookies";
 import CommonService from "../../services/CommonService";
 import naver from 'naver-id-login';
@@ -98,6 +98,9 @@ export default {
     const { cookies } = useCookies();
     const common = inject("common");
     onMounted(() => {
+      common.methods.isFromApp();
+    });
+    onUpdated(() => {
       common.methods.isFromApp();
     });
     return { cookies, common };
@@ -140,19 +143,19 @@ export default {
     sendKakoAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.kakaoLoginHandler(ftoken);
     },
     sendNaverAccessToken(token) {
       let ftoken = token;
       // console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.naverLoginHandler(ftoken);
     },
     sendAppleAccessToken(token) {
       let ftoken = token;
       console.log("ftoken:--", ftoken);
-      alert(ftoken);
+      // alert(ftoken);
       this.appleLoginHandler(ftoken);
     },
     //post login

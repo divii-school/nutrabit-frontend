@@ -8,11 +8,11 @@
                     <h5>{{ $t('RawMaterialadd.addnew_raw') }}</h5>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="type">{{ $t('RawMaterialadd.list.category') }}</label>
+                            <label for="type">카테고리</label>
 
                             <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id"
                                 :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"
-                                :placeholder="$t('Banner.placeholder.select')" />
+                                placeholder="선택" />
                             <div class="text-red">{{ error.sub_category_id }}</div>
                         </div>
                     </div>
@@ -147,13 +147,13 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.banner') }}
-                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -164,13 +164,13 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.thumbnail1') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.files }}</div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -181,13 +181,13 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.thumbnail2') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!newthumnail">파일 선택</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
@@ -198,13 +198,13 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('RawMaterialadd.list.rawdetails') }}
-                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">파일 선택</span>
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.files }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
@@ -236,11 +236,11 @@
                             <div :class="`${error.status ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status"
                                      />
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
                 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status"
                                  />
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             </div>
                             <div class="text-red">{{ error.status }}</div>
                         </div>
@@ -255,7 +255,7 @@
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('RawMaterialadd.list.Back')" icon="pi pi-replay" iconPos="left"
+                    <Button label="뒤로가기" icon="pi pi-replay" iconPos="left"
                         class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
                 </div>
             </div>

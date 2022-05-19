@@ -8,7 +8,7 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field" >
                             <label for="title2">{{$t('Faq.list.category')}}</label>
-                           <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                           <Dropdown v-model="category_id"  :options="categoryDropdownValues"  optionLabel="name_ko" optionValue="id" placeholder="All (전체)" />
                         </div>
                     </div>
                       <div class="p-grid p-formgrid p-mb-3">
@@ -47,10 +47,10 @@
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                              <input type="radio" id="yes" value="active" name="status" v-model="status">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
                                 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             
                             <div class="text-red">{{ error.state }}</div>
                         </div>
@@ -65,10 +65,10 @@
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                              <input type="radio" id="yes" value="y" name="top_10" v-model="top_10">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
                                 
                                 <input type="radio" id="no" name="top_10" value="n" v-model="top_10">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             
                             <div class="text-red">{{ error.top }}</div>
                         </div>
@@ -76,15 +76,11 @@
                 </div>
             </div>
 
-            <div class="p-d-flex p-jc-end p-ai-center"  style="float:left;">
-                <Button :label="$t('button.update')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editFaq"></Button>
+            <div class="p-d-flex p-jc-end p-ai-center"  style="float:left;margin-top: -18px;">
+                <Button label="저장" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editFaq"></Button>
+                 <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
             </div>
-            <div class="p-d-flex p-jc-end p-ai-center">
-                <div>
-                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
-                    
-                </div>
-            </div>
+            
         </form>
     </div>
 </template>

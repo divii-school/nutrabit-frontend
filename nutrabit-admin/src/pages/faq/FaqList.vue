@@ -108,7 +108,7 @@
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
                                 {{ data.status }}-->
-                                {{ data.status }}
+                                {{ $t(data.status) }}
                             </template>
                         </Column>
 
@@ -141,7 +141,7 @@
                         </Column>
                        
 
-                        <Column field="Actions" :header="$t('Faq.list.see_more')">
+                        <Column field="Actions" header="기능">
                             <template #body="{ data }">
                                 <span class="p-column-title">Actions</span>
                                 <p style="display: none">{{ data.status }}</p>

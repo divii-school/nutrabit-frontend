@@ -5,7 +5,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('RawMaterialadd.list.viewRawHeader') }}</strong>
+                    <strong>원료 정보</strong>
                 </h4>
                 <div class="p-field p-grid">
                     <label

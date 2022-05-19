@@ -11,7 +11,7 @@
 
 
                             <Dropdown :class="`${error.category_id ? 'p-invalid' : ''}`" v-model="category_id" :options="categoryDropdownValues" optionLabel="name_ko"
-                                optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                                optionValue="id" placeholder="All (전체)" />
                                 <div class="text-red">{{ error.category_id }}</div>
 
                         </div>
@@ -62,10 +62,10 @@
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                             <div :class="`${error.state ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             </div>
                             <div class="text-red">{{ error.state }}</div>
                         </div>
@@ -83,10 +83,10 @@
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                             <div :class="`${error.top_10 ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="y" name="top_10" v-model="top_10">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
 
                                 <input type="radio" id="no" name="top_10" value="n" v-model="top_10">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             </div>
                             <div class="text-red">{{ error.top_10 }}</div>
                         </div>

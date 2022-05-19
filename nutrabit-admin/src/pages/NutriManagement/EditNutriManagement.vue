@@ -10,13 +10,13 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name3') }}</label>
                         <InputText id="id" :class="`${error.name_ko ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('Nutri3.Edit.EditNutri3-name3')" v-model="name_ko" />
+                            placeholder="제품명 입력" v-model="name_ko" />
                         <div class="text-red">{{ error.name_ko }}</div>
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="id">{{ $t('Nutri3.Edit.EditNutri3-name4') }}</label>
                         <InputText id="id" :class="`${error.name_en ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('Nutri3.Edit.EditNutri3-name4')" v-model="name_en" />
+                            placeholder="제품명 입력" v-model="name_en" />
                         <div class="text-red">{{ error.name_en }}</div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                             optionLabel="category_name_ko" :placeholder="$t('Nutri3.Edit.EditCategory')" />
                     </div>
                     <div class="p-field p-col-12 p-md-3">
-                        <label for="type">{{ $t('Nutri3.Edit.EditMainRaw1') }}</label>
+                        <label for="type">주원료</label>
 
                         <MultiSelect id="multiselect" :placeholder="$t('Nutri3.Edit.EditMainRaw1')"
                             :options="mainRawDropdownValues" v-model="select_items" name="raw_material_name_ko"
@@ -89,13 +89,13 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.EditThumbnailimg') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
                             <input type="file" class="select-file" v-on:change="onFileChange" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <Button label="파일을 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -111,14 +111,14 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.Editproductsubimg1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
 
                             <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
+                            <Button label="파일을 선택" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
 
                         <!-- <FileUpload v-if="!filesNames" name="demo[]"  :multiple="true" :customUpload="true" @uploader="onFilesChange" :maxFileSize="1000000" :fileLimit="4" /> -->
@@ -142,13 +142,13 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.Editproductdetailimg1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileNames }}</span>
                             <input type="file" class="select-file" v-on:change="onFilesChanges" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <Button label="파일을 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
@@ -162,9 +162,9 @@
                         <label for="state2">{{ $t('Nutri3.Add.status') }}</label>
                         <br />
                         <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                        <label for="yes">Yes</label>
+                        <label for="yes">활성</label>
                         <input type="radio" id="no" name="status" value="inactive" v-model="status" />
-                        <label for="no">No</label>
+                        <label for="no">비활성</label>
                         <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>

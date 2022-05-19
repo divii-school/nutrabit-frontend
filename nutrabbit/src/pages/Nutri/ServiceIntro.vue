@@ -4,7 +4,7 @@
       <div class="main-page-body">
         <div class="container-medium">
           <div class="nutri-choice theme-green servIntro">
-            <span class="my-choice-title-top">Nutri 3.3</span>
+            <span class="my-choice-title-top">nutri 3.3</span>
             <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("nutri.title.heading") }}
             </h2>

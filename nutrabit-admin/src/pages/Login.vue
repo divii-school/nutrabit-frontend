@@ -5,20 +5,20 @@
             <div class="login-panel">
                 <a @click="goDashboard" class="logo">
                     <!-- <img src="assets/layout/images/site-logo.svg" alt="DA LAB" /> -->
-                    <h2 style="color: #000000;">Nutrabbit Admin</h2>
+                    <h2 style="color: #000000;">Nutrabbit</h2>
                 </a>
                 <form class="login">
-                    <h2 class="header"> Welcome Admin</h2>
-                    <p>Please sign-in to your account.</p>
+                    <h2 class="header"> 환영합니다</h2>
+                    <p>계정에 로그인하십시오.</p>
                      <div class="form-group">
-                        <h2 class="user">Username</h2>
-                        <InputText class="p-invalid" id="email" placeholder="이메일" v-model="email" />
+                        <h2 class="user">사용자 ID</h2>
+                        <InputText class="p-invalid" id="email" placeholder="사용자 ID" v-model="email" />
                         <div class="text-redx">{{ error.email }}</div>
                         <div class="text-redx">{{ email_err }}</div>
                     </div>
                     <div class="form-group">
-                        <h2 class="user">Password</h2>
-                        <input type="password" class="p-password" @keyup.enter='Login' id="password" placeholder="비밀번호" :feedback="false" v-model="password" :class="`${error.password ? 'p-invalid' : ''}`" />
+                        <h2 class="user">비밀번호</h2>
+                        <input type="password" class="p-password" @keyup.enter='Login' id="password" placeholder="***********" :feedback="false" v-model="password" :class="`${error.password ? 'p-invalid' : ''}`" />
                         <div class="text-redx">{{ error.password }}</div>
                         <div class="text-redx">{{ pass_err }}</div>
                     </div>
@@ -219,7 +219,7 @@ margin: 20px 0px
 
 .user{
     position: static;
-width: 83px;
+width: 90px;
 height: 19px;
 left: 0px;
 top: 0px;

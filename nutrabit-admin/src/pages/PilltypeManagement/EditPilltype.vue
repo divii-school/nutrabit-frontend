@@ -23,13 +23,13 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('PillType.list.uploadimage') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div class="custom-select" >
                                 <span v-if="!fileName">{{$t('button.select_file')}}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div style="float: right;">
                                 <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>

@@ -10,7 +10,7 @@
 
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Category.list.title')}}</label>
+                            <label for="title2">1차 카테고리 명 (KO)</label>
                            
                             <!-- <AutoComplete
                                 placeholder="Search"
@@ -23,30 +23,30 @@
 
                             />
  -->
-                            <AutoComplete :class="`${error.fst_category_name_ko ? 'p-invalid' : ''}`" :placeholder="$t('Category.list.title')" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
+                            <AutoComplete :class="`${error.fst_category_name_ko ? 'p-invalid' : ''}`" placeholder="1차 카테고리 명 (KO" v-model="fst_category_name_ko" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="category_name_ko" />
                               <div class="text-red">{{ error.fst_category_name_ko }}</div>
                         </div>
                         
                        
 
                         <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Category.list.url')}}</label>
+                            <label for="title2">1차 카테고리 명 (EN)</label>
                            
-                            <InputText :class="`${error.fst_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.url')" id="title2" v-model="fst_category_name_en" ></InputText>
+                            <InputText :class="`${error.fst_category_name_en ? 'p-invalid' : ''}`" type="text" placeholder="1차 카테고리 명 (EN)" id="title2" v-model="fst_category_name_en" ></InputText>
                             <div class="text-red">{{ error.fst_category_name_en }}</div>
                         </div>
                         
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                          <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Category.list.status')}}</label>
-                            <InputText :class="`${error.scnd_category_name_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.status')" id="title2" v-model="scnd_category_name_ko" ></InputText>
+                            <label for="title2">2차 카테고리 명 (KO)</label>
+                            <InputText :class="`${error.scnd_category_name_ko ? 'p-invalid' : ''}`" type="text" placeholder="2차 카테고리 명 (KO)" id="title2" v-model="scnd_category_name_ko" ></InputText>
                             <div class="text-red">{{ error.scnd_category_name_ko }}</div>
 
                         </div>
                          <div class="p-col-12 p-mb-2 p-lg-3 p-mb-lg-0 p-field">
-                            <label for="title2">{{$t('Category.list.created_dt')}}</label>
-                            <InputText :class="`${error.scnd_category_name_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Category.list.created_dt')" id="title2" v-model="scnd_category_name_en"></InputText>
+                            <label for="title2">2차 카테고리 명 (EN)</label>
+                            <InputText :class="`${error.scnd_category_name_en ? 'p-invalid' : ''}`" type="text" placeholder="2차 카테고리 명 (EN)" id="title2" v-model="scnd_category_name_en"></InputText>
                             <div class="text-red">{{ error.scnd_category_name_en }}</div>
 
                         </div>
@@ -58,14 +58,14 @@
                       <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
-                                {{ $t('RawMaterialadd.list.banner') }}
+                                2차 카테고리 썸네일
                                 <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
