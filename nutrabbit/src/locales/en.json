@@ -172,7 +172,7 @@
             "additionalRequest": "Please write freely"
         },
         "button": {
-            "DeleteSelection": "delete selection",
+            "DeleteSelection": "Delete Selected",
             "Next": "Next",
             "Confirm": "Confirm",
             "Cancel": "Cancel",
@@ -213,6 +213,7 @@
         "privacy": "Privacy Policy",
         "total": "Total",
         "result": "result",
+        "number_text":"",
         "no_result": "No results were found for your search."
     },
     "header": {
@@ -332,7 +333,7 @@
         "heading": "Raw material storage box",
         "title": "Raw material",
         "selectAll": "Select All",
-        "delete": "delete selection",
+        "delete": "Delete selection",
         "add": "Add additional ingredients",
         "popup": "Add more ingredients of your choice.",
         "deleteModal": {

@@ -8,7 +8,7 @@
             <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("sampleMaking.title.title") }}
             </h2>
-            <p class="title text-center sampleBLueAfter sample-diff">
+            <p class="title text-center sampleBLueAfter sample-diff sampleMaking-before-diff">
               {{ $t("sampleMaking.title.subtitle") }}
             </p>
             <p class="sample-desc text-center">

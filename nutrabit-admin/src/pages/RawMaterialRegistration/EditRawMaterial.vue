@@ -141,7 +141,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.banner') }}
-                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
@@ -170,7 +170,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.thumbnail1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesName">{{ $t('button.select_file') }}</span>
@@ -189,7 +189,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.thumbnail2') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
@@ -208,7 +208,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.rawdetails') }}
-                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images)(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
@@ -254,10 +254,10 @@
                         <label for="state2">{{ $t('RawMaterialadd.list.status') }}</label>
                         <br />
                         <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                        <label for="yes">Yes</label>
+                        <label for="yes">활성</label>
 
                         <input type="radio" id="no" name="status" value="inactive" v-model="status" />
-                        <label for="no">No</label>
+                        <label for="no">비활성</label>
                         <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>

@@ -130,8 +130,11 @@ export default {
       naverProfiledata: undefined,
       isPlatMobile: localStorage.getItem("isMobile") === "true",
       isAppaleId: localStorage.getItem("isiPhone") === "true",
+      isPlatMobile: this.cookies.get("isMobile") === "true",
+      isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
       globalLocale: "",
+      isTabActive: '',
     };
   },
   setup() {
@@ -160,6 +163,20 @@ export default {
     }
 
 
+    window.onfocus = function () {
+      this.isTabActive = true;
+    };
+
+    window.onblur = function () {
+      this.isTabActive = false;
+    };
+
+    // test
+    setInterval(function () {
+      console.log(this.isTabActive ? 'active' : 'inactive');
+    }, 1000);
+
+
 
     // web view get message
     window["sendKakaoLoginData"] = (res) => {
@@ -176,7 +193,8 @@ export default {
 
   updated() {
     this.globalLocale = this.$i18n.locale;
-    alert('Platform: -' + this.isPlatMobile);
+    // alert('Platform: -' + this.isPlatMobile);
+    // alert('applePlatform: -' + this.isAppaleId);
   },
 
   watch: {
@@ -453,6 +471,7 @@ export default {
           });
         },
         fail: function (err) {
+          self.loader.hide();
           alert('kakao error');
           // console.log(err);
         },

@@ -156,8 +156,8 @@
         color: $purple-F4;
         font-family: $Pretend-bold;
         @media screen and (max-width: 640px) {
-          font-size: 16px;
-          line-height: 19px;
+          font-size: 24px;
+          line-height: 150%;
         }
 
         &.sample-diff {
@@ -175,9 +175,9 @@
       .nutri-choice-heading {
         margin-top: 15px;
         position: relative;
-        font-size: 45px;
-        line-height: 130%;
-        font-family: $Pretend-semibold;
+        font-size: 60px;
+        font-weight: 700;
+        font-family: $Pretend-bold;
         color: $black-33;
         &.mt-0{
           margin-top: 0;
@@ -198,7 +198,7 @@
         }
         @media screen and (max-width: 640px) {
           // font-size: 22px;
-          line-height: 28px;
+          line-height: 130%;
         }
       }
       .desc {

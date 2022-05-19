@@ -40,6 +40,13 @@ export default {
       this.sendPushNotificationData(res);
     };
   },
+  updated() {
+    // alert('Page url:-- ' + window.location.href);
+    // alert('Navigator:==' + navigator.userAgentData.platform);
+    // alert('mobile:==' + navigator.userAgentData.mobile);
+    // console.log(navigator.userAgentData.platform);
+    // console.log(navigator.userAgentData.mobile);
+  },
   methods: {
     sendPushNotificationData(res) {
       if (res) {

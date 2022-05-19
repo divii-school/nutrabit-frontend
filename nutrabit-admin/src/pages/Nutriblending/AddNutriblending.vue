@@ -149,7 +149,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.detail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
@@ -167,7 +167,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.similar') }}
-                                <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
@@ -187,7 +187,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.addthumnail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
@@ -205,7 +205,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.newthumnail') }}
-                                <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>
@@ -228,10 +228,10 @@
                             <br />
                             <div :class="`${error.state ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status">
-                                <label for="yes">Yes</label>
+                                <label for="yes">활성</label>
 
                                 <input type="radio" id="no" name="status" value="inactive" v-model="status">
-                                <label for="no">No</label>
+                                <label for="no">비활성</label>
                             </div>
 
                             <div class="text-red">{{ error.state }}</div>
