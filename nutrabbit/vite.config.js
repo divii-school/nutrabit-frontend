@@ -30,6 +30,14 @@ export default ({ mode }) => {
 
     server: {
       port: process.env.VITE_PORT,
+      proxy: {
+        "/nutrabbit-dev/api/v1/sites/": {
+          target: "https://api-nutrabbit-dev.dvconsulting.org",
+          changeOrigin: true,
+          secure: false,
+          // rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
     },
   });
 }
