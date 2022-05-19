@@ -225,16 +225,12 @@
             &:first-child {
                 margin-top: 0;
             }
-            &.error{
-                margin-bottom: 0 !important; 
-            }
         }
     }
 
     .business-form {
         margin-top: 40px;
-        // padding-bottom: 64px;
-        padding-bottom: 40px;
+        padding-bottom: 64px;
         border-bottom: 1px solid $grey-CF;
 
         @media screen and (max-width: 768px) {
