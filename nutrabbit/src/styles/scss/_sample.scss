@@ -74,7 +74,7 @@
         p {
           font-size: 20px;
           color: $black-4C;
-          line-height: 150%;
+          line-height: 130%;
 
           @media screen and (max-width: 640px) {
             margin-bottom: 77px;
@@ -87,6 +87,8 @@
       margin: 0px;
       border: 0px;
       padding: 0px;
+      font-family: $default-font;
+      font-weight: 400;
 
       @media screen and (max-width: 640px) {
         font-size: 12px;
