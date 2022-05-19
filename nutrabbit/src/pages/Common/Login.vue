@@ -134,6 +134,7 @@ export default {
       isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
       globalLocale: "",
+      isTabActive: '',
     };
   },
   setup() {
@@ -160,6 +161,20 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
+
+
+    window.onfocus = function () {
+      this.isTabActive = true;
+    };
+
+    window.onblur = function () {
+      this.isTabActive = false;
+    };
+
+    // test
+    setInterval(function () {
+      console.log(this.isTabActive ? 'active' : 'inactive');
+    }, 1000);
 
 
 
@@ -430,40 +445,37 @@ export default {
         height: 30,
         onCancel: this.onCancel,
       });
-      try {
-        window.Kakao.Auth.login({
-          success: function (authObj) {
-            Kakao.Auth.setAccessToken(authObj.access_token);
-            Kakao.API.request({
-              url: "/v2/user/me",
-              success: function (res) {
-                self.socialRegistration(
-                  res.kakao_account.profile.nickname,
-                  res.kakao_account.profile.nickname,
-                  "12345678",
-                  res.kakao_account.email,
-                  "9999999999",
-                  "address",
-                  "detail address",
-                  "sns",
-                  authObj.access_token,
-                  "kakao"
-                );
-                setTimeout(() => {
-                  self.socialLogin(res.kakao_account.email);
-                  self.loader.hide();
-                }, 1500);
-              },
-            });
-          },
-          fail: function (err) {
-            // alert('kakao error');
-            // console.log(err);
-          },
-        });
-      } catch (error) {
-        alert(error);
-      }
+      window.Kakao.Auth.login({
+        success: function (authObj) {
+          Kakao.Auth.setAccessToken(authObj.access_token);
+          Kakao.API.request({
+            url: "/v2/user/me",
+            success: function (res) {
+              self.socialRegistration(
+                res.kakao_account.profile.nickname,
+                res.kakao_account.profile.nickname,
+                "12345678",
+                res.kakao_account.email,
+                "9999999999",
+                "address",
+                "detail address",
+                "sns",
+                authObj.access_token,
+                "kakao"
+              );
+              setTimeout(() => {
+                self.socialLogin(res.kakao_account.email);
+                self.loader.hide();
+              }, 1500);
+            },
+          });
+        },
+        fail: function (err) {
+          self.loader.hide();
+          alert('kakao error');
+          // console.log(err);
+        },
+      });
     },
 
     //socialRegistration
