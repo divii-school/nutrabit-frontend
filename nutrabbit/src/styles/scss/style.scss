@@ -664,7 +664,9 @@ textarea {
     cursor: pointer;
     transition: transform 0.2s ease-out;
     background-color: #ffffff;
-
+    @media screen and (max-width: 768px) {
+      font-family: $Pretend-medium;
+    }
     img {
       margin-left: 0px;
     }

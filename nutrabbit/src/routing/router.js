@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import Login from "../pages/Common/login.vue";
 import NaverLoginCallback from "../pages/Common/NaverLoginCallback.vue";
+import KakaoLoginCallback from "../pages/Common/kakaoLoginCallback.vue";
 import PaymentCallback from "../pages/Common/PaymentCallback.vue";
 import MemberRegistrationTypeSelection from "../pages/Common/MemberRegistrationTypeSelection.vue";
 import MemberRegistrationMethod from "../pages/Common/MemberRegistrationMethod.vue";
@@ -80,6 +81,11 @@ const routes = [
     name: "NaverLogin",
     path: "/callback/naverlogin",
     component: NaverLoginCallback,
+  },
+  {
+    name: "KakaoLogin",
+    path: "/callback/kakaologin",
+    component: KakaoLoginCallback,
   },
   {
     name: "PaymentCallback",
