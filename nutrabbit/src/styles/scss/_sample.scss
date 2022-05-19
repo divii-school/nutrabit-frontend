@@ -333,7 +333,7 @@
         line-height: 300px;
         color: $green-d0;
         width: 221px;
-        font-family: $Pretend-thin;
+        font-family: $Pretend-semibold;
         @include flex-justify-center;
         @media screen and (max-width: 900px) {
           display: none;
