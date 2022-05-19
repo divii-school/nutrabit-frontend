@@ -40,7 +40,7 @@
                                 {{ $t('PackageType.Add.addimage') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                >(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div
                                 :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
