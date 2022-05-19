@@ -90,6 +90,7 @@ import MainService from "../../services/MainService";
 import Button from "../../components/Button.vue";
 import KakaoChat from "../../components/KakaoChat.vue";
 import Modal from "../../components/Modal.vue";
+import { useCookies } from "vue3-cookies";
 export default {
   name: "Main",
   components: {
@@ -109,9 +110,12 @@ export default {
       isiPhone: false,
       imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
       isModalVisible: false,
+      isPlatMobile: this.cookies.get("isMobile") === "true",
+      isAppaleId: this.cookies.get("isiPhone") === "true",
     };
   },
   setup() {
+    const { cookies } = useCookies();
     const common = inject("common");
     onMounted(() => {
       common.methods.isFromApp();
@@ -122,6 +126,7 @@ export default {
     return {
       modules: [Pagination, Navigation, Autoplay],
       common,
+      cookies,
     };
   },
   created() {
@@ -138,6 +143,10 @@ export default {
     localStorage.removeItem("etc");
     localStorage.removeItem("storage_box");
   },
+  // updated() {
+  //   alert('Platform: -' + this.isPlatMobile);
+  //   alert('applePlatform: -' + this.isAppaleId);
+  // },
   watch: {
     "common.state.SelectedLang": function (newVal, oldVal) {
       if (

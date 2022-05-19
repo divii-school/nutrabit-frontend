@@ -1,4 +1,7 @@
 import { reactive } from "vue";
+// import VueCookies from "vue3-cookies";
+
+// const cookies = useCookies();
 
 const state = reactive({
   AppData: undefined,
@@ -19,15 +22,18 @@ const methods = {
   },
   // check if it's from APP
   isFromApp() {
+    // const cookies = VueCookies();
     var queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     var mobile = urlParams.get("mobile");
     var iphone = urlParams.get("isiPhone");
     if (mobile == 'true') {
       state.isMobile = true;
+      document.cookie = "isMobile=true";
       localStorage.setItem("isMobile", true);
       if (iphone == 'true') {
         state.isiPhone = true;
+        document.cookie = "isiPhone=true";
         localStorage.setItem("isiPhone", true);
       }
     }
