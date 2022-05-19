@@ -9,6 +9,9 @@
       padding: 50px 70px;
       form.signUp-form {
         margin-top: 0;
+        .individuals-form{
+          margin-top: 0;
+        }
       }
       .dropdown {
         padding: 0;
@@ -22,7 +25,7 @@
           color: $grey-4C;
           appearance: none;
           background: url(@/assets/images/down.png) right 16px center no-repeat;
-          
+          font-family: $default-font;
         }
         select:required:invalid {
           color: $grey-CF;
@@ -51,6 +54,7 @@
     line-height: 100%;
     margin-bottom: 40px;
     font-weight: 700;
+    font-family: $Pretend-bold;
     @media screen and (max-width: 640px) {
       padding: 0 16px;
     }
@@ -195,6 +199,10 @@
         @include flex-align-center;
         li {
             font-size: 14px;
+            a{
+              font-family: $default-font;
+              font-weight: 400;
+            }
           &:before {
             content: "I";
             margin: 0 10px;
