@@ -67,4 +67,10 @@
   &.grey-82 {
     background: $grey-82;
   }
+  &.main-page-btn{
+    line-height: 19px;
+    @media screen and (max-width: 767px){
+      line-height: 14px;
+    }
+  }
 }

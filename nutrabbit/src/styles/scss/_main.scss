@@ -48,7 +48,7 @@
       position: absolute;
       background: rgba(24, 24, 24, 0.7);
       border-radius: 50px;
-      width: 97px;
+      width: 77px;
       height: 34px;
       font-weight: 600;
       bottom: 60px;
@@ -179,6 +179,9 @@
         font-weight: 700;
         font-family: $Pretend-bold;
         color: $black-33;
+        &.main-page{
+          color: $black-18;
+        }
         &.mt-0{
           margin-top: 0;
         }
@@ -208,6 +211,9 @@
         color: $grey-66;
         margin-top: 30px;
         font-family: $Pretend-medium;
+        &.main-page-desc{
+          color: $grey-82;
+        }
         @media screen and (max-width: 640px) {
           font-size: 16px;
           line-height: 19px;
