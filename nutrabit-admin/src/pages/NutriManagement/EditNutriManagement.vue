@@ -196,6 +196,7 @@ export default {
             render2: false,
             render3: false,
             render4: false,
+            id: '',
             file: '',
             files: '',
             addthumnailfile: '',
@@ -237,6 +238,7 @@ export default {
             packageDropdownValue: null,
             formData: new FormData(),
             error: {},
+           
             isdisable: false,
             crossdisplay: true,
         };
@@ -446,14 +448,14 @@ export default {
                     });
             }
         },
-        remove_raw(id, raw_material_img) {
-            //console.log(id)
+        remove_raw(id, product_sub_image) {
+            console.log(id)
             // console.log(similar_product_img)
-            let raw_material_img_arr = raw_material_img.toString().split('/');
-            let image_name = raw_material_img_arr[3];
+            let product_sub_image_arr = product_sub_image.toString().split('/');
+            let image_name = product_sub_image_arr[3];
             // console.log(similar_prod_image_arr[3])
             if (confirm('정말 삭제하시겠습니까?')) {
-                axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id, image_name: image_name } })
+                axios({ method: 'post', url: '/admin/nutriBlending/productSubImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
                         console.log(response);
                     })

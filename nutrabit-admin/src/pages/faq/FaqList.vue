@@ -70,8 +70,8 @@
                     >
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>FAQ 찾을 수 없음</template>
-                        <template #loading>Loading faq data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                         <Column field="Sl. No." header="번호" style="min-width: 3rem">
                             <template #body="{ data }">
