@@ -391,14 +391,14 @@ export default {
     // naver login
     async loginWithNaver() {
       // alert('testNaverLg');
-      this.loader = this.$loading.show({
-        // Optional parameters
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: false,
-        width: 30,
-        height: 30,
-        onCancel: this.onCancel,
-      });
+      // this.loader = this.$loading.show({
+      //   // Optional parameters
+      //   container: this.fullPage ? null : this.$refs.formContainer,
+      //   canCancel: false,
+      //   width: 30,
+      //   height: 30,
+      //   onCancel: this.onCancel,
+      // });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
       const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
@@ -428,7 +428,7 @@ export default {
         );
         setTimeout(() => {
           self.socialLogin(res.response.email);
-          self.loader.hide();
+          // self.loader.hide();
         }, 1500);
       });
     },
@@ -437,14 +437,14 @@ export default {
     // kakao Login
     loginWithKakao() {
       const self = this;
-      this.loader = this.$loading.show({
-        // Optional parameters
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: false,
-        width: 30,
-        height: 30,
-        onCancel: this.onCancel,
-      });
+      // this.loader = this.$loading.show({
+      //   // Optional parameters
+      //   container: this.fullPage ? null : this.$refs.formContainer,
+      //   canCancel: false,
+      //   width: 30,
+      //   height: 30,
+      //   onCancel: this.onCancel,
+      // });
       window.Kakao.Auth.login({
         success: function (authObj) {
           Kakao.Auth.setAccessToken(authObj.access_token);
@@ -465,14 +465,15 @@ export default {
               );
               setTimeout(() => {
                 self.socialLogin(res.kakao_account.email);
-                self.loader.hide();
+                // self.loader.hide();
               }, 1500);
             },
           });
         },
         fail: function (err) {
-          self.loader.hide();
-          alert('kakao error');
+          this.$router.push({ name: "Login" });
+          // self.loader.hide();
+          // alert('kakao error');
           // console.log(err);
         },
       });
