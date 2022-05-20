@@ -152,6 +152,7 @@ export default {
     this.commonService = new CommonService();
   },
   mounted() {
+
     if (this.cookies) {
       const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
@@ -161,7 +162,6 @@ export default {
           (this.password = rememberUserPasswordCookie);
       }
     }
-
 
     window.onfocus = function () {
       this.isTabActive = true;
@@ -417,7 +417,7 @@ export default {
         self.socialRegistration(
           res.response.name,
           res.response.nickname,
-          "12345678",
+          "Ab12345678987654",
           res.response.email,
           "9999999999",
           "address",
@@ -440,7 +440,7 @@ export default {
       // this.loader = this.$loading.show({
       //   // Optional parameters
       //   container: this.fullPage ? null : this.$refs.formContainer,
-      //   canCancel: false,
+      //   canCancel: true,
       //   width: 30,
       //   height: 30,
       //   onCancel: this.onCancel,
@@ -454,7 +454,7 @@ export default {
               self.socialRegistration(
                 res.kakao_account.profile.nickname,
                 res.kakao_account.profile.nickname,
-                "12345678",
+                "Ab12345678987654",
                 res.kakao_account.email,
                 "9999999999",
                 "address",
@@ -466,6 +466,7 @@ export default {
               setTimeout(() => {
                 self.socialLogin(res.kakao_account.email);
                 // self.loader.hide();
+                
               }, 1500);
             },
           });
