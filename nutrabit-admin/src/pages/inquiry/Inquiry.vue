@@ -10,8 +10,11 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
+                        <Dropdown  v-model="inquiry_id"
+                                :options="businessDropdownValues" optionLabel="title_ko" optionValue="id"
+                                placeholder="유저명 입력" />
                       
-                        <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력"  @select="searchInquiry" />
+                        <!-- <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력"   optionValue="id" /> -->
                         
                     </div>
                     <div class="p-field p-col-12 p-md-4">
