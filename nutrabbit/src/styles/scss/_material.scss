@@ -21,11 +21,12 @@
                     background: $grey-9;
                     padding: 15px;
                     font-size: 16px;
-                    line-height: 110%;
-                    color: #A4A4A4;
+                    line-height: 19px;
+                    color: $grey-A4;
                     font-weight: normal;
                     text-align: center;
                     font-family: $default-font;
+                    letter-spacing: 0.02em;
                 }
             }
             td{
@@ -99,7 +100,7 @@
             padding: 14px 20px;
             border: 1px solid $grey-CF;
             border-radius: 5px;
-            
+            font-family: $default-font;
         }
         textarea{
             padding: 30px;
@@ -117,11 +118,14 @@
                 span{
                     font-size: 18px;
                     font-weight: 500;
-                    line-height: 110%;
+                    line-height: 22px;
                     color: $grey-82;
-                    margin-left: 15px;
+                    margin-left: 13px;
                     font-family: $Pretend-medium;
                 }
+                @media screen and (max-width: 768px) {
+                    margin-right: 0 !important;
+                  }
             }
         }
         ul{
@@ -199,7 +203,7 @@
             font-size: 16px;
             line-height: 16px;
             font-weight: 500;
-            font-family: $default-font;
+            font-family: $Pretend-medium;
             i{
                 margin: 0px 0 0 12px;
             }
