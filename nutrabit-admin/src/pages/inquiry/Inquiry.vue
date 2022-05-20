@@ -282,8 +282,10 @@ export default {
             if (this.inquiry_id === '' && this.name === '' && this.title === '' && this.status === '') {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                // console.log(this.inquiry_id)
                 this.inquiryService
-                    .getInquryList(this.inquiry_id?.id, this.name, this.title, this.status?.value, this.startDate, this.endDate, this.sortBy, this.sortOrder)
+            
+                    .getInquryList(this.inquiry_id, this.name, this.title, this.status?.value, this.startDate, this.endDate, this.sortBy, this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -293,6 +295,7 @@ export default {
                         this.customer1 = [];
                         this.loading1 = false;
                     });
+
             }
         },
         open() {
