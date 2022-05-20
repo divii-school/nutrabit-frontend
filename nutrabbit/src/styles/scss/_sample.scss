@@ -150,7 +150,7 @@
           margin: 15px 0;
         }
         p {
-          line-height: 150%;
+          line-height: 130%;
         }
       }
     }
@@ -305,6 +305,11 @@
         line-height: 150%;
         font-size: 30px;
         font-weight: 700;
+      }
+      &.service-intro-title{
+        @media screen and (max-width: 640px) {
+          line-height: 36px;
+        }
       }
     }
   }

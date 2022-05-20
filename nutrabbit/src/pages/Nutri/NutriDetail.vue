@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p>{{ item.description }}</p>
+            <p class="product-details-desc">{{ item.description }}</p>
             <button @click="openmodal()" class="btn-primary blue-btn-solid">
               {{ $t("nutri.nutriDetails.button") }}
             </button>
@@ -61,7 +61,7 @@
       <div class="container-medium">
         <div class="nutri-blending">
           <div class="nutri-choice design-2">
-            <h2 class="nutri-choice-heading text-center design-2">
+            <h2 class="nutri-choice-heading text-center design-2 nutri-detail-heading">
               {{ $t("nutri.nutriDetails.title") }}<br />
               {{ $t("nutri.nutriDetails.title2") }}
             </h2>

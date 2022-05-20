@@ -197,9 +197,13 @@
           margin-top: 0;
         }
         &.design-2{
+          font-family: $Pretend-semibold;
+          font-weight: 600;
+          font-size: 45px;
+          line-height: 130%;
           @media screen and (max-width: 640px) {
             font-size: 22px;
-            line-height: 28px;
+            line-height: 29px;
           }
         }
         @media screen and (max-width: 1200px) {
