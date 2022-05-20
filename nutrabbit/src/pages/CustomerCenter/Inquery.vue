@@ -59,7 +59,7 @@
                 :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{$t("customer.tag.AnswerContent")}}</h4>
-                <p>
+                <p class="ml-2">
                   {{ item.replyText }}
                 </p>
               </div>
