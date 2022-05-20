@@ -1,7 +1,7 @@
 .recomanded-blending-details {
   @include flex-start-between;
   width: 100%;
-  padding: 120px 0;
+  padding: 80px 0;
   gap: 80px;
 
   @media screen and (max-width: 1200px) {
