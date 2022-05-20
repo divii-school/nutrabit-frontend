@@ -18,7 +18,7 @@
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
-            <div class="item-left lp-2">
+            <div class="item-left ">
               <div class="item-left-inner">
                 <p class="para-category para-date">{{ dateformat(item.createdDate) }}</p>
                 <span
