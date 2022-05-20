@@ -22,15 +22,19 @@
               :modules="[Thumbs]"
               watch-slides-progress
               @swiper="setThumbsSwiper"
-              class="mySwiper2"
-              v-for="(items, index) of blending_data"
-              :key="index"
+              class="mySwiper2"  
+              v-if="detail_image"         
             >
-              <swiper-slide
-                v-for="(item, index) of items.detail_image_path"
+              <swiper-slide 
+                v-for="(item, index) of blending_image"
                 :key="index"
               >
                 <img :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
+            <swiper class="mySwiper2" v-else>
+              <swiper-slide>
+                <img src="../../assets/images/sub_place.png"/>
               </swiper-slide>
             </swiper>
           </div>
@@ -114,7 +118,7 @@
               {{ $t("myChoice.RecommendedBlending.detail.Similar_Products") }}
             </h2>
             <!-- <img src="../assets/images/suggested-product-img.png" alt="" /> -->
-            <ul class="smilar-product-img" v-if="item.similar_image_path">
+            <ul class="smilar-product-img" v-if="item.similar_image">
               <li
                 v-for="(items, index) of item.similar_image_path"
                 :key="index"
@@ -181,6 +185,7 @@ export default {
       active: false,
       globalLocale: "",
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
+      detail_image:''
     };
   },
   created() {
@@ -221,6 +226,7 @@ export default {
           if (res.data.status == 200) {
             this.blending_data = res.data.data;
             this.blending_image = res.data.data[0].detail_image_path;
+            this.detail_image = res.data.data[0].detail_image;
 
             this.thumb_image = res.data.data[0].thumbnail_1_path
               ? this.imgBaseUrl + res.data.data[0].thumbnail_1_path
