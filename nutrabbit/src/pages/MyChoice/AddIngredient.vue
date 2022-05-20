@@ -100,6 +100,7 @@
     @close="closeModalDelete"
     :bodytext1="$t('onlyme.modal.SelectedBodyText')"
     :btnText2="$t('button.Confirm')"
+    link="/add-ingredient"
   />
 </template>
 

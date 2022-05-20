@@ -66,9 +66,10 @@ body {
   max-width: 870px;
   width: 100%;
   margin: 0 auto;
-  .login-signup-inner{
+  .login-signup-inner {
     @media screen and (max-width: 900px) {
-     box-shadow: none;
+      box-shadow: none;
+      // padding: 60px 90px;
     }
   }
 }
@@ -303,10 +304,13 @@ textarea {
     font-family: $Pretend-semibold;
     font-weight: 600;
     font-size: 18px;
-    line-height: 27px;
+    line-height: 22px;
     letter-spacing: 0.01em;
     color: $black-33;
     margin-top: 20px;
+    @media screen and (max-width: 768px) {
+      line-height: 27px;
+    }
   }
 
   .recomanded-vitamin {
@@ -684,12 +688,12 @@ textarea {
     @media screen and (max-width: 640px) {
       padding: 40px 16px !important;
     }
-    form{
-      &.signUp-form{
+    form {
+      &.signUp-form {
         max-width: 100%;
-        .btn-wrap.dual-btn{
+        .btn-wrap.dual-btn {
           gap: 20px;
-          .btn-primary{
+          .btn-primary {
             width: 50%;
           }
         }
@@ -1003,7 +1007,6 @@ textarea {
         font-size: 16px;
         line-height: 110%;
         color: $green-68;
-        
       }
       p {
         font-size: 22px;
@@ -1130,17 +1133,18 @@ textarea {
   }
 }
 
-
 .swiper-backface-hidden {
-  .swiper-slide{
-      height: 830px;
+  .swiper-slide {
+    height: 830px;
     @media screen and (max-width: 640px) {
       height: 375px;
     }
-    img{
+    img {
       height: 100%;
       object-fit: cover;
     }
+
+    
   }
 }
 
@@ -1157,8 +1161,8 @@ textarea {
   }
 }
 
-#addressLayer{
-  #__daum__layer_1{
+#addressLayer {
+  #__daum__layer_1 {
     @media screen and (max-width: 768px) {
       max-width: 500px;
       width: 100% !important;
@@ -1166,7 +1170,7 @@ textarea {
   }
 }
 
-.flexRight{
+.flexRight {
   display: flex;
   flex-direction: row-reverse;
 }

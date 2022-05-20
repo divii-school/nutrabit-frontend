@@ -88,8 +88,10 @@ export default {
       loader: undefined,
       naverAuth: undefined,
       naverProfiledata: undefined,
-      isPlatMobile: localStorage.getItem("isMobile") === "true",
-      isAppaleId: localStorage.getItem("isiPhone") === "true",
+      // isPlatMobile: localStorage.getItem("isMobile") === "true",
+      // isAppaleId: localStorage.getItem("isiPhone") === "true",
+      isPlatMobile: this.cookies.get("isMobile") === "true",
+      isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
       globalLocale: "",
     };
@@ -182,7 +184,7 @@ export default {
         self.socialRegistration(
           userName,
           userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -209,7 +211,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -237,7 +239,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -259,14 +261,14 @@ export default {
     // naver login
     async loginWithNaver() {
       // alert('testNaverLg');
-      this.loader = this.$loading.show({
-        // Optional parameters
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: false,
-        width: 30,
-        height: 30,
-        onCancel: this.onCancel,
-      });
+      // this.loader = this.$loading.show({
+      //   // Optional parameters
+      //   container: this.fullPage ? null : this.$refs.formContainer,
+      //   canCancel: false,
+      //   width: 30,
+      //   height: 30,
+      //   onCancel: this.onCancel,
+      // });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
       const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
@@ -285,7 +287,7 @@ export default {
         self.socialRegistration(
           res.response.name,
           res.response.nickname,
-          "12345678",
+          "Ab12345678987654",
           res.response.email,
           "9999999999",
           "address",
@@ -296,7 +298,7 @@ export default {
         );
         setTimeout(() => {
           self.socialLogin(res.response.email);
-          self.loader.hide();
+          // self.loader.hide();
         }, 1500);
       });
     },
@@ -305,14 +307,14 @@ export default {
     // kakao Login
     loginWithKakao() {
       const self = this;
-      this.loader = this.$loading.show({
-        // Optional parameters
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: false,
-        width: 30,
-        height: 30,
-        onCancel: this.onCancel,
-      });
+      // this.loader = this.$loading.show({
+      //   // Optional parameters
+      //   container: this.fullPage ? null : this.$refs.formContainer,
+      //   canCancel: false,
+      //   width: 30,
+      //   height: 30,
+      //   onCancel: this.onCancel,
+      // });
       window.Kakao.Auth.login({
         success: function (authObj) {
           Kakao.Auth.setAccessToken(authObj.access_token);
@@ -322,7 +324,7 @@ export default {
               self.socialRegistration(
                 res.kakao_account.profile.nickname,
                 res.kakao_account.profile.nickname,
-                "12345678",
+                "Ab12345678987654",
                 res.kakao_account.email,
                 "9999999999",
                 "address",
@@ -333,7 +335,7 @@ export default {
               );
               setTimeout(() => {
                 self.socialLogin(res.kakao_account.email);
-                self.loader.hide();
+                // self.loader.hide();
               }, 1500);
             },
           });
