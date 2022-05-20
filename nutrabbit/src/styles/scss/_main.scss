@@ -70,7 +70,7 @@
         text-align: center;
         color: $white-1;
         position: relative;
-        font-family: $Pretend-medium;
+        font-family: $Pretend-semibold;
         @media screen and (max-width: 768px) {
           font-size: 10px;
           line-height: 13px;
@@ -119,6 +119,12 @@
         margin: 150px 0;
         @media screen and (max-width: 768px) {
           margin: 80px 0;
+        }
+      }
+      &.main_nutri{
+        margin: 185px 0 150px;
+        @media screen and (max-width: 768px) {
+          margin: 135px 0 120px;
         }
       }
       @include flex-justify-center;
@@ -190,6 +196,7 @@
         font-weight: 700;
         font-family: $Pretend-bold;
         color: $black-33;
+        line-height: 130%;
         &.main-page{
           color: $black-18;
         }

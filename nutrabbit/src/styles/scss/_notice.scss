@@ -123,8 +123,8 @@
                 font-size: 18px;
                 line-height: 22px;
                 color: $black-33;
-                font-weight: 400;
-                font-family: $default-font;
+                font-weight: 500;
+                font-family: $Pretend-medium;
                 @media screen and (max-width: 640px) {
                   overflow: hidden;
                   white-space: nowrap;
@@ -141,6 +141,7 @@
               line-height: 20px;
               color: $grey-A4;
               margin-left: 20px;
+              font-family: $default-font;
               @media screen and (max-width: 640px) {
                 font-size: 14px;
               }
