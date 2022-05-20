@@ -285,6 +285,9 @@
             &.mr-2 {
               margin-right: 20px;
             }
+            &.ml-2{
+              margin-left: 20px;
+            }
 
             &.grey {
               color: $grey-A4;
@@ -347,7 +350,7 @@
       }
 
       .accroCont {
-        padding: 35px 62px;
+        padding: 35px 45px 35px 15px;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
@@ -360,12 +363,13 @@
         }
 
         h4 {
-          width: 115px;
+          width: 145px;
           font-size: 16px;
           font-weight: 500;
           color: $grey-A4;
           font-family: $Pretend-medium;
           line-height: 22px;
+          text-align: center;
           @media screen and (max-width: 640px) {
             margin-bottom: 10px;
           }
@@ -375,7 +379,7 @@
           font-size: 16px;
           line-height: 140%;
           color: $black-33;
-          width: calc(100% - 115px);
+          width: calc(100% - 145px);
           font-weight: 400;
           font-family: $default-font;
           @media screen and (max-width: 640px) {
