@@ -94,7 +94,13 @@
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">status</span>
-                                {{ $t(data.status) }}
+                                <span v-if="data.expose == '1'">
+                                {{ $t('active') }}
+                                </span>
+                                <span v-else-if="data.expose == '0'">
+                                 {{ $t('inactive') }}
+                                </span>
+                                
                             </template>
                         </Column>
                         <Column
