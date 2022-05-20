@@ -1,7 +1,7 @@
 <template>
     <div class="p-grid">
         <Toast />
-        
+
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
@@ -10,47 +10,27 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
-                        <Dropdown  v-model="inquiry_id"
-                                :options="businessDropdownValues" optionLabel="title_ko" optionValue="id"
-                                placeholder="선택" />
-                      
+                        <Dropdown v-model="inquiry_id" :options="businessDropdownValues" optionLabel="title_ko" optionValue="id" placeholder="선택" />
+
                         <!-- <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력"   optionValue="id" /> -->
-                        
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.appname') }}</label>
-                         <InputText
-                            id="googlurl"
-                            type="text"
-                            placeholder="유저명 입력"
-                            v-model="name"
-                            @keyup="resetdata"
-                        />
-                        
+                        <InputText id="googlurl" type="text" placeholder="유저명 입력" v-model="name" @keyup="resetdata" />
+
                         <!-- <Dropdown v-model="name"  :options="businessDropdownValues"  optionLabel="business_name" placeholder="유저명 입력" /> -->
                     </div>
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">상태</label>
-                        
-                      <Dropdown v-model="status" modelValue="statusDropdownValues[0].status" :options="statusDropdownValues" optionLabel="name" placeholder="선택" />
-                        
+
+                        <Dropdown v-model="status" modelValue="statusDropdownValues[0].status" :options="statusDropdownValues" optionLabel="name" placeholder="선택" />
                     </div>
                 </div>
-                <div class="p-formgrid p-grid p-mb-3">
-                    
-                </div>
-                <div
-                    class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
-                >
+                <div class="p-formgrid p-grid p-mb-3"></div>
+                <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                     <div class="p-mb-4 p-mb-lg-0"></div>
                     <div>
-                        <Button
-                            :label="$t('button.search')"
-                            icon="pi pi-search"
-                            iconPos="left"
-                            class="p-button p-button-sm p-mr-2 p-mb-2"
-                            @click="searchInquiry"
-                        ></Button>
+                        <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchInquiry"></Button>
                         <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="resetUser"></Button> -->
                     </div>
                 </div>
@@ -62,33 +42,19 @@
                     <div class="p-col-12">
                         <div class="p-d-flex p-jc-between p-mb-2">
                             <h5>{{ $t('Inquiry.list.header') }}</h5>
-                            <div>
-                               
-                            </div>
+                            <div></div>
                         </div>
 
-                        <DataTable
-                            :value="customer1"
-                            :paginator="true"
-                            class="p-datatable-gridlines"
-                            :rows="5"
-                            data-key="id"
-                            :rowHover="true"
-                            :loading="loading1"
-                            :filters="filters1"
-                            responsiveLayout="scroll"
-                            style="text-align: center"
-                        >
+                        <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
                             <ConfirmDialog group="dialog" />
 
                             <template #empty>데이터가 없습니다.</template>
                             <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
-                            
-                            <Column header="번호" >
+                            <Column header="번호">
                                 <template #body="{ data }">
                                     <span class="p-column-title">SlNo</span>
-                                   
+
                                     {{ data.sl_no }}
                                 </template>
                             </Column>
@@ -105,80 +71,67 @@
                                 </template>
                             </Column> -->
 
-                            <Column
-                                :header="$t('Inquiry.list.QuestionType')"
-                                
-                            >
+                            <Column :header="$t('Inquiry.list.QuestionType')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Quetion Type</span>
-                                   
+
                                     {{ data.type_title_ko }}
                                 </template>
                             </Column>
 
-                            <Column :header="$t('Inquiry.list.appname')" >
+                            <Column :header="$t('Inquiry.list.appname')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
-                                    
+
                                     {{ data.business_name }}
                                 </template>
                             </Column>
-                            <Column :header="$t('Inquiry.list.Reopenby')" >
+                            <Column :header="$t('Inquiry.list.Reopenby')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Responded by</span>
-                                   <span v-if="data.status == 'answered'">
-                                    {{ data.repliedBy }}
+                                    <span v-if="data.status == 'answered'">
+                                        {{ data.repliedBy }}
                                     </span>
                                     <span v-else>-</span>
                                 </template>
                             </Column>
-                            <Column
-                                field="Exposure"
-                                :header="$t('Inquiry.list.status')"
-                               
-                            >
+                            <Column field="Exposure" :header="$t('Inquiry.list.status')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Exposure</span>
-                                   
+
                                     {{ $t(data.status) }}
-                                  
                                 </template>
                             </Column>
-                            <Column
-                                :header="$t('Inquiry.list.inqurydate')"
-                               
-                            >
+                            <Column :header="$t('Inquiry.list.inqurydate')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Registration Date</span>
-                                  
+
                                     {{ dateformat(data.createdDate) }}
                                 </template>
                             </Column>
-                            
 
                             <Column header="기능">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>
                                     <div style="display: flex">
-                                       <template v-if="!(data.status == 'answered')" >
                                        
+                                            <span v-if="data.status == 'not_answered'" >
+                                                <router-link :to="'/reply-inquiry/' + data.id">
+                                                    <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2">
+                                                        <i class="pi pi-reply p-mr-2"></i>
+                                                    </Button>
+                                                </router-link>
+                                            </span>
+                                            <span v-else-if="data.status == 'answered'">
+                                                
+                                                    <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2" disabled>
+                                                        <i class="pi pi-reply p-mr-2"></i>
+                                                    </Button>
+                                                
+                                            </span>
                                        
-                                        <router-link :to="'/reply-inquiry/' + data.id" 
-                                        >
-                                            <Button
-                                                label="help"
-                                                class="p-button-outlined p-button-help p-mr-2 p-mb-2"
-                                            >
-                                                <i class="pi pi-reply p-mr-2"></i>
-                                            </Button>
-                                        </router-link>
-                                        </template>
-                                        <Button
-                                            icon="pi pi-trash"
-                                            class="p-button-danger p-button-outlined p-mr-2 p-mb-2"
-                                            @click="confirm(data.id)"
-                                        />
+                                        <Button icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
                                     </div>
                                 </template>
                             </Column>
@@ -187,28 +140,14 @@
                 </div>
             </div>
         </div>
-        <Dialog
-            :header="$t('dfc_user.popup.header')"
-            v-model:visible="display"
-            :breakpoints="{ '960px': '75vw' }"
-            :style="{ width: '30vw' }"
-            :modal="true"
-        >
+        <Dialog :header="$t('dfc_user.popup.header')" v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :style="{ width: '30vw' }" :modal="true">
             <div class="p-field p-fluid">
                 <ul>
-                    <li
-                        v-for="item in records"
-                        :key="item.title"
-                    >{{ item.title }} : {{ item.count }}</li>
+                    <li v-for="item in records" :key="item.title">{{ item.title }} : {{ item.count }}</li>
                 </ul>
             </div>
             <template #footer>
-                <Button
-                    :label="$t('button.ok')"
-                    @click="close"
-                    icon="pi pi-pi-times"
-                    class="p-button-primary"
-                />
+                <Button :label="$t('button.ok')" @click="close" icon="pi pi-pi-times" class="p-button-primary" />
             </template>
         </Dialog>
     </div>
@@ -249,23 +188,25 @@ export default {
             sortOrder: '',
             createdDate: '',
             business_name: '',
-            title_ko:'',
+            title_ko: '',
             title: '',
             type_id: '',
             repliedBy: '',
-            sl_no:'',
+            sl_no: '',
             dropdownValue: null,
             dropdownValues: '',
-            statusDropdownValues: [{ name: '답변', value: 'answered' }, { name: '미답변', value: 'not_answered' }],
+            statusDropdownValues: [
+                { name: '답변', value: 'answered' },
+                { name: '미답변', value: 'not_answered' },
+            ],
             statusDropdownValue: null,
-           
+
             businessDropdownValues: '',
             businessDropdownValue: null,
             searchData: '',
             type_title: '',
             statusitem: '',
-            type_title_ko:'',
-
+            type_title_ko: '',
         };
     },
     customerService: null,
@@ -277,19 +218,16 @@ export default {
         const route = useRoute();
         console.log(route.params);
         this.loading1 = true;
-        this.inquiryService
-            .getInquryList(this.inquiry_id,this.title,this.name,this.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
-            .then((data) => {
-                this.customer1 = data;
-                this.loading1 = false;
-                //this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-            })
+        this.inquiryService.getInquryList(this.inquiry_id, this.title, this.name, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder).then((data) => {
+            this.customer1 = data;
+            this.loading1 = false;
+            //this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+        });
         this.loading1 = true;
         this.inquiryService
 
             .dropdownBusiness()
             .then((data) => {
-                
                 this.businessDropdownValues = data;
                 // this.products = data;
                 this.loading1 = false;
@@ -297,9 +235,7 @@ export default {
                 console.log(this.customer1);
                 console.log(data);
             })
-       
 
-            
             .catch((err) => {
                 this.loading1 = false;
                 this.customer1 = [];
@@ -315,7 +251,7 @@ export default {
             this.clientlist = false;
             this.detailsclient = true;
         },
-       
+
         backList() {
             this.clientlist = true;
             this.detailsclient = false;
@@ -326,32 +262,28 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('LL - hh:mm:ss')
+                return moment(String(value)).format('LL - hh:mm:ss');
             }
         },
 
-        resetdata(){
-            if (this.title === ''){
-                this.inquiryService
-                 .getInquryList(this.inquiry_id,this.title,this.name?.business_name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
-                    .then((data) => {
-                        this.customer1 = data;
-                        this.loading1 = false;
-                        //console.log(data);
-                    })
-                    
-            } 
+        resetdata() {
+            if (this.title === '') {
+                this.inquiryService.getInquryList(this.inquiry_id, this.title, this.name?.business_name, this.status?.status, this.startDate, this.endDate, this.sortBy, this.sortOrder).then((data) => {
+                    this.customer1 = data;
+                    this.loading1 = false;
+                    //console.log(data);
+                });
+            }
         },
         searchInquiry() {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.inquiry_id === '' && this.name === '' && this.title === '' && this.status === '' ) {
+            if (this.inquiry_id === '' && this.name === '' && this.title === '' && this.status === '') {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
-            } 
-            else {
+            } else {
                 this.inquiryService
-                    .getInquryList(this.inquiry_id?.id,this.name,this.title,this.status?.value,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .getInquryList(this.inquiry_id?.id, this.name, this.title, this.status?.value, this.startDate, this.endDate, this.sortBy, this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -424,19 +356,17 @@ export default {
                 header: '확인',
                 message: '삭제하시겠습니까?',
                 icon: 'pi pi-trash',
-                acceptLabel: "확인",
-                rejectLabel: "취소",
+                acceptLabel: '확인',
+                rejectLabel: '취소',
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/inquery/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
-                        self.inquiryService
-                            .getInquryList(self.status, self.title, self.business_name, self.repliedBy, self.startDate, self.endDate, self.sortBy, self.sortOrder)
-                            .then((data) => {
-                                this.customer1 = data;
-                                this.loading1 = false;
-                                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                                //console.log(data);
-                            })
+                        self.inquiryService.getInquryList(self.status, self.title, self.business_name, self.repliedBy, self.startDate, self.endDate, self.sortBy, self.sortOrder).then((data) => {
+                            this.customer1 = data;
+                            this.loading1 = false;
+                            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                            //console.log(data);
+                        });
                     });
                     this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제됨', life: 3000 });
                 },
