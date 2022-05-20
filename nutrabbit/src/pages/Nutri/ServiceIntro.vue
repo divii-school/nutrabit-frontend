@@ -23,7 +23,7 @@
         <div class="container-medium">
           <div class="sampleServices sampleBlendSpecial about-recom pb-40">
             <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center">{{ $t("nutri.title.heading2") }}</h4>
+            <h4 class="title text-center service-intro-title">{{ $t("nutri.title.heading2") }}</h4>
             <ul class="nutriBlending">
               <li>
                 <img src="~@/assets/images/blending1.png" />
@@ -57,7 +57,7 @@
         <div class="container-medium">
           <div class="sampleServices about-recom pb-70">
             <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center mb-80">
+            <h4 class="title text-center mb-80 service-intro-title">
               {{ $t("nutri.title.blending") }}
             </h4>
             <div class="nutri-dom-product blendedPro">

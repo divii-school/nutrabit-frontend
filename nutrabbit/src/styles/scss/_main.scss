@@ -90,6 +90,17 @@
       }
     }
     .mySwiperDesktop {
+      &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 49%;
+        background: linear-gradient(180deg, #D8D8D8 0%, rgba(196, 196, 196, 0) 100%);
+        z-index: 1;
+        pointer-events: none;
+      }
       @media screen and (max-width: 768px) {
         display: none;
       }
@@ -186,9 +197,13 @@
           margin-top: 0;
         }
         &.design-2{
+          font-family: $Pretend-semibold;
+          font-weight: 600;
+          font-size: 45px;
+          line-height: 130%;
           @media screen and (max-width: 640px) {
             font-size: 22px;
-            line-height: 28px;
+            line-height: 29px;
           }
         }
         @media screen and (max-width: 1200px) {

@@ -19,7 +19,7 @@
         }
         .faq-heading {
           .title {
-            padding-left: 12px;
+            padding-left: 0px;
           }
         }
       }
@@ -70,7 +70,7 @@
           padding: 20px 0px;
           font-weight: 600;
         }
-        .title{
+        .title {
           font-weight: 400;
           font-family: $default-font;
         }
@@ -111,6 +111,7 @@
                 margin-right: 10px;
                 font-weight: 600;
                 font-family: $Pretend-semibold;
+                // min-width: 98px;
                 // width: 98px;
                 @media screen and (max-width: 640px) {
                   font-size: 12px;
@@ -200,14 +201,15 @@
 
           .category {
             width: 135px;
+            text-align: center;
           }
 
           .status {
-            width: 100px;
+            width: 126px;
             text-align: center;
           }
         }
-        p{
+        p {
           font-family: $default-font;
           font-weight: 400;
         }
@@ -221,7 +223,7 @@
         align-items: center;
         display: flex;
         width: 100%;
-        padding: 15px 0;
+        padding: 15px 0 15px 30px;
         border-bottom: 1px solid $grey-CF;
         .item-left {
           display: flex;
@@ -245,6 +247,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            min-width: 250px;
 
             @media screen and (max-width: 640px) {
               width: 100%;
@@ -273,10 +276,11 @@
             color: $green-68;
             border: 1px solid $green-68;
             border-radius: 15px;
-            padding: 5px 15px;
+            padding: 5px 0px;
             margin-right: 10px;
             font-weight: 600;
             font-family: $Pretend-semibold;
+            min-width: 98px;
             // width: 94px;
             &.mr-2 {
               margin-right: 20px;
