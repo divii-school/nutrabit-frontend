@@ -2,7 +2,7 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">{{ $t("customer.title.Inquiry") }}</h1>
+        <h1 class="inquiry-heading">{{$t("customer.button.Inquiry")}}</h1>
         <div class="login-signup-inner">
           <form
             action=""

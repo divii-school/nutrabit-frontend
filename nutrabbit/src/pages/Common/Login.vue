@@ -71,8 +71,8 @@
             <!-- kakao login for App -->
             <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
               <i class="icon-chat-black"></i>
-              <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
-              kakao mobile login
+              {{ $t("common.QuickLinks.CacaoLogin") }}
+              <!-- kakao mobile login -->
             </button>
             <!-- END kakao login for App -->
 
@@ -85,8 +85,8 @@
             <!-- Naver login for App -->
             <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
               <i class="icon-naver"></i>
-              naver mobile login
-              <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
+              <!-- naver mobile login -->
+              {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- ENd Naver login for App -->
 
@@ -128,8 +128,8 @@ export default {
       loader: undefined,
       naverAuth: undefined,
       naverProfiledata: undefined,
-      isPlatMobile: localStorage.getItem("isMobile") === "true",
-      isAppaleId: localStorage.getItem("isiPhone") === "true",
+      // isPlatMobile: localStorage.getItem("isMobile") === "true",
+      // isAppaleId: localStorage.getItem("isiPhone") === "true",
       isPlatMobile: this.cookies.get("isMobile") === "true",
       isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
@@ -152,7 +152,6 @@ export default {
     this.commonService = new CommonService();
   },
   mounted() {
-
     if (this.cookies) {
       const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
@@ -314,7 +313,7 @@ export default {
         self.socialRegistration(
           userName,
           userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -341,7 +340,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -369,7 +368,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -466,7 +465,7 @@ export default {
               setTimeout(() => {
                 self.socialLogin(res.kakao_account.email);
                 // self.loader.hide();
-                
+
               }, 1500);
             },
           });
