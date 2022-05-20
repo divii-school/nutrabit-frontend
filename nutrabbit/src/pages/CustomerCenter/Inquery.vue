@@ -22,7 +22,7 @@
               <div class="item-left-inner">
                 <p class="para-category para-date">{{ dateformat(item.createdDate) }}</p>
                 <span
-                  class="mr-2 ml-2"
+                  class="mr-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
                   >{{ $t(item.status) }}</span
                 >

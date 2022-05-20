@@ -276,12 +276,15 @@
             color: $green-68;
             border: 1px solid $green-68;
             border-radius: 15px;
-            padding: 5px 0px;
+            padding: 5px 8px;
             margin-right: 10px;
             font-weight: 600;
             font-family: $Pretend-semibold;
             min-width: 98px;
             // width: 94px;
+            @media screen and (max-width: 640px) {
+              min-width: 48px;
+            }
             &.mr-2 {
               margin-right: 20px;
             }
@@ -310,6 +313,7 @@
             line-height: 20px;
             color: $grey-66;
             min-width: 145px;
+            width: 145px;
             text-align: center;
             font-weight: 400;
             font-family: $default-font;
@@ -317,6 +321,7 @@
               color: $grey-A4;
               @media screen and (max-width: 640px) {
                 font-size: 14px;
+                width: auto;
               }
             }
 
@@ -363,6 +368,7 @@
         }
 
         h4 {
+          min-width: 145px;
           width: 145px;
           font-size: 16px;
           font-weight: 500;
@@ -372,6 +378,9 @@
           text-align: center;
           @media screen and (max-width: 640px) {
             margin-bottom: 10px;
+            width: auto;
+            min-width: auto;
+            text-align: left;
           }
         }
 
@@ -382,11 +391,11 @@
           width: calc(100% - 145px);
           font-weight: 400;
           font-family: $default-font;
-          margin-left: 20px;
           @media screen and (max-width: 640px) {
             width: auto;
             font-size: 14px;
             font-weight: 400;
+            min-width: auto;
           }
 
           a {
