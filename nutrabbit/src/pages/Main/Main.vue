@@ -21,7 +21,7 @@
           <a :href="slider.link">
             <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
-            <p class="banner-title text-center">{{ slider.title }}</p>
+            <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
         </swiper-slide>
       </swiper>
@@ -31,15 +31,15 @@
         <div class="nutri-choice with-img">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2 class="nutri-choice-heading text-center" v-html="$t('main.my_choice.title')"></h2>
-          <p class="desc text-center">{{ $t("main.my_choice.desc") }}</p>
+          <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.my_choice.title')"></h2>
+          <p class="desc text-center main-page-desc">{{ $t("main.my_choice.desc") }}</p>
           <router-link to="/my-choice" v-if="token">
-            <button class="btn-small-solid">
+            <button class="btn-small-solid main-page-btn">
               {{ $t("main.my_choice.button") }}
             </button>
           </router-link>
           <router-link to="/" v-else @click="accessPage()">
-            <button class="btn-small-solid">
+            <button class="btn-small-solid main-page-btn">
               {{ $t("main.my_choice.button") }}
             </button>
           </router-link>
@@ -54,9 +54,9 @@
           <div class="nutri-choice greenTItle">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
-            <h2 class="nutri-choice-heading text-center" v-html="$t('main.nutri.title')"></h2>
-            <p class="desc text-center">{{ $t("main.nutri.desc") }}</p>
-            <button @click="toNutri()" class="btn-small-solid green">
+            <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.nutri.title')"></h2>
+            <p class="desc text-center main-page-desc">{{ $t("main.nutri.desc") }}</p>
+            <button @click="toNutri()" class="btn-small-solid green main-page-btn">
               {{ $t("main.nutri.button") }}
             </button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
