@@ -269,7 +269,7 @@ export default {
             ],
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
-            exposure: '1',
+            exposure: '',
             // dropdownValueType: null,
             title: null,
             link: null,
@@ -615,7 +615,12 @@ export default {
                 this.formData.append('description_en', this.description_en);
 
                 this.formData.append('status', this.status);
-                this.formData.append('exposure', this.exposure);
+                if(this.status == 'active'){
+                    this.formData.append('exposure', '1');
+                } else if(this.status == 'inactive'){
+                this.formData.append('exposure', '0');
+                } 
+                
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 alert('업데이트 완료');
