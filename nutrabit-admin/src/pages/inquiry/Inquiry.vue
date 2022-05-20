@@ -12,7 +12,7 @@
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
                         <Dropdown  v-model="inquiry_id"
                                 :options="businessDropdownValues" optionLabel="title_ko" optionValue="id"
-                                placeholder="유저명 입력" />
+                                placeholder="선택" />
                       
                         <!-- <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력"   optionValue="id" /> -->
                         
