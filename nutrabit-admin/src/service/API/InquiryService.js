@@ -37,7 +37,7 @@ export default class InquiryService {
        
          }
         async dropdownBusiness() {
-            return await axios.post(`/admin/inquery_type/`, {}).then((res) => res.data.data.inquery);
+            return await axios.post(`/admin/inquery_type/`, {}).then((res) => res.data.data.inqueryType);
             
         }
         async ReplyInquiry(id , replyText) {

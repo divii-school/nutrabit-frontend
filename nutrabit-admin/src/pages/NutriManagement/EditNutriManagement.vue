@@ -285,6 +285,7 @@ export default {
             console.log(data);
         });
         this.nutriManagementService.ViewNurtiManagementList(this.$route.params.id).then((res) => {
+             this.id = res.data.data[0].id;
             this.category_id = res.data.data[0].category_id;
             this.raw_material_id = res.data.data[0].selectedItems;
             this.pill_id = res.data.data[0].pill_id;
@@ -321,6 +322,7 @@ export default {
             });
             this.select_items = result;
             this.selectedItems = res.data.data[0].raw_material_id;
+            console.log(res);
         });
     },
     methods: {
@@ -449,21 +451,39 @@ export default {
             }
         },
         remove_raw(id, product_sub_image) {
-            console.log(id)
-            console.log(product_sub_image)
+            //console.log(id)
+            // console.log(similar_product_img)
             let product_sub_image_arr = product_sub_image.toString().split('/');
-            let image_name = product_sub_image_arr[3];
-            // console.log(similar_prod_image_arr[3])
+            let image_name = product_sub_image_arr.findLast(() => true);
+            //let image_name = product_sub_image_arr[2];
+             console.log()
             if (confirm('정말 삭제하시겠습니까?')) {
                 axios({ method: 'post', url: '/admin/nutriBlending/productSubImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
                         console.log(response);
+                        // console.log(id);
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             }
         },
+        // remove_raw(id, product_sub_image) {
+        //     console.log(id)
+        //     console.log(product_sub_image)
+        //     let product_sub_image_arr = product_sub_image.toString().split('/');
+        //     let image_name = product_sub_image_arr[3];
+        //      console.log(product_sub_image_arr[3])
+        //     if (confirm('정말 삭제하시겠습니까?')) {
+        //         axios({ method: 'post', url: '/admin/nutriBlending/productSubImageDelete', data: { blending_id: id, image_name: image_name } })
+        //             .then(function (response) {
+        //                 console.log(response);
+        //             })
+        //             .catch((error) => {
+        //                 console.log(error);
+        //             });
+        //     }
+        // },
 
         editNutri() {
             // console.log(this.select_items)

@@ -536,7 +536,7 @@ export default {
             // console.log(similar_product_img)
             let detail_image_arr = detail_image.toString().split('/');
             let image_name = detail_image_arr[3];
-            // console.log(similar_prod_image_arr[3])
+             console.log(detail_image_arr[3])
             if (confirm('정말 삭제하시겠습니까?')) {
                 axios({ method: 'post', url: '/admin/blending/detailsImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {

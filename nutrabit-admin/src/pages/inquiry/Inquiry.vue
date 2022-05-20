@@ -11,7 +11,7 @@
                     <div class="p-field p-col-12 p-md-4">
                         <label for="type">{{ $t('Inquiry.list.inqury1') }}</label>
                       
-                        <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력" />
+                        <Dropdown v-model="inquiry_id"  :options="businessDropdownValues"  optionLabel="title_ko" placeholder="유저명 입력"  @select="searchInquiry" />
                         
                     </div>
                     <div class="p-field p-col-12 p-md-4">
@@ -123,8 +123,10 @@
                             <Column :header="$t('Inquiry.list.Reopenby')" >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Responded by</span>
-                                   
+                                   <span v-if="data.status == 'answered'">
                                     {{ data.repliedBy }}
+                                    </span>
+                                    <span v-else>-</span>
                                 </template>
                             </Column>
                             <Column
@@ -156,6 +158,8 @@
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>
                                     <div style="display: flex">
+                                       <template v-if="!(data.status == 'answered')" >
+                                       
                                        
                                         <router-link :to="'/reply-inquiry/' + data.id" 
                                         >
@@ -166,6 +170,7 @@
                                                 <i class="pi pi-reply p-mr-2"></i>
                                             </Button>
                                         </router-link>
+                                        </template>
                                         <Button
                                             icon="pi pi-trash"
                                             class="p-button-danger p-button-outlined p-mr-2 p-mb-2"
@@ -248,7 +253,7 @@ export default {
             sl_no:'',
             dropdownValue: null,
             dropdownValues: '',
-            statusDropdownValues: [{ name: '답변', value: 'answer' }, { name: '미답변', value: 'unanswered' }],
+            statusDropdownValues: [{ name: '답변', value: 'answered' }, { name: '미답변', value: 'not_answered' }],
             statusDropdownValue: null,
            
             businessDropdownValues: '',
@@ -338,12 +343,12 @@ export default {
             // console.log(this.name);
             // console.log(this.id);
 
-            if (this.inquiry_id === '' && this.title === '' && this.name === '' && this.status === '' ) {
+            if (this.inquiry_id === '' && this.name === '' && this.title === '' && this.status === '' ) {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } 
             else {
                 this.inquiryService
-                    .getInquryList(this.inquiry_id?.id,this.title,this.name,this.status?.status,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .getInquryList(this.inquiry_id?.id,this.name,this.title,this.status?.value,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
