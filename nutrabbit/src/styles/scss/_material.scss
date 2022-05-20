@@ -101,6 +101,10 @@
             border: 1px solid $grey-CF;
             border-radius: 5px;
             font-family: $default-font;
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+                line-height: 17px;
+            }
         }
         textarea{
             padding: 30px;
