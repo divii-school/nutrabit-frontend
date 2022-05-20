@@ -25,7 +25,6 @@
           color: $grey-4C;
           appearance: none;
           background: url(@/assets/images/down.png) right 16px center no-repeat;
-          font-family: $default-font;
         }
         select:required:invalid {
           color: $grey-CF;
