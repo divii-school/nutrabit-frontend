@@ -183,7 +183,7 @@
       .faq-heading {
         @include flex-align-center;
         border-bottom: 1px solid $grey-CF;
-        padding: 20px 40px 20px 30px;
+        padding: 20px 40px 20px 41px;
         font-size: 18px;
         line-height: 18px;
         color: $grey-A4;
@@ -195,7 +195,9 @@
           padding: 20px 0;
         }
         &.inquiry {
+          padding: 20px 40px 20px 30px;
           @media screen and (max-width: 640px) {
+            padding: 20px 0;
             display: none;
           }
 
@@ -225,6 +227,9 @@
         width: 100%;
         padding: 15px 45px 15px 15px;
         border-bottom: 1px solid $grey-CF;
+        @media screen and (max-width: 640px) {
+          padding: 15px 0 15px 0;
+        }
         .item-left {
           display: flex;
           align-items: center;
@@ -290,6 +295,9 @@
             }
             &.ml-2{
               margin-left: 20px;
+              @media screen and (max-width: 640px){
+                margin-left: 0;
+              }
             }
 
             &.grey {
@@ -312,22 +320,26 @@
             font-size: 17px;
             line-height: 20px;
             color: $grey-66;
-            min-width: 145px;
-            width: 145px;
+            min-width: 115px;
+            width: 115px;
             text-align: center;
             font-weight: 400;
             font-family: $default-font;
             &.para-date {
               color: $grey-A4;
+              min-width: 145px;
+              width: 145px;
               @media screen and (max-width: 640px) {
                 font-size: 14px;
                 width: auto;
+                min-width: auto;
               }
             }
 
             @media screen and (max-width: 640px) {
               text-align: justify;
               min-width: auto;
+              width: auto;
               margin-right: 10px;
             }
           }
@@ -391,6 +403,12 @@
           width: calc(100% - 145px);
           font-weight: 400;
           font-family: $default-font;
+          &.ml-2{
+            margin-left: 20px;
+            @media screen and (max-width: 640px){
+              margin-left: 0;
+            }
+          }
           @media screen and (max-width: 640px) {
             width: auto;
             font-size: 14px;
