@@ -204,7 +204,7 @@ export default {
     data() {
         return {
             // dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
-            dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
+            dropdownValues: [{ name: 'pending', code: '미답변' }, { name: 'completed', code: '답변' }],
             serial: 0,
             dropdownValue: null,
             productdropdownValues: [{ name: '내 선택', value: 'my_choice' }, { name: '명령된 블렌딩', value: 'recommanded' },{ name: '뉴트리 3.3', value: 'nutri' }],
