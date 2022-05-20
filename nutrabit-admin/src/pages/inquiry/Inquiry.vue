@@ -179,6 +179,7 @@ export default {
             refercode: '',
             error: {},
             clientdata: '',
+            inquiry_id: '',
             status: '',
             id: '',
             email: '',
