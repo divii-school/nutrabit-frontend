@@ -306,6 +306,11 @@
         font-size: 30px;
         font-weight: 700;
       }
+      &.service-intro-title{
+        @media screen and (max-width: 640px) {
+          line-height: 36px;
+        }
+      }
     }
   }
   .recom-section {
