@@ -355,7 +355,6 @@ header {
               padding-left: 10px;
               font-weight: 500;
               font-size: 14px;
-              font-family: $Pretend-medium;
               line-height: 17px;
               color: $black-33;
               appearance: none;
@@ -634,7 +633,8 @@ header {
             .after-login-wrap {
               .after-login {
                 position: relative;
-                display: inline-block;
+                display: flex;
+                align-items: center;
                 a {
                   max-width: 215px;
                   white-space: nowrap;
@@ -655,7 +655,7 @@ header {
                     background-size: auto 24px;
                     height: 24px;
                     width: 24px;
-                    margin-top: -16px;
+                    margin-top: -15px;
                     right: -30px;
                     top: 50%;
                   }

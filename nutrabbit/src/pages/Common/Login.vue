@@ -71,8 +71,8 @@
             <!-- kakao login for App -->
             <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
               <i class="icon-chat-black"></i>
-              <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
-              kakao mobile login
+              {{ $t("common.QuickLinks.CacaoLogin") }}
+              <!-- kakao mobile login -->
             </button>
             <!-- END kakao login for App -->
 
@@ -85,8 +85,8 @@
             <!-- Naver login for App -->
             <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
               <i class="icon-naver"></i>
-              naver mobile login
-              <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
+              <!-- naver mobile login -->
+              {{ $t("common.QuickLinks.NaverLogin") }}
             </button>
             <!-- ENd Naver login for App -->
 
@@ -128,8 +128,8 @@ export default {
       loader: undefined,
       naverAuth: undefined,
       naverProfiledata: undefined,
-      isPlatMobile: localStorage.getItem("isMobile") === "true",
-      isAppaleId: localStorage.getItem("isiPhone") === "true",
+      // isPlatMobile: localStorage.getItem("isMobile") === "true",
+      // isAppaleId: localStorage.getItem("isiPhone") === "true",
       isPlatMobile: this.cookies.get("isMobile") === "true",
       isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
@@ -152,7 +152,6 @@ export default {
     this.commonService = new CommonService();
   },
   mounted() {
-
     if (this.cookies) {
       const rememberUserPasswordCookie = this.cookies.get("rememberUserPassword");
       const rememberUserEmailCookie = this.cookies.get("rememberUserEmail");
@@ -307,21 +306,21 @@ export default {
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
-        // alert(resData);
+        alert('Apple login res from APP:' + JSON.stringify(resData));
         // console.log("--appleLoginHandler--", resData);
         let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
         self.socialRegistration(
           userName,
           userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
           "detail address",
           "sns",
           resData.accesstoken,
-          "apple"
+          resData.loginVia
         );
         setTimeout(() => {
           self.socialLogin(resData.emailId);
@@ -341,7 +340,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -369,7 +368,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -466,7 +465,7 @@ export default {
               setTimeout(() => {
                 self.socialLogin(res.kakao_account.email);
                 // self.loader.hide();
-                
+
               }, 1500);
             },
           });
@@ -508,6 +507,7 @@ export default {
         )
         .then((res) => {
           // console.log("socialRegistration:--", res);
+          alert('indi reg data: ' + JSON.stringify(res));
           if (res.data.status == 200) {
             // console.log("socialRegistration success:--", res);
             // this.$router.push("member-registration-completed");
@@ -523,7 +523,8 @@ export default {
         // console.log("socialLogin res.data.status:--", res.data.status);
         if (res.response) {
           if (res.response.data.status == 400) {
-            // console.log("res.response:", res.response);
+            alert('login failed:' + JSON.stringify(res.response));
+            console.log("res.response:", res.response);
           }
         } else {
           if (res.data.status == 200) {
@@ -539,6 +540,7 @@ export default {
               this.cookies.set("rememberUserEmail", email);
               this.cookies.set("rememberUserPassword", password);
             }
+              alert('login success:' + JSON.stringify(res.data.data));
             this.$router.push({ name: "Main" });
           }
         }

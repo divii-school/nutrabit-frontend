@@ -88,8 +88,10 @@ export default {
       loader: undefined,
       naverAuth: undefined,
       naverProfiledata: undefined,
-      isPlatMobile: localStorage.getItem("isMobile") === "true",
-      isAppaleId: localStorage.getItem("isiPhone") === "true",
+      // isPlatMobile: localStorage.getItem("isMobile") === "true",
+      // isAppaleId: localStorage.getItem("isiPhone") === "true",
+      isPlatMobile: this.cookies.get("isMobile") === "true",
+      isAppaleId: this.cookies.get("isiPhone") === "true",
       validateOnce: false,
       globalLocale: "",
     };
@@ -182,7 +184,7 @@ export default {
         self.socialRegistration(
           userName,
           userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -209,7 +211,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -237,7 +239,7 @@ export default {
         self.socialRegistration(
           resData.userName,
           resData.userName,
-          "12345678",
+          "Ab12345678987654",
           resData.emailId,
           "9999999999",
           "address",
@@ -285,7 +287,7 @@ export default {
         self.socialRegistration(
           res.response.name,
           res.response.nickname,
-          "12345678",
+          "Ab12345678987654",
           res.response.email,
           "9999999999",
           "address",
@@ -322,7 +324,7 @@ export default {
               self.socialRegistration(
                 res.kakao_account.profile.nickname,
                 res.kakao_account.profile.nickname,
-                "12345678",
+                "Ab12345678987654",
                 res.kakao_account.email,
                 "9999999999",
                 "address",
