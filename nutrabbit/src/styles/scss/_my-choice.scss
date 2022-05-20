@@ -395,11 +395,12 @@
                     margin-top: 15px;
                     p {
                       font-size: 18px;
-                      line-height: 150%;
+                      line-height: 130%;
                       color: $grey-82;
                       font-family: $default-font;
                       @media screen and (max-width: 768px) {
                         text-align: center;
+                        line-height: 150%;
                       }
                     }
                   }
