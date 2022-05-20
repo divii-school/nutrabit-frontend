@@ -190,8 +190,8 @@ export default {
           "address",
           "detail address",
           "sns",
-          resData.accesstoken,
-          "apple"
+          resData.accessToken,
+          resData.loginVia
         );
         setTimeout(() => {
           self.socialLogin(resData.emailId);
