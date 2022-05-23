@@ -26,20 +26,38 @@
             </swiper>
           </div>
           <div v-if="product_sub_image_path">
-          <swiper :spaceBetween="10" :slidesPerView="4" :freeMode="true" :modules="[Thumbs]" watch-slides-progress
-            @swiper="setThumbsSwiper" class="mySwiper2 thumbsSwiperCustom">
-            <swiper-slide v-for="(item, index) of product_sub_image_path" :key="index">
-              <img v-if="item" :src="imgBaseUrl + item" alt />
-            </swiper-slide>
-          </swiper>
+            <swiper
+              :spaceBetween="10"
+              :slidesPerView="4"
+              :freeMode="true"
+              :modules="[Thumbs]"
+              watch-slides-progress
+              @swiper="setThumbsSwiper"
+              class="mySwiper2 thumbsSwiperCustom"
+            >
+              <swiper-slide
+                v-for="(item, index) of product_sub_image_path"
+                :key="index"
+              >
+                <img v-if="item" :src="imgBaseUrl + item" alt />
+              </swiper-slide>
+            </swiper>
           </div>
         </div>
-        <div class="blending-right" v-for="(item, index) of nutriDetails" :key="index">
+        <div
+          class="blending-right"
+          v-for="(item, index) of nutriDetails"
+          :key="index"
+        >
           <div class="right-heading">
             <i class="login-icon-green"></i>
             <h2>{{ item.name }}</h2>
             <div class="blending-tag">
-              <span v-for="(tag, index) in splitJoin(item.tags)" :key="index" v-text="tag"></span>
+              <span
+                v-for="(tag, index) in splitJoin(item.tags)"
+                :key="index"
+                v-text="tag"
+              ></span>
             </div>
           </div>
           <div class="product-details-wrap">
@@ -60,8 +78,15 @@
       <div class="devider devider-lg"><i class="icon-dark-grey-star"></i></div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice design-2">
-            <h2 class="nutri-choice-heading text-center design-2 nutri-detail-heading">
+          <div class="nutri-choice design-2 my-choice-design2">
+            <h2
+              class="
+                nutri-choice-heading
+                text-center
+                design-2
+                nutri-detail-heading
+              "
+            >
               {{ $t("nutri.nutriDetails.title") }}<br />
               {{ $t("nutri.nutriDetails.title2") }}
             </h2>
@@ -76,9 +101,16 @@
       </div>
     </div>
   </div>
-  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('nutri.nutrimodal.bodytext')"
-    :bodytext2="$t('nutri.nutrimodal.bodytext2')" :btnText1="$t('nutri.nutrimodal.btntext')"
-    :btnText2="$t('nutri.nutrimodal.btntext2')" @confirm="confirm" link='/my-application-detail' />
+  <Modal
+    v-show="isModalVisible"
+    @close="closeModal"
+    :bodytext1="$t('nutri.nutrimodal.bodytext')"
+    :bodytext2="$t('nutri.nutrimodal.bodytext2')"
+    :btnText1="$t('nutri.nutrimodal.btntext')"
+    :btnText2="$t('nutri.nutrimodal.btntext2')"
+    @confirm="confirm"
+    link="/my-application-detail"
+  />
 </template>
 
 
@@ -96,10 +128,9 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import NutriService from "../../services/NutriService";
 
-
 export default {
   name: "NutriDetail",
-  inject : ['common'],
+  inject: ["common"],
   components: {
     Swiper,
     SwiperSlide,
@@ -131,24 +162,27 @@ export default {
       isModalVisible: false,
       product_sub_image_path: [],
       thumb_image: "",
-      detail_image_path: '',
+      detail_image_path: "",
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
-      globalLocale : "",
+      globalLocale: "",
     };
   },
   created() {
     this.nutriService = new NutriService();
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
+  updated() {
+    this.globalLocale = localStorage.getItem("selectedLang");
     // console.log(this.globalLocale)
   },
 
   watch: {
     globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
-        this. getNutridetails();
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.getNutridetails();
       }
     },
   },
@@ -179,19 +213,18 @@ export default {
     getNutridetails() {
       this.id = this.$route.params.id;
       // console.log("id",this.id);
-      this.nutriService
-        .getNutridetails(this.id,this.lang)
-        .then((res) => {
-          if (res.data.status == 200) {
-            this.nutriDetails = res.data.data;
-            console.log("this.nutriDetails",this.nutriDetails);
-            this.product_sub_image_path =
-              res.data.data[0].product_sub_image_path;
-            // this.thumb_image= res.data.data[0].thumbnail_path;
-            this.thumb_image = (res.data.data[0].thumbnail_path) ? this.imgBaseUrl + res.data.data[0].thumbnail_path : this.placeholder_image;
-            this.detail_image_path = res.data.data[0].detail_image_path;
-          }
-        });
+      this.nutriService.getNutridetails(this.id, this.lang).then((res) => {
+        if (res.data.status == 200) {
+          this.nutriDetails = res.data.data;
+          console.log("this.nutriDetails", this.nutriDetails);
+          this.product_sub_image_path = res.data.data[0].product_sub_image_path;
+          // this.thumb_image= res.data.data[0].thumbnail_path;
+          this.thumb_image = res.data.data[0].thumbnail_path
+            ? this.imgBaseUrl + res.data.data[0].thumbnail_path
+            : this.placeholder_image;
+          this.detail_image_path = res.data.data[0].detail_image_path;
+        }
+      });
     },
 
     confirmbutton() {
@@ -231,5 +264,14 @@ export default {
 
 .mySwiper2 .swiper-slide-thumb-active {
   opacity: 1;
+}
+
+.my-choice-design2 {
+  margin-bottom: 120px !important;
+}
+@media screen and (max-width: 768px) {
+  .my-choice-design2 {
+    margin-bottom: 135px !important;
+  }
 }
 </style>
