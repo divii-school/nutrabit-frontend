@@ -410,6 +410,7 @@
                 width: 330px;
                 height: 330px;
                 border-radius: 200px 200px 0px 0px;
+                object-fit: cover;
                 cursor: pointer;
                 @media screen and (max-width: 768px) {
                   width: 164px;
