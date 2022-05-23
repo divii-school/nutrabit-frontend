@@ -65,7 +65,7 @@
                             $t('Application.details.datetime')
                         }}:</label>
                         <div class="p-col-12 p-md-10">
-                            <p>{{ createdDate }}</p>
+                            <p>{{ dateformat(createdDate) }}</p>
                         </div>
                     </div>
 
@@ -184,6 +184,7 @@
 import axios from 'axios';
 import validateCreateApplication from '../../validations/application/validateCreateApplication';
 import ApplicationmanagementService from '../../service/API/ApplicationmanagementService';
+import moment from 'moment';
 export default {
     name: 'appedit',
     data() {
@@ -254,6 +255,11 @@ export default {
     methods: {
         reinitialize() {
             (this.name = null), (this.ID = null), (this.email = null), (this.address = null), (this.createdDate = null), (this.Application_mode = null), (this.additional_request = null), (this.status_by_admin = null), (this.answer_by_admin = null), (this.memo_by_admin = null), (this.options = null);
+        },
+        dateformat(value) {
+            if (value) {
+                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+            }
         },
 
         editApplicationManagement() {

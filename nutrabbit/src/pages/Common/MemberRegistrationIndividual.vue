@@ -336,12 +336,17 @@
       v-show="isModalVisible"
       @close="closeModal"
       :bodytext1="$t('common.Modal.ServerError')"
-      :bodytext2="$t('common.Modal.ServerErrorSub')"
+      :bodytext3="$t('common.Modal.ServerErrorSub')"
       :btnText2="$t('button.Confirm')"
       link="/member-registration-individuals"
+      :img="ErrorImage"
+      :btnFull="true"
     />
   </div>
 </template>
+<script setup>
+import ErrorImage from "@/assets/images/Error.png";
+</script>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
@@ -393,7 +398,7 @@ export default {
       otpCheck: false,
       userExists: false,
       emailExist: false,
-      isModalVisible: false,
+      isModalVisible: true,
     };
   },
   created() {
@@ -599,7 +604,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 5;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
