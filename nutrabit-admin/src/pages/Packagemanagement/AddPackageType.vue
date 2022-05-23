@@ -89,7 +89,7 @@
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
                 <div>
                     <Button
-                        :label="$t('PackageType.Add.addpublish')"
+                        label="게시"
                         icon="pi pi-check"
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"
