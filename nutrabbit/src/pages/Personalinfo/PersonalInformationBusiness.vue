@@ -128,7 +128,7 @@
               </div>
             </div>
            
-            <!-- <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
+            <div class="form-group" :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr">
               <label for="">{{ $t("personalInfo.labels.phonenumber") }}</label>
               <div class="input-group">
                 <div class="input-inner">
@@ -141,8 +141,8 @@
                 </div>
               </div>
               <span class="error-msg">{{ error.phoneNumber }}</span>
-            </div> -->
-            <!-- <div class="form-group" :class="error.address ? 'error' : ''">
+            </div>
+            <div class="form-group" :class="error.address ? 'error' : ''" v-if="common.state.isHidePhAddr">
               <label for="">{{ $t("personalInfo.labels.address") }}</label>
               <div class="input-group with-btn dual-input">
                 <div class="input-inner">
@@ -167,7 +167,7 @@
                 </div>
               </div>
               <span class="error-msg">{{ error.address }}</span>
-            </div>mm -->
+            </div>
            </div>
             <button class="btn-primary grenn-btn2" @click="updateBusinessInfo">{{ $t("personalInfo.labels.save") }}</button>
           </form>

@@ -6,7 +6,7 @@
           <div class="login-heading-wrap with-extra-text">
             <h1 class="login-heading">
               {{ $t("common.QuickLinks.SignUp") }}
-              <span>{{$t("common.SubTitle.BusinessMember")}}</span>
+              <span>{{ $t("common.SubTitle.BusinessMember") }}</span>
             </h1>
             <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
@@ -18,12 +18,18 @@
             <div class="terms-sec">
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
-                   <label class="custom-check">
-                  <i18n-t keypath="common.label.TermsCheckBox" tag="p" for="common.label.TermsCheckBoxLink">
-                    <router-link to="/terms">{{ $t("common.label.TermsCheckBoxLink") }}</router-link>
-                  </i18n-t>
-                  <input type="checkbox" v-model="termsCheck" />
-                     <span class="checkmark"></span>
+                  <label class="custom-check">
+                    <i18n-t
+                      keypath="common.label.TermsCheckBox"
+                      tag="p"
+                      for="common.label.TermsCheckBoxLink"
+                    >
+                      <router-link to="/terms">{{
+                        $t("common.label.TermsCheckBoxLink")
+                      }}</router-link>
+                    </i18n-t>
+                    <input type="checkbox" v-model="termsCheck" />
+                    <span class="checkmark"></span>
                   </label>
                 </div>
               </div>
@@ -38,11 +44,17 @@
                     <span class="checkmark"></span>
                   </label> -->
                   <label class="custom-check">
-                  <i18n-t keypath="common.label.PersonalInfoCheckBox" tag="p" for="common.label.PersonalInfoCheckBoxLink">
-                    <router-link to="/privacy">{{ $t("common.label.PersonalInfoCheckBoxLink") }}</router-link>
-                  </i18n-t>
-                  <input type="checkbox" v-model="personalCheck" />
-                     <span class="checkmark"></span>
+                    <i18n-t
+                      keypath="common.label.PersonalInfoCheckBox"
+                      tag="p"
+                      for="common.label.PersonalInfoCheckBoxLink"
+                    >
+                      <router-link to="/privacy">{{
+                        $t("common.label.PersonalInfoCheckBoxLink")
+                      }}</router-link>
+                    </i18n-t>
+                    <input type="checkbox" v-model="personalCheck" />
+                    <span class="checkmark"></span>
                   </label>
                 </div>
               </div>
@@ -53,7 +65,8 @@
                 :class="error.businessNumber ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i> {{ $t("common.label.BusinessNo") }}</label
+                  ><i class="icon-required"></i>
+                  {{ $t("common.label.BusinessNo") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
@@ -62,7 +75,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EnterBusinessNo')"
                       v-model="businessNumber"
-                      
                     />
                   </div>
                 </div>
@@ -72,30 +84,34 @@
                 class="form-group"
                 :class="error.businessName ? 'error' : ''"
               >
-                <label for=""><i class="icon-required"></i> {{ $t("common.label.BusinessName") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i>
+                  {{ $t("common.label.BusinessName") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                     :placeholder="$t('common.placeholder.EnterBusinessName')"
+                      :placeholder="$t('common.placeholder.EnterBusinessName')"
                       v-model="businessName"
-                      
                     />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.businessName }}</span>
               </div>
               <div class="form-group" :class="error.depertment ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.department") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.department") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                     :placeholder="$t('common.placeholder.Enterdepartment')"
+                      :placeholder="$t('common.placeholder.Enterdepartment')"
                       v-model="depertment"
-                      
                     />
                   </div>
                 </div>
@@ -106,7 +122,8 @@
                 :class="error.contactPerson ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>{{ $t("common.label.contactPerson") }}</label
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.contactPerson") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
@@ -115,7 +132,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EntercontactPerson')"
                       v-model="contactPerson"
-                      
                     />
                   </div>
                 </div>
@@ -124,7 +140,10 @@
             </div>
             <div class="individuals-form business-with-individual">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Name") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Name") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -132,14 +151,16 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Name')"
                       v-model="name"
-                      
                     />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.ID") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.ID") }}</label
+                >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -147,20 +168,22 @@
                       type="text"
                       :placeholder="$t('common.placeholder.EnterId')"
                       v-model="username"
-                      
                     />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
-                    {{$t("button.checkAvailability")}}
+                    {{ $t("button.checkAvailability") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
-                  $t('common.Error.useridAvailable')
+                  $t("common.Error.useridAvailable")
                 }}</span>
-                <span class="error-msg" >{{ error.username }}</span>
+                <span class="error-msg">{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Password") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Password") }}</label
+                >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -170,7 +193,6 @@
                         $t('common.placeholder.PasswordFormatSignup')
                       "
                       v-model="password"
-                      
                     />
                   </div>
                 </div>
@@ -181,23 +203,26 @@
                 :class="error.confirmPassword ? 'error' : ''"
               >
                 <label for=""
-                  ><i class="icon-required"></i>{{ $t("common.label.VerifyPassword") }}</label
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.VerifyPassword") }}</label
                 >
                 <div class="input-group">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="password"
-                     :placeholder="$t('common.placeholder.VerifyPassword')"
+                      :placeholder="$t('common.placeholder.VerifyPassword')"
                       v-model="confirmPassword"
-                      
                     />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Email") }}</label>
+                <label for=""
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.Email") }}</label
+                >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
@@ -205,7 +230,6 @@
                       type="text"
                       :placeholder="$t('common.placeholder.Email')"
                       v-model="email"
-                      
                     />
                   </div>
                   <button
@@ -221,19 +245,19 @@
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
                 <label for=""
-                  ><i class="icon-required"></i>{{ $t("common.label.EmailVerification") }}</label
+                  ><i class="icon-required"></i
+                  >{{ $t("common.label.EmailVerification") }}</label
                 >
                 <div class="input-group with-btn">
                   <div class="input-inner">
                     <input
                       class="form-control"
                       type="text"
-                     :placeholder="
+                      :placeholder="
                         $t('common.placeholder.EnterVerificationCode')
                       "
                       v-model="emailOTP"
                       maxlength="6"
-                      
                     />
                     <span class="time" :class="{ startTimer: startTimer }">{{
                       newTime
@@ -248,68 +272,79 @@
                     @click="verifyOTP"
                     :disabled="otpValidate"
                   >
-                     {{ $t("button.verify") }}
+                    {{ $t("button.verify") }}
                   </button>
                 </div>
-               <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
+                <span class="success-msg" v-if="isOtpVerified">{{
+                  isOtpSuccess
+                }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-              <!-- <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
-                <div class="input-group">
-                  <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('common.placeholder.PhoneNumber')"
-                      v-model="phoneNumber"
-                      
-                    />
-                  </div>
-                </div>
-                <span class="error-msg">{{ error.phoneNumber }}</span>
-              </div> -->
-              <!-- <div
-                class="form-group"
-                :class="error.address || error.detsilAddress ? 'error' : ''"
+          
+                <div
+                  class="form-group"
+                  :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr"
                 >
-                <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
-                <div class="input-group with-btn dual-input">
-                  <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('common.placeholder.EnterAddress')"
-                      v-model="address"
-                      disabled
-                      
-                    />
+                  <label for=""
+                    ><i class="icon-required"></i
+                    >{{ $t("common.label.PhoneNumber") }}</label
+                  >
+                  <div class="input-group">
+                    <div class="input-inner">
+                      <input
+                        class="form-control"
+                        type="text"
+                        :placeholder="$t('common.placeholder.PhoneNumber')"
+                        v-model="phoneNumber"
+                      />
+                    </div>
                   </div>
-                  <button class="btn-green-outline" @click="getAddress">
-                   {{ $t("button.SearchAddress") }}
-                  </button> -->
-                   <!-- postcodeWrap modal -->
-                <!-- <div id="postcodeWrap">
-                  <div id="addressLayer"></div>
-                </div> -->
-                <!-- postcodeWrap modal -->
-                <!-- </div>
-                <div class="input-group">
-                  <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                     :placeholder="
-                        $t('common.placeholder.EnterDetailedAddress')
-                      "
-                      v-model="detsilAddress"
-                      
-                    />
-                  </div>
+                  <span class="error-msg">{{ error.phoneNumber }}</span>
                 </div>
-                <span class="error-msg">{{ error.address }}</span>
-              </div>-->
-            </div> 
+                <div
+                  class="form-group"
+                  :class="error.address || error.detsilAddress ? 'error' : ''" v-if="common.state.isHidePhAddr"
+                >
+                  <label for=""
+                    ><i class="icon-required"></i
+                    >{{ $t("common.label.Address") }}</label
+                  >
+                  <div class="input-group with-btn dual-input">
+                    <div class="input-inner">
+                      <input
+                        class="form-control"
+                        type="text"
+                        :placeholder="$t('common.placeholder.EnterAddress')"
+                        v-model="address"
+                        disabled
+                      />
+                    </div>
+                    <button class="btn-green-outline" @click="getAddress">
+                      {{ $t("button.SearchAddress") }}
+                    </button>
+                    <!-- postcodeWrap modal -->
+                    <div id="postcodeWrap">
+                      <div id="addressLayer"></div>
+                    </div>
+                    <!-- postcodeWrap modal -->
+                  </div>
+                  <div class="input-group">
+                    <div class="input-inner">
+                      <input
+                        class="form-control"
+                        type="text"
+                        :placeholder="
+                          $t('common.placeholder.EnterDetailedAddress')
+                        "
+                        v-model="detsilAddress"
+                      />
+                    </div>
+                  </div>
+                  <span class="error-msg">{{ error.address }}</span>
+                </div>
+                <!-- address -->
+              
+            </div>
             <button
               class="btn-primary grenn-btn2"
               @click="BusinessRegistration"
@@ -319,6 +354,14 @@
           </form>
         </div>
       </div>
+      <Modal
+        v-show="isModalVisible"
+        @close="closeModal"
+        :bodytext1="$t('common.Modal.ServerError')"
+        :bodytext2="$t('common.Modal.ServerErrorSub')"
+        :btnText2="$t('button.Confirm')"
+        link="/membership-registration-business"
+      />
     </div>
   </div>
 </template>
@@ -326,10 +369,14 @@
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
- 
+import Modal from "../../components/Modal.vue";
+
 export default {
   name: "MembershipRegistrationBusiness",
-
+  inject:['common'],
+  components:{
+    Modal,
+  },
   data() {
     return {
       termsCheck: "",
@@ -358,70 +405,72 @@ export default {
       storeSetInterval: null,
       newTime: "",
       // verificationStatus : this.$t('button.sendVerification'),
-      isIDVerified : false,
-      isOtpVerified : false,
-      isUserSuccess : '',
-      isOtpSuccess : '',
-      verificationTimer:false,
+      isIDVerified: false,
+      isOtpVerified: false,
+      isUserSuccess: "",
+      isOtpSuccess: "",
+      verificationTimer: false,
       validateOnce: false,
       globalLocale: "",
-      clickCheckAvailability : false,
-      clickSendOtp : false,
-      clickVerifyOtp : false,
-      otpCheck : false,
-      userExists : false,
-      emailExist : false,
+      clickCheckAvailability: false,
+      clickSendOtp: false,
+      clickVerifyOtp: false,
+      otpCheck: false,
+      userExists: false,
+      emailExist: false,
+      isModalVisible: false,
     };
   },
   created() {
     this.commonService = new CommonService();
   },
 
-  updated(){
-   this.globalLocale = this.$i18n.locale;
+  updated() {
+    this.globalLocale = this.$i18n.locale;
   },
-  computed : {
+  computed: {
     verificationStatus() {
-
-      if(this.verificationTimer) {
-        return this.$t('button.resendVerification');
+      if (this.verificationTimer) {
+        return this.$t("button.resendVerification");
+      } else {
+        return this.$t("button.sendVerification");
       }
-      else {
-        return this.$t('button.sendVerification');
-      }
-      
-    }
+    },
   },
 
-   watch: {
+  watch: {
     globalLocale(newVal) {
-      if ((newVal == 'kr' || newVal == 'en') && this.validateOnce) {
+      if ((newVal == "kr" || newVal == "en") && this.validateOnce) {
         this.checkError();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.clickCheckAvailability){
+      if ((newVal == "kr" || newVal == "en") && this.clickCheckAvailability) {
         this.checkErrorUser();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.clickSendOtp){
+      if ((newVal == "kr" || newVal == "en") && this.clickSendOtp) {
         this.sendOtpErrorCheck();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.clickVerifyOtp){
+      if ((newVal == "kr" || newVal == "en") && this.clickVerifyOtp) {
         this.verifyOTPError();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.otpCheck){
+      if ((newVal == "kr" || newVal == "en") && this.otpCheck) {
         this.wrongOtpCheck();
       }
 
-      if((newVal == 'kr' || newVal == 'en') && this.emailExist){
+      if ((newVal == "kr" || newVal == "en") && this.emailExist) {
         this.emailExists();
       }
     },
   },
 
   methods: {
+    closeModal() {
+      window.location.reload();
+      this.isModalVisible = false;
+    },
     checkError() {
       let credential = {
         termsCheck: this.termsCheck,
@@ -440,14 +489,13 @@ export default {
         depertment: this.depertment,
         contactPerson: this.contactPerson,
         account_type: "business",
-        isIDVerified : this.isIDVerified,
-        isOtpVerified : this.isOtpVerified,
-        
+        isIDVerified: this.isIDVerified,
+        isOtpVerified: this.isOtpVerified,
       };
       const { isInvalid, error } = validateRegistration(credential);
       this.clickCheckAvailability = false;
       this.clickSendOtp = false;
-      
+
       if (isInvalid) {
         this.error = error;
         return false;
@@ -456,10 +504,9 @@ export default {
         return true;
       }
     },
-    async BusinessRegistration() 
-    {
+    async BusinessRegistration() {
       this.validateOnce = true;
-      
+
       if (!this.checkError()) {
         //this.isIDVerified = false;
         return;
@@ -483,25 +530,23 @@ export default {
               this.$router.push("member-registration-completed");
             }
           });
-        }
-      
+      }
     },
 
-    checkErrorUser(){
-       if(validator.isEmpty(this.username)){
-         this.error.username = this.$t("common.Error.EnterId");
-         return true;
-       }else if(!validator.isAlphanumeric(this.username)){
-         this.isIDVerified = false;
-         this.error.username = this.$t("common.Error.useridFormatSignup");
-         return true;
-       }else if(this.userExists){
-          this.error.username =  this.$t("common.Error.UserExists");
-          //return true;
-       }
-       else{
-          return false;
-       }
+    checkErrorUser() {
+      if (validator.isEmpty(this.username)) {
+        this.error.username = this.$t("common.Error.EnterId");
+        return true;
+      } else if (!validator.isAlphanumeric(this.username)) {
+        this.isIDVerified = false;
+        this.error.username = this.$t("common.Error.useridFormatSignup");
+        return true;
+      } else if (this.userExists) {
+        this.error.username = this.$t("common.Error.UserExists");
+        //return true;
+      } else {
+        return false;
+      }
     },
 
     async checkUser() {
@@ -510,12 +555,12 @@ export default {
       // } else if (!validator.isAlphanumeric(this.username)) {
       //   this.error.username = "Please use only letter and number";
       //   this.isUserSuccess = "";
-      // } 
+      // }
       this.clickCheckAvailability = true;
-      if(this.checkErrorUser()){
+      if (this.checkErrorUser()) {
         this.isIDVerified = false;
-         return;
-      }else {
+        return;
+      } else {
         this.commonService.checkUser(this.username).then((res) => {
           if (res.data.status == 200 && res.data.data.is_exist === 0) {
             this.isIDVerified = true;
@@ -523,28 +568,27 @@ export default {
             //this.isUserSuccess = "User ID available";
           } else if (res.data.status == 200 && res.data.data.is_exist === 1) {
             //this.error.username = res.data.data.msg;
-             this.userExists = true;
+            this.userExists = true;
             this.isIDVerified = false;
-            this.isUserSuccess = '';
+            this.isUserSuccess = "";
           }
         });
       }
     },
 
-    sendOtpErrorCheck(){
-       if (validator.isEmpty(this.email)) {
+    sendOtpErrorCheck() {
+      if (validator.isEmpty(this.email)) {
         this.error.email = this.$t("common.Error.EnterEmail");
         return true;
-      }
-      else if (!validator.isEmail(this.email)) {
+      } else if (!validator.isEmail(this.email)) {
         this.error.email = this.$t("common.Error.ValidEmail");
         return true;
-      }else{
+      } else {
         return false;
       }
     },
 
-    emailExists(){
+    emailExists() {
       this.error.email = this.$t("common.Error.EmailExists");
     },
 
@@ -554,11 +598,11 @@ export default {
       // }
       // else if (!validator.isEmail(this.email)) {
       //   this.error.email = "Enter a valid email address";
-      // } 
+      // }
       this.clickSendOtp = true;
-      if(this.sendOtpErrorCheck()){
-         return;
-      }else {
+      if (this.sendOtpErrorCheck()) {
+        return;
+      } else {
         this.commonService.sendOTP(this.email).then((res) => {
           console.log(res);
           if (res.status == 200) {
@@ -594,39 +638,41 @@ export default {
               this.emailValidated = 0;
               this.otpValidate = 1;
               this.startTimer = true;
-              this.verificationTimer=true;
+              this.verificationTimer = true;
               // this.verificationStatus = this.$t('button.resendVerification')
             }, (this.timer + 1) * 1000);
           } else if (res.response.data.status == 400) {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
+          } else if (res.response.data.status >= 500) {
+            this.isModalVisible = true;
           }
         });
       }
     },
 
-    verifyOTPError(){
+    verifyOTPError() {
       if (validator.isEmpty(this.emailOTP)) {
-         this.error.emailOTP = this.$t('common.Error.EnterOtp');
-         return true;
-      }else{
-         return false;
+        this.error.emailOTP = this.$t("common.Error.EnterOtp");
+        return true;
+      } else {
+        return false;
       }
     },
 
-     wrongOtpCheck(){
-      this.error.emailOTP = this.$t("common.Error.OTPCheck")
+    wrongOtpCheck() {
+      this.error.emailOTP = this.$t("common.Error.OTPCheck");
     },
 
     async verifyOTP() {
       // if (this.emailOTP == "") {
       //   return (this.error.emailOTP = "Enter an valid OTP");
-      // } 
+      // }
       this.clickVerifyOtp = true;
-      if(this.verifyOTPError()){
-         return;
-      }else {
+      if (this.verifyOTPError()) {
+        return;
+      } else {
         this.commonService.verifyOTP(this.email, this.emailOTP).then((res) => {
           if (res.data.status == 200 && res.data.data.otp_verify === 1) {
             // this.$swal("OTP verified");
@@ -650,9 +696,9 @@ export default {
         });
       }
     },
-      getAddress() {
-      var element_layer = document.getElementById('postcodeWrap');
-      var element_layer2 = document.getElementById('addressLayer');
+    getAddress() {
+      var element_layer = document.getElementById("postcodeWrap");
+      var element_layer2 = document.getElementById("addressLayer");
       element_layer.style.display = "flex";
       new daum.Postcode({
         oncomplete: (data) => {

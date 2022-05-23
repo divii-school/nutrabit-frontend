@@ -112,7 +112,7 @@
                             <div :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChangethum"  name="demo[]" multiple />
+                                <input type="file" class="select-file" v-on:change="onFileChangethum"  name="productname" multiple />
                                 
                                 <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
@@ -204,7 +204,7 @@ export default {
             selectedItems: [],
             Multiselect: '',
             filesExtensions: '',
-            demo:[],
+            productimg:[],
             name_ko: '',
             name_en: '',
             description_ko: '',
@@ -314,20 +314,40 @@ export default {
             console.log(this.detail);
         },
         onFileChangethum(e) {
-            console.log(e);
+            // console.log("multiple",e);
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.filesaddthumnail = files[0];
+            console.log(files.length)
+            if(files.length > 5 ){
+                alert("5 이미지 선택");
+                return;
+            } 
+            // let productimg = []
+            // Array.from(files).forEach(element => {
+            //     productimg.push(element)
+                
+                
+            // });
+            
            
+        //    console.log( "multiple",productimg)
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.filesaddthumnail.name)) {
                 this.render3 = true;
                 return false;
             } else {
+
                 this.render3 = false;
                 this.addthumnail = this.filesaddthumnail.name;
-                this.formData.append('product_sub_image', files[0]);
+                  Array.from(files).forEach(element => {
+               this.formData.append('product_sub_image', element)
+                
+                
+            });
+                // this.formData.append('product_sub_image', productimg);
             }
+            
             this.fileExtensions = this.addthumnail.replace(/^.*\./, '');
             console.log(this.addthumnail);
         },

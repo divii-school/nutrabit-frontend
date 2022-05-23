@@ -68,8 +68,8 @@
                     >
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>공지사항을 찾을 수 없습니다</template>
-                        <template #loading>Loading Notice data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                         <Column field="Sl. No." header="번호" style="min-width: 3rem">
                             <template #body="{ data }">
@@ -94,7 +94,13 @@
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">status</span>
-                                {{ $t(data.status) }}
+                                <span v-if="data.expose == '1'">
+                                {{ $t('active') }}
+                                </span>
+                                <span v-else-if="data.expose == '0'">
+                                 {{ $t('inactive') }}
+                                </span>
+                                
                             </template>
                         </Column>
                         <Column

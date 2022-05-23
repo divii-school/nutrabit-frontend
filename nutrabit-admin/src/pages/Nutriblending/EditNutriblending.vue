@@ -129,7 +129,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange"
-                                    :disabled="isdisable" />
+                                    :disabled="isdisable" multiple/>
                                 <Button label="파일을 선택" class="SelectBtn n-wrap"
                                     :disabled="isdisable" />
                             </div>
@@ -160,7 +160,7 @@
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges"
-                                    :disabled="isdisable1" />
+                                    :disabled="isdisable1" multiple/>
                                 <Button label="파일을 선택" class="SelectBtn n-wrap"
                                     :disabled="isdisable1" />
                             </div>
@@ -224,7 +224,7 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Blending.edit.status') }}</label>
+                            <label for="state2">상태</label>
                             <br />
                             <input type="radio" id="yes" value="active" name="status" v-model="status" />
                             <label for="yes">활성</label>
@@ -269,7 +269,7 @@ export default {
             ],
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
-            exposure: '1',
+            exposure: '',
             // dropdownValueType: null,
             title: null,
             link: null,
@@ -431,6 +431,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.file = files[0];
+            if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
@@ -438,7 +442,12 @@ export default {
             } else {
                 this.render1 = false;
                 this.detail = this.file.name;
-                this.formData.append('detail_image', files[0]);
+                Array.from(files).forEach(element => {
+               this.formData.append('detail_image', element)
+                
+                
+            });
+                //this.formData.append('detail_image', files[0]);
             }
             this.fileExtension = this.detail.replace(/^.*\./, '');
             console.log(this.detail);
@@ -447,8 +456,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.files = files[0];
-            if (!files.length) return;
-            this.files = files[0];
+           if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.files.name)) {
                 this.render2 = true;
@@ -456,7 +467,12 @@ export default {
             } else {
                 this.render2 = false;
                 this.similar = this.files.name;
-                this.formData.append('similar_image', files[0]);
+                 Array.from(files).forEach(element1 => {
+               this.formData.append('similar_image', element1)
+                
+                
+            });
+                //this.formData.append('similar_image', files[0]);
             }
             this.filesExtension = this.similar.replace(/^.*\./, '');
             console.log(this.similar);
@@ -464,8 +480,8 @@ export default {
         onFileChangethum(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
-            this.filesaddthumnail = files[0];
-            if (!files.length) return;
+            
+            
             this.filesaddthumnail = files[0];
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.filesaddthumnail.name)) {
@@ -520,7 +536,7 @@ export default {
             // console.log(similar_product_img)
             let detail_image_arr = detail_image.toString().split('/');
             let image_name = detail_image_arr[3];
-            // console.log(similar_prod_image_arr[3])
+             console.log(detail_image_arr[3])
             if (confirm('정말 삭제하시겠습니까?')) {
                 axios({ method: 'post', url: '/admin/blending/detailsImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
@@ -599,7 +615,12 @@ export default {
                 this.formData.append('description_en', this.description_en);
 
                 this.formData.append('status', this.status);
-                this.formData.append('exposure', this.exposure);
+                if(this.status == 'active'){
+                    this.formData.append('exposure', '1');
+                } else if(this.status == 'inactive'){
+                this.formData.append('exposure', '0');
+                } 
+                
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 alert('업데이트 완료');

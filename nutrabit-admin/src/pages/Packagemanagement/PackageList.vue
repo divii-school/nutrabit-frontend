@@ -36,8 +36,8 @@
                         >
                             <ConfirmDialog group="dialog" />
 
-                            <template #empty>No Data found.</template>
-                            <template #loading>Loading data. Please wait.</template>
+                            <template #empty>데이터가 없습니다.</template>
+                            <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column header="번호" >
