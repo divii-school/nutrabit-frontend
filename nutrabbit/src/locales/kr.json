@@ -111,7 +111,9 @@
         },
         "Modal" :{
             "EmailVerified" : "이메일 인증 완료",
-            "ID" : "고객님의 아이디는 {ID}입니다.  "
+            "ID" : "고객님의 아이디는 {ID}입니다.  ",
+            "ServerError" : "서버 에러!",
+           "ServerErrorSub" : "다음에 다시 시도해주세요."
          }
     },
     "onlyme": {
