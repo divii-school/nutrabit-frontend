@@ -43,7 +43,7 @@
                          <div>
                             
                             <router-link to="/addnutri-management">
-                                <Button :label="$t('Nutri3.list.add_nutri')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
+                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
                         </div>
                     </div>
@@ -51,8 +51,8 @@
                 <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
                     <ConfirmDialog group="dialog" />
 
-                    <template #empty> No Data found. </template>
-                    <template #loading> Loading data. Please wait. </template>
+                    <template #empty> 데이터가 없습니다. </template>
+                    <template #loading> 데이터를 로드 중입니다. 기다리다. </template>
                      
                     
                     <Column header="번호" >
