@@ -113,7 +113,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >등록 날짜 및 시간:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.createdDate }}</p>
+                        <p>{{ dateformat(mydata.createdDate) }}</p>
                     </div>
                 </div>
 
@@ -175,6 +175,7 @@
 import axios from 'axios';
 import UserService from '../../service/API/UserService';
 // import {useRouter} from 'vue-router'
+import moment from 'moment';
 export default {
     data() {
         return {
@@ -244,6 +245,13 @@ export default {
                     this.loading1 = false;
                 });
             }, 2000);
+        },
+        dateformat(value) {
+             if (value) {
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).format('YYYY/MM/DD     h:mm:ss')
+            }
         },
         formatDate(value) {
             const date = new Date(value);
