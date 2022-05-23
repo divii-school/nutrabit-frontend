@@ -13,7 +13,8 @@ const state = reactive({
   isiPhone: false,
   SelectedLang: '',
   isPayment: false,
-  isPaymentDone: null, 
+  isPaymentDone: null,
+  isHidePhAddr:true,
 });
 
 const methods = {

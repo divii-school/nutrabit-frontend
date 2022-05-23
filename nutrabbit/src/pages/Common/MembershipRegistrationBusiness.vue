@@ -254,7 +254,7 @@
                <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
+               <div class="form-group" :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -271,7 +271,7 @@
               </div> 
               <div
                 class="form-group"
-                :class="error.address || error.detsilAddress ? 'error' : ''"
+                :class="error.address || error.detsilAddress ? 'error' : ''" v-if="common.state.isHidePhAddr"
                 >
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
                 <div class="input-group with-btn dual-input">
@@ -329,7 +329,7 @@ import CommonService from "../../services/CommonService";
  
 export default {
   name: "MembershipRegistrationBusiness",
-
+  inject:['common'],
   data() {
     return {
       termsCheck: "",
