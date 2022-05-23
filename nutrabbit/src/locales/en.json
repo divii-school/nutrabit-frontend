@@ -112,7 +112,9 @@
 
         "Modal" :{
            "EmailVerified" : "Email verified",
-           "ID" : "Your user ID is {ID}"
+           "ID" : "Your user ID is {ID}",
+           "ServerError" : "Server Error!",
+           "ServerErrorSub" : "Please try again next time."
         }
     },
     "button": {
