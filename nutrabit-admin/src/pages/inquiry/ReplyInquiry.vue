@@ -144,7 +144,7 @@ export default {
     methods: {
          dateformat(value) {
             if (value) {
-                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
         replayans() {
