@@ -351,6 +351,9 @@ import Modal from "../../components/Modal.vue";
 export default {
   name: "MemberRegistrationIndividual",
   inject:['common'],
+  components:{
+    Modal,
+  },
   data() {
     return {
       termsCheck: "",
