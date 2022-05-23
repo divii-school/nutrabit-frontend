@@ -42,7 +42,9 @@
               @media screen and (max-width: 768px) {
                 height: auto;
                 width: auto;
-                // border-radius: 50% 50% 0 0;
+                border-radius: 50% 50% 0 0;
+              }
+              @media screen and (max-width: 640px) {
                 border-radius: 230px 230px 0 0;
               }
             }

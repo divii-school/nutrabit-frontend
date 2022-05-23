@@ -336,12 +336,17 @@
       v-show="isModalVisible"
       @close="closeModal"
       :bodytext1="$t('common.Modal.ServerError')"
-      :bodytext2="$t('common.Modal.ServerErrorSub')"
+      :bodytext3="$t('common.Modal.ServerErrorSub')"
       :btnText2="$t('button.Confirm')"
       link="/member-registration-individuals"
+      :img="ErrorImage"
+      :btnFull="true"
     />
   </div>
 </template>
+<script setup>
+import ErrorImage from "@/assets/images/Error.png";
+</script>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
@@ -625,7 +630,7 @@ export default {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
-          } else if (res.response.data.status >= 500) {
+          } else {
             this.isModalVisible = true;
           }
         });
