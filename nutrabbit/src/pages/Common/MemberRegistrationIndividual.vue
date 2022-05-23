@@ -599,7 +599,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 5;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
