@@ -184,7 +184,7 @@ header {
               background: $white-1;
               width: 100%;
               height: 100vh;
-
+              z-index: 2;
               .input-group {
                 padding: 16px 16px 0;
                 input {
