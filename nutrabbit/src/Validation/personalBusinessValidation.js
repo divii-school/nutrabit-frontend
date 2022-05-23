@@ -37,20 +37,20 @@ const personalBusinessValidation = (data) => {
       }
     }
     
-    // if (validator.isEmpty(phoneNumber)) {
-    //     errors.phoneNumber = t('common.Error.EnterPhone');
-    // }else if(!validator.isNumeric(phoneNumber)){
-    //   errors.phoneNumber = t("common.Error.OnlyNumber");
-    // }
-    // if (validator.isEmpty(address)) {
-    //   errors.address = t('common.Error.EnterAddress');
-    // }
+    if (validator.isEmpty(phoneNumber)) {
+        errors.phoneNumber = t('common.Error.EnterPhone');
+    }else if(!validator.isNumeric(phoneNumber)){
+      errors.phoneNumber = t("common.Error.OnlyNumber");
+    }
+    if (validator.isEmpty(address)) {
+      errors.address = t('common.Error.EnterAddress');
+    }
 
-    // if (withdraw_type == "bussiness") {
-    //     if (validator.isEmpty(reason)) {
-    //         errors.reason = "Please enter your reason";
-    //     }
-    // }
+    if (withdraw_type == "bussiness") {
+        if (validator.isEmpty(reason)) {
+            errors.reason = "Please enter your reason";
+        }
+    }
 
   return {
     isInvalid: Object.keys(errors).length > 0,
