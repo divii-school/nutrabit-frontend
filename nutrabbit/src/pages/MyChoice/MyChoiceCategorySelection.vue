@@ -62,7 +62,7 @@
           <div class="choice-selection-item raw-material">
             <div class="heading-wrap">
               <div class="heading">
-                <h2 class="color-2">{{ $t("myChoice.RawMaterial.title") }}</h2>
+                <h2 class="color-2.green-belt-inner">{{ $t("myChoice.RawMaterial.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>

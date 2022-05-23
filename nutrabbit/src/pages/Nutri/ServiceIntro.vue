@@ -209,6 +209,9 @@ export default {
 }
 .pb-150 {
   padding-bottom: 150px;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 75px;
+  }
 }
 .pb-70 {
   padding-bottom: 70px;

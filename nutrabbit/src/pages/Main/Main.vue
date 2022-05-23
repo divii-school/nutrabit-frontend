@@ -28,7 +28,7 @@
     </div>
     <div class="main-page-body">
       <div class="container-medium">
-        <div class="nutri-choice with-img">
+        <div class="nutri-choice with-img main_nutri">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
           <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.my_choice.title')"></h2>
@@ -51,7 +51,7 @@
       </div>
       <div class="container-medium">
         <div class="nutri-blending">
-          <div class="nutri-choice greenTItle">
+          <div class="nutri-choice greenTItle main_nutri">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
             <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.nutri.title')"></h2>
