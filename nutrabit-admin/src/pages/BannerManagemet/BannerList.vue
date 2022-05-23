@@ -62,7 +62,7 @@
                                 {{ data.link }}
                             </template>
                         </Column>
-                        <Column field="Status" :header="$t('Banner.list.status')" >
+                        <Column field="Status" header="상태" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
@@ -255,7 +255,9 @@ export default {
         },
         dateformat(value) {
              if (value) {
-            return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
         
