@@ -283,7 +283,7 @@
           
                 <div
                   class="form-group"
-                  :class="error.phoneNumber ? 'error' : ''"
+                  :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr"
                 >
                   <label for=""
                     ><i class="icon-required"></i
@@ -303,7 +303,7 @@
                 </div>
                 <div
                   class="form-group"
-                  :class="error.address || error.detsilAddress ? 'error' : ''"
+                  :class="error.address || error.detsilAddress ? 'error' : ''" v-if="common.state.isHidePhAddr"
                 >
                   <label for=""
                     ><i class="icon-required"></i
