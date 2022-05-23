@@ -398,7 +398,7 @@ export default {
       otpCheck: false,
       userExists: false,
       emailExist: false,
-      isModalVisible: true,
+      isModalVisible: false,
     };
   },
   created() {
@@ -630,7 +630,7 @@ export default {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
-          } else if (res.response.data.status >= 500) {
+          } else {
             this.isModalVisible = true;
           }
         });
