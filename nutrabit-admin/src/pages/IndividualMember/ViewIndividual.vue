@@ -245,6 +245,35 @@ export default {
                 });
             // }
         },
+         del(id) {
+            this.$confirm.require({
+                group: 'dialog',
+                header: '확인',
+                message: '삭제하시겠습니까?',
+                icon: 'pi pi-trash',
+                acceptLabel:"확인",
+                rejectLabel:"취소",
+                accept: () => {
+                    axios({ method: 'delete', url: '/admin/user/delete', data: { deleteIdArray: id } }).then(function (response) {
+                        console.log(response);
+                    
+                     });
+                     this.$router.push({ name: 'IndividualMember' });
+                    
+                    this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제되었습니다', life: 3000 });
+                },
+                reject: () => {
+                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
+                },
+            });
+            setTimeout(() => {
+                this.userservice.getIndividualUserList().then((data) => {
+                    this.customer1 = data;
+                    console.log(data);
+                    this.loading1 = false;
+                });
+            }, 2000);
+        },
     },
     mounted() {
         this.userservice.viewIndividualUser(this.$route.params.id).then((res) => {
