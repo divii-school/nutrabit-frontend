@@ -188,7 +188,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.viewstatus') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{  $t(mydata.status) }}</p>
+                        <p>{{ $t(mydata.status) }}</p>
                     </div>
                 </div>
 
@@ -254,6 +254,7 @@ export default {
                 thumbnail1: '',
                 thumbnail2: '',
                 exposure: '',
+                status:'',
             },
         };
     },
@@ -323,7 +324,7 @@ export default {
             this.mydata.thumbnail1 = res.data.data[0].thumbnail_1_path;
             this.mydata.thumbnail2 = res.data.data[0].thumbnail_2_path;
             this.mydata.status = res.data.data[0].status;
-            console.log(this.mydata.detailimage);
+            console.log(this.mydata.status);
         });
     },
 };
