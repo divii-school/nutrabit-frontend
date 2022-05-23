@@ -385,7 +385,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
 

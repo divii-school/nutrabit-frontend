@@ -113,7 +113,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >등록 날짜 및 시간:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.createdDate }}</p>
+                        <p>{{ dateformat(mydata.createdDate) }}</p>
                     </div>
                 </div>
 
@@ -175,6 +175,7 @@
 import axios from 'axios';
 import UserService from '../../service/API/UserService';
 // import {useRouter} from 'vue-router'
+import moment from 'moment';
 export default {
     data() {
         return {
@@ -219,21 +220,38 @@ export default {
         del(id) {
             this.$confirm.require({
                 group: 'dialog',
-                header: 'Confirmation',
-                message: 'Are you sure you want to delete?',
-                icon: 'pi pi-exclamation-triangle',
+                header: '확인',
+                message: '삭제하시겠습니까?',
+                icon: 'pi pi-trash',
+                acceptLabel:"확인",
+                rejectLabel:"취소",
                 accept: () => {
-                    axios({ method: 'delete', url: `/admin/dfc/delete`, data: { deleteIdArray: id } }).then((res) => {
-                        console.warn(res);
-                        this.$router.push({ name: 'Dfc' });
-                    });
-
-                    this.$toast.add({ severity: 'info', summary: 'Deleted', detail: 'Deleted successfully', life: 3000 });
+                    axios({ method: 'delete', url: '/admin/user/delete', data: { deleteIdArray: id } }).then(function (response) {
+                        console.log(response);
+                    
+                     });
+                     this.$router.push({ name: 'BusinessMember' });
+                    
+                    this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제되었습니다', life: 3000 });
                 },
                 reject: () => {
-                    this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
                 },
             });
+            setTimeout(() => {
+                this.userservice.getBusinessUserList().then((data) => {
+                    this.customer1 = data;
+                    console.log(data);
+                    this.loading1 = false;
+                });
+            }, 2000);
+        },
+        dateformat(value) {
+             if (value) {
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).format('YYYY/MM/DD     h:mm:ss')
+            }
         },
         formatDate(value) {
             const date = new Date(value);
