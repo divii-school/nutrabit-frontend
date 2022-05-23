@@ -34,9 +34,9 @@ const personalInfoValidation = (data) => {
     errors.address = t('common.Error.EnterAddress');
   }
 
-  if (validator.isEmpty(reason)) {
-    errors.reason = "Please enter your reason";
-  }
+  // if (validator.isEmpty(reason)) {
+  //   errors.reason = "Please enter your reason";
+  // }
 
 
   return {
