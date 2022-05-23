@@ -188,7 +188,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.viewstatus') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.status }}</p>
+                        <p>{{  $t(mydata.status) }}</p>
                     </div>
                 </div>
 

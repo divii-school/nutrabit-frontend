@@ -86,7 +86,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Application.details.application') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.Application_mode }}</p>
+                        <p>{{ $t(mydata.Application_mode) }}</p>
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
                         <strong>
                             <label for="status">상태:</label>
                         </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.status_by_admin }}</p>
+                        <p style="float: right; margin-right: 19%">{{ $t(mydata.status_by_admin) }}</p>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">

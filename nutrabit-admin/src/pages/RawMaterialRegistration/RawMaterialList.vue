@@ -73,7 +73,7 @@
                                 </router-link>
                                 <router-link to="/addRawMaterial">
                                     <Button
-                                        :label="$t('RawMaterialadd.list.addnew_rawmaterial')"
+                                        label="새 원료 추가"
                                         icon="pi pi-plus"
                                         iconPos="left"
                                         class="p-button p-button-sm p-mr-2 p-mb-2"
@@ -97,7 +97,7 @@
                             <ConfirmDialog group="dialog" />
 
                             <template #empty>데이터가 없습니다</template>
-                            <template #loading>Loading data. Please wait.</template>
+                            <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                             <!-- <column selectionMode="multiple" style="width: 16px; text-align: center" /> -->
                             <Column

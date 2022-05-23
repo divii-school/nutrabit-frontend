@@ -65,7 +65,7 @@
             <div class="card p-fluid" style="height:250px;">
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                        <label for="title2" style="font-size: x-large;font-family: sans-serif;">Reply</label>
+                        <label for="title2" style="font-size: x-large;font-family: sans-serif;">댓글</label>
                         <div class="textbox">
                             <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="text" />
                         </div>

@@ -40,8 +40,8 @@
                 <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines p-jc-center" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
                     <ConfirmDialog group="dialog" />
 
-                    <template #empty> 데이터가 없습니다 </template>
-                    <template #loading> Loading data. Please wait. </template>
+                    <template #empty> 데이터가 없습니다. </template>
+                    <template #loading> 데이터를 로드 중입니다. 기다리다.</template>
                     
                     
                     <Column header="번호" >
