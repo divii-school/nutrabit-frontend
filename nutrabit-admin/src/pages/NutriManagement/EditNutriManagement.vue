@@ -117,7 +117,7 @@
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
 
-                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable" multiple/>
                             <Button label="파일을 선택" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
 
@@ -196,6 +196,7 @@ export default {
             render2: false,
             render3: false,
             render4: false,
+            id: '',
             file: '',
             files: '',
             addthumnailfile: '',
@@ -237,6 +238,7 @@ export default {
             packageDropdownValue: null,
             formData: new FormData(),
             error: {},
+           
             isdisable: false,
             crossdisplay: true,
         };
@@ -283,6 +285,7 @@ export default {
             console.log(data);
         });
         this.nutriManagementService.ViewNurtiManagementList(this.$route.params.id).then((res) => {
+             this.id = res.data.data[0].id;
             this.category_id = res.data.data[0].category_id;
             this.raw_material_id = res.data.data[0].selectedItems;
             this.pill_id = res.data.data[0].pill_id;
@@ -319,6 +322,7 @@ export default {
             });
             this.select_items = result;
             this.selectedItems = res.data.data[0].raw_material_id;
+            console.log(res);
         });
     },
     methods: {
@@ -374,13 +378,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+            if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render2 = true;
                 return false;
             } else {
                 this.render2 = false;
                 this.filesNames = this.file.name;
-                this.formData.append('product_sub_image', files[0]);
+                 Array.from(files).forEach(element => {
+               this.formData.append('product_sub_image', element)
+                
+                
+            });
+                // this.formData.append('product_sub_image', files[0]);
             }
             this.filesExtension = this.filesNames.replace(/^.*\./, '');
             console.log(this.filesNames);
@@ -437,22 +450,40 @@ export default {
                     });
             }
         },
-        remove_raw(id, raw_material_img) {
+        remove_raw(id, product_sub_image) {
             //console.log(id)
             // console.log(similar_product_img)
-            let raw_material_img_arr = raw_material_img.toString().split('/');
-            let image_name = raw_material_img_arr[3];
-            // console.log(similar_prod_image_arr[3])
+            let product_sub_image_arr = product_sub_image.toString().split('/');
+            let image_name = product_sub_image_arr.findLast(() => true);
+            //let image_name = product_sub_image_arr[2];
+             console.log()
             if (confirm('정말 삭제하시겠습니까?')) {
-                axios({ method: 'post', url: '/admin/product_raw_material/imageDelete', data: { raw_material_id: id, image_name: image_name } })
+                axios({ method: 'post', url: '/admin/nutriBlending/productSubImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
                         console.log(response);
+                        // console.log(id);
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             }
         },
+        // remove_raw(id, product_sub_image) {
+        //     console.log(id)
+        //     console.log(product_sub_image)
+        //     let product_sub_image_arr = product_sub_image.toString().split('/');
+        //     let image_name = product_sub_image_arr[3];
+        //      console.log(product_sub_image_arr[3])
+        //     if (confirm('정말 삭제하시겠습니까?')) {
+        //         axios({ method: 'post', url: '/admin/nutriBlending/productSubImageDelete', data: { blending_id: id, image_name: image_name } })
+        //             .then(function (response) {
+        //                 console.log(response);
+        //             })
+        //             .catch((error) => {
+        //                 console.log(error);
+        //             });
+        //     }
+        // },
 
         editNutri() {
             // console.log(this.select_items)

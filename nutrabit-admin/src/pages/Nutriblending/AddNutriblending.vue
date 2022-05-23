@@ -154,7 +154,7 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange" />
+                                <input type="file" class="select-file" v-on:change="onFileChange" multiple/>
                                 <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -172,7 +172,7 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges" />
+                                <input type="file" class="select-file" v-on:change="onFileChanges" multiple />
                                 <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
@@ -224,7 +224,7 @@
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
-                            <label for="state2">{{ $t('Blending.list.addstatus') }}</label>
+                            <label for="state2">상태</label>
                             <br />
                             <div :class="`${error.state ? 'p-invalid' : ''}`">
                                 <input type="radio" id="yes" value="active" name="status" v-model="status">
@@ -362,6 +362,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.file = files[0];
+            if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
@@ -369,7 +373,12 @@ export default {
             } else {
                 this.render1 = false;
                 this.detail = this.file.name;
-                this.formData.append('detail_image', files[0]);
+                Array.from(files).forEach(element => {
+               this.formData.append('detail_image', element)
+                
+                
+            });
+                //this.formData.append('detail_image', files[0]);
             }
             this.fileExtension = this.detail.replace(/^.*\./, '');
             console.log(this.detail);
@@ -378,8 +387,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.files = files[0];
-            if (!files.length) return;
-            this.files = files[0];
+            if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.files.name)) {
                 this.render2 = true;
@@ -387,7 +398,12 @@ export default {
             } else {
                 this.render2 = false;
                 this.similar = this.files.name;
-                this.formData.append('similar_image', files[0]);
+                 Array.from(files).forEach(element1 => {
+               this.formData.append('similar_image', element1)
+                
+                
+            });
+                //this.formData.append('similar_image', files[0]);
             }
             this.filesExtension = this.similar.replace(/^.*\./, '');
             console.log(this.similar);
