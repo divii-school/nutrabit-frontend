@@ -306,7 +306,7 @@ export default {
       if (res) {
         // let resData = JSON.parse(JSON.stringify(res));
         let resData = JSON.parse(res);
-        // alert(resData);
+        // alert('Apple login res from APP:' + JSON.stringify(resData));
         // console.log("--appleLoginHandler--", resData);
         let emailName = resData.emailId.match(/^([^@]*)@/)[1];
         let userName = (!resData.userName || resData.userName == "") ? resData.userName : emailName;
@@ -319,8 +319,8 @@ export default {
           "address",
           "detail address",
           "sns",
-          resData.accesstoken,
-          "apple"
+          resData.accessToken,
+          resData.loginVia
         );
         setTimeout(() => {
           self.socialLogin(resData.emailId);
@@ -507,6 +507,7 @@ export default {
         )
         .then((res) => {
           // console.log("socialRegistration:--", res);
+          // alert('indi reg data: ' + JSON.stringify(res));
           if (res.data.status == 200) {
             // console.log("socialRegistration success:--", res);
             // this.$router.push("member-registration-completed");
@@ -522,7 +523,8 @@ export default {
         // console.log("socialLogin res.data.status:--", res.data.status);
         if (res.response) {
           if (res.response.data.status == 400) {
-            // console.log("res.response:", res.response);
+            // alert('login failed:' + JSON.stringify(res.response));
+            console.log("res.response:", res.response);
           }
         } else {
           if (res.data.status == 200) {
@@ -538,6 +540,7 @@ export default {
               this.cookies.set("rememberUserEmail", email);
               this.cookies.set("rememberUserPassword", password);
             }
+              // alert('login success:' + JSON.stringify(res.data.data));
             this.$router.push({ name: "Main" });
           }
         }

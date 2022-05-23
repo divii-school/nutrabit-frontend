@@ -57,7 +57,7 @@
               </div>
           </div>
         </div>
-        <div class="choice-selection-item-wrap">
+        <div class="choice-selection-item-wrap recipeGap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
               <div class="heading">

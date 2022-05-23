@@ -355,7 +355,9 @@ export default {
             this.phoneNumber,
             this.address,
             this.detsilAddress,
-            this.checkName.join(",")
+            this.checkName.join(","),
+            '',
+            'web'
           )
           .then((res) => {
             if (res.data.status == 200) {

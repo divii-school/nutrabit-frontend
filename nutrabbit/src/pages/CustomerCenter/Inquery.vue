@@ -18,11 +18,11 @@
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
-            <div class="item-left lp-2">
+            <div class="item-left ">
               <div class="item-left-inner">
                 <p class="para-category para-date">{{ dateformat(item.createdDate) }}</p>
                 <span
-                  class="mr-2"
+                  class="mr-2 ml-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
                   >{{ $t(item.status) }}</span
                 >
@@ -36,7 +36,7 @@
             <div class="contWrap">
               <div class="contCol">
                 <h4>{{$t("customer.tag.Attachment")}}</h4>
-                <p>
+                <p class="ml-2">
                   <a
                     :href="
                       'http://api-nutrabbit-dev.dvconsulting.org/public' +
@@ -50,7 +50,7 @@
               </div>
               <div class="contCol">
                 <h4>{{$t("customer.tag.Inquiries")}}</h4>
-                <p>
+                <p class="ml-2">
                   {{ item.description }}
                 </p>
               </div>
@@ -59,7 +59,7 @@
                 :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{$t("customer.tag.AnswerContent")}}</h4>
-                <p>
+                <p class="ml-2">
                   {{ item.replyText }}
                 </p>
               </div>

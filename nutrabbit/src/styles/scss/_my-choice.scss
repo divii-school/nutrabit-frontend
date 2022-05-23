@@ -395,11 +395,12 @@
                     margin-top: 15px;
                     p {
                       font-size: 18px;
-                      line-height: 150%;
+                      line-height: 130%;
                       color: $grey-82;
                       font-family: $default-font;
                       @media screen and (max-width: 768px) {
                         text-align: center;
+                        line-height: 150%;
                       }
                     }
                   }
@@ -450,7 +451,7 @@
                 padding: 30px 0 30px;
               }
               &.my-choice-product-item{
-                padding: 25px 30px;
+                padding: 25px 44px;
               }
               &.with-input {
                 @include flex-align-center;
@@ -465,7 +466,7 @@
                 .radio-wrap {
                   .custom-radio {
                     .checkmark {
-                      top: -2px;
+                      top: -4px;
                     }
                   }
                 }
@@ -483,6 +484,7 @@
                     @media screen and (max-width: 640px) {
                       min-width: 35px;
                       margin-right: 15px;
+                      line-height: 24px;
                     }
                   }
                   .input-group {
