@@ -254,7 +254,7 @@
                <span class="success-msg" v-if="isOtpVerified">{{ isOtpSuccess }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-              <!-- <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
+               <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -268,8 +268,8 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
-              </div> -->
-              <!-- <div
+              </div> 
+              <div
                 class="form-group"
                 :class="error.address || error.detsilAddress ? 'error' : ''"
                 >
@@ -287,13 +287,13 @@
                   </div>
                   <button class="btn-green-outline" @click="getAddress">
                    {{ $t("button.SearchAddress") }}
-                  </button> -->
+                  </button>
                    <!-- postcodeWrap modal -->
-                <!-- <div id="postcodeWrap">
+                <div id="postcodeWrap">
                   <div id="addressLayer"></div>
-                </div> -->
+                </div>
                 <!-- postcodeWrap modal -->
-                <!-- </div>
+                </div>
                 <div class="input-group">
                   <div class="input-inner">
                     <input
@@ -308,7 +308,7 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>
-              </div>-->
+              </div>
             </div> 
             <button
               class="btn-primary grenn-btn2"
