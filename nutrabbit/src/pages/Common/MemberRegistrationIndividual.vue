@@ -463,7 +463,8 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-          console.log(res)
+          console.log("send otp res",res.response)
+          console.log("send otp",res)
           if(!res){
             this.isModalVisible = true;
           }
