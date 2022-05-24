@@ -10,22 +10,14 @@
             </h1>
             <span>{{ $t("common.Error.Resquired") }}</span>
           </div>
-          <form
-            action=""
-            class="signUp-form"
-            @submit="(e) => e.preventDefault()"
-          >
+          <form action="" class="signUp-form" @submit="(e) => e.preventDefault()">
             <div class="terms-sec">
               <div class="form-group" :class="error.termsCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <label class="custom-check">
-                    <i18n-t
-                      keypath="common.label.TermsCheckBox"
-                      tag="p"
-                      for="common.label.TermsCheckBoxLink"
-                    >
+                    <i18n-t keypath="common.label.TermsCheckBox" tag="p" for="common.label.TermsCheckBoxLink">
                       <router-link to="/terms">{{
-                        $t("common.label.TermsCheckBoxLink")
+                          $t("common.label.TermsCheckBoxLink")
                       }}</router-link>
                     </i18n-t>
                     <input type="checkbox" v-model="termsCheck" />
@@ -33,10 +25,7 @@
                   </label>
                 </div>
               </div>
-              <div
-                class="form-group"
-                :class="error.personalCheck ? 'error' : ''"
-              >
+              <div class="form-group" :class="error.personalCheck ? 'error' : ''">
                 <div class="check-box-wrap">
                   <!-- <label class="custom-check">
                     {{ $t("common.label.PersonalInfoCheckBox") }}
@@ -44,13 +33,10 @@
                     <span class="checkmark"></span>
                   </label> -->
                   <label class="custom-check">
-                    <i18n-t
-                      keypath="common.label.PersonalInfoCheckBox"
-                      tag="p"
-                      for="common.label.PersonalInfoCheckBoxLink"
-                    >
+                    <i18n-t keypath="common.label.PersonalInfoCheckBox" tag="p"
+                      for="common.label.PersonalInfoCheckBoxLink">
                       <router-link to="/privacy">{{
-                        $t("common.label.PersonalInfoCheckBoxLink")
+                          $t("common.label.PersonalInfoCheckBoxLink")
                       }}</router-link>
                     </i18n-t>
                     <input type="checkbox" v-model="personalCheck" />
@@ -61,259 +47,155 @@
             </div>
             <div class="individuals-form">
               <div class="form-group" :class="error.name ? 'error' : ''">
-                <label for=""
-                  ><i class="icon-required"></i>
-                  {{ $t("common.label.Name") }}</label
-                >
+                <label for=""><i class="icon-required"></i>
+                  {{ $t("common.label.Name") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('common.placeholder.Name')"
-                      v-model="name"
-                    />
+                    <input class="form-control" type="text" :placeholder="$t('common.placeholder.Name')"
+                      v-model="name" />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.name }}</span>
               </div>
               <div class="form-group" :class="error.username ? 'error' : ''">
-                <label for=""
-                  ><i class="icon-required"></i
-                  >{{ $t("common.label.ID") }}</label
-                >
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.ID") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('common.placeholder.EnterId')"
-                      v-model="username"
-                    />
+                    <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterId')"
+                      v-model="username" />
                   </div>
                   <button class="btn-green-outline" @click="checkUser">
                     {{ $t("button.checkAvailability") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isIDVerified">{{
-                  $t("common.Error.useridAvailable")
+                    $t("common.Error.useridAvailable")
                 }}</span>
                 <span class="error-msg" v-else>{{ error.username }}</span>
               </div>
               <div class="form-group" :class="error.password ? 'error' : ''">
-                <label for=""
-                  ><i class="icon-required"></i
-                  >{{ $t("common.label.Password") }}</label
-                >
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Password") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="password"
-                      :placeholder="
-                        $t('common.placeholder.PasswordFormatSignup')
-                      "
-                      v-model="password"
-                    />
+                    <input class="form-control" type="password" :placeholder="
+                      $t('common.placeholder.PasswordFormatSignup')
+                    " v-model="password" />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.password }}</span>
               </div>
-              <div
-                class="form-group"
-                :class="error.confirmPassword ? 'error' : ''"
-              >
-                <label for=""
-                  ><i class="icon-required"></i
-                  >{{ $t("common.label.VerifyPassword") }}</label
-                >
+              <div class="form-group" :class="error.confirmPassword ? 'error' : ''">
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.VerifyPassword") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="password"
-                      :placeholder="$t('common.placeholder.VerifyPassword')"
-                      v-model="confirmPassword"
-                    />
+                    <input class="form-control" type="password" :placeholder="$t('common.placeholder.VerifyPassword')"
+                      v-model="confirmPassword" />
                   </div>
                 </div>
                 <span class="error-msg">{{ error.confirmPassword }}</span>
               </div>
               <div class="form-group" :class="error.email ? 'error' : ''">
-                <label for=""
-                  ><i class="icon-required"></i
-                  >{{ $t("common.label.Email") }}</label
-                >
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Email") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('common.placeholder.Email')"
-                      v-model="email"
-                    />
+                    <input class="form-control" type="text" :placeholder="$t('common.placeholder.Email')"
+                      v-model="email" />
                   </div>
-                  <button
-                    class="btn-green-outline"
-                    @click="sendOtp"
-                    :class="{ grey: isVerification }"
-                    :disabled="emailValidated"
-                  >
+                  <button class="btn-green-outline" @click="sendOtp" :class="{ grey: isVerification }"
+                    :disabled="emailValidated">
                     {{ verificationStatus }}
                   </button>
                 </div>
                 <span class="error-msg">{{ error.email }}</span>
               </div>
               <div class="form-group" :class="error.emailOTP ? 'error' : ''">
-                <label for=""
-                  ><i class="icon-required"></i
-                  >{{ $t("common.label.EmailVerification") }}</label
-                >
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.EmailVerification") }}</label>
                 <div class="input-group with-btn">
                   <div class="input-inner">
-                    <input
-                      class="form-control"
-                      type="text"
-                      :placeholder="
-                        $t('common.placeholder.EnterVerificationCode')
-                      "
-                      v-model="emailOTP"
-                      maxlength="6"
-                    />
-                    <span
-                      class="time"
-                      id="timer"
-                      :class="{ startTimer: startTimer }"
-                      >{{ newTime }}</span
-                    >
-                    <span class="time" :class="{ showTick: showTick }"
-                      ><i class="green-tick-circle"></i
-                    ></span>
+                    <input class="form-control" type="text" :placeholder="
+                      $t('common.placeholder.EnterVerificationCode')
+                    " v-model="emailOTP" maxlength="6" />
+                    <span class="time" id="timer" :class="{ startTimer: startTimer }">{{ newTime }}</span>
+                    <span class="time" :class="{ showTick: showTick }"><i class="green-tick-circle"></i></span>
                   </div>
-                  <button
-                    class="btn-green-outline"
-                    :class="{ grey: isActive }"
-                    @click="verifyOTP"
-                    :disabled="otpValidate"
-                  >
+                  <button class="btn-green-outline" :class="{ grey: isActive }" @click="verifyOTP"
+                    :disabled="otpValidate">
                     {{ $t("button.verify") }}
                   </button>
                 </div>
                 <span class="success-msg" v-if="isOtpVerified">{{
-                  isOtpSuccess
+                    isOtpSuccess
                 }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-      
-                <div
-                  class="form-group"
-                  :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr"
-                >
-                  <label for=""
-                    ><i class="icon-required"></i
-                    >{{ $t("common.label.PhoneNumber") }}</label
-                  >
-                  <div class="input-group">
-                    <div class="input-inner">
-                      <input
-                        class="form-control"
-                        type="text"
-                        :placeholder="$t('common.placeholder.PhoneNumber')"
-                        v-model="phoneNumber"
-                      />
-                    </div>
+
+              <div class="form-group" :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr">
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
+                <div class="input-group">
+                  <div class="input-inner">
+                    <input class="form-control" type="text" :placeholder="$t('common.placeholder.PhoneNumber')"
+                      v-model="phoneNumber" />
                   </div>
-                  <span class="error-msg">{{ error.phoneNumber }}</span>
                 </div>
-                <div
-                  class="form-group"
-                  :class="error.address || error.detsilAddress ? 'error' : ''" v-if="common.state.isHidePhAddr"
-                >
-                  <label for=""
-                    ><i class="icon-required"></i
-                    >{{ $t("common.label.Address") }}</label
-                  >
-                  <div class="input-group with-btn dual-input">
-                    <div class="input-inner">
-                      <input
-                        class="form-control"
-                        type="text"
-                        :placeholder="$t('common.placeholder.EnterAddress')"
-                        v-model="address"
-                        disabled
-                      />
-                    </div>
-                    <button class="btn-green-outline" @click="getAddress">
-                      {{ $t("button.SearchAddress") }}
-                    </button>
+                <span class="error-msg">{{ error.phoneNumber }}</span>
+              </div>
+              <div class="form-group" :class="error.address || error.detsilAddress ? 'error' : ''"
+                v-if="common.state.isHidePhAddr">
+                <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
+                <div class="input-group with-btn dual-input">
+                  <div class="input-inner">
+                    <input class="form-control" type="text" :placeholder="$t('common.placeholder.EnterAddress')"
+                      v-model="address" disabled />
                   </div>
-                  <!-- postcodeWrap modal -->
-                  <div id="postcodeWrap">
-                    <div id="addressLayer"></div>
-                  </div>
-                  <!-- postcodeWrap modal -->
-                  <div class="input-group">
-                    <div class="input-inner">
-                      <input
-                        class="form-control"
-                        type="text"
-                        :placeholder="
-                          $t('common.placeholder.EnterDetailedAddress')
-                        "
-                        v-model="detsilAddress"
-                      />
-                    </div>
-                  </div>
-                  <span class="error-msg">{{ error.address }}</span>
+                  <button class="btn-green-outline" @click="getAddress">
+                    {{ $t("button.SearchAddress") }}
+                  </button>
                 </div>
-                <!-- address-->
-            
+                <!-- postcodeWrap modal -->
+                <div id="postcodeWrap">
+                  <div id="addressLayer"></div>
+                </div>
+                <!-- postcodeWrap modal -->
+                <div class="input-group">
+                  <div class="input-inner">
+                    <input class="form-control" type="text" :placeholder="
+                      $t('common.placeholder.EnterDetailedAddress')
+                    " v-model="detsilAddress" />
+                  </div>
+                </div>
+                <span class="error-msg">{{ error.address }}</span>
+              </div>
+              <!-- address-->
+
               <div class="form-group">
                 <label for=""> {{ $t("common.label.FindUs") }}</label>
                 <div class="multi-checkbox">
                   <div class="check-box-wrap">
-                    <label class="custom-check"
-                      >{{ $t("common.label.OfflineCheck") }}
-                      <input
-                        type="checkbox"
-                        value="offline"
-                        v-model="checkName"
-                      />
+                    <label class="custom-check">{{ $t("common.label.OfflineCheck") }}
+                      <input type="checkbox" value="offline" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check"
-                      >{{ $t("common.label.OnlineCheck") }}
-                      <input
-                        type="checkbox"
-                        value="online"
-                        v-model="checkName"
-                      />
+                    <label class="custom-check">{{ $t("common.label.OnlineCheck") }}
+                      <input type="checkbox" value="online" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check"
-                      >{{ $t("common.label.NetworkCheck") }}
-                      <input
-                        type="checkbox"
-                        value="network"
-                        v-model="checkName"
-                      />
+                    <label class="custom-check">{{ $t("common.label.NetworkCheck") }}
+                      <input type="checkbox" value="network" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check"
-                      >{{ $t("common.label.SNSCheck") }}
+                    <label class="custom-check">{{ $t("common.label.SNSCheck") }}
                       <input type="checkbox" value="sns" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="check-box-wrap">
-                    <label class="custom-check"
-                      >{{ $t("common.label.EtcCheck") }}
+                    <label class="custom-check">{{ $t("common.label.EtcCheck") }}
                       <input type="checkbox" value="etc" v-model="checkName" />
                       <span class="checkmark"></span>
                     </label>
@@ -322,41 +204,31 @@
               </div>
             </div>
 
-            <button
-              class="btn-primary grenn-btn2"
-              @click="individalRegistration"
-            >
+            <button class="btn-primary grenn-btn2" @click="individalRegistration">
               {{ $t("common.QuickLinks.SignUp") }}
             </button>
           </form>
         </div>
       </div>
     </div>
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-      :bodytext1="$t('common.Modal.ServerError')"
-      :bodytext3="$t('common.Modal.ServerErrorSub')"
-      :btnText2="$t('button.Confirm')"
-      link="/member-registration-individuals"
-      :img="ErrorImage"
-      :btnFull="true"
-    />
+    <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('common.Modal.ServerError')"
+      :bodytext3="$t('common.Modal.ServerErrorSub')" :btnText2="$t('button.Confirm')"
+      link="/member-registration-individuals" :img="imgUrl" :btnFull="true" />
   </div>
 </template>
-<script setup>
-import ErrorImage from "@/assets/images/Error.png";
-</script>
+
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import Modal from "../../components/Modal.vue";
+import ErrorImage from "~@/assets/images/error.png";
+
 
 export default {
   name: "MemberRegistrationIndividual",
-  inject:['common'],
-  components:{
+  inject: ['common'],
+  components: {
     Modal,
   },
   data() {
@@ -398,7 +270,8 @@ export default {
       otpCheck: false,
       userExists: false,
       emailExist: false,
-      isModalVisible: true,
+      isModalVisible: false,
+      imgUrl: ErrorImage,
     };
   },
   created() {
@@ -590,6 +463,12 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          console.log("send otp res",res.response)
+          console.log("send otp",res)
+          if(!res){
+            this.isModalVisible = true;
+          }
+
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -604,7 +483,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 180;
+            this.timer = 5;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -630,9 +509,10 @@ export default {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
-          } else if (res.response.data.status >= 500) {
-            this.isModalVisible = true;
           }
+        }).catch(err => {
+            console.log(err)
+            this.isModalVisible = true;
         });
       }
     },
