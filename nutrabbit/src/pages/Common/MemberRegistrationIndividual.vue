@@ -463,6 +463,11 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          console.log(res)
+          if(!res){
+            this.isModalVisible = true;
+          }
+
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -477,7 +482,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 180;
+            this.timer = 5;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
@@ -503,9 +508,10 @@ export default {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
-          } else {
-            this.isModalVisible = true;
           }
+        }).catch(err => {
+            console.log(err)
+            this.isModalVisible = true;
         });
       }
     },
