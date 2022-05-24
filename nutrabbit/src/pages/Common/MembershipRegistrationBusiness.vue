@@ -607,9 +607,9 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-          console.log(res);
-          console.log("send otp res",res.response)
-          console.log("send otp",res)
+          // console.log(res);
+          // console.log("send otp res",res.response)
+          // console.log("send otp",res)
           if(!res){
             this.isModalVisible = true;
           }
@@ -654,6 +654,9 @@ export default {
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           } 
+        }).catch(err => {
+            console.log(err)
+            this.isModalVisible = true;
         });
       }
     },
