@@ -463,8 +463,8 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-          console.log("send otp res",res.response)
-          console.log("send otp",res)
+          // console.log("send otp res",res.response)
+          // console.log("send otp",res)
           if(!res){
             this.isModalVisible = true;
           }
@@ -483,7 +483,7 @@ export default {
               clearInterval(this.storeSetInterval);
             }
             // asign new time again
-            this.timer = 5;
+            this.timer = 180;
 
             this.storeSetInterval = setInterval(() => {
               let m = Math.floor(this.timer / 60);
