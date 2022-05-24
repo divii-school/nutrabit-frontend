@@ -137,7 +137,7 @@
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
                 <Button
-                    :label="$t('button.confirm')"
+                    label="게시"
                     icon="pi pi-check"
                     iconPos="left"
                     class="p-button p-button-sm p-mr-2 p-mb-2"

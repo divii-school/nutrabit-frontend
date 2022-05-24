@@ -114,8 +114,10 @@ axios.defaults.headers = {
     apiKey:'coN21di1202VII01Ed0OnNiMDa2P3p0M',
     token: localStorage.getItem('token'),
     'Accept-Language':'en',
-    'Access-Control-Allow-Origin':'*',
+    // 'Access-Control-Allow-Origin':'*',
+    
 };
+axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 // Token expire redirection
 
 axios.interceptors.response.use((response) => {

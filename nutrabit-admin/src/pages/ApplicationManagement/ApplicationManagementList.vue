@@ -88,8 +88,8 @@
                     >
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>데이터가 없습니다</template>
-                        <template #loading>Loading data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                         <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
@@ -114,7 +114,7 @@
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title" >Product</span>
-                                {{ data.goods.toLowerCase() }}
+                                {{ $t(data.goods.toLowerCase()) }}
                             </template>
                         </Column>
                         <Column
@@ -124,7 +124,7 @@
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Service</span>
-                                {{ data.service }}
+                                {{ $t(data.service) }}
                             </template>
                         </Column>
                         <Column
@@ -135,7 +135,7 @@
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                
-                                {{ data.status_by_admin }}
+                                {{ $t(data.status_by_admin) }}
                             </template>
                         </Column>
 
@@ -204,12 +204,12 @@ export default {
     data() {
         return {
             // dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
-            dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
+            dropdownValues: [{ name: 'pending', code: '미답변' }, { name: 'completed', code: '답변' }],
             serial: 0,
             dropdownValue: null,
-            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommanded' },{ name: 'Nutri 3.3', value: 'nutri' }],
+            productdropdownValues: [{ name: '내 선택', value: 'my_choice' }, { name: '명령된 블렌딩', value: 'recommanded' },{ name: '뉴트리 3.3', value: 'nutri' }],
 
-            servicedropdownValues: [{ name: 'Sample Request', value: '1' }, { name: 'Get a quote', value: '2' }, { name: 'Both', value: '3' }],
+            servicedropdownValues: [{ name: '샘플 요청', value: '1' }, { name: '견적', value: '2' }, { name: 'Both', value: '3' }],
 
             calendarValue1: '',
             calendarValue2: '',
@@ -385,7 +385,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
 

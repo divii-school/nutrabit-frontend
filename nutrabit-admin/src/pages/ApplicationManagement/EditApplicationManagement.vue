@@ -65,7 +65,7 @@
                             $t('Application.details.datetime')
                         }}:</label>
                         <div class="p-col-12 p-md-10">
-                            <p>{{ createdDate }}</p>
+                            <p>{{ dateformat(createdDate) }}</p>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                             $t('Application.details.application')
                         }}:</label>
                         <div class="p-col-12 p-md-10">
-                            <p>{{ Application_mode }}</p>
+                            <p>{{ $t(Application_mode) }}</p>
                         </div>
                     </div>
 
@@ -184,13 +184,14 @@
 import axios from 'axios';
 import validateCreateApplication from '../../validations/application/validateCreateApplication';
 import ApplicationmanagementService from '../../service/API/ApplicationmanagementService';
+import moment from 'moment';
 export default {
     name: 'appedit',
     data() {
         return {
             // render1: false,
             // render2: false,
-            dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
+            dropdownValues: [{ name: 'pending', code: '미답변  ' }, { name: 'completed', code: '답변 ' }],
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
             // dropdownValueType: null,
@@ -254,6 +255,11 @@ export default {
     methods: {
         reinitialize() {
             (this.name = null), (this.ID = null), (this.email = null), (this.address = null), (this.createdDate = null), (this.Application_mode = null), (this.additional_request = null), (this.status_by_admin = null), (this.answer_by_admin = null), (this.memo_by_admin = null), (this.options = null);
+        },
+        dateformat(value) {
+            if (value) {
+                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+            }
         },
 
         editApplicationManagement() {

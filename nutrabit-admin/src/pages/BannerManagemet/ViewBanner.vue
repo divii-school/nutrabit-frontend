@@ -71,7 +71,7 @@
                             name="status"
                             v-model="mydata.status"
                         />
-                        <label for="yes">Yes</label>
+                        <label for="yes">활성</label>
 
                         <input
                             type="radio"
@@ -80,7 +80,7 @@
                             value="inactive"
                             v-model="mydata.status"
                         />
-                        <label for="no">No</label>
+                        <label for="no">비활성</label>
                     </div>
                 </div>
 

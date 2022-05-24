@@ -9,7 +9,7 @@
   }
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    padding: 80px 0 80px 0;
+    padding: 75px 0 80px 0;
     gap: 50px;
   }
 
@@ -35,13 +35,17 @@
               width: 100%;
             }
             img {
-              height: 465px;
-              width: 465px;
+              height: 100%;
+              width: 100%;
               border-radius: 230px 230px 0 0;
+              object-fit: cover;
               @media screen and (max-width: 768px) {
-                height: 343px;
+                height: auto;
                 width: auto;
                 border-radius: 50% 50% 0 0;
+              }
+              @media screen and (max-width: 640px) {
+                border-radius: 230px 230px 0 0;
               }
             }
           }
@@ -98,6 +102,7 @@
 
     @media screen and (max-width: 768px) {
       width: 100%;
+      max-width: 100%;
     }
 
     .right-heading {

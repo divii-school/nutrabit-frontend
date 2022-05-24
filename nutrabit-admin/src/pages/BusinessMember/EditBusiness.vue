@@ -86,6 +86,7 @@
 import validateEditBusiness from '../../validations/business/EditBusiness';
 
 import UserService from '../../service/API/UserService';
+import moment from 'moment';
 export default {
     data() {
         return {
@@ -137,6 +138,13 @@ export default {
             setTimeout(() => {
                 this.$router.go(-1);
             }, 2000);
+        },
+         dateformat(value) {
+             if (value) {
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).format('YYYY/MM/DD h:mm:ss')
+            }
         },
         editBusiness() {
              
@@ -193,7 +201,7 @@ export default {
              this.mydata.email = res.data.data[0].email;
              this.mydata.mobile = res.data.data[0].mobile;
              this.mydata.address = res.data.data[0].address;
-             this.mydata.createdDate = res.data.data[0].createdDate;
+             this.mydata.createdDate =this.dateformat(res.data.data[0].createdDate);
             // this.mydata.account_type = res.data.data[0].account_type;
             //console.log(res.data.data[0]);
             //console.log(res)

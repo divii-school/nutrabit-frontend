@@ -16,7 +16,9 @@
                 <div class="check-box-wrap">
                   <label class="custom-check">
                     <i18n-t keypath="common.label.TermsCheckBox" tag="p" for="common.label.TermsCheckBoxLink">
-                      <router-link to="/terms">{{ $t("common.label.TermsCheckBoxLink") }}</router-link>
+                      <router-link to="/terms">{{
+                          $t("common.label.TermsCheckBoxLink")
+                      }}</router-link>
                     </i18n-t>
                     <input type="checkbox" v-model="termsCheck" />
                     <span class="checkmark"></span>
@@ -33,7 +35,9 @@
                   <label class="custom-check">
                     <i18n-t keypath="common.label.PersonalInfoCheckBox" tag="p"
                       for="common.label.PersonalInfoCheckBoxLink">
-                      <router-link to="/privacy">{{ $t("common.label.PersonalInfoCheckBoxLink") }}</router-link>
+                      <router-link to="/privacy">{{
+                          $t("common.label.PersonalInfoCheckBoxLink")
+                      }}</router-link>
                     </i18n-t>
                     <input type="checkbox" v-model="personalCheck" />
                     <span class="checkmark"></span>
@@ -124,7 +128,8 @@
                 }}</span>
                 <span class="error-msg">{{ error.emailOTP }}</span>
               </div>
-              <!-- <div class="form-group" :class="error.phoneNumber ? 'error' : ''">
+
+              <div class="form-group" :class="error.phoneNumber ? 'error' : ''" v-if="common.state.isHidePhAddr">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.PhoneNumber") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
@@ -133,8 +138,9 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.phoneNumber }}</span>
-              </div> -->
-              <!-- <div class="form-group" :class="error.address || error.detsilAddress ? 'error' : ''">
+              </div>
+              <div class="form-group" :class="error.address || error.detsilAddress ? 'error' : ''"
+                v-if="common.state.isHidePhAddr">
                 <label for=""><i class="icon-required"></i>{{ $t("common.label.Address") }}</label>
                 <div class="input-group with-btn dual-input">
                   <div class="input-inner">
@@ -144,13 +150,13 @@
                   <button class="btn-green-outline" @click="getAddress">
                     {{ $t("button.SearchAddress") }}
                   </button>
-                </div> -->
+                </div>
                 <!-- postcodeWrap modal -->
-                <!-- <div id="postcodeWrap">
+                <div id="postcodeWrap">
                   <div id="addressLayer"></div>
-                </div> -->
+                </div>
                 <!-- postcodeWrap modal -->
-                <!-- <div class="input-group">
+                <div class="input-group">
                   <div class="input-inner">
                     <input class="form-control" type="text" :placeholder="
                       $t('common.placeholder.EnterDetailedAddress')
@@ -158,7 +164,9 @@
                   </div>
                 </div>
                 <span class="error-msg">{{ error.address }}</span>
-              </div> -->
+              </div>
+              <!-- address-->
+
               <div class="form-group">
                 <label for=""> {{ $t("common.label.FindUs") }}</label>
                 <div class="multi-checkbox">
@@ -203,16 +211,26 @@
         </div>
       </div>
     </div>
+    <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('common.Modal.ServerError')"
+      :bodytext3="$t('common.Modal.ServerErrorSub')" :btnText2="$t('button.Confirm')"
+      link="/member-registration-individuals" :img="imgUrl" :btnFull="true" />
   </div>
 </template>
+
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
+import Modal from "../../components/Modal.vue";
+import ErrorImage from "~@/assets/images/error.png";
+
 
 export default {
   name: "MemberRegistrationIndividual",
-
+  inject: ['common'],
+  components: {
+    Modal,
+  },
   data() {
     return {
       termsCheck: "",
@@ -252,6 +270,8 @@ export default {
       otpCheck: false,
       userExists: false,
       emailExist: false,
+      isModalVisible: false,
+      imgUrl: ErrorImage,
     };
   },
   created() {
@@ -306,6 +326,10 @@ export default {
   },
 
   methods: {
+    closeModal() {
+      window.location.reload();
+      this.isModalVisible = false;
+    },
     checkError() {
       let credential = {
         termsCheck: this.termsCheck,
@@ -356,7 +380,8 @@ export default {
             this.address,
             this.detsilAddress,
             this.checkName.join(","),
-            'web'
+            "",
+            "web"
           )
           .then((res) => {
             if (res.data.status == 200) {
@@ -438,6 +463,12 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
+          // console.log("send otp res",res.response)
+          // console.log("send otp",res)
+          if(!res){
+            this.isModalVisible = true;
+          }
+
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -448,7 +479,6 @@ export default {
             this.emailOTP = "";
             this.error.email = "";
             this.emailExist = false;
-
             if (this.storeSetInterval) {
               clearInterval(this.storeSetInterval);
             }
@@ -480,6 +510,9 @@ export default {
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
           }
+        }).catch(err => {
+            console.log(err)
+            this.isModalVisible = true;
         });
       }
     },
@@ -528,10 +561,10 @@ export default {
       }
     },
     getAddress() {
-      var element_layer = document.getElementById('postcodeWrap');
-      var element_layer2 = document.getElementById('addressLayer');
+      var element_layer = document.getElementById("postcodeWrap");
+      var element_layer2 = document.getElementById("addressLayer");
       var win_width;
-      if(window.innerWidth < 576){
+      if (window.innerWidth < 576) {
         win_width = window.innerWidth - 60;
       }
       element_layer.style.display = "flex";

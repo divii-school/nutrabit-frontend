@@ -37,8 +37,8 @@
                     <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>배너를 찾을 수 없습니다.</template>
-                        <template #loading>Loading banner data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
                         <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
@@ -62,7 +62,7 @@
                                 {{ data.link }}
                             </template>
                         </Column>
-                        <Column field="Status" :header="$t('Banner.list.status')" >
+                        <Column field="Status" header="상태" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
@@ -255,7 +255,9 @@ export default {
         },
         dateformat(value) {
              if (value) {
-            return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
         
