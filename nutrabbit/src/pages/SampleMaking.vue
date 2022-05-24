@@ -197,6 +197,8 @@ export default {
   font-size: 22px;
   line-height: 140%;
   color: $grey-4C;
+  font-family: $default-font;
+  font-style: normal;
   /* margin-top: 19px; */
 }
 .btn-small-solid {

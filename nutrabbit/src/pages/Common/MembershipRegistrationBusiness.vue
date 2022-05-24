@@ -355,13 +355,15 @@
         </div>
       </div>
       <Modal
-        v-show="isModalVisible"
-        @close="closeModal"
-        :bodytext1="$t('common.Modal.ServerError')"
-        :bodytext2="$t('common.Modal.ServerErrorSub')"
-        :btnText2="$t('button.Confirm')"
-        link="/membership-registration-business"
-      />
+      v-show="isModalVisible"
+      @close="closeModal"
+      :bodytext1="$t('common.Modal.ServerError')"
+      :bodytext3="$t('common.Modal.ServerErrorSub')"
+      :btnText2="$t('button.Confirm')"
+      link="/member-registration-individuals"
+      :img="imgUrl"
+      :btnFull="true"
+    />
     </div>
   </div>
 </template>
@@ -370,7 +372,7 @@ import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import Modal from "../../components/Modal.vue";
-
+import ErrorImage from "~@/assets/images/Error.png";
 export default {
   name: "MembershipRegistrationBusiness",
   inject:['common'],
@@ -419,6 +421,7 @@ export default {
       userExists: false,
       emailExist: false,
       isModalVisible: false,
+      imgUrl: ErrorImage,
     };
   },
   created() {
@@ -604,7 +607,12 @@ export default {
         return;
       } else {
         this.commonService.sendOTP(this.email).then((res) => {
-          console.log(res);
+          // console.log(res);
+          // console.log("send otp res",res.response)
+          // console.log("send otp",res)
+          if(!res){
+            this.isModalVisible = true;
+          }
           if (res.status == 200) {
             this.isActive = false;
             this.isVerification = true;
@@ -645,9 +653,10 @@ export default {
             this.emailExist = true;
             this.error.email = this.$t("common.Error.EmailExists");
             //return (this.error.email = res.response.data.message);
-          } else if (res.response.data.status >= 500) {
+          } 
+        }).catch(err => {
+            console.log(err)
             this.isModalVisible = true;
-          }
         });
       }
     },

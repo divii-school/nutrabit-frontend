@@ -162,6 +162,9 @@
                                     height: 200px;
                                     width: 200px;
                                 }
+                                @media screen and (max-width: 768px) {
+                                    display: none;
+                                }
                             }
                             .search-result-img {
                                 width: 100%;
