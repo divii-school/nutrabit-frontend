@@ -1113,6 +1113,7 @@
     }
   }
 },
+"status":"상태",
 "active":"활성",
 "inactive":"비활성",
 "pending":"미답변",
