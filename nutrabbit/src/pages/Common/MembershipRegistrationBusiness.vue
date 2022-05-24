@@ -361,21 +361,18 @@
       :bodytext3="$t('common.Modal.ServerErrorSub')"
       :btnText2="$t('button.Confirm')"
       link="/member-registration-individuals"
-      :img="ErrorImage"
+      :img="imgUrl"
       :btnFull="true"
     />
     </div>
   </div>
 </template>
-<script setup>
-import ErrorImage from "@/assets/images/Error.png";
-</script>
 <script>
 import validateRegistration from "../../Validation/validateRegistration";
 import validator from "validator";
 import CommonService from "../../services/CommonService";
 import Modal from "../../components/Modal.vue";
-
+import ErrorImage from "~@/assets/images/Error.png";
 export default {
   name: "MembershipRegistrationBusiness",
   inject:['common'],
@@ -424,6 +421,7 @@ export default {
       userExists: false,
       emailExist: false,
       isModalVisible: false,
+      imgUrl: ErrorImage,
     };
   },
   created() {
