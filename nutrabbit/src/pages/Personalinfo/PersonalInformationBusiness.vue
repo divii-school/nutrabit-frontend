@@ -156,6 +156,13 @@
                 </div>
                 <button class="btn-green-outline" @click="getAddress">{{ $t("personalInfo.labels.searchaddress") }}</button>
               </div>
+              <!-- postcodeWrap modal -->
+                <div id="postcodeWrap">
+                  <div id="addressLayer">
+                    <button @click="popClose"><img src="/src/assets/icons/menu-close.svg" /></button>
+                  </div>
+                </div>
+                <!-- postcodeWrap modal -->
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -334,12 +341,26 @@ export default {
     },
 
     getAddress() {
+      var element_layer = document.getElementById("postcodeWrap");
+      var element_layer2 = document.getElementById("addressLayer");
+      var win_width;
+      if (window.innerWidth < 576) {
+        win_width = window.innerWidth - 60;
+      }
+      element_layer.style.display = "flex";
       new daum.Postcode({
+        width: win_width,
         oncomplete: (data) => {
-          console.log(data);
+          element_layer.style.display = "none";
           return (this.address = data.address);
         },
-      }).open();
+      }).embed(element_layer2, {
+        autoClose: false,
+      });
+    },
+    popClose() {
+      var element_layer = document.getElementById("postcodeWrap");
+      element_layer.style.display = "none";
     },
 
     logOut() {
@@ -355,3 +376,35 @@ export default {
 
 };
 </script>
+<style scoped>
+.login-signup-wrap .login-signup-inner {
+  position: relative;
+}
+
+#addressLayer {
+  padding: 15px;
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 10%);
+  border-radius: 5px;
+}
+
+#addressLayer button {
+  width: 24px;
+  margin-left: auto;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+#postcodeWrap {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(24, 24, 24, 0.8);
+  z-index: 5;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+</style>

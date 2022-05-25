@@ -153,7 +153,9 @@
                 </div>
                 <!-- postcodeWrap modal -->
                 <div id="postcodeWrap">
-                  <div id="addressLayer"></div>
+                  <div id="addressLayer">
+                    <button @click="popClose"><img src="/src/assets/icons/menu-close.svg" /></button>
+                  </div>
                 </div>
                 <!-- postcodeWrap modal -->
                 <div class="input-group">
@@ -465,7 +467,7 @@ export default {
         this.commonService.sendOTP(this.email).then((res) => {
           // console.log("send otp res",res.response)
           // console.log("send otp",res)
-          if(!res){
+          if (!res) {
             this.isModalVisible = true;
           }
 
@@ -511,8 +513,8 @@ export default {
             //return (this.error.email = res.response.data.message);
           }
         }).catch(err => {
-            console.log(err)
-            this.isModalVisible = true;
+          console.log(err)
+          this.isModalVisible = true;
         });
       }
     },
@@ -574,7 +576,13 @@ export default {
           element_layer.style.display = "none";
           return (this.address = data.address);
         },
-      }).embed(element_layer2);
+      }).embed(element_layer2, {
+        autoClose: false,
+      });
+    },
+    popClose() {
+      var element_layer = document.getElementById("postcodeWrap");
+      element_layer.style.display = "none";
     },
   },
 };
@@ -590,6 +598,13 @@ export default {
   background: #ffffff;
   box-shadow: 0px 2px 10px rgb(0 0 0 / 10%);
   border-radius: 5px;
+}
+
+#addressLayer button {
+  width: 24px;
+  margin-left: auto;
+  display: flex;
+  margin-bottom: 4px;
 }
 
 #postcodeWrap {
