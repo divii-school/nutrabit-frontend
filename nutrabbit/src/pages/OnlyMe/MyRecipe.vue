@@ -359,6 +359,11 @@ export default {
     box-shadow: none;
   }
 }
+.deleteBtn{
+  @media screen and (max-width: 640px) {
+    margin: 0 !important;
+  }
+}
 .recipeGap{
   @media screen and (max-width: 640px){
     margin-bottom: 40px !important;
