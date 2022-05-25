@@ -359,6 +359,11 @@ export default {
     box-shadow: none;
   }
 }
+.recipeGap{
+  @media screen and (max-width: 640px){
+    margin-bottom: 40px !important;
+  }
+}
 .raw-material-list{
   li{
     .my-choice-product-item{
