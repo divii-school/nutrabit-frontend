@@ -13,7 +13,10 @@
                 <h2>{{ $t("onlyme.title.RecommendedBlending") }}</h2>
               </div>
             </div>
-            <div class="product-list-wrap" v-if="recommendedBlendingData.length > 0">
+            <div
+              class="product-list-wrap"
+              v-if="recommendedBlendingData.length > 0"
+            >
               <ul class="selectAllHeader">
                 <li class="flex-justify-end">
                   <button
@@ -53,8 +56,8 @@
               </div>
             </div>
             <div class="no-result-found text-center" v-else>
-                <span>{{ $t('footer.no_result') }}</span>
-              </div>
+              <span>{{ $t("footer.no_result") }}</span>
+            </div>
           </div>
         </div>
         <div class="choice-selection-item-wrap recipeGap">
@@ -73,7 +76,7 @@
                   </button>
                 </li>
               </ul>
-              <ul class="raw-material-list" >
+              <ul class="raw-material-list">
                 <li v-for="(item, index) of myChoiceData" :key="index">
                   <ProductListRecipe
                     :item="item"
@@ -100,8 +103,8 @@
               </div>
             </div>
             <div class="no-result-found text-center" v-else>
-                <span>{{ $t('footer.no_result') }}</span>
-              </div>
+              <span>{{ $t("footer.no_result") }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -348,3 +351,28 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.addWrap {
+  @media screen and (max-width: 640px) {
+    padding: 30px 0;
+    box-shadow: none;
+  }
+}
+.raw-material-list{
+  li{
+    .my-choice-product-item{
+      @media screen and (max-width: 640px) {
+        padding: 30px 0 !important;
+      }
+    }
+    &:first-child{
+      .my-choice-product-item{
+        @media screen and (max-width: 640px) {
+          padding-top: 20px !important;
+        }
+      }
+    }
+  }
+}
+</style>
