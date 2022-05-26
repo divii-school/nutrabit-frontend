@@ -16,7 +16,7 @@
               }}</router-link>
             </li>
             <li>
-              <router-link to="/service-intro">{{
+              <router-link to="/service-intro" @click="isModalVisible = true">{{
                   $t("header.nutri")
               }}</router-link>
             </li>
