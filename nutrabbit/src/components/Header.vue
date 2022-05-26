@@ -16,7 +16,10 @@
               }}</router-link>
             </li>
             <li>
-              <router-link to="/service-intro" @click="isModalVisible = true">{{
+              <router-link v-if="token" to="/service-intro">{{
+                  $t("header.nutri")
+              }}</router-link>
+              <router-link v-else @click="accessPage()" to="">{{
                   $t("header.nutri")
               }}</router-link>
             </li>
