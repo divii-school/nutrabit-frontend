@@ -260,6 +260,9 @@ textarea {
       left: 94px !important;
     }
 
+    @media screen and (max-width: 640px) {
+      left: -16px !important;
+    }
     .heading-tooltip-content {
       background: $white-1;
       padding: 20px 30px 20px 40px;
@@ -1182,4 +1185,8 @@ textarea {
 .flexRight {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.full-width{
+  width: 100% !important;
 }
