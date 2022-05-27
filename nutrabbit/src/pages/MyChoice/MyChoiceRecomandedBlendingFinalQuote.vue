@@ -116,7 +116,7 @@
                   <li>{{ $t("final.note.list3") }}</li>
                   <li>{{ $t("final.note.list4") }}</li>
                 </ul>
-                <div class="btn-wrap">
+                <div class="btn-wrap tripple-btn">
                   <button
                     @click="
                       this.$router.push({
@@ -124,7 +124,7 @@
                         query: { blending_id: this.blending_id },
                       })
                     "
-                    class="btn-small-solid grey"
+                    class="btn-small-solid grey btn-left"
                   >
                     {{ $t("button.Previous") }}
                   </button>
@@ -560,5 +560,10 @@ export default {
 
 .btn-green-outline {
   margin-right: 20px;
+}
+@media screen and (max-width: 768px){
+  .fGroup textarea{
+    min-height: 208px !important;
+  }
 }
 </style>

@@ -34,7 +34,7 @@
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
-              <div class="heading">
+              <div class="heading full-width">
                 <h2>{{ $t("formulation.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
@@ -215,3 +215,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 768px) {
+  .heading-tooltip-content {
+    min-width: 205px !important;
+  }
+}
+</style>
