@@ -8,31 +8,15 @@
                     <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Banner.search.type') }}</label>
-                            <InputText
-                                id="googlurl"
-                                type="text"
-                                placeholder="검색어 입력"
-                                v-model="searchData"
-                                 @keyup="resetdata"
-                            />
+                            <InputText id="googlurl" type="text" placeholder="검색어 입력" v-model="searchData" @keyup="resetdata" />
                         </div>
-
-                       
                     </div>
                 </div>
             </div>
-            <div
-                class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
-            >
+            <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                 <div class="p-mb-4 p-mb-lg-0"></div>
                 <div>
-                    <Button
-                        :label="$t('button.search')"
-                        icon="pi pi-search"
-                        iconPos="left"
-                        class="p-button p-button-sm p-mr-2 p-mb-2"
-                        @click="searchFaq"
-                    ></Button>
+                    <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchFaq"></Button>
                     <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button> -->
                 </div>
             </div>
@@ -41,144 +25,90 @@
             <div class="p-grid">
                 <div class="p-col-12">
                     <div class="p-d-flex p-jc-between p-mb-2">
-                        <div style="display:flex;">
-                            <h4>{{ $t('Faq.list.header') }}</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <Dropdown v-model="searchData1"  :options="categoryDropdownValues" optionLabel="name_ko" placeholder="카테고리 선택" @change="searchcategory" />
+                        <div style="display: flex">
+                            <h4>{{ $t('Faq.list.header') }}</h4>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Dropdown v-model="searchData1" :options="categoryDropdownValues" optionLabel="name_ko" placeholder="카테고리 선택" @change="searchcategory" />
                         </div>
 
                         <div>
                             <router-link to="/faq/add">
-                                <Button
-                                    :label="$t('Faq.addnew_faq')"
-                                    icon="pi pi-plus"
-                                    iconPos="left"
-                                    class="p-button p-button-sm p-mr-2 p-mb-2"
-                                ></Button>
+                                <Button :label="$t('Faq.addnew_faq')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
                         </div>
                     </div>
-                    <DataTable
-                        :value="products"
-                        :paginator="true"
-                        class="p-datatable-gridlines"
-                        :rows="5"
-                        data-key="id"
-                        :rowHover="true"
-                        :loading="loading1"
-                        :filters="filters1"
-                        responsiveLayout="scroll"
-                    >
-                        <ConfirmDialog group="dialog" />
+                    <div class="faq-table">
+                        <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
+                            <ConfirmDialog group="dialog" />
 
-                        <template #empty>FAQ 찾을 수 없음</template>
-                        <template #loading>Loading faq data. Please wait.</template>
+                            <template #empty>데이터가 없습니다.</template>
+                            <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">순서</span>
-                                {{ data.sl_no }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="Title"
-                            :header="$t('Faq.list.title')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Title</span>
-                                {{ data.title_ko }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="category"
-                            :header="$t('Faq.list.category')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Category</span>
-                                {{ data.category_name_ko }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="Status"
-                            :header="$t('Faq.list.status')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Status</span>
-                                <!-- {{ data.id }}
+                            <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">순서</span>
+                                    {{ data.sl_no }}
+                                </template>
+                            </Column>
+                            <Column field="Title" :header="$t('Faq.list.title')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Title</span>
+                                    {{ data.title_ko }}
+                                </template>
+                            </Column>
+                            <Column field="category" :header="$t('Faq.list.category')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Category</span>
+                                    {{ data.category_name_ko }}
+                                </template>
+                            </Column>
+                            <Column field="Status" :header="$t('Faq.list.status')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Status</span>
+                                    <!-- {{ data.id }}
                                 {{ data.status }}-->
-                                {{ data.status }}
-                            </template>
-                        </Column>
+                                    {{ $t(data.status) }}
+                                </template>
+                            </Column>
 
-                        <Column
-                            field="Order"
-                            :header="$t('Faq.list.Order')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Order</span>
+                            <Column field="Order" :header="$t('Faq.list.Order')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Order</span>
 
-                                <Button
-                                    label="info"
-                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
-                                    style="display: flex; "
-                                    @click="up(data.id)"
-                                >
-                                    <i class="pi pi-caret-up p-mr-2"></i>
-                                </Button>
+                                    <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2" style="display: flex" @click="up(data.id)">
+                                        <i class="pi pi-caret-up p-mr-2"></i>
+                                    </Button>
 
-                                <Button
-                                    label="info"
-                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
-                                    style="display: flex; "
-                                    @click="down(data.id)"
-                                >
-                                    <i class="pi pi-caret-down p-mr-2"></i>
-                                </Button>
-                            </template>
-                        </Column>
-                       
+                                    <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2" style="display: flex" @click="down(data.id)">
+                                        <i class="pi pi-caret-down p-mr-2"></i>
+                                    </Button>
+                                </template>
+                            </Column>
 
-                        <Column field="Actions" :header="$t('Faq.list.see_more')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Actions</span>
-                                <p style="display: none">{{ data.status }}</p>
-                                <div style="display: flex">
-                                    <router-link :to="'/faq/view/' + data.id">
-                                        <Button
-                                            label="info"
-                                            class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
-                                        >
-                                            <i class="pi pi-eye p-mr-2"></i>
-                                        </Button>
-                                    </router-link>
-                                    <router-link :to="'/faq/edit/' + data.id">
-                                        <Button
-                                            label="help"
-                                            class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"
-                                        >
-                                            <i class="pi pi-pencil p-mr-2"></i>
-                                        </Button>
-                                    </router-link>
-                                    <a
-                                        :href="'/admin/banner/delete/' + data.id"
-                                        @click.prevent="deleteNote(data.id)"
-                                        data-toggle="tooltip"
-                                        data-placement="right"
-                                        title="메모 삭제"
-                                    >
-                                        <Button
-                                            icon="pi pi-trash"
-                                            class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2"
-                                        />
-                                    </a>
-                                    <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
-                                </div>
-                            </template>
-                        </Column>
-                    </DataTable>
+                            <Column field="Actions" header="기능">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Actions</span>
+                                    <p style="display: none">{{ data.status }}</p>
+                                    <div style="display: flex">
+                                        <router-link :to="'/faq/view/' + data.id">
+                                            <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2">
+                                                <i class="pi pi-eye p-mr-2"></i>
+                                            </Button>
+                                        </router-link>
+                                        <router-link :to="'/faq/edit/' + data.id">
+                                            <Button label="help" class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2">
+                                                <i class="pi pi-pencil p-mr-2"></i>
+                                            </Button>
+                                        </router-link>
+                                        <a :href="'/admin/banner/delete/' + data.id" @click.prevent="deleteNote(data.id)" data-toggle="tooltip" data-placement="right" title="메모 삭제">
+                                            <Button icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" />
+                                        </a>
+                                        <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
+                                    </div>
+                                </template>
+                            </Column>
+                        </DataTable>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,7 +154,6 @@ export default {
             categoryDropdownValue: null,
             category_id: '',
             name_ko: '',
-
         };
     },
     created() {
@@ -238,7 +167,7 @@ export default {
     //         let categoryname,name, name_ko;
     //         switch(this.selectedFilter.name_ko) {
     //            // one hour milliseconds
-    //            case name_ko: 
+    //            case name_ko:
     //            categoryname = name_ko; break;
     //            }
     //         name =  Date.now() - this.selectedFilter.value * categoryname;
@@ -249,16 +178,14 @@ export default {
     mounted() {
         const route = useRoute();
         console.log(route.params);
-        this.faqService
-            .getFaqCategoryDropdown()
-            .then((data) => {
-                this.categoryDropdownValues = data;
-                //this.products = data;
-                this.loading1 = false;
-                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                console.log(this.products);
-                console.log(data);
-            })
+        this.faqService.getFaqCategoryDropdown().then((data) => {
+            this.categoryDropdownValues = data;
+            //this.products = data;
+            this.loading1 = false;
+            // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+            console.log(this.products);
+            console.log(data);
+        });
         this.faqService
             .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
             .then((res) => {
@@ -303,35 +230,30 @@ export default {
             }, 500);
         },
         searchcategory() {
-            console.log(this.searchData1?this.searchData1.id:this.searchData1)
-            this.faqService
-                .getFaqSearch(this.searchData1?this.searchData1.id:this.searchData1, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
-                .then((res) => {
-                    // this.products = res.data.data.faq;
-                    //  this.total = res.data.data.total;
-                    this.loading1 = false;
-                    // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                    // let items = res.data.data.faq.filter((item) => item.category_name_ko.match(this.searchData1));
-                    this.products = res.data.data.faq;
-                    // alert(this.searchData1)
-                    console.log(res.data.data.faq);
-                })
+            console.log(this.searchData1 ? this.searchData1.id : this.searchData1);
+            this.faqService.getFaqSearch(this.searchData1 ? this.searchData1.id : this.searchData1, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder).then((res) => {
+                // this.products = res.data.data.faq;
+                //  this.total = res.data.data.total;
+                this.loading1 = false;
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                // let items = res.data.data.faq.filter((item) => item.category_name_ko.match(this.searchData1));
+                this.products = res.data.data.faq;
+                // alert(this.searchData1)
+                console.log(res.data.data.faq);
+            });
             //   if (this.refercode != '') {
 
             // }
         },
 
-         resetdata(){
-            if (this.searchData === ''){
-                this.faqService
-                .getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder)
-                    .then((res) => {
-                        this.products = res.data.data.faq;
-                        this.loading1 = false;
-                        //console.log(data);
-                    })
-                    
-            } 
+        resetdata() {
+            if (this.searchData === '') {
+                this.faqService.getFaqList(this.searchData, this.status, this.startDate, this.endDate, this.sortBy, this.sortOrder).then((res) => {
+                    this.products = res.data.data.faq;
+                    this.loading1 = false;
+                    //console.log(data);
+                });
+            }
         },
         searchFaq() {
             if (this.searchData === '') {
@@ -368,7 +290,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss');
             }
         },
 
@@ -380,8 +302,8 @@ export default {
                 header: '확인',
                 message: '삭제하시겠습니까?',
                 icon: 'pi pi-trash',
-                acceptLabel: "확인",
-                rejectLabel: "취소",
+                acceptLabel: '확인',
+                rejectLabel: '취소',
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/faq/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
@@ -406,8 +328,6 @@ export default {
                 reject: () => {
                     this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
                 },
-
-
             });
             //  setTimeout(() => {
             //     this.bannerService.getBannerList().then((data) => {
@@ -416,7 +336,6 @@ export default {
             //         this.loading1 = false;
             //     });
             // }, 500);
-
         },
         onRowExpand(event) {
             this.$toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });

@@ -16,10 +16,10 @@
                     <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>No Data found.</template>
-                        <template #loading>Loading banner data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다..</template>
 
-                        <Column field="Sl. No." :header="$t('PillType.list.sr')" style="min-width: 3rem">
+                        <Column field="Sl. No." :header="$t('PillType.list.sr')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
@@ -31,7 +31,7 @@
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.pillImage" :alt="data.pillImage" class="product-image" />
                             </template>
                         </Column>
-                        <Column field="name" :header="$t('PillType.list.name')" style="min-width: 12rem">
+                        <Column field="name" :header="$t('PillType.list.name')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Name</span>
                                 {{ data.name_ko }}

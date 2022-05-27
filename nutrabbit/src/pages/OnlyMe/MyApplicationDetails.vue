@@ -114,8 +114,15 @@
                                 v-for="(item, index) of updateAppRecom_List"
                                 :key="index"
                               >
-                                <td>{{ (appRecommendedTotal- index) -(page2 - 1) *perPage }}</td>
+                                <td>
+                                  {{
+                                    appRecommendedTotal -
+                                    index -
+                                    (page2 - 1) * perPage
+                                  }}
+                                </td>
                                 <td
+                                  class="applicationDesc"
                                   @click="
                                     $router.push({
                                       name: 'MyRecipeDetailsSample',
@@ -155,55 +162,63 @@
                       </div>
                     </div>
                     <div v-if="updateAppMychoiceList.length > 0">
-                    <div class="materialForm">
-                      <div class="tableWrap">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.Description") }}
-                              </th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.ApplicationDate") }}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr
-                              v-for="(item, index) of updateAppMychoiceList"
-                              :key="index"
-                            >
-                             <td>{{ (appMychoiceTotal- index) -(page3 - 1) *perPage }}</td>
-                              <td
-                                @click="
-                                  $router.push({
-                                    name: 'MyRecipeDetailsSample',
-                                    params: { id: item.id, type: 'choice' },
-                                  })
-                                "
+                      <div class="materialForm">
+                        <div class="tableWrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>
+                                  {{ $t("onlyme.tableCaption.Description") }}
+                                </th>
+                                <th>
+                                  {{
+                                    $t("onlyme.tableCaption.ApplicationDate")
+                                  }}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                v-for="(item, index) of updateAppMychoiceList"
+                                :key="index"
                               >
-                                {{ item.explanation }}
-                              </td>
-                              <td>{{ dateformat(item.createdDate) }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                <td>
+                                  {{
+                                    appMychoiceTotal -
+                                    index -
+                                    (page3 - 1) * perPage
+                                  }}
+                                </td>
+                                <td
+                                  class="applicationDesc"
+                                  @click="
+                                    $router.push({
+                                      name: 'MyRecipeDetailsChoice',
+                                      params: { id: item.id, type: 'choice' },
+                                    })
+                                  "
+                                >
+                                  {{ item.explanation }}
+                                </td>
+                                <td>{{ dateformat(item.createdDate) }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                    <pagination
-                    v-model="page3"
-                    :records="appMychoiceTotal"
-                    :options="chunkPage"
-                    :per-page="perPage"
-                    @paginate="myCallback3"
-                  />
+                      <pagination
+                        v-model="page3"
+                        :records="appMychoiceTotal"
+                        :options="chunkPage"
+                        :per-page="perPage"
+                        @paginate="myCallback3"
+                      />
                     </div>
                     <div class="no-result-found" v-else>
                       <span>{{ $t("footer.no_result") }}</span>
                     </div>
                   </div>
-                  
                 </div>
               </div>
               <div v-show="currentTab === 1">
@@ -215,55 +230,63 @@
                       </div>
                     </div>
                     <div v-if="updateQuoteNutri_List.length > 0">
-                    <div class="materialForm">
-                      <div class="tableWrap">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.Description") }}
-                              </th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.ApplicationDate") }}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr
-                              v-for="(item, index) of updateQuoteNutri_List"
-                              :key="index"
-                            >
-                              <td>{{ (quoteNutriTotal- index) -(page4 - 1) *perPage }}</td>
-                              <td
-                                @click="
-                                  $router.push({
-                                    name: 'MyApplicationQuoteRequestBlending',
-                                    params: { id: item.id, type: 'nutri' },
-                                  })
-                                "
+                      <div class="materialForm">
+                        <div class="tableWrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>
+                                  {{ $t("onlyme.tableCaption.Description") }}
+                                </th>
+                                <th>
+                                  {{
+                                    $t("onlyme.tableCaption.ApplicationDate")
+                                  }}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                v-for="(item, index) of updateQuoteNutri_List"
+                                :key="index"
                               >
-                                {{ item.explanation }}
-                              </td>
-                              <td>{{ dateformat(item.createdDate) }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                <td>
+                                  {{
+                                    quoteNutriTotal -
+                                    index -
+                                    (page4 - 1) * perPage
+                                  }}
+                                </td>
+                                <td
+                                  class="applicationDesc"
+                                  @click="
+                                    $router.push({
+                                      name: 'MyApplicationQuoteRequestBlending',
+                                      params: { id: item.id, type: 'nutri' },
+                                    })
+                                  "
+                                >
+                                  {{ item.explanation }}
+                                </td>
+                                <td>{{ dateformat(item.createdDate) }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                    <pagination
-                    v-model="page4"
-                    :records="quoteNutriTotal"
-                    :options="chunkPage"
-                    :per-page="perPage"
-                    @paginate="myCallback4"
-                  />
+                      <pagination
+                        v-model="page4"
+                        :records="quoteNutriTotal"
+                        :options="chunkPage"
+                        :per-page="perPage"
+                        @paginate="myCallback4"
+                      />
                     </div>
                     <div class="no-result-found" v-else>
                       <span>{{ $t("footer.no_result") }}</span>
                     </div>
                   </div>
-                  
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -273,58 +296,66 @@
                       </div>
                     </div>
                     <div v-if="updateQuoteRecom_List.length > 0">
-                    <div class="materialForm">
-                      <div class="tableWrap">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.Description") }}
-                              </th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.ApplicationDate") }}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr
-                              v-for="(item, index) of updateQuoteRecom_List"
-                              :key="index"
-                            >
-                              <td>{{ (quoteRecommendedTotal- index) -(page5 - 1) *perPage }}</td>
-                              <td
-                                @click="
-                                  $router.push({
-                                    name: 'MyApplicationQuoteRequestBlending',
-                                    params: {
-                                      id: item.id,
-                                      type: 'recommended',
-                                    },
-                                  })
-                                "
+                      <div class="materialForm">
+                        <div class="tableWrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>
+                                  {{ $t("onlyme.tableCaption.Description") }}
+                                </th>
+                                <th>
+                                  {{
+                                    $t("onlyme.tableCaption.ApplicationDate")
+                                  }}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                v-for="(item, index) of updateQuoteRecom_List"
+                                :key="index"
                               >
-                                {{ item.explanation }}
-                              </td>
-                              <td>{{ dateformat(item.createdDate) }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                <td>
+                                  {{
+                                    quoteRecommendedTotal -
+                                    index -
+                                    (page5 - 1) * perPage
+                                  }}
+                                </td>
+                                <td
+                                  class="applicationDesc"
+                                  @click="
+                                    $router.push({
+                                      name: 'MyApplicationQuoteRequestBlending',
+                                      params: {
+                                        id: item.id,
+                                        type: 'recommended',
+                                      },
+                                    })
+                                  "
+                                >
+                                  {{ item.explanation }}
+                                </td>
+                                <td>{{ dateformat(item.createdDate) }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                    <pagination
-                    v-model="page5"
-                    :records="quoteRecommendedTotal"
-                    :options="chunkPage"
-                    :per-page="perPage"
-                    @paginate="myCallback5"
-                  />
+                      <pagination
+                        v-model="page5"
+                        :records="quoteRecommendedTotal"
+                        :options="chunkPage"
+                        :per-page="perPage"
+                        @paginate="myCallback5"
+                      />
                     </div>
                     <div class="no-result-found" v-else>
                       <span>{{ $t("footer.no_result") }}</span>
                     </div>
                   </div>
-                  
                 </div>
                 <div class="choice-selection-item-wrap choice-wrap-border">
                   <div class="choice-selection-item raw-material-product">
@@ -334,49 +365,58 @@
                       </div>
                     </div>
                     <div v-if="updateQuoteMychoiceList.length > 0">
-                    <div class="materialForm">
-                      <div class="tableWrap">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.Description") }}
-                              </th>
-                              <th>
-                                {{ $t("onlyme.tableCaption.ApplicationDate") }}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr
-                              v-for="(item, index) of updateQuoteMychoiceList"
-                              :key="index"
-                            >
-                              <td>{{ (quoteMychoiceTotal- index) -(page6 - 1) *perPage }}</td>
-                              <td
-                                @click="
-                                  $router.push({
-                                    name: 'MyApplicationQuoteRequestChoice',
-                                    params: { id: item.id },
-                                  })
-                                "
+                      <div class="materialForm">
+                        <div class="tableWrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>
+                                  {{ $t("onlyme.tableCaption.Description") }}
+                                </th>
+                                <th>
+                                  {{
+                                    $t("onlyme.tableCaption.ApplicationDate")
+                                  }}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                v-for="(item, index) of updateQuoteMychoiceList"
+                                :key="index"
                               >
-                                {{ item.explanation }}
-                              </td>
-                              <td>{{ dateformat(item.createdDate) }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                <td>
+                                  {{
+                                    quoteMychoiceTotal -
+                                    index -
+                                    (page6 - 1) * perPage
+                                  }}
+                                </td>
+                                <td
+                                  class="applicationDesc"
+                                  @click="
+                                    $router.push({
+                                      name: 'MyApplicationQuoteRequestChoice',
+                                      params: { id: item.id },
+                                    })
+                                  "
+                                >
+                                  {{ item.explanation }}
+                                </td>
+                                <td>{{ dateformat(item.createdDate) }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                    <pagination
-                    v-model="page6"
-                    :records="quoteMychoiceTotal"
-                    :per-page="perPage"
-                    :options="chunkPage"
-                    @paginate="myCallback6"
-                  />
+                      <pagination
+                        v-model="page6"
+                        :records="quoteMychoiceTotal"
+                        :per-page="perPage"
+                        :options="chunkPage"
+                        @paginate="myCallback6"
+                      />
                     </div>
                     <div class="no-result-found" v-else>
                       <span>{{ $t("footer.no_result") }}</span>
@@ -402,6 +442,7 @@ import moment from "moment";
 import { inject } from "vue";
 
 export default {
+  inject: ["common"],
   name: "MyRecipeDetails",
   components: {
     // Popper,
@@ -474,12 +515,12 @@ export default {
   created() {
     this.myApplicationDetails = new MyApplicationDetails();
   },
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-  },
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  // },
 
   watch: {
-    globalLocale(newVal, oldVal) {
+    "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
         (newVal == "EN" && oldVal == "KO")
@@ -494,6 +535,23 @@ export default {
       }
     },
   },
+
+  // watch: {
+  //   globalLocale(newVal, oldVal) {
+  //     if (
+  //       (newVal == "KO" && oldVal == "EN") ||
+  //       (newVal == "EN" && oldVal == "KO")
+  //     ) {
+  //       this.QuoteNutri();
+  //       this.QuoteRecommended();
+  //       this.QuoteMyChoice();
+
+  //       // this.appNutri();
+  //       this.appRecommended();
+  //       this.appMychoice();
+  //     }
+  //   },
+  // },
   methods: {
     // myCallback1(ClickPage) {
     //   const startIndex = (ClickPage - 1) * this.perPage;

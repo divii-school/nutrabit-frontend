@@ -30,7 +30,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.status') }}</label>
                            
-                            <Dropdown v-model="status_by_admin" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="$t('Application.search.status')" />
+                            <Dropdown v-model="status_by_admin" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" placeholder="선택" />
                         </div>
 
                     </div>
@@ -39,7 +39,7 @@
                         <div class="p-field p-col-12 p-md-4">
                             <label for="pass">{{ $t('Application.search.product') }}</label>
                            
-                            <Dropdown v-model="goods" modelValue="productdropdownValues[0].name" :options="productdropdownValues" optionLabel="name" :placeholder="$t('Application.search.product') " />
+                            <Dropdown v-model="goods" modelValue="productdropdownValues[0].name" :options="productdropdownValues" optionLabel="name" placeholder="검색어 입력" />
                         </div>
 
                         <div class="p-field p-col-12 p-md-4">
@@ -47,7 +47,7 @@
 
                             
 
-                             <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" :placeholder="$t('Application.search.service') " />
+                             <Dropdown v-model="service" modelValue="servicedropdownValues[0].name" :options="servicedropdownValues" optionLabel="name" placeholder="선택" />
                         </div>
                     </div>
                 </div>
@@ -88,10 +88,10 @@
                     >
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>데이터가 없습니다</template>
-                        <template #loading>Loading data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
@@ -100,7 +100,7 @@
                         <Column
                             field="companyname"
                             :header="$t('Application.list.companyname')"
-                            style="min-width: 12rem"
+                           
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Applicant name/ company name</span>
@@ -110,39 +110,39 @@
                         <Column
                             field="product"
                             :header="$t('Application.list.product')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
-                                <span class="p-column-title">Product</span>
-                                {{ data.goods }}
+                                <span class="p-column-title" >Product</span>
+                                {{ $t(data.goods.toLowerCase()) }}
                             </template>
                         </Column>
                         <Column
                             field="service"
                             :header="$t('Application.list.service')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Service</span>
-                                {{ data.service }}
+                                {{ $t(data.service) }}
                             </template>
                         </Column>
                         <Column
                             field="Status"
                             :header="$t('Application.list.status')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                
-                                {{ data.status_by_admin }}
+                                {{ $t(data.status_by_admin) }}
                             </template>
                         </Column>
 
                         <Column
                             field="Creation-Date"
                             :header="$t('Application.list.created_dt')"
-                            style="min-width: 12rem"
+                            
                         >
                             <template #body="{ data }">
                                 <span class="p-column-title">Creation-Date</span>
@@ -151,7 +151,7 @@
                         </Column>
                        
 
-                        <Column field="Actions" :header="$t('Application.list.see_more')">
+                        <Column field="Actions" header="기능">
                             <template #body="{ data }">
                                 <span class="p-column-title">Actions</span>
                                 <p style="display: none">{{ data.status }}</p>
@@ -204,12 +204,12 @@ export default {
     data() {
         return {
             // dropdownValues: [{ name: 'nft',code:'NFT' }, { name: 'card_news',code:'Card News' }, { name: 'media_press',code:'Media press' }, { name: 'de_fi_services',code:'De-Fi Services' }],
-            dropdownValues: [{ name: 'pending', code: '보류 중' }, { name: 'completed', code: '완전한' }],
+            dropdownValues: [{ name: 'pending', code: '미답변' }, { name: 'completed', code: '답변' }],
             serial: 0,
             dropdownValue: null,
-            productdropdownValues: [{ name: 'My choice', value: 'my_choice' }, { name: 'Recommanded Blending', value: 'recommanded' },{ name: 'Nutri 3.3', value: 'nutri' }],
+            productdropdownValues: [{ name: '내 선택', value: 'my_choice' }, { name: '명령된 블렌딩', value: 'recommanded' },{ name: '뉴트리 3.3', value: 'nutri' }],
 
-            servicedropdownValues: [{ name: 'Sample Request', value: '1' }, { name: 'Get a quote', value: '2' }, { name: 'Both', value: '3' }],
+            servicedropdownValues: [{ name: '샘플 요청', value: '1' }, { name: '견적', value: '2' }, { name: 'Both', value: '3' }],
 
             calendarValue1: '',
             calendarValue2: '',
@@ -385,7 +385,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
 

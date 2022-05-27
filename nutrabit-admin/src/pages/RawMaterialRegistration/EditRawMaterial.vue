@@ -5,11 +5,11 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('RawMaterialadd.list.editRawHeader') }}</strong>
+                    <strong>원료 수정</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
-                        <label for="nameuser">{{ $t('RawMaterialadd.list.categorylist') }}</label>
+                        <label for="nameuser">카테고리</label>
 
                         <Dropdown :class="`${error.sub_category_id ? 'p-invalid' : ''}`" v-model="sub_category_id"
                             :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id"
@@ -141,12 +141,12 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.banner') }}
-                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
-                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" />
+                            <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" multiple />
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
@@ -170,7 +170,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.thumbnail1') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesName">{{ $t('button.select_file') }}</span>
@@ -189,7 +189,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.thumbnail2') }}
-                            <span class="img-info">(File Type jpg,jpeg,png )(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
@@ -208,12 +208,12 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('RawMaterialadd.list.rawdetails') }}
-                            <span class="img-info">(File Type jpg,jpeg,png Maximum up to 5 images)(Image width 200px )</span>
+                            <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesimilar ? 'custom-select-invalid' : 'custom-select'}`">
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
-                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" />
+                            <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" multiple/>
                             <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
@@ -254,10 +254,10 @@
                         <label for="state2">{{ $t('RawMaterialadd.list.status') }}</label>
                         <br />
                         <input type="radio" id="yes" value="active" name="status" v-model="status" />
-                        <label for="yes">Yes</label>
+                        <label for="yes">활성</label>
 
                         <input type="radio" id="no" name="status" value="inactive" v-model="status" />
-                        <label for="no">No</label>
+                        <label for="no">비활성</label>
                         <div class="text-red">{{ error.status }}</div>
                     </div>
                 </div>
@@ -461,13 +461,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+             if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
                 return false;
             } else {
                 this.render1 = false;
                 this.fileName = this.file.name;
-                this.formData.append('similar_product_img', files[0]);
+                 Array.from(files).forEach(element => {
+               this.formData.append('similar_product_img', element)
+                
+                
+            });
+                // this.formData.append('similar_product_img', files[0]);
             }
             this.fileExtension = this.fileName.replace(/^.*\./, '');
             console.log(this.fileName);
@@ -478,13 +487,22 @@ export default {
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             this.file = files[0];
+             if(files.length > 5 ){
+                 alert("5 이미지 선택");
+                return;
+            } 
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render2 = true;
                 return false;
             } else {
                 this.render2 = false;
                 this.filesNames = this.file.name;
-                this.formData.append('raw_material_img', files[0]);
+                Array.from(files).forEach(element1 => {
+               this.formData.append('raw_material_img', element1)
+                
+                
+            });
+                // this.formData.append('raw_material_img', files[0]);
             }
             this.filesExtension = this.filesNames.replace(/^.*\./, '');
             console.log(this.filesNames);

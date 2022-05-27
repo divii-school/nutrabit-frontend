@@ -22,7 +22,7 @@
                     <label
                         for="title_ko"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Faq.list.title') }}:</label>
+                    >제목 (KO):</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.title_ko }}</p>
                     </div>
@@ -62,9 +62,9 @@
                     <label
                         for="status"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Faq.list.status') }}:</label>
+                    >노출:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.status }}</p>
+                        <p>{{ $t(mydata.status) }}</p>
                     </div>
                 </div>
                 
@@ -90,9 +90,9 @@
                 </div>
 
 
-             
+             <br>
 
-                <div class="p-d-flex p-jc-end" style="float:left;">
+                <div class="p-d-flex p-jc-end" style="float:left;margin-top:-18px;">
                     <router-link :to="'/faq/edit/' + $route.params.id">
                         <Button
                             label="help"
@@ -214,7 +214,5 @@ export default {
     color: white;
 }
 
-.card{
-    height: 720px;
-}
+
 </style>

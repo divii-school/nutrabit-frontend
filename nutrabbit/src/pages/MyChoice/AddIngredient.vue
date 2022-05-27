@@ -59,7 +59,7 @@
               </ul>
               <div class="addIng">
                 <button
-                  @click="this.$router.push(`/my-choice-category-selection/`)"
+                  @click="this.$router.push(`/my-choice/`)"
                 >
                   <i class="icon-menu-add"></i>{{ $t("storageBox.add") }}
                 </button>
@@ -96,9 +96,11 @@
   </div>
   <Modal
     v-show="isItemSelectedVisible"
+    :btnFull="true"
     @close="closeModalDelete"
     :bodytext1="$t('onlyme.modal.SelectedBodyText')"
-    :btnText1="$t('button.Confirm')"
+    :btnText2="$t('button.Confirm')"
+    link="/add-ingredient"
   />
 </template>
 
@@ -113,6 +115,7 @@ import Modal from "../../components/Modal.vue";
 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
+  inject: ["common"],
   components: {
     Popper,
     ProductListStorageBox,
@@ -145,19 +148,18 @@ export default {
     localStorage.removeItem("storage_box");
   },
   updated() {
-    //this.allNutidata();
-    this.globalLocale = this.$i18n.locale;
     if (this.storage_box_list_data.length == this.box_id_data.length) {
       this.allSelected = true;
     }
-    // if(this.storage_box_list_data.length!=this.box_id_data.length){
-    //   this.allSelected=false;
-    // }
   },
-
   watch: {
-    globalLocale(newVal, oldVal) {
-      this.storage_box_list();
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.storage_box_list();
+      }
     },
     box_id_data: {
       handler(newVal) {
@@ -170,6 +172,22 @@ export default {
       deep: true,
     },
   },
+
+  // watch: {
+  //   globalLocale(newVal, oldVal) {
+  //     this.storage_box_list();
+  //   },
+  //   box_id_data: {
+  //     handler(newVal) {
+  //       if (newVal.length > 0) {
+  //         this.isSelected = true;
+  //       } else {
+  //         this.isSelected = false;
+  //       }
+  //     },
+  //     deep: true,
+  //   },
+  // },
   methods: {
     closeModal() {
       this.showModal = false;

@@ -2,20 +2,20 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">{{ $t("customer.title.Inquiry") }}</h1>
+        <h1 class="inquiry-heading">{{$t("customer.button.Inquiry")}}</h1>
         <div class="login-signup-inner">
           <form
             action=""
             class="signUp-form"
-            @submit="(e) => e.preventDefault()"
+            @submit="(e) => e.preventDefault()" enctype="multipart/form-data"
           >
             <div class="individuals-form">
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Subject") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Subject") }}</label>
                 <div class="input-group">
                   <div class="header-dropdown dropdown">
-                    <select v-model="selected">
-                      <option value="" disabled hidden>
+                    <select v-model="selected" required>
+                      <option value="" disabled selected hidden>
                         {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
                       <option
@@ -30,29 +30,29 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Details") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Details") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
                     <textarea
                       class="form-control inquiry-textarea"
                       :placeholder="$t('customer.placeholder.InquiryDetails')"
-                      v-model="InqDesc"
+                      v-model="InqDesc" required
                     ></textarea>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="">{{ $t("customer.inquiryLabel.Upload") }}</label>
+                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Upload") }}</label>
                 <div class="input-group">
                   <div class="file-input">
                     <input
                       type="file"
                       class="select-file"
-                      v-on:change="onFileChange"
+                      v-on:change="onFileChange" required
                     />
                     <label for="file">
                       {{ $t("customer.inquiryLabel.Upload") }}
-                      <img src="../../assets/icons/upload.png" />
+                      <img src="../../assets/icons/upload.svg" />
                     </label>
                   </div>
                   <div class="file-name-details" v-if="fileName">
@@ -89,6 +89,7 @@ import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 
 export default {
+  inject : ["common"],
   name: "InquiryContactUs",
   components: {
     Modal,
@@ -115,17 +116,18 @@ export default {
     this.allEnqueryType();
   },
 
-  updated() {
-    this.globalLocale = localStorage.getItem("selectedLang");
-    console.log(this.globalLocale);
-  },
-  watch: {
-    globalLocale(newVal, oldVal) {
+  // updated() {
+  //   this.globalLocale = localStorage.getItem("selectedLang");
+  //   console.log(this.globalLocale);
+  // },
+ watch: {
+    "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
         (newVal == "EN" && oldVal == "KO")
       ) {
         this.allEnqueryType();
+        console.log(this.common.state.SelectedLang);
       }
     },
   },
@@ -134,6 +136,7 @@ export default {
       this.CustomerCenterService.getEnqueryType()
         .then((res) => {
           if (res.status == 200) {
+            console.log(res.data.data.inqueryType)
             this.EnqueryTypeList = res.data.data.inqueryType;
           }
         })

@@ -62,7 +62,7 @@
           <div class="choice-selection-item raw-material">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{ $t("myChoice.RawMaterial.title") }}</h2>
+                <h2 class="color-2.green-belt-inner">{{ $t("myChoice.RawMaterial.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
                     <button>
@@ -101,6 +101,7 @@
               <li v-for="data in rawMaterialData" :key="data">
                 <div class="list-left">
                   <div class="img-wrap" @click="gotoNextPage(data.id)">
+                    <div class="img-hover-hide">
                     <img
                       v-if="data.thumbnail_fst_path"
                       :src="imgBaseUrl + data.thumbnail_fst_path"
@@ -111,7 +112,7 @@
                       src="../../assets/images/raw_material_place.png"
                       alt
                     />
-
+                    </div>
                     <div v-if="data.thumbnail_scnd_path" class="img-wrap-hover">
                       <img :src="imgBaseUrl + data.thumbnail_scnd_path" alt />
                     </div>
@@ -284,3 +285,7 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+</style>

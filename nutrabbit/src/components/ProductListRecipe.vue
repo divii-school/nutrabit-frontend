@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item">
+  <div class="product-item my-choice-product-item">
     <div class="radio-wrap">
       <label class="custom-radio">
         <input type="radio" name="radio" ref="radio" :id="'radio-'+ item.id" :value="item.id" @click="getPackageId" :data-type="'radio'+ type" />
@@ -47,7 +47,7 @@
             </li>
             <li>
               <h3>{{ $t("onlyme.tableCaption.Package" )}}</h3>
-              <p>{{ item.package }}</p>
+              <p>{{ $t(item.package) }}</p>
             </li>
             <li>
               <h3>{{ $t("onlyme.tableCaption.AdditionalRequest" )}}</h3>
@@ -55,7 +55,7 @@
             </li>
             <li>
               <h3>{{ $t("onlyme.tableCaption.Service" )}}</h3>
-              <p>{{ item.service }}</p>
+              <p>{{ $t(item.service) }}</p>
             </li>
           </ul>
         </div>

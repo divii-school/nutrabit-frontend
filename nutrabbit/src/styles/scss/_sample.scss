@@ -5,6 +5,7 @@
   @media screen and (max-width: 640px) {
     margin: 40px 0 30px;
   }
+
   &:after {
     position: absolute;
     background: url(@/assets/images/nutri-choice-symbol.svg) no-repeat top left;
@@ -30,8 +31,19 @@
       background-size: auto 70px;
       width: 68px;
       content: "";
-      left: -49px;
-      top: -23px;
+      left: -36px;
+      top: -41px;
+    }
+  }
+
+  &.sampleMaking-before-diff{
+    &::after{
+      background: url(@/assets/icons/sample_graphics.svg) no-repeat top left;
+
+      @media screen and (max-width: 640px) {
+        background: url(@/assets/icons/sample_graphics_mob.svg) no-repeat top
+          left;
+      }
     }
   }
 
@@ -56,6 +68,7 @@
   &.sampleMarketing {
     h4 {
       font-size: 40px;
+      line-height: 48px;
 
       @media screen and (max-width: 640px) {
         font-size: 30px;
@@ -74,10 +87,11 @@
         p {
           font-size: 20px;
           color: $black-4C;
-          line-height: 150%;
+          line-height: 130%;
 
           @media screen and (max-width: 640px) {
             margin-bottom: 77px;
+            line-height: 150%;
           }
         }
       }
@@ -87,6 +101,8 @@
       margin: 0px;
       border: 0px;
       padding: 0px;
+      font-family: $default-font;
+      font-weight: 400;
 
       @media screen and (max-width: 640px) {
         font-size: 12px;
@@ -102,11 +118,11 @@
     line-height: 36px;
     color: $black-33;
     margin-bottom: 80px;
-
+    font-family: $Pretend-bold;
     @media screen and (max-width: 640px) {
       font-size: 18px;
       line-height: 22px;
-      margin-bottom: 57px;
+      margin-bottom: 80px;
     }
   }
   .samllTitle {
@@ -115,7 +131,7 @@
     line-height: 24px;
     font-weight: 700;
     margin-bottom: 10px;
-
+    font-family: $Pretend-bold;
     @media screen and (max-width: 640px) {
       font-size: 18px;
       line-height: 22px;
@@ -134,7 +150,7 @@
           margin: 15px 0;
         }
         p {
-          line-height: 150%;
+          line-height: 130%;
         }
       }
     }
@@ -171,12 +187,12 @@
         line-height: 16px;
         font-weight: 600;
         color: $purple-F4;
-        text-transform: uppercase;
         border: 1px solid $purple-F4;
         border-radius: 20px;
         padding: 4px 10px;
         margin: 60px 0 10px;
         display: inline-block;
+        font-family: $Pretend-semibold;
         @media screen and (max-width: 640px) {
           margin: 28px 0 10px;
         }
@@ -186,11 +202,13 @@
         line-height: 36px;
         font-weight: 600;
         margin-bottom: 20px;
+        font-family: $Pretend-semibold;
       }
       p {
         font-size: 15px;
         line-height: 25px;
         font-weight: 500;
+        font-family: $Pretend-medium;
       }
     }
   }
@@ -223,12 +241,13 @@
         font-size: 40px;
         line-height: 48px;
         font-weight: 700;
+        font-family: $Pretend-bold;
       }
 
       @media screen and (max-width: 640px) {
         padding: 30px 35px 30px 72px;
         font-size: 18px;
-        line-height: 22px;
+        line-height: 150%;
       }
     }
     .accBody {
@@ -249,6 +268,7 @@
       border-bottom-right-radius: 0;
       font-size: 22px;
       line-height: 26px;
+      font-family: $Pretend-medium;
 
       @media screen and (max-width: 640px) {
         line-height: 150%;
@@ -262,7 +282,8 @@
         content: "A";
         font-size: 40px;
         line-height: 48px;
-        font-weight: 700;
+        font-weight: 600;
+        font-family: $Pretend-semibold;
       }
     }
   }
@@ -281,7 +302,14 @@
       font-size: 40px;
       line-height: 48px;
       @media screen and (max-width: 640px) {
-        line-height: 45px;
+        line-height: 150%;
+        font-size: 30px;
+        font-weight: 700;
+      }
+      &.service-intro-title{
+        @media screen and (max-width: 640px) {
+          line-height: 36px;
+        }
       }
     }
   }
@@ -312,7 +340,7 @@
           p {
             font-weight: 700;
             font-size: 26px;
-            line-height: 130%;
+            line-height: 34px;
             color: $grey-4C;
             @media screen and (max-width: 900px) {
               font-size: 24px;
@@ -333,6 +361,7 @@
         line-height: 300px;
         color: $green-d0;
         width: 221px;
+        font-family: $Pretend-semibold;;
         @include flex-justify-center;
         @media screen and (max-width: 900px) {
           display: none;
@@ -358,8 +387,13 @@
           line-height: 140%;
           color: $grey-4C;
           text-align: center;
+          font-family: $Pretend-medium;
           @media screen and (max-width: 900px) {
             font-size: 24px;
+            line-height: 150%;
+          }
+          span{
+            font-family: $Pretend-bold;
           }
         }
       }
@@ -411,6 +445,8 @@
       font-size: 30px;
       line-height: 120%;
       color: $white-1;
+      font-family: $Pretend-medium;
+      // white-space: nowrap;
       @media screen and (max-width: 900px) {
         font-size: 16px;
         line-height: 170%;
@@ -421,16 +457,19 @@
       text-align: center;
       font-weight: 700;
       font-size: 50px;
-      line-height: 60px;
+      line-height: 120%;
       color: $white-1;
+      font-family: $Pretend-semibold;
+      letter-spacing: -0.04em;
       @media screen and (max-width: 900px) {
         font-size: 24px;
-        line-height: 41px;
+        line-height: 170% ;
       }
       span {
         font-size: 40px;
-        line-height: 48px;
+        line-height: 120%;
         font-weight: 600;
+        font-family: $Pretend-bold;
         @media screen and (max-width: 900px) {
           font-size: 24px;
           line-height: 41px;
@@ -504,11 +543,13 @@
       min-width: 221px;
       @include flex-justify-center;
       margin-right: 40px;
+      font-family: $Pretend-semibold;
       @media screen and (max-width: 900px) {
         min-width: 70px;
         font-weight: 800;
         font-size: 100px;
         line-height: 120px;
+        font-family: $Pretend-extrabold;
       }
 
       &.num-type-2 {
@@ -522,6 +563,7 @@
         font-size: 40px;
         line-height: 130%;
         color: $black-33;
+        font-family: $Pretend-bold;
         @media screen and (max-width: 900px) {
           font-size: 24px;
         }
@@ -533,9 +575,9 @@
         line-height: 130%;
         color: $grey-66;
         margin-top: 20px;
+        font-family: $Pretend-medium;
         @media screen and (max-width: 900px) {
           font-size: 16px;
-          font-weight: 500;
           line-height: 150%;
           margin-top: 10px;
           margin-left: 0;

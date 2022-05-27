@@ -47,7 +47,7 @@
                                 <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ fileName }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div
@@ -101,7 +101,7 @@
                                 name="status"
                                 v-model="expose"
                             />
-                            <label for="yes">Yes</label>
+                            <label for="yes">활성</label>
 
                             <input
                                 type="radio"
@@ -110,7 +110,7 @@
                                 value="0"
                                 v-model="expose"
                             />
-                            <label for="no">No</label>
+                            <label for="no">비활성</label>
                             </div>
                             
 
@@ -125,10 +125,10 @@
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                            <div :class="`${error.top10 ? 'p-invalid' : ''}`">
                             <input type="radio" id="yes" value="1" name="top_10" v-model="top10" />
-                            <label for="yes">Yes</label>
+                            <label for="yes">활성</label>
 
                             <input type="radio" id="no" name="top_10" value="0" v-model="top10" />
-                            <label for="no">No</label>
+                            <label for="no">비활성</label>
                             </div>
                             <div class="text-red">{{ error.top10 }}</div>
                         </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
                 <Button
-                    :label="$t('button.confirm')"
+                    label="게시"
                     icon="pi pi-check"
                     iconPos="left"
                     class="p-button p-button-sm p-mr-2 p-mb-2"

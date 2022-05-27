@@ -8,7 +8,15 @@
             <h2 class="nutri-choice-heading text-center mt-0">
               {{ $t("sampleMaking.title.title") }}
             </h2>
-            <p class="title text-center sampleBLueAfter sample-diff">
+            <p
+              class="
+                title
+                text-center
+                sampleBLueAfter
+                sample-diff
+                sampleMaking-before-diff
+              "
+            >
               {{ $t("sampleMaking.title.subtitle") }}
             </p>
             <p class="sample-desc text-center">
@@ -83,7 +91,7 @@
         <div class="container-medium">
           <div class="sampleServices questionSection">
             <p class="title text-center samllTitle">my choice</p>
-            <h4 class="title text-center">
+            <h4 class="title text-center questionSection-title">
               {{ $t("sampleMaking.sampleFaq.title") }}
             </h4>
             <div id="app" class="accCont">
@@ -189,15 +197,27 @@ export default {
   font-size: 22px;
   line-height: 140%;
   color: $grey-4C;
+  font-family: $default-font;
+  font-style: normal;
   /* margin-top: 19px; */
 }
 .btn-small-solid {
   margin-top: 40px !important;
 }
-.light-grey{
+.light-grey {
   color: $grey-A4;
 }
-.mt-0{
+.mt-0 {
   margin-top: 0px;
+}
+.questionSection-title {
+  font-size: 40px !important;
+  line-height: 48px !important;
+}
+@media screen and (max-width: 768px) {
+  .questionSection-title {
+    font-size: 30px !important;
+    line-height: 36px !important;
+  }
 }
 </style>

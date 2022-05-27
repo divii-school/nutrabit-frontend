@@ -29,7 +29,7 @@
                     <tr>
                       <td>{{ index + 1 }}</td>
                       <td>{{ $t(option.category) }}</td>
-                      <td>{{ option.explanation }}</td>
+                      <td>{{ $t(option.explanation) }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -64,7 +64,7 @@ import MyApplicationService from "../../services/MyApplicationQuoteService";
  
 export default {
   name: "MyApplicationQuoteRequestBlending",
-
+  inject : ["common"],
   data() {
     return {
       options: [],
@@ -91,15 +91,19 @@ export default {
     this.getQuotionBlendingDetails(this.product_id, this.application_type);
   },
 
-  updated(){
-    this.globalLocale = localStorage.getItem('selectedLang');
-    console.log(this.globalLocale)
-  },
+  // updated(){
+  //   this.globalLocale = localStorage.getItem('selectedLang');
+  //   console.log(this.globalLocale)
+  // },
 
   watch: {
-    globalLocale(newVal, oldVal) {
-      if((newVal == 'KO' && oldVal == 'EN') || (newVal == 'EN' && oldVal == 'KO')){
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
         this.getQuotionBlendingDetails(this.product_id, this.application_type);
+        console.log(this.common.state.SelectedLang);
       }
     },
   },

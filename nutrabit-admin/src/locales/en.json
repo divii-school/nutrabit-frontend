@@ -91,6 +91,7 @@
       "created_dt": "2nd Category (EN)"
     }
   },
+  
 
   "page": {
     "user": {
@@ -104,5 +105,14 @@
         "heading":"User more Information"
       }
     }
-  }
+  },
+  "active":"active",
+"inactive":"inactive",
+"pending":"pending",
+"not_answered":"not_answered",
+"answered":"answered",
+"Reply":"Reply",
+"Get a quote":"Get a quote",
+"Sample Request":"Sample Request",
+"recommanded blending":"recommanded blending"
 }

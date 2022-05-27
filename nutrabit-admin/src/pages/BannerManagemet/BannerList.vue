@@ -37,37 +37,41 @@
                     <DataTable :value="products" :paginator="true" class="p-datatable-gridlines" :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll">
                         <ConfirmDialog group="dialog" />
 
-                        <template #empty>배너를 찾을 수 없습니다.</template>
-                        <template #loading>Loading banner data. Please wait.</template>
+                        <template #empty>데이터가 없습니다.</template>
+                        <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                        <Column field="Sl. No." header="번호" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Sl. No.</span>
                                 {{ data.sl_no }}
                             </template>
                         </Column>
-                         <Column field="Title" :header="$t('Banner.list.title')" style="min-width: 12rem">
+                         <Column field="Title" :header="$t('Banner.list.title')" >
                             <template #body="{ data }">
-                                <span class="p-column-title">Title</span>
-                                {{ data.title }}
+                           <span class="p-column-title">Title</span>
+                            <template class="p-column-title" v-if="data.title.length<8"> {{ data.title }}</template>
+                            <template class="p-column-title" v-else> {{ data.title.substring(0,8)+".." }}</template>
+
+                               
+                                <!-- {{ data.title }} -->
                             </template>
                         </Column>
-                        <Column field="URL" :header="$t('Banner.list.url')" style="min-width: 12rem">
+                        <Column field="URL" :header="$t('Banner.list.url')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">URL</span>
                                 {{ data.link }}
                             </template>
                         </Column>
-                        <Column field="Status" :header="$t('Banner.list.status')" style="min-width: 12rem">
+                        <Column field="Status" header="상태" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Status</span>
                                 <!-- {{ data.id }}
                                 {{ data.status }} -->
-                                {{ data.status }}
+                                {{ $t(data.status) }}
                             </template>
                         </Column>
                          
-                        <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" style="min-width: 12rem">
+                        <Column field="Creation-Date" :header="$t('Banner.list.created_dt')" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Creation-Date</span>
                                 {{ dateformat(data.createdDate) }}
@@ -141,6 +145,7 @@ export default {
     mounted() {
          const route = useRoute();
          console.log(route.params);
+         
         this.bannerService
             .getBannerList(this.title,this.link,this.status,this.createdDate)
             .then((res) => {
@@ -250,7 +255,9 @@ export default {
         },
         dateformat(value) {
              if (value) {
-            return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).locale('ko').format('ll - h:mm:ss')
             }
         },
         

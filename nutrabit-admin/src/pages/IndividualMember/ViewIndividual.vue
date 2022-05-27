@@ -6,7 +6,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('DFC.details.individualheader') }}</strong>
+                    <strong>회원 정보</strong>
                 </h4>
                 <div class="p-field p-grid">
                     <label
@@ -43,7 +43,7 @@
                             @click="open"
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                             style=" background: white;border: 1px solid #0A0A0A;color: #000000; margin-left: 1%;"
-                        >{{ $t('Change Password') }}</a>
+                        >{{ $t('비밀번호 재설정') }}</a>
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('DFC.details.location') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.createdDate }}</p>
+                        <p>{{ dateformat(mydata.createdDate) }}</p>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정
                         </Button>
                     </router-link>
                 </div>
@@ -116,7 +116,7 @@
                         class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                     >
                         <i class="pi pi-trash p-mr-2"></i>
-                        {{ $t('button.delete') }}
+                        삭제
                     </Button>
                 </div>
             </div>
@@ -130,7 +130,7 @@
         >
             <div class="p-field p-fluid">
                 <label for="username">{{ $t('Individual.list.newpassword') }}:</label>
-                <InputText id="password" type="text" v-model="new_password"  />
+                <InputText id="password" placeholder="#123Abc" type="text" v-model="new_password"  />
                 <small v-show="helptxt">{{ $t('password.help') }}</small>
                 <!-- <div class="text-redx">{{ error.new_password }}{{ errmsg }}</div> -->
             </div>
@@ -155,6 +155,7 @@
 import axios from 'axios';
 import UserService from '../../service/API/UserService';
 // import {useRouter} from 'vue-router'
+import moment from 'moment';
 export default {
     data() {
         return {
@@ -201,6 +202,13 @@ export default {
         close() {
             this.display = false;
         },
+         dateformat(value) {
+             if (value) {
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).format('YYYY/MM/DD     h:mm:ss')
+            }
+        },
 
         formatDate(value) {
             const date = new Date(value);
@@ -244,6 +252,35 @@ export default {
                     this.errmsg = err.response.data.message;
                 });
             // }
+        },
+         del(id) {
+            this.$confirm.require({
+                group: 'dialog',
+                header: '확인',
+                message: '삭제하시겠습니까?',
+                icon: 'pi pi-trash',
+                acceptLabel:"확인",
+                rejectLabel:"취소",
+                accept: () => {
+                    axios({ method: 'delete', url: '/admin/user/delete', data: { deleteIdArray: id } }).then(function (response) {
+                        console.log(response);
+                    
+                     });
+                     this.$router.push({ name: 'IndividualMember' });
+                    
+                    this.$toast.add({ severity: 'info', summary: '삭제됨', detail: '성공적으로 삭제되었습니다', life: 3000 });
+                },
+                reject: () => {
+                    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
+                },
+            });
+            setTimeout(() => {
+                this.userservice.getIndividualUserList().then((data) => {
+                    this.customer1 = data;
+                    console.log(data);
+                    this.loading1 = false;
+                });
+            }, 2000);
         },
     },
     mounted() {

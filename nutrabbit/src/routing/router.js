@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import Login from "../pages/Common/login.vue";
 import NaverLoginCallback from "../pages/Common/NaverLoginCallback.vue";
+import KakaoLoginCallback from "../pages/Common/kakaoLoginCallback.vue";
+import PaymentCallback from "../pages/Common/PaymentCallback.vue";
 import MemberRegistrationTypeSelection from "../pages/Common/MemberRegistrationTypeSelection.vue";
 import MemberRegistrationMethod from "../pages/Common/MemberRegistrationMethod.vue";
 import MemberRegistrationIndividuals from "../pages/Common/MemberRegistrationIndividual.vue";
@@ -36,6 +38,7 @@ import MyRecipeDetails from "../pages/OnlyMe/MyRecipeDetails.vue";
 import MyRecipeDetailsEdit from "../pages/OnlyMe/MyRecipeDetailsEdit.vue";
 import MyApplicationDetails from "../pages/OnlyMe/MyApplicationDetails.vue";
 import MyRecipeDetailsSample from "../pages/OnlyMe/MyRecipeDetailsSample.vue";
+import MyRecipeDetailsChoice from "../pages/OnlyMe/MyRecipeDetailsChoice.vue";
 import MyRecipe from "../pages/OnlyMe/MyRecipe.vue";
 import AboutUs from "../pages/AboutUs.vue";
 import ServiceIntro from "../pages/Nutri/ServiceIntro.vue";
@@ -78,7 +81,16 @@ const routes = [
     name: "NaverLogin",
     path: "/callback/naverlogin",
     component: NaverLoginCallback,
-    beforeEnter: guest,
+  },
+  {
+    name: "KakaoLogin",
+    path: "/callback/kakaologin",
+    component: KakaoLoginCallback,
+  },
+  {
+    name: "PaymentCallback",
+    path: "/callback/payment",
+    component: PaymentCallback,
   },
   {
     name: "MemberRegistrationTypeSelection",
@@ -289,6 +301,11 @@ const routes = [
     name: "MyRecipeDetailsSample",
     path: "/my-recipe-details-sample/:type/:id",
     component: MyRecipeDetailsSample,
+  },
+  {
+    name: "MyRecipeDetailsChoice",
+    path: "/my-recipe-details-sample/:type/:id",
+    component: MyRecipeDetailsChoice,
   },
   {
     name: "MyRecipe",

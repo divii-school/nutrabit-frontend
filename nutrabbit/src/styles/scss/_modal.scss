@@ -5,7 +5,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: $grey-66;
+	background: rgba(0, 0, 0, 0.75);
 	z-index: 99;
     .modal {
 		padding: 80px 30px 50px;
@@ -40,13 +40,9 @@
 				margin-top: 50px;
 				@include flex-justify-center;
 				&.dual-btn{
+					gap: 10px;
 					button{
-						&:first-child{
-							margin-right: 5px;
-						}
-						&:last-child{
-							margin-left: 5px;
-						}
+						width: calc(50% - 5px);
 					}
 				}
 			}

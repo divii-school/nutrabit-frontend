@@ -5,7 +5,7 @@
         <div class="p-col-12">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('DFC.details.editindividual') }}</strong>
+                    <strong>회원 정보 수정</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
-                        <label for="address">{{ $t('DFC.details.address') }}</label>
+                        <label for="address">주소</label>
                         <Textarea id="address" type="text" placeholder="address" v-model="mydata.address" />
                     </div>
                     </div>
@@ -74,6 +74,7 @@
 import validateEditIndividual from '../../validations/individual/EditIndividual';
 
 import UserService from '../../service/API/UserService';
+import moment from 'moment';
 export default {
     data() {
         return {
@@ -98,6 +99,7 @@ export default {
             id:'',
             email:'',
             username:'',
+            
             uuid:'',
                 mobile: '',
                 findings: '',
@@ -122,6 +124,13 @@ export default {
             setTimeout(() => {
                 this.$router.go(-1);
             }, 2000);
+        },
+        dateformat(value) {
+             if (value) {
+                 console.log()
+            // return moment(String(value)).locale('ko').format('LLL')
+            return moment(String(value)).format('YYYY/MM/DD h:mm:ss')
+            }
         },
         editIndividual() {
             
@@ -173,7 +182,7 @@ export default {
             this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.uuid = res.data.data[0].uuid;
             this.mydata.address = res.data.data[0].address;
-            this.mydata.createdDate = res.data.data[0].createdDate;
+            this.mydata.createdDate = this.dateformat(res.data.data[0].createdDate);
             this.mydata.findings = res.data.data[0].findings;
             this.mydata.account_type = res.data.data[0].account_type;
             //console.log(res.data.data[0]);

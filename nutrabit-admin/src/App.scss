@@ -3,3 +3,36 @@ $gutter: 1rem; //for primeflex grid system
 
 @import 'node_modules/primeflex/primeflex.scss';
 @import './assets/flags/flags.css';
+
+.p-datatable .p-column-header-content {
+    justify-content: center;
+}
+
+.p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
+    text-align: center;
+}
+
+.p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td > div {
+    justify-content: center;
+}
+.p-datatable .p-datatable-thead > tr > th {
+    width: 14%;
+    &:nth-child(1) {
+        width: 5%;
+    }
+    &:nth-child(3) {
+        width: 25%;
+    }
+    &:nth-child(6) {
+        width: 25%;
+    }
+}
+.faq-table {
+    .p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
+        &:nth-child(5) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

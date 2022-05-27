@@ -5,18 +5,18 @@
         <div class="p-col-12" v-show="clientlist">
             <div class="card p-fluid">
                 <h4>
-                    <strong>{{ $t('search') }}</strong>
+                    <strong>검색</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Blending') }}</label>
                            
-                            <InputText id="googlurl" type="text" placeholder="search blending name" v-model="name" @keyup="resetdata"/>
+                            <InputText id="googlurl" type="text" placeholder="혼합 이름" v-model="name" @keyup="resetdata"/>
                         </div>
                         <div class="p-field p-col-12 p-md-4">
                             <label for="type">{{ $t('Nutri3.list.Tag') }}</label>
                             
-                           <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" :placeholder="$t('Nutri3.list.Tag')" />
+                           <Dropdown v-model="tags_ko"  :options="dropdownValues"  optionLabel="tags_ko" placeholder="선택하다" />
                         </div>
                     
                     </div>
@@ -43,7 +43,7 @@
                          <div>
                             
                             <router-link to="/addnutri-management">
-                                <Button :label="$t('Nutri3.list.add_nutri')" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
+                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
                         </div>
                     </div>
@@ -51,11 +51,11 @@
                 <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id" :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" style="text-align: center">
                     <ConfirmDialog group="dialog" />
 
-                    <template #empty> No Data found. </template>
-                    <template #loading> Loading data. Please wait. </template>
+                    <template #empty> 데이터가 없습니다. </template>
+                    <template #loading> 데이터를 로드 중입니다. 기다리다. </template>
                      
                     
-                    <Column header="번호" style="min-width: 12rem">
+                    <Column header="번호" >
                         <template #body="{ data }">
                             <span class="p-column-title">SlNo</span>
                             
@@ -63,30 +63,30 @@
                         </template>
                     </Column>
                     
-                    <Column field="ReferralCode" :header="$t('Nutri3.list.Nutri3-Blending')" style="min-width: 12rem">
+                    <Column field="ReferralCode" :header="$t('Nutri3.list.Nutri3-Blending')" >
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                            
                             {{ data.name_ko }}
                         </template>
                     </Column>
-                    <Column :header="$t('Nutri3.list.Tags')" style="min-width: 12rem">
+                    <Column header="태그" >
                         <template #body="{ data }">
                             <span class="p-column-title">Category</span>
                           
                              {{ data.tags_ko }}
                         </template>
                     </Column>
-                    <Column field="Exposure" :header="$t('Nutri3.list.status')" style="min-width: 12rem">
+                    <Column field="Exposure" header="상태" >
                             <template #body="{ data }">
                                 <span class="p-column-title">Exposure</span>
                                 
-                                {{ data.status }}
+                                {{ $t(data.status) }}
                                 <!-- <InputSwitch v-model="data.status" trueValue="active" @change="switchValue(data.id, data.status)" /> -->
                             </template>
                         </Column>
                    
-                    <Column :header="$t('Nutri3.list.Action')">
+                    <Column header="기능">
                         <template #body="{ data }">
                             <span class="p-column-title">Balance</span>
                             <p style="display: none">{{ data.mobile }}</p>

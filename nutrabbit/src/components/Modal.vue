@@ -3,12 +3,14 @@
     <div class="modal">
       <section class="modal-body">
         <slot name="body">
+          <img :src="img" alt="" class="mx-auto img-space">
           <h2 class="modal-title text-center" v-if="bodytext1">
             {{ bodytext1 }}
           </h2>
           <h2 class="modal-title text-center" v-if="bodytext2">
             {{ bodytext2 }}
           </h2>
+          <p class="body-title text-center" v-if="bodytext3">{{bodytext3}}</p>
         </slot>
       </section>
 
@@ -19,7 +21,7 @@
         >
           <button
             type="button"
-            class="btn-primary grey-btn-solid"
+            :class="`btn-primary grey-btn-solid ${btnFull? 'full-width' : ''}`"
             @click="close()"
             v-if="btnText1"
           >
@@ -27,7 +29,7 @@
           </button>
           <button
             type="button"
-            class="btn-primary grenn-btn2"
+            :class="`btn-primary grenn-btn2 ${btnFull? 'full-width' : ''}`"
             @click="close2(link)"
             v-if="btnText2"
           >
@@ -40,9 +42,10 @@
 </template>
 
 <script>
+
 export default {
   name: "Modal",
-  props: ["bodytext1", "bodytext2", "btnText1", "btnText2", "link"],
+  props: ["bodytext1", "bodytext2", "bodytext3", "btnText1", "btnText2", "link", "btnFull","img"],
   methods: {
     close() {
       this.$emit("close");
@@ -60,7 +63,22 @@ export default {
 .modal-footer{
   .btn-primary{
     width: 50%;
+    &.full-width{
+      width: 100%;
+    }
   }
+}
+
+.body-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  font-family: $default-font;
+  margin-top: 20px;
+  color: #4c4c4c;
+}
+.img-space{
+  margin-bottom: 20px;
 }
 </style>
 

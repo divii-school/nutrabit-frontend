@@ -66,9 +66,10 @@ body {
   max-width: 870px;
   width: 100%;
   margin: 0 auto;
-  .login-signup-inner{
+  .login-signup-inner {
     @media screen and (max-width: 900px) {
-     box-shadow: none;
+      box-shadow: none;
+      // padding: 60px 90px;
     }
   }
 }
@@ -153,7 +154,6 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-weight: normal;
 
   &.error {
     color: $red-3 !important;
@@ -228,7 +228,7 @@ textarea {
   height: 24px;
   width: 24px;
   background-color: $white-1;
-  border-radius: 0;
+  border-radius: 1px;
   border: 1px solid $grey-CF;
 
   &:after {
@@ -247,6 +247,9 @@ textarea {
   > div {
     margin: 0 0 0 10px !important;
     border: 0 !important;
+    @media screen and (max-width: 640px) {
+      margin: 0 0 0 5px !important;
+    }
   }
 
   .popper {
@@ -293,18 +296,21 @@ textarea {
 
 .search-card-inner {
   .search-result-img {
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    height: 100%;
   }
 
   p {
     font-family: $Pretend-semibold;
     font-weight: 600;
     font-size: 18px;
-    line-height: 27px;
+    line-height: 22px;
     letter-spacing: 0.01em;
     color: $black-33;
     margin-top: 20px;
+    @media screen and (max-width: 768px) {
+      line-height: 27px;
+    }
   }
 
   .recomanded-vitamin {
@@ -639,12 +645,16 @@ textarea {
     position: absolute;
     z-index: 2;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
   }
   label {
     display: block;
     position: relative;
     width: auto;
     height: 45px;
+    line-height: 19px;
     background: none;
     border: 1px solid #a4a4a4;
     border-radius: 4px;
@@ -654,11 +664,15 @@ textarea {
     color: #a4a4a4;
     font-size: 16px;
     font-weight: 500;
+    font-family: $default-font;
     cursor: pointer;
     transition: transform 0.2s ease-out;
-
+    background-color: #ffffff;
+    @media screen and (max-width: 768px) {
+      font-family: $Pretend-medium;
+    }
     img {
-      margin-left: 5px;
+      margin-left: 0px;
     }
   }
 }
@@ -673,6 +687,17 @@ textarea {
   .login-signup-inner {
     @media screen and (max-width: 640px) {
       padding: 40px 16px !important;
+    }
+    form {
+      &.signUp-form {
+        max-width: 100%;
+        .btn-wrap.dual-btn {
+          gap: 20px;
+          .btn-primary {
+            width: 50%;
+          }
+        }
+      }
     }
   }
 }
@@ -836,8 +861,10 @@ textarea {
 
 .ansBlock {
   border: 1px solid $grey-CF;
-  padding: 30px 30px 68px 30px;
+  padding: 30px 30px 30px 30px;
   border-radius: 10px;
+  min-height: 193px;
+  background: $white-FA;
   @media screen and (max-width: 768px) {
     padding: 20px;
   }
@@ -906,6 +933,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-prev-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;
@@ -917,6 +945,7 @@ textarea {
         }
 
         &.VuePagination__pagination-item-next-chunk {
+          display: none;
           button {
             background: url("@/assets/icons/pagination-dual-arwl-h.svg")
               no-repeat center center;
@@ -940,7 +969,6 @@ textarea {
 
 .dropdown {
   select {
-    font-family: $Pretend-medium;
     background: $white-1;
     font-size: 16px;
     color: #181818;
@@ -978,7 +1006,6 @@ textarea {
         font-size: 16px;
         line-height: 110%;
         color: $green-68;
-        
       }
       p {
         font-size: 22px;
@@ -1000,8 +1027,8 @@ textarea {
     flex-wrap: wrap !important;
     justify-content: flex-start;
     li {
-      width: 31.33%;
-      padding: 0 1%;
+      width: 31%;
+      padding: 0 1.5%;
       margin-bottom: 80px;
       @media screen and (max-width: 1024px) {
         width: 47%;
@@ -1099,23 +1126,26 @@ textarea {
 }
 
 .nutriBlend-para {
+  font-family: $default-font;
   span {
     color: $green-68;
     font-weight: 700;
+    font-family: $Pretend-bold;
   }
 }
 
-
 .swiper-backface-hidden {
-  .swiper-slide{
-      height: 830px;
+  .swiper-slide {
+    height: 830px;
     @media screen and (max-width: 640px) {
       height: 375px;
     }
-    img{
+    img {
       height: 100%;
       object-fit: cover;
     }
+
+    
   }
 }
 
@@ -1130,4 +1160,18 @@ textarea {
       width: calc(100% - 33.33%);
     }
   }
+}
+
+#addressLayer {
+  #__daum__layer_1 {
+    @media screen and (max-width: 768px) {
+      max-width: 500px;
+      width: 100% !important;
+    }
+  }
+}
+
+.flexRight {
+  display: flex;
+  flex-direction: row-reverse;
 }

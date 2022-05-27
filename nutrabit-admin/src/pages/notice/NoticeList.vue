@@ -8,31 +8,15 @@
                     <div class="p-formgrid p-grid">
                         <div class="p-field p-col-12 p-md-3">
                             <label for="type">{{ $t('Banner.search.type') }}</label>
-                            <InputText
-                                id="googlurl"
-                                type="text"
-                                placeholder="검색어 입력"
-                                v-model="title"
-                                 @keyup="resetdata"
-                            />
+                            <InputText id="googlurl" type="text" placeholder="제목입력" v-model="title" @keyup="resetdata" />
                         </div>
-
-                      
                     </div>
                 </div>
             </div>
-            <div
-                class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row"
-            >
+            <div class="p-d-flex p-jc-between p-ai-lg-center p-ai-start p-mt-6 p-flex-column p-flex-lg-row">
                 <div class="p-mb-4 p-mb-lg-0"></div>
                 <div>
-                    <Button
-                        :label="$t('button.search')"
-                        icon="pi pi-search"
-                        iconPos="left"
-                        class="p-button p-button-sm p-mr-2 p-mb-2"
-                        @click="searchNotice"
-                    ></Button>
+                    <Button :label="$t('button.search')" icon="pi pi-search" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="searchNotice"></Button>
                     <!-- <Button :label="$t('button.reset')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" v-on:click="reInitialize"></Button> -->
                 </div>
             </div>
@@ -42,135 +26,87 @@
                 <div class="p-col-12">
                     <div class="p-d-flex p-jc-between p-mb-2">
                         <h4>{{ $t('Notice.list.header') }}</h4>
-                       
 
                         <div>
                             <router-link to="/add-notice">
-                                <Button
-                                    :label="$t('Notice.addnew_notice')"
-                                    icon="pi pi-plus"
-                                    iconPos="left"
-                                    class="p-button p-button-sm p-mr-2 p-mb-2"
-                                ></Button>
+                                <Button label="추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
                             </router-link>
                         </div>
                     </div>
-                    <DataTable
-                        :value="products"
-                        :paginator="true"
-                        class="p-datatable-gridlines"
-                        :rows="5"
-                        data-key="id"
-                        :rowHover="true"
-                        :loading="loading1"
-                        :filters="filters1"
-                        responsiveLayout="scroll"
-                    >
-                        <ConfirmDialog group="dialog" />
+                    <div class="faq-table">
+                        <DataTable :value="products" :paginator="true" class="p-datatable-gridlines"
+                         :rows="5" data-key="id" :rowHover="true" :loading="loading1" :filters="filters1"
+                          responsiveLayout="scroll">
+                            <ConfirmDialog group="dialog" />
 
-                        <template #empty>공지사항을 찾을 수 없습니다</template>
-                        <template #loading>Loading Notice data. Please wait.</template>
+                            <template #empty>데이터가 없습니다.</template>
+                            <template #loading>데이터를 로드 중입니다. 기다리다.</template>
 
-                        <Column field="Sl. No." header="번호" style="min-width: 3rem">
-                            <template #body="{ data }">
-                                <span class="p-column-title">번호</span>
-                                {{ data.sl_no }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="Title"
-                            :header="$t('Notice.list.title')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Title</span>
-                                {{ data.title_ko }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="status"
-                            :header="$t('Notice.list.status')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">status</span>
-                                {{ data.status }}
-                            </template>
-                        </Column>
-                        <Column
-                            field="createddate"
-                            :header="$t('Notice.list.createddate')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Createddate</span>
-                                <!-- {{ data.id }}
+                            <Column field="Sl. No." header="번호" style="min-width: 3rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">번호</span>
+                                    {{ data.sl_no }}
+                                </template>
+                            </Column>
+                            <Column field="Title" :header="$t('Notice.list.title')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Title</span>
+                                    {{ data.title_ko }}
+                                </template>
+                            </Column>
+                            <Column field="status" :header="$t('Notice.list.status')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">status</span>
+                                    <span v-if="data.expose == '1'">
+                                        {{ $t('active') }}
+                                    </span>
+                                    <span v-else-if="data.expose == '0'">
+                                        {{ $t('inactive') }}
+                                    </span>
+                                </template>
+                            </Column>
+                            <Column field="createddate" :header="$t('Notice.list.createddate')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Createddate</span>
+                                    <!-- {{ data.id }}
                                 {{ data.status }}-->
-                               {{ dateformat(data.createdDate) }}
-                            </template>
-                        </Column>
+                                    {{ dateformat(data.createdDate) }}
+                                </template>
+                            </Column>
 
-                        <Column
-                            field="Order"
-                            :header="$t('Notice.list.Order')"
-                            style="min-width: 12rem"
-                        >
-                            <template #body="{ data }">
-                                <span class="p-column-title">Order</span>
+                            <Column field="Order" :header="$t('Notice.list.Order')" style="min-width: 12rem">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Order</span>
 
-                                <Button
-                                    label="info"
-                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
-                                    style="display: flex; "
-                                    @click="up(data.id)"
-                                >
-                                    <i class="pi pi-caret-up p-mr-2"></i>
-                                    
-                                </Button>
+                                    <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2" style="display: flex" @click="up(data.id)">
+                                        <i class="pi pi-caret-up p-mr-2"></i>
+                                    </Button>
 
-                                <Button
-                                    label="info"
-                                    class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2"
-                                     style="display: flex; "
-                                     @click="down(data.id)"
-                                >
-                                    <i class="pi pi-caret-down p-mr-2"></i>
-                                </Button>
-                            </template>
-                        </Column>
-                       
+                                    <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2" style="display: flex" @click="down(data.id)">
+                                        <i class="pi pi-caret-down p-mr-2"></i>
+                                    </Button>
+                                </template>
+                            </Column>
 
-                        <Column field="Actions" :header="$t('Notice.list.see_more')">
-                            <template #body="{ data }">
-                                <span class="p-column-title">Actions</span>
-                                <p style="display: none">{{ data.status }}</p>
-                                <div style="display: flex">
-                                   
-                                    <router-link :to="'/edit-notice/' + data.id">
-                                        <Button
-                                            label="help"
-                                            class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"
-                                        >
-                                            <i class="pi pi-pencil p-mr-2"></i>
-                                        </Button>
-                                    </router-link>
-                                    <a
-                                        :href="'/admin/banner/delete/' + data.id"
-                                        @click.prevent="deleteNote(data.id)"
-                                        data-toggle="tooltip"
-                                        data-placement="right"
-                                        title="메모 삭제"
-                                    >
-                                        <Button
-                                            icon="pi pi-trash"
-                                            class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2"
-                                        />
-                                    </a>
-                                    <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
-                                </div>
-                            </template>
-                        </Column>
-                    </DataTable>
+                            <Column field="Actions" header="기능">
+                                <template #body="{ data }">
+                                    <span class="p-column-title">Actions</span>
+                                    <p style="display: none">{{ data.status }}</p>
+                                    <div style="display: flex">
+                                        <router-link :to="'/edit-notice/' + data.id">
+                                            <Button label="help" class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2">
+                                                <i class="pi pi-pencil p-mr-2"></i>
+                                            </Button>
+                                        </router-link>
+                                        <a :href="'/admin/banner/delete/' + data.id" @click.prevent="deleteNote(data.id)" data-toggle="tooltip" data-placement="right" title="메모 삭제">
+                                            <Button icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" />
+                                        </a>
+                                        <!-- <Button :label="$t('button.delete')" icon="pi pi-trash" class="n-wrap p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" /> -->
+                                    </div>
+                                </template>
+                            </Column>
+                        </DataTable>
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,13 +125,13 @@ export default {
             dropdownValues: [{ name: '활동적인' }, { name: '비활성' }],
             serial: 0,
             // filtercategory:'',
-            selectedFilter:'',
+            selectedFilter: '',
             dropdownValue: '',
             calendarValue1: '',
             calendarValue2: '',
             link: '',
-            id:'',
-           
+            id: '',
+
             isModalVisible: false,
             products: null,
             title: '',
@@ -205,8 +141,6 @@ export default {
             title_ko: '',
             status: '',
             createdDate: '',
-           
-
         };
     },
     created() {
@@ -220,7 +154,7 @@ export default {
     //         let categoryname,name, name_ko;
     //         switch(this.selectedFilter.name_ko) {
     //            // one hour milliseconds
-    //            case name_ko: 
+    //            case name_ko:
     //            categoryname = name_ko; break;
     //            }
     //         name =  Date.now() - this.selectedFilter.value * categoryname;
@@ -231,7 +165,7 @@ export default {
     mounted() {
         const route = useRoute();
         console.log(route.params);
-        
+
         this.noticeService
             .getNoticeList(this.title)
             .then((res) => {
@@ -276,19 +210,16 @@ export default {
             }, 500);
         },
 
-         resetdata(){
-            if (this.title === ''){
-                this.noticeService
-                .getNoticeList(this.title)
-                    .then((res) => {
-                        this.products = res.data.data.notice;
-                        this.loading1 = false;
-                        //console.log(data);
-                    })
-                    
-            } 
+        resetdata() {
+            if (this.title === '') {
+                this.noticeService.getNoticeList(this.title).then((res) => {
+                    this.products = res.data.data.notice;
+                    this.loading1 = false;
+                    //console.log(data);
+                });
+            }
         },
-      
+
         searchNotice() {
             if (this.title === '') {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
@@ -309,7 +240,6 @@ export default {
         },
         reInitialize() {
             this.title = null;
-            
 
             this.noticeService
                 .getNoticeList(this.title)
@@ -323,7 +253,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('DD/MM/YYYY - hh:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - h:mm:ss');
             }
         },
 
@@ -335,8 +265,8 @@ export default {
                 header: '확인',
                 message: '삭제하시겠습니까?',
                 icon: 'pi pi-trash',
-                acceptLabel: "확인",
-                rejectLabel: "취소",
+                acceptLabel: '확인',
+                rejectLabel: '취소',
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/notice/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
@@ -361,8 +291,6 @@ export default {
                 reject: () => {
                     this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '당신은 거부했습니다', life: 3000 });
                 },
-
-
             });
             //  setTimeout(() => {
             //     this.bannerService.getBannerList().then((data) => {
@@ -371,7 +299,6 @@ export default {
             //         this.loading1 = false;
             //     });
             // }, 500);
-
         },
         onRowExpand(event) {
             this.$toast.add({ severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000 });

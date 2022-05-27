@@ -40,7 +40,7 @@
                                 {{ $t('PackageType.Add.addimage') }}
                                 <span
                                     class="img-info"
-                                >(File Type jpg,jpeg,png )(Image width 200px )</span>
+                                >(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div
                                 :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`"
@@ -48,7 +48,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" />
-                                <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.file }}</div>
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -89,7 +89,7 @@
             <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
                 <div>
                     <Button
-                        :label="$t('PackageType.Add.addpublish')"
+                        label="게시"
                         icon="pi pi-check"
                         iconPos="left"
                         class="p-button p-button-sm p-mr-2 p-mb-2"

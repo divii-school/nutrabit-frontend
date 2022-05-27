@@ -4,13 +4,15 @@
       <div class="search-result-main">
         <div class="search-result-body">
           <p class="search-result-title" v-if="this.newSearchResult">
-            {{ $t('footer.total') }}
-            <span>{{ this.newSearchResult.length }}</span
-            >{{ $t('footer.result') }}
+            {{ $t("footer.total") }}
+            <span
+              >{{ this.newSearchResult.length
+              }}{{ $t("footer.number_text") }}</span
+            >{{ $t("footer.result") }}
           </p>
           <p class="search-result-title" v-else>
-            {{ $t('footer.result') }}
-            <span>0</span>{{ $t('footer.result') }}
+            {{ $t("footer.result") }}
+            <span>0</span>{{ $t("footer.result") }}
           </p>
           <ul class="search-resul-list-wrap">
             <li class="search-resul-list">
@@ -24,7 +26,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      :image_link= imgBaseUrl
+                      :image_link="imgBaseUrl"
                       type2="search"
                       :route_link="'/nutri-detail/' + item.id"
                     />
@@ -38,11 +40,13 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>{{ $t('footer.no_result') }}</span>
+                <span>{{ $t("footer.no_result") }}</span>
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">{{$t('myChoice.RecommendedBlending.title')}}</h1>
+              <h1 class="list-heading">
+                {{ $t("myChoice.RecommendedBlending.title") }}
+              </h1>
               <div
                 class="search-list-inner"
                 v-if="recomanedBlending.length > 0"
@@ -55,9 +59,11 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      :image_link= imgBaseUrl
+                      :image_link="imgBaseUrl"
                       type2="search"
-                      :route_link="'/choice-recommended-blending-detailed-page/' + item.id"
+                      :route_link="
+                        '/choice-recommended-blending-detailed-page/' + item.id
+                      "
                     />
                   </template>
                 </div>
@@ -69,11 +75,13 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>{{ $t('footer.no_result') }}</span>
+                <span>{{ $t("footer.no_result") }}</span>
               </div>
             </li>
             <li class="search-resul-list">
-              <h1 class="list-heading">{{ $t('myChoice.RawMaterial.title') }}</h1>
+              <h1 class="list-heading">
+                {{ $t("myChoice.RawMaterial.title") }}
+              </h1>
               <div class="search-list-inner" v-if="rawMaterial.length > 0">
                 <div class="search-list-item">
                   <template
@@ -83,7 +91,7 @@
                     <SearchCard
                       :category="item.name_en"
                       :image="item.image"
-                      :image_link= imgBaseUrl
+                      :image_link="imgBaseUrl"
                       type2="search"
                       :route_link="'/mychoice-rawMaterial-detailed-page/'"
                       @click="setId(item.id)"
@@ -98,7 +106,7 @@
                 />
               </div>
               <div class="no-result-found" v-else>
-                <span>{{ $t('footer.no_result') }}</span>
+                <span>{{ $t("footer.no_result") }}</span>
               </div>
             </li>
           </ul>
@@ -122,7 +130,7 @@
               </template>
               <template v-else>
                 <div class="no-result-found">
-                  <span>{{ $t('footer.no_result') }}</span>
+                  <span>{{ $t("footer.no_result") }}</span>
                 </div>
               </template>
             </li>
@@ -137,7 +145,7 @@
 import SearchCard from "../../components/SearchCard.vue";
 import SearchAccordion from "../../components/SearchAccordion.vue";
 import CommonService from "../../services/CommonService";
- 
+
 import { inject } from "vue";
 export default {
   name: "SearchResult",
@@ -184,10 +192,18 @@ export default {
         this.showSarchResult(newkeyword);
       }
     },
+    "common.state.SelectedLang": function (newVal, oldVal) {
+      if (
+        (newVal == "KO" && oldVal == "EN") ||
+        (newVal == "EN" && oldVal == "KO")
+      ) {
+        this.showSarchResult(this.searchKeyword);
+      }
+    },
   },
   methods: {
     setId(raw_material_id) {
-      localStorage.setItem('raw_material_id', raw_material_id);
+      localStorage.setItem("raw_material_id", raw_material_id);
     },
     showSarchResult(searchKeyword) {
       this.commonService
@@ -197,37 +213,47 @@ export default {
           const recomanedBlending = [];
           const rawMaterial = [];
           const faq = [];
+          const search_name = "";
+          const search_description = "";
           this.newSearchResult = res.data.data.search;
-          this.newSearchResult.map((value)=> {
+          this.newSearchResult.map((value) => {
+            if (localStorage.getItem("selectedLang") == "KO") {
+              this.search_name = value.name_ko;
+              this.search_description = value.description_ko;
+            } else {
+              this.search_name = value.name_en;
+              this.search_description = value.description_en;
+            }
             if (value.type == "nutri_blending") {
-                nutriBlending.push({
-                  id: value.id,
-                  name_en: value.name_en,
-                  image: value.image,
-                });
-              }
-              if (value.type == "recommended_blending") {
-                recomanedBlending.push({
-                  id: value.id,
-                  name_en: value.name_en,
-                  image: value.image,
-                });
-              }
-              if (value.type == "raw_material") {
-                rawMaterial.push({
-                  id: value.id,
-                  name_en: value.name_en,
-                  image: value.image,
-                });
-              }
-              if (value.type == "faq") {
-                faq.push({
-                  id: value.id,
-                  name_en: value.name_en,
-                  description_en: value.description_en,
-                });
-              }
-          })
+              nutriBlending.push({
+                id: value.id,
+                name_en: this.search_name,
+                image: value.image,
+              });
+            }
+            console.log(search_name);
+            if (value.type == "recommended_blending") {
+              recomanedBlending.push({
+                id: value.id,
+                name_en: this.search_name,
+                image: value.image,
+              });
+            }
+            if (value.type == "raw_material") {
+              rawMaterial.push({
+                id: value.id,
+                name_en: this.search_name,
+                image: value.image,
+              });
+            }
+            if (value.type == "faq") {
+              faq.push({
+                id: value.id,
+                name_en: this.search_name,
+                description_en: this.search_description,
+              });
+            }
+          });
           this.nutriBlending = nutriBlending;
           this.recomanedBlending = recomanedBlending;
           this.rawMaterial = rawMaterial;

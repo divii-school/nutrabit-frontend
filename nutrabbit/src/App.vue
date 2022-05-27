@@ -34,9 +34,18 @@ export default {
     provide("common", common);
   },
   mounted() {
+    window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
+    console.log(Kakao.isInitialized());
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
+  },
+  updated() {
+    // alert('Page url:-- ' + window.location.href);
+    // alert('Navigator:==' + navigator.userAgentData.platform);
+    // alert('mobile:==' + navigator.userAgentData.mobile);
+    // console.log(navigator.userAgentData.platform);
+    // console.log(navigator.userAgentData.mobile);
   },
   methods: {
     sendPushNotificationData(res) {
