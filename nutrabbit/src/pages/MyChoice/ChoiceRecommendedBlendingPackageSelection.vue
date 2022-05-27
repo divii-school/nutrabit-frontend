@@ -35,7 +35,7 @@
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
-              <div class="heading">
+              <div class="heading full-width">
                 <h2 class="grey-4c">{{ $t("package.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
