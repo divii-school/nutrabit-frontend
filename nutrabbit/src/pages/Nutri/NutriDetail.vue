@@ -28,7 +28,7 @@
           <div v-if="product_sub_image_path">
             <swiper
               :spaceBetween="10"
-              :slidesPerView="4"
+              :slidesPerView="5"
               :freeMode="true"
               :modules="[Thumbs]"
               watch-slides-progress
