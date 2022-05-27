@@ -293,4 +293,9 @@ export default {
     }
   }
 }
+.product-item{
+  @media screen and (max-width: 768px) {
+    padding:  30px 0 !important;
+  }
+}
 </style>

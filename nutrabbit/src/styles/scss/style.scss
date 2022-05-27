@@ -275,6 +275,9 @@ textarea {
         padding: 10px 10px 10px 30px;
         max-width: 240px;
       }
+      @media screen and (max-width: 480px) {
+        max-width: 180px;
+      }
 
       ul {
         list-style: initial;
@@ -435,9 +438,13 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  gap: 10px;
+  width: 100%;
+  @media screen and (max-width: 640px) {
+    gap: 20px;
+  }
   button {
-    width: 49%;
+    width: 50%;
   }
 }
 
@@ -838,7 +845,7 @@ textarea {
   line-height: 24px;
   font-size: 20px;
   font-family: $Pretend-semibold;
-  font-weight: 600;
+  font-weight: 400;
   @media screen and (max-width: 768px) {
     height: auto;
     font-size: 18px;
@@ -850,7 +857,8 @@ textarea {
 .overlay-panel-actions-primary li.active {
   background: #16ae68;
   border-color: #16ae68;
-  color: #fff;
+  color: $white-1;
+  font-weight: 600;
 }
 
 .content-bd {
