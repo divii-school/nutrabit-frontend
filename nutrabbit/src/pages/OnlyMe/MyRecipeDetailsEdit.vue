@@ -356,4 +356,7 @@ export default {
 .material-details h2 {
   cursor: default !important;
 }
+.fGroup input{
+  background: $white-1 !important;
+}
 </style>
