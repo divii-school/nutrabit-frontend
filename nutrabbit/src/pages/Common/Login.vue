@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <div class="check-box-wrap">
-                <label class="custom-check">
+                <label class="custom-check special-login">
                   {{ $t("common.QuickLinks.RememberId") }}
                   <input type="checkbox" v-model="checkBox" />
                   <span class="checkmark"></span>

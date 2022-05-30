@@ -16,8 +16,10 @@
   .blending-left {
     width: 50%;
     position: relative;
+    min-height: 465px;
     @media screen and (max-width: 768px) {
       width: 100%;
+      min-height: auto;
     }
     .swiper {
       position: relative;
