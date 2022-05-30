@@ -6,6 +6,9 @@ footer{
         @media screen and (max-width:992px){
             padding: 0 16px;
         }
+        @media screen and (max-width:568px){
+            padding: 0 31px;
+        }
     }
     .footer-inner{
         .footer-links{
@@ -150,10 +153,10 @@ footer{
                         position: relative;
                         padding-left: 21px;
                         margin-left: 21px;
-                        // @media screen and (max-width: 768px){
-                        //     padding-left: 5px;
-                        //     margin-left: 5px;
-                        // }
+                        @media screen and (max-width: 568px){
+                            padding-left: 13px;
+                            margin-left: 13px;
+                        }
                         &::before{
                             position: absolute;
                             content: "";
