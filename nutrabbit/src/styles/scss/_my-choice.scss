@@ -470,7 +470,7 @@
               @media screen and (max-width: 640px) {
                 align-items: flex-start;
                 flex-direction: column;
-                padding: 30px 0 30px;
+                padding: 30px 0 30px 10px;
               }
               &.my-choice-product-item{
                 padding: 25px 44px;
@@ -537,7 +537,7 @@
                 // }
                 .custom-radio {
                   @media screen and (max-width: 640px) {
-                    padding-left: 37px;
+                    padding-left: 39px;
                   }
                 }
                 .img-wrap {
@@ -676,7 +676,7 @@
                 height: 45px;
                 font-size: 18px;
                 @media screen and (max-width: 768px) {
-                  min-width: 162px;
+                  min-width: 161px;
                   line-height: 22px;
                   width: 100%;
                 }

@@ -260,6 +260,9 @@ textarea {
       left: 94px !important;
     }
 
+    @media screen and (max-width: 640px) {
+      left: -16px !important;
+    }
     .heading-tooltip-content {
       background: $white-1;
       padding: 20px 30px 20px 40px;
@@ -271,6 +274,9 @@ textarea {
       @media screen and (max-width: 768px) {
         padding: 10px 10px 10px 30px;
         max-width: 240px;
+      }
+      @media screen and (max-width: 480px) {
+        max-width: 180px;
       }
 
       ul {
@@ -432,9 +438,13 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  gap: 10px;
+  width: 100%;
+  @media screen and (max-width: 640px) {
+    gap: 20px;
+  }
   button {
-    width: 49%;
+    width: 50%;
   }
 }
 
@@ -835,7 +845,7 @@ textarea {
   line-height: 24px;
   font-size: 20px;
   font-family: $Pretend-semibold;
-  font-weight: 600;
+  font-weight: 400;
   @media screen and (max-width: 768px) {
     height: auto;
     font-size: 18px;
@@ -847,7 +857,8 @@ textarea {
 .overlay-panel-actions-primary li.active {
   background: #16ae68;
   border-color: #16ae68;
-  color: #fff;
+  color: $white-1;
+  font-weight: 600;
 }
 
 .content-bd {
@@ -1174,4 +1185,8 @@ textarea {
 .flexRight {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.full-width{
+  width: 100% !important;
 }

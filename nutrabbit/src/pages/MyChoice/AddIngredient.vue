@@ -8,7 +8,7 @@
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product addWrap">
             <div class="heading-wrap">
-              <div class="heading">
+              <div class="heading full-width">
                 <h2>{{ $t("storageBox.title") }}</h2>
               </div>
             </div>

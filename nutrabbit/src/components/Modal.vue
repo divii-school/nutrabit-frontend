@@ -3,7 +3,7 @@
     <div class="modal">
       <section class="modal-body">
         <slot name="body">
-          <img :src="img" alt="" class="mx-auto img-space">
+          <img v-if="img" :src="img" alt="" class="mx-auto img-space">
           <h2 class="modal-title text-center" v-if="bodytext1">
             {{ bodytext1 }}
           </h2>
