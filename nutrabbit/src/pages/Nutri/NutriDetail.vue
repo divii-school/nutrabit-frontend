@@ -246,6 +246,9 @@ export default {
 </script>
 
 <style scoped>
+.devider::before, .devider::after{
+  background: #666666;
+}
 .mySwiper2 {
   height: 20%;
   box-sizing: border-box;
