@@ -154,6 +154,12 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
+  &.special-login{
+    font-size: 14px !important;
+    line-height: 17px !important;
+    font-weight: 400 !important;
+  }
 
   &.error {
     color: $red-3 !important;
@@ -219,6 +225,7 @@ textarea {
       top: -3px;
     }
   }
+  
 }
 
 .checkmark {
