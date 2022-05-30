@@ -18,7 +18,7 @@ const validateRegistration = (data) => {
   }
   if (account_type == 'business') {
     if (validator.isEmpty(businessNumber)) {
-      errors.businessNumber =  t('common.Error.BusinessNo');
+      errors.businessNumber = t('common.Error.BusinessNo');
     }
     if (validator.isEmpty(businessName)) {
       errors.businessName = t('common.Error.BusinessName');
@@ -34,7 +34,7 @@ const validateRegistration = (data) => {
     errors.name = t('common.Error.EnterName');
   }
   if (validator.isEmpty(username)) {
-    errors.username =  t('common.Error.EnterId');
+    errors.username = t('common.Error.EnterId');
   }
   else if (!(validator.isAlphanumeric(username))) {
     errors.username = t("common.Error.useridFormatSignup");
@@ -44,16 +44,16 @@ const validateRegistration = (data) => {
   }
 
   if (validator.isEmpty(password)) {
-    errors.password =  t('common.Error.PasswordFormat');
+    errors.password = t('common.Error.PasswordFormat');
   }
   else if (!(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{10,20}$/))) {
-    errors.password =  t('common.Error.PasswordFormat');
+    errors.password = t('common.Error.PasswordFormat');
   }
   if (validator.isEmpty(confirmPassword)) {
-    errors.confirmPassword =  t('common.Error.ConfirmPassword');
+    errors.confirmPassword = t('common.Error.ConfirmPassword');
   }
   if (!validator.equals(password, confirmPassword)) {
-    errors.confirmPassword =  t('common.Error.checkPassword');
+    errors.confirmPassword = t('common.Error.checkPassword');
   }
   if (!validator.isEmail(email)) {
     errors.email = t("common.Error.ValidEmail");
@@ -68,8 +68,8 @@ const validateRegistration = (data) => {
   }
 
   if (validator.isEmpty(phoneNumber)) {
-    errors.phoneNumber =  t('common.Error.EnterPhone');
-  }else if(!validator.isNumeric(phoneNumber)){
+    errors.phoneNumber = t('common.Error.EnterPhone');
+  } else if (!validator.isNumeric(phoneNumber)) {
     errors.phoneNumber = t("common.Error.OnlyNumber");
   }
   if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
