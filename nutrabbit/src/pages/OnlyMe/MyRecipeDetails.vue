@@ -32,16 +32,6 @@
                       <td>{{ $t(option_item.category) }}</td>
                       <td>{{ $t(option_item.explanation) }}</td>
                     </tr>
-                    <!-- <tr>
-                      <td>2</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Raw material</td>
-                      <td>aloe gel</td>
-                    </tr> -->
                   </tbody>
                 </table>
               </div>

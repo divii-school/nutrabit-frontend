@@ -246,6 +246,14 @@ export default {
 </script>
 
 <style scoped>
+.my-choice-design2 button{
+  min-width: 112px;
+  font-size: 14px;
+  line-height: 17px;
+}
+.devider::before, .devider::after{
+  background: #666666;
+}
 .mySwiper2 {
   height: 20%;
   box-sizing: border-box;

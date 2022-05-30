@@ -105,7 +105,7 @@
             </div>
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
-            <img src="../assets/images/menu-toggle.png" alt />
+            <img src="../assets/icons/menu-toggle.svg" alt />
           </router-link>
         </div>
       </div>

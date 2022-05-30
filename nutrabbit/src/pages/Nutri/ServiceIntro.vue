@@ -23,27 +23,29 @@
         <div class="container-medium">
           <div class="sampleServices sampleBlendSpecial about-recom pb-40">
             <p class="title text-center samllTitle">nutri 3.3</p>
-            <h4 class="title text-center service-intro-title">{{ $t("nutri.title.heading2") }}</h4>
+            <h4 class="title text-center service-intro-title">
+              {{ $t("nutri.title.heading2") }}
+            </h4>
             <ul class="nutriBlending">
               <li>
-                <img src="~@/assets/images/blending1.png" />
-                <span>Step.1</span>
+                <img src="~@/assets/images/blending1.svg" />
+                <span class="steps">Step.1</span>
                 <p>{{ $t("nutri.title.desc1") }}</p>
               </li>
               <li>
-                <img src="~@/assets/images/blending2.png" />
-                <span>Step.2</span>
+                <img src="~@/assets/images/blending2.svg" />
+                <span class="steps">Step.2</span>
                 <p v-html="$t('nutri.title.desc2')"></p>
               </li>
               <li>
-                <img src="~@/assets/images/blending3.png" />
-                <span>Step.3</span>
+                <img src="~@/assets/images/blending3.svg" />
+                <span class="steps">Step.3</span>
                 <p v-html="$t('nutri.title.desc3')"></p>
                 <!-- <p>{{ $t("nutri.title.desc3") }} <span></span></p> -->
               </li>
               <li>
-                <img src="~@/assets/images/blending4.png" />
-                <span>Step.4</span>
+                <img src="~@/assets/images/blending4.svg" />
+                <span class="steps">Step.4</span>
                 <p v-html="$t('nutri.title.desc4')"></p>
               </li>
             </ul>
@@ -156,6 +158,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.servIntro {
+  .sampleBLueAfter {
+    @media screen and (max-width: 640px) {
+      &:after {
+        background: url(@/assets/images/service-intro-mob.svg) no-repeat top
+          left;
+        left: -20px;
+        top: -31px;
+        height: 76px;
+        width: 68px;
+      }
+    }
+  }
+}
 .nutri-product-item .nutri-pimg,
 .nutri-product-item p {
   cursor: pointer;
@@ -185,6 +201,9 @@ export default {
     }
   }
   .nutriBlending li {
+    .steps{
+      text-transform: uppercase;
+    }
     p {
       color: $black-33;
       span {

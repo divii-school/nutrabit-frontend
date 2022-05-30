@@ -166,6 +166,6 @@ export default {
 
 <style lang="scss" scoped>
   .green-belt-content h2{
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 </style>
