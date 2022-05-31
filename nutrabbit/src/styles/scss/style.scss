@@ -834,8 +834,6 @@ textarea {
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  font-weight: 400;
-
   @media screen and (max-width: 640px) {
     font-size: 18px;
   }
@@ -851,8 +849,8 @@ textarea {
   height: 62px;
   line-height: 24px;
   font-size: 20px;
-  font-family: $Pretend-semibold;
   font-weight: 400;
+  font-family: $default-font;
   @media screen and (max-width: 768px) {
     height: auto;
     font-size: 18px;
@@ -865,6 +863,7 @@ textarea {
   background: #16ae68;
   border-color: #16ae68;
   color: $white-1;
+  font-family: $Pretend-semibold;
   font-weight: 600;
 }
 

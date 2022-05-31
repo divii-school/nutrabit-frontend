@@ -57,7 +57,7 @@
           <div class="nutri-choice theme-green">
             <span class="my-choice-title-top">Nutri 3.3</span>
             <p class="title text-center">{{ $t("aboutus.service.title") }}</p>
-            <h2 class="nutri-choice-heading text-center">
+            <h2 class="nutri-choice-heading text-center nutri-choice-heading2">
               {{ $t("aboutus.service.subtitle") }}
             </h2>
           </div>
@@ -165,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .green-belt-content h2{
-    // white-space: nowrap;
+  .nutri-choice-heading2{
+    color: $black-18 !important; 
   }
 </style>

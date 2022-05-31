@@ -3,6 +3,12 @@
     <div class="header-container">
       <div class="header-menu flex">
         <div class="manuLeft">
+          <!-- For mobile only start -->
+          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back' " to @click="$router.go(-1)" v-if="isPlatMobile">
+            <img src="../assets/images/header-arrow.svg" alt="">
+          </router-link>
+          <!-- For mobile only end -->
+
           <router-link class="header-logo" to="/">
             <img src="../assets/images/logo.svg" alt="Logo" />
           </router-link>
