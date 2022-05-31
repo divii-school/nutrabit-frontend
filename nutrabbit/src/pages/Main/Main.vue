@@ -248,6 +248,13 @@ export default {
 
 
 <style lang="scss" scoped>
+.icon-grey-star{
+  @media screen and (max-width: 640px) {
+   height: 10px !important;
+   min-width: 10px !important;
+     background-size: auto 10px !important;
+  }
+}
 .nutri-choice-heading {
   @media screen and (max-width: 768px) {
     font-size: 24px !important;
