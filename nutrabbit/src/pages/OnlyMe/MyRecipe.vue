@@ -339,10 +339,10 @@ export default {
     },
 
     toNextChoice() {
-      if (!this.product_id && this.type !== "radiochoice") {
-        this.$swal("Any one of the products needs to be selected");
-        return;
-      }
+      // if (!this.product_id && this.type !== "radiochoice") {
+      //   this.$swal("Any one of the products needs to be selected");
+      //   return;
+      // }
       this.$router.push({
         name: "MyRecipeDetails",
         params: { id: this.product_id, type: "my-choice" },
