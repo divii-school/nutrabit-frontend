@@ -307,3 +307,12 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+@media screen and (max-width: 768px){
+  .tolltip-outer .popper{
+    top: 4px !important;
+  }
+}
+</style>
