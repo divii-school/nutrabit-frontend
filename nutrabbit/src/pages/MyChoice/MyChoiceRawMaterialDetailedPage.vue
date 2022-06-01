@@ -29,7 +29,7 @@
           </div>
           <swiper
             :spaceBetween="10"
-            :slidesPerView="4"
+            :slidesPerView="5"
             :freeMode="true"
             :modules="[Thumbs]"
             watch-slides-progress
