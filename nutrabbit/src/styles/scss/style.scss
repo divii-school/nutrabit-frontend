@@ -268,7 +268,7 @@ textarea {
     }
 
     @media screen and (max-width: 640px) {
-      left: -16px !important;
+      left: 0px !important;
     }
     .heading-tooltip-content {
       background: $white-1;
@@ -277,7 +277,7 @@ textarea {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       max-width: 444px;
-
+      width: 100%;
       @media screen and (max-width: 768px) {
         padding: 10px 10px 10px 30px;
         max-width: 240px;

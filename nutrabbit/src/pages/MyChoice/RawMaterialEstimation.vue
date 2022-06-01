@@ -77,7 +77,9 @@
               <div class="fGroup mb0">
                 <label class="mb0">
                   {{ $t("final.Select_Service") }}
-                  <span> {{ $t("final.Select_Service_desc") }}</span>
+                  <span class="mb0">
+                    {{ $t("final.Select_Service_desc") }}</span
+                  >
                 </label>
               </div>
               <div class="product-list-wrap">
@@ -477,7 +479,8 @@ export default {
           buyer_tel: buyerTel,
           buyer_addr: buyerAddr,
           app_scheme: "NutrabbitIAmPort",
-          m_redirect_url : "https://frontned-nutrabbit-dev.dvconsulting.org/callback/payment",
+          m_redirect_url:
+            "https://frontned-nutrabbit-dev.dvconsulting.org/callback/payment",
         },
         function (rsp) {
           if (rsp.success) {
@@ -589,7 +592,7 @@ export default {
     option_list() {
       var option_data = JSON.parse(localStorage.getItem("option") || "[]");
       // console.log("# of option_data: " + option_data.length);
-      this.items=[];
+      this.items = [];
       for (let i = 0; i < option_data.length; i++) {
         var option_array = option_data[i];
         var res_option_type = Object.keys(option_array).toString();
@@ -610,3 +613,25 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.fGroup {
+  input {
+    height: 45px;
+  }
+}
+.product-list-wrap {
+  margin-top: 0 !important;
+  .product-item {
+    padding: 36px 30px !important;
+    @media screen and (max-width: 640px) {
+      padding: 30px 0 !important;
+    }
+    &:first-child {
+      @media screen and (max-width: 640px) {
+        padding: 20px 0 30px !important;
+      }
+    }
+  }
+}
+</style>
