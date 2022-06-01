@@ -29,6 +29,10 @@ header {
         }
         .header-back{
           margin: 2px 10px 0 0;
+          display: none;
+          @media screen and (max-width: 768px) {
+            display: block;
+          }
           img{
             height: 24px;
             width: 24px;
