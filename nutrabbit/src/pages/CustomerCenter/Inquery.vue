@@ -1,26 +1,28 @@
 <template>
   <div class="main-body">
-    <div class="container-medium ">
+    <div class="container-medium">
       <div class="my-notice-wrap inquery-wrap">
         <div class="my-notice-heading noFlex">
-          <h2>{{$t("customer.title.Inquiry")}}</h2>
+          <h2>{{ $t("customer.title.Inquiry") }}</h2>
           <button
             class="btn-primary grenn-btn2"
             @click="this.$router.push('/inquiry-contactUs')"
           >
-            {{$t("customer.button.Inquiry")}} 
+            {{ $t("customer.button.Inquiry") }}
           </button>
         </div>
         <div class="faq-heading inquiry">
-          <p class="category">{{$t("customer.title.PublishedDate")}}</p>
-          <p class="status">{{$t("customer.title.Status")}}</p>
-          <p class="title">{{$t("onlyme.title.Title")}}</p>
+          <p class="category">{{ $t("customer.title.PublishedDate") }}</p>
+          <p class="status">{{ $t("customer.title.Status") }}</p>
+          <p class="title">{{ $t("onlyme.title.Title") }}</p>
         </div>
         <FaqAccordion v-for="(item, index) in UpdatedEnqueryList" :key="index">
           <template v-slot:title>
-            <div class="item-left ">
+            <div class="item-left">
               <div class="item-left-inner">
-                <p class="para-category para-date">{{ dateformat(item.createdDate) }}</p>
+                <p class="para-category para-date">
+                  {{ dateformat(item.createdDate) }}
+                </p>
                 <span
                   class="mr-2 ml-2"
                   :class="item.status == 'Unanswered' ? 'grey' : ''"
@@ -35,7 +37,7 @@
           <template v-slot:content>
             <div class="contWrap">
               <div class="contCol">
-                <h4>{{$t("customer.tag.Attachment")}}</h4>
+                <h4>{{ $t("customer.tag.Attachment") }}</h4>
                 <p class="ml-2">
                   <a
                     :href="
@@ -49,7 +51,7 @@
                 </p>
               </div>
               <div class="contCol">
-                <h4>{{$t("customer.tag.Inquiries")}}</h4>
+                <h4>{{ $t("customer.tag.Inquiries") }}</h4>
                 <p class="ml-2">
                   {{ item.description }}
                 </p>
@@ -58,7 +60,7 @@
                 class="contCol"
                 :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
-                <h4>{{$t("customer.tag.AnswerContent")}}</h4>
+                <h4>{{ $t("customer.tag.AnswerContent") }}</h4>
                 <p class="ml-2">
                   {{ item.replyText }}
                 </p>
@@ -83,13 +85,13 @@
 import moment from "moment";
 import FaqAccordion from "../../components/FaqAccordion.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
- 
+
 export default {
   name: "Inquery",
   components: {
-    FaqAccordion
+    FaqAccordion,
   },
-  inject : ["common"],
+  inject: ["common"],
   data() {
     return {
       enqueryList: [],
@@ -97,8 +99,8 @@ export default {
       page: 1,
       perPage: 10,
       inqId: localStorage.getItem("uid"),
-      chunkPage : { chunk : 5 },
-      globalLocale : '',
+      chunkPage: { chunk: 5 },
+      globalLocale: "",
     };
   },
   created() {
@@ -137,7 +139,7 @@ export default {
       this.CustomerCenterService.getEnqueryList(this.inqId)
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data)
+            console.log(res.data);
             this.enqueryList = res.data.data.inquery;
             this.myCallback(1);
           }
@@ -156,7 +158,16 @@ export default {
 </script>
 
 <style scoped>
-.inquery-wrap .grenn-btn2{
+.inquery-wrap .grenn-btn2 {
   padding: 11px 30px;
+}
+@media screen and (max-width: 768px) {
+  .notice-list .item-left span {
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
+  .notice-list .item-left p{
+    line-height: 17px !important;
+  }
 }
 </style>

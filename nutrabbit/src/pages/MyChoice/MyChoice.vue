@@ -124,3 +124,19 @@ export default {
   },
 };
 </script>
+
+
+<style lang="scss" scoped>
+.tolltip-outer {
+  .popper {
+    @media screen and (max-width: 640px) {
+      left: 70px !important;
+    }
+  }
+  .heading-tooltip-content {
+    @media screen and (max-width: 640px) {
+      max-width: 207px !important;
+    }
+  }
+}
+</style>

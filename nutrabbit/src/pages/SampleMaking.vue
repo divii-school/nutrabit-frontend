@@ -219,5 +219,12 @@ export default {
     font-size: 30px !important;
     line-height: 36px !important;
   }
+  .servIntro .title{
+    margin-top: 40px;
+  }
+  .btn-small-solid{
+    min-width: 179px;
+    height: 47px;
+  }
 }
 </style>

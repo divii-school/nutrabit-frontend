@@ -219,7 +219,10 @@ export default {
 <style scoped>
 @media screen and (max-width: 768px) {
   .heading-tooltip-content {
-    min-width: 205px !important;
+    max-width: 205px !important;
+  }
+  .popper{
+    left: 85px !important;
   }
 }
 </style>

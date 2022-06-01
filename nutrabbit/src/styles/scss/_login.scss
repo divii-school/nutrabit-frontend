@@ -101,7 +101,7 @@
             color: $grey-7C;
             margin-left: 20px;
             font-weight: 300;
-            font-family: "Pretendard-Light";
+            font-family: $Pretend-light;
           }
         }
         span {
@@ -174,9 +174,9 @@
         }
         .form-group{
           position: relative;
-          .error-msg{
-            position: absolute;
-          }
+          // .error-msg{
+          //   position: absolute;
+          // }
           &:last-child{
             .error-msg{
               position: relative;
@@ -242,7 +242,7 @@
           color: $grey-7C;
           margin-top: 10px;
           font-weight: 300;
-          font-family: $Pretend-thin;
+          font-family: $Pretend-light;
         }
       }
       .membership-list-wrap {

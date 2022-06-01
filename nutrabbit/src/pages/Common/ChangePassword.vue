@@ -4,11 +4,14 @@
       <div class="login-signup-wrap membership-wrap">
         <div class="login-signup-inner">
           <div class="login-heading-wrap type-2">
-            <h1 class="login-heading">{{$t("common.title.ChangePassword")}}</h1>
-            <p class="membership-desc">{{$t("common.SubTitle.changePassword")}}</p>
+            <h1 class="login-heading">
+              {{ $t("common.title.ChangePassword") }}
+            </h1>
+            <p class="membership-desc">
+              {{ $t("common.SubTitle.changePassword") }}
+            </p>
           </div>
 
-          
           <form
             action=""
             class="signUp-form change-password"
@@ -18,7 +21,8 @@
               <label for="">
                 <!-- <i class="icon-required">
                 </i> -->
-                {{$t("common.label.NewPassword")}}</label>
+                {{ $t("common.label.NewPassword") }}</label
+              >
               <div class="input-group">
                 <div class="input-inner">
                   <input
@@ -26,7 +30,6 @@
                     type="password"
                     :placeholder="$t('common.placeholder.EnterNewPassword')"
                     v-model="password"
-                   
                   />
                 </div>
               </div>
@@ -36,27 +39,27 @@
               class="form-group"
               :class="error.confirmPassword ? 'error' : ''"
             >
-              <label for=""
-                >
+              <label for="">
                 <!-- <i class="icon-required">
                   </i> -->
-                  {{$t("common.label.Newpasswordconfirmation")}}</label
+                {{ $t("common.label.Newpasswordconfirmation") }}</label
               >
               <div class="input-group">
                 <div class="input-inner">
                   <input
                     class="form-control"
                     type="password"
-                   :placeholder="$t('common.placeholder.Newpasswordconfirmation')"
+                    :placeholder="
+                      $t('common.placeholder.Newpasswordconfirmation')
+                    "
                     v-model="confirmPassword"
-                   
                   />
                 </div>
               </div>
               <span class="error-msg">{{ error.confirmPassword }}</span>
             </div>
             <button class="btn-primary grenn-btn2" @click="changePassword">
-               {{ $t("button.change") }}
+              {{ $t("button.change") }}
             </button>
           </form>
         </div>
@@ -67,7 +70,7 @@
 <script>
 import passwordValidation from "../../Validation/passwordValidation";
 import CommonService from "../../services/CommonService";
- 
+
 export default {
   name: "ChangePassword",
 
@@ -85,8 +88,8 @@ export default {
     this.commonService = new CommonService();
   },
 
-  updated(){
-   this.globalLocale = this.$i18n.locale;
+  updated() {
+    this.globalLocale = this.$i18n.locale;
   },
 
   watch: {
@@ -108,7 +111,7 @@ export default {
         confirmPassword: this.confirmPassword,
       };
       const { isInvalid, error } = passwordValidation(credential);
-      
+
       if (isInvalid) {
         this.error = error;
         return false;
