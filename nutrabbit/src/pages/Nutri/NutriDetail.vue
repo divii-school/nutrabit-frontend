@@ -252,7 +252,7 @@ export default {
   line-height: 17px;
 }
 .devider::before, .devider::after{
-  background: #666666;
+  background: #666666 !important;
 }
 .mySwiper2 {
   height: 20%;
