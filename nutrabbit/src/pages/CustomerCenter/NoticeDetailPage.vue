@@ -116,4 +116,7 @@ export default {
 .main-body .container-medium .my-notice-wrap .btn{
   margin-top: 0px;
 }
+.main-body .container-medium .my-notice-wrap .notice-list{
+  border-bottom: 1px solid #E0E0E0;
+}
 </style>
