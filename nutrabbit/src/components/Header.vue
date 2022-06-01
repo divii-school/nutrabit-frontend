@@ -4,7 +4,7 @@
       <div class="header-menu flex">
         <div class="manuLeft">
           <!-- For mobile only start -->
-          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back' " to @click="$router.go(-1)" v-if="isPlatMobile">
+          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back' " to @click="$router.go(-1)">
             <img src="../assets/images/header-arrow.svg" alt="">
           </router-link>
           <!-- For mobile only end -->
