@@ -28,7 +28,7 @@
           <div v-if="product_sub_image_path">
             <swiper
               :spaceBetween="10"
-              :slidesPerView="4"
+              :slidesPerView="5"
               :freeMode="true"
               :modules="[Thumbs]"
               watch-slides-progress
@@ -246,6 +246,14 @@ export default {
 </script>
 
 <style scoped>
+.my-choice-design2 button{
+  min-width: 112px;
+  font-size: 14px;
+  line-height: 17px;
+}
+.devider::before, .devider::after{
+  background: #666666 !important;
+}
 .mySwiper2 {
   height: 20%;
   box-sizing: border-box;

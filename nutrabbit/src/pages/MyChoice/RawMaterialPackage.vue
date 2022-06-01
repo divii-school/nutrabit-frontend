@@ -34,7 +34,7 @@
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
-              <div class="heading">
+              <div class="heading full-width">
                 <h2>{{ $t("package.title") }}</h2>
                 <div class="tolltip-outer">
                   <Popper>
@@ -131,8 +131,12 @@
                 >
                   {{ $t("button.Previous") }}
                 </button>
-                <button :class="!isSelected ? 'btn-disabled' : ''"
-                  :disabled="!isSelected" @click="checkPackageId" class="btn-small-solid blue">
+                <button
+                  :class="!isSelected ? 'btn-disabled' : ''"
+                  :disabled="!isSelected"
+                  @click="checkPackageId"
+                  class="btn-small-solid blue"
+                >
                   {{ $t("button.next") }}
                 </button>
               </div>
@@ -163,7 +167,7 @@ import ModalWarning from "../../components/ModalWarning.vue";
 
 export default {
   name: "ChoiceRecommendedBlendingPackageSelection",
-   inject: ["common"],
+  inject: ["common"],
   components: {
     Popper,
     ProductList,
@@ -172,7 +176,7 @@ export default {
   data() {
     return {
       blendingPackageData: "",
-      package_id: '',
+      package_id: "",
       etc: "",
       etcbtn: "",
       to: "",
@@ -213,12 +217,12 @@ export default {
     "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         ((newVal == "KO" && oldVal == "EN") ||
-        (newVal == "EN" && oldVal == "KO")) && this.ischeckETCError
+          (newVal == "EN" && oldVal == "KO")) &&
+        this.ischeckETCError
       ) {
-         this.checkETCError();
-         this.blendingPackage();
-      }
-      else {
+        this.checkETCError();
+        this.blendingPackage();
+      } else {
         this.blendingPackage();
       }
     },
@@ -329,3 +333,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 768px) {
+  .btn-wrap {
+    margin-top: 40px !important;
+  }
+}
+</style>

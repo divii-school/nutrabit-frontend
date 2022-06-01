@@ -60,20 +60,30 @@
               <div class="fGroup">
                 <label>{{ $t("final.AdditionalRequests") }}</label>
                 <span>{{ $t("final.add_info") }}</span>
-                <textarea v-model="additional_request" :placeholder="$t('final.textarea_place')"></textarea>
+                <textarea
+                  v-model="additional_request"
+                  :placeholder="$t('final.textarea_place')"
+                ></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">
                   {{ $t("final.Select_Service") }}
                   <span class="mb0">
-                    {{ $t("final.Select_Service_desc") }}</span>
+                    {{ $t("final.Select_Service_desc") }}</span
+                  >
                 </label>
               </div>
               <div class="product-list-wrap">
                 <div class="product-item with-input auto-width pt-20">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="qoute">
-                      <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
+                      <input
+                        type="checkbox"
+                        id="qoute"
+                        checked
+                        value="2"
+                        v-model="servicetype"
+                      />
                       <span class="checkmark" for="qoute"></span>
                     </label>
                   </div>
@@ -84,7 +94,12 @@
                 <div class="product-item with-input auto-width">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="sample">
-                      <input type="checkbox" id="sample" value="1" v-model="servicetype" />
+                      <input
+                        type="checkbox"
+                        id="sample"
+                        value="1"
+                        v-model="servicetype"
+                      />
                       <span class="checkmark" for="sample"></span>
                     </label>
                   </div>
@@ -101,29 +116,46 @@
                   <li>{{ $t("final.note.list3") }}</li>
                   <li>{{ $t("final.note.list4") }}</li>
                 </ul>
-                <div class="btn-wrap">
-                  <button @click="
-                    this.$router.push({
-                      name: 'ChoiceRecommendedBlendingPackageSelection',
-                      query: { blending_id: this.blending_id },
-                    })
-                  " class="btn-small-solid grey">
+                <div class="btn-wrap tripple-btn">
+                  <button
+                    @click="
+                      this.$router.push({
+                        name: 'ChoiceRecommendedBlendingPackageSelection',
+                        query: { blending_id: this.blending_id },
+                      })
+                    "
+                    class="btn-small-solid grey btn-left"
+                  >
                     {{ $t("button.Previous") }}
                   </button>
                   <div class="btnWrapRight">
-                    <button class="btn-green-outline blue" @click="package_temporary_add">
+                    <button
+                      class="btn-green-outline blue"
+                      @click="package_temporary_add"
+                    >
                       {{ $t("button.Save_as_draft") }}
                     </button>
-                    <button class="btn-small-solid blue ml-4" @click="package_add">
+                    <button
+                      class="btn-small-solid blue ml-4"
+                      @click="package_add"
+                    >
                       {{ $t("button.next") }}
                     </button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal @close="closeModal" :bodytext1="$t('final.modal_msg')" :btnText2="$t('button.Confirm')"
-                      link="/" />
+                    <Modal
+                      @close="closeModal"
+                      :bodytext1="$t('final.modal_msg')"
+                      :btnText2="$t('button.Confirm')"
+                      link="/"
+                    />
                   </my-modal-component>
-                  <Modal v-show="isServiceSelectedVisible" @close="closeModalService"
-                    :bodytext1="$t('final.required_service_msg')" :btnText1="$t('button.Confirm')" />
+                  <Modal
+                    v-show="isServiceSelectedVisible"
+                    @close="closeModalService"
+                    :bodytext1="$t('final.required_service_msg')"
+                    :btnText1="$t('button.Confirm')"
+                  />
                 </div>
               </div>
             </div>
@@ -286,7 +318,7 @@ export default {
             this.applicationId = res.data.application_Id;
             if (this.payment_status == "Success") {
               this.$router.push({ name: "MyApplicationDetails" });
-              this.addPayment();
+               this.addPayment();
             }
             if (this.payment_status == "Failed") {
               this.$router.push({ name: "MyRecipe" });
@@ -479,7 +511,7 @@ export default {
       }
     },
     option_list() {
-      this.items = [];
+      this.items=[];
       this.mychoiceService
         .getRecommendedBlendingDetail(this.blending_id)
         .then((res) => {
@@ -528,5 +560,10 @@ export default {
 
 .btn-green-outline {
   margin-right: 20px;
+}
+@media screen and (max-width: 768px){
+  .fGroup textarea{
+    min-height: 208px !important;
+  }
 }
 </style>

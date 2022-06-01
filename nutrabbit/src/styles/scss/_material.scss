@@ -117,6 +117,7 @@
         }
     }
     .product-list-wrap{
+        margin-top: 0;
         .material-details{
             h2{
                 span{
@@ -150,13 +151,14 @@
         .btn-wrap{
             button{
                 @media screen and (max-width: 640px) {
-                    min-width: 100px !important;
+                    min-width: 101px !important;
                     padding: 10px 14px;
                 }
             }
             .btnWrapRight{
                 display: flex;
                 justify-content: space-between; 
+                gap: 20px;
             }
             &.tripple-btn{
                 .btn-left{
@@ -170,6 +172,19 @@
                     }
                 }
             }
+        }
+    }
+}
+.ingredient-wrap{
+    margin-top: 0 !important;
+    .selectAllHeader{
+        .radio-wrap{
+            .custom-radio{
+                margin-bottom: 0;
+            }
+        }
+        .deleteBtn{
+            margin-top: 2px !important;
         }
     }
 }

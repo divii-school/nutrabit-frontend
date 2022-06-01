@@ -3,6 +3,12 @@
     <div class="header-container">
       <div class="header-menu flex">
         <div class="manuLeft">
+          <!-- For mobile only start -->
+          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back' " to @click="$router.go(-1)">
+            <img src="../assets/images/header-arrow.svg" alt="">
+          </router-link>
+          <!-- For mobile only end -->
+
           <router-link class="header-logo" to="/">
             <img src="../assets/images/logo.svg" alt="Logo" />
           </router-link>
@@ -68,7 +74,7 @@
             </div>
             <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : ''"
               @click="showMobSearchF">
-              <i class="icon-search-black"></i>
+              <i class="search-icon-mob-black"></i>
             </router-link>
           </div>
           <template v-if="this.logedInUserDetails">
@@ -105,7 +111,7 @@
             </div>
           </div>
           <router-link to class="menu-toggle" @click="sideMenuOpen">
-            <img src="../assets/images/menu-toggle.png" alt />
+            <img src="../assets/icons/menu-toggle.svg" alt />
           </router-link>
         </div>
       </div>

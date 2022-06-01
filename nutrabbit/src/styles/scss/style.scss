@@ -154,6 +154,12 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
+  &.special-login{
+    font-size: 14px !important;
+    line-height: 17px !important;
+    font-weight: 400 !important;
+  }
 
   &.error {
     color: $red-3 !important;
@@ -219,6 +225,7 @@ textarea {
       top: -3px;
     }
   }
+  
 }
 
 .checkmark {
@@ -260,6 +267,9 @@ textarea {
       left: 94px !important;
     }
 
+    @media screen and (max-width: 640px) {
+      left: 0px !important;
+    }
     .heading-tooltip-content {
       background: $white-1;
       padding: 20px 30px 20px 40px;
@@ -267,10 +277,13 @@ textarea {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       max-width: 444px;
-
+      width: 100%;
       @media screen and (max-width: 768px) {
         padding: 10px 10px 10px 30px;
         max-width: 240px;
+      }
+      @media screen and (max-width: 480px) {
+        max-width: 180px;
       }
 
       ul {
@@ -432,9 +445,13 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  gap: 10px;
+  width: 100%;
+  @media screen and (max-width: 640px) {
+    gap: 20px;
+  }
   button {
-    width: 49%;
+    width: 50%;
   }
 }
 
@@ -817,8 +834,6 @@ textarea {
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  font-weight: 400;
-
   @media screen and (max-width: 640px) {
     font-size: 18px;
   }
@@ -834,8 +849,8 @@ textarea {
   height: 62px;
   line-height: 24px;
   font-size: 20px;
-  font-family: $Pretend-semibold;
-  font-weight: 600;
+  font-weight: 400;
+  font-family: $default-font;
   @media screen and (max-width: 768px) {
     height: auto;
     font-size: 18px;
@@ -847,7 +862,9 @@ textarea {
 .overlay-panel-actions-primary li.active {
   background: #16ae68;
   border-color: #16ae68;
-  color: #fff;
+  color: $white-1;
+  font-family: $Pretend-semibold;
+  font-weight: 600;
 }
 
 .content-bd {
@@ -1174,4 +1191,8 @@ textarea {
 .flexRight {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.full-width{
+  width: 100% !important;
 }

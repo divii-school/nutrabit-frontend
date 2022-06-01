@@ -149,4 +149,8 @@ export default {
     display: none !important;
   }
 }
+.main-body .container-medium .my-notice-wrap .my-notice-heading{
+  border-bottom: 0px;
+  
+}
 </style>
