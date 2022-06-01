@@ -74,7 +74,7 @@
             </div>
             <router-link to class="mobile-search-icon" :class="showMobSearch ? 'icon-show' : ''"
               @click="showMobSearchF">
-              <i class="icon-search-black"></i>
+              <i class="search-icon-mob-black"></i>
             </router-link>
           </div>
           <template v-if="this.logedInUserDetails">
