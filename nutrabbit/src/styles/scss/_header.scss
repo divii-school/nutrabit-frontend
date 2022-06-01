@@ -273,7 +273,7 @@ header {
             }
 
             @media screen and (max-width: 640px) {
-              display: block;
+              display: flex;
             }
 
             &.icon-show {
