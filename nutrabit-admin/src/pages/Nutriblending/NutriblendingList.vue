@@ -40,7 +40,14 @@
                         <h5>{{ $t('Blending.list.header') }}</h5>
                     </div>
                     <div>
-
+                        <router-link to="/excelnutri-blending">
+                                <Button
+                                    :label="$t('Category.excel_category')"
+                                    icon="pi pi-download"
+                                    iconPos="left"
+                                    class="p-button p-button-sm p-mr-2 p-mb-2"
+                                ></Button>
+                            </router-link>
 
 
                         <router-link to="/addnutri-blending">
@@ -52,8 +59,7 @@
                 </div>
 
                 <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id"
-                    :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll"
-                    v-model:selection="selected">
+                    :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" v-model:selection="selected">
                     <ConfirmDialog group="dialog" />
 
                     <template #empty>데이터가 없습니다.</template>

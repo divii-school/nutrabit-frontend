@@ -126,8 +126,8 @@ export default {
                        
                         console.log(this.formData);
                         return axios.post('/admin/product_category/upload', this.formData).then(() => {
-                            this.$router.push({ name: 'CategoryProduct' });
-                        });
+                            this.$router.push({ name: 'nutri' });
+                        }); 
                     }
                 },
                 reject: () => {
