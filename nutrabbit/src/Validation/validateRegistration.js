@@ -67,14 +67,14 @@ const validateRegistration = (data) => {
     errors.emailOTP = t('common.Error.VerifyOtp');
   }
 
-  if (validator.isEmpty(phoneNumber)) {
-    errors.phoneNumber = t('common.Error.EnterPhone');
-  } else if (!validator.isNumeric(phoneNumber)) {
-    errors.phoneNumber = t("common.Error.OnlyNumber");
-  }
-  if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
-    errors.address = t('common.Error.EnterAddress');
-  }
+  // if (validator.isEmpty(phoneNumber)) {
+  //   errors.phoneNumber = t('common.Error.EnterPhone');
+  // } else if (!validator.isNumeric(phoneNumber)) {
+  //   errors.phoneNumber = t("common.Error.OnlyNumber");
+  // }
+  // if (validator.isEmpty(address) || validator.isEmpty(detsilAddress)) {
+  //   errors.address = t('common.Error.EnterAddress');
+  // }
 
 
   return {
