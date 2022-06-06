@@ -320,7 +320,7 @@ export default {
       let page = 1;
       const setSubCategory = this.sub_category_id;
       this.mychoiceService
-        .getRecommendedData(setSubCategory, limit, page)
+        .getRawMaterialRecommendedData(localStorage.getItem("raw_material_id"), limit, page)
         .then((res) => {
           // console.log(res);
           if (res.status == 200) {
