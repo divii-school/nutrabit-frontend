@@ -47,7 +47,7 @@
           <div class="right-heading">
             <i class="icon-star-blue"></i>
             <h2>{{ item.name }}</h2>
-            <div class="blending-tag">
+            <div class="blending-tag" v-if="item.tag">
               <span
                 v-for="(tag, index) in splitJoin(item.tags)"
                 :key="index"

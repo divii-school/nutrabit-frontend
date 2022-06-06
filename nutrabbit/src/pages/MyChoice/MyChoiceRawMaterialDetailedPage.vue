@@ -4,17 +4,6 @@
       <h2 class="mychoice-heading heading">{{ $t("header.myChoice") }}</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
-            <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
-            </swiper-slide>
-          </swiper> -->
-
-          <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
-              <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-                <img :src="imgBaseUrl + item.image_path" alt="" />
-              </swiper-slide>
-            </swiper> -->
           <div v-if="raw_material_data">
             <swiper class="mySwiper">
               <swiper-slide>
@@ -35,6 +24,7 @@
             watch-slides-progress
             @swiper="setThumbsSwiper"
             class="mySwiper2"
+            v-if="raw_material_image.length > 0"
           >
             <swiper-slide
               v-for="(item, index) of raw_material_image"
@@ -43,6 +33,11 @@
               <img :src="imgBaseUrl + item.image_path" alt="" />
             </swiper-slide>
           </swiper>
+          <swiper class="mySwiper2" v-else>
+              <swiper-slide>
+                <img src="../../assets/images/sub_place.png"/>
+              </swiper-slide>
+            </swiper>
 
           <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
@@ -283,10 +278,10 @@ export default {
           if (res.data.status == 200) {
             this.raw_material_data = res.data.data;
             this.sub_category_id = res.data.data[0].sub_category_id;
-            this.thumb_image = res.data.data[0].thumbnail_fst_path
+            this.thumb_image = res.data.data[0].thumbnail_1
               ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path
               : this.placeholder_image;
-            this.thumb_2nd_image = res.data.data[0].thumbnail_scnd_path
+            this.thumb_2nd_image = res.data.data[0].thumbnail_2
               ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path
               : this.placeholder_image;
           } else {
