@@ -175,6 +175,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
 import MyChoiceService from "../../services/MyChoiceService";
+import thumbImage from "~@/assets/images/thumbnail_place.png";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
@@ -212,6 +213,7 @@ export default {
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
       globalLocale: "",
       sub_category_id: "",
+      imgUrl: thumbImage,
     };
   },
   created() {
@@ -280,10 +282,10 @@ export default {
             this.sub_category_id = res.data.data[0].sub_category_id;
             this.thumb_image = res.data.data[0].thumbnail_1
               ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path
-              : this.placeholder_image;
+              : this.imgUrl;
             this.thumb_2nd_image = res.data.data[0].thumbnail_2
               ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path
-              : this.placeholder_image;
+              : this.imgUrl;
           } else {
             // this.$swal(res.data.message, "error");
             console.log(res.data.message);
