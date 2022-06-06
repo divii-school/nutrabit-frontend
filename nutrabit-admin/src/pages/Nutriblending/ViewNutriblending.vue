@@ -143,7 +143,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" v-if="detailimage"/>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" v-if="similarimage"/>
                         </div>
                     </div>
                 </div>

@@ -136,11 +136,11 @@
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(detail_image, img) in detail_image" :key="img">
                                     <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                                    <div class="raw-image" style="margin:5px;">
+                                    <div class="raw-image" style="margin:5px;" v-if="detail_image != '/uploads/blending/null'">
                                         <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image"
                                             :alt="detail_image" class="product-image" />
                                         <div v-show="crossdisplay3">
-                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)"> <img
+                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)" > <img
                                                     src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
                                                     class="cross" /></a>
                                         </div>
@@ -167,7 +167,7 @@
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(similar_image, img) in similar_image" :key="img">
                                     <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                                    <div class="raw-image" style="margin:5px;">
+                                    <div class="raw-image" style="margin:5px;" v-if="similar_image != '/uploads/blending/null'">
                                         <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image"
                                             :alt="similar_image" class="product-image" />
                                         <div v-show="crossdisplay4">
@@ -194,7 +194,7 @@
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
                                 <Button label="파일을 선택" class="SelectBtn n-wrap" />
                             </div>
-                            <div>
+                            <div v-if="thumbnail1">
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1"
                                     :alt="thumbnail1" class="product-image" />
