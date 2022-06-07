@@ -5,7 +5,7 @@ const validateCreateRaw = (data) => {
 
   const { sub_category_id, material_name_ko, material_name_en,
     material_function_ko, material_function_en,
-    daily_intake_amount_ko, daily_intake_amount_en, file, status } = data;
+    daily_intake_amount_ko, daily_intake_amount_en, addthumnail,newthumnail, status } = data;
   if (validator.isEmpty(sub_category_id)) {
     errors.sub_category_id = "카테고리를 선택하세요";
   }
@@ -59,13 +59,16 @@ const validateCreateRaw = (data) => {
   //   errors.tag_en =  "태그 EN는 필수 항목입니다.";
   // }
 
-  if (validator.isEmpty(file)) {
-    errors.file = '파일을 업로드 해주세요';
+  if (validator.isEmpty(newthumnail)) {
+    errors.newthumnail = '파일을 업로드 해주세요';
+  }
+ 
+
+  if (validator.isEmpty(addthumnail)) {
+    errors.addthumnail = '파일을 업로드 해주세요';
   }
 
-  // if (validator.isEmpty(files)) {
-  //   errors.files = '파일을 업로드 해주세요';
-  // }
+
   if (validator.isEmpty(status)) {
     errors.status = '선택 해주세요';
   }

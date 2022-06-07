@@ -324,7 +324,7 @@ export default {
             this.mydata.thumbnail1 = res.data.data[0].thumbnail_1_path;
             this.mydata.thumbnail2 = res.data.data[0].thumbnail_2_path;
             this.mydata.status = res.data.data[0].status;
-            console.log(this.mydata.status);
+            console.log(this.mydata.detailimage);
         });
     },
 };

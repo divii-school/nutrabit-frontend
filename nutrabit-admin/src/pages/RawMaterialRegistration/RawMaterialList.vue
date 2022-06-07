@@ -454,8 +454,7 @@ export default {
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/product_raw_material/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
-                       self.rawService
-                            .getRawList(self.status, self.material_name_ko, self.category_id, self.startDate, self.endDate, self.sortBy, self.sortOrder)
+                       self.rawService.getRawList(self.status, self.material_name_ko, self.category_id, self.startDate, self.endDate, self.sortBy, self.sortOrder)
                             .then((data) => {
                                 self.customer1 = data;
                                 self.loading1 = false;
