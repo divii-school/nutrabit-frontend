@@ -42,8 +42,8 @@
                             <h5>{{ $t('Nutri3.list.header') }}</h5>
                          <div>
                             
-                            <router-link to="/addnutri-management">
-                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
+                            <router-link to="/addnutri-management" >
+                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" ></Button>
                             </router-link>
                         </div>
                     </div>

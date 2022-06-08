@@ -11,10 +11,10 @@ const validateCreateRaw = (data) => {
   }
 
   if (validator.isEmpty(material_name_ko)) {
-    errors.material_name_ko = "재료 이름 Ko는 필수 항목입니다";
+    errors.material_name_ko = "필수 입력 항목입니다.";
   }
   if (validator.isEmpty(material_name_en)) {
-    errors.material_name_en = "재료 이름 EN은 필수 항목입니다.";
+    errors.material_name_en = "필수 입력 항목입니다.";
   }
   // if(validator.isEmpty(standard_ko)) {
   //   errors.standard_ko =  "표준 KO가 필요합니다.";
@@ -29,10 +29,10 @@ const validateCreateRaw = (data) => {
   //   errors.material_description_en =  "재료 설명 EN가 필요합니다";
   // }
   if (validator.isEmpty(material_function_ko)) {
-    errors.material_function_ko = "머티리얼 기능 KO가 필요합니다";
+    errors.material_function_ko = "필수 입력 항목입니다.";
   }
   if (validator.isEmpty(material_function_en)) {
-    errors.material_function_en = "머티리얼 기능 EN가 필요합니다";
+    errors.material_function_en = "필수 입력 항목입니다.";
   }
   // if(validator.isEmpty(material_prequotion_ko)) {
   //   errors.material_prequotion_ko =  "재료 전치 KO는 필수 항목입니다.";
@@ -47,10 +47,10 @@ const validateCreateRaw = (data) => {
   //   errors.material_extra_info_en =  "재료 추가 정보 EN가 필요합니다";
   // }
   if (validator.isEmpty(daily_intake_amount_ko)) {
-    errors.daily_intake_amount_ko = "1일 섭취량 KO 필수";
+    errors.daily_intake_amount_ko = "필수 입력 항목입니다.";
   }
   if (validator.isEmpty(daily_intake_amount_en)) {
-    errors.daily_intake_amount_en = "1일 섭취량 EN 필수";
+    errors.daily_intake_amount_en = "필수 입력 항목입니다.";
   }
   // if(validator.isEmpty(tag_ko)) {
   //   errors.tag_ko =  "태그 KO는 필수 항목입니다.";
@@ -60,17 +60,17 @@ const validateCreateRaw = (data) => {
   // }
 
   if (validator.isEmpty(newthumnail)) {
-    errors.newthumnail = '파일을 업로드 해주세요';
+    errors.newthumnail = '파일 업로드가 필요합니다.';
   }
  
 
   if (validator.isEmpty(addthumnail)) {
-    errors.addthumnail = '파일을 업로드 해주세요';
+    errors.addthumnail = '파일 업로드가 필요합니다.';
   }
 
 
   if (validator.isEmpty(status)) {
-    errors.status = '선택 해주세요';
+    errors.status = '필수 선택 항목입니다.';
   }
 
 

@@ -21,7 +21,7 @@
                     <label
                         for="material_name_ko"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('RawMaterialadd.list.Rawname(KO)') }}:</label>
+                    >{{ $t('RawMaterialadd.list.Rawmaterialname(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ material_name_ko }}</p>
                     </div>
@@ -31,7 +31,7 @@
                     <label
                         for="material_name_en"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('RawMaterialadd.list.Rawname(EN)') }}:</label>
+                    >{{ $t('RawMaterialadd.list.Rawmaterialname(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ material_name_en }}</p>
                     </div>
@@ -245,7 +245,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정 
                         </Button>
                     </router-link>
                 </div>

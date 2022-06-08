@@ -147,7 +147,7 @@
                             <span v-if="!fileName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileName }}</span>
                             <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" multiple />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable" />
+                            <Button label="파일 선택" class="SelectBtn n-wrap" :disabled="isdisable" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(similar_product_img, img) in similar_product_img" :key="img">
@@ -176,7 +176,7 @@
                             <span v-if="!filesName">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesName }}</span>
                             <input type="file" class="select-file" v-on:change="onFileChanges" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <Button label="파일 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -195,7 +195,7 @@
                             <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ fileNames }}</span>
                             <input type="file" class="select-file" v-on:change="onFilesChanges" />
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" />
+                            <Button label="파일 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
@@ -214,7 +214,7 @@
                             <span v-if="!filesNames">{{ $t('button.select_file') }}</span>
                             <span v-else>{{ filesNames }}</span>
                             <input type="file" class="select-file" v-on:change="onFilesChange" :disabled="isdisable1" multiple/>
-                            <Button :label="$t('button.select_file')" class="SelectBtn n-wrap" :disabled="isdisable1" />
+                            <Button label="파일 선택" class="SelectBtn n-wrap" :disabled="isdisable1" />
                         </div>
                         <div style="display: -webkit-box; justify-content: flex-end">
                             <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
@@ -264,7 +264,7 @@
                 <br />
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <ConfirmPopup group="popup"></ConfirmPopup>
-                    <Button ref="popup" @click="editRaw" icon="pi pi-check" :label="$t('DFC.details.confirm')"
+                    <Button ref="popup" @click="editRaw" icon="pi pi-check" label="수정"
                         class="p-mr-2"></Button>
                 </div>
                 <div class="p-d-flex p-jc-end">

@@ -46,12 +46,12 @@
                                     icon="pi pi-download"
                                     iconPos="left"
                                     class="p-button p-button-sm p-mr-2 p-mb-2"
-                                ></Button>
+                                style="font-size:12px;"></Button>
                             </router-link>
 
 
                         <router-link to="/addnutri-blending">
-                            <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-plus p-mr-2"></i> {{
+                            <Button label="Primary" class="p-mr-2 p-mb-2" style="font-size:11px;"><i class="pi pi-plus p-mr-2" ></i> {{
                                 $t('Blending.addnew_blending')
                             }}</Button>
                         </router-link>

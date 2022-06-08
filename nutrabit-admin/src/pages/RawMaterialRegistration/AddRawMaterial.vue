@@ -153,7 +153,7 @@
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChange" multiple/>
-                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <!-- <div class="text-red">{{ error.detail }}</div> -->
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
@@ -170,7 +170,7 @@
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethum" />
-                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.addthumnail }}</div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
@@ -184,10 +184,10 @@
                                 <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.newthumnail ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!newthumnail">파일 선택</span>
+                                <span v-if="!newthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ newthumnail }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChangethumnail" />
-                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <div class="text-red">{{ error.newthumnail }}</div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
@@ -201,10 +201,10 @@
                                 <span class="img-info">(파일 형식: jpg,jpeg,png 최대 5개의 이미지를 추가할 수 있습니다.)(이미지 너비 200px )</span>
                             </label>
                             <div :class="`${error.similar ? 'custom-select-invalid' : 'custom-select'}`">
-                                <span v-if="!similar">파일 선택</span>
+                                <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
                                 <input type="file" class="select-file" v-on:change="onFileChanges" multiple/>
-                                <Button label="파일을 선택" class="SelectBtn n-wrap" />
+                                <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
                             <!-- <div class="text-red">{{ error.similar }}</div> -->
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
