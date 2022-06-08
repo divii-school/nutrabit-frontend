@@ -70,12 +70,8 @@
                 <p>{{ item.standard }}</p>
               </li>
               <li>
-                <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
-                <p>{{ item.material_description }}</p>
-              </li>
-              <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
-                <p>{{ item.material_function }}</p>
+                <p>{{ item.material_description }}</p>
               </li>
               <li>
                 <h2>
