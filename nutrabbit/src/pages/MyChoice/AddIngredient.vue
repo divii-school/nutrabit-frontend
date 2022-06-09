@@ -12,7 +12,7 @@
                 <h2>{{ $t("storageBox.title") }}</h2>
               </div>
             </div>
-            <div class="product-list-wrap">
+            <div class="product-list-wrap ingredient-wrap">
               <ul class="selectAllHeader">
                 <li>
                   <div class="radio-wrap">
@@ -58,9 +58,7 @@
                 </li>
               </ul>
               <div class="addIng">
-                <button
-                  @click="this.$router.push(`/my-choice/`)"
-                >
+                <button @click="this.$router.push(`/my-choice/`)">
                   <i class="icon-menu-add"></i>{{ $t("storageBox.add") }}
                 </button>
                 <div class="tolltip-outer">
@@ -308,3 +306,18 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.tolltip-outer {
+  .popper {
+    @media screen and (max-width: 640px) {
+      top: -14px !important;
+    }
+    .heading-tooltip-content {
+      @media screen and (max-width: 640px) {
+        max-width: 219px !important;
+        padding: 10px 10px 10px 26px !important;
+      }
+    }
+  }
+}
+</style>

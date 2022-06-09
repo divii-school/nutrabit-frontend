@@ -312,3 +312,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .signUp-form{
+    @media screen and (max-width: 768px){
+      margin-top: 40px !important;
+    }
+  }
+</style>
