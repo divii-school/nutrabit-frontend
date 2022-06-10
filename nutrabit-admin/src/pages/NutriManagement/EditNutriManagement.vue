@@ -73,16 +73,18 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
-                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
+                        <Quill-Editor id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
+                                contentType="html"
+                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model:content="description_ko" />
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
-                            v-model="description_en" />
+                        <Quill-Editor id="medium" ref="myQuillEditor"
+                                contentType="html" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
+                            v-model:content="description_en" />
                     </div>
                 </div>
                 <div class="p-grid p-formgrid p-mb-3 browse">
@@ -214,8 +216,8 @@ export default {
             selectedItems: [],
             name_ko: '',
             name_en: '',
-            description_ko: '',
-            description_en: '',
+            description_ko: JSON.parse(localStorage.getItem('desc')).description_ko,
+            description_en: JSON.parse(localStorage.getItem('desc')).description_en,
             status: 'active',
             image: '',
             detail_image: '',

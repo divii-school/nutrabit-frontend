@@ -106,7 +106,7 @@
                                             class="pi pi-eye p-mr-2"></i> </Button>
                                 </router-link>
                                 <router-link :to="'/editnutri-blending/' + data.id"><Button label="help"
-                                        class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i
+                                        class="p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"><i
                                             class="pi pi-pencil p-mr-2"></i> </Button></router-link>
                                 <Button icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2"
                                     @click="confirm(data.id)" />
@@ -206,6 +206,15 @@ export default {
                 this.calendarValue1 = this.calendarValue1.toISOString().slice(0, 10) + 1;
                 console.log(this.calendarValue1);
             }
+        },
+         setData(id) {
+            this.blendingService.viewBlending (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
 
         resetUser() {

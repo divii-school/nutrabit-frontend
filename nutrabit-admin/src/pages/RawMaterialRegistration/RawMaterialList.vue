@@ -165,7 +165,7 @@
                                         >
                                             <Button
                                                 label="help"
-                                                class="p-button-outlined p-button-help p-mr-2 p-mb-2"
+                                                class="p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"
                                             >
                                                 <i class="pi pi-pencil p-mr-2"></i>
                                             </Button>
@@ -305,6 +305,15 @@ export default {
                 mm = '0' + mm;
             }
             return (val = yyyy + '-' + mm + '-' + dd );
+        },
+        setData(id) {
+            this.rawService.viewRaw (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         showdetails() {
             this.clientlist = false;

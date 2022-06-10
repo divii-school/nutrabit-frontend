@@ -103,8 +103,9 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-field p-col-12 p-md-3 p-lg-6">
                             <label for="productdescription">{{ $t('Blending.edit.productdescription') }}</label>
-                            <Textarea id="productdescription" type="text" placeholder="Product description (KO)"
-                                v-model="description_ko" />
+                            <Quill-Editor id="productdescription" ref="myQuillEditor"
+                                contentType="html" placeholder="Product description (KO)"
+                                 v-model:content="description_ko" />
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
@@ -113,8 +114,9 @@
                             <label for="blendingproductdescription">{{
                                 $t('Blending.edit.blendingproductdescription')
                             }}</label>
-                            <Textarea id="blendingproductdescription" type="text" placeholder="Product description (EN)"
-                                v-model="description_en" />
+                            <Quill-Editor id="blendingproductdescription" ref="myQuillEditor"
+                                contentType="html" placeholder="Product description (EN)"
+                                v-model:content="description_en" />
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -306,8 +308,8 @@ export default {
             efficiency_en: '',
             ingredients_ko: '',
             ingredients_en: '',
-            description_ko: '',
-            description_en: '',
+            description_ko: JSON.parse(localStorage.getItem('desc')).description_ko,
+            description_en: JSON.parse(localStorage.getItem('desc')).description_en,
             categoryDropdownValues: '',
             categoryDropdownValue: null,
             RawDropdownValues: '',
@@ -366,6 +368,7 @@ export default {
             this.efficiency_en = res.data.data[0].efficiency_en;
             this.ingredients_ko = res.data.data[0].ingredients_ko;
             this.ingredients_en = res.data.data[0].ingredients_en;
+            // localStorage.setItem('storedData', res.data.data[0].description_ko)
             this.description_ko = res.data.data[0].description_ko;
             this.description_en = res.data.data[0].description_en;
 
