@@ -169,6 +169,9 @@ footer{
                                 height: 10px;
                                 top: 2px;
                             }
+                            @media screen and (max-width: 480px){
+                                display: none;
+                            }
                         } 
                         &:first-child{
                             margin: 0;
@@ -185,6 +188,13 @@ footer{
                                 &:before{
                                     display: none;
                                 }
+                            }
+                        }
+                        &:nth-child(2){
+                            @media screen and (max-width: 480px){
+                                padding-left: 0;
+                                margin-left: 0;
+                                width: 100%;
                             }
                         }
                         // &.active{
