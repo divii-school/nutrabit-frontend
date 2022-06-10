@@ -269,8 +269,8 @@
                 "list1": "This is a menu where I make my own health functional food recipes.",
                 "list2": "Choose the raw material you want. (Multiple selection possible)"
             },
-            "popularity": "in order of popularity",
-            "alphabetical": "in alphabetical order",
+            "popularity": "Popularity",
+            "alphabetical": "Alphabet",
             "modal": {
                 "heading": "Added to raw material cart",
                 "btn1": "Go to Cart",
