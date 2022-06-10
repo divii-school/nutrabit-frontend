@@ -55,84 +55,84 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('RawMaterialadd.list.Rawmarterialdescription(KO)') }}</label>
-                        <InputText id="date" class="" type="text"
+                        <Textarea id="date" class="" type="text"
                             :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(KO)')"
-                            v-model="material_description_ko" />
+                            v-model="material_description_ko" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_description_ko }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Rawmarterialdescription(EN)') }}</label>
-                        <InputText id="medium" class=""
+                        <Textarea id="medium" class=""
                             type="text" :placeholder="$t('RawMaterialadd.list.Rawmarterialdescription(EN)')"
-                            v-model="material_description_en" />
+                            v-model="material_description_en" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_description_en }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Function(KO)') }}</label>
-                        <InputText id="medium" :class="`${error.material_function_ko ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" />
+                        <Textarea id="medium" :class="`${error.material_function_ko ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Function(KO)')" v-model="material_function_ko" ></Textarea>
                         <div class="text-red">{{ error.material_function_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('RawMaterialadd.list.Fucntion(EN)') }}</label>
-                        <InputText id="medium" :class="`${error.material_function_en ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" />
+                        <Textarea id="medium" :class="`${error.material_function_en ? 'p-invalid' : ''}`" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Fucntion(EN)')" v-model="material_function_en" ></Textarea>
                         <div class="text-red">{{ error.material_function_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}</label>
-                        <InputText id="remark" :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`" type="text"
+                        <Textarea id="remark" :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`" type="text"
                             :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')"
-                            v-model="daily_intake_amount_ko" />
+                            v-model="daily_intake_amount_ko" ></Textarea>
                         <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
-                        <InputText id="remark" :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`" type="text"
+                        <Textarea id="remark" :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`" type="text"
                             :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')"
-                            v-model="daily_intake_amount_en" />
+                            v-model="daily_intake_amount_en" ></Textarea>
                         <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
-                        <InputText id="remark" class="" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" />
+                        <Textarea id="remark" class="" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model="material_prequotion_ko" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_prequotion_ko }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
-                        <InputText id="remark" class="" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" />
+                        <Textarea id="remark" class="" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model="material_prequotion_en" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_prequotion_en }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
-                        <InputText id="remark" class="" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" />
+                        <Textarea id="remark" class="" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model="material_extra_info_ko" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_extra_info_ko }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
-                        <InputText id="remark" class="" type="text"
-                            :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" />
+                        <Textarea id="remark" class="" type="text"
+                            :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model="material_extra_info_en" ></Textarea>
                         <!-- <div class="text-red">{{ error.material_extra_info_en }}</div> -->
                     </div>
                 </div>
