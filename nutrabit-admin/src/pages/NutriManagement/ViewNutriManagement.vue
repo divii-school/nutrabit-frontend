@@ -57,13 +57,13 @@
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description1(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_ko }}</p>
+                        <p  v-html="description_ko"></p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description2(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_en }}</p>
+                        <p v-html="description_en"></p>
                     </div>
                 </div>
                 

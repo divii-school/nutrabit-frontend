@@ -124,7 +124,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.productdescription') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.description_ko }}</p>
+                        <p v-html="mydata.description_ko"></p>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.blendingproductdescription') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.description_en }}</p>
+                        <p v-html="mydata.description_en"></p>
                     </div>
                 </div>
 

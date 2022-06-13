@@ -103,7 +103,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ daily_intake_amount_ko }}</p>
+                        <p v-html="daily_intake_amount_ko" ></p>
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ daily_intake_amount_en }}</p>
+                        <p v-html="daily_intake_amount_en"></p>
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Prequotion(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_prequotion_ko }}</p>
+                        <p v-html="material_prequotion_ko"></p>
                     </div>
                 </div>
 
@@ -133,7 +133,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Prequotion(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_prequotion_en }}</p>
+                        <p v-html="material_prequotion_en"></p>
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_extra_info_ko }}</p>
+                        <p v-html="material_extra_info_ko"></p>
                     </div>
                 </div>
 
@@ -153,7 +153,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_extra_info_en }}</p>
+                        <p v-html="material_extra_info_en"></p>
                     </div>
                 </div>
 
