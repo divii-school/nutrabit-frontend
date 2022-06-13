@@ -155,7 +155,7 @@
                                         >
                                             <Button
                                                 label="info"
-                                                class="p-button-outlined p-button-info p-mr-2 p-mb-2"
+                                                class="p-button-outlined p-button-info p-mr-2 p-mb-2" 
                                             >
                                                 <i class="pi pi-eye p-mr-2"></i>
                                             </Button>
