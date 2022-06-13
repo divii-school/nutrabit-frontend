@@ -124,7 +124,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.productdescription') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.description_ko }}</p>
+                        <p v-html="mydata.description_ko"></p>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.blendingproductdescription') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.description_en }}</p>
+                        <p v-html="mydata.description_en"></p>
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" v-if="detailimage"/>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" v-if="similarimage"/>
                         </div>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정
                         </Button>
                     </router-link>
                 </div>
@@ -324,7 +324,7 @@ export default {
             this.mydata.thumbnail1 = res.data.data[0].thumbnail_1_path;
             this.mydata.thumbnail2 = res.data.data[0].thumbnail_2_path;
             this.mydata.status = res.data.data[0].status;
-            console.log(this.mydata.status);
+            console.log(this.mydata.detailimage);
         });
     },
 };

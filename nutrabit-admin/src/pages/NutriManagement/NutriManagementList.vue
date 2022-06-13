@@ -42,8 +42,8 @@
                             <h5>{{ $t('Nutri3.list.header') }}</h5>
                          <div>
                             
-                            <router-link to="/addnutri-management">
-                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2"></Button>
+                            <router-link to="/addnutri-management" >
+                                <Button label="nutri3.3 블렌딩 추가" icon="pi pi-plus" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" ></Button>
                             </router-link>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                                     ><Button label="info" class="p-button-outlined p-button-info p-mr-2 p-mb-2"><i class="pi pi-eye p-mr-2"></i></Button>
                                 </router-link>
                                 <router-link :to="'/editnutri-management/' + data.id"
-                                    ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i class="pi pi-pencil p-mr-2"></i></Button></router-link
+                                    ><Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"><i class="pi pi-pencil p-mr-2"></i></Button></router-link
                                 >
                                 <Button  icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
                             </div>
@@ -214,6 +214,15 @@ export default {
         showdetails() {
             this.clientlist = false;
             this.detailsclient = true;
+        },
+         setData(id) {
+            this.nutriManagementService.ViewNurtiManagementList (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         dropdownCategory() {
             axios({ method: 'get', url: '/admin/product_category/category2Dropdown/' }).then(function (response) {

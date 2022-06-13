@@ -57,13 +57,13 @@
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description1(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_ko }}</p>
+                        <p  v-html="description_ko"></p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description2(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_en }}</p>
+                        <p v-html="description_en"></p>
                     </div>
                 </div>
                 
@@ -103,7 +103,7 @@
                 <div class="p-d-flex p-jc-end" style="float: left">
                    
                     <router-link :to="'/editnutri-management/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정</Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정 </Button></router-link
                     >
                 </div>
                 <div class="p-d-flex p-jc-end">
