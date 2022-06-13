@@ -86,7 +86,7 @@
                         <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
                         <Quill-Editor
@@ -100,35 +100,35 @@
                         <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
                         <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model:content="material_prequotion_ko" />
                         <!-- <div class="text-red">{{ error.material_prequotion_ko }}</div> -->
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
                         <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model:content="material_prequotion_en" />
                         <!-- <div class="text-red">{{ error.material_prequotion_en }}</div> -->
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
                         <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model:content="material_extra_info_ko" />
                         <!-- <div class="text-red">{{ error.material_extra_info_ko }}</div> -->
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
                         <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model:content="material_extra_info_en" />
                         <!-- <div class="text-red">{{ error.material_extra_info_en }}</div> -->
                     </div>
                 </div>
-                <div class="p-formgrid p-grid"></div>
+                <div class="p-formgrid p-grid editer-gap-small"></div>
                 <div class="p-grid p-formgrid p-mb-3 browse">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">

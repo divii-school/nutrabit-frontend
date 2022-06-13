@@ -136,7 +136,7 @@
                         </div>
                     </div>
 
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Blending.list.productdescription') }}</label>
                             <Quill-Editor :class="`${error.description_en ? 'p-invalid' : ''}`" ref="myQuillEditor"
@@ -147,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Blending.list.detail') }}
@@ -182,8 +182,6 @@
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
-
-
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
@@ -220,9 +218,6 @@
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
-
-
-
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
