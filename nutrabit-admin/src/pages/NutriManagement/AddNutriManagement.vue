@@ -80,7 +80,7 @@
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(EN)') }}</label>
                             <Quill-Editor :class="`${error.description_en ? 'p-invalid' : ''}`" ref="myQuillEditor"
@@ -88,7 +88,7 @@
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Nutri3.Add.Thumbnailimg') }}

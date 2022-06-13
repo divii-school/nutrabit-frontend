@@ -79,7 +79,7 @@
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
                         <Quill-Editor id="medium" ref="myQuillEditor"
@@ -87,7 +87,7 @@
                             v-model:content="description_en" />
                     </div>
                 </div>
-                <div class="p-grid p-formgrid p-mb-3 browse">
+                <div class="p-grid p-formgrid p-mb-3 browse editer-gap">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.EditThumbnailimg') }}
