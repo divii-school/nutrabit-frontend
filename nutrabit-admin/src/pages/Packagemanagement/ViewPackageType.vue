@@ -61,7 +61,7 @@
                 <div class="p-d-flex p-jc-end" style="float:left;">
                    
                     <router-link :to="'/edit-package-type/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> {{ $t('button.edit') }}</Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정 </Button></router-link
                     >
                 </div>
                 <div class="p-d-flex p-jc-end">

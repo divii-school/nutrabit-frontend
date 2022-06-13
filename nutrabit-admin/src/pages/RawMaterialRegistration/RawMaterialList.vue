@@ -155,7 +155,7 @@
                                         >
                                             <Button
                                                 label="info"
-                                                class="p-button-outlined p-button-info p-mr-2 p-mb-2"
+                                                class="p-button-outlined p-button-info p-mr-2 p-mb-2" 
                                             >
                                                 <i class="pi pi-eye p-mr-2"></i>
                                             </Button>
@@ -165,7 +165,7 @@
                                         >
                                             <Button
                                                 label="help"
-                                                class="p-button-outlined p-button-help p-mr-2 p-mb-2"
+                                                class="p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"
                                             >
                                                 <i class="pi pi-pencil p-mr-2"></i>
                                             </Button>
@@ -305,6 +305,15 @@ export default {
                 mm = '0' + mm;
             }
             return (val = yyyy + '-' + mm + '-' + dd );
+        },
+        setData(id) {
+            this.rawService.viewRaw (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         showdetails() {
             this.clientlist = false;
@@ -454,8 +463,7 @@ export default {
                 accept: () => {
                     axios({ method: 'delete', url: '/admin/product_raw_material/delete', data: { deleteIdArray: id } }).then(function (response) {
                         console.log(response);
-                       self.rawService
-                            .getRawList(self.status, self.material_name_ko, self.category_id, self.startDate, self.endDate, self.sortBy, self.sortOrder)
+                       self.rawService.getRawList(self.status, self.material_name_ko, self.category_id, self.startDate, self.endDate, self.sortBy, self.sortOrder)
                             .then((data) => {
                                 self.customer1 = data;
                                 self.loading1 = false;
