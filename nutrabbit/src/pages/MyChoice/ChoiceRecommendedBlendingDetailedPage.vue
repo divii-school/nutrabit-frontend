@@ -99,7 +99,8 @@
                     )
                   }}
                 </h2>
-                <p>{{ item.description }}</p>
+                <!-- <p>{{ item.description }}</p> -->
+                <div class="p-text" v-html="item.description"></div>
               </li>
             </ul>
             <button

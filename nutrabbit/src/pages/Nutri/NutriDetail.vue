@@ -61,7 +61,8 @@
             </div>
           </div>
           <div class="product-details-wrap">
-            <p class="product-details-desc">{{ item.description }}</p>
+            <!-- <p class="product-details-desc">{{ item.description }}</p> -->
+            <p class="product-details-desc" v-html="item.description"/>
             <button @click="openmodal()" class="btn-primary blue-btn-solid">
               {{ $t("nutri.nutriDetails.button") }}
             </button>
