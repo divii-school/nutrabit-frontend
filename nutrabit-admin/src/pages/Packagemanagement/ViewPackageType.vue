@@ -32,7 +32,8 @@
                     >{{ $t('PackageType.view.image') }}:</label>
                     <div class="p-col-12 p-md-10">
                        <div class="text-red" v-show="render1" >{{$t('validation.invalidFile')}}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + image" :alt="image" class="product-image" />
+                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + image" :alt="image" class="product-image" />
+                                <!-- <img :src="'https://back.nutri33.co.kr/public/' + image" :alt="image" class="product-image" /> -->
                     </div>
                 </div>
                

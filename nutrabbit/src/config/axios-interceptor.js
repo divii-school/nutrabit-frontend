@@ -3,6 +3,7 @@ import Toast from '../alert/alert.js';
 
 window.axios = axios;
 axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1/sites/';
+// axios.defaults.baseURL = 'https://back.nutri33.co.kr/nutrabbit-dev/api/v1/sites/';
 
 axios.interceptors.request.use(function (config) {
     const token = localStorage.getItem('token');

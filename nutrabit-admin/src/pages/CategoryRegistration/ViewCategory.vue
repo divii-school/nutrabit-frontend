@@ -59,6 +59,11 @@
                             :alt="mydata.category_image"
                             class="product-image"
                         />
+                        <!-- <img
+                            :src="'https://back.nutri33.co.kr/public' + mydata.category_image"
+                            :alt="mydata.category_image"
+                            class="product-image"
+                        /> -->
                     </div>
                 </div>
 
