@@ -81,15 +81,18 @@
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
-                <p>{{ item.daily_intake_amount }}</p>
+                <!-- <p>{{ item.daily_intake_amount }}</p> -->
+                <div class="p-text" v-html="item.daily_intake_amount"/>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
-                <p>{{ item.material_prequotion }}</p>
+                <!-- <p>{{ item.material_prequotion }}</p> -->
+                <div class="p-text" v-html="item.material_prequotion"/>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
-                <p>{{ item.material_extra }}</p>
+                <!-- <p>{{ item.material_extra }}</p> -->
+                <div class="p-text" v-html="item.material_extra"/>
               </li>
             </ul>
             <div class="blendBtnList">
