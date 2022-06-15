@@ -143,7 +143,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" v-if="detailimage"/>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" v-if="similarimage"/>
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage"/>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" :alt="mydata.thumbnail1" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" :alt="mydata.thumbnail2" class="product-image" />
+                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
                         </div>
                     </div>
                 </div>

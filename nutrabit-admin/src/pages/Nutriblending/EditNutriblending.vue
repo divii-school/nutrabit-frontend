@@ -124,7 +124,7 @@
                                 <div v-for="(detail_image, img) in detail_image" :key="img">
                                     <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                     <div class="raw-image" style="margin: 5px" v-if="detail_image != '/uploads/blending/null'">
-                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" :alt="detail_image" class="product-image" />
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + detail_image"
                                             :alt="detail_image" class="product-image" /> -->
                                         <div v-show="crossdisplay3">
@@ -154,7 +154,7 @@
                                 <div v-for="(similar_image, img) in similar_image" :key="img">
                                     <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                     <div class="raw-image" style="margin: 5px" v-if="similar_image != '/uploads/blending/null'">
-                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image" :alt="similar_image" class="product-image" />
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image" alt="이미지를 사용할 수 없음" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_image"
                                             :alt="similar_image" class="product-image" /> -->
                                         <div v-show="crossdisplay4">
@@ -182,7 +182,7 @@
                             </div>
                             <div v-if="thumbnail1">
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1" :alt="thumbnail1" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail1"
                                     :alt="thumbnail1" class="product-image" /> -->
                             </div>
@@ -203,7 +203,7 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" :alt="thumbnail2" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail2"
                                     :alt="thumbnail2" class="product-image" /> -->
                             </div>

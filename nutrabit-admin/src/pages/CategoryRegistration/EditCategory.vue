@@ -77,7 +77,7 @@
                             <div class="text-red">{{ error.file }}</div>
                             <img
                                 :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + category_image"
-                                :alt="category_image"
+                                alt="이미지를 사용할 수 없음"
                                 class="product-image"
                             />
                             <!-- <img

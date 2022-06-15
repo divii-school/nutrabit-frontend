@@ -57,7 +57,7 @@
                                     <span class="p-column-title">Image</span>
                                      <img
                                         :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.image_path"
-                                        :alt="data.image_path"
+                                        alt="이미지를 사용할 수 없음"
                                         class="product-image"
                                     />
                                     <!-- <img

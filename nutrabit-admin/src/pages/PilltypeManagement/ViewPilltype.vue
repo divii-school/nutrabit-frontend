@@ -33,7 +33,7 @@
                     >이미지:</label>
                     <div class="p-col-12 p-md-10">
                        <div class="text-red" v-show="render1">{{$t('validation.invalidFile')}}</div>
-                       <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + image_path" :alt="image_path" class="product-image" />
+                       <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + image_path" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + image_path" :alt="image_path" class="product-image" /> -->
                     </div>
                 </div>
