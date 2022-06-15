@@ -304,6 +304,7 @@ export default {
             material_prequotion_en: JSON.parse(localStorage.getItem('desc')).material_prequotion_en,
             material_extra_info_ko: JSON.parse(localStorage.getItem('desc')).material_extra_info_ko,
             material_extra_info_en: JSON.parse(localStorage.getItem('desc')).material_extra_info_en,
+            // daily_intake_amount_ko: '',
             daily_intake_amount_ko: JSON.parse(localStorage.getItem('desc')).daily_intake_amount_ko,
             daily_intake_amount_en: JSON.parse(localStorage.getItem('desc')).daily_intake_amount_en,
             tag_ko: '',
@@ -369,8 +370,8 @@ export default {
             this.material_description_en = res.data.data[0].material_description_en;
             this.material_function_ko = res.data.data[0].material_function_ko;
             this.material_function_en = res.data.data[0].material_function_en;
-            localStorage.setItem('storedData', res.data.data[0].daily_intake_amount_ko);
-            // this.daily_intake_amount_ko = res.data.data[0].daily_intake_amount_ko;
+            // localStorage.setItem('storedData', res.data.data[0].daily_intake_amount_ko);
+            this.daily_intake_amount_ko = res.data.data[0].daily_intake_amount_ko;
             this.daily_intake_amount_en = res.data.data[0].daily_intake_amount_en;
             this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
             this.material_prequotion_en = res.data.data[0].material_prequotion_en;

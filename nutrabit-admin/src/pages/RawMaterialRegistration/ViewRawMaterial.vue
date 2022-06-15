@@ -246,7 +246,7 @@
                     <router-link :to="'/editraw-material-registration/' + $route.params.id">
                         <Button
                             label="help"
-                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
+                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
                             수정 
@@ -358,6 +358,15 @@ export default {
                     this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
                 },
             });
+        },
+        setData(id) {
+            this.rawService.viewRaw (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         formatDate(value) {
             const date = new Date(value);

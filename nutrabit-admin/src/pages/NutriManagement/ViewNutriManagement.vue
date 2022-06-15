@@ -103,7 +103,7 @@
                 <div class="p-d-flex p-jc-end" style="float: left">
                    
                     <router-link :to="'/editnutri-management/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정 </Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)"><i class="pi pi-user-edit p-mr-2"></i> 수정 </Button></router-link
                     >
                 </div>
                 <div class="p-d-flex p-jc-end">
@@ -196,6 +196,15 @@ export default {
                     this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
                 },
             });
+        },
+         setData(id) {
+            this.nutriManagementService.ViewNurtiManagementList (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         formatDate(value) {
             const date = new Date(value);
