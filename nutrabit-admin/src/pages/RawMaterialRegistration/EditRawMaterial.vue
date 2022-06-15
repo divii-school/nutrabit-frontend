@@ -75,56 +75,54 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}</label>
-                        <Quill-Editor
-                            id="remark"
-                            :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`"
-                            ref="myQuillEditor"
-                            contentType="html"
-                            :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')"
-                            v-model:content="daily_intake_amount_ko"
-                        />
+                        <div :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')" v-model:content="daily_intake_amount_ko" />
+                        </div>
                         <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
-                        <Quill-Editor
-                            id="remark"
-                            :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`"
-                            ref="myQuillEditor"
-                            contentType="html"
-                            :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')"
-                            v-model:content="daily_intake_amount_en"
-                        />
+                        <div :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')" v-model:content="daily_intake_amount_en" />
+                        </div>
                         <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
-                        <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model:content="material_prequotion_ko" />
+                        <div :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" v-model:content="material_prequotion_ko" />
+                        </div>
                         <!-- <div class="text-red">{{ error.material_prequotion_ko }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
-                        <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model:content="material_prequotion_en" />
+                        <div :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" v-model:content="material_prequotion_en" />
+                        </div>
                         <!-- <div class="text-red">{{ error.material_prequotion_en }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
-                        <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model:content="material_extra_info_ko" />
+                        <div :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" v-model:content="material_extra_info_ko" />
+                        </div>
                         <!-- <div class="text-red">{{ error.material_extra_info_ko }}</div> -->
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="remark">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
-                        <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model:content="material_extra_info_en" />
+                        <div :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`">
+                            <Quill-Editor id="remark" class="" ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" v-model:content="material_extra_info_en" />
+                        </div>
                         <!-- <div class="text-red">{{ error.material_extra_info_en }}</div> -->
                     </div>
                 </div>
@@ -146,7 +144,7 @@
                                 <!-- <div class="text-red">{{ error.file }}</div> -->
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
                                     <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" /> -->
                                     <div v-show="crossdisplay1">
                                         <a href="javascript:;" @click="remove_similar(id, similar_product_img)">
@@ -212,7 +210,7 @@
                             <div v-for="(raw_material_img, img) in raw_material_img" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
                                     <!-- <img :src="'https://back.nutri33.co.kr/public/' + raw_material_img" :alt="raw_material_img" class="product-image" /> -->
                                     <div v-show="crossdisplay2">
                                         <a href="javascript:;" @click="remove_raw(id, raw_material_img)"
@@ -306,8 +304,8 @@ export default {
             material_prequotion_en: JSON.parse(localStorage.getItem('desc')).material_prequotion_en,
             material_extra_info_ko: JSON.parse(localStorage.getItem('desc')).material_extra_info_ko,
             material_extra_info_en: JSON.parse(localStorage.getItem('desc')).material_extra_info_en,
-            daily_intake_amount_ko: JSON.parse(localStorage.getItem('desc')).daily_intake_amount_ko ,
-            daily_intake_amount_en:  JSON.parse(localStorage.getItem('desc')).daily_intake_amount_en,
+            daily_intake_amount_ko: JSON.parse(localStorage.getItem('desc')).daily_intake_amount_ko,
+            daily_intake_amount_en: JSON.parse(localStorage.getItem('desc')).daily_intake_amount_en,
             tag_ko: '',
             tag_en: '',
 
@@ -371,7 +369,7 @@ export default {
             this.material_description_en = res.data.data[0].material_description_en;
             this.material_function_ko = res.data.data[0].material_function_ko;
             this.material_function_en = res.data.data[0].material_function_en;
-            localStorage.setItem('storedData', res.data.data[0].daily_intake_amount_ko)
+            localStorage.setItem('storedData', res.data.data[0].daily_intake_amount_ko);
             // this.daily_intake_amount_ko = res.data.data[0].daily_intake_amount_ko;
             this.daily_intake_amount_en = res.data.data[0].daily_intake_amount_en;
             this.material_prequotion_ko = res.data.data[0].material_prequotion_ko;
@@ -415,7 +413,7 @@ export default {
             this.status = res.data.data[0].status;
             //console.log(res.data.data[0]);
             // console.log(this.thumbnail_1)
-            console.log( this.daily_intake_amount_ko);
+            console.log(this.daily_intake_amount_ko);
         });
     },
     methods: {

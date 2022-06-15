@@ -23,25 +23,20 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Category">{{ $t('Blending.edit.Category') }}</label>
 
-                            <Dropdown v-model="category_id" :options="categoryDropdownValues"
-                                optionLabel="category_name_ko" optionValue="id"
-                                :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="category_id" :options="categoryDropdownValues" optionLabel="category_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Mainrawmaterial">{{ $t('Blending.edit.Mainrawmaterial') }}</label>
 
-                            <Dropdown v-model="raw_material_id" :options="RawDropdownValues"
-                                optionLabel="material_name_ko" optionValue="id"
-                                :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="raw_material_id" :options="RawDropdownValues" optionLabel="material_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="SubRawMaterial">{{ $t('Blending.edit.SubRawMaterial') }}</label>
-                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.SubRawMaterial')"
-                                v-model="sub_raw_materials" />
+                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.SubRawMaterial')" v-model="sub_raw_materials" />
                             <div class="text-red">{{ error.sub_raw_materials }}</div>
                         </div>
                     </div>
@@ -49,8 +44,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="PillTypeSelect">{{ $t('Blending.edit.PillTypeSelect') }}</label>
 
-                            <Dropdown v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko"
-                                optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+                            <Dropdown v-model="pill_id" :options="PillDropdownValues" optionLabel="name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -77,46 +71,39 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="blendingEfficacy">{{ $t('Blending.edit.blendingEfficacy') }}</label>
-                            <Textarea id="blendingEfficacy" type="text" placeholder="Efficiency (EN)"
-                                v-model="efficiency_en" />
+                            <Textarea id="blendingEfficacy" type="text" placeholder="Efficiency (EN)" v-model="efficiency_en" />
                             <div class="text-red">{{ error.efficiency_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="ingredientsdetails">{{ $t('Blending.edit.ingredientsdetails') }}</label>
-                            <Textarea id="ingredientsdetails" type="text" placeholder="Ingredients Details (KO)"
-                                v-model="ingredients_ko" />
+                            <Textarea id="ingredientsdetails" type="text" placeholder="Ingredients Details (KO)" v-model="ingredients_ko" />
                             <div class="text-red">{{ error.ingredients_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="blendingingredientsdetails">{{
-                                $t('Blending.edit.blendingingredientsdetails')
-                            }}</label>
-                            <Textarea id="blendingingredientsdetails" type="text" placeholder="Ingredients Details (EN)"
-                                v-model="ingredients_en" />
+                            <label for="blendingingredientsdetails">{{ $t('Blending.edit.blendingingredientsdetails') }}</label>
+                            <Textarea id="blendingingredientsdetails" type="text" placeholder="Ingredients Details (EN)" v-model="ingredients_en" />
                             <div class="text-red">{{ error.ingredients_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-field p-col-12 p-md-3 p-lg-6">
                             <label for="productdescription">{{ $t('Blending.edit.productdescription') }}</label>
-                            <Quill-Editor id="productdescription" ref="myQuillEditor"
-                                contentType="html" placeholder="Product description (KO)"
-                                 v-model:content="description_ko" />
+                            <div :class="`${error.description_ko ? 'p-invalid' : ''}`">
+                                <Quill-Editor id="productdescription" ref="myQuillEditor" contentType="html" placeholder="Product description (KO)" v-model:content="description_ko" />
+                            </div>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap-small">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="blendingproductdescription">{{
-                                $t('Blending.edit.blendingproductdescription')
-                            }}</label>
-                            <Quill-Editor id="blendingproductdescription" ref="myQuillEditor"
-                                contentType="html" placeholder="Product description (EN)"
-                                v-model:content="description_en" />
+                            <label for="blendingproductdescription">{{ $t('Blending.edit.blendingproductdescription') }}</label>
+                            <div :class="`${error.description_en ? 'p-invalid' : ''}`">
+                                <Quill-Editor id="blendingproductdescription" ref="myQuillEditor" contentType="html" placeholder="Product description (EN)" v-model:content="description_en" />
+                            </div>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -130,23 +117,20 @@
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!detail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ detail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChange"
-                                    :disabled="isdisable" multiple/>
-                                <Button label="파일을 선택" class="SelectBtn n-wrap"
-                                    :disabled="isdisable" />
+                                <input type="file" class="select-file" v-on:change="onFileChange" :disabled="isdisable" multiple />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" :disabled="isdisable" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(detail_image, img) in detail_image" :key="img">
                                     <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                                    <div class="raw-image" style="margin:5px;" v-if="detail_image != '/uploads/blending/null'">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image"
-                                            :alt="detail_image" class="product-image" />
+                                    <div class="raw-image" style="margin: 5px" v-if="detail_image != '/uploads/blending/null'">
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" :alt="detail_image" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + detail_image"
                                             :alt="detail_image" class="product-image" /> -->
                                         <div v-show="crossdisplay3">
-                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)" > <img
-                                                    src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
-                                                    class="cross" /></a>
+                                            <a href="javascript:;" @click="remove_detail_image(id, detail_image)">
+                                                <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross"
+                                            /></a>
                                         </div>
                                     </div>
                                 </div>
@@ -163,23 +147,19 @@
                             <div :class="`${error.files ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!similar">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ similar }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChanges"
-                                    :disabled="isdisable1" multiple/>
-                                <Button label="파일을 선택" class="SelectBtn n-wrap"
-                                    :disabled="isdisable1" />
+                                <input type="file" class="select-file" v-on:change="onFileChanges" :disabled="isdisable1" multiple />
+                                <Button label="파일을 선택" class="SelectBtn n-wrap" :disabled="isdisable1" />
                             </div>
                             <div style="display: -webkit-box; justify-content: flex-end">
                                 <div v-for="(similar_image, img) in similar_image" :key="img">
                                     <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                                    <div class="raw-image" style="margin:5px;" v-if="similar_image != '/uploads/blending/null'">
-                                     <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image"
-                                            :alt="similar_image" class="product-image" />
+                                    <div class="raw-image" style="margin: 5px" v-if="similar_image != '/uploads/blending/null'">
+                                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image" :alt="similar_image" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_image"
                                             :alt="similar_image" class="product-image" /> -->
                                         <div v-show="crossdisplay4">
                                             <a href="javascript:;" @click="remove_similar_image(id, similar_image)">
-                                                <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
-                                                    class="cross" />
+                                                <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross" />
                                             </a>
                                         </div>
                                     </div>
@@ -202,8 +182,7 @@
                             </div>
                             <div v-if="thumbnail1">
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1"
-                                    :alt="thumbnail1" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1" :alt="thumbnail1" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail1"
                                     :alt="thumbnail1" class="product-image" /> -->
                             </div>
@@ -224,8 +203,7 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2"
-                                    :alt="thumbnail2" class="product-image" />
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" :alt="thumbnail2" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail2"
                                     :alt="thumbnail2" class="product-image" /> -->
                             </div>
@@ -248,13 +226,11 @@
             </div>
 
             <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
-                <Button :label="$t('button.save')" icon="pi pi-save" iconPos="left"
-                    class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
+                <Button :label="$t('button.save')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editBanner"></Button>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
-                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
                 </div>
             </div>
         </form>
@@ -406,7 +382,6 @@ export default {
                 this.crossdisplay4 = false;
             }
 
-
             this.similar_image = res.data.data[0].similar_image_path.toString().split(',');
             this.thumbnail1 = res.data.data[0].thumbnail_1_path;
             this.thumbnail2 = res.data.data[0].thumbnail_2_path;
@@ -442,10 +417,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.file = files[0];
-            if(files.length > 5 ){
-                 alert("5 이미지 선택");
+            if (files.length > 5) {
+                alert('5 이미지 선택');
                 return;
-            } 
+            }
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.file.name)) {
                 this.render1 = true;
@@ -453,11 +428,9 @@ export default {
             } else {
                 this.render1 = false;
                 this.detail = this.file.name;
-                Array.from(files).forEach(element => {
-               this.formData.append('detail_image', element)
-                
-                
-            });
+                Array.from(files).forEach((element) => {
+                    this.formData.append('detail_image', element);
+                });
                 //this.formData.append('detail_image', files[0]);
             }
             this.fileExtension = this.detail.replace(/^.*\./, '');
@@ -467,10 +440,10 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.files = files[0];
-           if(files.length > 5 ){
-                 alert("5 이미지 선택");
+            if (files.length > 5) {
+                alert('5 이미지 선택');
                 return;
-            } 
+            }
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.files.name)) {
                 this.render2 = true;
@@ -478,11 +451,9 @@ export default {
             } else {
                 this.render2 = false;
                 this.similar = this.files.name;
-                 Array.from(files).forEach(element1 => {
-               this.formData.append('similar_image', element1)
-                
-                
-            });
+                Array.from(files).forEach((element1) => {
+                    this.formData.append('similar_image', element1);
+                });
                 //this.formData.append('similar_image', files[0]);
             }
             this.filesExtension = this.similar.replace(/^.*\./, '');
@@ -491,8 +462,7 @@ export default {
         onFileChangethum(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
-            
-            
+
             this.filesaddthumnail = files[0];
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.filesaddthumnail.name)) {
@@ -547,7 +517,7 @@ export default {
             // console.log(similar_product_img)
             let detail_image_arr = detail_image.toString().split('/');
             let image_name = detail_image_arr[3];
-             console.log(detail_image_arr[3])
+            console.log(detail_image_arr[3]);
             if (confirm('정말 삭제하시겠습니까?')) {
                 axios({ method: 'post', url: '/admin/blending/detailsImageDelete', data: { blending_id: id, image_name: image_name } })
                     .then(function (response) {
@@ -626,12 +596,12 @@ export default {
                 this.formData.append('description_en', this.description_en);
 
                 this.formData.append('status', this.status);
-                if(this.status == 'active'){
+                if (this.status == 'active') {
                     this.formData.append('exposure', '1');
-                } else if(this.status == 'inactive'){
-                this.formData.append('exposure', '0');
-                } 
-                
+                } else if (this.status == 'inactive') {
+                    this.formData.append('exposure', '0');
+                }
+
                 // this.formData.append('type', this.dropdownValueType?.name === undefined ? this.type : this.dropdownValueType?.name);
                 console.log(this.formData);
                 alert('업데이트 완료');

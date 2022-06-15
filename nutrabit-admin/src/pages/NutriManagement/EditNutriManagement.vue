@@ -73,18 +73,22 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
+                         <div :class="`${error.description_ko ? 'p-invalid' : ''}`">
                         <Quill-Editor id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
                                 contentType="html"
                             :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model:content="description_ko" />
+                            </div>
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
+                        <div :class="`${error.description_en ? 'p-invalid' : ''}`">
                         <Quill-Editor id="medium" ref="myQuillEditor"
                                 contentType="html" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
                             v-model:content="description_en" />
+                        </div>
                     </div>
                 </div>
                 <div class="p-grid p-formgrid p-mb-3 browse editer-gap">
