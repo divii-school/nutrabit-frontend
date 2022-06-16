@@ -38,7 +38,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.mobbanner') }}
-                                <span class="img-info">(파일 형식  jpg,jpeg,png )(이미지 너비 1920px and 고저 828px
+                                <span class="img-info">(파일 형식  jpg,jpeg,png )(이미지 너비 375px and 고저 375px
                                     )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
@@ -213,7 +213,7 @@ export default {
                     simgs = new Image();
                     simgs.onload = function () {
                         // alert(this.width + " " + this.height);
-                        if (this.width >= 1920 && this.height >= 828) {
+                        if (this.width >= 375 && this.height >= 375) {
 
                             self.filesName = files[0].name;
                             console.log(self.filesName)
