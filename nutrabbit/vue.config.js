@@ -3,5 +3,6 @@ module.exports = {
   filenameHashing: true,
   devServer: {
     proxy: 'https://api-nutrabbit-dev.dvconsulting.org',
+    // proxy: 'https://back.nutri33.co.kr',
 }
 };

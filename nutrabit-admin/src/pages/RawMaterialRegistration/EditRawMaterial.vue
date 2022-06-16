@@ -144,8 +144,8 @@
                                 <!-- <div class="text-red">{{ error.file }}</div> -->
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" />
-                                    <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" /> -->
+                                    <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                                    <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
                                     <div v-show="crossdisplay1">
                                         <a href="javascript:;" @click="remove_similar(id, similar_product_img)">
                                             <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross"
@@ -170,8 +170,8 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail_1" :alt="thumbnail_1" class="product-image" /> -->
+                            <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/public' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -189,8 +189,8 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail_2" :alt="thumbnail_2" class="product-image" /> -->
+                            <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/public' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
                         </div>
                     </div>
                 </div>

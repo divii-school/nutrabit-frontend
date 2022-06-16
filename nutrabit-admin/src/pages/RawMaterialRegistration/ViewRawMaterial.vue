@@ -162,8 +162,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(similar_product_img, img) in similar_product_img" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" /> -->
+                            <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -174,8 +174,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" /> -->
+                            <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -186,8 +186,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" /> -->
+                            <!-- <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
                         </div>
                     </div>
                 </div>

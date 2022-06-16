@@ -144,6 +144,7 @@
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/>
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/> -->
                         </div>
                     </div>
                 </div>
@@ -154,6 +155,7 @@
                         <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage"/>
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage"/> -->
                         </div>
                     </div>
                 </div>
@@ -164,6 +166,7 @@
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" />
+                             <!-- <img :src="'https://back.nutri33.co.kr/public/' + mydata.thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -174,6 +177,7 @@
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + mydata.thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
