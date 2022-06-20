@@ -1117,6 +1117,7 @@
 "active":"활성",
 "inactive":"비활성",
 "pending":"미답변",
+"completed":"답변",
 "not_answered":"미답변",
 "answered":"답변",
 "Reply":"댓글",

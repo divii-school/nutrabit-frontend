@@ -127,12 +127,15 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('Application.details.status') }}</label>
+                            
                             <Dropdown
                             :class="`${error.status ? 'p-invalid' : ''}`"
-                                v-model="dropdownValue"
+                                v-model="status_by_admin"
                                 :options="dropdownValues"
                                 optionLabel="code"
+                                
                                 :placeholder="$t('Application.details.status')"
+                                
                             />
                             <div class="text-red">{{ error.status }}</div>
                         </div>
@@ -145,7 +148,7 @@
                             <div class="textbox">
                                 <Quill-Editor style="height: 100px;" :placeholder="$t('Application.details.answer')"  id="answer_by_admin"
                                     v-model:content="answer_by_admin" ref="myQuillEditor" :options="editorOption"
-                                    contentType="text" />
+                                    contentType="html" />
                             </div>
                             <!-- <Textarea type="text" :placeholder="$t('Application.details.answer')" id="answer_by_admin"
                                 v-model="answer_by_admin"></Textarea> -->
@@ -204,7 +207,7 @@ export default {
             Application_mode: '',
             additional_request: '',
             status_by_admin: '',
-            answer_by_admin: '',
+            answer_by_admin: JSON.parse(localStorage.getItem('desc')).answer_by_admin,
             memo_by_admin: '',
             // type:''
             sl_no: '',
@@ -240,6 +243,7 @@ export default {
             this.answer_by_admin = res.data.data[0].answer_by_admin;
             this.memo_by_admin = res.data.data[0].memo_by_admin;
             this.options = res.data.data[0].options;
+            console.log(this.status_by_admin)
             for (let i = 0; i <= this.options.length; i++) {
                 var res_option_type = this.options[i].split(':')[0]; // raw_material:1
                 var res_option_value = this.options[i].split(':')[1];
@@ -247,7 +251,7 @@ export default {
                 // console.log(res_option_value);
                 this.applicationmanagementService.optiondetails(res_option_type, res_option_value).then((res) => {
                     this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
-                    // console.log(res);
+                    // console.log(this.status_by_admin);
                 });
             }
         });
@@ -278,7 +282,7 @@ export default {
                 console.log(error);
             } else {
                 alert('업데이트 완료')
-                return axios.put('/admin/application/edit', { "id": this.$route.params.id, "answer_by_admin": this.answer_by_admin, "status_by_admin": this.status_by_admin, "memo_by_admin": this.memo_by_admin }).then((res) => {
+                return axios.put('/admin/application/edit', { "id": this.$route.params.id, "answer_by_admin": this.answer_by_admin, "status_by_admin": this.status_by_admin?.name, "memo_by_admin": this.memo_by_admin }).then((res) => {
                     this.$router.push({ name: 'appmanagement' });
                     console.log(res);
                 });

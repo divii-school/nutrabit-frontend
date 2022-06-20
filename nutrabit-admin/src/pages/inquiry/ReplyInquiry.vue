@@ -27,7 +27,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >문의 제목:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ title }}</p>
+                        <p>{{ title_ko }}</p>
                     </div>
                 </div>
 
@@ -50,7 +50,8 @@
                     <div class="p-col-12 p-md-10" v-for="(attachment, img) in attachment" :key="img">
                         
                        <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + attachment" :alt="attachment" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + attachment" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/' + attachment" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                     </div>
                 </div>
                 
@@ -67,7 +68,7 @@
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="title2" style="font-size: x-large;font-family: sans-serif;">댓글</label>
                         <div class="textbox">
-                            <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="text" />
+                            <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="html" />
                         </div>
                         <!-- <Textarea class="" type="text" placeholder="회신하다" id="title2" v-model="replyText" style="height:100px;"></Textarea> -->
                         <div class="text-red">{{}}</div>
@@ -99,7 +100,7 @@ export default {
             calendarValue: null,
             calendarValue2: null,
             business_name: '',
-            title: '',
+            title_ko: '',
             type_id: '',
             repliedBy: '',
             dropdownValue: null,
@@ -164,7 +165,7 @@ export default {
             this.createdDate = res.data.data[0].createdDate;
             this.status = res.data.data[0].status;
             this.business_name = res.data.data[0].business_name;
-            this.title = res.data.data[0].title;
+            this.title_ko = res.data.data[0].title_ko;
             this.type_id = res.data.data[0].type_id;
             this.repliedBy = res.data.data[0].repliedBy;
             this.type_title = res.data.data[0].type_title;

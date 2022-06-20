@@ -172,7 +172,7 @@
                         <strong>
                             <label for="answer">어드민 답변:</label>
                         </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.answer_by_admin }}</p>
+                        <p style="float: right; margin-right: 19%" v-html="mydata.answer_by_admin"></p>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -186,7 +186,7 @@
 
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <router-link :to="'/app-managementedit/' + $route.params.id">
-                        <Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2">
+                        <Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)">
                             <i class="pi pi-user-edit p-mr-2"></i>
                             수정
                         </Button>
@@ -276,6 +276,15 @@ export default {
             if (value) {
                 return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
             }
+        },
+         setData(id) {
+            this.applicationmanagementService.viewApplicationmanagemenList (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
     },
     mounted() {
