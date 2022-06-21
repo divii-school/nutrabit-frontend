@@ -82,8 +82,9 @@
                             <Column :header="$t('Inquiry.list.appname')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
-
-                                    {{ data.business_name }}
+                                    <span v-if="data.business_name != null">{{data.business_name }}</span>
+                                    <span v-else>{{ data.name }}</span>
+                                   
                                 </template>
                             </Column>
                             <Column :header="$t('Inquiry.list.Reopenby')">
@@ -189,6 +190,7 @@ export default {
             sortOrder: '',
             createdDate: '',
             business_name: '',
+            applicant_name:'',
             title_ko: '',
             title: '',
             type_id: '',
@@ -223,6 +225,7 @@ export default {
             this.customer1 = data;
             this.loading1 = false;
             //this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+            console.log(this.customer1);
         });
         this.loading1 = true;
         this.inquiryService

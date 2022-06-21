@@ -11,7 +11,10 @@
                     >신청자명 / 업체명:</label>
                     
                     <div class="p-col-12 p-md-10" style="display:flex;justify-content: space-between;">
-                        <p>{{ business_name }}
+                        <p v-if="business_name != null  ">{{ business_name }}
+                            
+                        </p>
+                         <p v-else>{{ applicant_name }}
                             
                         </p>
 
@@ -114,6 +117,7 @@ export default {
             statusitem: '',
             attachment: '',
             description: '',
+            applicant_name:'',
             id: '',
             replyText: '',
             createdDate:'',
@@ -165,18 +169,20 @@ export default {
             this.createdDate = res.data.data[0].createdDate;
             this.status = res.data.data[0].status;
             this.business_name = res.data.data[0].business_name;
+            this.applicant_name = res.data.data[0].name;
             this.title_ko = res.data.data[0].title_ko;
             this.type_id = res.data.data[0].type_id;
             this.repliedBy = res.data.data[0].repliedBy;
             this.type_title = res.data.data[0].type_title;
             this.attachment = res.data.data[0].attachmentURL.toString().split(',');
-
+            console.log(this.applicant_name);
             console.log(res);
             if (res.status === 'closed') {
                 this.render = false;
             } else {
                 this.render = true;
             }
+        
         });
     },
 };

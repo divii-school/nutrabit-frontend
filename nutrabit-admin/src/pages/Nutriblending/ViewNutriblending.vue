@@ -24,7 +24,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.category') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.category_id }}</p>
+                        <p>{{ mydata.category_name_ko }}</p>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.Mainraw') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.raw_material_id }}</p>
+                        <p>{{ mydata.material_name_ko }}</p>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.pilltype') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.pill_id }}</p>
+                        <p>{{ mydata.pillName_ko }}</p>
                     </div>
                 </div>
 
@@ -242,9 +242,12 @@ export default {
                 name_ko: '',
                 // name_en: '',
                 category_id: '',
+                category_name_ko:'',
                 raw_material_id: '',
+                material_name_ko:'',
                 sub_raw_materials: '',
                 pill_id: '',
+                pillName_ko:'',
                 tags_ko: '',
                 tags_en: '',
                 efficiency_ko: '',
@@ -316,10 +319,10 @@ export default {
             // console.log(res);
             this.mydata.name_ko = res.data.data[0].name_ko;
             // this.mydata.name_en = res.data.data[0].name_en;
-            this.mydata.category_id = res.data.data[0].category_id;
-            this.mydata.raw_material_id = res.data.data[0].raw_material_id;
+            this.mydata.category_name_ko = res.data.data[0].category_name_ko;
+            this.mydata.material_name_ko = res.data.data[0].material_name_ko;
             this.mydata.sub_raw_materials = res.data.data[0].sub_raw_materials;
-            this.mydata.pill_id = res.data.data[0].pill_id;
+            this.mydata.pillName_ko = res.data.data[0].pillName_ko;
             this.mydata.tags_ko = res.data.data[0].tags_ko;
             this.mydata.tags_en = res.data.data[0].tags_en;
             this.mydata.efficiency_ko = res.data.data[0].efficiency_ko;

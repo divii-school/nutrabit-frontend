@@ -259,6 +259,23 @@ export default {
         this.rawService = new RawService();
     },
     mounted() {
+        if(localStorage.getItem("subCategoryID")!='' ){
+            this.sub_category_id = localStorage.getItem("subCategoryID");
+            this.searchRaw();
+        }else{
+        this.rawService
+            .getRawCategoryDropdown()
+            .then((data) => {
+                this.dropdownValues = data;
+                // this.products = data;
+                this.loading1 = false;
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                console.log(this.dropdownValues);
+                console.log(data);
+            })
+        }
+       
+      
         
         if(localStorage.getItem("sData")!='' ){
             this.searchData = localStorage.getItem("sData");
@@ -274,18 +291,9 @@ export default {
                 this.loading1 = false;
                 //this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
             })
-        this.rawService
-            .getRawCategoryDropdown()
-            .then((data) => {
-                this.dropdownValues = data;
-                // this.products = data;
-                this.loading1 = false;
-                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
-                console.log(this.dropdownValues);
-                console.log(data);
-            })
+        
 
-
+    
         
             .catch((err) => {
                 this.loading1 = false;
@@ -383,6 +391,7 @@ export default {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 localStorage.setItem("sData", this.searchData)
+                localStorage.setItem("subCategoryID", this.sub_category_id)
                 // if(this.from_date!=''){
                 //     this.searchdate = this.addDay(this.from_date)
                 // } else {
