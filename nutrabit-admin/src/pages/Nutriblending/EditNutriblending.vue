@@ -35,9 +35,16 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
-                            <label for="SubRawMaterial">{{ $t('Blending.edit.SubRawMaterial') }}</label>
-                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.SubRawMaterial')" v-model="sub_raw_materials" />
-                            <div class="text-red">{{ error.sub_raw_materials }}</div>
+                            <label for="SubRawMaterial">{{ $t('Blending.edit.subrawmaterial_ko') }}</label>
+                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.subrawmaterial_ko')" v-model="sub_raw_materials_ko" />
+                            <div class="text-red">{{ error.sub_raw_materials_ko }}</div>
+                        </div>
+                    </div>
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            <label for="SubRawMaterial">{{ $t('Blending.edit.subraw_en') }}</label>
+                            <InputText id="SubRawMaterial" type="text" :placeholder="$t('Blending.edit.subraw_en')" v-model="sub_raw_materials_en" />
+                            <div class="text-red">{{ error.sub_raw_materials_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -284,7 +291,8 @@ export default {
             name_en: '',
             category_id: '',
             raw_material_id: '',
-            sub_raw_materials: '',
+            sub_raw_materials_ko:'',
+            sub_raw_materials_en: '',
             pill_id: '',
             tags_ko: '',
             tags_en: '',
@@ -344,7 +352,8 @@ export default {
             // this.type = res.data.data[0].type;
             this.category_id = res.data.data[0].category_id;
             this.raw_material_id = res.data.data[0].raw_material_id;
-            this.sub_raw_materials = res.data.data[0].sub_raw_materials;
+            this.sub_raw_materials_ko = res.data.data[0].sub_raw_materials_ko;
+            this.sub_raw_materials_en = res.data.data[0].sub_raw_materials_en;
             this.pill_id = res.data.data[0].pill_id;
             this.tags_ko = res.data.data[0].tags_ko;
             this.tags_en = res.data.data[0].tags_en;
@@ -397,7 +406,8 @@ export default {
                 (this.name_en = null),
                 (this.category_id = null),
                 (this.raw_material_id = null),
-                (this.sub_raw_materials = null),
+                (this.sub_raw_materials_ko = null),
+                (this.sub_raw_materials_en = null),
                 (this.pill_id = null),
                 (this.tags_ko = null),
                 (this.tags_en = null),
@@ -553,7 +563,8 @@ export default {
                 name_en: this.name_en,
                 category_id: this.category_id.toString(),
                 raw_material_id: this.raw_material_id.toString(),
-                sub_raw_materials: this.sub_raw_materials,
+                sub_raw_materials_ko: this.sub_raw_materials_ko,
+                sub_raw_materials_en: this.sub_raw_materials_en,
                 pill_id: this.pill_id.toString(),
                 tags_ko: this.tags_ko,
                 tags_en: this.tags_en,
@@ -583,7 +594,8 @@ export default {
                 this.formData.append('name_en', this.name_en);
                 this.formData.append('category_id', this.category_id);
                 this.formData.append('raw_material_id', this.raw_material_id);
-                this.formData.append('sub_raw_materials', this.sub_raw_materials);
+                this.formData.append('sub_raw_materials_ko', this.sub_raw_materials_ko);
+                this.formData.append('sub_raw_materials_en', this.sub_raw_materials_en);
                 this.formData.append('pill_id', this.pill_id);
                 this.formData.append('tags_ko', this.tags_ko);
                 this.formData.append('tags_en', this.tags_en);

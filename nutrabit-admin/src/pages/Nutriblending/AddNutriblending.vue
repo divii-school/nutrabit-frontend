@@ -40,9 +40,16 @@
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
-                            <label for="title2">{{ $t('Blending.list.subraw') }}</label>
-                            <InputText :class="`${error.sub_raw_materials ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Blending.list.subraw')" id="title2" v-model="sub_raw_materials"> </InputText>
-                            <div class="text-red">{{ error.sub_raw_materials }}</div>
+                            <label for="title2">{{ $t('Blending.list.subrawmaterial_ko') }}</label>
+                            <InputText :class="`${error.sub_raw_materials_ko ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Blending.list.subrawmaterial_ko')" id="title2" v-model="sub_raw_materials_ko"> </InputText>
+                            <div class="text-red">{{ error.sub_raw_materials_ko }}</div>
+                        </div>
+                    </div>
+                    <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-5 p-mb-lg-0 p-field">
+                            <label for="title2">{{ $t('Blending.list.subraw_en') }}</label>
+                            <InputText :class="`${error.sub_raw_materials_en ? 'p-invalid' : ''}`" type="text" :placeholder="$t('Blending.list.subraw_en')" id="title2" v-model="sub_raw_materials_en"> </InputText>
+                            <div class="text-red">{{ error.sub_raw_materials_en }}</div>
                         </div>
                     </div>
 
@@ -251,7 +258,8 @@ export default {
             name_en: '',
             category_id: '',
             raw_material_id: '',
-            sub_raw_materials: '',
+            sub_raw_materials_ko: '',
+            sub_raw_materials_en: '',
             pill_id: '',
             tags_ko: '',
             tags_en: '',
@@ -329,7 +337,8 @@ export default {
                 (this.name_en = null),
                 (this.category_id = null),
                 (this.raw_material_id = null),
-                (this.sub_raw_materials = null),
+                (this.sub_raw_materials_ko = null),
+                (this.sub_raw_materials_en = null),
                 (this.pill_id = null),
                 (this.tags_ko = null),
                 (this.tags_en = null),
@@ -433,7 +442,8 @@ export default {
                 name_en: this.name_en,
                 category_id: this.category_id.toString(),
                 raw_material_id: this.raw_material_id.toString(),
-                sub_raw_materials: this.sub_raw_materials,
+                sub_raw_materials_ko: this.sub_raw_materials_ko,
+                sub_raw_materials_en: this.sub_raw_materials_en,
                 pill_id: this.pill_id.toString(),
                 tags_ko: this.tags_ko,
                 tags_en: this.tags_en,
@@ -458,7 +468,8 @@ export default {
                 this.formData.append('name_en', this.name_en);
                 this.formData.append('category_id', this.category_id);
                 this.formData.append('raw_material_id', this.raw_material_id);
-                this.formData.append('sub_raw_materials', this.sub_raw_materials);
+                this.formData.append('sub_raw_materials_ko', this.sub_raw_materials_ko);
+                this.formData.append('sub_raw_materials_en', this.sub_raw_materials_en);
                 this.formData.append('pill_id', this.pill_id);
                 this.formData.append('tags_ko', this.tags_ko);
                 this.formData.append('tags_en', this.tags_en);

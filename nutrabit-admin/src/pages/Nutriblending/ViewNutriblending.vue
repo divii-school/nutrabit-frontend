@@ -38,13 +38,23 @@
                     </div>
                 </div>
 
+                 <div class="p-field p-grid">
+                    <label
+                        for="sub_raw_materials"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Blending.details.subrawmaterial_ko') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.sub_raw_materials_ko }}</p>
+                    </div>
+                </div>
+
                 <div class="p-field p-grid">
                     <label
                         for="sub_raw_materials"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.submaterial') }}:</label>
+                    >{{ $t('Blending.details.subraw_en') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.sub_raw_materials }}</p>
+                        <p>{{ mydata.sub_raw_materials_en }}</p>
                     </div>
                 </div>
 
@@ -245,7 +255,8 @@ export default {
                 category_name_ko:'',
                 raw_material_id: '',
                 material_name_ko:'',
-                sub_raw_materials: '',
+                sub_raw_materials_ko: '',
+                sub_raw_materials_en: '',
                 pill_id: '',
                 pillName_ko:'',
                 tags_ko: '',
@@ -321,7 +332,8 @@ export default {
             // this.mydata.name_en = res.data.data[0].name_en;
             this.mydata.category_name_ko = res.data.data[0].category_name_ko;
             this.mydata.material_name_ko = res.data.data[0].material_name_ko;
-            this.mydata.sub_raw_materials = res.data.data[0].sub_raw_materials;
+            this.mydata.sub_raw_materials_ko = res.data.data[0].sub_raw_materials_ko;
+            this.mydata.sub_raw_materials_en = res.data.data[0].sub_raw_materials_en;
             this.mydata.pillName_ko = res.data.data[0].pillName_ko;
             this.mydata.tags_ko = res.data.data[0].tags_ko;
             this.mydata.tags_en = res.data.data[0].tags_en;
