@@ -19,7 +19,7 @@ export default class BlendingService {
                 // sortOrder: 'desc',
             })
             .then((res) => res.data.data.blendingData);
-    }
+    } 
     async getBlendingCategoryDropdown() {
         return await axios.get(`/admin/product_category/category2Dropdown/`, {}).then((res) => res.data.data.productCategory);
     }

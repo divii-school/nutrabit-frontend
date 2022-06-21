@@ -132,10 +132,10 @@
                             :class="`${error.status ? 'p-invalid' : ''}`"
                                 v-model="status_by_admin"
                                 :options="dropdownValues"
+                                
                                 optionLabel="code"
-                                
                                 :placeholder="$t('Application.details.status')"
-                                
+                                optionValue="name"
                             />
                             <div class="text-red">{{ error.status }}</div>
                         </div>

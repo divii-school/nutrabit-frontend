@@ -29,8 +29,9 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="Mainrawmaterial">{{ $t('Blending.edit.Mainrawmaterial') }}</label>
-
                             <Dropdown v-model="raw_material_id" :options="RawDropdownValues" optionLabel="material_name_ko" optionValue="id" :placeholder="$t('Banner.placeholder.select')" />
+
+                            
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
@@ -351,7 +352,7 @@ export default {
             this.name_en = res.data.data[0].name_en;
             // this.type = res.data.data[0].type;
             this.category_id = res.data.data[0].category_id;
-            this.raw_material_id = res.data.data[0].raw_material_id;
+            this.raw_material_id = parseInt(res.data.data[0].raw_material_id);
             this.sub_raw_materials_ko = res.data.data[0].sub_raw_materials_ko;
             this.sub_raw_materials_en = res.data.data[0].sub_raw_materials_en;
             this.pill_id = res.data.data[0].pill_id;
@@ -395,7 +396,7 @@ export default {
             this.thumbnail1 = res.data.data[0].thumbnail_1_path;
             this.thumbnail2 = res.data.data[0].thumbnail_2_path;
             this.status = res.data.data[0].status;
-            console.log(res.data.data[0]);
+            console.log( this.raw_material_id);
         });
     },
     methods: {
