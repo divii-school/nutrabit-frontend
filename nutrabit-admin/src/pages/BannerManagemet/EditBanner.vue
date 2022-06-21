@@ -30,7 +30,7 @@
                                  <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName1"
                                     alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName1"
-                                    :alt="fileName1" class="product-image" /> -->
+                                    alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <div class="text-red">{{ error.file }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" alt="이미지를 사용할 수 없음"
                                 class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName2" :alt="fileName2"
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName2" alt="이미지를 사용할 수 없음"
                                 class="product-image" /> -->
                         </div>
                     </div>

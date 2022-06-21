@@ -133,7 +133,7 @@
                                     <div class="raw-image" style="margin: 5px" v-if="detail_image != '/uploads/blending/null'">
                                         <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + detail_image"
-                                            :alt="detail_image" class="product-image" /> -->
+                                            alt="이미지를 사용할 수 없음" class="product-image" /> -->
                                         <div v-show="crossdisplay3">
                                             <a href="javascript:;" @click="remove_detail_image(id, detail_image)">
                                                 <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross"
@@ -163,7 +163,7 @@
                                     <div class="raw-image" style="margin: 5px" v-if="similar_image != '/uploads/blending/null'">
                                         <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_image" alt="이미지를 사용할 수 없음" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_image"
-                                            :alt="similar_image" class="product-image" /> -->
+                                            alt="이미지를 사용할 수 없음" class="product-image" /> -->
                                         <div v-show="crossdisplay4">
                                             <a href="javascript:;" @click="remove_similar_image(id, similar_image)">
                                                 <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross" />
@@ -191,7 +191,7 @@
                                 <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail1"
-                                    :alt="thumbnail1" class="product-image" /> -->
+                                    alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail2"
-                                    :alt="thumbnail2" class="product-image" /> -->
+                                    :alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </div>
                         </div>
                     </div>

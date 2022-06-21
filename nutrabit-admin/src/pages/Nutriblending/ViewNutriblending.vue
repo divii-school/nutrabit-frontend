@@ -154,7 +154,7 @@
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/>
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/> -->
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/> -->
                         </div>
                     </div>
                 </div>
