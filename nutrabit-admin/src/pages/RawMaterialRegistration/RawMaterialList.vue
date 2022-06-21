@@ -259,10 +259,10 @@ export default {
         this.rawService = new RawService();
     },
     mounted() {
-        if(localStorage.getItem("subCategoryID")!='' ){
-            this.sub_category_id = localStorage.getItem("subCategoryID");
-            this.searchRaw();
-        }else{
+        // if(localStorage.getItem("subCategoryID")!='' ){
+        //     this.sub_category_id = localStorage.getItem("subCategoryID");
+        //     this.searchRaw();
+        // }else{
         this.rawService
             .getRawCategoryDropdown()
             .then((data) => {
@@ -273,7 +273,7 @@ export default {
                 console.log(this.dropdownValues);
                 console.log(data);
             })
-        }
+        // }
        
       
         
