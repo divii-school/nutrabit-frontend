@@ -142,7 +142,7 @@ export default {
           if (res.status == 200) {
             // console.log("res", res);
             this.nutriList = res.data.data.blendingData;
-            // console.log("nutriList", this.nutriList);
+            console.log("nutriList", this.nutriList);
           }
         })
         .catch((err) => {

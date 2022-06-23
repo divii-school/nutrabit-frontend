@@ -59,6 +59,11 @@
                             :alt="mydata.category_image"
                             class="product-image"
                         />
+                        <!-- <img
+                            :src="'https://back.nutri33.co.kr/public' + mydata.category_image"
+                            :alt="mydata.category_image"
+                            class="product-image"
+                        /> -->
                     </div>
                 </div>
 
@@ -70,7 +75,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정 
                         </Button>
                     </router-link>
                 </div>

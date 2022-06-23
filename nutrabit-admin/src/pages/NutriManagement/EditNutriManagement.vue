@@ -73,19 +73,21 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
-                        <InputText id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text"
-                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model="description_ko" />
+                        <Quill-Editor id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
+                                contentType="html"
+                            :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model:content="description_ko" />
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
-                <div class="p-formgrid p-grid">
+                <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
-                        <InputText id="medium" type="text" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
-                            v-model="description_en" />
+                        <Quill-Editor id="medium" ref="myQuillEditor"
+                                contentType="html" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
+                            v-model:content="description_en" />
                     </div>
                 </div>
-                <div class="p-grid p-formgrid p-mb-3 browse">
+                <div class="p-grid p-formgrid p-mb-3 browse editer-gap">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="subtitle2">
                             {{ $t('Nutri3.Edit.EditThumbnailimg') }}
@@ -100,7 +102,7 @@
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="raw-image">
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
+                                <img :src="'https://back.nutri33.co.kr/' + thumbnail"
                                     alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                             </div>
@@ -126,7 +128,7 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
+                                    <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
                                         alt="이미지를 사용할 수 없음" class="product-image" />
                                     <div v-show="crossdisplay">
                                         <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img
@@ -152,7 +154,7 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
+                            <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
                                 class="product-image" />
                         </div>
                     </div>
@@ -214,8 +216,8 @@ export default {
             selectedItems: [],
             name_ko: '',
             name_en: '',
-            description_ko: '',
-            description_en: '',
+            description_ko: JSON.parse(localStorage.getItem('desc')).description_ko,
+            description_en: JSON.parse(localStorage.getItem('desc')).description_en,
             status: 'active',
             image: '',
             detail_image: '',

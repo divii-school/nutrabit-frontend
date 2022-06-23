@@ -57,13 +57,13 @@
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description1(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_ko }}</p>
+                        <p  v-html="description_ko"></p>
                     </div>
                 </div>
                 <div class="p-field p-grid">
                     <label for="fst_category_name_ko" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Nutri3.View.Description2(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ description_en }}</p>
+                        <p v-html="description_en"></p>
                     </div>
                 </div>
                 
@@ -71,7 +71,7 @@
                     <label for="thumbnail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">썸네일 이미지:</label>
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                        <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
+                        <img :src="'https://back.nutri33.co.kr/' + thumbnail" alt="이미지를 사용할 수 없음" class="product-image" />
                     </div>
                 </div>
                 <div class="p-field p-grid">
@@ -79,7 +79,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(product_sub, img) in product_sub" :key="img" style="margin:5px;  margin-left: 1%;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <img :src="'https://back.nutri33.co.kr/' + product_sub" alt="이미지를 사용할 수 없음" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     <div class="p-col-12 p-md-10">
                         <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                         <div class="raw-image">
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음" class="product-image" />
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="p-d-flex p-jc-end" style="float: left">
                    
                     <router-link :to="'/editnutri-management/' + $route.params.id"
-                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정</Button></router-link
+                        ><Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"><i class="pi pi-user-edit p-mr-2"></i> 수정 </Button></router-link
                     >
                 </div>
                 <div class="p-d-flex p-jc-end">

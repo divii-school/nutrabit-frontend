@@ -207,9 +207,9 @@ export default {
             dropdownValues: [{ name: 'pending', code: '미답변' }, { name: 'completed', code: '답변' }],
             serial: 0,
             dropdownValue: null,
-            productdropdownValues: [{ name: '내 선택', value: 'my_choice' }, { name: '명령된 블렌딩', value: 'recommanded' },{ name: '뉴트리 3.3', value: 'nutri' }],
+            productdropdownValues: [{ name: 'my choice', value: 'my_choice' }, { name: '추천 블렌딩', value: 'recommanded' },{ name: 'nutri 3.3', value: 'nutri' }],
 
-            servicedropdownValues: [{ name: '샘플 요청', value: '1' }, { name: '견적', value: '2' }, { name: 'Both', value: '3' }],
+            servicedropdownValues: [{ name: '샘플 요청', value: '1' }, { name: '견적', value: '2' }, { name: '모두', value: '3' }],
 
             calendarValue1: '',
             calendarValue2: '',

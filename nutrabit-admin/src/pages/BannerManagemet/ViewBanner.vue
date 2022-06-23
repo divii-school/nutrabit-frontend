@@ -25,11 +25,16 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >PC 배너:</label>
                     <div class="p-col-12 p-md-10">
-                        <img
+                         <img
                             :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.desktop_banner"
                             :alt="mydata.desktop_banner"
                             class="product-image"
                         />
+                        <!-- <img
+                            :src="'https://back.nutri33.co.kr/public/' + mydata.desktop_banner"
+                            :alt="mydata.desktop_banner"
+                            class="product-image"
+                        /> -->
                     </div>
                 </div>
 
@@ -44,6 +49,11 @@
                             :alt="mydata.mobile_banner"
                             class="product-image"
                         />
+                        <!-- <img
+                            :src="'https://back.nutri33.co.kr/public/' + mydata.mobile_banner"
+                            :alt="mydata.mobile_banner"
+                            class="product-image"
+                        /> -->
                     </div>
                 </div>
 
@@ -91,7 +101,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정 
                         </Button>
                     </router-link>
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i>{{$t('button.delete')}}</Button> -->
