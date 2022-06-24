@@ -35,10 +35,12 @@
           </a>
           <div class="address">
             <ul>
-              <li>{{$t('footer.address.co_name')}}</li>
-              <li>{{$t('footer.address.ceo')}}</li>
+              <li>{{$t('footer.address.co_name')}} <span class="onMobile"> | {{$t('footer.address.ceo')}}</span></li>
+              <li class="offMobile">{{$t('footer.address.ceo')}}</li>
               <li class='active'>{{$t('footer.address.reg_no')}} </li>
-              <li class='active'>{{$t('footer.address.phone_no')}}<a class="phno" href="tel:070-4306-5678">070-4306-5678</a></li>
+            </ul>
+            <ul>
+              <li class='active active2'>{{$t('footer.address.phone_no')}}<a class="phno" href="tel:070-4306-5678">070-4306-5678</a></li>
               <li>{{$t('footer.address.mail_order')}}</li>
             </ul>
             <p> {{$t('footer.address.location')}} </p> 

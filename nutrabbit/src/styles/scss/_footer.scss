@@ -147,6 +147,7 @@ footer {
         }
         ul {
           @include flex-align-center;
+          margin-bottom: 5px;
           @media screen and (max-width: 580px) {
             flex-wrap: wrap;
           }
@@ -161,8 +162,8 @@ footer {
                 margin-left: 15px;
               }
             @media screen and (max-width: 568px) {
-              padding-left: 13px;
-              margin-left: 13px;
+              padding-left: 0;
+              margin-left: 0;
             }
             &::before {
               position: absolute;
@@ -207,6 +208,24 @@ footer {
             // &.active{
             //     font-weight: 600;
             // }
+            .onMobile{
+              display: none;
+              @media screen and (max-width: 580px) {
+                display: block;
+                margin-left: 5px;
+                margin-bottom: 5px;
+              }
+            }
+            &.active2{
+              @media screen and (max-width: 580px) {
+                margin-bottom: 5px !important;
+              }
+            }
+          }
+          .offMobile{
+            @media screen and (max-width: 580px) {
+              display: none;
+            }
           }
         }
         p,

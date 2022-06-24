@@ -541,6 +541,7 @@ export default {
               this.cookies.set("rememberUserPassword", password);
             }
               // alert('login success:' + JSON.stringify(res.data.data));
+            alert('redirected now...');
             this.$router.push({ name: "Main" });
           }
         }
