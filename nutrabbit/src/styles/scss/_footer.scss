@@ -161,8 +161,8 @@ footer {
                 margin-left: 15px;
               }
             @media screen and (max-width: 568px) {
-              padding-left: 13px;
-              margin-left: 13px;
+              padding-left: 0;
+              margin-left: 0;
             }
             &::before {
               position: absolute;
