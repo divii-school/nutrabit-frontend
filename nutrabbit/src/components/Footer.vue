@@ -39,6 +39,7 @@
               <li>{{$t('footer.address.ceo')}}</li>
               <li class='active'>{{$t('footer.address.reg_no')}} </li>
               <li class='active'>{{$t('footer.address.phone_no')}}<a class="phno" href="tel:070-4306-5678">070-4306-5678</a></li>
+              <li>{{$t('footer.address.mail_order')}}</li>
             </ul>
             <p> {{$t('footer.address.location')}} </p> 
             <a href=''>{{$t('footer.address.copyright')}}</a>
