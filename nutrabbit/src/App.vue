@@ -33,11 +33,18 @@ export default {
   setup() {
     provide("common", common);
   },
+  created() {
+    var get_current_url = window.location.pathname;
+    console.log(get_current_url);
+  },
   mounted() {
     window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
     console.log(Kakao.isInitialized());
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
+    };
+     window["backButtonHandeler"] = (res) => {
+      this.backButtonHandelerAction(res);
     };
   },
   updated() {
@@ -46,6 +53,12 @@ export default {
     // alert('mobile:==' + navigator.userAgentData.mobile);
     // console.log(navigator.userAgentData.platform);
     // console.log(navigator.userAgentData.mobile);
+    window["sendPushNotificationData"] = (res) => {
+      this.sendPushNotificationData(res);
+    };
+     window["backButtonHandeler"] = (res) => {
+      this.backButtonHandelerAction(res);
+    };
   },
   methods: {
     sendPushNotificationData(res) {
@@ -57,6 +70,10 @@ export default {
         return false;
       }
     },
+    backButtonHandelerAction(res) {
+      alert('backButtonHandeler-->');
+      alert('backButtonHandeler-->' + res);
+    }
   },
 };
 </script>

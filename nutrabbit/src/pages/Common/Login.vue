@@ -378,6 +378,7 @@ export default {
           resData.loginVia
         );
         setTimeout(() => {
+          alert('kakao login with: '+ resData.emailId);
           self.socialLogin(resData.emailId);
         }, 1500);
       } else {

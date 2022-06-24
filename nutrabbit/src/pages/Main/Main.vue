@@ -170,6 +170,7 @@ export default {
   },
   created() {
     this.MainService = new MainService();
+    
   },
   mounted() {
     this.allBanner();
@@ -181,6 +182,13 @@ export default {
     localStorage.removeItem("option");
     localStorage.removeItem("etc");
     localStorage.removeItem("storage_box");
+
+     window["sendPushNotificationData"] = (res) => {
+      this.sendPushNotificationData(res);
+    };
+     window["backButtonHandeler"] = (res) => {
+      this.backButtonHandelerAction(res);
+    };
   },
   // updated() {
   //   alert('Platform: -' + this.isPlatMobile);
@@ -242,6 +250,20 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+
+    sendPushNotificationData(res) {
+      if (res) {
+        alert("sendPushNotificationData");
+        alert(JSON.stringify(res));
+        console.log(res);
+      } else {
+        return false;
+      }
+    },
+    backButtonHandelerAction(res) {
+      alert('backButtonHandeler-->');
+      alert('backButtonHandeler-->' + res);
+    }
   },
 };
 </script>

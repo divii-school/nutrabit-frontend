@@ -61,10 +61,10 @@
                 :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{ $t("customer.tag.AnswerContent") }}</h4>
-                <p class="ml-2">
+                <!-- <p class="ml-2">
                   {{ item.replyText }}
-                </p>
-                <div></div>
+                </p> -->
+                <div class="ml-2" v-html="item.replyText"></div>
               </div>
             </div>
           </template>
