@@ -69,7 +69,7 @@
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                            
-                             {{ data.username }}
+                             {{ data.name }}
                         </template>
                     </Column>
                     <Column :header="$t('Business.list.Email')" >

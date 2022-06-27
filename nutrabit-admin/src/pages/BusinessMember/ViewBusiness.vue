@@ -250,7 +250,7 @@ export default {
              if (value) {
                  console.log()
             // return moment(String(value)).locale('ko').format('LLL')
-            return moment(String(value)).format('YYYY/MM/DD     h:mm:ss')
+            return moment(String(value)).format('YYYY/MM/DD     LT')
             }
         },
         formatDate(value) {
