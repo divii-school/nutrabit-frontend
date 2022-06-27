@@ -145,8 +145,8 @@
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
                                     <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" />
-                                    <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" /> -->
-                                    <div v-show="crossdisplay1">
+                                    <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" />
+                                    <div v-show="crossdisplay1"> -->
                                         <a href="javascript:;" @click="remove_similar(id, similar_product_img)">
                                             <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png" class="cross"
                                         /></a>
