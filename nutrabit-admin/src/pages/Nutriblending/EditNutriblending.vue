@@ -213,7 +213,7 @@
                                 <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + thumbnail2"
-                                    :alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                                    alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </div>
                         </div>
                     </div>

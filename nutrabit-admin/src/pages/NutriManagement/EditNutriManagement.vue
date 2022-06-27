@@ -106,10 +106,10 @@
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="raw-image">
-                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
-                                    alt="이미지를 사용할 수 없음" class="product-image" />
-                                <!-- <img :src="'https://back.nutri33.co.kr/' + thumbnail"
+                                <!-- <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
                                     alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                                <img :src="'https://back.nutri33.co.kr/' + thumbnail"
+                                    alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                             </div>
                         </div>
@@ -134,10 +134,10 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
-                                        alt="이미지를 사용할 수 없음" class="product-image" />
-                                        <!-- <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
+                                    <!-- <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
                                         alt="이미지를 사용할 수 없음" class="product-image" /> -->
+                                        <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
+                                        alt="이미지를 사용할 수 없음" class="product-image" />
                                     <div v-show="crossdisplay">
                                         <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img
                                                 src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
@@ -162,10 +162,10 @@
                         </div>
                         <div>
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
-                                class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
+                             <!-- <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
                                 class="product-image" /> -->
+                            <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
+                                class="product-image" />
                         </div>
                     </div>
                 </div>

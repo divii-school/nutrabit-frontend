@@ -29,7 +29,7 @@
                             <template #body="{ data }">
                                 <span class="p-column-title">Image</span>
                                  <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.pillImage" alt="이미지를 사용할 수 없음" class="product-image" />
-                                <!-- <img :src="'https://back.nutri33.co.kr/public' + data.pillImage" :alt="data.pillImage" class="product-image" /> -->
+                                <!-- <img :src="'https://back.nutri33.co.kr/public' + data.pillImage" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </template>
                         </Column>
                         <Column field="name" :header="$t('PillType.list.name')" >

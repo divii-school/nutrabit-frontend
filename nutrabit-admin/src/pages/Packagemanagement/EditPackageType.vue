@@ -36,7 +36,7 @@
                         <div class="raw-image" style="float:right;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                              <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + image" alt="이미지를 사용할 수 없음" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public' + image" :alt="image" class="product-image" /> -->
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + image" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             <!-- <a href="javascript:;" @click="remove_image(id,image)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                         </div>
                     </div>

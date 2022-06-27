@@ -9,7 +9,8 @@
             <div class="p-grid p-fluid">
                 <div class="p-col-12">
                     <h5>{{ $t('upload-doc.upload_doc_header') }}</h5>
-                    <div class="sample"> <a href="https://api-nutrabbit-dev.dvconsulting.org/public/sample_file/recommended_blending.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드 </a>
+                    <div class="sample"> 
+                        <a href="https://api-nutrabbit-dev.dvconsulting.org/public/sample_file/recommended_blending.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드 </a>
                        
                           <!-- <a href="https://back.nutri33.co.kr/public/sample_file/recommended_blending.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드 </a> -->
                     </div>

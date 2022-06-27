@@ -51,7 +51,7 @@
                         />
                         <!-- <img
                             :src="'https://back.nutri33.co.kr/public/' + mydata.mobile_banner"
-                            :alt="이미지를 사용할 수 없음"
+                            alt="이미지를 사용할 수 없음"
                             class="product-image"
                         /> -->
                     </div>
