@@ -71,8 +71,6 @@
                 <MainProductCard :item="item" @login="accessPage" />
               </li>
             </ul>
-
-            <!-- <button type="button" class="btn-small-solid green main-page-btn" @click="mbbackButtonAction"> Back button test </button> -->
           </div>
         </div>
       </div>
@@ -211,15 +209,6 @@ export default {
       this.isModalVisible = false;
     },
 
-    sendPushNotificationData(res) {
-      if (res) {
-        alert("sendPushNotificationData");
-        alert(JSON.stringify(res));
-        console.log(res);
-      } else {
-        return false;
-      }
-    },
   },
 };
 </script>

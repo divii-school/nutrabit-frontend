@@ -30,15 +30,8 @@ export default {
     Footer,
     // KakaoChat,
   },
-  beforeRouteEnter(to, from, next) {
-    console.log(from);
-  },
   setup() {
     provide("common", common);
-  },
-  created() {
-    var get_current_url = window.location.pathname;
-    console.log(get_current_url);
   },
   mounted() {
     window.Kakao.init("5d14c5e0ea3ead3c0683355cba9eda57");
@@ -46,26 +39,15 @@ export default {
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
-    window["backButtonHandeler"] = (res) => {
-      alert('backButtonHandelerapp-->');
-      this.backButtonHandelerAction(res);
-    };
     // if(window.history.length )
   },
   updated() {
     const histroyCount = window.history.state.position;
     console.log('History ---> ', window.history.state.position)
     if(histroyCount < 2) {
-      alert('history last')
       window.parent.postMessage("lastHistory", "*");
     }
   },
-  // beforeRouteEnter(to, from, next) {
-  //   console.log('History ---> ', window.history.length)
-  //       next((vm) => {
-  //           vm.from = from;
-  //       });
-  //   },
   methods: {
     sendPushNotificationData(res) {
       if (res) {
@@ -76,10 +58,6 @@ export default {
         return false;
       }
     },
-    backButtonHandelerAction(res) {
-      alert('backButtonHandeleraApp-->');
-      alert('backButtonHandeler-->' + res);
-    }
   },
 };
 </script>
