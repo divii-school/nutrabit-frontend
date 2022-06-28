@@ -2,44 +2,24 @@
   <div class="main-page">
     <div class="main-slider">
       <!-- slider for desktop -->
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="false"
-        :modules="modules"
-        :speed="1000"
-        class="mySwiper mySwiperDesktop"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperDesktop">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link" target="_blank">
-            <img
-              v-if="slider.desktop_banner_path"
-              :src="imgBaseUrl + slider.desktop_banner_path"
-              alt=""
-            />
+            <img v-if="slider.desktop_banner_path" :src="imgBaseUrl + slider.desktop_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
             <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
         </swiper-slide>
       </swiper>
       <!-- slider for mobile -->
-      <swiper
-        :pagination="{
-          type: 'fraction',
-        }"
-        :navigation="false"
-        :modules="modules"
-        :speed="1000"
-        class="mySwiper mySwiperMob"
-      >
+      <swiper :pagination="{
+        type: 'fraction',
+      }" :navigation="false" :modules="modules" :speed="1000" class="mySwiper mySwiperMob">
         <swiper-slide v-for="(slider, index) of MainSlider" :key="index">
           <a :href="slider.link" target="_blank">
-            <img
-              v-if="slider.mobile_banner_path"
-              :src="imgBaseUrl + slider.mobile_banner_path"
-              alt=""
-            />
+            <img v-if="slider.mobile_banner_path" :src="imgBaseUrl + slider.mobile_banner_path" alt="" />
             <img v-else src="../../assets/images/banner_place.png" alt />
             <!-- <p class="banner-title text-center">{{ slider.title }}</p> -->
           </a>
@@ -51,10 +31,7 @@
         <div class="nutri-choice with-img main_nutri">
           <span class="my-choice-title-top">my choice</span>
           <p class="title text-center">my choice</p>
-          <h2
-            class="nutri-choice-heading text-center main-page"
-            v-html="$t('main.my_choice.title')"
-          ></h2>
+          <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.my_choice.title')"></h2>
           <p class="desc text-center main-page-desc">
             {{ $t("main.my_choice.desc") }}
           </p>
@@ -79,17 +56,11 @@
           <div class="nutri-choice greenTItle main_nutri">
             <span class="my-choice-title-top">nutri 3.3</span>
             <p class="title text-center">{{ $t("main.nutri.heading") }}</p>
-            <h2
-              class="nutri-choice-heading text-center main-page"
-              v-html="$t('main.nutri.title')"
-            ></h2>
+            <h2 class="nutri-choice-heading text-center main-page" v-html="$t('main.nutri.title')"></h2>
             <p class="desc text-center main-page-desc">
               {{ $t("main.nutri.desc") }}
             </p>
-            <button
-              @click="toNutri()"
-              class="btn-small-solid green main-page-btn"
-            >
+            <button @click="toNutri()" class="btn-small-solid green main-page-btn">
               {{ $t("main.nutri.button") }}
             </button>
             <!-- <button @click="allNutidata">jhbkjbjk</button> -->
@@ -100,20 +71,16 @@
                 <MainProductCard :item="item" @login="accessPage" />
               </li>
             </ul>
+
+            <!-- <button type="button" class="btn-small-solid green main-page-btn" @click="mbbackButtonAction"> Back button test </button> -->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    :bodytext1="$t('requireModal.text1')"
-    :bodytext2="$t('requireModal.text2')"
-    :btnText1="$t('requireModal.btn1')"
-    :btnText2="$t('requireModal.btn2')"
-    link="/login"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('requireModal.text1')"
+    :bodytext2="$t('requireModal.text2')" :btnText1="$t('requireModal.btn1')" :btnText2="$t('requireModal.btn2')"
+    link="/login" />
   <!-- <KakaoChat /> -->
 </template>
 
@@ -170,7 +137,7 @@ export default {
   },
   created() {
     this.MainService = new MainService();
-    
+
   },
   mounted() {
     this.allBanner();
@@ -182,13 +149,6 @@ export default {
     localStorage.removeItem("option");
     localStorage.removeItem("etc");
     localStorage.removeItem("storage_box");
-
-     window["sendPushNotificationData"] = (res) => {
-      this.sendPushNotificationData(res);
-    };
-     window["backButtonHandeler"] = (res) => {
-      this.backButtonHandelerAction(res);
-    };
   },
   // updated() {
   //   alert('Platform: -' + this.isPlatMobile);
@@ -260,28 +220,26 @@ export default {
         return false;
       }
     },
-    backButtonHandelerAction(res) {
-      alert('backButtonHandeler-->');
-      alert('backButtonHandeler-->' + res);
-    }
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
-.icon-grey-star{
+.icon-grey-star {
   @media screen and (max-width: 640px) {
-   height: 10px !important;
-   min-width: 10px !important;
-     background-size: auto 10px !important;
+    height: 10px !important;
+    min-width: 10px !important;
+    background-size: auto 10px !important;
   }
 }
+
 .nutri-choice-heading {
   @media screen and (max-width: 768px) {
     font-size: 24px !important;
   }
 }
+
 .nutri-choice {
   .title {
     @media screen and (max-width: 768px) {
@@ -289,18 +247,21 @@ export default {
       line-height: 19px !important;
     }
   }
+
   .nutri-choice-heading {
     @media screen and (max-width: 768px) {
       font-size: 24px !important;
     }
   }
+
   .desc {
     @media screen and (max-width: 768px) {
       font-size: 13px !important;
       line-height: 16px !important;
     }
   }
-  button{
+
+  button {
     @media screen and (max-width: 768px) {
       margin-top: 30px !important;
       font-size: 12px !important;
@@ -308,5 +269,4 @@ export default {
     }
   }
 }
-
 </style>

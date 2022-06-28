@@ -30,6 +30,9 @@ export default {
     Footer,
     // KakaoChat,
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(from);
+  },
   setup() {
     provide("common", common);
   },
@@ -43,23 +46,26 @@ export default {
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
-     window["backButtonHandeler"] = (res) => {
+    window["backButtonHandeler"] = (res) => {
+      alert('backButtonHandelerapp-->');
       this.backButtonHandelerAction(res);
     };
+    // if(window.history.length )
   },
   updated() {
-    // alert('Page url:-- ' + window.location.href);
-    // alert('Navigator:==' + navigator.userAgentData.platform);
-    // alert('mobile:==' + navigator.userAgentData.mobile);
-    // console.log(navigator.userAgentData.platform);
-    // console.log(navigator.userAgentData.mobile);
-    window["sendPushNotificationData"] = (res) => {
-      this.sendPushNotificationData(res);
-    };
-     window["backButtonHandeler"] = (res) => {
-      this.backButtonHandelerAction(res);
-    };
+    const histroyCount = window.history.state.position;
+    console.log('History ---> ', window.history.state.position)
+    if(histroyCount < 2) {
+      alert('history last')
+      window.parent.postMessage("lastHistory", "*");
+    }
   },
+  // beforeRouteEnter(to, from, next) {
+  //   console.log('History ---> ', window.history.length)
+  //       next((vm) => {
+  //           vm.from = from;
+  //       });
+  //   },
   methods: {
     sendPushNotificationData(res) {
       if (res) {
@@ -71,7 +77,7 @@ export default {
       }
     },
     backButtonHandelerAction(res) {
-      alert('backButtonHandeler-->');
+      alert('backButtonHandeleraApp-->');
       alert('backButtonHandeler-->' + res);
     }
   },
