@@ -41,7 +41,7 @@
                 <p class="ml-2">
                   <a
                     :href="
-                      'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                      imgBaseUrl +
                       item.attachment_path
                     "
                     target="_blank"
@@ -102,6 +102,7 @@ export default {
       inqId: localStorage.getItem("uid"),
       chunkPage: { chunk: 5 },
       globalLocale: "",
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
   created() {
