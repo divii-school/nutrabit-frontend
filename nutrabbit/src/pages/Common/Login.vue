@@ -188,6 +188,10 @@ export default {
       this.sendAppleAccessToken(res);
     };
     // end web view get message
+    window["backButtonHandeler"] = (res) => {
+      alert('backButtonHandeler calling..');
+      this.backButtonHandelerAction(res);
+    };
   },
 
   updated() {
@@ -260,6 +264,11 @@ export default {
           }
         });
       }
+    },
+
+    backButtonHandelerAction(res) {
+      alert('backButtonHandeler called');
+      alert('backButtonHandeler-->' + res);
     },
 
     // Webview support
@@ -378,6 +387,7 @@ export default {
           resData.loginVia
         );
         setTimeout(() => {
+          alert('kakao login with: '+ resData.emailId);
           self.socialLogin(resData.emailId);
         }, 1500);
       } else {

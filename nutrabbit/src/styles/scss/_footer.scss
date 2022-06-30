@@ -88,8 +88,7 @@ footer {
               border-left: 1px solid $grey-E0;
               border-right: 1px solid $grey-E0;
               width: 120px;
-              background: $white-1 url(@/assets/icons/icon-arrowUp.svg)
-                no-repeat right 20px center;
+              background: $white-1 url(@/assets/icons/icon-arrowUp.svg) no-repeat right 20px center;
               background-size: auto 6px;
               padding: 0 20px;
               appearance: none;
@@ -106,8 +105,7 @@ footer {
                 font-size: 10px;
                 line-height: 12px;
                 padding: 0 10px;
-                background: transparent url(@/assets/icons/icon-arrowUp.svg)
-                  no-repeat right 10px center;
+                background: transparent url(@/assets/icons/icon-arrowUp.svg) no-repeat right 10px center;
               }
             }
           }
@@ -158,12 +156,27 @@ footer {
             margin-left: 21px;
             display: inline-flex;
             @media screen and (max-width: 991px) {
-                padding-left: 15px;
-                margin-left: 15px;
-              }
-            @media screen and (max-width: 568px) {
+              padding-left: 15px;
+              margin-left: 15px;
+            }
+            @media screen and (max-width: 580px) {
               padding-left: 0;
               margin-left: 0;
+              width: 100%;
+              .onMobile {
+                position: relative;
+                margin-left: 6px;
+                padding-left: 6px;
+                &::before {
+                  position: absolute;
+                  content: "";
+                  background: $grey-4C;
+                  height: 10px;
+                  width: 1px;
+                  top: 1px;
+                  left: 0;
+                }
+              }
             }
             &::before {
               position: absolute;
@@ -177,7 +190,7 @@ footer {
                 height: 10px;
                 top: 2px;
               }
-              @media screen and (max-width: 480px) {
+              @media screen and (max-width: 580px) {
                 display: none;
               }
             }
@@ -189,7 +202,7 @@ footer {
               }
             }
             &:last-child {
-              color: $black-18;
+              color: $grey-4C;
               @media screen and (max-width: 551px) {
                 padding: 0;
                 margin: 0;
@@ -205,29 +218,29 @@ footer {
                 width: 100%;
               }
             }
-            &:nth-child(1) {
-              @media screen and (max-width: 580px) {
-                font-size: 9px;
-              }
-            }
+            // &:nth-child(1) {
+            //   @media screen and (max-width: 580px) {
+            //     font-size: 9px;
+            //   }
+            // }
             // &.active{
             //     font-weight: 600;
             // }
-            .onMobile{
+            .onMobile {
               display: none;
               @media screen and (max-width: 580px) {
                 display: block;
-                margin-left: 5px;
+                margin-left: 6px;
                 margin-bottom: 5px;
               }
             }
-            &.active2{
+            &.active2 {
               @media screen and (max-width: 580px) {
                 margin-bottom: 5px !important;
               }
             }
           }
-          .offMobile{
+          .offMobile {
             @media screen and (max-width: 580px) {
               display: none;
             }

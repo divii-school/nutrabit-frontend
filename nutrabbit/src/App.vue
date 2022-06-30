@@ -39,14 +39,18 @@ export default {
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
+    window["backButtonHandeler"] = (res) => {
+      this.isBackbuttonAction(res);
+    };
+    // if(window.history.length )
   },
-  updated() {
-    // alert('Page url:-- ' + window.location.href);
-    // alert('Navigator:==' + navigator.userAgentData.platform);
-    // alert('mobile:==' + navigator.userAgentData.mobile);
-    // console.log(navigator.userAgentData.platform);
-    // console.log(navigator.userAgentData.mobile);
-  },
+  // updated() {
+  //   const histroyCount = window.history.state.position;
+  //   console.log('History ---> ', window.history.state.position)
+  //   if (histroyCount < 2) {
+  //     window.parent.postMessage("lastHistory", "*");
+  //   }
+  // },
   methods: {
     sendPushNotificationData(res) {
       if (res) {
@@ -57,6 +61,18 @@ export default {
         return false;
       }
     },
+    isBackbuttonAction(res) {
+      if (res) {
+        const histroyCount = window.history.state.position;
+        // alert('clicked back button');
+        // alert('History-', histroyCount);
+        if (histroyCount < 2) {
+          window.parent.postMessage("lastHistory", "*");
+        } else {
+          window.parent.postMessage("hasHistory", "*");
+        }
+      }
+    }
   },
 };
 </script>
