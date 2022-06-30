@@ -175,8 +175,6 @@ export default {
       console.log(this.isTabActive ? 'active' : 'inactive');
     }, 1000);
 
-
-
     // web view get message
     window["sendKakaoLoginData"] = (res) => {
       this.sendKakoAccessToken(res);
@@ -187,11 +185,6 @@ export default {
     window["sendAppleLoginData"] = (res) => {
       this.sendAppleAccessToken(res);
     };
-    // end web view get message
-    // window["backButtonHandeler"] = (res) => {
-    //   alert('backButtonHandeler calling..');
-    //   this.backButtonHandelerAction(res);
-    // };
   },
 
   updated() {
@@ -265,11 +258,6 @@ export default {
         });
       }
     },
-
-    // backButtonHandelerAction(res) {
-    //   alert('backButtonHandeler called');
-    //   alert('backButtonHandeler-->' + res);
-    // },
 
     // Webview support
     sendAccessToken(res) {
