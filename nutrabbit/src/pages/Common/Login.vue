@@ -188,10 +188,10 @@ export default {
       this.sendAppleAccessToken(res);
     };
     // end web view get message
-    window["backButtonHandeler"] = (res) => {
-      alert('backButtonHandeler calling..');
-      this.backButtonHandelerAction(res);
-    };
+    // window["backButtonHandeler"] = (res) => {
+    //   alert('backButtonHandeler calling..');
+    //   this.backButtonHandelerAction(res);
+    // };
   },
 
   updated() {
