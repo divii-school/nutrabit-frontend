@@ -266,10 +266,10 @@ export default {
       }
     },
 
-    backButtonHandelerAction(res) {
-      alert('backButtonHandeler called');
-      alert('backButtonHandeler-->' + res);
-    },
+    // backButtonHandelerAction(res) {
+    //   alert('backButtonHandeler called');
+    //   alert('backButtonHandeler-->' + res);
+    // },
 
     // Webview support
     sendAccessToken(res) {
