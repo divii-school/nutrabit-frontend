@@ -64,8 +64,6 @@ export default {
     isBackbuttonAction(res) {
       if (res) {
         const histroyCount = window.history.state.position;
-        // alert('clicked back button');
-        // alert('History-', histroyCount);
         if (histroyCount < 2) {
           window.parent.postMessage("lastHistory", "*");
         } else {
