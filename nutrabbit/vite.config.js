@@ -32,7 +32,7 @@ export default ({ mode }) => {
       port: process.env.VITE_PORT,
       proxy: {
         "/nutrabbit-dev/api/v1/sites/": {
-          target: "https://api-nutrabbit-dev.dvconsulting.org",
+          target: process.env.VITE_IMAGE_BASE_URL,
           changeOrigin: true,
           secure: false,
           // rewrite: (path) => path.replace(/^\/api/, ""),
