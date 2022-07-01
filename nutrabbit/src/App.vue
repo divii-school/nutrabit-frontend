@@ -42,15 +42,7 @@ export default {
     window["backButtonHandeler"] = (res) => {
       this.isBackbuttonAction(res);
     };
-    // if(window.history.length )
   },
-  // updated() {
-  //   const histroyCount = window.history.state.position;
-  //   console.log('History ---> ', window.history.state.position)
-  //   if (histroyCount < 2) {
-  //     window.parent.postMessage("lastHistory", "*");
-  //   }
-  // },
   methods: {
     sendPushNotificationData(res) {
       if (res) {
