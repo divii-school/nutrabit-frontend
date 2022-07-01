@@ -175,8 +175,6 @@ export default {
       console.log(this.isTabActive ? 'active' : 'inactive');
     }, 1000);
 
-
-
     // web view get message
     window["sendKakaoLoginData"] = (res) => {
       this.sendKakoAccessToken(res);
@@ -187,7 +185,6 @@ export default {
     window["sendAppleLoginData"] = (res) => {
       this.sendAppleAccessToken(res);
     };
-    // end web view get message
   },
 
   updated() {
@@ -378,6 +375,7 @@ export default {
           resData.loginVia
         );
         setTimeout(() => {
+          alert('kakao login with: '+ resData.emailId);
           self.socialLogin(resData.emailId);
         }, 1500);
       } else {
@@ -400,7 +398,7 @@ export default {
       // });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
+      const callbackUrl = import.meta.env.VITE_SITE_BASE_URL+'/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
