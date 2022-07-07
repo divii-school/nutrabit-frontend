@@ -106,7 +106,7 @@
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="raw-image">
-                                <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org' + thumbnail"
                                     alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/' + thumbnail"
                                     alt="이미지를 사용할 수 없음" class="product-image" /> -->
@@ -134,7 +134,7 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org' + product_sub_image"
                                         alt="이미지를 사용할 수 없음" class="product-image" />
                                         <!-- <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
                                         alt="이미지를 사용할 수 없음" class="product-image" /> -->
@@ -155,14 +155,14 @@
                             <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
-                            <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
-                            <span v-else>{{ fileNames }}</span>
+                            <span v-if="!filesName">{{ $t('button.select_file') }}</span>
+                            <span v-else>{{ filesName }}</span>
                             <input type="file" class="select-file" v-on:change="onFilesChanges" />
                             <Button label="파일을 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div>
-                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                             <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
+                            <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
+                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
                                 class="product-image" />
                             <!-- <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
                                 class="product-image" /> -->
@@ -411,7 +411,7 @@ export default {
             console.log(this.filesNames);
         },
 
-        onFileChanges(e) {
+        onFilesChanges(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -428,23 +428,23 @@ export default {
             console.log(this.filesName);
         },
 
-        onFilesChanges(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            //console.log(files)
-            if (!files.length) return;
-            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-            this.file = files[0];
-            if (!allowedExtensions.exec(this.file.name)) {
-                this.render4 = true;
-                return false;
-            } else {
-                this.render4 = false;
-                this.fileNames = this.file.name;
-                this.formData.append('thumbnail_2', files[0]);
-            }
-            this.filesExtensions = this.fileNames.replace(/^.*\./, '');
-            console.log(this.fileNames);
-        },
+        // onFileChanges(e) {
+        //     var files = e.target.files || e.dataTransfer.files;
+        //     //console.log(files)
+        //     if (!files.length) return;
+        //     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        //     this.file = files[0];
+        //     if (!allowedExtensions.exec(this.file.name)) {
+        //         this.render4 = true;
+        //         return false;
+        //     } else {
+        //         this.render4 = false;
+        //         this.fileNames = this.file.name;
+        //         this.formData.append('thumbnail_2', files[0]);
+        //     }
+        //     this.filesExtensions = this.fileNames.replace(/^.*\./, '');
+        //     console.log(this.fileNames);
+        // },
 
         remove_similar(id, similar_product_img) {
             //console.log(id)
