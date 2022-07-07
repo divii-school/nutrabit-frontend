@@ -79,6 +79,7 @@
             "SignUp": "회원가입",
             "CacaoLogin": "카카오로 시작하기",
             "NaverLogin": "네이버로 시작하기",
+            "AppleLogin": "Apple로 계속하기",
             "home": "홈으로"
         },
         "Error": {

@@ -93,10 +93,10 @@
             <!-- social login for appale -->
             <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
               <i class="icon-appale"></i>
-              애플로 시작하기
+              {{ $t("common.QuickLinks.AppleLogin") }}
             </button>
 
-            <div id="naver_id_login"></div>
+            <!-- <div id="naver_id_login"></div> -->
 
           </div>
         </div>

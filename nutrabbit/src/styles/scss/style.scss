@@ -154,8 +154,8 @@ textarea {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
-  &.special-login{
+
+  &.special-login {
     font-size: 14px !important;
     line-height: 17px !important;
     font-weight: 400 !important;
@@ -225,7 +225,6 @@ textarea {
       top: -3px;
     }
   }
-  
 }
 
 .checkmark {
@@ -349,6 +348,23 @@ textarea {
     @media screen and (max-width: 640px) {
       font-size: 16px;
       line-height: 24px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 22px;
+      color: $grey-82;
+      margin-top: 0;
+      font-weight: 400;
+      font-family: $default-font;
+      @media screen and (max-width: 640px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+    li {
+      padding: 0;
+      margin: 0;
+      width: 100%;
     }
   }
 }
@@ -919,22 +935,18 @@ textarea {
 
         &:nth-child(2) {
           button {
-            background: url("@/assets/icons/pagination-arwl-h.svg") no-repeat
-              center center;
+            background: url("@/assets/icons/pagination-arwl-h.svg") no-repeat center center;
             &:disabled {
-              background: url("@/assets/icons/pagination-arwl.svg") no-repeat
-                center center;
+              background: url("@/assets/icons/pagination-arwl.svg") no-repeat center center;
             }
           }
         }
         &:nth-last-child(2) {
           button {
-            background: url("@/assets/icons/pagination-arwl-h.svg") no-repeat
-              center center;
+            background: url("@/assets/icons/pagination-arwl-h.svg") no-repeat center center;
             transform: rotate(180deg);
             &:disabled {
-              background: url("@/assets/icons/pagination-arwl.svg") no-repeat
-                center center;
+              background: url("@/assets/icons/pagination-arwl.svg") no-repeat center center;
             }
           }
         }
@@ -952,11 +964,9 @@ textarea {
         &.VuePagination__pagination-item-prev-chunk {
           display: none;
           button {
-            background: url("@/assets/icons/pagination-dual-arwl-h.svg")
-              no-repeat center center;
+            background: url("@/assets/icons/pagination-dual-arwl-h.svg") no-repeat center center;
             &:disabled {
-              background: url("@/assets/icons/pagination-dual-arwl.svg")
-                no-repeat center center;
+              background: url("@/assets/icons/pagination-dual-arwl.svg") no-repeat center center;
             }
           }
         }
@@ -964,12 +974,10 @@ textarea {
         &.VuePagination__pagination-item-next-chunk {
           display: none;
           button {
-            background: url("@/assets/icons/pagination-dual-arwl-h.svg")
-              no-repeat center center;
+            background: url("@/assets/icons/pagination-dual-arwl-h.svg") no-repeat center center;
             transform: rotate(180deg);
             &:disabled {
-              background: url("@/assets/icons/pagination-dual-arwl.svg")
-                no-repeat center center;
+              background: url("@/assets/icons/pagination-dual-arwl.svg") no-repeat center center;
             }
           }
         }
@@ -1161,8 +1169,6 @@ textarea {
       height: 100%;
       object-fit: cover;
     }
-
-    
   }
 }
 
@@ -1193,6 +1199,6 @@ textarea {
   flex-direction: row-reverse;
 }
 
-.full-width{
+.full-width {
   width: 100% !important;
 }
