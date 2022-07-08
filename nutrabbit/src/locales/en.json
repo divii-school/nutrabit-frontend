@@ -79,6 +79,7 @@
             "SignUp": "Sign Up",
             "CacaoLogin": "Login with Kakao",
             "NaverLogin": "Login with Naver",
+            "AppleLogin": "Continue with Apple",
             "home": "Home"
         },
         "Error": {

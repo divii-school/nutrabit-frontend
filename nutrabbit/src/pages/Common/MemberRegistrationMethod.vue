@@ -42,8 +42,7 @@
                 <!-- kakao login for App -->
                 <button id="kakao_login" v-else class="btn-primary with-icon yellow-btn" @click="mbKakaoLogin">
                   <i class="icon-chat-black"></i>
-                  <!-- {{ $t("common.QuickLinks.CacaoLogin") }} -->
-                  kakao mobile login
+                  {{ $t("common.QuickLinks.CacaoLogin") }}
                 </button>
                 <!-- END kakao login for App -->
 
@@ -56,15 +55,14 @@
                 <!-- Naver login for App -->
                 <button id="naver_Login" v-else class="btn-primary with-icon green-btn" @click="mbNaverLogin">
                   <i class="icon-naver"></i>
-                  naver mobile login
-                  <!-- {{ $t("common.QuickLinks.NaverLogin") }} -->
+                  {{ $t("common.QuickLinks.NaverLogin") }}
                 </button>
                 <!-- ENd Naver login for App -->
 
                 <!-- social login for appale -->
                 <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
                   <i class="icon-appale"></i>
-                  애플로 시작하기
+                  {{ $t("common.QuickLinks.AppleLogin") }}
                 </button>
 
 
