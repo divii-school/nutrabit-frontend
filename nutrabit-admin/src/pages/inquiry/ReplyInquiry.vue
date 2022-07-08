@@ -69,7 +69,7 @@
     </div>
     <div class="p-grid">
          <div class="p-col-12">
-            <div class="card p-fluid" style="height:250px;">
+            <div class="card p-fluid" style="height:320px;">
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="title2" style="font-size: x-large;font-family: sans-serif;">댓글</label>
@@ -87,11 +87,11 @@
                             <br>
                             <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
                             <div >
-                                <input type="radio" id="ko" name="ko" value="ko" v-model="replyLang" v-bind:checked="checked">
-                                <label for="ko">Riply In Korean</label>
+                                <input type="radio" id="Korean" name="replyLang" value="ko" v-model="replyLang" v-bind:checked="checked">
+                                <label for="Korean">Riply In Korean</label>
 
-                                <input type="radio" id="en" value="en" name="en" v-model="replyLang">
-                                <label for="en">Riply In English</label>
+                                <input type="radio" id="English" value="en" name="replyLang" v-model="replyLang">
+                                <label for="English">Riply In English</label>
 
                                 
                             </div>
