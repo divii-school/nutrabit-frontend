@@ -57,6 +57,9 @@
                             <!-- <img :src="'https://back.nutri33.co.kr/' + attachment" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                     </div>
                 </div>
+
+
+                
                 
                 
                 
@@ -77,6 +80,24 @@
                         <div class="text-red">{{}}</div>
                     </div>
                 </div>
+
+                <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            
+                            <br>
+                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                            <div >
+                                <input type="radio" id="ko" name="ko" value="ko" v-model="replyLang" v-bind:checked="checked">
+                                <label for="ko">Riply In Korean</label>
+
+                                <input type="radio" id="en" value="en" name="en" v-model="replyLang">
+                                <label for="en">Riply In English</label>
+
+                                
+                            </div>
+                            <!-- <div class="text-red">{{ error.state }}</div> -->
+                        </div>
+                    </div>
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i> {{ $t('button.delete') }}</Button> -->
                     <Button label="회신하다" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="replayans"></Button>
@@ -120,6 +141,7 @@ export default {
             applicant_name:'',
             id: '',
             replyText: '',
+            replyLang:'',
             createdDate:'',
             dropdownItems: [
                 { name: 'Member information related enquries', code: 'Member information related enquries' },
@@ -153,9 +175,11 @@ export default {
             }
         },
         replayans() {
-            this.inquiryService.ReplyInquiry(this.$route.params.id, this.replyText).then((res) => {
+
+           
+            this.inquiryService.ReplyInquiry(this.$route.params.id,  this.replyText, this.replyLang).then((res) => {
                 console.warn(res);
-                console.log(this.replyText);
+                console.log(this.replyLang);
                 alert('업데이트 완료')
                 this.$router.push({ name: 'Inquiry' });
             });

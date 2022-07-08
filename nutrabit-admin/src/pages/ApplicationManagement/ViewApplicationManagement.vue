@@ -292,6 +292,7 @@ export default {
             this.mydata.name = res.data.data[0].name;
             this.mydata.ID = res.data.data[0].ID;
             this.mydata.email = res.data.data[0].email;
+            this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.address = res.data.data[0].address;
             this.mydata.createdDate = res.data.data[0].createdDate;
             this.mydata.Application_mode = res.data.data[0].Application_mode;

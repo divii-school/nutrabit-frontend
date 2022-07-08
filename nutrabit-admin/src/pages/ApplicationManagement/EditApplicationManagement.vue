@@ -188,6 +188,7 @@ export default {
             this.name = res.data.data[0].name;
             this.ID = res.data.data[0].ID;
             this.email = res.data.data[0].email;
+            this.mobile = res.data.data[0].mobile;
             this.address = res.data.data[0].address;
             this.createdDate = res.data.data[0].createdDate;
             this.Application_mode = res.data.data[0].Application_mode;

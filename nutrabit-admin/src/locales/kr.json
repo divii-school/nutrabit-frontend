@@ -617,7 +617,8 @@
     "Blending":"제목",
     "Tag":"태그",
     "add_nutri":"새로운 Nutri3.3 블렌딩 추가",
-    "inqury1":"질문 제목 게시"
+    "inqury1":"질문 제목 게시",
+    "Language":"Language"
   }
 },
 
@@ -1128,5 +1129,6 @@
 "Reply":"댓글",
 "Get a quote":"견적",
 "Sample Request":"샘플 요청",
-"recommanded blending":"명령된 블렌딩"
+"recommanded blending":"추천블렌딩",
+"1":"뉴트리 3.3"
 }
