@@ -146,16 +146,16 @@ export default {
                   
 
 
-                  console.log('options---', res.data[0].options);
+                  // console.log('options---', res.data[0].options);
 
                    Array.from(res.data[0].options).forEach((ele)=>{
                      //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                       let op_type = ele.split(':')[0];
                       let op_val = ele.split(':')[1];
-                      console.log(op_type, op_val)
+                      // console.log(op_type, op_val)
                       this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
 
-                        console.log('getOptionDetails---',res);
+                        // console.log('getOptionDetails---',res);
 
                         if(res.status == 200){
                           // console.log(res.data[0])
@@ -177,9 +177,9 @@ export default {
                         
                       })
                    })
-                   console.log('Raw--', this.raw_mat);
-                   console.log('Pill--',this.pill);
-                   console.log('Pack--',this.pack);
+                  //  console.log('Raw--', this.raw_mat);
+                  //  console.log('Pill--',this.pill);
+                  //  console.log('Pack--',this.pack);
               }else{
                 this.$swal(res.message)
               }
