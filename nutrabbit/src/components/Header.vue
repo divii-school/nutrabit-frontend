@@ -4,7 +4,8 @@
       <div class="header-menu flex">
         <div class="manuLeft">
           <!-- For mobile only start -->
-          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back' " to @click="$router.go(-1)">
+          <router-link :class="isHeaderPositionAbsolute ? 'header-back-remove' : 'header-back'" to
+            @click="$router.go(-1)">
             <img src="../assets/images/header-arrow.svg" alt="">
           </router-link>
           <!-- For mobile only end -->
@@ -36,8 +37,8 @@
             <div class="search-wrap" :class="showMobSearch ? 'search-wrap-mob' : ''">
               <div class="input-group">
                 <input type="text" :placeholder="$t('header.search')" @click="getHistory" v-model="sarchInput"
-                  v-on:keyup.enter="getSearch" />
-                <router-link to @click="getSearch">
+                  v-on:keyup.enter="getSearch" :disabled="token ? disabled : ''" />
+                <router-link to @click="getSearch" :disabled="token ? disabled : ''">
                   <i class="icon-search-black"></i>
                 </router-link>
               </div>
@@ -410,9 +411,9 @@ export default {
     // search api (main)
     getSearch(e) {
       if (this.sarchInput == "") {
-        // return ;
+        return false;
         // this.$swal("Please add searchData");
-        console.log("Please add searchData");
+        // console.log("Please add searchData");
       } else {
         this.common.state.searchKeyword = this.sarchInput;
         this.searchDataInput = e.target.value;

@@ -38,7 +38,7 @@
         <!-- <p class="recomanded-quality text-center">
           {{ desc.substring(0, 50) }}
         </p> -->
-        <div class="recomanded-quality text-center" v-html="desc.substring(0, 50)"></div>
+        <!-- <div class="recomanded-quality text-center" v-html="desc.substring(0, 50)"></div> -->
       </router-link>
     </template>
   </div>
