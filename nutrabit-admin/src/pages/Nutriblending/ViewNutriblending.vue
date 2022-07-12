@@ -153,7 +153,7 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;" >
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/>
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage != '/uploads/blending/null'"/>
                             <!-- <img :src="'https://back.nutri33.co.kr/public/' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage"/> -->
                         </div>
                     </div>
@@ -162,9 +162,9 @@
                 <div class="p-field p-grid">
                     <label for="similarimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.SimilarProductImage') }}:</label>
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
-                        <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
+                        <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;" >
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage"/>
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage != '/uploads/blending/null'"/>
                             <!-- <img :src="'https://back.nutri33.co.kr/public/' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage"/> -->
                         </div>
                     </div>

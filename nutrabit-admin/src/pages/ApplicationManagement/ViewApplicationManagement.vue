@@ -8,6 +8,16 @@
                     <strong>{{ $t('Application.details.header') }}</strong>
                 </h4>
 
+                <div class="p-field p-grid">
+                    <label
+                        for="name"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.blendingname') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.blending_name_ko }}</p>
+                    </div>
+                </div>
+
                  <div class="p-field p-grid">
                     <label
                         for="name"
@@ -234,6 +244,7 @@ export default {
                 mobile: '',
                 address: '',
                 createdDate: '',
+                blending_name_ko:'',
                 Application_mode: '',
                 additional_request: '',
                 status_by_admin: '',
@@ -300,6 +311,8 @@ export default {
             this.mydata.status_by_admin = res.data.data[0].status_by_admin;
             this.mydata.answer_by_admin = res.data.data[0].answer_by_admin;
             this.mydata.memo_by_admin = res.data.data[0].memo_by_admin;
+            this.mydata.blending_name_ko = res.data.data[0].blending_name_ko;
+            
             this.mydata.options = res.data.data[0].options;
             // console.log(this.mydata.options.length);
             for (let i = 0; i <= this.mydata.options.length; i++) {
@@ -309,7 +322,7 @@ export default {
                 // console.log(res_option_value);
                 this.applicationmanagementService.optiondetails(res_option_type, res_option_value).then((res) => {
                 this.items.push({'category':res.data.data[0].category,'explanation':res.data.data[0].explanation});
-                // console.log(res);
+                 console.log(this.mydata.blending_name_ko);
                 });
             }
         });
