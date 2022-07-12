@@ -22,12 +22,29 @@
                       <th>{{$t("onlyme.tableCaption.Description")}}</th>
                     </tr>
                   </thead>
-                  <tbody
+                  <!-- <tbody
                     v-for="(option, index) in options"
                     :key="index"
                   >
                     <tr>
                       <td>{{ index + 1 }}</td>
+                      <td>{{ $t(option.category)}}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                  </tbody> -->
+                   <tbody>
+                    <tr v-for="(option, index) in pill" :key="index">
+                      <td>{{ index + 1 }}</td>
+                      <td>{{ $t(option.category)}}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                    <tr v-for="(option, index) in raw_mat" :key="index">
+                      <td>{{ pill.length + 1 }}</td>
+                      <td>{{ $t(option.category)}}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                    <tr v-for="(option, index) in pack" :key="index">
+                      <td>{{ raw_mat.length + pill.length + 1  }}</td>
                       <td>{{ $t(option.category)}}</td>
                       <td>{{ $t(option.explanation) }}</td>
                     </tr>
@@ -47,7 +64,8 @@
               <div class="fGroup">
                 <label>{{$t("onlyme.title.Answer")}}</label>
                 <div class="ansBlock">
-                  <p>{{ answer }}</p>
+                  <!-- <p>{{ answer }}</p> -->
+                  <div class="p-text" v-html="answer"></div>
                 </div>
               </div>
               <div class="product-list-wrap">
@@ -72,6 +90,9 @@ export default {
   data() {
     return {
       options: [],
+      raw_mat: [],
+      pill: [],
+      pack: [],
       title : "",
       add_req: "",
       answer: "",
@@ -111,12 +132,22 @@ export default {
   methods: {
     getQuotionRequestDetails(_id) {
       this.myApplication.getApplicationChoiceDetails(_id).then(res=>{
-                console.log(res.data[0])
+                // console.log(res.data[0])
               if(res.status == 200){
                    this.add_req = res.data[0].additional_request;
                    this.title = res.data[0].title;
                    this.answer = res.data[0].answer_by_admin;
                   this.options = [];
+
+                  this.raw_mat = [];
+                  this.pill = [];
+                  this.pack = [];
+
+                  
+
+
+                  console.log('options---', res.data[0].options);
+
                    Array.from(res.data[0].options).forEach((ele)=>{
                      //console.log(Object.keys(ele)[0], Object.values(ele)[0])
                       let op_type = ele.split(':')[0];
@@ -124,16 +155,31 @@ export default {
                       console.log(op_type, op_val)
                       this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
 
+                        console.log('getOptionDetails---',res);
+
                         if(res.status == 200){
-                          console.log(res.data[0])
-                             this.options.push( res.data[0] )
+                          // console.log(res.data[0])
+                            //  this.options.push( res.data[0] )
+                            if(op_type == 'raw_material') {
+                              this.raw_mat.push(res.data[0])
+                            }
+                            else if(op_type == 'pill') {
+                              this.pill.push(res.data[0])
+                            }
+                            else if(op_type == 'package') {
+                              this.pack.push(res.data[0])
+                            }
+
                         }else{
-                          console.log(res.message)
+                          // console.log(res.message)
                            //this.$swal(res.message)
                         }
                         
                       })
                    })
+                   console.log('Raw--', this.raw_mat);
+                   console.log('Pill--',this.pill);
+                   console.log('Pack--',this.pack);
               }else{
                 this.$swal(res.message)
               }

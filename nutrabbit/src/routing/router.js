@@ -180,7 +180,7 @@ const routes = [
     name: "SearchResult",
     path: "/search-result",
     component: SearchResult,
-    // beforeEnter: guest,
+    beforeEnter: guard,
   },
   {
     name: "MyChoice",
