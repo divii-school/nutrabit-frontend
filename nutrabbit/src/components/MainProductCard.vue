@@ -9,8 +9,7 @@
       <img v-else class="nutri-pimg" src="../assets/images/content_place.png" alt />
     </div>
     <div class="tag-wrap">
-      <span>nutri 3.3</span>
-      <span>nutri 3.3</span>
+      <span>{{ item.category_name }}</span>
     </div>
     <p v-if="token" @click="this.$router.push(`/nutri-detail/${item.id}`)" class="title">
       {{ item.name }}
