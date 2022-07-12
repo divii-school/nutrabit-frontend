@@ -14,7 +14,7 @@ const state = reactive({
   SelectedLang: '',
   isPayment: false,
   isPaymentDone: null,
-  isHidePhAddr:false,
+  isHidePhAddr:true,
 });
 
 const methods = {
