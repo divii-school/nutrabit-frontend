@@ -398,7 +398,8 @@ export default {
       // });
       const self = this;
       const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = import.meta.env.VITE_SITE_BASE_URL+'/callback/naverlogin';
+      const callbackUrl = import.meta.env.VITE_REDIRECT_URI+'/callback/naverlogin';
+      alert(callbackUrl);
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
