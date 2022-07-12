@@ -3,13 +3,13 @@
     <div class="container-medium">
       <div class="my-choce-wrap my-choice-selection package-list-section">
         <div class="my-choice-heading">
-          <h2>{{$t("onlyme.title.QuoteTab")}}</h2>
+          <h2>{{ $t("onlyme.title.QuoteTab") }}</h2>
         </div>
         <div class="choice-selection-item-wrap">
           <div class="choice-selection-item raw-material-product">
             <div class="heading-wrap">
               <div class="heading">
-                <h2>{{$t("onlyme.title.Options")}}</h2>
+                <h2>{{ $t("onlyme.title.Options") }}</h2>
               </div>
             </div>
             <div class="materialForm">
@@ -18,37 +18,46 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>{{$t("onlyme.tableCaption.Category")}}</th>
-                      <th>{{$t("onlyme.tableCaption.Description")}}</th>
+                      <th>{{ $t("onlyme.tableCaption.Category") }}</th>
+                      <th>{{ $t("onlyme.tableCaption.Description") }}</th>
                     </tr>
                   </thead>
-                  <tbody
-                    v-for="(option, index) in options"
-                    :key="index"
-                  >
-                    <tr>
+                  <tbody>
+                    <tr v-for="(option, index) in pill" :key="index">
                       <td>{{ index + 1 }}</td>
-                      <td>{{ $t(option.category) }}</td>
+                      <td>{{ $t(option.category)}}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                    <tr v-for="(option, index) in raw_mat" :key="index">
+                      <td>{{ pill.length + 1 }}</td>
+                      <td>{{ $t(option.category)}}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                    <tr v-for="(option, index) in pack" :key="index">
+                      <td>{{ raw_mat.length + pill.length + 1  }}</td>
+                      <td>{{ $t(option.category)}}</td>
                       <td>{{ $t(option.explanation) }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="fGroup">
-                <label>{{$t("onlyme.title.AdditionalRequest")}}</label>
+                <label>{{ $t("onlyme.title.AdditionalRequest") }}</label>
                 <div class="ansBlock">
                   <p>{{ add_req }}</p>
                 </div>
               </div>
               <div class="fGroup">
-                <label>{{$t("onlyme.title.Answer")}}</label>
+                <label>{{ $t("onlyme.title.Answer") }}</label>
                 <div class="ansBlock">
-                  <p>{{ answer }}</p>
+                  <!-- <p>{{ answer }}</p> -->
+                  <div class="p-text" v-html="answer"></div>
                 </div>
               </div>
               <div class="product-list-wrap">
                 <div class="btn-wrap flex-justify-end">
-                  <button class="btn-small-solid grey" @click="$router.push('/my-application-detail')">{{$t("onlyme.button.Previous")}}</button>
+                  <button class="btn-small-solid grey"
+                    @click="$router.push('/my-application-detail')">{{ $t("onlyme.button.Previous") }}</button>
                 </div>
               </div>
             </div>
@@ -61,13 +70,16 @@
 
 <script>
 import MyApplicationService from "../../services/MyApplicationQuoteService";
- 
+
 export default {
   name: "MyApplicationQuoteRequestBlending",
-  inject : ["common"],
+  inject: ["common"],
   data() {
     return {
       options: [],
+      raw_mat: [],
+      pill: [],
+      pack: [],
       add_req: "",
       answer: "",
       product_id: this.$route.params.id,
@@ -75,8 +87,8 @@ export default {
         this.$route.params.type == "recommended"
           ? "recommended_blending"
           : 'nutri_blending',
-      globalLocale : '',
-      
+      globalLocale: '',
+
     };
   },
 
@@ -110,33 +122,51 @@ export default {
 
   methods: {
     getQuotionBlendingDetails(_id, _app_type) {
-      this.myApplication.getApplicationBlendingDetails(_id, _app_type).then(res=>{
-                console.log(res.data[0])
-              if(res.status == 200){
-                   this.title = res.data[0].title;
-                   this.add_req = res.data[0].additional_request;
-                   this.answer = res.data[0].answer_by_admin;
-                   this.options = [];
-                   Array.from(res.data[0].options).forEach((ele)=>{
-                     //console.log(Object.keys(ele)[0], Object.values(ele)[0])
-                      let op_type = ele.split(':')[0];
-                      let op_val = ele.split(':')[1];
+      this.myApplication.getApplicationBlendingDetails(_id, _app_type).then(res => {
+        // console.log(res.data[0])
+        if (res.status == 200) {
+          this.title = res.data[0].title;
+          this.add_req = res.data[0].additional_request;
+          this.answer = res.data[0].answer_by_admin;
+          this.options = [];
+          this.raw_mat = [];
+          this.pill = [];
+          this.pack = [];
+          Array.from(res.data[0].options).forEach((ele) => {
+            //console.log(Object.keys(ele)[0], Object.values(ele)[0])
+            let op_type = ele.split(':')[0];
+            let op_val = ele.split(':')[1];
 
-                      this.myApplication.getOptionDetails(op_type, op_val).then(res =>{
+            this.myApplication.getOptionDetails(op_type, op_val).then(res => {
 
-                        if(res.status == 200){
-                            console.log(res.data[0])
-                             this.options.push( res.data[0] )
-                        }else{
-                          console.log(res.message)
-                           //this.$swal(res.message)
-                        }
-                        
-                      })
-                   })
-              }else{
-                this.$swal(res.message)
+              if (res.status == 200) {
+                // console.log(res.data[0])
+                //  this.options.push( res.data[0] )
+
+
+                if (op_type == 'raw_material') {
+                  this.raw_mat.push(res.data[0])
+                }
+                else if (op_type == 'pill') {
+                  this.pill.push(res.data[0])
+                }
+                else if (op_type == 'package') {
+                  this.pack.push(res.data[0])
+                }
+
+
+
+
+              } else {
+                // console.log(res.message)
+                //this.$swal(res.message)
               }
+
+            })
+          })
+        } else {
+          this.$swal(res.message)
+        }
       })
     },
   },
