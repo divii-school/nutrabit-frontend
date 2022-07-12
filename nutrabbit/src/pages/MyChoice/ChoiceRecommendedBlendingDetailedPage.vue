@@ -29,8 +29,8 @@
                 v-for="(item, index) of blending_image"
                 :key="index"
               >
-              <img v-if="item=='/uploads/blending/null'" src="../../assets/images/sub_place.png"/>
-                <img v-else  :src="imgBaseUrl + item" alt />
+              <!-- <img v-if="item=='/uploads/blending/null'" src="../../assets/images/sub_place.png"/> -->
+                <img  v-if="item!='/uploads/blending/null'"  :src="imgBaseUrl + item" alt />
               </swiper-slide>
             </swiper>
             <swiper class="mySwiper2" v-else>
@@ -125,8 +125,8 @@
                 v-for="(items, index) of item.similar_image_path"
                 :key="index"
               >
-                <img v-if="items=='/uploads/blending/null'" src="../../assets/images/similar_place.png" alt />
-                <img v-else :src="imgBaseUrl + items" alt />
+                <!-- <img v-if="items=='/uploads/blending/null'" src="../../assets/images/similar_place.png" alt /> -->
+                <img v-if="items!='/uploads/blending/null'" :src="imgBaseUrl + items" alt />
               </li>
             </ul>
             <ul class="smilar-product-img" v-else>
