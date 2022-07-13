@@ -257,7 +257,7 @@ export default {
              if (value) {
                  console.log()
             // return moment(String(value)).locale('ko').format('LLL')
-            return moment(String(value)).locale('ko').format('ll - h:mm:ss')
+            return moment(String(value)).locale('ko').format('ll - LTS')
             }
         },
         

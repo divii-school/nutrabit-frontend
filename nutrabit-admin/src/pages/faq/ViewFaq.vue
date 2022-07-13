@@ -173,7 +173,7 @@ export default {
         },
          dateformat(value) {
              if (value) {
-            return moment(String(value)).format('YYYY/MM/DD  hh:mm:ss')
+            return moment(String(value)).format('YYYY/MM/DD  LTS')
             }
         },
     },

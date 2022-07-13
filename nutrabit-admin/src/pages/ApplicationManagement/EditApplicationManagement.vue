@@ -6,6 +6,12 @@
                 <div class="p-col-12">
                     <h5>{{ $t('Application.details.header') }}</h5>
                     <div class="p-field p-grid">
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.blendingname') }}:</label>
+                        <div class="p-col-12 p-md-10">
+                            <p>{{ blending_name_ko }}</p>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
                         <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.name') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ name }}</p>
@@ -158,6 +164,7 @@ export default {
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
             // dropdownValueType: null,
+            blending_name_ko:'',
             name: '',
             ID: '',
             email: '',
@@ -185,6 +192,7 @@ export default {
     },
     mounted() {
         this.applicationmanagementService.viewApplicationmanagemenList(this.$route.params.id).then((res) => {
+            this.blending_name_ko = res.data.data[0].blending_name_ko;
             this.name = res.data.data[0].name;
             this.ID = res.data.data[0].ID;
             this.email = res.data.data[0].email;
@@ -241,7 +249,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+                return moment(String(value)).format('MM/DD/YYYY - LTS');
             }
         },
 

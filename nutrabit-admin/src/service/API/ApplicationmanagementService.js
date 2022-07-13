@@ -31,7 +31,7 @@ export default class ApplicationmanagementService {
     // }
 
     async optiondetails(type,value) {
-        return await axios.post(`/admin/application/options_details`,{ lang: 'EN',option_type:type,option_val:value }).then((res) => res);
+        return await axios.post(`/admin/application/options_details`,{ lang: 'KO',option_type:type,option_val:value }).then((res) => res);
     }
     async viewApplicationmanagemenList(ids) {
         return await axios.post(`/admin/application/id`, { id: ids }).then((res) => res);

@@ -128,7 +128,7 @@
                              <tbody>
                                  <tr v-for="(item, index) in items" :key="index">
                                     <td>{{ index + 1 }}</td>
-                                    <td>{{ item.category }}</td>
+                                    <td>{{ $t(item.category) }}</td>
                                     <td>{{ item.explanation }}</td>
                                 </tr>
                             </tbody>
@@ -285,7 +285,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+                return moment(String(value)).format('MM/DD/YYYY - LTS');
             }
         },
          setData(id) {

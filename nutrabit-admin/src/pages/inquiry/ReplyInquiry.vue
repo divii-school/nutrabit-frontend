@@ -171,7 +171,7 @@ export default {
     methods: {
          dateformat(value) {
             if (value) {
-                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - LTS')
             }
         },
         replayans() {

@@ -1120,6 +1120,10 @@
     }
   }
 },
+"Formulation":"공식화",
+"Package":"패키지",
+"Raw Material":"원료",
+"Pill type":"제형",
 "status":"상태",
 "active":"활성",
 "inactive":"비활성",
