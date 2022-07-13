@@ -268,8 +268,8 @@ export default {
       //   onCancel: this.onCancel,
       // });
       const self = this;
-      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
+      const clientId = import.meta.env.VITE_NAVER_CLIENT_ID;
+      const callbackUrl = import.meta.env.VITE_REDIRECT_URI+'/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;

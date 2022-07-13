@@ -397,8 +397,8 @@ export default {
       //   onCancel: this.onCancel,
       // });
       const self = this;
-      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = import.meta.env.VITE_SITE_BASE_URL+'/callback/naverlogin';
+      const clientId = import.meta.env.VITE_NAVER_CLIENT_ID;
+      const callbackUrl = import.meta.env.VITE_REDIRECT_URI+'/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
