@@ -109,6 +109,16 @@
 
                 <div class="p-field p-grid">
                     <label
+                        for="detailaddress"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Business.list.detailaddress') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.detail_address }}</p>
+                    </div>
+                </div>
+
+                <div class="p-field p-grid">
+                    <label
                         for="createdDate"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >등록 날짜 및 시간:</label>
@@ -203,6 +213,7 @@ export default {
                 mobile: '',
                 createdDate: '',
                 address: '',
+                detail_address:'',
                 password: '',
             },
         };
@@ -316,6 +327,7 @@ export default {
             this.mydata.email = res.data.data[0].email;
             this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.address = res.data.data[0].address;
+            this.mydata.detail_address = res.data.data[0].detail_address;
             this.mydata.createdDate = res.data.data[0].createdDate;
 
         });

@@ -75,7 +75,8 @@
     "Cancel":"취소합니다",
     "confirm":"저장",
     "Goback":"Go Back",
-    "individualheader":"회원의 세부 정보"
+    "individualheader":"회원의 세부 정보",
+    "detailaddress":"상세 주소"
   },
   "add": {
     "header": "새로운 DFC 등록 (Excel Upload)",
@@ -210,7 +211,8 @@
     "mobile": "휴대폰 번호",
     "Area":"지역",
     "EditBusiness":"비즈니스 회원 정보 편집",
-    "EditAdress":"주소"
+    "EditAdress":"주소",
+    "detailaddress":"상세 주소"
   }
 },
 "Individual": {
