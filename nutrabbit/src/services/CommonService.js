@@ -116,16 +116,16 @@ export default class CommonService {
   }
 
   // search
-  async getSearchResult(searchInput, ip) {
+  async getSearchResult(searchInput, ip, uid) {
     return new Promise((resolve, reject) => {
-      axios.post(`/search`, { searchData: searchInput, ipAddress: ip })
+      axios.post(`/search`, { searchData: searchInput, ipAddress: ip, user_id: uid })
         .then((res) => resolve(res))
         .catch((err) => reject(err))
     })
   }
   // get history
-  async getSearchHistory(ip) {
-    return await axios.post(`/search/getHistory`, { ipAddress: ip })
+  async getSearchHistory(ip, uid) {
+    return await axios.post(`/search/getHistory`, { ipAddress: ip, user_id: uid })
       .then((res) => res)
       .catch((err) => err)
   }
@@ -138,8 +138,8 @@ export default class CommonService {
   }
 
   // delete all
-  async deleteAllHistory(ip) {
-    return await axios.post(`/search/deleteAll`, { ipAddress: ip })
+  async deleteAllHistory(ip,uid) {
+    return await axios.post(`/search/deleteAll`, { ipAddress: ip, user_id: uid })
       .then((res) => res)
       .catch((err) => err)
   }

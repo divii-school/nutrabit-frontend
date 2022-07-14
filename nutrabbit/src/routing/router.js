@@ -64,6 +64,15 @@ function guard(to, from, next) {
   }
 }
 
+function historyCheck(to, from, next) {
+  if (localStorage.token) {
+    next();
+  } else {
+    next({ name: "Login" });
+    Toast.fire({ title: "Please login to access" });
+  }
+}
+
 const routes = [
   {
     name: "Main",
@@ -171,7 +180,7 @@ const routes = [
     name: "SearchResult",
     path: "/search-result",
     component: SearchResult,
-    // beforeEnter: guest,
+    beforeEnter: guard,
   },
   {
     name: "MyChoice",
