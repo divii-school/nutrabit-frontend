@@ -128,6 +128,7 @@ export default {
                        
                         console.log(this.formData);
                         return axios.post('/admin/blending/upload', this.formData).then(() => {
+                            alert("성공적으로 저장");
                             this.$router.push({ name: 'nutri' });
                         }); 
                     }
