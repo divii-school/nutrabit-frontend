@@ -21,7 +21,7 @@
                     <label
                         for="material_name_ko"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('RawMaterialadd.list.Rawname(KO)') }}:</label>
+                    >{{ $t('RawMaterialadd.list.Rawmaterialname(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ material_name_ko }}</p>
                     </div>
@@ -31,7 +31,7 @@
                     <label
                         for="material_name_en"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('RawMaterialadd.list.Rawname(EN)') }}:</label>
+                    >{{ $t('RawMaterialadd.list.Rawmaterialname(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ material_name_en }}</p>
                     </div>
@@ -103,7 +103,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ daily_intake_amount_ko }}</p>
+                        <p v-html="daily_intake_amount_ko" ></p>
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ daily_intake_amount_en }}</p>
+                        <p v-html="daily_intake_amount_en"></p>
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Prequotion(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_prequotion_ko }}</p>
+                        <p v-html="material_prequotion_ko"></p>
                     </div>
                 </div>
 
@@ -133,7 +133,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Prequotion(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_prequotion_en }}</p>
+                        <p v-html="material_prequotion_en"></p>
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_extra_info_ko }}</p>
+                        <p v-html="material_extra_info_ko"></p>
                     </div>
                 </div>
 
@@ -153,7 +153,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ material_extra_info_en }}</p>
+                        <p v-html="material_extra_info_en"></p>
                     </div>
                 </div>
 
@@ -163,6 +163,7 @@
                         <div v-for="(similar_product_img, img) in similar_product_img" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -174,6 +175,7 @@
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -185,6 +187,7 @@
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -199,6 +202,7 @@
                         <div v-for="(raw_material_img, img) in raw_material_img" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + raw_material_img" :alt="raw_material_img" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -245,7 +249,7 @@
                             class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
-                            {{ $t('button.edit') }}
+                            수정 
                         </Button>
                     </router-link>
                 </div>

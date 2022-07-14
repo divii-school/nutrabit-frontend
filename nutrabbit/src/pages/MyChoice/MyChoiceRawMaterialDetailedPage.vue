@@ -4,17 +4,6 @@
       <h2 class="mychoice-heading heading">{{ $t("header.myChoice") }}</h2>
       <div class="recomanded-blending-details">
         <div class="blending-left">
-          <!-- <swiper :pagination="pagination" :modules="modules" class="mySwiper" >
-            <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-              <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public' + item.image_path" alt="" />
-            </swiper-slide>
-          </swiper> -->
-
-          <!-- <swiper :spaceBetween="10" :modules="[Thumbs]" :thumbs="{ swiper: thumbsSwiper }" class="mySwiper">
-              <swiper-slide v-for="(item, index) of raw_material_image" :key="index">
-                <img :src="imgBaseUrl + item.image_path" alt="" />
-              </swiper-slide>
-            </swiper> -->
           <div v-if="raw_material_data">
             <swiper class="mySwiper">
               <swiper-slide>
@@ -35,6 +24,7 @@
             watch-slides-progress
             @swiper="setThumbsSwiper"
             class="mySwiper2"
+            v-if="raw_material_image.length > 0"
           >
             <swiper-slide
               v-for="(item, index) of raw_material_image"
@@ -43,6 +33,11 @@
               <img :src="imgBaseUrl + item.image_path" alt="" />
             </swiper-slide>
           </swiper>
+          <swiper class="mySwiper2" v-else>
+              <swiper-slide>
+                <img src="../../assets/images/sub_place.png"/>
+              </swiper-slide>
+            </swiper>
 
           <!-- <div v-else>
             <img src="../../assets/images/thumbnail_place.png" alt />
@@ -75,12 +70,8 @@
                 <p>{{ item.standard }}</p>
               </li>
               <li>
-                <h2>{{ $t("myChoice.RawMaterial.detail.Rawmaterials") }}</h2>
-                <p>{{ item.material_description }}</p>
-              </li>
-              <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Appearance") }}</h2>
-                <p>{{ item.material_function }}</p>
+                <p>{{ item.material_description }}</p>
               </li>
               <li>
                 <h2>
@@ -90,15 +81,18 @@
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.DailyIntake") }}</h2>
-                <p>{{ item.daily_intake_amount }}</p>
+                <!-- <p>{{ item.daily_intake_amount }}</p> -->
+                <div class="p-text" v-html="item.daily_intake_amount"/>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Precautions") }}</h2>
-                <p>{{ item.material_prequotion }}</p>
+                <!-- <p>{{ item.material_prequotion }}</p> -->
+                <div class="p-text" v-html="item.material_prequotion"/>
               </li>
               <li>
                 <h2>{{ $t("myChoice.RawMaterial.detail.Etc") }}</h2>
-                <p>{{ item.material_extra }}</p>
+                <!-- <p>{{ item.material_extra }}</p> -->
+                <div class="p-text" v-html="item.material_extra"/>
               </li>
             </ul>
             <div class="blendBtnList">
@@ -180,6 +174,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { useRoute } from "vue-router";
 import MyChoiceService from "../../services/MyChoiceService";
+import thumbImage from "~@/assets/images/thumbnail_place.png";
 
 export default {
   name: "MyChoiceRawMaterialDetailedPage",
@@ -217,6 +212,7 @@ export default {
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
       globalLocale: "",
       sub_category_id: "",
+      imgUrl: thumbImage,
     };
   },
   created() {
@@ -283,12 +279,12 @@ export default {
           if (res.data.status == 200) {
             this.raw_material_data = res.data.data;
             this.sub_category_id = res.data.data[0].sub_category_id;
-            this.thumb_image = res.data.data[0].thumbnail_fst_path
+            this.thumb_image = res.data.data[0].thumbnail_1
               ? this.imgBaseUrl + res.data.data[0].thumbnail_fst_path
-              : this.placeholder_image;
-            this.thumb_2nd_image = res.data.data[0].thumbnail_scnd_path
+              : this.imgUrl;
+            this.thumb_2nd_image = res.data.data[0].thumbnail_2
               ? this.imgBaseUrl + res.data.data[0].thumbnail_scnd_path
-              : this.placeholder_image;
+              : this.imgUrl;
           } else {
             // this.$swal(res.data.message, "error");
             console.log(res.data.message);
@@ -320,7 +316,7 @@ export default {
       let page = 1;
       const setSubCategory = this.sub_category_id;
       this.mychoiceService
-        .getRecommendedData(setSubCategory, limit, page)
+        .getRawMaterialRecommendedData(localStorage.getItem("raw_material_id"), limit, page)
         .then((res) => {
           // console.log(res);
           if (res.status == 200) {

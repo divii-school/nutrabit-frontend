@@ -93,10 +93,10 @@
             <!-- social login for appale -->
             <button class="btn-primary with-icon black-btn" v-show="isAppaleId" @click="mbAppleLogin">
               <i class="icon-appale"></i>
-              애플로 시작하기
+              {{ $t("common.QuickLinks.AppleLogin") }}
             </button>
 
-            <div id="naver_id_login"></div>
+            <!-- <div id="naver_id_login"></div> -->
 
           </div>
         </div>
@@ -171,11 +171,9 @@ export default {
     };
 
     // test
-    setInterval(function () {
-      console.log(this.isTabActive ? 'active' : 'inactive');
-    }, 1000);
-
-
+    // setInterval(function () {
+    //   console.log(this.isTabActive ? 'active' : 'inactive');
+    // }, 1000);
 
     // web view get message
     window["sendKakaoLoginData"] = (res) => {
@@ -187,7 +185,6 @@ export default {
     window["sendAppleLoginData"] = (res) => {
       this.sendAppleAccessToken(res);
     };
-    // end web view get message
   },
 
   updated() {
@@ -378,6 +375,7 @@ export default {
           resData.loginVia
         );
         setTimeout(() => {
+          alert('kakao login with: '+ resData.emailId);
           self.socialLogin(resData.emailId);
         }, 1500);
       } else {
@@ -399,8 +397,8 @@ export default {
       //   onCancel: this.onCancel,
       // });
       const self = this;
-      const clientId = 'RzAKRIVkiYS3ETx4MlTd';
-      const callbackUrl = 'https://frontned-nutrabbit-dev.dvconsulting.org/callback/naverlogin';
+      const clientId = import.meta.env.VITE_NAVER_CLIENT_ID;
+      const callbackUrl = import.meta.env.VITE_REDIRECT_URI+'/callback/naverlogin';
       await naver.login(clientId, callbackUrl).then((res) => {
         // console.log('testNaverLg---', res);
         self.naverAuth = res;
@@ -541,7 +539,8 @@ export default {
               this.cookies.set("rememberUserPassword", password);
             }
               // alert('login success:' + JSON.stringify(res.data.data));
-            this.$router.push({ name: "Main" });
+            // alert('redirected now...');
+            this.$router.push({ name: "personal-information" });
           }
         }
       });

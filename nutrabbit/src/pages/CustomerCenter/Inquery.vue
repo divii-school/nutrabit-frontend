@@ -41,7 +41,7 @@
                 <p class="ml-2">
                   <a
                     :href="
-                      'http://api-nutrabbit-dev.dvconsulting.org/public' +
+                      imgBaseUrl +
                       item.attachment_path
                     "
                     target="_blank"
@@ -61,9 +61,10 @@
                 :class="item.status == 'Answered' ? 'show' : 'hide'"
               >
                 <h4>{{ $t("customer.tag.AnswerContent") }}</h4>
-                <p class="ml-2">
+                <!-- <p class="ml-2">
                   {{ item.replyText }}
-                </p>
+                </p> -->
+                <div class="ml-2" v-html="item.replyText"></div>
               </div>
             </div>
           </template>
@@ -101,6 +102,7 @@ export default {
       inqId: localStorage.getItem("uid"),
       chunkPage: { chunk: 5 },
       globalLocale: "",
+      imgBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     };
   },
   created() {

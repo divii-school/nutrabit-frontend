@@ -27,8 +27,10 @@
                             </div>
                             <div>
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName1"
+                                 <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName1"
                                     :alt="fileName1" class="product-image" />
+                                <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName1"
+                                    :alt="fileName1" class="product-image" /> -->
                             </div>
                         </div>
                     </div>
@@ -49,6 +51,8 @@
                             <div class="text-red">{{ error.file }}</div>
                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" :alt="fileName2"
                                 class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName2" :alt="fileName2"
+                                class="product-image" /> -->
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">

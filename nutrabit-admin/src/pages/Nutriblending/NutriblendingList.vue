@@ -40,11 +40,18 @@
                         <h5>{{ $t('Blending.list.header') }}</h5>
                     </div>
                     <div>
-
+                        <router-link to="/excelnutri-blending">
+                                <Button
+                                    :label="$t('Category.excel_category')"
+                                    icon="pi pi-download"
+                                    iconPos="left"
+                                    class="p-button p-button-sm p-mr-2 p-mb-2"
+                                style="font-size:12px;"></Button>
+                            </router-link>
 
 
                         <router-link to="/addnutri-blending">
-                            <Button label="Primary" class="p-mr-2 p-mb-2"><i class="pi pi-plus p-mr-2"></i> {{
+                            <Button label="Primary" class="p-mr-2 p-mb-2" style="font-size:11px;"><i class="pi pi-plus p-mr-2" ></i> {{
                                 $t('Blending.addnew_blending')
                             }}</Button>
                         </router-link>
@@ -52,8 +59,7 @@
                 </div>
 
                 <DataTable :value="customer1" :paginator="true" class="p-datatable-gridlines" :rows="5" dataKey="id"
-                    :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll"
-                    v-model:selection="selected">
+                    :rowHover="true" :loading="loading1" :filters="filters1" responsiveLayout="scroll" v-model:selection="selected">
                     <ConfirmDialog group="dialog" />
 
                     <template #empty>데이터가 없습니다.</template>
@@ -100,7 +106,7 @@
                                             class="pi pi-eye p-mr-2"></i> </Button>
                                 </router-link>
                                 <router-link :to="'/editnutri-blending/' + data.id"><Button label="help"
-                                        class="p-button-outlined p-button-help p-mr-2 p-mb-2"><i
+                                        class="p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"><i
                                             class="pi pi-pencil p-mr-2"></i> </Button></router-link>
                                 <Button icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2"
                                     @click="confirm(data.id)" />
@@ -200,6 +206,15 @@ export default {
                 this.calendarValue1 = this.calendarValue1.toISOString().slice(0, 10) + 1;
                 console.log(this.calendarValue1);
             }
+        },
+         setData(id) {
+            this.blendingService.viewBlending (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
 
         resetUser() {

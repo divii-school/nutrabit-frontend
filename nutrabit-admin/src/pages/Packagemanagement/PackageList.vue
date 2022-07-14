@@ -55,11 +55,16 @@
                             >
                                 <template #body="{ data }">
                                     <span class="p-column-title">Image</span>
-                                    <img
+                                     <img
                                         :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + data.image_path"
                                         :alt="data.image_path"
                                         class="product-image"
                                     />
+                                    <!-- <img
+                                        :src="'https://back.nutri33.co.kr/public' + data.image_path"
+                                        :alt="data.image_path"
+                                        class="product-image"
+                                    /> -->
                                     <!-- {{ data.image }} -->
                                 </template>
                             </Column>

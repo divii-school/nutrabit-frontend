@@ -29,7 +29,8 @@
                 v-for="(item, index) of blending_image"
                 :key="index"
               >
-                <img :src="imgBaseUrl + item" alt />
+              <!-- <img v-if="item=='/uploads/blending/null'" src="../../assets/images/sub_place.png"/> -->
+                <img  v-if="item!='/uploads/blending/null'"  :src="imgBaseUrl + item" alt />
               </swiper-slide>
             </swiper>
             <swiper class="mySwiper2" v-else>
@@ -47,7 +48,7 @@
           <div class="right-heading">
             <i class="icon-star-blue"></i>
             <h2>{{ item.name }}</h2>
-            <div class="blending-tag">
+            <div class="blending-tag" v-if="item.tag">
               <span
                 v-for="(tag, index) in splitJoin(item.tags)"
                 :key="index"
@@ -98,7 +99,8 @@
                     )
                   }}
                 </h2>
-                <p>{{ item.description }}</p>
+                <!-- <p>{{ item.description }}</p> -->
+                <div class="p-text" v-html="item.description"></div>
               </li>
             </ul>
             <button
@@ -123,8 +125,8 @@
                 v-for="(items, index) of item.similar_image_path"
                 :key="index"
               >
-                <img v-if="items" :src="imgBaseUrl + items" alt />
-                <img v-else src="../../assets/images/similar_place.png" alt />
+                <!-- <img v-if="items=='/uploads/blending/null'" src="../../assets/images/similar_place.png" alt /> -->
+                <img v-if="items!='/uploads/blending/null'" :src="imgBaseUrl + items" alt />
               </li>
             </ul>
             <ul class="smilar-product-img" v-else>
@@ -152,6 +154,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import MyChoiceService from "../../services/MyChoiceService";
+import thumbImage from "~@/assets/images/thumbnail_place.png";
 
 export default {
   name: "ChoiceRecommendedBlendingDetailedPage",
@@ -185,7 +188,8 @@ export default {
       active: false,
       globalLocale: "",
       placeholder_image: "../../src/assets/images/thumbnail_place.png",
-      detail_image:''
+      detail_image:'',
+      imgUrl: thumbImage,
     };
   },
   created() {
@@ -230,11 +234,11 @@ export default {
 
             this.thumb_image = res.data.data[0].thumbnail_1_path
               ? this.imgBaseUrl + res.data.data[0].thumbnail_1_path
-              : this.placeholder_image;
+              : this.imgUrl;
 
             this.thumb_2nd_image = res.data.data[0].thumbnail_2_path
               ? this.imgBaseUrl + res.data.data[0].thumbnail_2_path
-              : this.placeholder_image;
+              : this.imgUrl;
           } else {
             // this.$swal(res.data.message, "error");
             console.log(res.data.message);

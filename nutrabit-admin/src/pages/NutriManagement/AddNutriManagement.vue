@@ -75,18 +75,20 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(KO)') }}</label>
-                            <Textarea :class="`${error.description_ko ? 'p-invalid' : ''}`" type="text" placeholder="설명" id="title2" v-model="description_ko"></Textarea>
+                            <Quill-Editor :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
+                                contentType="html" placeholder="설명" id="title2" v-model:content="description_ko"/>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(EN)') }}</label>
-                            <Textarea :class="`${error.description_en ? 'p-invalid' : ''}`" type="text" placeholder="설명" id="title2" v-model="description_en"></Textarea>
+                            <Quill-Editor :class="`${error.description_en ? 'p-invalid' : ''}`" ref="myQuillEditor"
+                                contentType="html" placeholder="설명" id="title2" v-model:content="description_en" />
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
-                    <div class="p-grid p-formgrid p-mb-3">
+                    <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Nutri3.Add.Thumbnailimg') }}

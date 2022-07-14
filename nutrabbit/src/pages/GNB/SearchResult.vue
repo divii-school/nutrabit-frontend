@@ -207,7 +207,7 @@ export default {
     },
     showSarchResult(searchKeyword) {
       this.commonService
-        .getSearchResult(searchKeyword, this.common.state.myIP)
+        .getSearchResult(searchKeyword, this.common.state.myIP, this.common.state.userId)
         .then((res) => {
           const nutriBlending = [];
           const recomanedBlending = [];

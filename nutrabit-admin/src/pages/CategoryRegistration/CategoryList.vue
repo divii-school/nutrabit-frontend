@@ -12,7 +12,7 @@
                             <p for="type">카테고리 명</p>
                             
                             <AutoComplete
-                                placeholder="검색어 입력"
+                                placeholder="선택 "
                                 :dropdown="true"
                                 :multiple="false"
                                 v-model="selectedAutoValue"

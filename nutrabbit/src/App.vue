@@ -39,13 +39,9 @@ export default {
     window["sendPushNotificationData"] = (res) => {
       this.sendPushNotificationData(res);
     };
-  },
-  updated() {
-    // alert('Page url:-- ' + window.location.href);
-    // alert('Navigator:==' + navigator.userAgentData.platform);
-    // alert('mobile:==' + navigator.userAgentData.mobile);
-    // console.log(navigator.userAgentData.platform);
-    // console.log(navigator.userAgentData.mobile);
+    window["backButtonHandeler"] = (res) => {
+      this.isBackbuttonAction(res);
+    };
   },
   methods: {
     sendPushNotificationData(res) {
@@ -57,6 +53,16 @@ export default {
         return false;
       }
     },
+    isBackbuttonAction(res) {
+      if (res) {
+        const histroyCount = window.history.state.position;
+        if (histroyCount < 2) {
+          window.parent.postMessage("lastHistory", "*");
+        } else {
+          window.parent.postMessage("hasHistory", "*");
+        }
+      }
+    }
   },
 };
 </script>

@@ -106,6 +106,7 @@ import Toast2 from '../src/alert/alert.js'
 // axios.defaults.baseURL = 'http://da-lab-backend.dvconsulting.org:4040/dl-dev/api/v1/';
 // axios.defaults.baseURL = 'https://api-nutrabbit-dev2.dvconsulting.org/nutrabbit-dev/api/v1';
 axios.defaults.baseURL = 'https://api-nutrabbit-dev.dvconsulting.org/nutrabbit-dev/api/v1';
+// axios.defaults.baseURL = 'https://back.nutri33.co.kr/nutrabbit-dev/api/v1';
 // https://admin-nutrabbit-dev2.dvconsulting.org/
 // axios.defaults.baseURL = 'http://api-nutrabbit-dev.dvconsulting.org:3000/nutrabbit-dev/api/v1';
 axios.defaults.headers = {
