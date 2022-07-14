@@ -428,7 +428,7 @@ export default {
     getHistory() {
       this.showSearchpannel = true;
       this.commonService
-        .getSearchHistory(this.common.state.myIP)
+        .getSearchHistory(this.common.state.myIP, this.common.state.userId)
         .then((res) => {
           this.activeSearch = true;
           if (res.data.data.length > 0) {
@@ -459,7 +459,7 @@ export default {
     // delete all search history itema
     deleteAllHistory() {
       this.commonService
-        .deleteAllHistory(this.common.state.myIP)
+        .deleteAllHistory(this.common.state.myIP, this.common.state.userId)
         .then((res) => {
           this.getHistory();
         })

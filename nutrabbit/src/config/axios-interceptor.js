@@ -26,7 +26,7 @@ axios.interceptors.response.use((response) => {
     return response
 }, async function (error) {
     if (error.response.status === 403) {
-        // Toast.fire({ title: "Session Expired" });
+        Toast.fire({ title: "Session Expired" });
         window.location.href = '/login';
         localStorage.clear();
         return axios(originalRequest);

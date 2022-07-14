@@ -23,13 +23,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(option, index) in pill" :key="index">
+                    <tr v-for="(option, index) in raw_mat" :key="index">
                       <td>{{ index + 1 }}</td>
                       <td>{{ $t(option.category)}}</td>
                       <td>{{ $t(option.explanation) }}</td>
                     </tr>
-                    <tr v-for="(option, index) in raw_mat" :key="index">
-                      <td>{{ pill.length + 1 }}</td>
+                    <tr v-for="(option, index) in pill" :key="index">
+                      <td>{{ raw_mat.length + 1 }}</td>
                       <td>{{ $t(option.category)}}</td>
                       <td>{{ $t(option.explanation) }}</td>
                     </tr>
