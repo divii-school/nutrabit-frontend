@@ -81,8 +81,8 @@
                       />
                     </div>
                     <div class="tag-wrap">
-                      <span>nutri 3.3</span>
-                      <span>nutri 3.3</span>
+                      <span>{{ item.category_name }}</span>
+                      <!-- <span>nutri 3.3</span> -->
                     </div>
 
                     <p @click="this.$router.push(`/nutri-detail/${item.id}`)">
