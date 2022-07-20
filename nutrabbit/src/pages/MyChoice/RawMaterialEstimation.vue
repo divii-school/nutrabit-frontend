@@ -38,7 +38,7 @@
                 <h2>{{ $t("final.option") }}</h2>
               </div>
             </div>
-            <div class="materialForm">yjkkyu
+            <div class="materialForm">
               <div class="tableWrap">
                 <table>
                   <thead>
@@ -580,8 +580,8 @@ export default {
         var option_array = option_data[i];
         var res_option_type = Object.keys(option_array).toString();
         var res_option_value = Object.values(option_array).toString();
-        console.log(res_option_type);
-        console.log(res_option_value);
+        // console.log(res_option_type);
+        // console.log(res_option_value);
         this.mychoiceService
           .optiondetails(res_option_type, res_option_value)
           .then((res) => {
@@ -589,7 +589,7 @@ export default {
             //   category: res.data.data[0].category,
             //   explanation: res.data.data[0].explanation,
             // });
-            console.log('ressss----', res.data.data[0].category);
+            // console.log('ressss----', res.data.data[0].category);
 
             if (res.data.data[0].category == 'Raw Material') {
               this.raw_mat.push({
