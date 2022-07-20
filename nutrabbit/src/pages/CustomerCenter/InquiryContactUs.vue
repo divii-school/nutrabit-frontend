@@ -2,13 +2,9 @@
   <div class="main-body">
     <div class="signUp-container">
       <div class="login-signup-wrap membership-wrap personal-info inquery">
-        <h1 class="inquiry-heading">{{$t("customer.button.Inquiry")}}</h1>
+        <h1 class="inquiry-heading">{{ $t("customer.button.Inquiry") }}</h1>
         <div class="login-signup-inner">
-          <form
-            action=""
-            class="signUp-form"
-            @submit="(e) => e.preventDefault()" enctype="multipart/form-data"
-          >
+          <form action="" class="signUp-form" @submit="(e) => e.preventDefault()" enctype="multipart/form-data">
             <div class="individuals-form">
               <div class="form-group">
                 <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Subject") }}</label>
@@ -18,11 +14,7 @@
                       <option value="" disabled selected hidden>
                         {{ $t("customer.placeholder.InquirySubject") }}
                       </option>
-                      <option
-                        v-for="(item, index) of EnqueryTypeList"
-                        :key="index"
-                        :value="item.id"
-                      >
+                      <option v-for="(item, index) of EnqueryTypeList" :key="index" :value="item.id">
                         {{ item.title }}
                       </option>
                     </select>
@@ -33,23 +25,19 @@
                 <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Details") }}</label>
                 <div class="input-group">
                   <div class="input-inner">
-                    <textarea
-                      class="form-control inquiry-textarea"
-                      :placeholder="$t('customer.placeholder.InquiryDetails')"
-                      v-model="InqDesc" required
-                    ></textarea>
+                    <textarea class="form-control inquiry-textarea"
+                      :placeholder="$t('customer.placeholder.InquiryDetails')" v-model="InqDesc" required></textarea>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for=""><i class="icon-required"></i>{{ $t("customer.inquiryLabel.Upload") }}</label>
+                <label for="">
+                  <!-- <i class="icon-required"></i> -->
+                  {{ $t("customer.inquiryLabel.Upload") }}
+                </label>
                 <div class="input-group">
                   <div class="file-input">
-                    <input
-                      type="file"
-                      class="select-file"
-                      v-on:change="onFileChange" required
-                    />
+                    <input type="file" class="select-file" v-on:change="onFileChange" />
                     <label for="file">
                       {{ $t("customer.inquiryLabel.Upload") }}
                       <img src="../../assets/icons/upload.svg" />
@@ -76,20 +64,15 @@
       </div>
     </div>
   </div>
-  <Modal
-    v-show="isModalVisible"
-    @close="closeModal"
-    :bodytext1="$t('customer.modal.inquiryText')"
-    :btnText2="$t('onlyme.button.Confirm')"
-    link="/inquiry"
-  />
+  <Modal v-show="isModalVisible" @close="closeModal" :bodytext1="$t('customer.modal.inquiryText')"
+    :btnText2="$t('onlyme.button.Confirm')" link="/inquiry" />
 </template>
 <script>
 import Modal from "../../components/Modal.vue";
 import CustomerCenterService from "../../services/CustomerCenterService";
 
 export default {
-  inject : ["common"],
+  inject: ["common"],
   name: "InquiryContactUs",
   components: {
     Modal,
@@ -105,7 +88,7 @@ export default {
       InqDesc: "",
       isModalVisible: false,
       errorMsg: "",
-      globalLocale:'',
+      globalLocale: '',
     };
   },
   created() {
@@ -120,7 +103,7 @@ export default {
   //   this.globalLocale = localStorage.getItem("selectedLang");
   //   console.log(this.globalLocale);
   // },
- watch: {
+  watch: {
     "common.state.SelectedLang": function (newVal, oldVal) {
       if (
         (newVal == "KO" && oldVal == "EN") ||
@@ -162,18 +145,18 @@ export default {
       this.this.errorMsg = "";
     },
     async submitData() {
-        let formData = new FormData();
-        formData.append("type_id", this.selected);
-        formData.append("description", this.InqDesc);
-        formData.append("attachment", this.file);
-        // const data1 = await axios.post("/inquery/add", formData);
-        try {
-          const res = await axios.post("/inquery/add", formData);
-          this.isModalVisible = true;
-        } catch (error) {
-          return;
-        }
-      
+      let formData = new FormData();
+      formData.append("type_id", this.selected);
+      formData.append("description", this.InqDesc);
+      formData.append("attachment", this.file);
+      // const data1 = await axios.post("/inquery/add", formData);
+      try {
+        const res = await axios.post("/inquery/add", formData);
+        this.isModalVisible = true;
+      } catch (error) {
+        return;
+      }
+
     },
     removeFile() {
       this.fileName = "";
