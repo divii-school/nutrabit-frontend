@@ -38,7 +38,7 @@
                 <h2>{{ $t("final.option") }}</h2>
               </div>
             </div>
-            <div class="materialForm">
+            <div class="materialForm">yjkkyu
               <div class="tableWrap">
                 <table>
                   <thead>
@@ -49,50 +49,58 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, index) in items" :key="index">
+                    <!-- <tr v-for="(item, index) in items" :key="index">
                       <td>{{ index + 1 }}</td>
                       <td>{{ $t(item.category) }}</td>
                       <td>{{ $t(item.explanation) }}</td>
+                    </tr> -->
+
+
+
+                    <tr v-for="(option, index) in raw_mat" :key="index">
+                      <td>{{ index + 1 }}</td>
+                      <td>{{ $t(option.category) }}</td>
+                      <td>{{ $t(option.explanation) }}</td>
                     </tr>
+                    <tr v-for="(option, index) in pill" :key="index">
+                      <td>{{ raw_mat.length + 1 }}</td>
+                      <td>{{ $t(option.category) }}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+                    <tr v-for="(option, index) in pack" :key="index">
+                      <td>{{ raw_mat.length + pill.length + 1 }}</td>
+                      <td>{{ $t(option.category) }}</td>
+                      <td>{{ $t(option.explanation) }}</td>
+                    </tr>
+
+
+
+
+
                   </tbody>
                 </table>
               </div>
               <div class="fGroup">
                 <label>{{ $t("final.title") }}</label>
-                <input
-                  type="text"
-                  v-model="title"
-                  name
-                  :placeholder="$t('final.title_place')"
-                />
+                <input type="text" v-model="title" name :placeholder="$t('final.title_place')" />
               </div>
               <div class="fGroup">
                 <label>{{ $t("final.AdditionalRequests") }}</label>
                 <span>{{ $t("final.add_info") }}</span>
-                <textarea
-                  v-model="additional_request"
-                  :placeholder="$t('final.textarea_place')"
-                ></textarea>
+                <textarea v-model="additional_request" :placeholder="$t('final.textarea_place')"></textarea>
               </div>
               <div class="fGroup mb0">
                 <label class="mb0">
                   {{ $t("final.Select_Service") }}
                   <span class="mb0">
-                    {{ $t("final.Select_Service_desc") }}</span
-                  >
+                    {{ $t("final.Select_Service_desc") }}</span>
                 </label>
               </div>
               <div class="product-list-wrap">
                 <div class="product-item with-input">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="qoute">
-                      <input
-                        type="checkbox"
-                        id="qoute"
-                        checked
-                        value="2"
-                        v-model="servicetype"
-                      />
+                      <input type="checkbox" id="qoute" checked value="2" v-model="servicetype" />
                       <span class="checkmark" for="qoute"></span>
                     </label>
                   </div>
@@ -103,12 +111,7 @@
                 <div class="product-item with-input">
                   <div class="radio-wrap">
                     <label class="custom-check custom-check2" for="sample">
-                      <input
-                        type="checkbox"
-                        id="sample"
-                        value="1"
-                        v-model="servicetype"
-                      />
+                      <input type="checkbox" id="sample" value="1" v-model="servicetype" />
                       <span class="checkmark" for="sample"></span>
                     </label>
                   </div>
@@ -126,55 +129,29 @@
                   <li>{{ $t("final.note.list4") }}</li>
                 </ul>
                 <div class="btn-wrap tripple-btn">
-                  <button
-                    @click="this.$router.push('/raw-material-package/')"
-                    class="btn-small-solid grey btn-left"
-                  >
+                  <button @click="this.$router.push('/raw-material-package/')" class="btn-small-solid grey btn-left">
                     {{ $t("button.Previous") }}
                   </button>
                   <div class="btnWrapRight">
-                    <button
-                      class="btn-green-outline blue"
-                      @click="package_temporary_add"
-                    >
+                    <button class="btn-green-outline blue" @click="package_temporary_add">
                       {{ $t("button.Save_as_draft") }}
                     </button>
-                    <button
-                      class="btn-small-solid blue ml-4"
-                      @click="package_add"
-                    >
+                    <button class="btn-small-solid blue ml-4" @click="package_add">
                       {{ $t("button.next") }}
                     </button>
                   </div>
                   <my-modal-component v-show="showModal">
-                    <Modal
-                      @close="closeModal"
-                      :bodytext1="$t('final.modal_msg')"
-                      :btnText2="$t('button.Confirm')"
-                      link="/"
-                    />
+                    <Modal @close="closeModal" :bodytext1="$t('final.modal_msg')" :btnText2="$t('button.Confirm')"
+                      link="/" />
                   </my-modal-component>
                   <my-modal-component v-show="showModal2">
-                    <ModalWarning
-                      @close2="closeModal2"
-                      :bodytext1="$t('warningModal.text')"
-                      :btnText1="$t('warningModal.btn1')"
-                      :btnText2="$t('warningModal.btn2')"
-                      @confirm="confirm"
-                    />
+                    <ModalWarning @close2="closeModal2" :bodytext1="$t('warningModal.text')"
+                      :btnText1="$t('warningModal.btn1')" :btnText2="$t('warningModal.btn2')" @confirm="confirm" />
                   </my-modal-component>
-                  <Modal
-                    v-show="isItemSelectedVisible"
-                    @close="closeModalTitle"
-                    :bodytext1="$t('final.required_title_msg')"
-                    :btnText1="$t('button.Confirm')"
-                  />
-                  <Modal
-                    v-show="isServiceSelectedVisible"
-                    @close="closeModalService"
-                    :bodytext1="$t('final.required_service_msg')"
-                    :btnText1="$t('button.Confirm')"
-                  />
+                  <Modal v-show="isItemSelectedVisible" @close="closeModalTitle"
+                    :bodytext1="$t('final.required_title_msg')" :btnText1="$t('button.Confirm')" />
+                  <Modal v-show="isServiceSelectedVisible" @close="closeModalService"
+                    :bodytext1="$t('final.required_service_msg')" :btnText1="$t('button.Confirm')" />
                 </div>
               </div>
             </div>
@@ -220,6 +197,9 @@ export default {
       isServiceSelectedVisible: false,
       to: "",
       items: [],
+      raw_mat: [],
+      pill: [],
+      pack: [],
       name: "",
       email: "",
       phoneNumber: "",
@@ -593,19 +573,42 @@ export default {
       var option_data = JSON.parse(localStorage.getItem("option") || "[]");
       // console.log("# of option_data: " + option_data.length);
       this.items = [];
+      this.raw_mat = [];
+      this.pill = [];
+      this.pack = [];
       for (let i = 0; i < option_data.length; i++) {
         var option_array = option_data[i];
         var res_option_type = Object.keys(option_array).toString();
         var res_option_value = Object.values(option_array).toString();
-        //  console.log(res_option_type);
-        // console.log(res_option_value);
+        console.log(res_option_type);
+        console.log(res_option_value);
         this.mychoiceService
           .optiondetails(res_option_type, res_option_value)
           .then((res) => {
-            this.items.push({
-              category: res.data.data[0].category,
-              explanation: res.data.data[0].explanation,
-            });
+            // this.items.push({
+            //   category: res.data.data[0].category,
+            //   explanation: res.data.data[0].explanation,
+            // });
+            console.log('ressss----', res.data.data[0].category);
+
+            if (res.data.data[0].category == 'Raw Material') {
+              this.raw_mat.push({
+                category: res.data.data[0].category,
+                explanation: res.data.data[0].explanation,
+              })
+            }
+            else if (res.data.data[0].category == 'Formulation') {
+              this.pill.push({
+                category: res.data.data[0].category,
+                explanation: res.data.data[0].explanation,
+              })
+            }
+            else if (res.data.data[0].category == 'Package') {
+              this.pack.push({
+                category: res.data.data[0].category,
+                explanation: res.data.data[0].explanation,
+              })
+            }
             // console.log(res);
           });
       }
@@ -620,13 +623,17 @@ export default {
     height: 45px;
   }
 }
+
 .product-list-wrap {
   margin-top: 0 !important;
+
   .product-item {
     padding: 36px 30px !important;
+
     @media screen and (max-width: 640px) {
       padding: 30px 0 !important;
     }
+
     &:first-child {
       @media screen and (max-width: 640px) {
         padding: 20px 0 30px !important;
