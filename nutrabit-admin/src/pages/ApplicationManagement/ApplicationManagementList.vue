@@ -167,7 +167,7 @@
                                     <router-link :to="'/app-managementedit/' + data.id">
                                         <Button
                                             label="help"
-                                            class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2"
+                                            class="n-wrap p-button-outlined p-button-help p-mr-2 p-mb-2" @mouseenter="setData(data.id)"
                                         >
                                             <i class="pi pi-pencil p-mr-2"></i>
                                         </Button>
@@ -304,6 +304,15 @@ export default {
                 });
             }, 500);
         },
+          setData(id) {
+            this.applicationmanagementService.viewApplicationmanagemenList (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
+        },
 
          resetUser() {
             this.name = '';
@@ -385,7 +394,7 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - LTS')
             }
         },
 

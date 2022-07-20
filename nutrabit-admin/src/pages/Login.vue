@@ -5,7 +5,7 @@
             <div class="login-panel">
                 <a @click="goDashboard" class="logo">
                     <!-- <img src="assets/layout/images/site-logo.svg" alt="DA LAB" /> -->
-                    <h2 style="color: #000000;">Nutrabbit</h2>
+                    <h2 style="color: #000000;">NUTRABBIT</h2>
                 </a>
                 <form class="login">
                     <h2 class="header"> 환영합니다</h2>

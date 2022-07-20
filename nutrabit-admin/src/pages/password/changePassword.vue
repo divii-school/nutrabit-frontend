@@ -10,11 +10,11 @@
                     <strong>{{ $t('password.header') }}</strong>
                 </h4>
                 <div class="p-formgrid p-grid">
-                    <div class="p-field p-col-12 p-md-3">
+                    <!-- <div class="p-field p-col-12 p-md-3">
                         <label for="current_pass">{{ $t('password.current') }}</label>
                         <Password id="current_pass" :class="`${error.current ? 'p-invalid' : ''}`"  placeholder="Enter current-password" v-model="Current_pass" />
                         <div class="text-red">{{ error.current }}</div>
-                    </div>
+                    </div> -->
                     <div class="p-field p-col-12 p-md-3">
                         <label for="new_pass">{{ $t('password.new') }}</label>
                         <Password id="new_pass" :class="`${error.newp ? 'p-invalid' : ''}`"  placeholder="Example: Admin@dfc" v-model="new_pass" />
@@ -46,10 +46,11 @@ export default {
             helptxt:true,
             render:false,
             render1:false,
-            Current_pass: '',
+            // Current_pass: '',
             new_pass: '',
             confirm_pass: '',
             error: {},
+            id:'',
             errpassconfi: null,
         };
     },
@@ -68,7 +69,7 @@ export default {
         },
         Changepass() {
             let vcheckData = {
-                current: this.Current_pass,
+                // current: this.Current_pass,
                 newp: this.new_pass,
                 confi: this.confirm_pass,
             };
@@ -80,7 +81,7 @@ export default {
             } else {
                 this.error = {};
                 this.passwordService
-                    .changePassword(this.Current_pass, this.new_pass, this.confirm_pass)
+                    .changePassword( this.id, this.new_pass)
                     .then(() => {
                         this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: '비밀번호가 성공적으로 변경되었습니다.', life: 3000 });
                         setTimeout(() => {

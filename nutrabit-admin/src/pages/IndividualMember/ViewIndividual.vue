@@ -73,7 +73,17 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('DFC.details.address') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.address }}</p>
+                        <p>{{ mydata.address  }} </p>
+                    </div>
+                </div>
+
+                <div class="p-field p-grid">
+                    <label
+                        for="address"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('DFC.details.detailaddress') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.detail_address  }} </p>
                     </div>
                 </div>
 
@@ -187,6 +197,7 @@ export default {
                 findings: '',
                 createdDate: '',
                 address: '',
+                detail_address:'',
                 password: '',
 
             },
@@ -206,7 +217,7 @@ export default {
              if (value) {
                  console.log()
             // return moment(String(value)).locale('ko').format('LLL')
-            return moment(String(value)).format('YYYY/MM/DD     h:mm:ss')
+            return moment(String(value)).format('YYYY/MM/DD     LT')
             }
         },
 
@@ -290,6 +301,7 @@ export default {
             this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.uuid = res.data.data[0].uuid;
             this.mydata.address = res.data.data[0].address;
+            this.mydata.detail_address = res.data.data[0].detail_address;
             this.mydata.createdDate = res.data.data[0].createdDate;
             this.mydata.findings = res.data.data[0].findings;
             this.mydata.password = res.data.data[0].password;

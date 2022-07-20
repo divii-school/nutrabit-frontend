@@ -11,7 +11,10 @@
                     >신청자명 / 업체명:</label>
                     
                     <div class="p-col-12 p-md-10" style="display:flex;justify-content: space-between;">
-                        <p>{{ business_name }}
+                        <p v-if="business_name != null  ">{{ business_name }}
+                            
+                        </p>
+                         <p v-else>{{ applicant_name }}
                             
                         </p>
 
@@ -27,7 +30,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >문의 제목:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ title }}</p>
+                        <p>{{ title_ko }}</p>
                     </div>
                 </div>
 
@@ -50,9 +53,13 @@
                     <div class="p-col-12 p-md-10" v-for="(attachment, img) in attachment" :key="img">
                         
                        <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/' + attachment" :alt="attachment" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + attachment" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/' + attachment" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                     </div>
                 </div>
+
+
+                
                 
                 
                 
@@ -62,17 +69,35 @@
     </div>
     <div class="p-grid">
          <div class="p-col-12">
-            <div class="card p-fluid" style="height:250px;">
+            <div class="card p-fluid" style="height:320px;">
                 <div class="p-grid p-formgrid p-mb-3">
                     <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                         <label for="title2" style="font-size: x-large;font-family: sans-serif;">댓글</label>
                         <div class="textbox">
-                            <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="text" />
+                            <Quill-Editor style="height: 100px;" placeholder="회신하다" id="title2" v-model:content="replyText" ref="myQuillEditor" :options="editorOption" contentType="html" />
                         </div>
                         <!-- <Textarea class="" type="text" placeholder="회신하다" id="title2" v-model="replyText" style="height:100px;"></Textarea> -->
                         <div class="text-red">{{}}</div>
                     </div>
                 </div>
+
+                <div class="p-grid p-formgrid p-mb-3">
+                        <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
+                            
+                            <br>
+                            <!-- <Dropdown v-model="dropdownValue" modelValue="dropdownValues[0].name" :options="dropdownValues" optionLabel="code" :placeholder="status" /> -->
+                            <div >
+                                <input type="radio" id="Korean" name="replyLang" value="ko" v-model="replyLang" v-bind:checked="checked">
+                                <label for="Korean">Riply In Korean</label>
+
+                                <input type="radio" id="English" value="en" name="replyLang" v-model="replyLang">
+                                <label for="English">Riply In English</label>
+
+                                
+                            </div>
+                            <!-- <div class="text-red">{{ error.state }}</div> -->
+                        </div>
+                    </div>
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <!-- <Button @click="del($route.params.id)" label="delete" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"><i class="pi pi-trash p-mr-2"></i> {{ $t('button.delete') }}</Button> -->
                     <Button label="회신하다" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="replayans"></Button>
@@ -99,7 +124,7 @@ export default {
             calendarValue: null,
             calendarValue2: null,
             business_name: '',
-            title: '',
+            title_ko: '',
             type_id: '',
             repliedBy: '',
             dropdownValue: null,
@@ -113,8 +138,10 @@ export default {
             statusitem: '',
             attachment: '',
             description: '',
+            applicant_name:'',
             id: '',
             replyText: '',
+            replyLang:'',
             createdDate:'',
             dropdownItems: [
                 { name: 'Member information related enquries', code: 'Member information related enquries' },
@@ -144,13 +171,15 @@ export default {
     methods: {
          dateformat(value) {
             if (value) {
-                return moment(String(value)).locale('ko').format('ll - h:mm:ss')
+                return moment(String(value)).locale('ko').format('ll - LTS')
             }
         },
         replayans() {
-            this.inquiryService.ReplyInquiry(this.$route.params.id, this.replyText).then((res) => {
+
+           
+            this.inquiryService.ReplyInquiry(this.$route.params.id,  this.replyText, this.replyLang).then((res) => {
                 console.warn(res);
-                console.log(this.replyText);
+                console.log(this.replyLang);
                 alert('업데이트 완료')
                 this.$router.push({ name: 'Inquiry' });
             });
@@ -164,18 +193,20 @@ export default {
             this.createdDate = res.data.data[0].createdDate;
             this.status = res.data.data[0].status;
             this.business_name = res.data.data[0].business_name;
-            this.title = res.data.data[0].title;
+            this.applicant_name = res.data.data[0].name;
+            this.title_ko = res.data.data[0].title_ko;
             this.type_id = res.data.data[0].type_id;
             this.repliedBy = res.data.data[0].repliedBy;
             this.type_title = res.data.data[0].type_title;
             this.attachment = res.data.data[0].attachmentURL.toString().split(',');
-
+            console.log(this.applicant_name);
             console.log(res);
             if (res.status === 'closed') {
                 this.render = false;
             } else {
                 this.render = true;
             }
+        
         });
     },
 };

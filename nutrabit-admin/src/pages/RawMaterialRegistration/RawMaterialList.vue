@@ -259,6 +259,24 @@ export default {
         this.rawService = new RawService();
     },
     mounted() {
+      
+       
+      this.rawService
+            .getRawCategoryDropdown()
+            .then((data) => {
+                this.dropdownValues = data;
+                // this.products = data;
+                this.loading1 = false;
+                // this.products.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
+                console.log(this.dropdownValues);
+                console.log(data);
+            })
+        
+        if(localStorage.getItem("sData")!='' && localStorage.getItem("subCategoryID")!='' ){
+            this.searchData = localStorage.getItem("sData");
+            this.sub_category_id = localStorage.getItem("subCategoryID");
+            this.searchRaw();
+        }else{
         const route = useRoute();
         console.log(route.params);
         this.loading1 = true;
@@ -269,7 +287,8 @@ export default {
                 this.loading1 = false;
                 //this.customer1.forEach((customer) => (customer.createdDate = new Date(customer.createdDate)));
             })
-        this.rawService
+        
+             this.rawService
             .getRawCategoryDropdown()
             .then((data) => {
                 this.dropdownValues = data;
@@ -279,8 +298,7 @@ export default {
                 console.log(this.dropdownValues);
                 console.log(data);
             })
-
-
+    
         
             .catch((err) => {
                 this.loading1 = false;
@@ -290,6 +308,7 @@ export default {
                     this.$router.push({ name: 'login' });
                 }
             });
+        }
     },
     watch: {},
     methods: {
@@ -376,12 +395,14 @@ export default {
             if (this.searchData === '' && this.sub_category_id === '' ) {
                 // this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
+                localStorage.setItem("sData", this.searchData)
+                localStorage.setItem("subCategoryID", this.sub_category_id?this.sub_category_id.id:this.sub_category_id)
                 // if(this.from_date!=''){
                 //     this.searchdate = this.addDay(this.from_date)
                 // } else {
                 //     this.searchdate = ""
                 // }
-                console.log(  this.sub_category_id)
+                console.log(  this.sub_category_id?this.sub_category_id.id:this.sub_category_id)
                 this.rawService
                 
                     .getRawList(this.status,this.page,this.limit, this.searchData, this.sub_category_id?this.sub_category_id.id:this.sub_category_id,this.sortBy, this.sortOrder, this.to_date)

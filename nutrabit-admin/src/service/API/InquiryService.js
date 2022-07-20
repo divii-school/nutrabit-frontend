@@ -40,9 +40,9 @@ export default class InquiryService {
             return await axios.post(`/admin/inquery_type/`, {}).then((res) => res.data.data.inqueryType);
             
         }
-        async ReplyInquiry(id , replyText) {
+        async ReplyInquiry(id , replyText, replyLang) {
             // console.log(ids)
-            return await axios.put(`/admin/inquery/reply`, { id: id , replyText:replyText }).then((res) => res);
+            return await axios.put(`/admin/inquery/reply`, { id: id , replyText:replyText, replyLang:replyLang }).then((res) => res);
         }
     // async getBusinessNameDropdown() {
     //        return await axios.get(`/admin/inquery`, {}).then((res) => res.data.data.inquery);

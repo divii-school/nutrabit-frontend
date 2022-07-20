@@ -4,7 +4,7 @@ import validator from 'validator';
 const validateCreateBlending = (data) => {
     let errors = {};
 
-    const { name_ko, name_en,category_id,raw_material_id,sub_raw_materials,pill_id,tags_ko,tags_en,efficiency_ko,efficiency_en
+    const { name_ko, name_en,category_id,raw_material_id,sub_raw_materials_ko ,sub_raw_materials_en,pill_id,tags_ko,tags_en,efficiency_ko,efficiency_en
         ,ingredients_ko,ingredients_en,description_ko,description_en,state,file} = data;
 
     if (validator.isEmpty(name_ko)) {
@@ -20,8 +20,11 @@ const validateCreateBlending = (data) => {
     if (validator.isEmpty(raw_material_id)) {
         errors.raw_material_id = '원료를 입력하십시오';
     }
-    if (validator.isEmpty(sub_raw_materials)) {
-        errors.sub_raw_materials = '서브 원시를 입력하십시오';
+    if (validator.isEmpty(sub_raw_materials_ko)) {
+        errors.sub_raw_materials_ko = '서브 원시를 입력하십시오';
+    }
+    if (validator.isEmpty(sub_raw_materials_en)) {
+        errors.sub_raw_materials_en = '서브 원시를 입력하십시오';
     }
     if (validator.isEmpty(pill_id)) {
         errors.pill_id = '알약을 입력하십시오';

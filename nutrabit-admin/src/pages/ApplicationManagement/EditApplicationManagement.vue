@@ -6,91 +6,76 @@
                 <div class="p-col-12">
                     <h5>{{ $t('Application.details.header') }}</h5>
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.name')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.blendingname') }}:</label>
+                        <div class="p-col-12 p-md-10">
+                            <p>{{ blending_name_ko }}</p>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.name') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ name }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.id')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.id') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ ID }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.password')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.password') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>******</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.email')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.email') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ email }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.mobile')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.mobile') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ mobile }}</p>
                         </div>
                     </div>
 
-
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.address')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.address') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ address }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.datetime')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.datetime') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ dateformat(createdDate) }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.application')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.application') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ $t(Application_mode) }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.client')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.client') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ additional_request }}</p>
                         </div>
                     </div>
 
                     <div class="p-field p-grid">
-                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{
-                            $t('Application.details.applicationlist')
-                        }}:</label>
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.applicationlist') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <table id="firstTable" class="firstTable">
                                 <thead>
@@ -111,14 +96,6 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
                     <br />
                     <h4>
                         <strong>{{ $t('Application.details.adminheader') }}</strong>
@@ -127,25 +104,19 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="state2">{{ $t('Application.details.status') }}</label>
-                            <Dropdown
-                            :class="`${error.status ? 'p-invalid' : ''}`"
-                                v-model="dropdownValue"
-                                :options="dropdownValues"
-                                optionLabel="code"
-                                :placeholder="$t('Application.details.status')"
-                            />
-                            <div class="text-red">{{ error.status }}</div>
+
+                            <Dropdown :class="`${error.status_by_admin ? 'p-invalid' : ''}`" v-model="status_by_admin" :options="dropdownValues" optionLabel="code" :placeholder="$t('Application.details.status')" optionValue="name" />
+                            <div class="text-red">{{ error.status_by_admin }}</div>
                         </div>
                     </div>
-
 
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="answer_by_admin">{{ $t('Application.details.answer') }}</label>
                             <div class="textbox">
-                                <Quill-Editor style="height: 100px;" :placeholder="$t('Application.details.answer')"  id="answer_by_admin"
-                                    v-model:content="answer_by_admin" ref="myQuillEditor" :options="editorOption"
-                                    contentType="text" />
+                                <div :class="`${error.answer_by_admin ? 'p-invalid' : ''}`">
+                                    <Quill-Editor style="height: 100px" :placeholder="$t('Application.details.answer')" id="answer_by_admin" v-model:content="answer_by_admin" ref="myQuillEditor" :options="editorOption" contentType="html" />
+                                </div>
                             </div>
                             <!-- <Textarea type="text" :placeholder="$t('Application.details.answer')" id="answer_by_admin"
                                 v-model="answer_by_admin"></Textarea> -->
@@ -156,24 +127,19 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="memo_by_admin">{{ $t('Application.details.memo') }}</label>
-                            <Textarea type="text" :placeholder="$t('Application.details.memo')" id="memo_by_admin"
-                                v-model="memo_by_admin"></Textarea>
+                            <Textarea type="text" :class="`${error.memo_by_admin ? 'p-invalid' : ''}`" :placeholder="$t('Application.details.memo')" id="memo_by_admin" v-model="memo_by_admin"></Textarea>
                             <div class="text-red">{{ error.memo_by_admin }}</div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
 
-            <div class="p-d-flex p-jc-end p-ai-center" style="float:left;">
-                <Button :label="$t('Application.details.save')" icon="pi pi-save" iconPos="left"
-                    class="p-button p-button-sm p-mr-2 p-mb-2" @click="editApplicationManagement"></Button>
+            <div class="p-d-flex p-jc-end p-ai-center" style="float: left">
+                <Button :label="$t('Application.details.save')" icon="pi pi-save" iconPos="left" class="p-button p-button-sm p-mr-2 p-mb-2" @click="editApplicationManagement"></Button>
             </div>
             <div class="p-d-flex p-jc-end p-ai-center">
                 <div>
-                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left"
-                        class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
+                    <Button :label="$t('button.back')" icon="pi pi-replay" iconPos="left" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @click="$router.go(-1)"></Button>
                 </div>
             </div>
         </form>
@@ -191,10 +157,14 @@ export default {
         return {
             // render1: false,
             // render2: false,
-            dropdownValues: [{ name: 'pending', code: '미답변  ' }, { name: 'completed', code: '답변 ' }],
+            dropdownValues: [
+                { name: 'pending', code: '미답변  ' },
+                { name: 'completed', code: '답변 ' },
+            ],
             // dropdownValueTypes: [{ name: 'nft' }, { name: 'card_news' }, { name: 'media_press' }, { name: 'de_fi_services' }],
             dropdownValue: null,
             // dropdownValueType: null,
+            blending_name_ko:'',
             name: '',
             ID: '',
             email: '',
@@ -204,7 +174,7 @@ export default {
             Application_mode: '',
             additional_request: '',
             status_by_admin: '',
-            answer_by_admin: '',
+            answer_by_admin: JSON.parse(localStorage.getItem('desc')).answer_by_admin,
             memo_by_admin: '',
             // type:''
             sl_no: '',
@@ -215,13 +185,6 @@ export default {
             formData: new FormData(),
             error: {},
             status: '',
-
-
-
-
-
-
-
         };
     },
     created() {
@@ -229,63 +192,91 @@ export default {
     },
     mounted() {
         this.applicationmanagementService.viewApplicationmanagemenList(this.$route.params.id).then((res) => {
+            this.blending_name_ko = res.data.data[0].blending_name_ko;
             this.name = res.data.data[0].name;
             this.ID = res.data.data[0].ID;
             this.email = res.data.data[0].email;
+            this.mobile = res.data.data[0].mobile;
             this.address = res.data.data[0].address;
             this.createdDate = res.data.data[0].createdDate;
             this.Application_mode = res.data.data[0].Application_mode;
             this.additional_request = res.data.data[0].additional_request;
-            this.status_by_admin = res.data.data[0].status_by_admin;
-            this.answer_by_admin = res.data.data[0].answer_by_admin;
-            this.memo_by_admin = res.data.data[0].memo_by_admin;
+            if(res.data.data[0].status_by_admin != null ){
+                this.status_by_admin = res.data.data[0].status_by_admin;
+            } else {
+                  this.status_by_admin  = '';
+            }
+            // this.status_by_admin = res.data.data[0].status_by_admin;
+            if(res.data.data[0].answer_by_admin != null ){
+                this.answer_by_admin = res.data.data[0].answer_by_admin;
+            } else {
+                  this.answer_by_admin  = '';
+            }
+            
+            if(res.data.data[0].memo_by_admin != null ){
+                this.memo_by_admin = res.data.data[0].memo_by_admin;
+            } else {
+                  this.memo_by_admin  = '';
+            }
+            // this.memo_by_admin = res.data.data[0].memo_by_admin;
             this.options = res.data.data[0].options;
+            console.log(this.answer_by_admin);
             for (let i = 0; i <= this.options.length; i++) {
                 var res_option_type = this.options[i].split(':')[0]; // raw_material:1
                 var res_option_value = this.options[i].split(':')[1];
                 // console.log(res_option_type);
                 // console.log(res_option_value);
                 this.applicationmanagementService.optiondetails(res_option_type, res_option_value).then((res) => {
-                    this.items.push({ 'category': res.data.data[0].category, 'explanation': res.data.data[0].explanation });
-                    // console.log(res);
+                    this.items.push({ category: res.data.data[0].category, explanation: res.data.data[0].explanation });
+                    // console.log(this.status_by_admin);
                 });
             }
         });
     },
     methods: {
         reinitialize() {
-            (this.name = null), (this.ID = null), (this.email = null), (this.address = null), (this.createdDate = null), (this.Application_mode = null), (this.additional_request = null), (this.status_by_admin = null), (this.answer_by_admin = null), (this.memo_by_admin = null), (this.options = null);
+            (this.name = null),
+                (this.ID = null),
+                (this.email = null),
+                (this.address = null),
+                (this.createdDate = null),
+                (this.Application_mode = null),
+                (this.additional_request = null),
+                (this.status_by_admin = ''),
+                (this.answer_by_admin = ''),
+                (this.memo_by_admin = null),
+                (this.options = null);
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+                return moment(String(value)).format('MM/DD/YYYY - LTS');
             }
         },
 
         editApplicationManagement() {
             let vcheckData = {
                 id: this.$route.params.id,
-                status_by_admin: this.dropdownValue ? 'something' : 'something',
+                status_by_admin: this.status_by_admin,
                 answer_by_admin: this.answer_by_admin,
                 memo_by_admin: this.memo_by_admin,
                 // type: this.dropdownValueType ? 'something' : 'something',
                 // link: this.link,
                 // file: this.fileName1 == '' ? '' : 'something',
             };
+            // console.log(vcheckData)
             const { isInvalid, error } = validateCreateApplication(vcheckData);
             if (isInvalid) {
                 this.error = error;
                 console.log(error);
             } else {
-                alert('업데이트 완료')
-                return axios.put('/admin/application/edit', { "id": this.$route.params.id, "answer_by_admin": this.answer_by_admin, "status_by_admin": this.status_by_admin, "memo_by_admin": this.memo_by_admin }).then((res) => {
+                alert('업데이트 완료');
+                
+                return axios.put('/admin/application/edit', { id: this.$route.params.id, answer_by_admin: this.answer_by_admin, status_by_admin: this.status_by_admin, memo_by_admin: this.memo_by_admin }).then((res) => {
                     this.$router.push({ name: 'appmanagement' });
                     console.log(res);
                 });
             }
         },
-
-
     },
 };
 </script>
@@ -304,7 +295,6 @@ export default {
     padding: 5px;
     width: 150px;
     height: 100px;
-
 }
 
 .custom-select {
@@ -358,11 +348,10 @@ export default {
 }
 
 table {
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     width: 750px;
     border-collapse: collapse;
     border: 1px solid #cfcfcf;
-
 }
 
 table th {
@@ -394,7 +383,7 @@ table tbody tr:nth-child(2n) td {
         width: 330px;
         display: inline;
     }
-    .textbox{
+    .textbox {
         width: 100%;
     }
 }

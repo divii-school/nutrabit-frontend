@@ -8,7 +8,8 @@
                 <div class="p-col-12">
                     <h5>{{ $t('upload-doc.upload_doc_header') }}</h5>
                     <div class="sample">
-                          <a href="https://back.nutri33.co.kr/sample_file/product_category.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드</a>
+                         <a href="https://api-nutrabbit-dev.dvconsulting.org/public/sample_file/product_category.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드</a>
+                          <!-- <a href="https://back.nutri33.co.kr/sample_file/product_category.xlsx" target="_blank" class="p-button p-button-text p-mr-2 p-mb-2">샘플 다운로드</a> -->
                     </div>
                     <div class="p-grid p-formgrid p-mb-3">
                         
@@ -106,6 +107,7 @@ export default {
                        
                         console.log(this.formData);
                         return axios.post('/admin/product_category/upload', this.formData).then(() => {
+                            alert("성공적으로 저장");
                             this.$router.push({ name: 'CategoryProduct' });
                         });
                     }

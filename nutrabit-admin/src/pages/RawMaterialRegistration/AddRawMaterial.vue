@@ -73,42 +73,27 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.DailyIntakeAmount(KO)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')"
-                                id="title2"
-                                v-model:content="daily_intake_amount_ko"
-                            />
+                            <div :class="`${error.daily_intake_amount_ko ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(KO)')" id="title2" v-model:content="daily_intake_amount_ko" />
+                            </div>
                             <div class="text-red">{{ error.daily_intake_amount_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.DailyIntakeAmount(EN)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')"
-                                id="title2"
-                                v-model:content="daily_intake_amount_en"
-                            />
+                            <div :class="`${error.daily_intake_amount_en ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.DailyIntakeAmount(EN)')" id="title2" v-model:content="daily_intake_amount_en" />
+                            </div>
                             <div class="text-red">{{ error.daily_intake_amount_en }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.Prequotion(KO)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')"
-                                id="title2"
-                                v-model:content="material_prequotion_ko"
-                            />
+                            <div :class="`${error.material_prequotion_ko ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(KO)')" id="title2" v-model:content="material_prequotion_ko" />
+                            </div>
                             <!-- <div class="text-red">{{ error.material_prequotion_ko }}</div> -->
                         </div>
                     </div>
@@ -116,42 +101,27 @@
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.Prequotion(EN)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')"
-                                id="title2"
-                                v-model:content="material_prequotion_en"
-                            />
+                            <div :class="`${error.material_prequotion_en ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Prequotion(EN)')" id="title2" v-model:content="material_prequotion_en" />
+                            </div>
                             <!-- <div class="text-red">{{ error.material_prequotion_en }}</div> -->
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.Extrainfo(KO)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')"
-                                id="title2"
-                                v-model:content="material_extra_info_ko"
-                            />
+                            <div :class="`${error.material_extra_info_ko ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(KO)')" id="title2" v-model:content="material_extra_info_ko" />
+                            </div>
                             <!-- <div class="text-red">{{ error.material_extra_info_ko }}</div> -->
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('RawMaterialadd.list.Extrainfo(EN)') }}</label>
-                            <Quill-Editor
-                                :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`"
-                                ref="myQuillEditor"
-                                contentType="html"
-                                :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')"
-                                id="title2"
-                                v-model:content="material_extra_info_en"
-                            />
+                            <div :class="`${error.material_extra_info_en ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" :placeholder="$t('RawMaterialadd.list.Extrainfo(EN)')" id="title2" v-model:content="material_extra_info_en" />
+                            </div>
                             <!-- <div class="text-red">{{ error.material_extra_info_en }}</div> -->
                         </div>
                     </div>
@@ -586,4 +556,8 @@ export default {
     border: 1px solid #0a0a0a;
     color: white;
 }
+
+/* .p-invalid {
+border: 1px solid red;
+} */
 </style>

@@ -162,8 +162,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(similar_product_img, img) in similar_product_img" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" :alt="similar_product_img" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" :alt="similar_product_img" class="product-image" /> -->
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + similar_product_img" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -174,8 +174,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_1" :alt="thumbnail_1" class="product-image" /> -->
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_1" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -186,8 +186,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div  style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_2" :alt="thumbnail_2" class="product-image" /> -->
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + thumbnail_2" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -201,8 +201,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div v-for="(raw_material_img, img) in raw_material_img" :key="img" style="margin:5px;">
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" :alt="raw_material_img" class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + raw_material_img" :alt="raw_material_img" class="product-image" /> -->
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + raw_material_img" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + raw_material_img" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                     <router-link :to="'/editraw-material-registration/' + $route.params.id">
                         <Button
                             label="help"
-                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
+                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
                             수정 
@@ -358,6 +358,15 @@ export default {
                     this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
                 },
             });
+        },
+        setData(id) {
+            this.rawService.viewRaw (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
         formatDate(value) {
             const date = new Date(value);

@@ -8,6 +8,16 @@
                     <strong>{{ $t('Application.details.header') }}</strong>
                 </h4>
 
+                <div class="p-field p-grid">
+                    <label
+                        for="name"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Application.details.blendingname') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.blending_name_ko }}</p>
+                    </div>
+                </div>
+
                  <div class="p-field p-grid">
                     <label
                         for="name"
@@ -118,7 +128,7 @@
                              <tbody>
                                  <tr v-for="(item, index) in items" :key="index">
                                     <td>{{ index + 1 }}</td>
-                                    <td>{{ item.category }}</td>
+                                    <td>{{ $t(item.category) }}</td>
                                     <td>{{ item.explanation }}</td>
                                 </tr>
                             </tbody>
@@ -172,7 +182,7 @@
                         <strong>
                             <label for="answer">어드민 답변:</label>
                         </strong>
-                        <p style="float: right; margin-right: 19%">{{ mydata.answer_by_admin }}</p>
+                        <p style="float: right; margin-right: 19%" v-html="mydata.answer_by_admin"></p>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -186,7 +196,7 @@
 
                 <div class="p-d-flex p-jc-end" style="float: left">
                     <router-link :to="'/app-managementedit/' + $route.params.id">
-                        <Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2">
+                        <Button label="help" class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)">
                             <i class="pi pi-user-edit p-mr-2"></i>
                             수정
                         </Button>
@@ -234,6 +244,7 @@ export default {
                 mobile: '',
                 address: '',
                 createdDate: '',
+                blending_name_ko:'',
                 Application_mode: '',
                 additional_request: '',
                 status_by_admin: '',
@@ -274,8 +285,17 @@ export default {
         },
         dateformat(value) {
             if (value) {
-                return moment(String(value)).format('MM/DD/YYYY - hh:mm:ss');
+                return moment(String(value)).format('MM/DD/YYYY - LTS');
             }
+        },
+         setData(id) {
+            this.applicationmanagementService.viewApplicationmanagemenList (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
         },
     },
     mounted() {
@@ -283,6 +303,7 @@ export default {
             this.mydata.name = res.data.data[0].name;
             this.mydata.ID = res.data.data[0].ID;
             this.mydata.email = res.data.data[0].email;
+            this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.address = res.data.data[0].address;
             this.mydata.createdDate = res.data.data[0].createdDate;
             this.mydata.Application_mode = res.data.data[0].Application_mode;
@@ -290,6 +311,8 @@ export default {
             this.mydata.status_by_admin = res.data.data[0].status_by_admin;
             this.mydata.answer_by_admin = res.data.data[0].answer_by_admin;
             this.mydata.memo_by_admin = res.data.data[0].memo_by_admin;
+            this.mydata.blending_name_ko = res.data.data[0].blending_name_ko;
+            
             this.mydata.options = res.data.data[0].options;
             // console.log(this.mydata.options.length);
             for (let i = 0; i <= this.mydata.options.length; i++) {
@@ -299,7 +322,7 @@ export default {
                 // console.log(res_option_value);
                 this.applicationmanagementService.optiondetails(res_option_type, res_option_value).then((res) => {
                 this.items.push({'category':res.data.data[0].category,'explanation':res.data.data[0].explanation});
-                // console.log(res);
+                 console.log(this.mydata.blending_name_ko);
                 });
             }
         });

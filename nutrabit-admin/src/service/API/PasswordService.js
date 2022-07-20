@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export default class PasswordService {
-    async changePassword(current, newp, confirm) {
-        return await axios.post(`/${localStorage.getItem('userType')=='admin'?'admin':'dfc-admin'}/user/change-password`, {
-            currentPassword: current,
+    async changePassword( newp) {
+        return await axios.post(`admin/user/change_password`, {
+        
             newPassword: newp,
-            confirm_password: confirm
+           
         }).then((res) => res)
     }
 

@@ -119,6 +119,8 @@ axios.defaults.headers = {
     
 };
 axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+
+
 // Token expire redirection
 
 axios.interceptors.response.use((response) => {

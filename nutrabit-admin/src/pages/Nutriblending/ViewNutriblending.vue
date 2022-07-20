@@ -24,7 +24,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.category') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.category_id }}</p>
+                        <p>{{ mydata.category_name_ko }}</p>
                     </div>
                 </div>
 
@@ -34,7 +34,17 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.Mainraw') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.raw_material_id }}</p>
+                        <p>{{ mydata.material_name_ko }}</p>
+                    </div>
+                </div>
+
+                 <div class="p-field p-grid">
+                    <label
+                        for="sub_raw_materials"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Blending.details.subrawmaterial_ko') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.sub_raw_materials_ko }}</p>
                     </div>
                 </div>
 
@@ -42,9 +52,9 @@
                     <label
                         for="sub_raw_materials"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Blending.details.submaterial') }}:</label>
+                    >{{ $t('Blending.details.subraw_en') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.sub_raw_materials }}</p>
+                        <p>{{ mydata.sub_raw_materials_en }}</p>
                     </div>
                 </div>
 
@@ -54,7 +64,7 @@
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Blending.details.pilltype') }}:</label>
                     <div class="p-col-12 p-md-10">
-                        <p>{{ mydata.pill_id }}</p>
+                        <p>{{ mydata.pillName_ko }}</p>
                     </div>
                 </div>
 
@@ -141,9 +151,10 @@
                 <div class="p-field p-grid">
                     <label for="detailimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.DetailImage') }}:</label>
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
-                        <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;">
+                        <div v-for="(detailimage, img) in mydata.detailimage" :key="img" style="margin:5px;" >
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + detailimage" :alt="mydata.detail_image" class="product-image" v-if="detailimage"/>
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage != '/uploads/blending/null'"/>
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + detailimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="detailimage != '/uploads/blending/null'"/> -->
                         </div>
                     </div>
                 </div>
@@ -151,9 +162,10 @@
                 <div class="p-field p-grid">
                     <label for="similarimage" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Blending.details.SimilarProductImage') }}:</label>
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
-                        <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;">
+                        <div v-for="(similarimage, img) in mydata.similarimage" :key="img" style="margin:5px;" >
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + similarimage" :alt="mydata.similarimage" class="product-image" v-if="similarimage"/>
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage != '/uploads/blending/null'"/>
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + similarimage" alt="이미지를 사용할 수 없음" class="product-image" v-if="similarimage != '/uploads/blending/null'"/> -->
                         </div>
                     </div>
                 </div>
@@ -163,7 +175,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" :alt="mydata.thumbnail1" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" />
+                             <!-- <img :src="'https://back.nutri33.co.kr/public/' + mydata.thumbnail1" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -173,7 +186,8 @@
                     <div class="p-col-12 p-md-4 p-sm-2" style="display: contents">
                         <div style="margin:5px;">
                             <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'http://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" :alt="mydata.thumbnail2" class="product-image" />
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public/' + mydata.thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/public/' + mydata.thumbnail2" alt="이미지를 사용할 수 없음" class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -196,7 +210,7 @@
                     <router-link :to="'/editnutri-blending/' + $route.params.id">
                         <Button
                             label="help"
-                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2"
+                            class="p-button p-button-outlined p-button-sm p-mr-2 p-mb-2" @mouseenter="setData($route.params.id)"
                         >
                             <i class="pi pi-user-edit p-mr-2"></i>
                             수정
@@ -238,9 +252,13 @@ export default {
                 name_ko: '',
                 // name_en: '',
                 category_id: '',
+                category_name_ko:'',
                 raw_material_id: '',
-                sub_raw_materials: '',
+                material_name_ko:'',
+                sub_raw_materials_ko: '',
+                sub_raw_materials_en: '',
                 pill_id: '',
+                pillName_ko:'',
                 tags_ko: '',
                 tags_en: '',
                 efficiency_ko: '',
@@ -281,6 +299,15 @@ export default {
                 },
             });
         },
+         setData(id) {
+            this.blendingService.viewBlending (id)
+           .then((res) => {
+                localStorage.setItem('desc', JSON.stringify(res.data.data[0]));
+                // alert(res.data.data[0].daily_intake_amount_ko)
+            });
+            
+
+        },
         formatDate(value) {
             const date = new Date(value);
             var dd = date.getDate();
@@ -303,10 +330,11 @@ export default {
             // console.log(res);
             this.mydata.name_ko = res.data.data[0].name_ko;
             // this.mydata.name_en = res.data.data[0].name_en;
-            this.mydata.category_id = res.data.data[0].category_id;
-            this.mydata.raw_material_id = res.data.data[0].raw_material_id;
-            this.mydata.sub_raw_materials = res.data.data[0].sub_raw_materials;
-            this.mydata.pill_id = res.data.data[0].pill_id;
+            this.mydata.category_name_ko = res.data.data[0].category_name_ko;
+            this.mydata.material_name_ko = res.data.data[0].material_name_ko;
+            this.mydata.sub_raw_materials_ko = res.data.data[0].sub_raw_materials_ko;
+            this.mydata.sub_raw_materials_en = res.data.data[0].sub_raw_materials_en;
+            this.mydata.pillName_ko = res.data.data[0].pillName_ko;
             this.mydata.tags_ko = res.data.data[0].tags_ko;
             this.mydata.tags_en = res.data.data[0].tags_en;
             this.mydata.efficiency_ko = res.data.data[0].efficiency_ko;

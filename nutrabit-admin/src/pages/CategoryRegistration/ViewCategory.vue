@@ -56,12 +56,12 @@
                     <div class="p-col-12 p-md-10">
                         <img
                             :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + mydata.category_image"
-                            :alt="mydata.category_image"
+                            alt="이미지를 사용할 수 없음"
                             class="product-image"
                         />
                         <!-- <img
                             :src="'https://back.nutri33.co.kr/public' + mydata.category_image"
-                            :alt="mydata.category_image"
+                            alt="이미지를 사용할 수 없음"
                             class="product-image"
                         /> -->
                     </div>

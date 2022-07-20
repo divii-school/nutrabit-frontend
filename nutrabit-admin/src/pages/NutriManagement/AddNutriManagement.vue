@@ -75,16 +75,18 @@
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(KO)') }}</label>
-                            <Quill-Editor :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
-                                contentType="html" placeholder="설명" id="title2" v-model:content="description_ko"/>
+                            <div :class="`${error.description_ko ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" placeholder="설명" id="title2" v-model:content="description_ko" />
+                            </div>
                             <div class="text-red">{{ error.description_ko }}</div>
                         </div>
                     </div>
                     <div class="p-grid p-formgrid p-mb-3 editer-gap">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="title2">{{ $t('Nutri3.Add.Description(EN)') }}</label>
-                            <Quill-Editor :class="`${error.description_en ? 'p-invalid' : ''}`" ref="myQuillEditor"
-                                contentType="html" placeholder="설명" id="title2" v-model:content="description_en" />
+                            <div :class="`${error.description_en ? 'p-invalid' : ''}`">
+                                <Quill-Editor ref="myQuillEditor" contentType="html" placeholder="설명" id="title2" v-model:content="description_en" />
+                            </div>
                             <div class="text-red">{{ error.description_en }}</div>
                         </div>
                     </div>
@@ -114,18 +116,17 @@
                             <div :class="`${error.addthumnail ? 'custom-select-invalid' : 'custom-select'}`">
                                 <span v-if="!addthumnail">{{ $t('button.select_file') }}</span>
                                 <span v-else>{{ addthumnail }}</span>
-                                <input type="file" class="select-file" v-on:change="onFileChangethum"  name="productname" multiple />
-                                
+                                <input type="file" class="select-file" v-on:change="onFileChangethum" name="productname" multiple />
+
                                 <Button label="파일 선택" class="SelectBtn n-wrap" />
                             </div>
-                            
+
                             <div class="text-red">{{ error.addthumnail }}</div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <img id="frame" src width="100px" height="100px" />
                         </div>
                     </div>
 
-                
                     <div class="p-grid p-formgrid p-mb-3">
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
@@ -179,13 +180,11 @@ import { useRoute } from 'vue-router';
 import NutriManagementService from '../../service/API/NutriManagementService';
 import validateAddNutri from '../../validations/NutriManagement/validateAddNutri';
 
-
 export default {
     name: 'AddNutriManagement',
 
     data() {
         return {
-          
             value12: '',
             render1: false,
             render2: false,
@@ -206,7 +205,7 @@ export default {
             selectedItems: [],
             Multiselect: '',
             filesExtensions: '',
-            productimg:[],
+            productimg: [],
             name_ko: '',
             name_en: '',
             description_ko: '',
@@ -320,36 +319,31 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.filesaddthumnail = files[0];
-            console.log(files.length)
-            if(files.length > 5 ){
-                alert("5 이미지 선택");
+            console.log(files.length);
+            if (files.length > 5) {
+                alert('5 이미지 선택');
                 return;
-            } 
+            }
             // let productimg = []
             // Array.from(files).forEach(element => {
             //     productimg.push(element)
-                
-                
+
             // });
-            
-           
-        //    console.log( "multiple",productimg)
+
+            //    console.log( "multiple",productimg)
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
             if (!allowedExtensions.exec(this.filesaddthumnail.name)) {
                 this.render3 = true;
                 return false;
             } else {
-
                 this.render3 = false;
                 this.addthumnail = this.filesaddthumnail.name;
-                  Array.from(files).forEach(element => {
-               this.formData.append('product_sub_image', element)
-                
-                
-            });
+                Array.from(files).forEach((element) => {
+                    this.formData.append('product_sub_image', element);
+                });
                 // this.formData.append('product_sub_image', productimg);
             }
-            
+
             this.fileExtensions = this.addthumnail.replace(/^.*\./, '');
             console.log(this.addthumnail);
         },

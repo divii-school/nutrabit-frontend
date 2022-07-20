@@ -73,18 +73,22 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="date">{{ $t('Nutri3.Edit.EditDescription1(KO)') }}</label>
+                         <div :class="`${error.description_ko ? 'p-invalid' : ''}`">
                         <Quill-Editor id="date" :class="`${error.description_ko ? 'p-invalid' : ''}`" ref="myQuillEditor"
                                 contentType="html"
                             :placeholder="$t('Nutri3.Edit.EditDescription1(KO)')" v-model:content="description_ko" />
+                            </div>
                         <div class="text-red">{{ error.description_ko }}</div>
                     </div>
                 </div>
                 <div class="p-formgrid p-grid editer-gap-small">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Nutri3.Edit.EditDescription2(EN)') }}</label>
+                        <div :class="`${error.description_en ? 'p-invalid' : ''}`">
                         <Quill-Editor id="medium" ref="myQuillEditor"
                                 contentType="html" :placeholder="$t('Nutri3.Edit.EditDescription2(EN)')"
                             v-model:content="description_en" />
+                        </div>
                     </div>
                 </div>
                 <div class="p-grid p-formgrid p-mb-3 browse editer-gap">
@@ -102,8 +106,10 @@
                         <div style="display: flex; justify-content: flex-end">
                             <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                             <div class="raw-image">
-                                <img :src="'https://back.nutri33.co.kr/' + thumbnail"
+                                <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + thumbnail"
                                     alt="이미지를 사용할 수 없음" class="product-image" />
+                                <!-- <img :src="'https://back.nutri33.co.kr/' + thumbnail"
+                                    alt="이미지를 사용할 수 없음" class="product-image" /> -->
                                 <!-- <a href="javascript:;" @click="remove_similar(id,thumbnail)"> <img src="https://www.pikpng.com/pngl/m/302-3024323_close-icon-close-icon-free-png-clipart.png" class="cross"  /></a> -->
                             </div>
                         </div>
@@ -128,8 +134,10 @@
                             <div v-for="(product_sub_image, img) in product_sub_image" :key="img">
                                 <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                                 <div class="raw-image" style="margin: 5px">
-                                    <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
+                                    <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + product_sub_image"
                                         alt="이미지를 사용할 수 없음" class="product-image" />
+                                        <!-- <img :src="'https://back.nutri33.co.kr/' + product_sub_image"
+                                        alt="이미지를 사용할 수 없음" class="product-image" /> -->
                                     <div v-show="crossdisplay">
                                         <a href="javascript:;" @click="remove_raw(id, product_sub_image)"><img
                                                 src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/000000/external-cross-essentials-tanah-basah-glyph-tanah-basah.png"
@@ -147,15 +155,17 @@
                             <span class="img-info">(파일 형식: jpg,jpeg,png )(이미지 너비 200px )</span>
                         </label>
                         <div :class="`${error.filesthumb ? 'custom-select-invalid' : 'custom-select'}`">
-                            <span v-if="!fileNames">{{ $t('button.select_file') }}</span>
-                            <span v-else>{{ fileNames }}</span>
+                            <span v-if="!filesName">{{ $t('button.select_file') }}</span>
+                            <span v-else>{{ filesName }}</span>
                             <input type="file" class="select-file" v-on:change="onFilesChanges" />
                             <Button label="파일을 선택" class="SelectBtn n-wrap" />
                         </div>
                         <div>
-                            <div class="text-red" v-show="render4">{{ $t('validation.invalidFile') }}</div>
-                            <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
+                            <div class="text-red" v-show="render3">{{ $t('validation.invalidFile') }}</div>
+                             <img :src="'https://api-nutrabbit-dev.dvconsulting.org/' + detail_image" alt="이미지를 사용할 수 없음"
                                 class="product-image" />
+                            <!-- <img :src="'https://back.nutri33.co.kr/' + detail_image" alt="이미지를 사용할 수 없음"
+                                class="product-image" /> -->
                         </div>
                     </div>
                 </div>
@@ -401,7 +411,7 @@ export default {
             console.log(this.filesNames);
         },
 
-        onFileChanges(e) {
+        onFilesChanges(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -418,23 +428,23 @@ export default {
             console.log(this.filesName);
         },
 
-        onFilesChanges(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            //console.log(files)
-            if (!files.length) return;
-            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-            this.file = files[0];
-            if (!allowedExtensions.exec(this.file.name)) {
-                this.render4 = true;
-                return false;
-            } else {
-                this.render4 = false;
-                this.fileNames = this.file.name;
-                this.formData.append('thumbnail_2', files[0]);
-            }
-            this.filesExtensions = this.fileNames.replace(/^.*\./, '');
-            console.log(this.fileNames);
-        },
+        // onFileChanges(e) {
+        //     var files = e.target.files || e.dataTransfer.files;
+        //     //console.log(files)
+        //     if (!files.length) return;
+        //     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        //     this.file = files[0];
+        //     if (!allowedExtensions.exec(this.file.name)) {
+        //         this.render4 = true;
+        //         return false;
+        //     } else {
+        //         this.render4 = false;
+        //         this.fileNames = this.file.name;
+        //         this.formData.append('thumbnail_2', files[0]);
+        //     }
+        //     this.filesExtensions = this.fileNames.replace(/^.*\./, '');
+        //     console.log(this.fileNames);
+        // },
 
         remove_similar(id, similar_product_img) {
             //console.log(id)

@@ -28,9 +28,9 @@
                             <div>
                                 <div class="text-red" v-show="render1">{{ $t('validation.invalidFile') }}</div>
                                  <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName1"
-                                    :alt="fileName1" class="product-image" />
+                                    alt="이미지를 사용할 수 없음" class="product-image" />
                                 <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName1"
-                                    :alt="fileName1" class="product-image" /> -->
+                                    alt="이미지를 사용할 수 없음" class="product-image" /> -->
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="p-col-12 p-mb-2 p-lg-6 p-mb-lg-0 p-field">
                             <label for="subtitle2">
                                 {{ $t('Banner.list.mobbanner') }}
-                                <span class="img-info">(파일 형식  jpg,jpeg,png )(이미지 너비 1920px and 고저 828px
+                                <span class="img-info">(파일 형식  jpg,jpeg,png )(이미지 너비 375px and 고저 375px
                                     )</span>
                             </label>
                             <div :class="`${error.file ? 'custom-select-invalid' : 'custom-select'}`">
@@ -49,9 +49,9 @@
                             </div>
                             <div class="text-red" v-show="render2">{{ $t('validation.invalidFile') }}</div>
                             <div class="text-red">{{ error.file }}</div>
-                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" :alt="fileName2"
+                            <img :src="'https://api-nutrabbit-dev.dvconsulting.org/public' + fileName2" alt="이미지를 사용할 수 없음"
                                 class="product-image" />
-                            <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName2" :alt="fileName2"
+                            <!-- <img :src="'https://back.nutri33.co.kr/public' + fileName2" alt="이미지를 사용할 수 없음"
                                 class="product-image" /> -->
                         </div>
                     </div>
@@ -213,7 +213,7 @@ export default {
                     simgs = new Image();
                     simgs.onload = function () {
                         // alert(this.width + " " + this.height);
-                        if (this.width >= 1920 && this.height >= 828) {
+                        if (this.width >= 375 && this.height >= 375) {
 
                             self.filesName = files[0].name;
                             console.log(self.filesName)

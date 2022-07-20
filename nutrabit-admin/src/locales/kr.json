@@ -75,7 +75,8 @@
     "Cancel":"취소합니다",
     "confirm":"저장",
     "Goback":"Go Back",
-    "individualheader":"회원의 세부 정보"
+    "individualheader":"회원의 세부 정보",
+    "detailaddress":"상세 주소"
   },
   "add": {
     "header": "새로운 DFC 등록 (Excel Upload)",
@@ -210,7 +211,8 @@
     "mobile": "휴대폰 번호",
     "Area":"지역",
     "EditBusiness":"비즈니스 회원 정보 편집",
-    "EditAdress":"주소"
+    "EditAdress":"주소",
+    "detailaddress":"상세 주소"
   }
 },
 "Individual": {
@@ -377,7 +379,8 @@
     "applicationlist":"신청 사항",
     "category":"카테고리",
     "description":"설명",
-    "save":"저장"
+    "save":"저장",
+    "blendingname":"추천블렌딩"
     
   }
 
@@ -420,7 +423,8 @@
     "blendingname1":"블렌딩 이름 (EN)",
     "addcategory":"카테고리",
     "mainraw":"주원료",
-    "subraw":"부원료",
+    "subrawmaterial_ko":"부원료 (KO)",
+    "subraw_en":"부원료 (EN)",
     "piltype":"제형선택",
     "addtag":"태그 추가 (KO)",
     "tag": "태그 추가 (EN)",
@@ -444,6 +448,8 @@
     "addtag":"태그 (KO)",
     "Mainraw":"주요 원료",
     "submaterial":"부원료",
+    "subrawmaterial_ko":"부원료 (KO)",
+    "subraw_en":"부원료 (EN)",
     "pilltype":"제형",
     "Tags":"Tags (KO)",
     "blendingtags":"태그 (EN)",
@@ -466,13 +472,15 @@
     "edit":"추천 블랜딩 수정",
     "Mainrawmaterial":"주원료",
     "SubRawMaterial":"부원료",
+    "subrawmaterial_ko":"부원료 (KO)",
+    "subraw_en":"부원료 (EN)",
     "PillTypeSelect":"제형선택",
     "Tags":"태그 추가 (KO)",
     "AddTags":"태그 추가 (EN)",
     "Efficacy":"효능 (KO)",
     "blendingEfficacy":"효능 (EN)",
     "ingredientsdetails":"성상 (KO)",
-    "blendingingredientsdetails":"성분 정보 (EN)",
+    "blendingingredientsdetails":"성상 (EN)",
     "productdescription":"제품 설명 (KO)",
     "blendingproductdescription":"제품 설명 (EN)",
     "detailimage":"세부 이미지",
@@ -612,7 +620,8 @@
     "Blending":"제목",
     "Tag":"태그",
     "add_nutri":"새로운 Nutri3.3 블렌딩 추가",
-    "inqury1":"질문 제목 게시"
+    "inqury1":"질문 제목 게시",
+    "Language":"Language"
   }
 },
 
@@ -1113,14 +1122,20 @@
     }
   }
 },
+"Formulation":"공식화",
+"Package":"패키지",
+"Raw Material":"원료",
+"Pill type":"제형",
 "status":"상태",
 "active":"활성",
 "inactive":"비활성",
 "pending":"미답변",
+"completed":"답변",
 "not_answered":"미답변",
 "answered":"답변",
 "Reply":"댓글",
 "Get a quote":"견적",
 "Sample Request":"샘플 요청",
-"recommanded blending":"명령된 블렌딩"
+"recommanded blending":"추천블렌딩",
+"1":"뉴트리 3.3"
 }
