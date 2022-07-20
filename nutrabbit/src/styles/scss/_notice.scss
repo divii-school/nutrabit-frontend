@@ -421,6 +421,14 @@
             text-decoration-line: underline;
           }
         }
+        div{
+          &.ml-2{
+            margin-left: 20px;
+            @media screen and (max-width: 640px){
+              margin-left: 0;
+            }
+          }
+        }
       }
 
       .pagination-wrap {

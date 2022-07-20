@@ -64,7 +64,7 @@
                 <!-- <p class="ml-2">
                   {{ item.replyText }}
                 </p> -->
-                <div class="ml-2" v-html="item.replyText"></div>
+                <div class="ml-2 fullWidth" v-html="item.replyText"></div>
               </div>
             </div>
           </template>
