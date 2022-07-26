@@ -471,6 +471,16 @@ const routes = [
         },
     },
     {
+        path: '/view-inquiry/:id',
+        name: 'ViewInquiry',
+        exact: true,
+        component: () => import('./pages/inquiry/ViewInquiry.vue'),
+        beforeEnter: guard,
+        meta: {
+            breadcrumb: [{ parent: 'pages', label: 'ViewInquiry' }],
+        },
+    },
+    {
         path: '/edit-inquiry/:id',
         name: 'EditInquiry',
         exact: true,

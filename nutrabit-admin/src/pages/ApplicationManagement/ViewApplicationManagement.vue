@@ -80,6 +80,16 @@
 
                 <div class="p-field p-grid">
                     <label
+                        for="detail_address"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >상세 주소:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.detail_address }}</p>
+                    </div>
+                </div>
+
+                <div class="p-field p-grid">
+                    <label
                         for="date"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Application.details.datetime') }}:</label>
@@ -243,6 +253,7 @@ export default {
                 email: '',
                 mobile: '',
                 address: '',
+                detail_address:'',
                 createdDate: '',
                 blending_name_ko:'',
                 Application_mode: '',
@@ -305,6 +316,7 @@ export default {
             this.mydata.email = res.data.data[0].email;
             this.mydata.mobile = res.data.data[0].mobile;
             this.mydata.address = res.data.data[0].address;
+            this.mydata.detail_address = res.data.data[0].detail_address;
             this.mydata.createdDate = res.data.data[0].createdDate;
             this.mydata.Application_mode = res.data.data[0].Application_mode;
             this.mydata.additional_request = res.data.data[0].additional_request;

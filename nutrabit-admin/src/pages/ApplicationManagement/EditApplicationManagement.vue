@@ -54,6 +54,13 @@
                     </div>
 
                     <div class="p-field p-grid">
+                        <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">상세 주소:</label>
+                        <div class="p-col-12 p-md-10">
+                            <p>{{ detail_address }}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-field p-grid">
                         <label for="title" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">{{ $t('Application.details.datetime') }}:</label>
                         <div class="p-col-12 p-md-10">
                             <p>{{ dateformat(createdDate) }}</p>
@@ -170,6 +177,7 @@ export default {
             email: '',
             mobile: '',
             address: '',
+            detail_address:'',
             createdDate: '',
             Application_mode: '',
             additional_request: '',
@@ -198,6 +206,7 @@ export default {
             this.email = res.data.data[0].email;
             this.mobile = res.data.data[0].mobile;
             this.address = res.data.data[0].address;
+            this.detail_address = res.data.data[0].detail_address;
             this.createdDate = res.data.data[0].createdDate;
             this.Application_mode = res.data.data[0].Application_mode;
             this.additional_request = res.data.data[0].additional_request;

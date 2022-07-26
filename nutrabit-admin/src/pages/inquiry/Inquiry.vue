@@ -82,9 +82,8 @@
                             <Column :header="$t('Inquiry.list.appname')">
                                 <template #body="{ data }">
                                     <span class="p-column-title">Applicant name/Business NAme</span>
-                                    <span v-if="data.business_name != null">{{data.business_name }}</span>
+                                    <span v-if="data.business_name != null">{{ data.business_name }}</span>
                                     <span v-else>{{ data.name }}</span>
-                                   
                                 </template>
                             </Column>
                             <Column :header="$t('Inquiry.list.Reopenby')">
@@ -116,22 +115,25 @@
                                     <span class="p-column-title">Balance</span>
                                     <p style="display: none">{{ data.mobile }}</p>
                                     <div style="display: flex">
-                                       
-                                            <span v-if="data.status == 'not_answered'" >
-                                                <router-link :to="'/reply-inquiry/' + data.id">
-                                                    <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2">
-                                                        <i class="pi pi-reply p-mr-2"></i>
-                                                    </Button>
-                                                </router-link>
-                                            </span>
-                                            <span v-else-if="data.status == 'answered'">
-                                                
-                                                    <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2" disabled>
-                                                        <i class="pi pi-reply p-mr-2"></i>
-                                                    </Button>
-                                                
-                                            </span>
-                                       
+                                        <span v-if="data.status == 'not_answered'">
+                                            <router-link :to="'/reply-inquiry/' + data.id">
+                                                <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2">
+                                                    <i class="pi pi-reply p-mr-2"></i>
+                                                </Button>
+                                            </router-link>
+                                        </span>
+                                        <span v-else-if="data.status == 'answered'">
+                                            <Button label="help" class="p-button-outlined p-button-help p-mr-2 p-mb-2" disabled>
+                                                <i class="pi pi-reply p-mr-2"></i>
+                                            </Button>
+                                        </span>
+
+                                        <router-link :to="'/view-inquiry/' + data.id">
+                                            <Button label="info" class="n-wrap p-button-outlined p-button-info p-mr-2 p-mb-2">
+                                                <i class="pi pi-eye p-mr-2"></i>
+                                            </Button>
+                                        </router-link>
+
                                         <Button icon="pi pi-trash" class="p-button-danger p-button-outlined p-mr-2 p-mb-2" @click="confirm(data.id)" />
                                     </div>
                                 </template>
@@ -190,7 +192,7 @@ export default {
             sortOrder: '',
             createdDate: '',
             business_name: '',
-            applicant_name:'',
+            applicant_name: '',
             title_ko: '',
             title: '',
             type_id: '',
@@ -288,7 +290,7 @@ export default {
             } else {
                 // console.log(this.inquiry_id)
                 this.inquiryService
-            
+
                     .getInquryList(this.inquiry_id, this.name, this.title, this.status?.value, this.startDate, this.endDate, this.sortBy, this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
@@ -299,7 +301,6 @@ export default {
                         this.customer1 = [];
                         this.loading1 = false;
                     });
-
             }
         },
         open() {
