@@ -45,7 +45,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="detailaddress">상세 주소</label>
-                        <Textarea id="detailaddress" type="text" placeholder="detail address" v-model="mydata.detail_address"  disabled/>
+                        <Textarea id="detailaddress" type="text" placeholder="detail address" v-model="mydata.detail_address"  />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -164,7 +164,7 @@ export default {
                         this.error = {};
                         console.log('pass');
 
-                        this.userservice.updateIndividualUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.uuid, this.mydata.findings, this.mydata.address, this.mydata.createdDate).then((res) => {
+                        this.userservice.updateIndividualUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.uuid, this.mydata.findings, this.mydata.address,this.mydata.detail_address, this.mydata.createdDate).then((res) => {
                             console.warn(res);
 
                             this.$router.push({ name: 'IndividualMember' });

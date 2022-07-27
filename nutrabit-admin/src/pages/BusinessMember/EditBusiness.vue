@@ -67,7 +67,7 @@
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="medium">{{ $t('Business.list.detailaddress') }}</label>
-                        <InputText id="medium" type="text" placeholder="Detail Address" v-model="mydata.detail_address"  disabled/>
+                        <InputText id="medium" type="text" placeholder="Detail Address" v-model="mydata.detail_address"  />
                     </div>
                 </div>
                 <div class="p-formgrid p-grid">
@@ -154,7 +154,7 @@ export default {
             }
         },
         editBusiness() {
-            this.userservice.updateBusinessUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.address, this.mydata.business_name, this.mydata.department, this.mydata.person_in_charge).then(() => {
+            this.userservice.updateBusinessUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.address,this.mydata.detail_address, this.mydata.business_name, this.mydata.department, this.mydata.person_in_charge).then(() => {
                 alert('업데이트 완료');
                 this.$router.push({ name: 'BusinessMember' });
             });
@@ -181,7 +181,7 @@ export default {
                         console.log('pass');
 
                         this.userservice
-                            .updateBusinessUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.address, this.mydata.business_name, this.mydata.department, this.mydata.person_in_charge)
+                            .updateBusinessUser(this.$route.params.id, this.mydata.name, this.mydata.mobile, this.mydata.email, this.mydata.address,this.mydata.detail_address, this.mydata.business_name, this.mydata.department, this.mydata.person_in_charge)
                             .then((res) => {
                                 console.warn(res);
                                 this.$router.push({ name: 'BusinessMember' });

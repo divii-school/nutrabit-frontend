@@ -27,14 +27,14 @@ export default class UserService {
     async viewIndividualUser(ids) {
         return await axios.post(`/admin/user/view/id`, { id: ids }).then((res) => res);
     }
-    async updateIndividualUser(id,name, mobile, address) {
-        return await axios.put(`/admin/user/personal_member/edit`, {id: id ,name: name, mobile: mobile, address:address }).then((res) => res);
+    async updateIndividualUser(id,name, mobile, address, detail_address) {
+        return await axios.put(`/admin/user/personal_member/edit`, {id: id ,name: name, mobile: mobile, address:address , detail_address:detail_address }).then((res) => res);
     }
     async viewBusinessUser(ids) {
         return await axios.post(`/admin/user/view/id`, { id: ids }).then((res) => res);
     }
-    async updateBusinessUser(id,name,mobile, email, address, business_name, department, person_in_charge) {
-        return await axios.put(`/admin/user/business_member/edit`, {id: id ,name:name,mobile:mobile,email:email,address:address,business_name: business_name,department:department,person_in_charge: person_in_charge }).then((res) => res);
+    async updateBusinessUser(id,name,mobile, email, address,detail_address, business_name, department, person_in_charge) {
+        return await axios.put(`/admin/user/business_member/edit`, {id: id ,name:name,mobile:mobile,email:email,address:address,detail_address:detail_address,business_name: business_name,department:department,person_in_charge: person_in_charge }).then((res) => res);
     }
     async deleteIndividualUser(id) {
         return await axios.delete(`/admin/user/delete`, { deleteIdArray: id }).then((res) => res);
