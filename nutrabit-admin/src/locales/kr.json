@@ -212,7 +212,8 @@
     "Area":"지역",
     "EditBusiness":"비즈니스 회원 정보 편집",
     "EditAdress":"주소",
-    "detailaddress":"상세 주소"
+    "detailaddress":"상세 주소",
+    "name":"이름"
   }
 },
 "Individual": {

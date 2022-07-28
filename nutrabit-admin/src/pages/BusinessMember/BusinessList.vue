@@ -69,7 +69,7 @@
                         <template #body="{ data }">
                             <span class="p-column-title">Name</span>
                            
-                             {{ data.name }}
+                             {{ data.person_in_charge }}
                         </template>
                     </Column>
                     <Column :header="$t('Business.list.Email')" >
@@ -165,6 +165,7 @@ export default {
             createdDate:'',
             business_number :'',
             business_name:'',
+            person_in_charge:'',
             sl_no:'',
             
         };
@@ -216,7 +217,7 @@ export default {
             this.id = '';
             this.loading1 = true;
             this.userservice
-                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.person_in_charge,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -235,7 +236,7 @@ export default {
         resetiddata(){
             if (this.id === ''){
                 this.userservice
-                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.person_in_charge,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -248,7 +249,7 @@ export default {
          resetdata(){
             if (this.name === ''){
                 this.userservice
-                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                 .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.person_in_charge,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;
@@ -262,7 +263,7 @@ export default {
             //    this.$toast.add({ severity: 'error', summary: '오류가 발생했습니다', detail: '검색 필드를 입력해주세요.', life: 2000 });
             } else {
                 this.userservice
-                    .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.name,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
+                    .getBusinessUserList(this.account_type,this.status,this.page,this.limit,this.person_in_charge,this.id,this.email,this.business_number,this.business_name,this.startDate,this.endDate,this.sortBy,this.sortOrder)
                     .then((data) => {
                         this.customer1 = data;
                         this.loading1 = false;

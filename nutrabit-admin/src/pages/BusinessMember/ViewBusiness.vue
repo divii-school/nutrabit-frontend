@@ -50,6 +50,16 @@
 
                 <div class="p-field p-grid">
                     <label
+                        for="person_in_charge"
+                        class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+                    >{{ $t('Business.list.name') }}:</label>
+                    <div class="p-col-12 p-md-10">
+                        <p>{{ mydata.name }}</p>
+                    </div>
+                </div>
+
+                <div class="p-field p-grid">
+                    <label
                         for="uuid"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
                     >{{ $t('Business.list.ID') }}:</label>
@@ -215,6 +225,7 @@ export default {
                 address: '',
                 detail_address:'',
                 password: '',
+                name:'',
             },
         };
     },
@@ -322,6 +333,7 @@ export default {
             this.mydata.business_name = res.data.data[0].business_name;
             this.mydata.department = res.data.data[0].department;
             this.mydata.person_in_charge = res.data.data[0].person_in_charge;
+            this.mydata.name = res.data.data[0].name;
             this.mydata.uuid = res.data.data[0].uuid;
             this.mydata.password = res.data.data[0].password;
             this.mydata.email = res.data.data[0].email;

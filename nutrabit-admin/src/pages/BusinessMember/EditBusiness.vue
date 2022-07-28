@@ -37,6 +37,14 @@
                         <div class="text-red">{{ error.person_in_charge }}</div>
                     </div>
                 </div>
+
+                <div class="p-formgrid p-grid">
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="mobileuser">{{ $t('Business.list.name') }}</label>
+                        <InputText id="mobileuser" :class="`${error.name ? 'p-invalid' : ''}`" type="text" placeholder="name" :modelValue="mydata.name" v-model="mydata.name" />
+                        <div class="text-red">{{ error.name }}</div>
+                    </div>
+                </div>
                 <div class="p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
                         <label for="address">{{ $t('Business.list.ID') }}</label>
@@ -126,6 +134,7 @@ export default {
                 address: '',
                 detail_address: '',
                 createdDate: '',
+                
             },
             error: {},
         };
@@ -202,6 +211,7 @@ export default {
             this.mydata.business_name = res.data.data[0].business_name;
             this.mydata.department = res.data.data[0].department;
             this.mydata.person_in_charge = res.data.data[0].person_in_charge;
+            this.mydata.name = res.data.data[0].name;
             this.mydata.uuid = res.data.data[0].uuid;
             // this.mydata.password = res.data.data[0].password;
             this.mydata.email = res.data.data[0].email;
