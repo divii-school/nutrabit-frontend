@@ -12,7 +12,7 @@
                     <label
                         for="name"
                         class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
-                    >{{ $t('Application.details.blendingname') }}:</label>
+                    >{{ $t(mydata.application_type) }}:</label>
                     <div class="p-col-12 p-md-10">
                         <p>{{ mydata.blending_name_ko }}</p>
                     </div>
@@ -258,6 +258,7 @@ export default {
                 blending_name_ko:'',
                 Application_mode: '',
                 additional_request: '',
+                application_type:'',
                 status_by_admin: '',
                 answer_by_admin: '',
                 memo_by_admin: '',
@@ -324,7 +325,7 @@ export default {
             this.mydata.answer_by_admin = res.data.data[0].answer_by_admin;
             this.mydata.memo_by_admin = res.data.data[0].memo_by_admin;
             this.mydata.blending_name_ko = res.data.data[0].blending_name_ko;
-            
+            this.mydata.application_type = res.data.data[0].application_type;
             this.mydata.options = res.data.data[0].options;
             // console.log(this.mydata.options.length);
             for (let i = 0; i <= this.mydata.options.length; i++) {
